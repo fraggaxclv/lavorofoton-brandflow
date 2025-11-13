@@ -4,6 +4,7 @@ import ModelCard from "@/components/ModelCard";
 import fotonS315 from "@/assets/foton-s315.jpg";
 import foton7t from "@/assets/foton-7t.jpg";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
+import foton1722 from "@/assets/foton-1722.jpg";
 const Modelos = () => {
   return <div className="min-h-screen">
       <Navbar />
@@ -25,7 +26,7 @@ const Modelos = () => {
             <ModelCard name="AUMARK 715" description="Médio porte com excelente custo-benefício. Versatilidade comprovada." image={foton7t} link="/modelos/aumark-715" />
             <ModelCard name="AUMARK 916" description="Capacidade ampliada. Performance para distribuição regional." image={fotonHeavy} link="/modelos/aumark-916" />
             <ModelCard name="AUMARK 1217" description="Semipesado robusto. Força para grandes volumes." image={fotonHeavy} link="/modelos/aumark-1217" />
-            <ModelCard name="AUMAN D 1722" description="Alta capacidade. Longas distâncias e cargas pesadas." image={fotonHeavy} link="/modelos/auman-d-1722" />
+            <ModelCard name="AUMAN D 1722" description="Alta capacidade. Longas distâncias e cargas pesadas." image={foton1722} link="/modelos/auman-d-1722" />
           </div>
         </div>
       </section>
