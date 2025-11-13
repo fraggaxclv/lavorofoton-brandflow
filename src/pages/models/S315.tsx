@@ -142,7 +142,7 @@ const S315 = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="card-premium p-8">
-              <div className="w-28 h-28 bg-white rounded-full flex items-center justify-center mb-6 p-3">
+              <div className="w-36 h-36 bg-white rounded-full flex items-center justify-center mb-6 p-4">
                 <img src={cumminsLogo} alt="Cummins" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-3">Motor confiável - CUMMINS    </h3>
