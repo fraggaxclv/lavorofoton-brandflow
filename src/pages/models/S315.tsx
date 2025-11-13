@@ -1,66 +1,30 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { 
-  Truck, 
-  Zap, 
-  Shield, 
-  Heart,
-  Gauge, 
-  Settings, 
-  Award,
-  Users,
-  TrendingUp,
-  CheckCircle2,
-  Phone,
-  MessageSquare,
-  Package,
-  Building2,
-  ShoppingCart,
-  Store,
-  UserCheck,
-  Wrench,
-  Eye,
-  HandshakeIcon
-} from "lucide-react";
+import { Truck, Zap, Shield, Heart, Gauge, Settings, Award, Users, TrendingUp, CheckCircle2, Phone, MessageSquare, Package, Building2, ShoppingCart, Store, UserCheck, Wrench, Eye, HandshakeIcon } from "lucide-react";
 import { useState } from "react";
 import heroImage from "@/assets/foton-s315.jpg";
-
 const S315 = () => {
   const [businessType, setBusinessType] = useState("");
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o AUMARK S315.");
-
   const handleWhatsApp = () => {
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
   };
-
   const handleQuoteSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleWhatsApp();
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navbar />
 
       {/* 1. HERO - Acima da dobra */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-industrial-dark">
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage} 
-            alt="AUMARK S315" 
-            className="w-full h-full object-cover opacity-40"
-          />
+          <img src={heroImage} alt="AUMARK S315" className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-t from-industrial-dark via-industrial-dark/60 to-transparent" />
         </div>
         
@@ -78,20 +42,13 @@ const S315 = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-              <Button 
-                onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
-                size="lg"
-                className="btn-primary-large text-xl px-12 py-6 h-auto"
-              >
+              <Button onClick={() => document.getElementById('contato')?.scrollIntoView({
+              behavior: 'smooth'
+            })} size="lg" className="btn-primary-large text-xl px-12 py-6 h-auto">
                 Quero consultar o preço
               </Button>
               
-              <Button 
-                onClick={handleWhatsApp}
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-industrial-dark text-xl px-12 py-6 h-auto transition-all duration-300"
-              >
+              <Button onClick={handleWhatsApp} size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-industrial-dark text-xl px-12 py-6 h-auto transition-all duration-300">
                 <MessageSquare className="mr-2 h-6 w-6" />
                 Falar no WhatsApp agora
               </Button>
@@ -123,7 +80,7 @@ const S315 = () => {
             </p>
 
             <p className="text-lg text-foreground leading-relaxed mb-12">
-              O Aumark S315 é um VUC de verdade, pensado para a cidade: entra em vias restritas, é ágil, econômico e entrega a robustez de um caminhão com a praticidade de quem vem da Fiorino, da Strada ou de uma van.
+              O Aumark S315 é um VUC de verdade, pensado para as cidades e estradas: entra em vias restritas, é ágil, econômico e entrega a robustez de um caminhão com a praticidade de quem vem de utilitários menores.      
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -147,7 +104,7 @@ const S315 = () => {
                 <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-bold text-lg mb-1">Plataforma perfeita</h3>
-                  <p className="text-muted-foreground">Para última milha e entregas urbanas com eficiência.</p>
+                  <p className="text-muted-foreground">Para última milha e entregas urbanas ou longas viagens.         </p>
                 </div>
               </div>
 
@@ -186,7 +143,7 @@ const S315 = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
                 <Zap className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Motor confiável</h3>
+              <h3 className="text-xl font-bold mb-3">Motor confiável - CUMMINS    </h3>
               <p className="text-muted-foreground">
                 Potência e torque sob medida para a cidade, com respostas rápidas e consumo inteligente.
               </p>
@@ -196,7 +153,7 @@ const S315 = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
                 <Settings className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Câmbio preciso</h3>
+              <h3 className="text-xl font-bold mb-3">Câmbio preciso - ZF    </h3>
               <p className="text-muted-foreground">
                 Trocas suaves, menos fadiga no trânsito urbano e mais controle em subidas e manobras.
               </p>
@@ -383,11 +340,7 @@ const S315 = () => {
             </div>
 
             <div className="mt-12">
-              <Button 
-                onClick={handleWhatsApp}
-                size="lg"
-                className="bg-white text-primary hover:bg-gray-100 px-10 py-6 h-auto text-lg"
-              >
+              <Button onClick={handleWhatsApp} size="lg" className="bg-white text-primary hover:bg-gray-100 px-10 py-6 h-auto text-lg">
                 Quero fazer esse upgrade
               </Button>
             </div>
@@ -479,7 +432,7 @@ const S315 = () => {
                 </div>
                 <div>
                   <blockquote className="text-lg md:text-xl italic text-muted-foreground mb-4">
-                    "Saí da van para o S315. Hoje faço mais viagens com mais carga e chego menos cansado."
+                    "Vendi meu carro e fui para o S315. Hoje faço mais viagens com mais carga e chego menos cansado."
                   </blockquote>
                   <p className="font-semibold text-foreground">— Cliente Lavoro Foton</p>
                 </div>
@@ -572,26 +525,14 @@ const S315 = () => {
                     <label htmlFor="name" className="block text-sm font-semibold mb-2">
                       Nome *
                     </label>
-                    <Input 
-                      id="name"
-                      type="text" 
-                      placeholder="Seu nome completo" 
-                      required
-                      className="h-12"
-                    />
+                    <Input id="name" type="text" placeholder="Seu nome completo" required className="h-12" />
                   </div>
 
                   <div>
                     <label htmlFor="phone" className="block text-sm font-semibold mb-2">
                       Telefone (WhatsApp) *
                     </label>
-                    <Input 
-                      id="phone"
-                      type="tel" 
-                      placeholder="(11) 99999-9999" 
-                      required
-                      className="h-12"
-                    />
+                    <Input id="phone" type="tel" placeholder="(11) 99999-9999" required className="h-12" />
                   </div>
                 </div>
 
@@ -600,13 +541,7 @@ const S315 = () => {
                     <label htmlFor="city" className="block text-sm font-semibold mb-2">
                       Cidade / Estado *
                     </label>
-                    <Input 
-                      id="city"
-                      type="text" 
-                      placeholder="Belo Horizonte - MG" 
-                      required
-                      className="h-12"
-                    />
+                    <Input id="city" type="text" placeholder="Belo Horizonte - MG" required className="h-12" />
                   </div>
 
                   <div>
@@ -633,30 +568,15 @@ const S315 = () => {
                   <label htmlFor="message" className="block text-sm font-semibold mb-2">
                     Qual é a sua necessidade hoje?
                   </label>
-                  <Textarea 
-                    id="message"
-                    placeholder="Conte um pouco sobre sua operação e o que você está buscando..."
-                    rows={4}
-                    className="resize-none"
-                  />
+                  <Textarea id="message" placeholder="Conte um pouco sobre sua operação e o que você está buscando..." rows={4} className="resize-none" />
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
-                    type="submit"
-                    size="lg"
-                    className="flex-1 h-14 text-lg"
-                  >
+                  <Button type="submit" size="lg" className="flex-1 h-14 text-lg">
                     Quero uma proposta do S315
                   </Button>
 
-                  <Button 
-                    type="button"
-                    size="lg"
-                    variant="outline"
-                    className="flex-1 h-14 text-lg"
-                    onClick={handleWhatsApp}
-                  >
+                  <Button type="button" size="lg" variant="outline" className="flex-1 h-14 text-lg" onClick={handleWhatsApp}>
                     <MessageSquare className="mr-2 h-5 w-5" />
                     Falar com um consultor no WhatsApp
                   </Button>
@@ -670,11 +590,7 @@ const S315 = () => {
 
             <div className="mt-12 text-center">
               <p className="text-muted-foreground mb-4">Quer conhecer outros modelos Foton?</p>
-              <Button 
-                variant="outline"
-                size="lg"
-                onClick={() => window.location.href = '/modelos'}
-              >
+              <Button variant="outline" size="lg" onClick={() => window.location.href = '/modelos'}>
                 Ver toda a linha de caminhões
               </Button>
             </div>
@@ -683,8 +599,6 @@ const S315 = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default S315;
