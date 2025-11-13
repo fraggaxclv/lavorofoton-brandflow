@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/logo-foton-lavoro.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,9 +10,8 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container-lavoro">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-foreground">LAVORO</span>
-            <span className="text-2xl font-bold text-primary">FOTON</span>
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="Foton Lavoro" className="h-8 md:h-10" />
           </Link>
 
           {/* Desktop Menu */}

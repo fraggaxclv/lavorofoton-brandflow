@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo-foton-lavoro.png";
 
 const Footer = () => {
   return (
@@ -8,9 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">
-              LAVORO <span className="text-primary">FOTON</span>
-            </h3>
+            <img src={logo} alt="Foton Lavoro" className="h-10 mb-4 brightness-0 invert" />
             <p className="text-sm text-muted-foreground">
               Concessionária oficial Foton em Minas Gerais. Força, confiança e performance.
             </p>
