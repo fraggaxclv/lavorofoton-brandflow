@@ -50,7 +50,7 @@ const S315 = () => {
                 Quero consultar o preço
               </Button>
               
-              <Button onClick={handleWhatsApp} size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-industrial-dark text-xl px-12 py-6 h-auto transition-all duration-300">
+              <Button onClick={handleWhatsApp} size="lg" className="bg-[#25D366] hover:bg-[#20BA5A] text-white border-0 text-xl px-12 py-6 h-auto transition-all duration-300">
                 <MessageSquare className="mr-2 h-6 w-6" />
                 Falar no WhatsApp agora
               </Button>
