@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle, ArrowRight, Truck, Wrench, Gauge, Zap, Shield, Users } from "lucide-react";
-import fotonHeavy from "@/assets/foton-heavy.jpg";
+import foton1217 from "@/assets/foton-1217.jpg";
 import cumminsLogo from "@/assets/cummins-logo.png";
 import zfLogo from "@/assets/zf-logo.png";
 import { Button } from "@/components/ui/button";
@@ -82,7 +82,7 @@ const Foton1217 = () => {
               </p>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[var(--shadow-strong)]">
-              <img src={fotonHeavy} alt="Foton 1217 - O melhor três-quartos do mercado" className="w-full h-full object-cover" />
+              <img src={foton1217} alt="Foton 1217 - O melhor três-quartos do mercado" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
