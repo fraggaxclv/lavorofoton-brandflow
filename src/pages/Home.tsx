@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import ModelCard from "@/components/ModelCard";
 import { Link } from "react-router-dom";
 import { CheckCircle, Users, TrendingUp, Award } from "lucide-react";
-import heroTruck from "@/assets/hero-truck.jpg";
+import heroTruck from "@/assets/banner-foton-lavoro.png";
 import fotonS315 from "@/assets/foton-s315.jpg";
 import foton7t from "@/assets/foton-7t.jpg";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
