@@ -4,9 +4,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Truck, Zap, Shield, Heart, Gauge, Settings, Award, Users, TrendingUp, CheckCircle2, Phone, MessageSquare, Package, Building2, ShoppingCart, Store, UserCheck, Wrench, Eye, HandshakeIcon } from "lucide-react";
+import { Truck, Shield, Heart, Gauge, Settings, Award, Users, TrendingUp, CheckCircle2, Phone, MessageSquare, Package, Building2, ShoppingCart, Store, UserCheck, Wrench, Eye, HandshakeIcon } from "lucide-react";
 import { useState } from "react";
 import heroImage from "@/assets/foton-s315.jpg";
+import cumminsLogo from "@/assets/cummins-logo.png";
 const S315 = () => {
   const [businessType, setBusinessType] = useState("");
   const whatsappNumber = "5511999999999";
@@ -140,8 +141,8 @@ const S315 = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="card-premium p-8">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                <Zap className="h-8 w-8 text-primary" />
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 p-2">
+                <img src={cumminsLogo} alt="Cummins" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-3">Motor confiável - CUMMINS    </h3>
               <p className="text-muted-foreground">
