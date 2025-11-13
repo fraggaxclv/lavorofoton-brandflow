@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle, ArrowRight } from "lucide-react";
-import fotonHeavy from "@/assets/foton-heavy.jpg";
+import foton916 from "@/assets/foton-916.jpg";
 
 const Foton9T = () => {
   return (
@@ -32,7 +32,7 @@ const Foton9T = () => {
               </div>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[var(--shadow-strong)]">
-              <img src={fotonHeavy} alt="AUMARK 916" className="w-full h-full object-cover" />
+              <img src={foton916} alt="AUMARK 916" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
