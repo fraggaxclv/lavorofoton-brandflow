@@ -21,11 +21,11 @@ const Home = () => {
         </div>
         <div className="container-lavoro relative z-10 text-center text-primary-foreground">
           <h1 className="hero-text mb-6 animate-fade-in">
-            FORÇA QUE <br />
+            UM BOM NEGÓCIO NA LAVORO <br />
             <span className="text-gradient">MOVE NEGÓCIOS</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-200">
-            Caminhões Foton de alta performance para quem não aceita menos que excelência
+            c
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/modelos" className="btn-primary-large">
