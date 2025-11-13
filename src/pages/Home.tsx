@@ -4,6 +4,7 @@ import ModelCard from "@/components/ModelCard";
 import { Link } from "react-router-dom";
 import { CheckCircle, Users, TrendingUp, Award } from "lucide-react";
 import heroTruck from "@/assets/banner-foton-lavoro.png";
+import blackNovember from "@/assets/black-november-promo.png";
 import fotonS315 from "@/assets/foton-s315.jpg";
 import foton7t from "@/assets/foton-7t.jpg";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
@@ -39,6 +40,19 @@ const Home = () => {
             >
               Falar com Consultor
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Black November Promo */}
+      <section className="section-padding bg-industrial-dark">
+        <div className="container-lavoro">
+          <div className="max-w-4xl mx-auto">
+            <img 
+              src={blackNovember} 
+              alt="Black November - Últimos Dias - Fale com a Lavoro!" 
+              className="w-full rounded-lg shadow-2xl hover-scale"
+            />
           </div>
         </div>
       </section>
