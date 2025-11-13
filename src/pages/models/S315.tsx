@@ -8,6 +8,7 @@ import { Truck, Shield, Heart, Gauge, Settings, Award, Users, TrendingUp, CheckC
 import { useState } from "react";
 import heroImage from "@/assets/foton-s315.jpg";
 import cumminsLogo from "@/assets/cummins-logo.png";
+import zfLogo from "@/assets/zf-logo.png";
 const S315 = () => {
   const [businessType, setBusinessType] = useState("");
   const whatsappNumber = "5511999999999";
@@ -151,8 +152,8 @@ const S315 = () => {
             </div>
 
             <div className="card-premium p-8">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                <Settings className="h-8 w-8 text-primary" />
+              <div className="w-28 h-28 bg-white rounded-full flex items-center justify-center mb-6 p-3">
+                <img src={zfLogo} alt="ZF" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-3">Câmbio preciso - ZF    </h3>
               <p className="text-muted-foreground">
