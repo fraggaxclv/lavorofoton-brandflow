@@ -27,11 +27,11 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/quem-somos" element={<QuemSomos />} />
           <Route path="/modelos" element={<Modelos />} />
-          <Route path="/modelos/s315" element={<S315 />} />
-          <Route path="/modelos/7t" element={<Foton7T />} />
-          <Route path="/modelos/9t" element={<Foton9T />} />
-          <Route path="/modelos/1217" element={<Foton1217 />} />
-          <Route path="/modelos/17t" element={<Foton17T />} />
+          <Route path="/modelos/aumark-s315" element={<S315 />} />
+          <Route path="/modelos/aumark-715" element={<Foton7T />} />
+          <Route path="/modelos/aumark-916" element={<Foton9T />} />
+          <Route path="/modelos/aumark-1217" element={<Foton1217 />} />
+          <Route path="/modelos/auman-d-1722" element={<Foton17T />} />
           <Route path="/servicos" element={<Servicos />} />
           <Route path="/contato" element={<Contato />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

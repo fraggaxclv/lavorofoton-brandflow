@@ -13,7 +13,7 @@ const Foton1217 = () => {
         <div className="container-lavoro">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="mb-6">Foton 1217</h1>
+              <h1 className="mb-6">AUMARK 1217</h1>
               <p className="text-2xl text-muted-foreground mb-8">
                 Semipesado robusto. Força para grandes volumes e longas distâncias.
               </p>
@@ -32,7 +32,7 @@ const Foton1217 = () => {
               </div>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[var(--shadow-strong)]">
-              <img src={fotonHeavy} alt="Foton 1217" className="w-full h-full object-cover" />
+              <img src={fotonHeavy} alt="AUMARK 1217" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ const Foton1217 = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Vantagens do 1217:</h3>
+              <h3 className="text-xl font-bold mb-4">Vantagens do AUMARK 1217:</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
@@ -172,7 +172,7 @@ const Foton1217 = () => {
         <div className="container-lavoro text-center">
           <h2 className="mb-6">Força Bruta para Grandes Operações</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            O Foton 1217 é construído para quem não aceita limitações. Alta carga, longas distâncias.
+            O AUMARK 1217 é construído para quem não aceita limitações. Alta carga, longas distâncias.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

@@ -13,7 +13,7 @@ const Foton7T = () => {
         <div className="container-lavoro">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="mb-6">Foton 7T</h1>
+              <h1 className="mb-6">AUMARK 715</h1>
               <p className="text-2xl text-muted-foreground mb-8">
                 Médio porte. Versatilidade e eficiência para urbano e regional.
               </p>
@@ -32,7 +32,7 @@ const Foton7T = () => {
               </div>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[var(--shadow-strong)]">
-              <img src={foton7t} alt="Foton 7T" className="w-full h-full object-cover" />
+              <img src={foton7t} alt="AUMARK 715" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ const Foton7T = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Vantagens do 7T:</h3>
+              <h3 className="text-xl font-bold mb-4">Vantagens do AUMARK 715:</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
@@ -172,7 +172,7 @@ const Foton7T = () => {
         <div className="container-lavoro text-center">
           <h2 className="mb-6">O Caminhão Mais Versátil da Linha</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Descubra como o Foton 7T pode aumentar a eficiência da sua operação.
+            Descubra como o AUMARK 715 pode aumentar a eficiência da sua operação.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

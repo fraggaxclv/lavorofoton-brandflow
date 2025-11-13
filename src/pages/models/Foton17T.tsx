@@ -13,7 +13,7 @@ const Foton17T = () => {
         <div className="container-lavoro">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="mb-6">Foton 17T</h1>
+              <h1 className="mb-6">AUMAN D 1722</h1>
               <p className="text-2xl text-muted-foreground mb-8">
                 Alta capacidade. Máxima performance em longas distâncias e cargas extremas.
               </p>
@@ -32,7 +32,7 @@ const Foton17T = () => {
               </div>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[var(--shadow-strong)]">
-              <img src={fotonHeavy} alt="Foton 17T" className="w-full h-full object-cover" />
+              <img src={fotonHeavy} alt="AUMAN D 1722" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ const Foton17T = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Vantagens do 17T:</h3>
+              <h3 className="text-xl font-bold mb-4">Vantagens do AUMAN D 1722:</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
@@ -172,7 +172,7 @@ const Foton17T = () => {
         <div className="container-lavoro text-center">
           <h2 className="mb-6">O Mais Poderoso da Linha Foton</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            O Foton 17T foi construído para quem opera no limite. Máxima carga, máxima confiança.
+            O AUMAN D 1722 foi construído para quem opera no limite. Máxima carga, máxima confiança.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

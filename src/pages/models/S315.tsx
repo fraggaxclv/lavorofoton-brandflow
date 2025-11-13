@@ -13,7 +13,7 @@ const S315 = () => {
         <div className="container-lavoro">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="mb-6">Foton S315</h1>
+              <h1 className="mb-6">AUMARK S315</h1>
               <p className="text-2xl text-muted-foreground mb-8">
                 Veículo Urbano de Carga. Dirigível com CNH B.
               </p>
@@ -32,7 +32,7 @@ const S315 = () => {
               </div>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[var(--shadow-strong)]">
-              <img src={fotonS315} alt="Foton S315" className="w-full h-full object-cover" />
+              <img src={fotonS315} alt="AUMARK S315" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ const S315 = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Vantagens do S315:</h3>
+              <h3 className="text-xl font-bold mb-4">Vantagens do AUMARK S315:</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
@@ -172,7 +172,7 @@ const S315 = () => {
         <div className="container-lavoro text-center">
           <h2 className="mb-6">Pronto para Economizar com CNH B?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Solicite uma proposta personalizada e descubra como o S315 pode otimizar sua operação.
+            Solicite uma proposta personalizada e descubra como o AUMARK S315 pode otimizar sua operação.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
