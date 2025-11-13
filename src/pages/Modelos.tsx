@@ -4,57 +4,28 @@ import ModelCard from "@/components/ModelCard";
 import fotonS315 from "@/assets/foton-s315.jpg";
 import foton7t from "@/assets/foton-7t.jpg";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
-
 const Modelos = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
 
       {/* Hero */}
       <section className="mt-16 pt-20 pb-12 bg-industrial-dark text-primary-foreground">
         <div className="container-lavoro text-center">
-          <h1 className="mb-4">Linha Completa Foton</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Do urbano ao pesado. Soluções para cada operação com a confiabilidade Foton.
-          </p>
+          <h1 className="mb-4">Linha Completa FOTON        </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">Equipado: Motor CUMMINS - Caixa ZF - Diferencial DANA - Injeção BOSCH</p>
         </div>
       </section>
 
       {/* Lista de Modelos - Linha Tradicional */}
       <section className="section-padding">
         <div className="container-lavoro">
-          <h2 className="mb-12">Linha Tradicional Diesel</h2>
+          <h2 className="mb-12">Linha Motores Diesel EURO-6      </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ModelCard
-              name="AUMARK S315"
-              description="VUC. Pode ser dirigido com CNH B. Ideal para entregas urbanas."
-              image={fotonS315}
-              link="/modelos/aumark-s315"
-            />
-            <ModelCard
-              name="AUMARK 715"
-              description="Médio porte com excelente custo-benefício. Versatilidade comprovada."
-              image={foton7t}
-              link="/modelos/aumark-715"
-            />
-            <ModelCard
-              name="AUMARK 916"
-              description="Capacidade ampliada. Performance para distribuição regional."
-              image={fotonHeavy}
-              link="/modelos/aumark-916"
-            />
-            <ModelCard
-              name="AUMARK 1217"
-              description="Semipesado robusto. Força para grandes volumes."
-              image={fotonHeavy}
-              link="/modelos/aumark-1217"
-            />
-            <ModelCard
-              name="AUMAN D 1722"
-              description="Alta capacidade. Longas distâncias e cargas pesadas."
-              image={fotonHeavy}
-              link="/modelos/auman-d-1722"
-            />
+            <ModelCard name="AUMARK S315" description="VUC. Pode ser dirigido com CNH B. Ideal para entregas urbanas." image={fotonS315} link="/modelos/aumark-s315" />
+            <ModelCard name="AUMARK 715" description="Médio porte com excelente custo-benefício. Versatilidade comprovada." image={foton7t} link="/modelos/aumark-715" />
+            <ModelCard name="AUMARK 916" description="Capacidade ampliada. Performance para distribuição regional." image={fotonHeavy} link="/modelos/aumark-916" />
+            <ModelCard name="AUMARK 1217" description="Semipesado robusto. Força para grandes volumes." image={fotonHeavy} link="/modelos/aumark-1217" />
+            <ModelCard name="AUMAN D 1722" description="Alta capacidade. Longas distâncias e cargas pesadas." image={fotonHeavy} link="/modelos/auman-d-1722" />
           </div>
         </div>
       </section>
@@ -62,20 +33,10 @@ const Modelos = () => {
       {/* Linha Picapes */}
       <section className="section-padding bg-industrial-light">
         <div className="container-lavoro">
-          <h2 className="mb-12">Linha Picapes TUNLAND</h2>
+          <h2 className="mb-12">Tunland V9/V7                                                                                                                                       </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ModelCard
-              name="TUNLAND V9"
-              description="Picape 4x4 robusta. Força e versatilidade para trabalho e lazer."
-              image={fotonHeavy}
-              link="/modelos/tunland-v9"
-            />
-            <ModelCard
-              name="TUNLAND V7"
-              description="Picape 4x2 versátil. Equilíbrio perfeito entre trabalho e mobilidade."
-              image={fotonHeavy}
-              link="/modelos/tunland-v7"
-            />
+            <ModelCard name="TUNLAND V9" description="Picape 4x4 robusta. Força e versatilidade para trabalho e lazer." image={fotonHeavy} link="/modelos/tunland-v9" />
+            <ModelCard name="TUNLAND V7" description="Picape 4x2 versátil. Equilíbrio perfeito entre trabalho e mobilidade." image={fotonHeavy} link="/modelos/tunland-v7" />
           </div>
         </div>
       </section>
@@ -88,30 +49,15 @@ const Modelos = () => {
               <span className="text-2xl">⚡</span>
               <span className="font-bold">LINHA 100% ELÉTRICA</span>
             </div>
-            <h2>Futuro Sustentável</h2>
+            <h2>Linha e-Foton            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-4">
               Zero emissões. Economia de até 80%. O futuro do transporte chegou.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ModelCard
-              name="eWONDER"
-              description="VUC elétrico. Emissão zero para entregas urbanas sustentáveis."
-              image={fotonS315}
-              link="/modelos/ewonder"
-            />
-            <ModelCard
-              name="eTOANO"
-              description="Médio porte elétrico. Alta capacidade com zero emissões."
-              image={foton7t}
-              link="/modelos/etoano"
-            />
-            <ModelCard
-              name="eVIEW"
-              description="Pesado elétrico. Máxima capacidade com impacto ambiental zero."
-              image={fotonHeavy}
-              link="/modelos/eview"
-            />
+            <ModelCard name="eWONDER" description="VUC elétrico. Emissão zero para entregas urbanas sustentáveis." image={fotonS315} link="/modelos/ewonder" />
+            <ModelCard name="eTOANO" description="Médio porte elétrico. Alta capacidade com zero emissões." image={foton7t} link="/modelos/etoano" />
+            <ModelCard name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." image={fotonHeavy} link="/modelos/eview" />
           </div>
         </div>
       </section>
@@ -174,18 +120,13 @@ const Modelos = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Nossos consultores analisam sua operação e recomendam a solução ideal.
           </p>
-          <a
-            href="/contato"
-            className="inline-block bg-background text-foreground px-8 py-4 rounded text-lg font-semibold hover:bg-secondary transition-all"
-          >
+          <a href="/contato" className="inline-block bg-background text-foreground px-8 py-4 rounded text-lg font-semibold hover:bg-secondary transition-all">
             Falar com Especialista
           </a>
         </div>
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Modelos;
