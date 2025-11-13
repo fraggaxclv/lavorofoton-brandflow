@@ -20,9 +20,10 @@ const Modelos = () => {
         </div>
       </section>
 
-      {/* Lista de Modelos */}
+      {/* Lista de Modelos - Linha Tradicional */}
       <section className="section-padding">
         <div className="container-lavoro">
+          <h2 className="mb-12">Linha Tradicional Diesel</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ModelCard
               name="AUMARK S315"
@@ -58,10 +59,67 @@ const Modelos = () => {
         </div>
       </section>
 
-      {/* Comparativo Rápido */}
+      {/* Linha Picapes */}
       <section className="section-padding bg-industrial-light">
         <div className="container-lavoro">
-          <h2 className="text-center mb-12">Comparativo de Capacidades</h2>
+          <h2 className="mb-12">Linha Picapes TUNLAND</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <ModelCard
+              name="TUNLAND V9"
+              description="Picape 4x4 robusta. Força e versatilidade para trabalho e lazer."
+              image={fotonHeavy}
+              link="/modelos/tunland-v9"
+            />
+            <ModelCard
+              name="TUNLAND V7"
+              description="Picape 4x2 versátil. Equilíbrio perfeito entre trabalho e mobilidade."
+              image={fotonHeavy}
+              link="/modelos/tunland-v7"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Linha Elétrica */}
+      <section className="section-padding">
+        <div className="container-lavoro">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-500 px-4 py-2 rounded-full mb-4">
+              <span className="text-2xl">⚡</span>
+              <span className="font-bold">LINHA 100% ELÉTRICA</span>
+            </div>
+            <h2>Futuro Sustentável</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-4">
+              Zero emissões. Economia de até 80%. O futuro do transporte chegou.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <ModelCard
+              name="eWONDER"
+              description="VUC elétrico. Emissão zero para entregas urbanas sustentáveis."
+              image={fotonS315}
+              link="/modelos/ewonder"
+            />
+            <ModelCard
+              name="eTOANO"
+              description="Médio porte elétrico. Alta capacidade com zero emissões."
+              image={foton7t}
+              link="/modelos/etoano"
+            />
+            <ModelCard
+              name="eVIEW"
+              description="Pesado elétrico. Máxima capacidade com impacto ambiental zero."
+              image={fotonHeavy}
+              link="/modelos/eview"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Comparativo Rápido */}
+      <section className="section-padding bg-industrial-dark text-primary-foreground">
+        <div className="container-lavoro">
+          <h2 className="text-center mb-12">Comparativo de Capacidades - Linha Diesel</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
