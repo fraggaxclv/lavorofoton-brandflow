@@ -1,13 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { 
   Truck, 
   Zap, 
   Shield, 
-  DollarSign, 
+  Heart,
   Gauge, 
   Settings, 
   Award,
@@ -19,11 +26,17 @@ import {
   Package,
   Building2,
   ShoppingCart,
-  Store
+  Store,
+  UserCheck,
+  Wrench,
+  Eye,
+  HandshakeIcon
 } from "lucide-react";
+import { useState } from "react";
 import heroImage from "@/assets/foton-s315.jpg";
 
 const S315 = () => {
+  const [businessType, setBusinessType] = useState("");
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o AUMARK S315.");
 
@@ -40,8 +53,8 @@ const S315 = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero Section - Above the fold */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-industrial-dark">
+      {/* 1. HERO - Acima da dobra */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-industrial-dark">
         <div className="absolute inset-0 z-0">
           <img 
             src={heroImage} 
@@ -51,40 +64,42 @@ const S315 = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-industrial-dark via-industrial-dark/60 to-transparent" />
         </div>
         
-        <div className="container-lavoro relative z-10 text-center text-white">
-          <div className="max-w-5xl mx-auto space-y-8">
-            <div className="inline-block px-4 py-2 bg-primary/20 backdrop-blur-sm border border-primary rounded-full mb-4">
-              <span className="text-primary-light font-semibold text-sm tracking-wider">CNH B • VUC • QUERIDINHO DOS MOTORISTAS</span>
-            </div>
-            
-            <h1 className="hero-text text-white leading-[0.9] mb-6">
-              AUMARK S315
+        <div className="container-lavoro relative z-10 text-center text-white py-20">
+          <div className="max-w-5xl mx-auto space-y-8">            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6 text-white">
+              Aumark S315.<br />
+              <span className="text-primary-light">O caminhão que cabe</span><br />
+              na sua carteira B.
             </h1>
             
-            <p className="text-2xl md:text-3xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">
-              O caminhão que revoluciona sua operação.<br />
-              <span className="text-white font-semibold">CNH B. Sem balança. Puro resultado.</span>
+            <p className="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">
+              Entre no mundo dos caminhões sem mudar de categoria.<br />
+              <span className="text-white font-semibold">Mais carga, mais respeito na rua, mais resultado no seu negócio.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
               <Button 
-                onClick={handleWhatsApp}
+                onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
                 size="lg"
                 className="btn-primary-large text-xl px-12 py-6 h-auto"
               >
-                <MessageSquare className="mr-2 h-6 w-6" />
-                Falar no WhatsApp agora
+                Quero consultar o preço
               </Button>
               
               <Button 
-                onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={handleWhatsApp}
                 size="lg"
                 variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-industrial-dark text-xl px-12 py-6 h-auto transition-all duration-300"
               >
-                Consultar preço
+                <MessageSquare className="mr-2 h-6 w-6" />
+                Falar no WhatsApp agora
               </Button>
             </div>
+
+            <p className="text-sm text-gray-400 pt-4">
+              Atendimento rápido, direto com um consultor Lavoro Foton.
+            </p>
           </div>
         </div>
 
@@ -95,192 +110,142 @@ const S315 = () => {
         </div>
       </section>
 
-      {/* Why S315 is the Favorite */}
+      {/* 2. POR QUE O S315 É O QUERIDINHO DA CARTEIRA B */}
       <section className="section-padding bg-white">
         <div className="container-lavoro">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Por que o S315 é o <span className="text-gradient">queridinho da CNH B</span>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
+              Por que todo mundo fala do <span className="text-gradient">Aumark S315?</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              O caminhão que mais vende na categoria. E não é por acaso.
+            
+            <p className="text-xl text-muted-foreground leading-relaxed mb-12 text-center">
+              Porque ele resolve um problema real: você quer crescer, carregar mais, profissionalizar o transporte da sua empresa – sem precisar tirar CNH C.
             </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="card-premium p-8 text-center group">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-all">
-                <CheckCircle2 className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">CNH B</h3>
-              <p className="text-muted-foreground">
-                Dirija com sua habilitação atual. Sem burocracia, sem cursos extras.
-              </p>
-            </div>
+            <p className="text-lg text-foreground leading-relaxed mb-12">
+              O Aumark S315 é um VUC de verdade, pensado para a cidade: entra em vias restritas, é ágil, econômico e entrega a robustez de um caminhão com a praticidade de quem vem da Fiorino, da Strada ou de uma van.
+            </p>
 
-            <div className="card-premium p-8 text-center group">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-all">
-                <Gauge className="h-8 w-8 text-primary" />
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-bold text-lg mb-1">Dirigido com CNH B</h3>
+                  <p className="text-muted-foreground">Sem burocracia, sem cursos extras. Sua habilitação atual já resolve.</p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">Não pesa na balança</h3>
-              <p className="text-muted-foreground">
-                VUC = Veículo Urbano de Carga. Passe direto. Mais agilidade, menos estresse.
-              </p>
-            </div>
 
-            <div className="card-premium p-8 text-center group">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-all">
-                <DollarSign className="h-8 w-8 text-primary" />
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-bold text-lg mb-1">Veículo VUC</h3>
+                  <p className="text-muted-foreground">Ideal para áreas de restrição. Passa onde outros não passam.</p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">Economia real</h3>
-              <p className="text-muted-foreground">
-                Consumo eficiente, manutenção previsível. Seu bolso agradece todo mês.
-              </p>
-            </div>
 
-            <div className="card-premium p-8 text-center group">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-all">
-                <Zap className="h-8 w-8 text-primary" />
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-bold text-lg mb-1">Plataforma perfeita</h3>
+                  <p className="text-muted-foreground">Para última milha e entregas urbanas com eficiência.</p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">Robustez urbana</h3>
-              <p className="text-muted-foreground">
-                Motor Cummins, chassis reforçado. Feito para trabalhar pesado todo dia.
-              </p>
-            </div>
 
-            <div className="card-premium p-8 text-center group">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-all">
-                <Settings className="h-8 w-8 text-primary" />
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-bold text-lg mb-1">Mais carga</h3>
+                  <p className="text-muted-foreground">Mais que um utilitário leve. Capacidade de caminhão.</p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">Fácil de manobrar</h3>
-              <p className="text-muted-foreground">
-                Compacto na cidade, potente na estrada. A combinação perfeita.
-              </p>
-            </div>
 
-            <div className="card-premium p-8 text-center group">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-all">
-                <TrendingUp className="h-8 w-8 text-primary" />
+              <div className="flex items-start gap-4 md:col-span-2">
+                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-bold text-lg mb-1">Posição de dirigir de caminhão</h3>
+                  <p className="text-muted-foreground">Com conforto e visibilidade que fazem diferença no dia a dia.</p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3">Ideal para crescer</h3>
-              <p className="text-muted-foreground">
-                Empreendedores, entregas, última milha. O caminhão que escala seu negócio.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Differentiators */}
+      {/* 3. PRINCIPAIS DIFERENCIAIS TÉCNICOS */}
       <section className="section-padding bg-industrial-light">
         <div className="container-lavoro">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Diferenciais <span className="text-gradient">que fazem a diferença</span>
+              Tecnologia de gente grande,<br />
+              <span className="text-gradient">para quem está dando o próximo passo.</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-lg hover:shadow-[var(--shadow-strong)] transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Zap className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Motor Cummins</h3>
-                  <p className="text-sm text-muted-foreground">Líder mundial. Confiabilidade comprovada.</p>
-                </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="card-premium p-8">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                <Zap className="h-8 w-8 text-primary" />
               </div>
+              <h3 className="text-xl font-bold mb-3">Motor confiável</h3>
+              <p className="text-muted-foreground">
+                Potência e torque sob medida para a cidade, com respostas rápidas e consumo inteligente.
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg hover:shadow-[var(--shadow-strong)] transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <DollarSign className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Baixo custo</h3>
-                  <p className="text-sm text-muted-foreground">Manutenção previsível e acessível.</p>
-                </div>
+            <div className="card-premium p-8">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                <Settings className="h-8 w-8 text-primary" />
               </div>
+              <h3 className="text-xl font-bold mb-3">Câmbio preciso</h3>
+              <p className="text-muted-foreground">
+                Trocas suaves, menos fadiga no trânsito urbano e mais controle em subidas e manobras.
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg hover:shadow-[var(--shadow-strong)] transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Settings className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Tecnologia Bosch</h3>
-                  <p className="text-sm text-muted-foreground">Injeção eletrônica de ponta.</p>
-                </div>
+            <div className="card-premium p-8">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                <Shield className="h-8 w-8 text-primary" />
               </div>
+              <h3 className="text-xl font-bold mb-3">Projeto robusto</h3>
+              <p className="text-muted-foreground">
+                Chassi dimensionado para aguentar a rotina pesada de entregas, todos os dias.
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg hover:shadow-[var(--shadow-strong)] transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Gauge className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Câmbio ZF</h3>
-                  <p className="text-sm text-muted-foreground">Suavidade e durabilidade europeia.</p>
-                </div>
+            <div className="card-premium p-8">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                <Users className="h-8 w-8 text-primary" />
               </div>
+              <h3 className="text-xl font-bold mb-3">Conforto na cabine</h3>
+              <p className="text-muted-foreground">
+                Banco confortável, boa ergonomia, painel intuitivo e excelente visibilidade.
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg hover:shadow-[var(--shadow-strong)] transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Truck className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Consumo eficiente</h3>
-                  <p className="text-sm text-muted-foreground">Mais km rodados, menos combustível.</p>
-                </div>
+            <div className="card-premium p-8">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                <Award className="h-8 w-8 text-primary" />
               </div>
+              <h3 className="text-xl font-bold mb-3">Segurança</h3>
+              <p className="text-muted-foreground">
+                Freios eficientes, construção robusta e mais presença na rua que um utilitário leve.
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg hover:shadow-[var(--shadow-strong)] transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Conforto interno</h3>
-                  <p className="text-sm text-muted-foreground">Cabine ergonômica para longas jornadas.</p>
-                </div>
+            <div className="card-premium p-8">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                <Heart className="h-8 w-8 text-primary" />
               </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg hover:shadow-[var(--shadow-strong)] transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Shield className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Garantia Foton</h3>
-                  <p className="text-sm text-muted-foreground">Tranquilidade para você trabalhar.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg hover:shadow-[var(--shadow-strong)] transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Award className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-1">Rede autorizada</h3>
-                  <p className="text-sm text-muted-foreground">Assistência em todo Brasil.</p>
-                </div>
-              </div>
+              <h3 className="text-xl font-bold mb-3">Custo-benefício</h3>
+              <p className="text-muted-foreground">
+                Excelente relação entre preço, capacidade de carga e custo operacional.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Technical Specifications */}
+      {/* 4. FICHA TÉCNICA RESUMIDA */}
       <section className="section-padding bg-white">
         <div className="container-lavoro">
           <div className="text-center mb-16">
@@ -289,217 +254,164 @@ const S315 = () => {
             </h2>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-6">
               <div className="card-premium p-8">
-                <h3 className="text-xl font-bold mb-6 pb-4 border-b">Motorização</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-muted-foreground">Motor</span>
-                    <span className="font-semibold">Cummins ISF 3.8</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-muted-foreground">Potência</span>
-                    <span className="font-semibold">150 cv</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-muted-foreground">Torque</span>
-                    <span className="font-semibold">500 Nm</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-muted-foreground">Combustível</span>
-                    <span className="font-semibold">Diesel S10</span>
-                  </div>
+                <div className="flex items-center gap-3 mb-4 pb-4 border-b">
+                  <Truck className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold">Categoria</h3>
                 </div>
+                <p className="text-lg mb-2 font-semibold text-primary">Caminhão leve VUC – CNH B</p>
+                <p className="text-muted-foreground">
+                  Perfeito para quem precisa de caminhão de verdade sem complicar a habilitação.
+                </p>
               </div>
 
               <div className="card-premium p-8">
-                <h3 className="text-xl font-bold mb-6 pb-4 border-b">Capacidades</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-muted-foreground">PBT</span>
-                    <span className="font-semibold">3.500 kg</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-muted-foreground">Capacidade de carga</span>
-                    <span className="font-semibold">1.415 kg</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-muted-foreground">CNH necessária</span>
-                    <span className="font-semibold text-primary">B (comum)</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-muted-foreground">Categoria</span>
-                    <span className="font-semibold text-primary">VUC</span>
-                  </div>
+                <div className="flex items-center gap-3 mb-4 pb-4 border-b">
+                  <Package className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold">Aplicações típicas</h3>
                 </div>
+                <p className="text-lg mb-2 font-semibold">Baú, carga seca, refrigerado</p>
+                <p className="text-muted-foreground">
+                  Versatilidade para diferentes tipos de operação e negócio.
+                </p>
               </div>
-            </div>
 
-            <div className="card-premium p-8">
-              <h3 className="text-xl font-bold mb-6 pb-4 border-b">Dimensões</h3>
-              <div className="grid md:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">5,99m</div>
-                  <div className="text-sm text-muted-foreground">Comprimento</div>
+              <div className="card-premium p-8">
+                <div className="flex items-center gap-3 mb-4 pb-4 border-b">
+                  <Building2 className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold">Uso ideal</h3>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">2,00m</div>
-                  <div className="text-sm text-muted-foreground">Largura</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">2,49m</div>
-                  <div className="text-sm text-muted-foreground">Altura</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">3,36m</div>
-                  <div className="text-sm text-muted-foreground">Entre-eixos</div>
-                </div>
+                <p className="text-lg mb-2 font-semibold">Entregas urbanas, e-commerce, distribuição, serviços</p>
+                <p className="text-muted-foreground">
+                  Feito para o dia a dia da cidade e das operações que crescem.
+                </p>
               </div>
-            </div>
 
-            <div className="mt-8 p-6 bg-primary/5 rounded-lg border border-primary/20">
-              <p className="text-center text-muted-foreground">
-                <span className="font-semibold text-foreground">Versões disponíveis:</span> Baú, Carga Seca, Refrigerado, Plataforma, Sider
-              </p>
+              <div className="card-premium p-8">
+                <div className="flex items-center gap-3 mb-4 pb-4 border-b">
+                  <Gauge className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold">Capacidade de carga</h3>
+                </div>
+                <p className="text-lg mb-2 font-semibold">Mais que utilitário, menos que caminhão médio</p>
+                <p className="text-muted-foreground">
+                  O equilíbrio perfeito para quem está evoluindo.
+                </p>
+              </div>
+
+              <div className="card-premium p-8">
+                <div className="flex items-center gap-3 mb-4 pb-4 border-b">
+                  <Eye className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold">Cabine</h3>
+                </div>
+                <p className="text-lg mb-2 font-semibold">Simples, confortável, visibilidade excelente</p>
+                <p className="text-muted-foreground">
+                  Projetada para longas jornadas sem cansaço.
+                </p>
+              </div>
+
+              <div className="card-premium p-8">
+                <div className="flex items-center gap-3 mb-4 pb-4 border-b">
+                  <Wrench className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold">Versões</h3>
+                </div>
+                <p className="text-lg mb-2 font-semibold">Chassi para diferentes implementos</p>
+                <p className="text-muted-foreground">
+                  Adapte ao seu tipo de carga e operação.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Smart Comparison */}
-      <section className="section-padding bg-industrial-dark text-white">
+      {/* 5. COMPARATIVO INTELIGENTE */}
+      <section className="section-padding bg-primary text-white">
         <div className="container-lavoro">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Por que escolher o <span className="text-primary-light">S315</span>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">
+              Upgrade natural de quem<br />
+              <span className="text-white/90">cansou de utilitário leve.</span>
             </h2>
-            <p className="text-xl text-gray-300">Comparação inteligente com a concorrência</p>
-          </div>
+            
+            <p className="text-xl mb-12 leading-relaxed text-white/90">
+              Se você está no limite da Fiorino, da Strada, da HR ou da Bongo, o Aumark S315 é o passo lógico: 
+              mais caminhão, mais respeito na rua e mais carga – sem complicar sua habilitação.
+            </p>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-gray-400 font-semibold mb-4">Concorrentes</div>
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8 h-full">
-                  <div className="space-y-4 text-left">
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full" />
-                      <span>Carga limitada</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full" />
-                      <span>Motor básico</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full" />
-                      <span>Manutenção cara</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full" />
-                      <span>Cabine apertada</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full" />
-                      <span>Revenda difícil</span>
-                    </div>
+            <div className="grid md:grid-cols-2 gap-6 text-left">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <TrendingUp className="h-5 w-5" />
                   </div>
+                  <h3 className="font-bold text-lg">De utilitário leve → caminhão de verdade</h3>
                 </div>
+                <p className="text-white/80">Presença, robustez e capacidade que fazem diferença.</p>
               </div>
 
-              <div className="text-center md:-mt-4">
-                <div className="inline-block px-4 py-2 bg-primary rounded-full text-white font-bold mb-4">
-                  AUMARK S315
-                </div>
-                <div className="bg-gradient-to-br from-primary to-primary-dark rounded-lg p-8 h-full shadow-[var(--shadow-premium)]">
-                  <div className="space-y-4 text-left">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" />
-                      <span className="font-semibold">1.415 kg de carga útil</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" />
-                      <span className="font-semibold">Motor Cummins robusto</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" />
-                      <span className="font-semibold">Custo previsível</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" />
-                      <span className="font-semibold">Conforto superior</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0" />
-                      <span className="font-semibold">Ótima valorização</span>
-                    </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <Users className="h-5 w-5" />
                   </div>
+                  <h3 className="font-bold text-lg">De "exausto todo dia" → posição confortável</h3>
                 </div>
+                <p className="text-white/80">Ergonomia de caminhão, não de carro de passeio adaptado.</p>
               </div>
 
-              <div className="text-center">
-                <div className="text-gray-400 font-semibold mb-4">Concorrentes</div>
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8 h-full">
-                  <div className="space-y-4 text-left">
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full" />
-                      <span>Menos tecnologia</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full" />
-                      <span>Sem câmbio ZF</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full" />
-                      <span>Rede menor</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full" />
-                      <span>Garantia limitada</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <div className="w-2 h-2 bg-gray-500 rounded-full" />
-                      <span>Preço inflacionado</span>
-                    </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <Package className="h-5 w-5" />
                   </div>
+                  <h3 className="font-bold text-lg">De "tô no limite de carga" → respiro para crescer</h3>
                 </div>
+                <p className="text-white/80">Mais volume, mais peso, mais entregas por viagem.</p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                    <Award className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-bold text-lg">De visual de carro → presença de caminhão</h3>
+                </div>
+                <p className="text-white/80">Profissionalismo e credibilidade na frente do cliente.</p>
               </div>
             </div>
 
-            <div className="mt-12 text-center">
-              <p className="text-xl text-gray-300 mb-6">
-                O S315 entrega mais. Em todos os sentidos.
-              </p>
+            <div className="mt-12">
               <Button 
                 onClick={handleWhatsApp}
                 size="lg"
-                className="bg-white text-industrial-dark hover:bg-gray-100 px-8 py-6 h-auto text-lg"
+                className="bg-white text-primary hover:bg-gray-100 px-10 py-6 h-auto text-lg"
               >
-                Quero o melhor custo-benefício
+                Quero fazer esse upgrade
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Who is it for */}
+      {/* 6. PARA QUEM É O AUMARK S315 */}
       <section className="section-padding bg-white">
         <div className="container-lavoro">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Para quem é o <span className="text-gradient">S315</span>
+              Feito sob medida para <span className="text-gradient">quem está crescendo.</span>
             </h2>
-            <p className="text-xl text-muted-foreground">O caminhão certo para o momento certo do seu negócio</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="card-premium p-8 hover:scale-105 transition-all duration-300">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                <Users className="h-8 w-8 text-primary" />
+                <Store className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-3">Pequenos empresários</h3>
               <p className="text-muted-foreground">
-                Começando ou expandindo. O S315 cresce com você, sem precisar de CNH C.
+                Donos de comércios, lojas, distribuidoras que querem profissionalizar o transporte.
               </p>
             </div>
 
@@ -507,9 +419,9 @@ const S315 = () => {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
                 <ShoppingCart className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-3">E-commerce</h3>
+              <h3 className="text-xl font-bold mb-3">E-commerce e marketplace</h3>
               <p className="text-muted-foreground">
-                Entregas rápidas e volumosas. Capacidade para atender demanda crescente.
+                Quem precisa de entrega diária, organizada e com mais volume.
               </p>
             </div>
 
@@ -519,102 +431,137 @@ const S315 = () => {
               </div>
               <h3 className="text-xl font-bold mb-3">Distribuição urbana</h3>
               <p className="text-muted-foreground">
-                Agilidade na cidade, sem parar em balança. Mais entregas por dia.
+                Bebidas, alimentos, embalagens, atacarejo, farmácias e mais.
               </p>
             </div>
 
             <div className="card-premium p-8 hover:scale-105 transition-all duration-300">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                <Truck className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Terceirizados de logística</h3>
+              <p className="text-muted-foreground">
+                Quem presta serviço para grandes redes e precisa de um veículo confiável.
+              </p>
+            </div>
+
+            <div className="card-premium p-8 hover:scale-105 transition-all duration-300 md:col-span-2 lg:col-span-1">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
                 <TrendingUp className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Evoluindo da van</h3>
+              <h3 className="text-xl font-bold mb-3">Autônomos que querem subir de nível</h3>
               <p className="text-muted-foreground">
-                Saindo da Fiorino, Saveiro, Sprinter. O próximo passo natural do seu crescimento.
-              </p>
-            </div>
-
-            <div className="card-premium p-8 hover:scale-105 transition-all duration-300">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                <Package className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Última milha</h3>
-              <p className="text-muted-foreground">
-                Logística final eficiente. Tamanho ideal para centros urbanos.
-              </p>
-            </div>
-
-            <div className="card-premium p-8 hover:scale-105 transition-all duration-300">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                <Store className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Padronização de frota</h3>
-              <p className="text-muted-foreground">
-                Empresas que buscam economia com performance. Um motorista, CNH B.
+                Gente que cansou de depender de frete de terceiros e quer ter seu próprio caminhão.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Numbers/Testimonials */}
-      <section className="section-padding bg-primary text-white">
+      {/* 7. PROVA SOCIAL / CONFIANÇA */}
+      <section className="section-padding bg-industrial-light">
         <div className="container-lavoro">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Números que <span className="text-white/90">provam resultados</span>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">
+              Você não está experimentando.<br />
+              <span className="text-gradient">Você está escolhendo uma tendência.</span>
             </h2>
-          </div>
+            
+            <p className="text-xl text-muted-foreground leading-relaxed mb-12">
+              Cada mês mais motoristas e empresas de Minas migram para o Aumark S315 como solução de frota leve.
+              O motivo é simples: <span className="text-foreground font-semibold">faz mais sentido na planilha e na rua.</span>
+            </p>
 
-          <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-3">96%</div>
-              <div className="text-xl text-white/80">Satisfação</div>
-              <div className="text-sm text-white/60 mt-2">dos proprietários</div>
+            <div className="card-premium p-8 md:p-12 text-left">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <blockquote className="text-lg md:text-xl italic text-muted-foreground mb-4">
+                    "Saí da van para o S315. Hoje faço mais viagens com mais carga e chego menos cansado."
+                  </blockquote>
+                  <p className="font-semibold text-foreground">— Cliente Lavoro Foton</p>
+                </div>
+              </div>
             </div>
-
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-3">30%</div>
-              <div className="text-xl text-white/80">Economia</div>
-              <div className="text-sm text-white/60 mt-2">vs concorrentes</div>
-            </div>
-
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-3">+250%</div>
-              <div className="text-xl text-white/80">Crescimento</div>
-              <div className="text-sm text-white/60 mt-2">de vendas em 2024</div>
-            </div>
-
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-3">8/10</div>
-              <div className="text-xl text-white/80">Recomendam</div>
-              <div className="text-sm text-white/60 mt-2">para outros motoristas</div>
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <blockquote className="max-w-3xl mx-auto">
-              <p className="text-2xl md:text-3xl font-light italic mb-6 leading-relaxed">
-                "Migrei da CNH C para o S315 com CNH B. Economizo no motorista, não paro em balança, 
-                e faço mais entregas por dia. Foi a melhor decisão para minha empresa."
-              </p>
-              <footer className="text-white/80">
-                <strong>— Roberto Silva</strong>, Transportadora Silva & Cia
-              </footer>
-            </blockquote>
           </div>
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section id="contato" className="section-padding bg-industrial-light">
+      {/* 8. SEÇÃO LAVORO FOTON (CONFIANÇA) */}
+      <section className="section-padding bg-industrial-dark text-white">
+        <div className="container-lavoro">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+              Por que comprar seu S315<br />
+              <span className="text-primary-light">com a Lavoro Foton?</span>
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                <div className="flex items-start gap-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Concessionária focada em caminhões Foton</h3>
+                    <p className="text-white/70">Especialistas que vivem e respiram a marca todos os dias.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                <div className="flex items-start gap-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Time especializado</h3>
+                    <p className="text-white/70">Entendemos seu negócio antes de empurrar qualquer modelo.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                <div className="flex items-start gap-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Apoio na negociação</h3>
+                    <p className="text-white/70">Financiamento e condições especiais pensadas para você.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                <div className="flex items-start gap-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Pós-venda estruturado</h3>
+                    <p className="text-white/70">Relacionamento próximo para fazer o S315 trabalhar por você.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
+              <p className="text-xl md:text-2xl leading-relaxed">
+                Aqui não é só venda de caminhão.<br />
+                <span className="text-primary-light font-semibold">É parceria para fazer o Aumark S315 trabalhar por você todos os dias.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. SEÇÃO FINAL – CTA PESADO */}
+      <section id="contato" className="section-padding bg-white">
         <div className="container-lavoro">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Fale com a <span className="text-gradient">Lavoro Foton</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Pronto para dar o próximo passo<br />
+                <span className="text-gradient">com a sua CNH B?</span>
               </h2>
               <p className="text-xl text-muted-foreground">
-                Consulte disponibilidade, preços e condições especiais
+                Preencha o formulário ou chame a Lavoro Foton no WhatsApp.<br />
+                Um consultor vai entender seu cenário e montar a melhor condição possível para você sair de Aumark S315.
               </p>
             </div>
 
@@ -623,12 +570,12 @@ const S315 = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold mb-2">
-                      Nome completo
+                      Nome *
                     </label>
                     <Input 
                       id="name"
                       type="text" 
-                      placeholder="Seu nome" 
+                      placeholder="Seu nome completo" 
                       required
                       className="h-12"
                     />
@@ -636,7 +583,7 @@ const S315 = () => {
 
                   <div>
                     <label htmlFor="phone" className="block text-sm font-semibold mb-2">
-                      Telefone / WhatsApp
+                      Telefone (WhatsApp) *
                     </label>
                     <Input 
                       id="phone"
@@ -650,39 +597,45 @@ const S315 = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-semibold mb-2">
-                      E-mail
+                    <label htmlFor="city" className="block text-sm font-semibold mb-2">
+                      Cidade / Estado *
                     </label>
                     <Input 
-                      id="email"
-                      type="email" 
-                      placeholder="seu@email.com" 
+                      id="city"
+                      type="text" 
+                      placeholder="Belo Horizonte - MG" 
                       required
                       className="h-12"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="city" className="block text-sm font-semibold mb-2">
-                      Cidade
+                    <label htmlFor="business" className="block text-sm font-semibold mb-2">
+                      Tipo de negócio *
                     </label>
-                    <Input 
-                      id="city"
-                      type="text" 
-                      placeholder="Sua cidade" 
-                      required
-                      className="h-12"
-                    />
+                    <Select value={businessType} onValueChange={setBusinessType} required>
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Selecione..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="comercio">Comércio/Loja</SelectItem>
+                        <SelectItem value="ecommerce">E-commerce</SelectItem>
+                        <SelectItem value="distribuicao">Distribuição</SelectItem>
+                        <SelectItem value="logistica">Logística/Transportadora</SelectItem>
+                        <SelectItem value="autonomo">Autônomo</SelectItem>
+                        <SelectItem value="outro">Outro</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-semibold mb-2">
-                    Qual sua necessidade?
+                    Qual é a sua necessidade hoje?
                   </label>
                   <Textarea 
                     id="message"
-                    placeholder="Conte mais sobre sua operação e o que você precisa..."
+                    placeholder="Conte um pouco sobre sua operação e o que você está buscando..."
                     rows={4}
                     className="resize-none"
                   />
@@ -694,8 +647,7 @@ const S315 = () => {
                     size="lg"
                     className="flex-1 h-14 text-lg"
                   >
-                    <MessageSquare className="mr-2 h-5 w-5" />
-                    Falar agora no WhatsApp
+                    Quero uma proposta do S315
                   </Button>
 
                   <Button 
@@ -703,27 +655,27 @@ const S315 = () => {
                     size="lg"
                     variant="outline"
                     className="flex-1 h-14 text-lg"
-                    onClick={() => handleWhatsApp()}
+                    onClick={handleWhatsApp}
                   >
-                    <Phone className="mr-2 h-5 w-5" />
-                    Consultar disponibilidade
+                    <MessageSquare className="mr-2 h-5 w-5" />
+                    Falar com um consultor no WhatsApp
                   </Button>
                 </div>
 
-                <p className="text-sm text-center text-muted-foreground">
-                  Resposta em até 2 horas durante horário comercial
+                <p className="text-sm text-center text-muted-foreground italic">
+                  Sem spam, sem empurroterapia. Só caminhão e conversa séria.
                 </p>
               </form>
             </div>
 
             <div className="mt-12 text-center">
-              <p className="text-muted-foreground mb-4">Quer conhecer outros modelos?</p>
+              <p className="text-muted-foreground mb-4">Quer conhecer outros modelos Foton?</p>
               <Button 
                 variant="outline"
                 size="lg"
                 onClick={() => window.location.href = '/modelos'}
               >
-                Ver todos os modelos Foton
+                Ver toda a linha de caminhões
               </Button>
             </div>
           </div>
