@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone } from "lucide-react";
 import cnhBIcon from "@/assets/cnh-b-icon.png";
+import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
 const S315 = () => {
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark S315.");
@@ -98,7 +99,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             {/* 5. Rodado duplo */}
             <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
               <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <Truck className="w-full h-full text-primary" strokeWidth={1.5} />
+                <img src={rodadoDuploIcon} alt="Rodado Duplo" className="w-full h-full object-contain" />
               </div>
               <p className="font-semibold text-sm md:text-base text-foreground">Rodado duplo</p>
             </div>
