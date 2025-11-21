@@ -9,6 +9,8 @@ import garantia3AnosIcon from "@/assets/garantia-3anos-icon.png";
 import tanqueAluminioIcon from "@/assets/tanque-aluminio-icon.png";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
+import boschLogo from "@/assets/bosch-logo-icon.png";
+import danaLogo from "@/assets/dana-logo-icon.png";
 const S315 = () => {
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark S315.");
@@ -95,8 +97,9 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
 
             {/* 4. Componentes Bosch + Dana */}
             <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <Wrench className="w-full h-full text-primary" strokeWidth={1.5} />
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center gap-2">
+                <img src={boschLogo} alt="Bosch" className="h-full w-auto object-contain" />
+                <img src={danaLogo} alt="Dana" className="h-full w-auto object-contain" />
               </div>
               <p className="font-semibold text-sm md:text-base text-foreground">Componentes Bosch + Dana</p>
             </div>
