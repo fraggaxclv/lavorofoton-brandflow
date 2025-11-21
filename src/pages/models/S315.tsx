@@ -223,64 +223,111 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
         </div>
       </section>
 
-      {/* 5. DNA FOTON */}
-      <section className="py-12 md:py-16 bg-industrial-dark text-white">
+      {/* 5. POR QUE ESCOLHER A FOTON */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-industrial-dark via-industrial-dark to-industrial-light text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Por que escolher a <span className="text-primary-light">Foton?</span>
+          {/* Título */}
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+            Por que escolher a <span className="text-primary-light">Foton</span>
           </h2>
-          <div className="max-w-4xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">3 anos de garantia de fábrica</p>
+          
+          {/* Subheadline */}
+          <p className="text-lg md:text-xl text-center text-gray-300 mb-16 max-w-3xl mx-auto">
+            Tecnologia global, montagem nacional e o melhor custo-benefício do mercado brasileiro.
+          </p>
+
+          {/* Grid de Cards */}
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+            {/* 1. Garantia de fábrica */}
+            <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-primary-light/50 transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <Award className="w-full h-full text-primary-light" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-white">Garantia de fábrica (3 anos)</h3>
+              <p className="text-sm text-gray-300 text-center">Caminhões projetados para rodar sem sustos.</p>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">Motores Cummins</p>
+
+            {/* 2. Motores Cummins */}
+            <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-primary-light/50 transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <Settings className="w-full h-full text-primary-light" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-white">Motores Cummins</h3>
+              <p className="text-sm text-gray-300 text-center">Confiabilidade global, manutenção simples e economia real.</p>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">Caixa ZF</p>
+
+            {/* 3. Caixa ZF */}
+            <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-primary-light/50 transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <Package className="w-full h-full text-primary-light" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-white">Caixa de transmissão ZF</h3>
+              <p className="text-sm text-gray-300 text-center">Precisão alemã, trocas suaves e durabilidade comprovada.</p>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">Componentes Bosch e Dana</p>
+
+            {/* 4. Componentes Bosch e Dana */}
+            <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-primary-light/50 transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <Wrench className="w-full h-full text-primary-light" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-white">Componentes Bosch e Dana</h3>
+              <p className="text-sm text-gray-300 text-center">Eletrônica, freios e transmissão de padrão mundial.</p>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">Tecnologia Europa–China com montagem no Brasil</p>
+
+            {/* 5. Tecnologia Europa-China */}
+            <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-primary-light/50 transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <TrendingUp className="w-full h-full text-primary-light" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-white">Tecnologia Europa–China</h3>
+              <p className="text-sm text-gray-300 text-center">Engenharia internacional com montagem no Brasil.</p>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">+70 concessionárias no Brasil</p>
+
+            {/* 6. +70 concessionárias */}
+            <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-primary-light/50 transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <Store className="w-full h-full text-primary-light" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-white">+70 concessionárias no País</h3>
+              <p className="text-sm text-gray-300 text-center">Rede completa, sempre perto de você.</p>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">88% de fill rate</p>
+
+            {/* 7. Centro logístico */}
+            <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-primary-light/50 transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <Truck className="w-full h-full text-primary-light" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-white">Centro logístico integrado</h3>
+              <p className="text-sm text-gray-300 text-center">Distribuição rápida e abastecimento nacional.</p>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">Oficinas autorizadas Cummins</p>
+
+            {/* 8. Fill rate + estoque */}
+            <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-primary-light/50 transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <Package className="w-full h-full text-primary-light" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-white">88% de fill rate + R$ 90 milhões em peças</h3>
+              <p className="text-sm text-gray-300 text-center">Peça na hora certa, operação sem paradas.</p>
             </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">+90 milhões em estoque de peças no país</p>
-            </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">Centro logístico integrado</p>
-            </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">+87% de aprovação dos clientes</p>
-            </div>
-            <div className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10">
-              <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0 mt-0.5" />
-              <p className="text-sm">Veículos focados em economia, autonomia e robustez</p>
+
+            {/* 9. Aprovação dos clientes */}
+            <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-primary-light/50 transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <CheckCircle2 className="w-full h-full text-primary-light" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-white">87% de aprovação dos clientes</h3>
+              <p className="text-sm text-gray-300 text-center">Quem compra, recomenda.</p>
             </div>
           </div>
-          <div className="text-center mt-10">
-            <p className="text-xl font-semibold text-primary-light">Foton entrega MAIS por menos dinheiro</p>
+
+          {/* Frase Final de Impacto */}
+          <div className="text-center mt-12 space-y-2">
+            <p className="text-xl md:text-2xl font-bold text-white">
+              Mais tecnologia, mais robustez, mais caminhão — por menos dinheiro.
+            </p>
+            <p className="text-lg md:text-xl text-primary-light font-semibold">
+              Foton & Lavoro: a escolha inteligente.
+            </p>
           </div>
         </div>
       </section>
