@@ -53,65 +53,87 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
       </section>
 
       {/* 2. PRINCIPAIS MOTIVOS */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          {/* Título */}
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 md:mb-20 text-foreground">
             Principais motivos para escolher o <span className="text-primary">S315</span>
           </h2>
-          <div className="max-w-4xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Dirija com CNH B</p>
+          
+          {/* Grid de Benefícios */}
+          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-16">
+            {/* 1. Dirija com CNH B */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <Shield className="w-full h-full text-primary" strokeWidth={1.5} />
               </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Dirija com CNH B</p>
             </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Motor Cummins</p>
+
+            {/* 2. Motor Cummins */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <Settings className="w-full h-full text-primary" strokeWidth={1.5} />
               </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Motor Cummins</p>
             </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Caixa ZF</p>
+
+            {/* 3. Caixa ZF */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <Package className="w-full h-full text-primary" strokeWidth={1.5} />
               </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Caixa ZF</p>
             </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Componentes Bosch + Dana</p>
+
+            {/* 4. Componentes Bosch + Dana */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <Wrench className="w-full h-full text-primary" strokeWidth={1.5} />
               </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Componentes Bosch + Dana</p>
             </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Rodado duplo</p>
+
+            {/* 5. Rodado duplo */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <Truck className="w-full h-full text-primary" strokeWidth={1.5} />
               </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Rodado duplo</p>
             </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Chassi reforçado</p>
+
+            {/* 6. Chassi reforçado */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <Shield className="w-full h-full text-primary" strokeWidth={1.5} />
               </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Chassi reforçado</p>
             </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Tanque de alumínio</p>
+
+            {/* 7. Tanque de alumínio */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <Package className="w-full h-full text-primary" strokeWidth={1.5} />
               </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Tanque de alumínio</p>
             </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Revisões com preço justo</p>
+
+            {/* 8. 3 anos de garantia */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <Award className="w-full h-full text-primary" strokeWidth={1.5} />
               </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">3 anos de garantia de fábrica</p>
             </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">3 anos de garantia de fábrica</p>
-              </div>
+          </div>
+
+          {/* Placeholders de Imagens */}
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mt-12">
+            <div className="aspect-video bg-muted rounded-2xl border border-border flex items-center justify-center">
+              <p className="text-muted-foreground text-sm font-medium">Foto externa do S315 aqui</p>
+            </div>
+            <div className="aspect-video bg-muted rounded-2xl border border-border flex items-center justify-center">
+              <p className="text-muted-foreground text-sm font-medium">Foto interna da cabine aqui</p>
             </div>
           </div>
         </div>
