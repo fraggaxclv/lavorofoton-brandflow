@@ -9,6 +9,7 @@ import foton1217 from "@/assets/foton-1217.jpg";
 import foton1722 from "@/assets/foton-1722.jpg";
 import tunlandV9 from "@/assets/tunland-v9.jpg";
 import tunlandV7 from "@/assets/tunland-v7.jpg";
+import ewonder from "@/assets/ewonder.jpg";
 const Modelos = () => {
   return <div className="min-h-screen">
       <Navbar />
@@ -60,7 +61,7 @@ const Modelos = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ModelCard name="eWONDER" description="VUC elétrico. Emissão zero para entregas urbanas sustentáveis." image={fotonS315} link="/modelos/ewonder" />
+            <ModelCard name="eWONDER" description="VUC elétrico. Emissão zero para entregas urbanas sustentáveis." image={ewonder} link="/modelos/ewonder" />
             <ModelCard name="eTOANO" description="Médio porte elétrico. Alta capacidade com zero emissões." image={foton7t} link="/modelos/etoano" />
             <ModelCard name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." image={fotonHeavy} link="/modelos/eview" />
           </div>
