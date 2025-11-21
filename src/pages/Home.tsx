@@ -134,7 +134,7 @@ UM BOM NEGÓCIO NA LAVORO
 
 
  <br />
-            <span className="text-gradient">MOVE NEGÓCIOS</span>
+            <span className="text-gradient"></span>
           </h1>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
