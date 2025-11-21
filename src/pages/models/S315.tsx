@@ -64,64 +64,72 @@ const S315 = () => {
       </section>
 
       {/* 2. PRINCIPAIS MOTIVOS */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 md:mb-20">
             Principais motivos para escolher o <span className="text-primary">S315</span>
           </h2>
-          <div className="max-w-4xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Dirija com CNH B</p>
+          
+          <div className="max-w-7xl mx-auto">
+            {/* Linha 1 */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-4 md:mb-6 lg:mb-8">
+              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                  <CheckCircle2 className="w-full h-full text-primary" />
+                </div>
+                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Dirija com CNH B</p>
+              </div>
+
+              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                  <Settings className="w-full h-full text-primary" />
+                </div>
+                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Motor Cummins</p>
+              </div>
+
+              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                  <Package className="w-full h-full text-primary" />
+                </div>
+                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Caixa ZF</p>
+              </div>
+
+              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                  <Wrench className="w-full h-full text-primary" />
+                </div>
+                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Componentes Bosch + Dana</p>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Motor Cummins</p>
+
+            {/* Linha 2 */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                  <Truck className="w-full h-full text-primary" />
+                </div>
+                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Rodado duplo</p>
               </div>
-            </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Caixa ZF</p>
+
+              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                  <Shield className="w-full h-full text-primary" />
+                </div>
+                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Chassi reforçado</p>
               </div>
-            </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Componentes Bosch + Dana</p>
+
+              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                  <Package className="w-full h-full text-primary" />
+                </div>
+                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Tanque de alumínio</p>
               </div>
-            </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Rodado duplo</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Chassi reforçado</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Tanque de alumínio</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">Revisões com preço justo</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold">3 anos de garantia de fábrica</p>
+
+              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                  <Award className="w-full h-full text-primary" />
+                </div>
+                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">3 anos de garantia de fábrica</p>
               </div>
             </div>
           </div>
