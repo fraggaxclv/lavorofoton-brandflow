@@ -6,6 +6,7 @@ import foton7t from "@/assets/foton-7t.jpg";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
 import foton916 from "@/assets/foton-916.jpg";
 import foton1722 from "@/assets/foton-1722.jpg";
+import tunlandV9 from "@/assets/tunland-v9.jpg";
 const Modelos = () => {
   return <div className="min-h-screen">
       <Navbar />
@@ -37,7 +38,7 @@ const Modelos = () => {
         <div className="container-lavoro">
           <h2 className="mb-12">Tunland V9/V7                                                                                                                                       </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ModelCard name="TUNLAND V9" description="Picape 4x4 robusta. Força e versatilidade para trabalho e lazer." image={fotonHeavy} link="/modelos/tunland-v9" />
+            <ModelCard name="TUNLAND V9" description="Picape 4x4 robusta. Força e versatilidade para trabalho e lazer." image={tunlandV9} link="/modelos/tunland-v9" />
             <ModelCard name="TUNLAND V7" description="Picape 4x2 versátil. Equilíbrio perfeito entre trabalho e mobilidade." image={fotonHeavy} link="/modelos/tunland-v7" />
           </div>
         </div>
