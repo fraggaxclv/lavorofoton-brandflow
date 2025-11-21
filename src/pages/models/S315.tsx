@@ -7,6 +7,8 @@ import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
 import chassiReforcadoIcon from "@/assets/chassi-reforcado-icon.png";
 import garantia3AnosIcon from "@/assets/garantia-3anos-icon.png";
 import tanqueAluminioIcon from "@/assets/tanque-aluminio-icon.png";
+import cumminsLogo from "@/assets/cummins-logo-icon.png";
+import zfLogo from "@/assets/zf-logo-icon.png";
 const S315 = () => {
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark S315.");
@@ -78,7 +80,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             {/* 2. Motor Cummins */}
             <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
               <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <Settings className="w-full h-full text-primary" strokeWidth={1.5} />
+                <img src={cumminsLogo} alt="Motor Cummins" className="w-full h-full object-contain" />
               </div>
               <p className="font-semibold text-sm md:text-base text-foreground">Motor Cummins</p>
             </div>
@@ -86,7 +88,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             {/* 3. Caixa ZF */}
             <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
               <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <Package className="w-full h-full text-primary" strokeWidth={1.5} />
+                <img src={zfLogo} alt="Caixa ZF" className="w-full h-full object-contain" />
               </div>
               <p className="font-semibold text-sm md:text-base text-foreground">Caixa ZF</p>
             </div>
