@@ -64,7 +64,10 @@ const Modelos = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ModelCard name="eWONDER" description="VUC elétrico. Emissão zero para entregas urbanas sustentáveis." image={ewonder} link="/modelos/ewonder" />
+            <ModelCard name="iBlue 6T" description="6 toneladas elétrico. Eficiência e sustentabilidade." image={foton7t} link="/modelos/iblue-6t" />
             <ModelCard name="eTOANO" description="Médio porte elétrico. Alta capacidade com zero emissões." image={etoano} link="/modelos/etoano" />
+            <ModelCard name="eAumark 9T" description="9 toneladas elétrico. Força e eficiência energética." image={foton916} link="/modelos/eaumark-9t" />
+            <ModelCard name="eAumark 12T" description="12 toneladas elétrico. Alta capacidade com emissão zero." image={foton1217} link="/modelos/eaumark-12t" />
             <ModelCard name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." image={eview} link="/modelos/eview" />
           </div>
         </div>
