@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone } from "lucide-react";
+import cnhBIcon from "@/assets/cnh-b-icon.png";
 const S315 = () => {
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark S315.");
@@ -65,7 +66,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             {/* 1. Dirija com CNH B */}
             <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
               <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <Shield className="w-full h-full text-primary" strokeWidth={1.5} />
+                <img src={cnhBIcon} alt="CNH Categoria B" className="w-full h-full object-contain" />
               </div>
               <p className="font-semibold text-sm md:text-base text-foreground">Dirija com CNH B</p>
             </div>
