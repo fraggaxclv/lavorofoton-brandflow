@@ -2,21 +2,18 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone } from "lucide-react";
-
 const S315 = () => {
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark S315.");
-  
   const handleWhatsApp = () => {
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
   };
-
   const handleQuoteClick = () => {
-    document.getElementById('cta-final')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('cta-final')?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navbar />
 
       {/* 1. HERO */}
@@ -28,24 +25,16 @@ const S315 = () => {
                 Foton Aumark S315 – O caminhão CNH B mais completo do Brasil.
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
-                Parece caminhão. Dirige com CNH B.<br />
+                Parece caminhão. Dirige com CNH B.
+Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
                 <span className="text-primary-light font-semibold">Força, robustez e economia no tamanho perfeito para a cidade.</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button 
-                  onClick={handleWhatsApp}
-                  size="lg" 
-                  className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-8 py-6 h-auto"
-                >
+                <Button onClick={handleWhatsApp} size="lg" className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-8 py-6 h-auto">
                   <MessageSquare className="mr-2 h-5 w-5" />
                   Falar no WhatsApp agora
                 </Button>
-                <Button 
-                  onClick={handleQuoteClick}
-                  size="lg" 
-                  variant="outline" 
-                  className="border-white text-white hover:bg-white/10 text-lg px-8 py-6 h-auto"
-                >
+                <Button onClick={handleQuoteClick} size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6 h-auto">
                   Solicitar Proposta
                 </Button>
               </div>
@@ -64,72 +53,64 @@ const S315 = () => {
       </section>
 
       {/* 2. PRINCIPAIS MOTIVOS */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 md:mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Principais motivos para escolher o <span className="text-primary">S315</span>
           </h2>
-          
-          <div className="max-w-7xl mx-auto">
-            {/* Linha 1 */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-4 md:mb-6 lg:mb-8">
-              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-                  <CheckCircle2 className="w-full h-full text-primary" />
-                </div>
-                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Dirija com CNH B</p>
-              </div>
-
-              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-                  <Settings className="w-full h-full text-primary" />
-                </div>
-                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Motor Cummins</p>
-              </div>
-
-              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-                  <Package className="w-full h-full text-primary" />
-                </div>
-                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Caixa ZF</p>
-              </div>
-
-              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-                  <Wrench className="w-full h-full text-primary" />
-                </div>
-                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Componentes Bosch + Dana</p>
+          <div className="max-w-4xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Dirija com CNH B</p>
               </div>
             </div>
-
-            {/* Linha 2 */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-                  <Truck className="w-full h-full text-primary" />
-                </div>
-                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Rodado duplo</p>
+            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Motor Cummins</p>
               </div>
-
-              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-                  <Shield className="w-full h-full text-primary" />
-                </div>
-                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Chassi reforçado</p>
+            </div>
+            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Caixa ZF</p>
               </div>
-
-              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-                  <Package className="w-full h-full text-primary" />
-                </div>
-                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">Tanque de alumínio</p>
+            </div>
+            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Componentes Bosch + Dana</p>
               </div>
-
-              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-                  <Award className="w-full h-full text-primary" />
-                </div>
-                <p className="font-semibold text-sm md:text-base text-foreground leading-tight">3 anos de garantia de fábrica</p>
+            </div>
+            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Rodado duplo</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Chassi reforçado</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Tanque de alumínio</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Revisões com preço justo</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">3 anos de garantia de fábrica</p>
               </div>
             </div>
           </div>
@@ -156,7 +137,7 @@ const S315 = () => {
               </div>
               <h3 className="text-xl font-bold mb-3">Conjunto mecânico global</h3>
               <p className="text-muted-foreground">
-                Motor Cummins, transmissão ZF, injeção Bosch e eixos Dana.
+                Motor Cummins, transmissão ZF, componentes Bosch e Dana.
               </p>
             </div>
 
@@ -338,20 +319,11 @@ const S315 = () => {
               Atendimento rápido. Sem enrolação. Sem burocracia.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button 
-                onClick={handleWhatsApp}
-                size="lg" 
-                className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-10 py-6 h-auto"
-              >
+              <Button onClick={handleWhatsApp} size="lg" className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-10 py-6 h-auto">
                 <MessageSquare className="mr-2 h-5 w-5" />
                 Falar com consultor pelo WhatsApp
               </Button>
-              <Button 
-                onClick={handleWhatsApp}
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white/10 text-lg px-10 py-6 h-auto"
-              >
+              <Button onClick={handleWhatsApp} size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-10 py-6 h-auto">
                 <Phone className="mr-2 h-5 w-5" />
                 Solicitar proposta
               </Button>
@@ -361,8 +333,6 @@ const S315 = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default S315;
