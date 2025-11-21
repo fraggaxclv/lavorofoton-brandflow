@@ -11,6 +11,7 @@ import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
 import danaLogo from "@/assets/dana-logo-icon.png";
+import motorCumminsFotonIcon from "@/assets/motor-cummins-foton-icon.png";
 const S315 = () => {
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark S315.");
@@ -260,7 +261,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             {/* 2. Motores Cummins */}
             <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 hover:border-primary-light/50 transition-all duration-300">
               <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
-                <Settings className="w-full h-full text-primary-light" strokeWidth={1.5} />
+                <img src={motorCumminsFotonIcon} alt="Motor Cummins" className="w-full h-full object-contain" />
               </div>
               <h3 className="font-bold text-lg mb-2 text-center text-white">Motores Cummins</h3>
               <p className="text-sm text-gray-300 text-center">Confiabilidade global, manutenção simples e economia real.</p>
