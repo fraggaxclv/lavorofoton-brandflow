@@ -22,7 +22,7 @@ const S315 = () => {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 order-2 lg:order-1">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Foton Aumark S315 – O caminhão CNH B mais completo do Brasil.
+                Foton Lavoro Aumark S315 – O caminhão CNH B mais completo do Brasil.
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
                 Parece caminhão. Dirige com CNH B.
@@ -228,7 +228,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
         <div className="container mx-auto px-4">
           {/* Título */}
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
-            Por que escolher a <span className="text-primary-light">Foton</span>
+            Por que escolher a <span className="text-primary-light">Foton Lavoro  </span>
           </h2>
           
           {/* Subheadline */}
@@ -326,7 +326,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
               Mais tecnologia, mais robustez, mais caminhão — por menos dinheiro.
             </p>
             <p className="text-lg md:text-xl text-primary-light font-semibold">
-              Foton & Lavoro: a escolha inteligente.
+              Foton Lavoro: a escolha inteligente.
             </p>
           </div>
         </div>
