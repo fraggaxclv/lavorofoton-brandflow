@@ -3,6 +3,11 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, FileText, TestTube2, Battery, Zap, TrendingDown, Shield, Package, Users, Truck, Leaf, Monitor } from "lucide-react";
 import eviewImg from "@/assets/eview.jpg";
+import eviewInteriorCockpit from "@/assets/eview-interior-cockpit.png";
+import eviewDimensions from "@/assets/eview-dimensions.png";
+import eviewDimensions2 from "@/assets/eview-dimensions-2.png";
+import eviewInteriorSeats from "@/assets/eview-interior-seats.png";
+import eviewInteriorDashboard from "@/assets/eview-interior-dashboard.png";
 
 const EView = () => {
   return (
@@ -126,8 +131,82 @@ const EView = () => {
         </div>
       </section>
 
-      {/* Especificações Técnicas */}
+      {/* Galeria de Fotos */}
       <section className="section-padding bg-industrial-light">
+        <div className="container-lavoro">
+          <h2 className="mb-12 text-center">Galeria de Fotos</h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="card-premium overflow-hidden group cursor-pointer">
+              <div className="relative overflow-hidden aspect-video">
+                <img 
+                  src={eviewInteriorCockpit} 
+                  alt="Interior premium do e-View Grand" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-4">
+                <p className="font-semibold text-center">Cockpit Premium</p>
+              </div>
+            </div>
+
+            <div className="card-premium overflow-hidden group cursor-pointer">
+              <div className="relative overflow-hidden aspect-video">
+                <img 
+                  src={eviewDimensions} 
+                  alt="Dimensões do e-View Grand" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-4">
+                <p className="font-semibold text-center">Dimensões do Veículo</p>
+              </div>
+            </div>
+
+            <div className="card-premium overflow-hidden group cursor-pointer">
+              <div className="relative overflow-hidden aspect-video">
+                <img 
+                  src={eviewDimensions2} 
+                  alt="Vista comparativa das dimensões" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-4">
+                <p className="font-semibold text-center">Vista Comparativa</p>
+              </div>
+            </div>
+
+            <div className="card-premium overflow-hidden group cursor-pointer">
+              <div className="relative overflow-hidden aspect-video">
+                <img 
+                  src={eviewInteriorSeats} 
+                  alt="Interior e bancos do e-View Grand" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-4">
+                <p className="font-semibold text-center">Interior e Bancos</p>
+              </div>
+            </div>
+
+            <div className="card-premium overflow-hidden group cursor-pointer">
+              <div className="relative overflow-hidden aspect-video">
+                <img 
+                  src={eviewInteriorDashboard} 
+                  alt="Painel completo do e-View Grand" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-4">
+                <p className="font-semibold text-center">Painel Completo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Especificações Técnicas */}
+      <section className="section-padding">
         <div className="container-lavoro">
           <h2 className="mb-12 text-center">Especificações</h2>
           
