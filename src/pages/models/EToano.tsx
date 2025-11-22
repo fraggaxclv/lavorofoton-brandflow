@@ -2,7 +2,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, FileText, TestTube2, Battery, Zap, TrendingDown, Shield, Package, Users, Truck, Leaf } from "lucide-react";
-import etoanoImg from "@/assets/etoano.jpg";
+import etoanoFront from "@/assets/etoano-front.png";
+import etoanoBattery from "@/assets/etoano-battery.png";
+import etoanoSide from "@/assets/etoano-side.png";
+import etoanoChassisBattery from "@/assets/etoano-chassis-battery.png";
+import etoanoHeadlight from "@/assets/etoano-headlight.png";
+import etoanoInterior from "@/assets/etoano-interior.png";
+import etoanoNormalRoof from "@/assets/etoano-normal-roof.png";
+import etoanoHighRoof from "@/assets/etoano-high-roof.png";
 
 const EToano = () => {
   return (
@@ -13,7 +20,7 @@ const EToano = () => {
       <section className="mt-16 relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={etoanoImg}
+            src={etoanoFront}
             alt="Foton e-Toano Pro"
             className="w-full h-full object-cover"
           />
@@ -120,6 +127,92 @@ const EToano = () => {
                 <li>• Vida útil estendida</li>
                 <li>• Garantia de 8 anos / 400.000 km</li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Galeria de Fotos */}
+      <section className="section-padding bg-industrial-light">
+        <div className="container-lavoro">
+          <h2 className="mb-12 text-center">Conheça o e-Toano Pro</h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <img
+                src={etoanoBattery}
+                alt="e-Toano Pro - Sistema de Bateria CATL LFP"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <p className="text-white font-semibold">Sistema de Bateria CATL LFP</p>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <img
+                src={etoanoSide}
+                alt="e-Toano Pro - Vista Lateral"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <p className="text-white font-semibold">Vista Lateral</p>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <img
+                src={etoanoChassisBattery}
+                alt="e-Toano Pro - Chassi com Bateria"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <p className="text-white font-semibold">Chassi com Bateria</p>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <img
+                src={etoanoInterior}
+                alt="e-Toano Pro - Interior Premium"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <p className="text-white font-semibold">Interior Premium</p>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <img
+                src={etoanoHeadlight}
+                alt="e-Toano Pro - Tecnologia LED"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <p className="text-white font-semibold">Farol Full LED</p>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
+              <img
+                src={etoanoNormalRoof}
+                alt="e-Toano Pro - Teto Normal"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <p className="text-white font-semibold">Versão Teto Normal (2445 mm)</p>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all md:col-span-2 lg:col-span-1">
+              <img
+                src={etoanoHighRoof}
+                alt="e-Toano Pro - Teto Alto"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <p className="text-white font-semibold">Versão Teto Alto (2720 mm)</p>
+              </div>
             </div>
           </div>
         </div>
