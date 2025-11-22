@@ -7,6 +7,9 @@ import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
 import danaLogo from "@/assets/dana-logo-icon.png";
 import dealershipImage from "@/assets/dealership.jpg";
+import timelineContexto from "@/assets/timeline-contexto-historico.png";
+import timelineHistoria from "@/assets/timeline-historia-lavoro.png";
+import casteloFragaMercedes from "@/assets/castelo-fraga-mercedes.png";
 
 const QuemSomos = () => {
   const handleWhatsAppContact = () => {
@@ -68,6 +71,31 @@ const QuemSomos = () => {
               <p className="text-muted-foreground text-center leading-relaxed">
                 Fundação da Lavoro Foton — um novo capítulo
               </p>
+            </div>
+          </div>
+
+          {/* Timeline Visual */}
+          <div className="my-20 space-y-12">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-border">
+              <img 
+                src={timelineContexto} 
+                alt="Contexto histórico da indústria automotiva brasileira" 
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-border">
+              <img 
+                src={timelineHistoria} 
+                alt="História da Lavoro desde 1974" 
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-border">
+              <img 
+                src={casteloFragaMercedes} 
+                alt="Castelo Fraga em convenção Mercedes-Benz" 
+                className="w-full h-auto"
+              />
             </div>
           </div>
 
