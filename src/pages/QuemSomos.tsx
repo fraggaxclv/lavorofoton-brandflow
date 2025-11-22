@@ -16,6 +16,9 @@ import casteloFragaMercedes from "@/assets/castelo-fraga-mercedes.png";
 import lavoro40Years from "@/assets/lavoro-40-years.png";
 import globalPartnershipIcon from "@/assets/global-partnership-icon.png";
 import lavoroLogoIcon from "@/assets/lavoro-logo-icon.png";
+import experienceIcon from "@/assets/experience-icon.png";
+import globalEngineeringIcon from "@/assets/global-engineering-icon.png";
+import localServiceIcon from "@/assets/local-service-icon.png";
 const QuemSomos = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -414,21 +417,15 @@ const QuemSomos = () => {
             
             <div className="grid md:grid-cols-3 gap-8 mb-10">
               <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
-                  <Award className="w-8 h-8 text-primary" />
-                </div>
+                <img src={experienceIcon} alt="Experiência de décadas" className="w-20 h-20 object-contain mb-4 mx-auto" />
                 <h3 className="text-xl font-semibold text-foreground">A experiência de décadas</h3>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
-                  <CheckCircle2 className="w-8 h-8 text-primary" />
-                </div>
+                <img src={globalEngineeringIcon} alt="Nova engenharia global" className="w-20 h-20 object-contain mb-4 mx-auto" />
                 <h3 className="text-xl font-semibold text-foreground">A nova engenharia global</h3>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
-                  <CheckCircle2 className="w-8 h-8 text-primary" />
-                </div>
+                <img src={localServiceIcon} alt="Atendimento próximo e mineiro" className="w-20 h-20 object-contain mb-4 mx-auto" />
                 <h3 className="text-xl font-semibold text-foreground">O atendimento próximo e mineiro</h3>
               </div>
             </div>
