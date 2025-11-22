@@ -122,7 +122,7 @@ const Home = () => {
               <div className="text-lg text-muted-foreground">Satisfação</div>
             </div>
             <div>
-              <div className="text-5xl font-bold text-primary mb-2">24h</div>
+              <div className="text-5xl font-bold text-primary mb-2">24/7</div>
               <div className="text-lg text-muted-foreground">Suporte</div>
             </div>
           </div>
