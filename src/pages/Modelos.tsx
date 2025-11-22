@@ -12,6 +12,7 @@ import tunlandV7 from "@/assets/tunland-v7.jpg";
 import ewonder from "@/assets/ewonder.jpg";
 import etoano from "@/assets/etoano.jpg";
 import iblue6t from "@/assets/iblue-6t.jpg";
+import eaumark12t from "@/assets/eaumark-12t.jpg";
 import eview from "@/assets/eview.jpg";
 const Modelos = () => {
   return <div className="min-h-screen">
@@ -68,7 +69,7 @@ const Modelos = () => {
             <ModelCard name="iBlue 6T" description="6 toneladas elétrico. Eficiência e sustentabilidade." image={iblue6t} link="/modelos/iblue-6t" />
             <ModelCard name="eTOANO" description="Médio porte elétrico. Alta capacidade com zero emissões." image={etoano} link="/modelos/etoano" />
             <ModelCard name="eAumark 9T" description="9 toneladas elétrico. Força e eficiência energética." image={foton916} link="/modelos/eaumark-9t" />
-            <ModelCard name="eAumark 12T" description="12 toneladas elétrico. Alta capacidade com emissão zero." image={foton1217} link="/modelos/eaumark-12t" />
+            <ModelCard name="eAumark 12T" description="12 toneladas elétrico. Alta capacidade com emissão zero." image={eaumark12t} link="/modelos/eaumark-12t" />
             <ModelCard name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." image={eview} link="/modelos/eview" />
           </div>
         </div>
