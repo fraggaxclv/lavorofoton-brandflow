@@ -19,6 +19,7 @@ import EWonder from "./pages/models/EWonder";
 import EToano from "./pages/models/EToano";
 import EView from "./pages/models/EView";
 import EAumark9T from "./pages/models/EAumark9T";
+import EAumark12T from "./pages/models/EAumark12T";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/modelos/etoano" element={<EToano />} />
           <Route path="/modelos/eview" element={<EView />} />
           <Route path="/modelos/eaumark-9t" element={<EAumark9T />} />
+          <Route path="/modelos/eaumark-12t" element={<EAumark12T />} />
           <Route path="/servicos" element={<Servicos />} />
           <Route path="/contato" element={<Contato />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
