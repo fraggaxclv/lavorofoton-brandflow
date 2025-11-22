@@ -19,25 +19,19 @@ const Home = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[85vh] md:h-screen flex items-center justify-center overflow-hidden mt-16">
+      <section className="relative h-[85vh] md:h-screen flex items-end justify-center overflow-hidden mt-16">
         <img 
           src={heroTruck} 
           alt="Foton Lavoro" 
           className="absolute inset-0 w-full h-full object-cover object-[35%_center] md:object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-transparent" />
-        <div className="container-lavoro relative z-10 text-left md:text-center text-primary-foreground px-6 md:px-4">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 animate-fade-in leading-tight">
-            Caminhões Foton<br className="md:hidden" /> em Minas Gerais
-          </h1>
-          <p className="text-lg md:text-2xl mb-8 md:mb-10 max-w-3xl mx-auto opacity-95 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Performance, qualidade e suporte técnico especializado para sua operação
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <Link to="/modelos" className="btn-primary-large text-center">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+        <div className="container-lavoro relative z-10 pb-16 md:pb-20 px-6 md:px-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+            <Link to="/modelos" className="btn-primary-large text-center shadow-2xl">
               Ver Modelos
             </Link>
-            <Link to="/contato" className="bg-background/10 backdrop-blur-sm text-primary-foreground px-8 py-4 rounded text-lg font-semibold border-2 border-primary-foreground hover:bg-primary-foreground hover:text-foreground transition-all text-center">
+            <Link to="/contato" className="bg-background/10 backdrop-blur-sm text-primary-foreground px-8 py-4 rounded text-lg font-semibold border-2 border-primary-foreground hover:bg-primary-foreground hover:text-foreground transition-all text-center shadow-2xl">
               Falar com Consultor
             </Link>
           </div>
