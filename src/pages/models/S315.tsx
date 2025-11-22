@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X, FileText } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
 import cnhBIcon from "@/assets/cnh-b-icon.png";
 import aumarkS315Hero from "@/assets/aumark-s315-hero.png";
@@ -424,16 +425,187 @@ dora            </h3>
         </div>
       </section>
 
-      {/* 7. COMPARATIVO INTELIGENTE */}
-      <section className="py-12 md:py-16 bg-primary text-white">
+      {/* 7. FICHA TÉCNICA */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Mais que vans e utilitários
-            </h2>
-            <p className="text-lg md:text-xl leading-relaxed">
-              O S315 entrega mais carga, mais robustez e mais durabilidade do que vans e utilitários do mesmo segmento — <span className="font-bold">mantendo a CNH B.</span>
-            </p>
+          <div className="max-w-4xl mx-auto">
+            {/* Título */}
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                <FileText className="w-8 h-8 text-primary" />
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                Ficha Técnica Completa
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Todas as especificações técnicas do Foton Aumark S315
+              </p>
+            </div>
+
+            {/* Accordion com especificações */}
+            <Accordion type="single" collapsible className="space-y-4">
+              {/* Motor */}
+              <AccordionItem value="motor" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Motor e Desempenho
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Motor:</span>
+                      <span className="font-medium">Cummins ISF 2.8</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Potência:</span>
+                      <span className="font-medium">150 cv @ 2.800 rpm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Torque:</span>
+                      <span className="font-medium">375 Nm @ 1.400-2.400 rpm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Combustível:</span>
+                      <span className="font-medium">Diesel S10</span>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* Transmissão */}
+              <AccordionItem value="transmissao" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Transmissão e Chassis
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Transmissão:</span>
+                      <span className="font-medium">ZF 6 marchas</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Embreagem:</span>
+                      <span className="font-medium">Monodisco a seco</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Eixo traseiro:</span>
+                      <span className="font-medium">Dana - Rodado duplo</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Chassis:</span>
+                      <span className="font-medium">Reforçado em aço</span>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* Dimensões e Capacidades */}
+              <AccordionItem value="dimensoes" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Dimensões e Capacidades
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">PBT:</span>
+                      <span className="font-medium">3.500 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Carga útil:</span>
+                      <span className="font-medium">Até 1.500 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Entre-eixos:</span>
+                      <span className="font-medium">3.360 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Comprimento total:</span>
+                      <span className="font-medium">5.995 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Largura:</span>
+                      <span className="font-medium">2.100 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Altura:</span>
+                      <span className="font-medium">2.400 mm</span>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* Sistemas e Conforto */}
+              <AccordionItem value="sistemas" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Sistemas e Conforto
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Freios:</span>
+                      <span className="font-medium">Discos ventilados (dianteiro/traseiro)</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Direção:</span>
+                      <span className="font-medium">Hidráulica</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Tanque combustível:</span>
+                      <span className="font-medium">80 litros (alumínio)</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Ar-condicionado:</span>
+                      <span className="font-medium">Opcional</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Vidros elétricos:</span>
+                      <span className="font-medium">Sim</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Trava elétrica:</span>
+                      <span className="font-medium">Sim</span>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* Habilitação e Garantia */}
+              <AccordionItem value="outros" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Habilitação e Garantia
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">CNH necessária:</span>
+                      <span className="font-medium text-primary font-semibold">Categoria B</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Garantia de fábrica:</span>
+                      <span className="font-medium text-primary font-semibold">3 anos</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Revisões:</span>
+                      <span className="font-medium">A cada 10.000 km</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Padrão de emissões:</span>
+                      <span className="font-medium">PROCONVE P8 (Euro 6)</span>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+
+            {/* CTA */}
+            <div className="text-center mt-12 p-8 bg-primary/5 rounded-2xl border border-primary/20">
+              <p className="text-lg mb-4 text-foreground">
+                Quer saber mais detalhes ou agendar um test-drive?
+              </p>
+              <Button onClick={handleWhatsApp} size="lg" className="bg-[#25D366] hover:bg-[#20BA5A] text-white">
+                <MessageSquare className="mr-2 h-5 w-5" />
+                Falar com especialista
+              </Button>
+            </div>
           </div>
         </div>
       </section>
