@@ -17,11 +17,12 @@ const Home = () => {
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden mt-16">
-        <div className="absolute inset-0 bg-cover bg-center" style={{
-        backgroundImage: `url(${heroTruck})`
-      }}>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
-        </div>
+        <img 
+          src={heroTruck} 
+          alt="Foton Lavoro" 
+          className="absolute inset-0 w-full h-full object-cover object-[30%_center] md:object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
         <div className="container-lavoro relative z-10 text-center text-primary-foreground">
           
           
