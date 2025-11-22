@@ -8,7 +8,6 @@ import { useState } from "react";
 import eaumark9tImg from "@/assets/eaumark-9t.jpg";
 import eaumarkLineupImg from "@/assets/eaumark-9t-lineup.jpg";
 import eaumarkChassisImg from "@/assets/eaumark-9t-chassis.webp";
-import eaumarkSpecsImg from "@/assets/eaumark-9t-specs-table.png";
 
 const EAumark9T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -430,15 +429,146 @@ const EAumark9T = () => {
             </div>
           </div>
 
-          {/* Tabela de Especificações Completa */}
-          <div className="mt-16 max-w-5xl mx-auto">
-            <div className="p-8 rounded-2xl bg-gradient-to-br from-industrial-light to-industrial-light/50 dark:from-black dark:to-industrial-dark/50 border border-border">
-              <h3 className="text-2xl font-bold mb-6 text-center">Ficha Técnica Completa</h3>
-              <img
-                src={eaumarkSpecsImg}
-                alt="Especificações Técnicas Detalhadas do e-Aumark 9T"
-                className="w-full rounded-xl shadow-lg"
-              />
+          {/* Ficha Técnica Completa */}
+          <div className="mt-16 max-w-6xl mx-auto">
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-2 border-blue-200 dark:border-blue-800/30">
+              <h3 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+                Foton e-Aumark 9 (Setembro/2025)
+              </h3>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Especificações Técnicas Principais */}
+                <div className="space-y-4">
+                  <div className="bg-white dark:bg-industrial-dark rounded-xl p-6 border border-border">
+                    <h4 className="font-bold text-lg mb-4 text-primary">Motorização e Performance</h4>
+                    <div className="space-y-3">
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">Motor</span>
+                        <span className="font-semibold">Rear e-Axle</span>
+                      </div>
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">Potência</span>
+                        <span className="font-semibold">75 kw @ 150 kw</span>
+                      </div>
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">Torque</span>
+                        <span className="font-semibold">250 N.m @ 560 N.m</span>
+                      </div>
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">Entre Eixo</span>
+                        <span className="font-semibold">3.360 mm / 3.800 mm</span>
+                      </div>
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">Tração</span>
+                        <span className="font-semibold">4x2</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Pneus</span>
+                        <span className="font-semibold">215/75 R17.5</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white dark:bg-industrial-dark rounded-xl p-6 border border-border">
+                    <h4 className="font-bold text-lg mb-4 text-primary">Capacidades</h4>
+                    <div className="space-y-3">
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">PBT</span>
+                        <span className="font-semibold">8.500 kg</span>
+                      </div>
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">Peso em ordem de marcha</span>
+                        <span className="font-semibold">2.950 kg</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Capacidade carga líquida</span>
+                        <span className="font-semibold text-green-600 dark:text-green-400">5.550kg</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sistema Elétrico */}
+                <div className="space-y-4">
+                  <div className="bg-white dark:bg-industrial-dark rounded-xl p-6 border border-border">
+                    <h4 className="font-bold text-lg mb-4 text-primary">Sistema Elétrico</h4>
+                    <div className="space-y-3">
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">Conector</span>
+                        <span className="font-semibold">Plug-in CCS2 (AC – OBC 22kW/DC)</span>
+                      </div>
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">Voltagem de Operação</span>
+                        <span className="font-semibold">540V</span>
+                      </div>
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">Bateria de Propulsão</span>
+                        <span className="font-semibold text-green-600 dark:text-green-400">100,46 kWh (CATL – LFP)</span>
+                      </div>
+                      <div className="flex justify-between border-b border-border pb-2">
+                        <span className="text-muted-foreground">Autonomia</span>
+                        <span className="font-semibold text-green-600 dark:text-green-400">200 km</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Bateria Auxiliar</span>
+                        <span className="font-semibold">24V</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white dark:bg-industrial-dark rounded-xl p-6 border border-border">
+                    <h4 className="font-bold text-lg mb-4 text-primary">Itens de Série</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>Volante multifuncional</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>ABS+ESC+EBS+EBD+HSA</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>Farol automático</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>MP5 (Rádio + USB + Bluetooth)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>Câmera e Sensor de ré</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>ePTO</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>Vidro Elétrico</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-green-500 mt-0.5">✓</span>
+                        <span>Sensor de pressão nos pneus</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white dark:bg-industrial-dark rounded-xl p-6 border border-border">
+                    <h4 className="font-bold text-lg mb-4 text-primary">Opcionais</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-500 mt-0.5">+</span>
+                        <span>MP3 (Rádio + USB)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-500 mt-0.5">+</span>
+                        <span>Defletor</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
