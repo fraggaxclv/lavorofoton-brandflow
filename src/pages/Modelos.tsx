@@ -15,6 +15,8 @@ import iblue6t from "@/assets/iblue-6t.jpg";
 import eaumark12t from "@/assets/eaumark-12t.jpg";
 import eaumark9t from "@/assets/eaumark-9t-card.webp";
 import eview from "@/assets/eview.jpg";
+import linhaEletricaBadge from "@/assets/linha-eletrica-badge.png";
+
 const Modelos = () => {
   return <div className="min-h-screen">
       <Navbar />
@@ -45,10 +47,11 @@ const Modelos = () => {
       <section className="section-padding bg-industrial-light">
         <div className="container-lavoro">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-500 px-4 py-2 rounded-full mb-4">
-              <span className="text-2xl">⚡</span>
-              <span className="font-bold">LINHA 100% ELÉTRICA</span>
-            </div>
+            <img 
+              src={linhaEletricaBadge} 
+              alt="Linha Elétrica" 
+              className="mx-auto mb-4 h-12 md:h-16"
+            />
             <h2>Linha e-Foton            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-4">
               Zero emissões. Economia de até 80%. O futuro do transporte chegou.
