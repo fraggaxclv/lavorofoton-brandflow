@@ -417,7 +417,7 @@ const QuemSomos = () => {
             </p>
           </div>
 
-          <div className="bg-muted/30 rounded-2xl p-10 md:p-12">
+          <div className="bg-background rounded-2xl p-8 md:p-12 border-4 border-primary/20 shadow-lg">
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-10 text-center">
               A Lavoro Foton nasceu para unir:
             </p>
