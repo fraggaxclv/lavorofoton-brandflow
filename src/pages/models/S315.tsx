@@ -452,20 +452,36 @@ dora            </h3>
                 <AccordionContent className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Motor:</span>
-                      <span className="font-medium">Cummins ISF 2.8</span>
+                      <span className="text-muted-foreground">Fabricante/Modelo:</span>
+                      <span className="font-medium">Cummins F2.5</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Potência:</span>
-                      <span className="font-medium">150 cv @ 2.800 rpm</span>
+                      <span className="text-muted-foreground">Cilindros/Cilindrada:</span>
+                      <span className="font-medium">4/2.498 cm³</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Torque:</span>
-                      <span className="font-medium">375 Nm @ 1.400-2.400 rpm</span>
+                      <span className="text-muted-foreground">Potência Líquida Máx.:</span>
+                      <span className="font-medium">150,2 cv @ 900 rpm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Torque Líquido Máx.:</span>
+                      <span className="font-medium">400 Nm @ 1.200-2.500 rpm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Sistema de Injeção:</span>
+                      <span className="font-medium">Common Rail</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Combustível:</span>
                       <span className="font-medium">Diesel S10</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Norma de Emissões:</span>
+                      <span className="font-medium">CONAMA P8</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Tecnologia:</span>
+                      <span className="font-medium">SCR+DOC+DPF</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -474,25 +490,41 @@ dora            </h3>
               {/* Transmissão */}
               <AccordionItem value="transmissao" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  Transmissão e Chassis
+                  Transmissão e Trem de Força
                 </AccordionTrigger>
                 <AccordionContent className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Transmissão:</span>
-                      <span className="font-medium">ZF 6 marchas</span>
+                      <span className="text-muted-foreground">Fabricante/Modelo:</span>
+                      <span className="font-medium">ZF S5408</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Tipo/Acionamento:</span>
+                      <span className="font-medium">Manual</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Número de marchas:</span>
+                      <span className="font-medium">5MT</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Relações:</span>
+                      <span className="font-medium text-xs">I:5.762 II:2.922 III:1.636 IV:1 V:0.752 R:5.149</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Embreagem:</span>
-                      <span className="font-medium">Monodisco a seco</span>
+                      <span className="font-medium">Tipo seco, mola de diafragma Ø325</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Eixo traseiro:</span>
-                      <span className="font-medium">Dana - Rodado duplo</span>
+                      <span className="text-muted-foreground">Eixo Dianteiro:</span>
+                      <span className="font-medium">Viga "I" Aço forjado - 2.4 ton</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Chassis:</span>
-                      <span className="font-medium">Reforçado em aço</span>
+                      <span className="text-muted-foreground">Eixo Traseiro:</span>
+                      <span className="font-medium">4.5 ton - Relação 4:3</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Rodas e Pneus:</span>
+                      <span className="font-medium">Aço - L205/75R16-10PR-RH</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -506,28 +538,99 @@ dora            </h3>
                 <AccordionContent className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">PBT:</span>
-                      <span className="font-medium">3.500 kg</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Carga útil:</span>
-                      <span className="font-medium">Até 1.500 kg</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Entre-eixos:</span>
-                      <span className="font-medium">3.360 mm</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Comprimento total:</span>
-                      <span className="font-medium">5.995 mm</span>
+                      <span className="font-medium">5.380 - 5.960 mm</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Largura:</span>
-                      <span className="font-medium">2.100 mm</span>
+                      <span className="text-muted-foreground">Largura máx. dianteira:</span>
+                      <span className="font-medium">2.030 mm</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Altura:</span>
-                      <span className="font-medium">2.400 mm</span>
+                      <span className="font-medium">2.240 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Distância entre-eixos:</span>
+                      <span className="font-medium">2.800 - 3.360 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Largura máx. traseira:</span>
+                      <span className="font-medium">1.895 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Balanço dianteiro:</span>
+                      <span className="font-medium">1.110 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Balanço traseiro:</span>
+                      <span className="font-medium">1.470 - 1.490 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Distância ao solo:</span>
+                      <span className="font-medium">155 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Bitola dianteira:</span>
+                      <span className="font-medium">1.590 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Bitola traseira:</span>
+                      <span className="font-medium">1.485 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Plataforma de carga:</span>
+                      <span className="font-medium">3.610 - 4.170 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Ângulo de ataque:</span>
+                      <span className="font-medium">19°</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Ângulo de saída:</span>
+                      <span className="font-medium">15°</span>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* Pesos e Capacidades */}
+              <AccordionItem value="pesos" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  Pesos e Capacidades de Carga
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">PBT (homologado):</span>
+                      <span className="font-medium">3.500 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Peso em ordem de marcha:</span>
+                      <span className="font-medium">2.340 - 2.370 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Capacidade de carga útil:</span>
+                      <span className="font-medium">1.130 - 1.160 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Capacidade técnica total:</span>
+                      <span className="font-medium">4.800 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Eixo dianteiro técnica:</span>
+                      <span className="font-medium">2.200 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Eixo traseiro técnica:</span>
+                      <span className="font-medium">2.600 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">PBTC (Combinado):</span>
+                      <span className="font-medium">5.000 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">CMT (Cap. máx. tração):</span>
+                      <span className="font-medium">5.000 kg</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -536,33 +639,41 @@ dora            </h3>
               {/* Sistemas e Conforto */}
               <AccordionItem value="sistemas" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  Sistemas e Conforto
+                  Suspensão, Freios e Sistema Elétrico
                 </AccordionTrigger>
                 <AccordionContent className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Freios:</span>
-                      <span className="font-medium">Discos ventilados (dianteiro/traseiro)</span>
+                      <span className="text-muted-foreground">Suspensão Dianteira:</span>
+                      <span className="font-medium text-xs">Molas parabólicas, amortecedores, barra estabilizadora (3 lâminas)</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Direção:</span>
-                      <span className="font-medium">Hidráulica</span>
+                      <span className="text-muted-foreground">Suspensão Traseira:</span>
+                      <span className="font-medium text-xs">Ar de dupla ação, amortecedores (5+2 lâminas)</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Freio de Serviço:</span>
+                      <span className="font-medium">Ar. Disco/Tambor com ABS+ASR+ESC</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Freio de Estacionamento:</span>
+                      <span className="font-medium">Câmara de molas acumuladores</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Sistema Elétrico:</span>
+                      <span className="font-medium">24V</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Bateria:</span>
+                      <span className="font-medium">2x 100 Ah</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Tanque combustível:</span>
-                      <span className="font-medium">80 litros (alumínio)</span>
+                      <span className="font-medium">80L / 120L Alumínio</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Ar-condicionado:</span>
-                      <span className="font-medium">Opcional</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Vidros elétricos:</span>
-                      <span className="font-medium">Sim</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Trava elétrica:</span>
-                      <span className="font-medium">Sim</span>
+                      <span className="text-muted-foreground">Tanque ARLA 32:</span>
+                      <span className="font-medium">14L</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -571,25 +682,87 @@ dora            </h3>
               {/* Habilitação e Garantia */}
               <AccordionItem value="outros" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  Habilitação e Garantia
+                  Habilitação, Garantia e Itens de Série
                 </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex justify-between py-2 border-b border-border/50">
+                <AccordionContent className="pt-4 space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4 pb-4 border-b border-border">
+                    <div className="flex justify-between py-2">
                       <span className="text-muted-foreground">CNH necessária:</span>
                       <span className="font-medium text-primary font-semibold">Categoria B</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
+                    <div className="flex justify-between py-2">
                       <span className="text-muted-foreground">Garantia de fábrica:</span>
-                      <span className="font-medium text-primary font-semibold">3 anos</span>
+                      <span className="font-medium text-primary font-semibold">3 anos ou 100.000 km</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Revisões:</span>
-                      <span className="font-medium">A cada 10.000 km</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Padrão de emissões:</span>
-                      <span className="font-medium">PROCONVE P8 (Euro 6)</span>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold mb-3">Itens de Série - Versão Padrão:</h4>
+                    <div className="grid md:grid-cols-2 gap-2 text-sm">
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>ABS+ESC+HSA+ASR</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Air-bag frontal para motorista e passageiro</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Painel de instrumentos com cristal líquido 7 polegadas</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Assento do motorista com absorção de mola a ar</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Vidro elétrico</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Alarme com subida de vidro na chave</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Freio dianteiro a disco (freio traseiro a tambor)</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Barra estabilizadora dianteira e traseira</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Defletor de ar</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Faróis de LED</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>DLR + Alerta automático dos LEDs</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Volante multifunções</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>MP3+Bluetooth</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Campainha de marcha ré</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Sensor de marcha ré</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Ar condicionado Automático</span>
+                      </div>
                     </div>
                   </div>
                 </AccordionContent>
