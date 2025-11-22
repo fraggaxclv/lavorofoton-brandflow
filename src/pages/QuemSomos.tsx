@@ -328,7 +328,7 @@ const QuemSomos = () => {
                 </div>
               </div>
 
-              <div className="bg-card rounded-2xl p-8 shadow-sm border border-border md:col-span-2">
+              <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
                   <img src={marketplaceHonestoIcon} alt="Marketplace honesto" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
