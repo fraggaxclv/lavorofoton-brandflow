@@ -369,7 +369,7 @@ const SobreFoton = () => {
       <section className="py-20 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Descubra a <span className="text-primary">Foton</span>
+            Descubra a <span className="text-primary">Participação crescente nos segmentos CNH-B (S315) e 3/4 (1217) - Além de novos mercados com Elétricos       </span>
           </h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto">
             Conheça nossos modelos e descubra por que a Foton é a marca que está redefinindo o futuro do transporte no Brasil.
