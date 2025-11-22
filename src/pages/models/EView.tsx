@@ -26,7 +26,7 @@ const EView = () => {
                   Solicitar Orçamento
                 </a>
                 <a
-                  href="https://wa.me/5531999998888"
+                  href="https://wa.me/5531211647335"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-background/10 backdrop-blur-sm text-primary-foreground px-8 py-4 rounded text-lg font-semibold border-2 border-primary-foreground hover:bg-primary-foreground hover:text-foreground transition-all text-center"
