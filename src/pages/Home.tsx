@@ -42,10 +42,10 @@ const Home = () => {
       </section>
 
       {/* Parceiros */}
-      <section className="py-16 md:py-20 bg-industrial-dark">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container-lavoro">
-          <h2 className="text-center mb-8 text-primary-foreground">Parceiros de Confiança Global</h2>
-          <div className="max-w-5xl mx-auto bg-background/5 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-primary/20">
+          <h2 className="text-center mb-8 text-foreground">Parceiros de Confiança Global</h2>
+          <div className="max-w-5xl mx-auto rounded-2xl p-8 md:p-12 border-4 border-primary">
             <img 
               src={promocionalParceiros} 
               alt="Foton Lavoro - Parceiros: ZF, Cummins, Dana, Bosch" 
