@@ -61,11 +61,11 @@ const Home = () => {
       </section>
 
       {/* Por Que Lavoro */}
-      <section className="section-padding bg-industrial-light">
+      <section className="section-padding bg-background">
         <div className="container-lavoro">
           <h2 className="text-center mb-12">Por Que Lavoro Foton?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
+            <div className="text-center border-2 border-primary rounded-lg p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <img src={lavoro40Years} alt="40 anos Lavoro" className="w-16 h-16 object-contain" />
               </div>
@@ -74,7 +74,7 @@ const Home = () => {
                 Foco total em caminhões Foton. Conhecimento profundo da linha.
               </p>
             </div>
-            <div className="text-center">
+            <div className="text-center border-2 border-primary rounded-lg p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <img src={parceriaIcon} alt="Parceria" className="w-16 h-16 object-contain" />
               </div>
@@ -83,7 +83,7 @@ const Home = () => {
                 Consultoria dedicada. Entendemos sua operação.
               </p>
             </div>
-            <div className="text-center">
+            <div className="text-center border-2 border-primary rounded-lg p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <img src={qualidadeIcon} alt="Qualidade" className="w-16 h-16 object-contain" />
               </div>
@@ -92,7 +92,7 @@ const Home = () => {
                 Soluções que impactam diretamente seu resultado operacional.
               </p>
             </div>
-            <div className="text-center">
+            <div className="text-center border-2 border-primary rounded-lg p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <img src={atendimentoMineiroIcon} alt="Atendimento Mineiro" className="w-16 h-16 object-contain" />
               </div>
