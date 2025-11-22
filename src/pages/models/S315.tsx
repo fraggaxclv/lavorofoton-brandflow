@@ -602,7 +602,7 @@ dora            </h3>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Capacidade de carga útil:</span>
-                      <span className="font-medium">1.130 - 1.160 kg</span>
+                      <span className="font-medium">-</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Capacidade técnica total:</span>
