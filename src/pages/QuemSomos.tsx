@@ -11,7 +11,7 @@ import zfLogoFull from "@/assets/zf-logo-full.png";
 import boschLogoFull from "@/assets/bosch-logo-full.png";
 import danaLogoFull from "@/assets/dana-logo-full.png";
 import engenhariaGlobalIcon from "@/assets/engenharia-global-icon.png";
-import dealershipImage from "@/assets/dealership.jpg";
+import dealershipImage from "@/assets/nova-concessionaria.png";
 import timelineContexto from "@/assets/timeline-contexto-historico.png";
 import timelineHistoria from "@/assets/timeline-historia-lavoro.png";
 import casteloFragaMercedes from "@/assets/castelo-fraga-mercedes.png";
