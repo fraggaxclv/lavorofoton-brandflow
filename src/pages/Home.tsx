@@ -118,7 +118,7 @@ const Home = () => {
               <div className="text-lg text-muted-foreground">Empresas Atendidas</div>
             </div>
             <div>
-              <div className="text-5xl font-bold text-primary mb-2">95%</div>
+              <div className="text-5xl font-bold text-primary mb-2">87%</div>
               <div className="text-lg text-muted-foreground">Satisfação</div>
             </div>
             <div>
