@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Building2, Award, CheckCircle2, Phone, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { Award, CheckCircle2, Phone, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -13,6 +13,7 @@ import dealershipImage from "@/assets/dealership.jpg";
 import timelineContexto from "@/assets/timeline-contexto-historico.png";
 import timelineHistoria from "@/assets/timeline-historia-lavoro.png";
 import casteloFragaMercedes from "@/assets/castelo-fraga-mercedes.png";
+import lavoro40Years from "@/assets/lavoro-40-years.png";
 const QuemSomos = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -61,8 +62,8 @@ const QuemSomos = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* Timeline Card 1 */}
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 mx-auto">
-                <Building2 className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 mx-auto p-2">
+                <img src={lavoro40Years} alt="Lavoro 40 Anos" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-2xl font-bold text-center mb-4 text-foreground">1984–2020</h3>
               <p className="text-muted-foreground text-center leading-relaxed">
@@ -430,7 +431,7 @@ const QuemSomos = () => {
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
-                  <Building2 className="w-8 h-8 text-primary" />
+                  <CheckCircle2 className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground">O atendimento próximo e mineiro</h3>
               </div>
