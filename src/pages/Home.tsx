@@ -2,12 +2,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModelCard from "@/components/ModelCard";
 import { Link } from "react-router-dom";
-import { CheckCircle, Users, TrendingUp, Award } from "lucide-react";
 import heroTruck from "@/assets/hero-lavoro-bh.png";
 import promocionalParceiros from "@/assets/promocional-parceiros.png";
 import fotonS315 from "@/assets/foton-s315.jpg";
 import foton7t from "@/assets/foton-7t.jpg";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
+import lavoro40Years from "@/assets/lavoro-40-years.png";
+import parceriaIcon from "@/assets/parceria-icon.png";
+import qualidadeIcon from "@/assets/qualidade-icon.png";
+import atendimentoMineiroIcon from "@/assets/atendimento-mineiro-icon.png";
 const Home = () => {
   return <div className="min-h-screen">
       <Navbar />
@@ -63,8 +66,8 @@ const Home = () => {
           <h2 className="text-center mb-12">Por Que Lavoro Foton?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                <CheckCircle className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <img src={lavoro40Years} alt="40 anos Lavoro" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-2">Especialização</h3>
               <p className="text-muted-foreground">
@@ -72,8 +75,8 @@ const Home = () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                <Users className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <img src={parceriaIcon} alt="Parceria" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-2">Atendimento</h3>
               <p className="text-muted-foreground">
@@ -81,8 +84,8 @@ const Home = () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                <TrendingUp className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <img src={qualidadeIcon} alt="Qualidade" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-2">Resultados</h3>
               <p className="text-muted-foreground">
@@ -90,8 +93,8 @@ const Home = () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                <Award className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <img src={atendimentoMineiroIcon} alt="Atendimento Mineiro" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-2">Confiança</h3>
               <p className="text-muted-foreground">
