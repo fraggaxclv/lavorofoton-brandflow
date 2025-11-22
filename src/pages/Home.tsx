@@ -2,7 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModelCard from "@/components/ModelCard";
 import { Link } from "react-router-dom";
-import heroTruck from "@/assets/hero-lavoro-bh.png";
+import heroTruckMobile from "@/assets/hero-lavoro-bh.png";
+import heroTruckDesktop from "@/assets/hero-lavoro-desktop.png";
 import cumminsLogo from "@/assets/cummins-logo-full.png";
 import zfLogo from "@/assets/zf-logo-full.png";
 import boschLogo from "@/assets/bosch-logo-full.png";
@@ -20,10 +21,17 @@ const Home = () => {
 
       {/* Hero Section */}
       <section className="relative h-[85vh] md:h-screen flex items-end justify-center overflow-hidden mt-16">
+        {/* Mobile Hero */}
         <img 
-          src={heroTruck} 
+          src={heroTruckMobile} 
           alt="Foton Lavoro" 
-          className="absolute inset-0 w-full h-full object-cover object-[35%_center] md:object-center"
+          className="absolute inset-0 w-full h-full object-cover object-[35%_center] md:hidden"
+        />
+        {/* Desktop Hero */}
+        <img 
+          src={heroTruckDesktop} 
+          alt="Foton Lavoro" 
+          className="absolute inset-0 w-full h-full object-cover object-center hidden md:block"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         <div className="container-lavoro relative z-10 pb-16 md:pb-20 px-6 md:px-4">
