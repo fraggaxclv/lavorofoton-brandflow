@@ -1,17 +1,15 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-foton-lavoro.png";
-
 const Footer = () => {
-  return (
-    <footer className="bg-industrial-dark text-primary-foreground">
+  return <footer className="bg-industrial-dark text-primary-foreground">
       <div className="container-lavoro py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
             <img src={logo} alt="Foton Lavoro" className="h-10 mb-4 brightness-0 invert" />
             <p className="text-sm text-muted-foreground">
-              Concessionária oficial Foton em Minas Gerais. Força, confiança e performance.
+              Concessionária oficial Foton em Belo Horizonte, Minas Gerais. Força, confiança e performance.
             </p>
           </div>
 
@@ -78,8 +76,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Contato</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <Phone size={16} className="text-primary" />
+              <li className="flex items-center gap-2 text-muted-foreground">(31) 2116-4735<Phone size={16} className="text-primary" />
                 (31) 3333-4444
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
@@ -98,8 +95,6 @@ const Footer = () => {
           <p>&copy; {new Date().getFullYear()} Lavoro Foton. Todos os direitos reservados.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

@@ -66,11 +66,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             
             <div className="order-1 lg:order-2">
               <div className="relative w-full aspect-[4/5] md:aspect-video rounded-lg overflow-hidden">
-                <img 
-                  src={aumarkS315Hero} 
-                  alt="Foton Lavoro Aumark S315" 
-                  className="w-full h-full object-cover"
-                />
+                <img src={aumarkS315Hero} alt="Foton Lavoro Aumark S315" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -374,11 +370,12 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
               <Truck className="w-10 h-10 mx-auto mb-3 text-primary" />
-              <h3 className="font-semibold">Rotas curtas e intermunicipais</h3>
+              <h3 className="font-semibold">Rotas longas e curtas   </h3>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
               <ShoppingCart className="w-10 h-10 mx-auto mb-3 text-primary" />
-              <h3 className="font-semibold">Varejo, distribuidoras e e-commerce</h3>
+              <h3 className="font-semibold">Varejo, e-commerce e distribui
+dora            </h3>
             </div>
           </div>
         </div>
