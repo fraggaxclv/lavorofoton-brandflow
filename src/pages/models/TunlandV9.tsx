@@ -26,16 +26,16 @@ import {
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
-import tunlandV9OffroadDust from "@/assets/tunland-v9-offroad-dust.jpg";
-import tunlandV9OffroadTrees from "@/assets/tunland-v9-offroad-trees.jpg";
-import tunlandV9LakeTurquoise from "@/assets/tunland-v9-lake-turquoise.jpg";
-import tunlandV9DashboardDetail from "@/assets/tunland-v9-dashboard-detail.jpg";
-import tunlandV9InteriorPanoramic from "@/assets/tunland-v9-interior-panoramic.jpg";
-import tunlandV9RearSeats from "@/assets/tunland-v9-rear-seats.jpg";
-import tunlandV9SeatbeltDetail from "@/assets/tunland-v9-seatbelt-detail.jpg";
-import tunlandV9SteeringDetail from "@/assets/tunland-v9-steering-detail.jpg";
-import tunlandV9CargoForklift from "@/assets/tunland-v9-cargo-forklift.jpg";
-import tunlandV9InteriorSunroofPerson from "@/assets/tunland-v9-interior-sunroof-person.jpg";
+import tunlandV9Photo1 from "@/assets/tunland-v9-photo-1.png";
+import tunlandV9Photo2 from "@/assets/tunland-v9-photo-2.png";
+import tunlandV9Photo3 from "@/assets/tunland-v9-photo-3.png";
+import tunlandV9Photo4 from "@/assets/tunland-v9-photo-4.png";
+import tunlandV9Photo5 from "@/assets/tunland-v9-photo-5.png";
+import tunlandV9Photo6 from "@/assets/tunland-v9-photo-6.png";
+import tunlandV9Photo7 from "@/assets/tunland-v9-photo-7.png";
+import tunlandV9Photo8 from "@/assets/tunland-v9-photo-8.png";
+import tunlandV9Photo9 from "@/assets/tunland-v9-photo-9.png";
+import tunlandV9Photo10 from "@/assets/tunland-v9-photo-10.png";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
@@ -54,64 +54,54 @@ const TunlandV9 = () => {
 
   const productImages = [
     {
-      src: tunlandV9OffroadDust,
-      alt: "Foton Tunland V9 - Ação Off-Road",
-      caption: "Tunland V9 - Performance Off-Road com Potência"
+      src: tunlandV9Photo1,
+      alt: "Foton Tunland V9 - Imagem 1",
+      caption: "Tunland V9 - Design e Sofisticação"
     },
     {
-      src: tunlandV9OffroadTrees,
-      alt: "Foton Tunland V9 - Aventura em Movimento",
-      caption: "Aventura e Dinâmica em Terrenos Desafiadores"
+      src: tunlandV9Photo2,
+      alt: "Foton Tunland V9 - Imagem 2",
+      caption: "Performance Premium"
     },
     {
-      src: tunlandV9LakeTurquoise,
-      alt: "Foton Tunland V9 - Design Premium em Paisagem Deslumbrante",
-      caption: "Design Sofisticado e Imponente"
+      src: tunlandV9Photo3,
+      alt: "Foton Tunland V9 - Imagem 3",
+      caption: "Tecnologia de Ponta"
     },
     {
-      src: tunlandV9InteriorPanoramic,
-      alt: "Foton Tunland V9 - Interior Panorâmico Premium",
-      caption: "Interior de Luxo com Teto Solar Panorâmico"
+      src: tunlandV9Photo4,
+      alt: "Foton Tunland V9 - Imagem 4",
+      caption: "Interior Refinado"
     },
     {
-      src: tunlandV9DashboardDetail,
-      alt: "Foton Tunland V9 - Painel Digital de Última Geração",
-      caption: "Painel Digital e Tecnologia Embarcada"
+      src: tunlandV9Photo5,
+      alt: "Foton Tunland V9 - Imagem 5",
+      caption: "Conforto e Elegância"
     },
     {
-      src: tunlandV9InteriorSunroofPerson,
-      alt: "Foton Tunland V9 - Experiência com Teto Solar",
-      caption: "Conforto e Sofisticação Interior"
+      src: tunlandV9Photo6,
+      alt: "Foton Tunland V9 - Imagem 6",
+      caption: "Detalhes Premium"
     },
     {
-      src: tunlandV9RearSeats,
-      alt: "Foton Tunland V9 - Bancos Traseiros Premium",
-      caption: "Bancos com Acabamento Premium e Espaço Generoso"
+      src: tunlandV9Photo7,
+      alt: "Foton Tunland V9 - Imagem 7",
+      caption: "Engenharia Avançada"
     },
     {
-      src: tunlandV9SeatbeltDetail,
-      alt: "Foton Tunland V9 - Detalhes de Segurança",
-      caption: "Atenção aos Detalhes e Segurança"
+      src: tunlandV9Photo8,
+      alt: "Foton Tunland V9 - Imagem 8",
+      caption: "Acabamento de Luxo"
     },
     {
-      src: tunlandV9SteeringDetail,
-      alt: "Foton Tunland V9 - Volante Multifuncional",
-      caption: "Volante Premium com Comandos Integrados"
+      src: tunlandV9Photo9,
+      alt: "Foton Tunland V9 - Imagem 9",
+      caption: "Robustez e Potência"
     },
     {
-      src: tunlandV9CargoForklift,
-      alt: "Foton Tunland V9 - Caçamba Profissional",
-      caption: "Versatilidade e Capacidade de Carga Profissional"
-    },
-    {
-      src: tunlandV9LakeTurquoise,
-      alt: "Foton Tunland V9 - Vista Lateral Premium",
-      caption: "Perfil Atlético e Elegante"
-    },
-    {
-      src: tunlandV9OffroadDust,
-      alt: "Foton Tunland V9 - Robustez e Performance",
-      caption: "Potência e Robustez em Ação"
+      src: tunlandV9Photo10,
+      alt: "Foton Tunland V9 - Imagem 10",
+      caption: "Versatilidade Profissional"
     }
   ];
 
@@ -188,7 +178,7 @@ const TunlandV9 = () => {
             
             <div className="order-1 lg:order-2">
               <div className="relative w-full aspect-[4/5] md:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10">
-                <img src={tunlandV9OffroadDust} alt="Foton Tunland V9 Premium" className="w-full h-full object-cover" />
+                <img src={tunlandV9Photo1} alt="Foton Tunland V9 Premium" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -286,21 +276,21 @@ const TunlandV9 = () => {
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
             <div className="space-y-4 group cursor-pointer" onClick={() => openLightbox(2)}>
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:opacity-80 border-2 border-transparent hover:border-primary/30">
-                <img src={tunlandV9LakeTurquoise} alt="Tunland V9 Design Premium" className="w-full h-full object-cover" />
+                <img src={tunlandV9Photo3} alt="Tunland V9 Design Premium" className="w-full h-full object-cover" />
               </div>
               <p className="text-center font-semibold text-lg">Design Premium</p>
             </div>
 
             <div className="space-y-4 group cursor-pointer" onClick={() => openLightbox(3)}>
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:opacity-80 border-2 border-transparent hover:border-primary/30">
-                <img src={tunlandV9InteriorPanoramic} alt="Tunland V9 Interior Panorâmico" className="w-full h-full object-cover" />
+                <img src={tunlandV9Photo4} alt="Tunland V9 Interior Panorâmico" className="w-full h-full object-cover" />
               </div>
               <p className="text-center font-semibold text-lg">Interior Panorâmico</p>
             </div>
 
             <div className="space-y-4 group cursor-pointer" onClick={() => openLightbox(9)}>
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:opacity-80 border-2 border-transparent hover:border-primary/30">
-                <img src={tunlandV9CargoForklift} alt="Tunland V9 Versatilidade" className="w-full h-full object-cover" />
+                <img src={tunlandV9Photo10} alt="Tunland V9 Versatilidade" className="w-full h-full object-cover" />
               </div>
               <p className="text-center font-semibold text-lg">Versatilidade Profissional</p>
             </div>
@@ -406,10 +396,10 @@ const TunlandV9 = () => {
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
             <div className="aspect-video rounded-2xl border-2 border-border overflow-hidden cursor-pointer hover:opacity-80 transition-opacity shadow-lg" onClick={() => openLightbox(0)}>
-              <img src={tunlandV9OffroadDust} alt="Potência e Performance" className="w-full h-full object-cover" />
+              <img src={tunlandV9Photo1} alt="Potência e Performance" className="w-full h-full object-cover" />
             </div>
             <div className="aspect-video rounded-2xl border-2 border-border overflow-hidden cursor-pointer hover:opacity-80 transition-opacity shadow-lg" onClick={() => openLightbox(2)}>
-              <img src={tunlandV9LakeTurquoise} alt="Design e Robustez" className="w-full h-full object-cover" />
+              <img src={tunlandV9Photo3} alt="Design e Robustez" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
