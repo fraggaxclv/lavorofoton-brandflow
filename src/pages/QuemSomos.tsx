@@ -204,49 +204,37 @@ const QuemSomos = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                <img src={qualidadeMecanicaIcon} alt="Qualidade mecânica" className="w-full h-full object-contain" />
-              </div>
+              <img src={qualidadeMecanicaIcon} alt="Qualidade mecânica" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Qualidade mecânica real</h3>
               <p className="text-muted-foreground">Engenharia robusta e confiável</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                <img src={cumminsLogoFull} alt="Cummins" className="w-full h-full object-contain" />
-              </div>
+              <img src={cumminsLogoFull} alt="Cummins" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Motores Cummins</h3>
               <p className="text-muted-foreground">Potência e durabilidade</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                <img src={zfLogoFull} alt="ZF" className="w-full h-full object-contain" />
-              </div>
+              <img src={zfLogoFull} alt="ZF" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Caixas de transmissão ZF</h3>
               <p className="text-muted-foreground">Eficiência premium</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                <img src={boschLogoFull} alt="Bosch" className="w-full h-full object-contain" />
-              </div>
+              <img src={boschLogoFull} alt="Bosch" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Componentes Bosch</h3>
               <p className="text-muted-foreground">Tecnologia de ponta</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                <img src={danaLogoFull} alt="Dana" className="w-full h-full object-contain" />
-              </div>
+              <img src={danaLogoFull} alt="Dana" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Componentes Dana</h3>
               <p className="text-muted-foreground">Alta performance</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                <img src={engenhariaGlobalIcon} alt="Engenharia global" className="w-full h-full object-contain" />
-              </div>
+              <img src={engenhariaGlobalIcon} alt="Engenharia global" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Engenharia global</h3>
               <p className="text-muted-foreground">Montagem já no Brasil</p>
             </div>
