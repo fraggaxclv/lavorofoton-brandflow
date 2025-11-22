@@ -229,9 +229,9 @@ const EAumark12T = () => {
             </div>
 
             {/* Card 6 — Bateria CATL LFP */}
-            <div className="group p-8 rounded-2xl bg-gradient-to-br from-red-50 to-rose-50 dark:from-red-950/20 dark:to-rose-950/20 border border-red-200 dark:border-red-800/30 hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <Battery className="w-8 h-8 text-red-600 dark:text-red-400" />
+            <div className="group p-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20 border border-emerald-200 dark:border-emerald-800/30 hover:shadow-xl transition-all duration-300">
+              <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Battery className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-center">Bateria CATL LFP</h3>
               <p className="text-sm text-center text-muted-foreground mb-3">
@@ -239,15 +239,15 @@ const EAumark12T = () => {
               </p>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
                   <span>Zero risco térmico</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
                   <span>Vida útil estendida</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
                   <span>Garantia de 5 anos / 200.000 km</span>
                 </li>
               </ul>
