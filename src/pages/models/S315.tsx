@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone } from "lucide-react";
 import cnhBIcon from "@/assets/cnh-b-icon.png";
+import cnhBTruckIcon from "@/assets/cnh-b-truck-icon.png";
 import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
 import chassiReforcadoIcon from "@/assets/chassi-reforcado-icon.png";
 import garantia3AnosIcon from "@/assets/garantia-3anos-foton.png";
@@ -161,8 +162,8 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Truck className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 flex items-center justify-center mb-4">
+                <img src={cnhBTruckIcon} alt="CNH B Caminhão" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-3">CNH B que é caminhão</h3>
               <p className="text-muted-foreground">
