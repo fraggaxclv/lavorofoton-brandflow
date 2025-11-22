@@ -36,6 +36,14 @@ import tunlandV9Photo7 from "@/assets/tunland-v9-photo-7.png";
 import tunlandV9Photo8 from "@/assets/tunland-v9-photo-8.png";
 import tunlandV9Photo9 from "@/assets/tunland-v9-photo-9.png";
 import tunlandV9Photo10 from "@/assets/tunland-v9-photo-10.png";
+import iconConforto from "@/assets/icon-conforto.png";
+import iconAcabamento from "@/assets/icon-acabamento.png";
+import iconIsolamento from "@/assets/icon-isolamento.png";
+import icon360 from "@/assets/icon-360.png";
+import icon20Maior from "@/assets/icon-20-maior.png";
+import iconBancosPremium from "@/assets/icon-bancos-premium.png";
+import iconTecnologia from "@/assets/icon-tecnologia.png";
+import iconRobustez from "@/assets/icon-robustez.png";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
@@ -198,64 +206,64 @@ const TunlandV9 = () => {
           <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {/* 1. Teto solar panorâmico */}
             <div className="group bg-white border-2 border-border rounded-2xl p-6 md:p-8 hover:shadow-2xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center bg-primary/10 rounded-full">
-                <Sun className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center">
+                <img src={iconConforto} alt="Teto solar panorâmico" className="w-full h-full object-contain" />
               </div>
               <p className="font-bold text-base md:text-lg text-foreground">Teto solar panorâmico</p>
             </div>
 
             {/* 2. Acabamento nível Mercedes-Benz */}
             <div className="group bg-white border-2 border-border rounded-2xl p-6 md:p-8 hover:shadow-2xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center bg-primary/10 rounded-full">
-                <Sparkles className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center">
+                <img src={iconAcabamento} alt="Acabamento nível Mercedes-Benz" className="w-full h-full object-contain" />
               </div>
               <p className="font-bold text-base md:text-lg text-foreground">Acabamento nível Mercedes-Benz</p>
             </div>
 
             {/* 3. Isolamento acústico superior */}
             <div className="group bg-white border-2 border-border rounded-2xl p-6 md:p-8 hover:shadow-2xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center bg-primary/10 rounded-full">
-                <Volume2 className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center">
+                <img src={iconIsolamento} alt="Isolamento acústico superior" className="w-full h-full object-contain" />
               </div>
               <p className="font-bold text-base md:text-lg text-foreground">Isolamento acústico superior</p>
             </div>
 
             {/* 4. 360° Vision + ADAS completo */}
             <div className="group bg-white border-2 border-border rounded-2xl p-6 md:p-8 hover:shadow-2xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center bg-primary/10 rounded-full">
-                <Eye className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center">
+                <img src={icon360} alt="360° Vision + ADAS completo" className="w-full h-full object-contain" />
               </div>
               <p className="font-bold text-base md:text-lg text-foreground">360° Vision + ADAS completo</p>
             </div>
 
             {/* 5. Dimensões 20% maiores */}
             <div className="group bg-white border-2 border-border rounded-2xl p-6 md:p-8 hover:shadow-2xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center bg-primary/10 rounded-full">
-                <Ruler className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center">
+                <img src={icon20Maior} alt="Dimensões 20% maiores" className="w-full h-full object-contain" />
               </div>
               <p className="font-bold text-base md:text-lg text-foreground">Dimensões 20% maiores</p>
             </div>
 
             {/* 6. Bancos premium */}
             <div className="group bg-white border-2 border-border rounded-2xl p-6 md:p-8 hover:shadow-2xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center bg-primary/10 rounded-full">
-                <Armchair className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center">
+                <img src={iconBancosPremium} alt="Bancos premium" className="w-full h-full object-contain" />
               </div>
               <p className="font-bold text-base md:text-lg text-foreground">Bancos premium / ergonomia de luxo</p>
             </div>
 
             {/* 7. Tecnologia embarcada extrema */}
             <div className="group bg-white border-2 border-border rounded-2xl p-6 md:p-8 hover:shadow-2xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center bg-primary/10 rounded-full">
-                <Cpu className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center">
+                <img src={iconTecnologia} alt="Tecnologia embarcada extrema" className="w-full h-full object-contain" />
               </div>
               <p className="font-bold text-base md:text-lg text-foreground">Tecnologia embarcada extrema</p>
             </div>
 
             {/* 8. Robustez Foton */}
             <div className="group bg-white border-2 border-border rounded-2xl p-6 md:p-8 hover:shadow-2xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center bg-primary/10 rounded-full">
-                <Mountain className="w-8 h-8 md:w-10 md:h-10 text-primary" />
+              <div className="w-16 h-16 md:w-20 md:h-20 mb-6 flex items-center justify-center">
+                <img src={iconRobustez} alt="Robustez Foton" className="w-full h-full object-contain" />
               </div>
               <p className="font-bold text-base md:text-lg text-foreground">Robustez Foton</p>
             </div>
