@@ -438,8 +438,7 @@ const QuemSomos = () => {
             </div>
             
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-center">
-              Criando uma concessionária que coloca o cliente no centro de tudo 
-              e trabalha todos os dias para entregar resultado, não discurso.
+              Criando uma concessionária que coloca <strong className="font-bold text-foreground">o cliente no centro de tudo</strong> e trabalha todos os dias para entregar resultado, não discurso.
             </p>
           </div>
         </div>
