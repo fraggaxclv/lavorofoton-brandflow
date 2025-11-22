@@ -743,40 +743,40 @@ const EAumark9T = () => {
       </section>
 
       {/* Por Que Lavoro Foton */}
-      <section className="section-padding bg-industrial-dark text-white">
+      <section className="section-padding bg-white dark:bg-industrial-dark">
         <div className="container-lavoro">
           <div className="text-center mb-16">
             <h2 className="mb-4">Por que a Lavoro Foton?</h2>
-            <p className="text-xl text-gray-300">O parceiro certo para a sua transformação elétrica</p>
+            <p className="text-xl text-muted-foreground">O parceiro certo para a sua transformação elétrica</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+            <div className="text-center p-8 rounded-2xl bg-industrial-light dark:bg-white/5 border border-border dark:border-white/10 hover:shadow-lg transition-all">
               <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6">
                 <Truck className="w-8 h-8 text-green-400" />
               </div>
               <h3 className="text-xl font-bold mb-4">Especialistas em veículos elétricos</h3>
-              <p className="text-gray-300">
+              <p className="text-muted-foreground">
                 Time treinado pela fábrica com engenharia dedicada para orientações técnicas completas.
               </p>
             </div>
 
-            <div className="text-center p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+            <div className="text-center p-8 rounded-2xl bg-industrial-light dark:bg-white/5 border border-border dark:border-white/10 hover:shadow-lg transition-all">
               <div className="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-6">
                 <Wrench className="w-8 h-8 text-blue-400" />
               </div>
               <h3 className="text-xl font-bold mb-4">Pós-venda de alto nível</h3>
-              <p className="text-gray-300">
+              <p className="text-muted-foreground">
                 Oficina completa, estoque de peças e atendimento rápido para manter sua operação funcionando.
               </p>
             </div>
 
-            <div className="text-center p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+            <div className="text-center p-8 rounded-2xl bg-industrial-light dark:bg-white/5 border border-border dark:border-white/10 hover:shadow-lg transition-all">
               <div className="w-16 h-16 rounded-full bg-yellow-500/20 flex items-center justify-center mx-auto mb-6">
                 <Shield className="w-8 h-8 text-yellow-400" />
               </div>
               <h3 className="text-xl font-bold mb-4">Tradição e confiança</h3>
-              <p className="text-gray-300">
+              <p className="text-muted-foreground">
                 40 anos de credibilidade Castelo Fraga. Experiência que faz a diferença.
               </p>
             </div>
