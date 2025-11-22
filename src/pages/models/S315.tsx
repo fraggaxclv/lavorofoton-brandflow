@@ -236,15 +236,15 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
       </section>
 
       {/* 5. POR QUE ESCOLHER A FOTON */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-industrial-dark via-industrial-dark to-industrial-light">
         <div className="container mx-auto px-4">
           {/* Título */}
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-industrial-dark">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
             Por que escolher a <span className="text-primary-light">Foton Lavoro  </span>
           </h2>
           
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-center text-gray-300 mb-16 max-w-3xl mx-auto">
             Tecnologia global, montagem nacional e o melhor custo-benefício do mercado brasileiro.
           </p>
 
@@ -334,10 +334,10 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
 
           {/* Frase Final de Impacto */}
           <div className="text-center mt-12 space-y-2">
-            <p className="text-xl md:text-2xl font-bold text-industrial-dark">
+            <p className="text-xl md:text-2xl font-bold text-white">
               Mais tecnologia, mais robustez, mais caminhão — por menos dinheiro.
             </p>
-            <p className="text-lg md:text-xl text-primary font-semibold">
+            <p className="text-lg md:text-xl text-primary-light font-semibold">
               Foton Lavoro: a escolha inteligente.
             </p>
           </div>
