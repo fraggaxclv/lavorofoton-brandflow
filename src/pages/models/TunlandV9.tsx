@@ -173,7 +173,7 @@ const TunlandV9 = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
-                  <span className="text-lg">Acabamento comparável às marcas premium</span>
+                  <span className="text-lg">Acabamento de luxo premium - robustez de caminhão</span>
                 </div>
               </div>
 
