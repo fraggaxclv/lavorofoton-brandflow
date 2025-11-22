@@ -321,7 +321,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
                 <Package className="w-full h-full text-primary" strokeWidth={1.5} />
               </div>
               <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">88% de fill rate + R$ 90 milhões em peças</h3>
-              <p className="text-sm text-gray-600 text-center">Peça na hora certa, operação sem paradas.</p>
+              <p className="text-sm text-gray-600 text-center">Peça na hora certa, operação sem paradas. - Sua empresa 24hs girando.               </p>
             </div>
 
             {/* 9. Aprovação dos clientes */}
