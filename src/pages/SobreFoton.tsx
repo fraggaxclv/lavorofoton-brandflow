@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MessageCircle, TrendingUp, Globe, Users, Zap, Shield } from "lucide-react";
-import heroTruck from "@/assets/hero-truck.jpg";
+import heroTruck from "@/assets/foton-lavoro-hero.png";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
 import cumminsLogo from "@/assets/cummins-logo-full.png";
 import boschLogo from "@/assets/bosch-logo-full.png";
@@ -105,7 +105,7 @@ const SobreFoton = () => {
             alt="Foton - Tecnologia Global"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/98 via-background/90 to-background/70" />
         </div>
 
         <div className="relative z-10 container mx-auto px-6 max-w-4xl text-left">
