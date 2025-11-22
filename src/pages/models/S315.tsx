@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone } from "lucide-react";
 import cnhBIcon from "@/assets/cnh-b-icon.png";
+import aumarkS315Hero from "@/assets/aumark-s315-hero.png";
 import cnhBTruckIcon from "@/assets/cnh-b-truck-icon.png";
 import durabilityIcon from "@/assets/durability-icon.png";
 import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
@@ -59,11 +60,12 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             </div>
             
             <div className="order-1 lg:order-2">
-              <div className="relative w-full aspect-[4/5] md:aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg overflow-hidden flex items-center justify-center border border-primary/20">
-                <div className="text-center p-8">
-                  <Truck className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-4 text-primary/40" />
-                  <p className="text-sm md:text-base text-gray-400 font-mono">HERO_IMAGE_PLACEHOLDER</p>
-                </div>
+              <div className="relative w-full aspect-[4/5] md:aspect-video rounded-lg overflow-hidden">
+                <img 
+                  src={aumarkS315Hero} 
+                  alt="Foton Lavoro Aumark S315" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
