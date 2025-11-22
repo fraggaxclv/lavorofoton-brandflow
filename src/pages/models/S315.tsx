@@ -279,8 +279,9 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
 
             {/* 4. Componentes Bosch e Dana */}
             <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
-              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
-                <Wrench className="w-full h-full text-primary" strokeWidth={1.5} />
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center gap-2 mx-auto">
+                <img src={boschLogo} alt="Bosch" className="w-1/2 h-full object-contain" />
+                <img src={danaLogo} alt="Dana" className="w-1/2 h-full object-contain" />
               </div>
               <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Componentes Bosch e Dana</h3>
               <p className="text-sm text-gray-600 text-center">Eletrônica, freios e transmissão de padrão mundial.</p>
