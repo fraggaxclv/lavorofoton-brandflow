@@ -3,7 +3,10 @@ import Footer from "@/components/Footer";
 import ModelCard from "@/components/ModelCard";
 import { Link } from "react-router-dom";
 import heroTruck from "@/assets/hero-lavoro-bh.png";
-import promocionalParceiros from "@/assets/promocional-parceiros.png";
+import cumminsLogo from "@/assets/cummins-logo-full.png";
+import zfLogo from "@/assets/zf-logo-full.png";
+import boschLogo from "@/assets/bosch-logo-full.png";
+import danaLogo from "@/assets/dana-logo-full.png";
 import fotonS315 from "@/assets/foton-s315.jpg";
 import foton7t from "@/assets/foton-7t.jpg";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
@@ -44,13 +47,36 @@ const Home = () => {
       {/* Parceiros */}
       <section className="py-16 md:py-20 bg-background">
         <div className="container-lavoro">
-          <h2 className="text-center mb-8 text-foreground">Parceiros de Confiança Global</h2>
-          <div className="max-w-5xl mx-auto rounded-2xl p-8 md:p-12 border-4 border-primary">
-            <img 
-              src={promocionalParceiros} 
-              alt="Foton Lavoro - Parceiros: ZF, Cummins, Dana, Bosch" 
-              className="w-full h-auto"
-            />
+          <h2 className="text-center mb-12 text-foreground">Parceiros de Confiança Global</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div className="bg-card border-2 border-primary/20 rounded-xl p-8 flex items-center justify-center hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <img 
+                src={cumminsLogo} 
+                alt="Cummins - Parceiro Foton Lavoro" 
+                className="w-full h-auto max-h-16 object-contain"
+              />
+            </div>
+            <div className="bg-card border-2 border-primary/20 rounded-xl p-8 flex items-center justify-center hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <img 
+                src={zfLogo} 
+                alt="ZF - Parceiro Foton Lavoro" 
+                className="w-full h-auto max-h-16 object-contain"
+              />
+            </div>
+            <div className="bg-card border-2 border-primary/20 rounded-xl p-8 flex items-center justify-center hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <img 
+                src={boschLogo} 
+                alt="Bosch - Parceiro Foton Lavoro" 
+                className="w-full h-auto max-h-16 object-contain"
+              />
+            </div>
+            <div className="bg-card border-2 border-primary/20 rounded-xl p-8 flex items-center justify-center hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-105">
+              <img 
+                src={danaLogo} 
+                alt="Dana - Parceiro Foton Lavoro" 
+                className="w-full h-auto max-h-16 object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
