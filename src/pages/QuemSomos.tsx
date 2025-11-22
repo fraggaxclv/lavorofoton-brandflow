@@ -19,6 +19,11 @@ import lavoroLogoIcon from "@/assets/lavoro-logo-icon.png";
 import experienceIcon from "@/assets/experience-icon.png";
 import globalEngineeringIcon from "@/assets/global-engineering-icon.png";
 import localServiceIcon from "@/assets/local-service-icon.png";
+import relacionamentoDiretoIcon from "@/assets/relacionamento-direto-icon.png";
+import suportePosVendaIcon from "@/assets/suporte-pos-venda-icon.png";
+import marketplaceHonestoIcon from "@/assets/marketplace-honesto-icon.png";
+import atendimentoTecnicoIcon from "@/assets/atendimento-tecnico-icon.png";
+import caminhõesRobustosIcon from "@/assets/caminhoes-robustos-icon.png";
 const QuemSomos = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -273,9 +278,7 @@ const QuemSomos = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                  </div>
+                  <img src={relacionamentoDiretoIcon} alt="Relacionamento direto" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Relacionamento direto</h3>
                     <p className="text-muted-foreground">Humano e transparente</p>
@@ -285,9 +288,7 @@ const QuemSomos = () => {
 
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                  </div>
+                  <img src={atendimentoTecnicoIcon} alt="Atendimento técnico" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Atendimento técnico</h3>
                     <p className="text-muted-foreground">Baseado na engenharia e na boa prática</p>
@@ -297,9 +298,7 @@ const QuemSomos = () => {
 
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                  </div>
+                  <img src={suportePosVendaIcon} alt="Suporte pós-venda real" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Suporte pós-venda real</h3>
                     <p className="text-muted-foreground">Presente quando você precisar</p>
@@ -309,9 +308,7 @@ const QuemSomos = () => {
 
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                  </div>
+                  <img src={caminhõesRobustosIcon} alt="Caminhões robustos" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Caminhões robustos</h3>
                     <p className="text-muted-foreground">Eficientes e acessíveis</p>
@@ -321,9 +318,7 @@ const QuemSomos = () => {
 
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border md:col-span-2">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                  </div>
+                  <img src={marketplaceHonestoIcon} alt="Marketplace honesto" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Um marketplace honesto</h3>
                     <p className="text-muted-foreground">Profissional e responsável</p>
