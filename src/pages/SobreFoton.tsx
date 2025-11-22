@@ -8,6 +8,7 @@ import fotonHeavy from "@/assets/foton-heavy.jpg";
 import cumminsLogo from "@/assets/cummins-logo-full.png";
 import boschLogo from "@/assets/bosch-logo-full.png";
 import zfLogo from "@/assets/zf-logo-full.png";
+import daimlerLogo from "@/assets/daimler-logo-full.png";
 
 const SobreFoton = () => {
   const scrollToSection = (id: string) => {
@@ -33,6 +34,7 @@ const SobreFoton = () => {
       year: "2012",
       title: "Joint Venture Daimler",
       description: "Parceria com Mercedes-Benz para desenvolvimento de veículos pesados. Referência mundial em engenharia, controle de qualidade e manufatura.",
+      logo: daimlerLogo,
     },
     {
       year: "2017",
