@@ -5,6 +5,7 @@ import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, 
 import cnhBIcon from "@/assets/cnh-b-icon.png";
 import aumarkS315Hero from "@/assets/aumark-s315-hero.png";
 import aumarkS315Exterior from "@/assets/aumark-s315-exterior.png";
+import aumarkS315Interior from "@/assets/aumark-s315-interior.png";
 import cnhBTruckIcon from "@/assets/cnh-b-truck-icon.png";
 import durabilityIcon from "@/assets/durability-icon.png";
 import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
@@ -154,8 +155,8 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             <div className="aspect-video rounded-2xl border border-border overflow-hidden">
               <img src={aumarkS315Exterior} alt="Foton Aumark S315 - Vista Externa" className="w-full h-full object-cover" />
             </div>
-            <div className="aspect-video bg-muted rounded-2xl border border-border flex items-center justify-center">
-              <p className="text-muted-foreground text-sm font-medium">Foto interna da cabine aqui</p>
+            <div className="aspect-video rounded-2xl border border-border overflow-hidden">
+              <img src={aumarkS315Interior} alt="Foton Aumark S315 - Vista Interna da Cabine" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
