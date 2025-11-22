@@ -1,10 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Building2, Award, TrendingUp, Users, Wrench, Target, CheckCircle2 } from "lucide-react";
-
 const QuemSomos = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
 
       {/* Hero */}
@@ -49,7 +47,7 @@ const QuemSomos = () => {
                   liderando operações comerciais, pós-venda e expansão de rede.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Foram <strong className="text-foreground">15 concessionárias Mercedes-Benz</strong> — caminhões, vans e ônibus — administradas com excelência,
+                  Foram + de 20 concessionárias Mercedes-Benz (em minas gerais, paraná, goiás e mato grosso) — caminhões, vans e ônibus — administradas com excelência, sempre entregando credibilidade, relacionamento e resultado. Com realizados de vendas de R$ 1.5bi/ano.                                                                                                                                                                                                <strong className="text-foreground">+ de 20 concessionárias Mercedes-Benz</strong> — caminhões, vans e ônibus — administradas com excelência,
                   sempre entregando credibilidade, relacionamento e resultado.
                 </p>
               </div>
@@ -219,18 +217,13 @@ const QuemSomos = () => {
           <h2 className="mb-8 max-w-4xl mx-auto leading-tight">
             A Lavoro Foton é a evolução natural de uma história construída com seriedade.
           </h2>
-          <a
-            href="/contato"
-            className="inline-block bg-background text-foreground px-10 py-5 rounded-lg text-xl font-semibold hover:bg-secondary hover:scale-105 transition-all shadow-[var(--shadow-strong)]"
-          >
+          <a href="/contato" className="inline-block bg-background text-foreground px-10 py-5 rounded-lg text-xl font-semibold hover:bg-secondary hover:scale-105 transition-all shadow-[var(--shadow-strong)]">
             Fale Conosco
           </a>
         </div>
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default QuemSomos;
