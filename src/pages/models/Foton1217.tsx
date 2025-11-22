@@ -1,529 +1,547 @@
+import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CheckCircle, ArrowRight, Truck, Wrench, Gauge, Zap, Shield, Users } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import foton1217 from "@/assets/foton-1217.jpg";
-import cumminsLogo from "@/assets/cummins-logo.png";
-import zfLogo from "@/assets/zf-logo.png";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { useToast } from "@/hooks/use-toast";
-
-const formSchema = z.object({
-  name: z.string().trim().min(1, { message: "Nome é obrigatório" }).max(100),
-  whatsapp: z.string().trim().min(1, { message: "WhatsApp é obrigatório" }).max(20),
-  city: z.string().trim().min(1, { message: "Cidade/Estado é obrigatório" }).max(100),
-  operationType: z.string().trim().max(200),
-  currentDemand: z.string().trim().max(500),
-});
+import cumminsLogo from "@/assets/cummins-logo-icon.png";
+import zfLogo from "@/assets/zf-logo-icon.png";
+import boschLogo from "@/assets/bosch-logo-icon.png";
+import danaLogo from "@/assets/dana-logo-icon.png";
+import durabilityIcon from "@/assets/durability-icon.png";
+import garantia3AnosIcon from "@/assets/garantia-3anos-foton.png";
+import motorCumminsFotonIcon from "@/assets/motor-cummins-foton-icon.png";
+import garantiaFabricaFotonIcon from "@/assets/garantia-3anos-foton.png";
+import tecnologiaGlobalIcon from "@/assets/tecnologia-global-icon.png";
+import concessionariasIcon from "@/assets/70-concessionarias-icon.png";
+import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
+import fillRateIcon from "@/assets/fill-rate-icon.png";
+import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 
 const Foton1217 = () => {
-  const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      whatsapp: "",
-      city: "",
-      operationType: "",
-      currentDemand: "",
-    },
-  });
+  const whatsappNumber = "5531999998888";
+  const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton 1217.");
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    const message = `*Nova Solicitação - Foton 1217*\n\nNome: ${values.name}\nWhatsApp: ${values.whatsapp}\nCidade/Estado: ${values.city}\nTipo de operação: ${values.operationType}\nDemanda atual: ${values.currentDemand}`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/5531999998888?text=${encodedMessage}`, "_blank");
-    
-    toast({
-      title: "Redirecionando para WhatsApp",
-      description: "Você será atendido em breve!",
+  const handleWhatsApp = () => {
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
+  };
+
+  const handleQuoteClick = () => {
+    document.getElementById('cta-final')?.scrollIntoView({
+      behavior: 'smooth'
     });
-    
-    form.reset();
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero */}
-      <section className="mt-16 pt-20 pb-16 bg-gradient-to-br from-industrial-dark via-industrial-dark to-industrial-darker">
-        <div className="container-lavoro">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-primary-foreground">
-              <h1 className="mb-6 text-5xl md:text-6xl font-bold leading-tight">
-                Foton 1217. O melhor três-quartos do mercado.
+      {/* 1. HERO */}
+      <section className="relative bg-industrial-dark text-white overflow-hidden">
+        <div className="container mx-auto px-4 py-12 md:py-20">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6 order-2 lg:order-1">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                Foton 1217 – O melhor três-quartos do mercado.
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-                Mais força, mais capacidade, mais tecnologia. O caminhão que domina o segmento 3/4 com autoridade.
+              <p className="text-xl md:text-2xl text-gray-300">
+                Mais força, mais capacidade, mais tecnologia.<br />
+                <span className="text-primary font-semibold">O caminhão que domina o segmento 3/4 com autoridade.</span>
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                <Button size="lg" className="text-lg" asChild>
-                  <a href="#contato">Solicitar Proposta</a>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button onClick={handleWhatsApp} size="lg" className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-8 py-6 h-auto">
+                  <MessageSquare className="mr-2 h-5 w-5" />
+                  Falar no WhatsApp agora
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg border-2 border-primary-foreground bg-background/10 hover:bg-primary-foreground hover:text-foreground text-primary-foreground"
-                  asChild
-                >
-                  <a href="https://wa.me/5531999998888" target="_blank" rel="noopener noreferrer">
-                    Falar no WhatsApp
-                  </a>
+                <Button onClick={handleQuoteClick} size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6 h-auto">
+                  Solicitar Proposta
                 </Button>
               </div>
-              <p className="text-sm text-muted-foreground">
-                Atendimento rápido, direto com um consultor Lavoro.
-              </p>
             </div>
-            <div className="rounded-lg overflow-hidden shadow-[var(--shadow-strong)]">
-              <img src={foton1217} alt="Foton 1217 - O melhor três-quartos do mercado" className="w-full h-full object-cover" />
+            
+            <div className="order-1 lg:order-2">
+              <div className="relative w-full aspect-[4/5] md:aspect-video rounded-lg overflow-hidden">
+                <img 
+                  src={foton1217} 
+                  alt="Foton 1217" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Seção 1 - Por que é o melhor */}
-      <section className="section-padding">
-        <div className="container-lavoro">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="mb-8">O três-quartos que entrega mais onde importa.</h2>
-            <div className="space-y-6 text-lg text-muted-foreground">
-              <p>
-                O Foton 1217 não concorre. <strong className="text-foreground">Ele lidera.</strong>
+      {/* 2. PRINCIPAIS MOTIVOS */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4">
+          {/* Título */}
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 md:mb-20 text-foreground">
+            Principais motivos para escolher o <span className="text-primary">Foton 1217</span>
+          </h2>
+          
+          {/* Grid de Benefícios */}
+          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-16">
+            {/* 1. Carrega até 1 tonelada a mais */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <svg className="w-full h-full text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11l5-5m0 0l5 5m-5-5v12" />
+                </svg>
+              </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">+1 tonelada de capacidade</p>
+            </div>
+
+            {/* 2. Motor Cummins */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <img src={cumminsLogo} alt="Motor Cummins" className="w-full h-full object-contain" />
+              </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Motor Cummins</p>
+            </div>
+
+            {/* 3. Caixa ZF */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <img src={zfLogo} alt="Caixa ZF" className="w-full h-full object-contain" />
+              </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Caixa ZF</p>
+            </div>
+
+            {/* 4. Componentes Bosch + Dana */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center gap-2">
+                <img src={boschLogo} alt="Bosch" className="h-full w-auto object-contain" />
+                <img src={danaLogo} alt="Dana" className="h-full w-auto object-contain" />
+              </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Componentes Bosch + Dana</p>
+            </div>
+
+            {/* 5. Melhor custo-benefício */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <svg className="w-full h-full text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Melhor custo-benefício</p>
+            </div>
+
+            {/* 6. Economia de combustível */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <svg className="w-full h-full text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Economia de combustível</p>
+            </div>
+
+            {/* 7. Baixo custo de manutenção */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <svg className="w-full h-full text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">Baixo custo de manutenção</p>
+            </div>
+
+            {/* 8. 3 anos de garantia */}
+            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+                <img src={garantia3AnosIcon} alt="3 Anos de Garantia" className="w-full h-full object-contain" />
+              </div>
+              <p className="font-semibold text-sm md:text-base text-foreground">3 anos de garantia de fábrica</p>
+            </div>
+          </div>
+
+          {/* Placeholders de Imagens */}
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mt-12">
+            <div className="aspect-video rounded-2xl border border-border overflow-hidden">
+              <img src={foton1217} alt="Foton 1217 - Vista Externa" className="w-full h-full object-cover" />
+            </div>
+            <div className="aspect-video rounded-2xl border border-border overflow-hidden">
+              <img src={foton1217} alt="Foton 1217 - Cabine" className="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. DESTAQUES TÉCNICOS - 4 CARDS */}
+      <section className="py-12 md:py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 flex items-center justify-center mb-4">
+                <svg className="w-full h-full text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-3">Carrega mais que a concorrência</h3>
+              <p className="text-muted-foreground">
+                Até 1 tonelada a mais de capacidade de carga. Mais carga por viagem, mais lucro no final do mês.
               </p>
-              <p>
-                É o caminhão 3/4 com o conjunto mecânico mais respeitado do segmento e a maior capacidade de carga entre seus concorrentes.
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-center gap-3 md:gap-4 mb-6">
+                <img src={cumminsLogo} alt="Cummins" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={zfLogo} alt="ZF" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={boschLogo} alt="Bosch" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={danaLogo} alt="Dana" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Conjunto mecânico global</h3>
+              <p className="text-muted-foreground">
+                Motor Cummins, transmissão ZF, componentes Bosch e Dana. Confiabilidade testada no mundo inteiro.
               </p>
-              <p className="text-xl font-semibold text-foreground">
-                Se o negócio exige força real, tecnologia confiável e custo operacional inteligente, o 1217 é a escolha óbvia.
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 flex items-center justify-center mb-4">
+                <img src={durabilityIcon} alt="Construído para durar" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Força e durabilidade</h3>
+              <p className="text-muted-foreground">
+                Chassi reforçado, suspensão robusta e componentes de primeira linha para aguentar o trabalho pesado.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 flex items-center justify-center mb-4">
+                <img src={garantia3AnosIcon} alt="3 Anos de Garantia" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Garantia real</h3>
+              <p className="text-muted-foreground">
+                3 anos de garantia de fábrica + rede de assistência completa em todo o Brasil.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Seção 2 - Diferenciais */}
-      <section className="section-padding bg-industrial-light">
-        <div className="container-lavoro">
-          <h2 className="mb-12 text-center">Diferenciais que ninguém iguala</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Diferencial 1 */}
-            <div className="card-premium p-8">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="bg-primary/10 p-3 rounded-lg">
-                  <Truck className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold">Carrega até 1 tonelada a mais que a concorrência</h3>
+      {/* 4. IMAGENS DO PRODUTO - 3 PLACEHOLDERS */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="space-y-3">
+              <div className="aspect-[4/3] rounded-lg overflow-hidden">
+                <img src={foton1217} alt="Foton 1217 - Vista Exterior" className="w-full h-full object-cover" />
               </div>
-              <ul className="space-y-3 text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Mais carga por viagem.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Mais eficiência na rota.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Mais lucro por dia.</span>
-                </li>
-              </ul>
-              <p className="mt-4 font-semibold text-foreground">
-                A diferença se paga sozinha na operação.
-              </p>
+              <p className="text-sm text-center text-muted-foreground">Vista lateral do Foton 1217</p>
             </div>
 
-            {/* Diferencial 2 */}
-            <div className="card-premium p-8">
-              <div className="flex items-start gap-4 mb-4">
-                <img src={cumminsLogo} alt="Cummins" className="w-16 h-16 object-contain" />
-                <h3 className="text-2xl font-bold">Motor Cummins</h3>
+            <div className="space-y-3">
+              <div className="aspect-[4/3] rounded-lg overflow-hidden">
+                <img src={foton1217} alt="Foton 1217 - Cabine" className="w-full h-full object-cover" />
               </div>
-              <ul className="space-y-3 text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Confiabilidade global.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Resposta rápida.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Excelente desempenho.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Economia real no dia a dia.</span>
-                </li>
-              </ul>
-              <p className="mt-4 font-semibold text-foreground">
-                É motor de respeito — para quem trabalha de verdade.
-              </p>
+              <p className="text-sm text-center text-muted-foreground">Cabine e painel de instrumentos</p>
             </div>
 
-            {/* Diferencial 3 */}
-            <div className="card-premium p-8">
-              <div className="flex items-start gap-4 mb-4">
-                <img src={zfLogo} alt="ZF" className="w-16 h-16 object-contain" />
-                <h3 className="text-2xl font-bold">Câmbio ZF</h3>
+            <div className="space-y-3">
+              <div className="aspect-[4/3] rounded-lg overflow-hidden">
+                <img src={foton1217} alt="Motor Cummins do Foton 1217" className="w-full h-full object-cover" />
               </div>
-              <ul className="space-y-3 text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Precisão alemã.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Trocas suaves.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Menor fadiga para o motorista.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Mais controle nas manobras.</span>
-                </li>
-              </ul>
-              <p className="mt-4 font-semibold text-foreground">
-                O casamento perfeito com o motor Cummins.
-              </p>
-            </div>
-
-            {/* Diferencial 4 */}
-            <div className="card-premium p-8">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="bg-primary/10 p-3 rounded-lg">
-                  <Zap className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold">Injeção eletrônica Bosch</h3>
-              </div>
-              <ul className="space-y-3 text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Mais eficiência.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Mais economia.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Mais estabilidade.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span>Menor manutenção preventiva.</span>
-                </li>
-              </ul>
-              <p className="mt-4 font-semibold text-foreground">
-                Tecnologia que transforma combustível em performance.
-              </p>
+              <p className="text-sm text-center text-muted-foreground">Motor Cummins ISF</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Seção 3 - Conjunto mais forte */}
-      <section className="section-padding">
-        <div className="container-lavoro">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="mb-12 text-center">A soma que faz o 1217 ser imbatível.</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              <div className="card-premium p-6 text-center">
-                <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="font-bold text-lg">Motor Cummins</h3>
-              </div>
-              <div className="card-premium p-6 text-center">
-                <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="font-bold text-lg">Câmbio ZF</h3>
-              </div>
-              <div className="card-premium p-6 text-center">
-                <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="font-bold text-lg">Injeção Bosch</h3>
-              </div>
-              <div className="card-premium p-6 text-center">
-                <CheckCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="font-bold text-lg">+1 tonelada de capacidade</h3>
-              </div>
-            </div>
-            <p className="text-center text-xl text-muted-foreground max-w-3xl mx-auto">
-              Nenhum outro caminhão da categoria entrega esse conjunto.
-              <br />
-              <strong className="text-foreground">É força, confiabilidade e custo-benefício em um único veículo.</strong>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Seção 4 - Aplicações */}
-      <section className="section-padding bg-industrial-light">
-        <div className="container-lavoro">
-          <h2 className="mb-8 text-center">Versátil para qualquer tipo de trabalho.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <div className="card-premium p-6">
-              <Truck className="w-10 h-10 text-primary mb-3" />
-              <h3 className="font-bold text-lg mb-2">Distribuição urbana</h3>
-            </div>
-            <div className="card-premium p-6">
-              <Gauge className="w-10 h-10 text-primary mb-3" />
-              <h3 className="font-bold text-lg mb-2">Logística regional</h3>
-            </div>
-            <div className="card-premium p-6">
-              <Shield className="w-10 h-10 text-primary mb-3" />
-              <h3 className="font-bold text-lg mb-2">Atacarejo e varejo</h3>
-            </div>
-            <div className="card-premium p-6">
-              <Zap className="w-10 h-10 text-primary mb-3" />
-              <h3 className="font-bold text-lg mb-2">E-commerce e marketplace</h3>
-            </div>
-            <div className="card-premium p-6">
-              <Users className="w-10 h-10 text-primary mb-3" />
-              <h3 className="font-bold text-lg mb-2">Empresas de frota</h3>
-            </div>
-            <div className="card-premium p-6">
-              <Wrench className="w-10 h-10 text-primary mb-3" />
-              <h3 className="font-bold text-lg mb-2">Transportadores autônomos</h3>
-            </div>
-          </div>
-          <div className="text-center">
-            <p className="text-lg text-muted-foreground mb-4">
-              <strong className="text-foreground">Implementos:</strong> baú, carga seca, refrigerado, basculante, plataforma
-            </p>
-            <p className="text-xl font-semibold text-foreground">
-              Se precisa carregar mais, rodar mais e gastar menos — o 1217 faz.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Seção 5 - Ficha técnica */}
-      <section className="section-padding">
-        <div className="container-lavoro">
-          <h2 className="mb-12 text-center">Ficha Técnica</h2>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="card-premium p-6">
-              <div className="text-4xl font-bold text-primary mb-2">—</div>
-              <div className="text-muted-foreground">PBT</div>
-            </div>
-            <div className="card-premium p-6">
-              <div className="text-4xl font-bold text-primary mb-2">—</div>
-              <div className="text-muted-foreground">Potência</div>
-            </div>
-            <div className="card-premium p-6">
-              <div className="text-4xl font-bold text-primary mb-2">—</div>
-              <div className="text-muted-foreground">Torque</div>
-            </div>
-            <div className="card-premium p-6">
-              <div className="text-4xl font-bold text-primary mb-2">+1t</div>
-              <div className="text-muted-foreground">Acima da concorrência</div>
-            </div>
-            <div className="card-premium p-6">
-              <div className="text-4xl font-bold text-primary mb-2">—</div>
-              <div className="text-muted-foreground">Entre eixos</div>
-            </div>
-            <div className="card-premium p-6">
-              <div className="text-4xl font-bold text-primary mb-2">—</div>
-              <div className="text-muted-foreground">Dimensões</div>
-            </div>
-          </div>
-          <p className="text-center text-sm text-muted-foreground mt-8">
-            Valores técnicos completos podem ser ajustados conforme ficha oficial Foton.
+      {/* 5. POR QUE ESCOLHER A FOTON */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-industrial-dark via-industrial-dark to-industrial-light">
+        <div className="container mx-auto px-4">
+          {/* Título */}
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
+            Por que escolher a <span className="text-primary-light">Foton Lavoro</span>
+          </h2>
+          
+          {/* Subheadline */}
+          <p className="text-lg md:text-xl text-center text-gray-300 mb-16 max-w-3xl mx-auto">
+            Tecnologia global, montagem nacional e o melhor custo-benefício do mercado brasileiro.
           </p>
-        </div>
-      </section>
 
-      {/* Seção 6 - Comparativo */}
-      <section className="section-padding bg-industrial-light">
-        <div className="container-lavoro">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="mb-8 text-center">Onde outros três-quartos chegam no limite, o 1217 começa a trabalhar.</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                <span className="text-lg">Mais capacidade de carga</span>
+          {/* Grid de Cards */}
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+            {/* 1. Garantia de fábrica */}
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={garantiaFabricaFotonIcon} alt="Garantia de Fábrica 3 Anos" className="w-full h-full object-contain" />
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                <span className="text-lg">Conjunto mecânico superior (Cummins + ZF + Bosch)</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                <span className="text-lg">Melhor equilíbrio entre potência e consumo</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                <span className="text-lg">Cabine confortável e durável</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                <span className="text-lg">Manobrabilidade excelente</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                <span className="text-lg">Confiabilidade operacional diária</span>
-              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Garantia de fábrica (3 anos)</h3>
+              <p className="text-sm text-gray-600 text-center">Caminhões projetados para rodar sem sustos.</p>
             </div>
-            <p className="text-center text-2xl font-bold text-primary">
-              O três-quartos que tem cara de médio e preço de leve.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      {/* Seção 7 - Lavoro Foton */}
-      <section className="section-padding">
-        <div className="container-lavoro">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="mb-8">A concessionária que entrega mais do que caminhões.</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="card-premium p-6 text-left">
-                <CheckCircle className="w-8 h-8 text-primary mb-3" />
-                <h3 className="font-bold text-lg mb-2">Atendimento consultivo</h3>
+            {/* 2. Motores Cummins */}
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={cumminsLogo} alt="Motor Cummins" className="w-full h-full object-contain" />
               </div>
-              <div className="card-premium p-6 text-left">
-                <CheckCircle className="w-8 h-8 text-primary mb-3" />
-                <h3 className="font-bold text-lg mb-2">Entendimento do negócio antes da proposta</h3>
-              </div>
-              <div className="card-premium p-6 text-left">
-                <CheckCircle className="w-8 h-8 text-primary mb-3" />
-                <h3 className="font-bold text-lg mb-2">Suporte técnico e pós-venda presentes</h3>
-              </div>
-              <div className="card-premium p-6 text-left">
-                <CheckCircle className="w-8 h-8 text-primary mb-3" />
-                <h3 className="font-bold text-lg mb-2">Condições especiais de financiamento</h3>
-              </div>
-              <div className="card-premium p-6 text-left md:col-span-2">
-                <CheckCircle className="w-8 h-8 text-primary mb-3" />
-                <h3 className="font-bold text-lg mb-2">Parceria real no crescimento do cliente</h3>
-              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Motores Cummins</h3>
+              <p className="text-sm text-gray-600 text-center">Confiabilidade global, manutenção simples e economia real.</p>
             </div>
-            <p className="text-lg text-muted-foreground italic">
-              Aqui, cada caminhão entregue carrega a nossa reputação.
-            </p>
+
+            {/* 3. Caixa ZF */}
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={zfLogo} alt="Caixa ZF" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Caixa de transmissão ZF</h3>
+              <p className="text-sm text-gray-600 text-center">Precisão alemã, trocas suaves e durabilidade comprovada.</p>
+            </div>
+
+            {/* 4. Componentes Bosch e Dana */}
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center gap-2 mx-auto">
+                <img src={boschLogo} alt="Bosch" className="w-1/2 h-full object-contain" />
+                <img src={danaLogo} alt="Dana" className="w-1/2 h-full object-contain" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Componentes Bosch e Dana</h3>
+              <p className="text-sm text-gray-600 text-center">Eletrônica, freios e transmissão de padrão mundial.</p>
+            </div>
+
+            {/* 5. Tecnologia Europa-China */}
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={tecnologiaGlobalIcon} alt="Tecnologia Global" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Tecnologia Europa-China</h3>
+              <p className="text-sm text-gray-600 text-center">Engenharia global com preço competitivo para o Brasil.</p>
+            </div>
+
+            {/* 6. Rede de concessionárias */}
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={concessionariasIcon} alt="70+ Concessionárias" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">70+ concessionárias</h3>
+              <p className="text-sm text-gray-600 text-center">Rede nacional em expansão para atender você onde estiver.</p>
+            </div>
+
+            {/* 7. Centro logístico */}
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={centroLogisticoIcon} alt="Centro Logístico" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Centro logístico nacional</h3>
+              <p className="text-sm text-gray-600 text-center">Distribuição rápida de peças para todo o Brasil.</p>
+            </div>
+
+            {/* 8. Fill rate alto */}
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={fillRateIcon} alt="Fill Rate Alto" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Fill rate alto</h3>
+              <p className="text-sm text-gray-600 text-center">Alta disponibilidade de peças — seu caminhão rodando sempre.</p>
+            </div>
+
+            {/* 9. Aprovação de clientes */}
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={aprovacaoClientesIcon} alt="Aprovação de Clientes" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Aprovação de clientes</h3>
+              <p className="text-sm text-gray-600 text-center">Satisfação comprovada de quem já escolheu a Foton.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Final com Formulário */}
-      <section id="contato" className="section-padding bg-gradient-to-br from-industrial-dark to-industrial-darker text-primary-foreground">
-        <div className="container-lavoro">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="mb-6">Pronto para colocar o melhor três-quartos do mercado na sua operação?</h2>
-            <p className="text-xl text-muted-foreground">
-              Fale agora com um consultor da Lavoro Foton e descubra a condição ideal para o seu 1217.
+      {/* 6. APLICAÇÕES IDEAIS */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-6 text-foreground">
+              Para quem o <span className="text-primary">Foton 1217</span> é ideal?
+            </h2>
+            <p className="text-lg md:text-xl text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
+              O três-quartos que resolve para quem precisa de mais capacidade, confiabilidade e economia.
             </p>
-          </div>
 
-          <div className="max-w-2xl mx-auto">
-            <div className="card-premium p-8">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Nome</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Seu nome completo" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="whatsapp"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>WhatsApp</FormLabel>
-                        <FormControl>
-                          <Input placeholder="(00) 00000-0000" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="city"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Cidade/Estado</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Ex: Belo Horizonte/MG" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="operationType"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Tipo de operação</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Ex: Distribuição urbana, logística" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="currentDemand"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Demanda atual</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Conte-nos sobre sua necessidade..."
-                            className="min-h-[100px]"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button type="submit" size="lg" className="flex-1">
-                      Quero uma proposta agora
-                    </Button>
-                    <Button
-                      type="button"
-                      size="lg"
-                      variant="outline"
-                      className="flex-1"
-                      asChild
-                    >
-                      <a href="https://wa.me/5531999998888" target="_blank" rel="noopener noreferrer">
-                        Falar no WhatsApp
-                      </a>
-                    </Button>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-primary/30 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Distribuição urbana e regional</h3>
+                    <p className="text-muted-foreground">Carga seca, refrigerada ou baú fechado</p>
+                  </div>
+                </div>
+              </div>
 
-                  <p className="text-center text-sm text-muted-foreground">
-                    Atendimento rápido. Sem complicação. Sem enrolação.
-                  </p>
-                </form>
-              </Form>
+              <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-primary/30 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">E-commerce e marketplaces</h3>
+                    <p className="text-muted-foreground">Entregas volumosas e operação intensa</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-primary/30 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Atacarejo, varejo e supermercados</h3>
+                    <p className="text-muted-foreground">Transferência entre centros de distribuição</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-primary/30 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Empresas de bebidas e alimentos</h3>
+                    <p className="text-muted-foreground">Volume alto, peso controlado</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-primary/30 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Mudanças e transportadoras</h3>
+                    <p className="text-muted-foreground">Espaço generoso e boa capacidade de carga</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-primary/30 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-2">Transportadores autônomos</h3>
+                    <p className="text-muted-foreground">Baixo custo operacional, alta produtividade</p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. COMPARATIVO INTELIGENTE */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              Onde outros três-quartos chegam no limite,<br />
+              <span className="text-primary">o 1217 começa a trabalhar.</span>
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground mb-12">
+              O Foton 1217 lidera o segmento 3/4 com o melhor conjunto mecânico e a maior capacidade de carga da categoria.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-white p-6 rounded-xl border-2 border-primary/20">
+                <h3 className="font-bold text-xl mb-4 text-foreground">✓ Com o Foton 1217</h3>
+                <ul className="text-left space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary font-bold">•</span>
+                    Carrega até 1 tonelada a mais
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary font-bold">•</span>
+                    Motor Cummins + Câmbio ZF
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary font-bold">•</span>
+                    Menor custo operacional
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary font-bold">•</span>
+                    Menos viagens, mais lucro
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-100 p-6 rounded-xl border-2 border-gray-300">
+                <h3 className="font-bold text-xl mb-4 text-muted-foreground">Concorrentes tradicionais</h3>
+                <ul className="text-left space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <span className="text-gray-400 font-bold">•</span>
+                    Menor capacidade de carga
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-gray-400 font-bold">•</span>
+                    Conjunto mecânico convencional
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-gray-400 font-bold">•</span>
+                    Custo operacional superior
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-gray-400 font-bold">•</span>
+                    Mais viagens para mesma demanda
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. CTA FINAL */}
+      <section id="cta-final" className="py-16 md:py-24 bg-gradient-to-br from-primary via-primary to-primary-dark">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Pronto para conhecer o melhor três-quartos do mercado?
+            </h2>
+            <p className="text-lg md:text-xl mb-10 text-primary-foreground/90">
+              Fale com um consultor Lavoro agora e descubra por que o Foton 1217 é a escolha certa para o seu negócio.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                onClick={handleWhatsApp}
+                size="lg" 
+                className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-8 py-6 h-auto"
+              >
+                <MessageSquare className="mr-2 h-5 w-5" />
+                Falar no WhatsApp
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6 h-auto"
+                asChild
+              >
+                <a href="/contato">Solicitar Proposta Completa</a>
+              </Button>
+            </div>
+
+            <p className="text-sm mt-6 text-primary-foreground/80">
+              Atendimento personalizado. Condições especiais. Entrega ágil.
+            </p>
           </div>
         </div>
       </section>
