@@ -47,7 +47,7 @@ const QuemSomos = () => {
                   liderando operações comerciais, pós-venda e expansão de rede.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Foram <strong className="text-foreground">+ de 20 concessionárias Mercedes-Benz</strong> em <strong className="text-foreground">Minas Gerais, Paraná, Goiás e Mato Grosso</strong> — caminhões, vans e ônibus — administradas com excelência, sempre entregando <strong className="text-foreground">credibilidade, relacionamento e resultado</strong>. Com realizações de vendas de <strong className="text-foreground">R$1,5 bilhão/ano</strong>.
+                  Foram + de 20 concessionárias Mercedes-Benz em Minas Gerais, Paraná, Goiás e Mato Grosso — caminhões, vans e ônibus — administradas com excelência, sempre entregando credibilidade, relacionamento e resultado. Com resultados de vendas de R$1,5 bilhão/ano. <strong className="text-foreground">+ de 20 concessionárias Mercedes-Benz</strong> em <strong className="text-foreground">Minas Gerais, Paraná, Goiás e Mato Grosso</strong> — caminhões, vans e ônibus — administradas com excelência, sempre entregando <strong className="text-foreground">credibilidade, relacionamento e resultado</strong>. Com realizações de vendas de <strong className="text-foreground">R$1,5 bilhão/ano</strong>.
                 </p>
               </div>
             </div>
