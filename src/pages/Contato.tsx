@@ -76,9 +76,9 @@ const Contato = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">WhatsApp</h3>
-                      <p className="text-muted-foreground mb-2">(31) 99999-8888</p>
+                      <p className="text-muted-foreground mb-2">(31) 2116-4735</p>
                       <a
-                        href="https://wa.me/5531999998888"
+                        href="https://wa.me/5531211647335"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary font-semibold hover:underline"
@@ -97,7 +97,14 @@ const Contato = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Telefone</h3>
-                      <p className="text-muted-foreground">(31) 3333-4444</p>
+                      <a 
+                        href="https://wa.me/5531211647335" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        (31) 2116-4735
+                      </a>
                       <p className="text-sm text-muted-foreground">Seg a Sex, 8h às 18h</p>
                     </div>
                   </div>
@@ -158,7 +165,7 @@ const Contato = () => {
             Nossa equipe está pronta para recebê-lo. Conheça nossa estrutura e veja de perto os caminhões Foton.
           </p>
           <p className="text-lg font-semibold text-foreground">
-            Agende sua visita pelo WhatsApp: <span className="text-primary">(31) 99999-8888</span>
+            Agende sua visita pelo WhatsApp: <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">(31) 2116-4735</a>
           </p>
         </div>
       </section>

@@ -76,8 +76,11 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Contato</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-muted-foreground">(31) 2116-4735<Phone size={16} className="text-primary" />
-                (31) 3333-4444
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <Phone size={16} className="text-primary" />
+                <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  (31) 2116-4735
+                </a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail size={16} className="text-primary" />
