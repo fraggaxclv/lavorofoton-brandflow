@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Phone, FileText, TestTube2, Battery, Zap, TrendingDown, Shield, Package, Users, Truck, Leaf } from "lucide-react";
+import { MessageCircle, FileText, TestTube2, Battery, Zap, TrendingDown, Shield, Package, Users, Truck, Leaf } from "lucide-react";
 import etoanoFront from "@/assets/etoano-front.png";
 import etoanoBattery from "@/assets/etoano-battery.png";
 import etoanoSide from "@/assets/etoano-side.png";
@@ -44,16 +44,16 @@ const EToano = () => {
             130 kW de potência · 330 N.m de torque · 77 kWh CATL LFP · 8 anos/400.000 km de garantia
           </p>
           <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-            <Button asChild size="lg" className="text-lg px-8">
-              <a href="/contato">
-                <FileText className="mr-2 h-5 w-5" />
-                Solicitar Proposta
+            <Button asChild size="lg" variant="whatsapp" className="text-lg px-8">
+              <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Falar no WhatsApp
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-white text-white">
               <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
-                <Phone className="mr-2 h-5 w-5" />
-                Falar com Especialista
+                <FileText className="mr-2 h-5 w-5" />
+                Solicitar Proposta
               </a>
             </Button>
           </div>
@@ -429,20 +429,20 @@ const EToano = () => {
               Conheça o e-Toano Pro e descubra como reduzir custos e aumentar eficiência com zero emissões.
             </p>
             <div className="flex flex-wrap gap-4 justify-center mb-12">
-              <Button asChild size="lg" variant="secondary" className="text-lg px-8">
+              <Button asChild size="lg" variant="whatsapp" className="text-lg px-8">
                 <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Falar com Especialista
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Falar no WhatsApp
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-white text-white">
-                <a href="/contato">
+                <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
                   <TestTube2 className="mr-2 h-5 w-5" />
                   Agendar Teste
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-white text-white">
-                <a href="/contato">
+                <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
                   <FileText className="mr-2 h-5 w-5" />
                   Solicitar Proposta
                 </a>
