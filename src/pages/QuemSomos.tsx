@@ -62,9 +62,7 @@ const QuemSomos = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* Timeline Card 1 */}
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 mx-auto p-2">
-                <img src={lavoro40Years} alt="Lavoro 40 Anos" className="w-full h-full object-contain" />
-              </div>
+              <img src={lavoro40Years} alt="Lavoro 40 Anos" className="w-20 h-20 object-contain mb-6 mx-auto" />
               <h3 className="text-2xl font-bold text-center mb-4 text-foreground">1984–2020</h3>
               <p className="text-muted-foreground text-center leading-relaxed">
                 40 anos liderando operações Mercedes-Benz como CEO do Grupo VDL
