@@ -8,20 +8,14 @@ import ewonderInteriorSeats from "@/assets/ewonder-interior-seats.jpg";
 import ewonderInteriorFront from "@/assets/ewonder-interior-front.jpg";
 import ewonderControls from "@/assets/ewonder-controls.jpg";
 import ewonderCargo from "@/assets/ewonder-cargo.png";
-
 const EWonder = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
 
       {/* Hero */}
       <section className="mt-16 relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={ewonderImg}
-            alt="Foton eWonder"
-            className="w-full h-full object-cover"
-          />
+          <img src={ewonderImg} alt="Foton eWonder" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
         </div>
         <div className="relative z-10 container-lavoro text-white">
@@ -29,16 +23,24 @@ const EWonder = () => {
             <Zap className="w-5 h-5" />
             <span className="font-bold">100% ELÉTRICO</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in max-w-4xl" style={{ animationDelay: "0.1s" }}>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in max-w-4xl" style={{
+          animationDelay: "0.1s"
+        }}>
             eWonder
           </h1>
-          <p className="text-2xl md:text-4xl mb-4 max-w-3xl animate-fade-in font-bold" style={{ animationDelay: "0.2s" }}>
+          <p className="text-2xl md:text-4xl mb-4 max-w-3xl animate-fade-in font-bold" style={{
+          animationDelay: "0.2s"
+        }}>
             O VUC elétrico que entrega economia real desde o primeiro dia.
           </p>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl text-gray-200 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl text-gray-200 animate-fade-in" style={{
+          animationDelay: "0.3s"
+        }}>
             180 km de autonomia · 1.325 kg de carga · 80% menos custo/km
           </p>
-          <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          <div className="flex flex-wrap gap-4 animate-fade-in" style={{
+          animationDelay: "0.4s"
+        }}>
             <Button asChild size="lg" className="text-lg px-8">
               <a href="/contato">
                 <FileText className="mr-2 h-5 w-5" />
@@ -245,21 +247,9 @@ const EWonder = () => {
           <h2 className="mb-16 text-center">Ideal para</h2>
           
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              "Last-mile delivery",
-              "E-commerce",
-              "Food service",
-              "Pharma",
-              "Supermercados",
-              "Hortifruti",
-              "Franquias",
-              "Logística urbana",
-              "Empresas ESG"
-            ].map((item) => (
-              <div key={item} className="card-premium p-6 text-center hover:border-primary hover:shadow-lg transition-all">
+            {["Last-mile delivery", "E-commerce", "Food service", "Pharma", "Supermercados", "Hortifruti", "Franquias", "Logística urbana", "Empresas ESG"].map(item => <div key={item} className="card-premium p-6 text-center hover:border-primary hover:shadow-lg transition-all">
                 <p className="font-semibold text-lg">{item}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -291,7 +281,7 @@ const EWonder = () => {
                 <Battery className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-2">40 anos de tradição</h3>
-              <p className="text-muted-foreground">Credibilidade da família Castelo Fraga</p>
+              <p className="text-muted-foreground">Credibilidade de família</p>
             </div>
           </div>
         </div>
@@ -338,8 +328,6 @@ const EWonder = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default EWonder;
