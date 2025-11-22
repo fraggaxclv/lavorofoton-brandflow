@@ -45,6 +45,9 @@ import iconBancosPremium from "@/assets/icon-bancos-premium.png";
 import iconTecnologia from "@/assets/icon-tecnologia.png";
 import iconRobustez from "@/assets/icon-robustez.png";
 import icon10AnosGarantia from "@/assets/icon-10-anos-garantia.png";
+import iconConfortoLuxo from "@/assets/icon-conforto-luxo.png";
+import iconTecnologiaExtrema from "@/assets/icon-tecnologia-extrema.png";
+import iconAcabamentoLuxo from "@/assets/icon-acabamento-luxo.png";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
@@ -316,8 +319,8 @@ const TunlandV9 = () => {
           
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <div className="bg-white p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
-              <div className="w-16 h-16 flex items-center justify-center mb-6 bg-primary/10 rounded-full">
-                <Armchair className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 flex items-center justify-center mb-6">
+                <img src={iconConfortoLuxo} alt="Conforto Superior" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-2xl font-bold mb-4">Conforto Superior</h3>
               <p className="text-muted-foreground text-lg leading-relaxed">
@@ -326,8 +329,8 @@ const TunlandV9 = () => {
             </div>
 
             <div className="bg-white p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
-              <div className="w-16 h-16 flex items-center justify-center mb-6 bg-primary/10 rounded-full">
-                <Cpu className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 flex items-center justify-center mb-6">
+                <img src={iconTecnologiaExtrema} alt="Tecnologia Extrema" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-2xl font-bold mb-4">Tecnologia Extrema</h3>
               <p className="text-muted-foreground text-lg leading-relaxed">
@@ -346,8 +349,8 @@ const TunlandV9 = () => {
             </div>
 
             <div className="bg-white p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
-              <div className="w-16 h-16 flex items-center justify-center mb-6 bg-primary/10 rounded-full">
-                <Sparkles className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 flex items-center justify-center mb-6">
+                <img src={iconAcabamentoLuxo} alt="Acabamento Premium" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-2xl font-bold mb-4">Acabamento Premium</h3>
               <p className="text-muted-foreground text-lg leading-relaxed">
