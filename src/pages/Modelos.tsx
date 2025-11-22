@@ -22,7 +22,7 @@ const Modelos = () => {
       {/* Hero */}
       <section className="mt-16 pt-20 pb-12 bg-industrial-dark text-primary-foreground">
         <div className="container-lavoro text-center">
-          <h1 className="mb-4">Linha Completa FOTON        </h1>
+          <h1 className="mb-4">Linha Completa FOTON        </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">Equipado: Motor CUMMINS - Caixa ZF - Diferencial DANA - Injeção BOSCH</p>
         </div>
       </section>
@@ -30,7 +30,7 @@ const Modelos = () => {
       {/* Lista de Modelos - Linha Tradicional */}
       <section className="section-padding">
         <div className="container-lavoro">
-          <h2 className="mb-12">Linha Motores Diesel EURO-6      </h2>
+          <h2 className="mb-12">Linha Motores Diesel EURO-6      </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ModelCard name="AUMARK S315" description="VUC. Pode ser dirigido com CNH B. Ideal para entregas urbanas." image={fotonS315} link="/modelos/aumark-s315" />
             <ModelCard name="AUMARK 715" description="Médio porte com excelente custo-benefício. Versatilidade comprovada." image={foton7t} link="/modelos/aumark-715" />
@@ -41,26 +41,15 @@ const Modelos = () => {
         </div>
       </section>
 
-      {/* Linha Picapes */}
-      <section className="section-padding bg-industrial-light">
-        <div className="container-lavoro">
-          <h2 className="mb-12">Tunland V9/V7                                                                                                                                       </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ModelCard name="TUNLAND V9" description="Picape 4x4 robusta. Força e versatilidade para trabalho e lazer." image={tunlandV9} link="/modelos/tunland-v9" />
-            <ModelCard name="TUNLAND V7" description="Picape 4x2 versátil. Equilíbrio perfeito entre trabalho e mobilidade." image={tunlandV7} link="/modelos/tunland-v7" />
-          </div>
-        </div>
-      </section>
-
       {/* Linha Elétrica */}
-      <section className="section-padding">
+      <section className="section-padding bg-industrial-light">
         <div className="container-lavoro">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-500 px-4 py-2 rounded-full mb-4">
               <span className="text-2xl">⚡</span>
               <span className="font-bold">LINHA 100% ELÉTRICA</span>
             </div>
-            <h2>Linha e-Foton            </h2>
+            <h2>Linha e-Foton            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-4">
               Zero emissões. Economia de até 80%. O futuro do transporte chegou.
             </p>
@@ -72,6 +61,17 @@ const Modelos = () => {
             <ModelCard name="eAumark 9T" description="9 toneladas elétrico. Força e eficiência energética." image={eaumark9t} link="/modelos/eaumark-9t" />
             <ModelCard name="eAumark 12T" description="12 toneladas elétrico. Alta capacidade com emissão zero." image={eaumark12t} link="/modelos/eaumark-12t" />
             <ModelCard name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." image={eview} link="/modelos/eview" />
+          </div>
+        </div>
+      </section>
+
+      {/* Linha Picapes */}
+      <section className="section-padding">
+        <div className="container-lavoro">
+          <h2 className="mb-12">Tunland V9/V7                                                                                                                                       </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <ModelCard name="TUNLAND V9" description="Picape 4x4 robusta. Força e versatilidade para trabalho e lazer." image={tunlandV9} link="/modelos/tunland-v9" />
+            <ModelCard name="TUNLAND V7" description="Picape 4x2 versátil. Equilíbrio perfeito entre trabalho e mobilidade." image={tunlandV7} link="/modelos/tunland-v7" />
           </div>
         </div>
       </section>
