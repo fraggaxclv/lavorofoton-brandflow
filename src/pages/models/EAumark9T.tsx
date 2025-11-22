@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { TrendingDown, Zap, Battery, Package, Shield, Truck, Wrench, CheckCircle2, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useState } from "react";
-import eaumark9tImg from "@/assets/eaumark-9t.jpg";
+import eaumarkFrontalImg from "@/assets/eaumark-9t-frontal.png";
+import eaumarkLateralImg from "@/assets/eaumark-9t-lateral.png";
+import eaumarkInteriorImg from "@/assets/eaumark-9t-interior.png";
 import eaumarkChassisImg from "@/assets/eaumark-9t-chassis.webp";
 
 const EAumark9T = () => {
@@ -16,14 +18,19 @@ const EAumark9T = () => {
 
   const galleryImages = [
     {
-      src: eaumark9tImg,
-      title: "e-Aumark 9T - Vista Lateral",
-      description: "Design robusto e profissional para operações exigentes"
+      src: eaumarkFrontalImg,
+      title: "e-Aumark 9T - Vista Frontal",
+      description: "Design moderno com grade distintiva e tecnologia elétrica"
     },
     {
-      src: eaumarkChassisImg,
-      title: "Arquitetura Avançada",
-      description: "Bateria centralizada CATL LFP para máxima segurança e estabilidade"
+      src: eaumarkLateralImg,
+      title: "e-Aumark 9T - Vista Lateral",
+      description: "Design robusto e profissional com baú para operações exigentes"
+    },
+    {
+      src: eaumarkInteriorImg,
+      title: "Interior Premium",
+      description: "Cabine confortável com painel digital e acabamento moderno"
     }
   ];
 
@@ -112,7 +119,7 @@ const EAumark9T = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-green-500/20 to-blue-500/20 rounded-3xl blur-3xl" />
               <img
-                src={eaumark9tImg}
+                src={eaumarkFrontalImg}
                 alt="e-Aumark 9T"
                 className="relative z-10 w-full rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
               />
@@ -346,7 +353,7 @@ const EAumark9T = () => {
             <p className="text-xl text-muted-foreground">Tecnologia de ponta em cada detalhe</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Coluna 1 */}
             <div className="space-y-6 p-8 rounded-2xl bg-industrial-light dark:bg-white/5 border border-border">
               <div>
