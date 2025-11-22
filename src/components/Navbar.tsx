@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="container-lavoro">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Foton Lavoro" className="h-8 md:h-10" />
+            <img src={logo} alt="Foton Lavoro" className="h-12 md:h-14" />
           </Link>
 
           {/* Desktop Menu */}
