@@ -16,6 +16,7 @@ import garantiaFabricaFotonIcon from "@/assets/garantia-3anos-icon.png";
 import tecnologiaGlobalIcon from "@/assets/tecnologia-global-icon.png";
 import concessionariasIcon from "@/assets/70-concessionarias-icon.png";
 import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
+import fillRateIcon from "@/assets/fill-rate-icon.png";
 const S315 = () => {
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark S315.");
@@ -320,7 +321,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             {/* 8. Fill rate + estoque */}
             <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
               <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
-                <Package className="w-full h-full text-primary" strokeWidth={1.5} />
+                <img src={fillRateIcon} alt="88% Fill Rate" className="w-full h-full object-contain" />
               </div>
               <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">88% de fill rate + R$ 90 milhões em peças</h3>
               <p className="text-sm text-gray-600 text-center">Peça na hora certa, operação sem paradas. - Sua empresa 24hs girando.               </p>
