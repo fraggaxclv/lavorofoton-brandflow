@@ -24,6 +24,7 @@ import suportePosVendaIcon from "@/assets/suporte-pos-venda-icon.png";
 import marketplaceHonestoIcon from "@/assets/marketplace-honesto-icon.png";
 import atendimentoTecnicoIcon from "@/assets/atendimento-tecnico-icon.png";
 import caminhõesRobustosIcon from "@/assets/caminhoes-robustos-icon.png";
+import atendimentoMineiroIcon from "@/assets/atendimento-mineiro-icon.png";
 const QuemSomos = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -420,7 +421,7 @@ const QuemSomos = () => {
                 <h3 className="text-xl font-semibold text-foreground">A nova engenharia global</h3>
               </div>
               <div className="text-center">
-                <img src={localServiceIcon} alt="Atendimento próximo e mineiro" className="w-20 h-20 object-contain mb-4 mx-auto" />
+                <img src={atendimentoMineiroIcon} alt="Atendimento próximo e mineiro" className="w-20 h-20 object-contain mb-4 mx-auto" />
                 <h3 className="text-xl font-semibold text-foreground">O atendimento próximo e mineiro</h3>
               </div>
             </div>
