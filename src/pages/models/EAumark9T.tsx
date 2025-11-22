@@ -8,30 +8,31 @@ import { useState } from "react";
 import eaumark9tImg from "@/assets/eaumark-9t.jpg";
 import eaumarkLineupImg from "@/assets/eaumark-9t-lineup.jpg";
 import eaumarkChassisImg from "@/assets/eaumark-9t-chassis.webp";
-
 const EAumark9T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  
   const whatsappNumber = "5531992677600";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o e-Aumark 9T.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-
-  const galleryImages = [
-    { src: eaumarkLineupImg, title: "Família e-Aumark", description: "Linha completa de caminhões elétricos" },
-    { src: eaumarkChassisImg, title: "Chassi e Bateria", description: "Arquitetura avançada com bateria centralizada" },
-    { src: eaumark9tImg, title: "e-Aumark 9T", description: "Design moderno e funcional" },
-  ];
-
+  const galleryImages = [{
+    src: eaumarkLineupImg,
+    title: "Família e-Aumark",
+    description: "Linha completa de caminhões elétricos"
+  }, {
+    src: eaumarkChassisImg,
+    title: "Chassi e Bateria",
+    description: "Arquitetura avançada com bateria centralizada"
+  }, {
+    src: eaumark9tImg,
+    title: "e-Aumark 9T",
+    description: "Design moderno e funcional"
+  }];
   const handlePrevious = () => {
-    setSelectedImage((prev) => (prev !== null ? (prev > 0 ? prev - 1 : galleryImages.length - 1) : null));
+    setSelectedImage(prev => prev !== null ? prev > 0 ? prev - 1 : galleryImages.length - 1 : null);
   };
-
   const handleNext = () => {
-    setSelectedImage((prev) => (prev !== null ? (prev < galleryImages.length - 1 ? prev + 1 : 0) : null));
+    setSelectedImage(prev => prev !== null ? prev < galleryImages.length - 1 ? prev + 1 : 0 : null);
   };
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
@@ -79,22 +80,12 @@ const EAumark9T = () => {
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">
-                <Button 
-                  asChild 
-                  size="lg" 
-                  variant="whatsapp"
-                  className="text-lg px-8"
-                >
+                <Button asChild size="lg" variant="whatsapp" className="text-lg px-8">
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                     Falar com Especialista
                   </a>
                 </Button>
-                <Button 
-                  asChild 
-                  size="lg" 
-                  variant="outline"
-                  className="text-lg px-8 bg-white/10 hover:bg-white/20 border-white/20 text-white"
-                >
+                <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 hover:bg-white/20 border-white/20 text-white">
                   <a href="/contato">
                     Solicitar Proposta
                   </a>
@@ -105,11 +96,7 @@ const EAumark9T = () => {
             {/* Right: Image */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-green-500/20 to-blue-500/20 rounded-3xl blur-3xl" />
-              <img 
-                src={eaumark9tImg} 
-                alt="e-Aumark 9T"
-                className="relative z-10 w-full rounded-2xl shadow-2xl"
-              />
+              <img src={eaumark9tImg} alt="e-Aumark 9T" className="relative z-10 w-full rounded-2xl shadow-2xl" />
             </div>
           </div>
         </div>
@@ -286,25 +273,15 @@ const EAumark9T = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl transition-all duration-300"
-                onClick={() => setSelectedImage(index)}
-              >
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+            {galleryImages.map((image, index) => <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl transition-all duration-300" onClick={() => setSelectedImage(index)}>
+                <img src={image.src} alt={image.title} className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                     <h3 className="text-xl font-bold mb-1">{image.title}</h3>
                     <p className="text-sm text-gray-300">{image.description}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -312,14 +289,9 @@ const EAumark9T = () => {
       {/* Dialog para visualização em tela cheia */}
       <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-none">
-          {selectedImage !== null && (
-            <div className="relative w-full h-full flex items-center justify-center">
+          {selectedImage !== null && <div className="relative w-full h-full flex items-center justify-center">
               {/* Imagem */}
-              <img
-                src={galleryImages[selectedImage].src}
-                alt={galleryImages[selectedImage].title}
-                className="max-w-full max-h-full object-contain"
-              />
+              <img src={galleryImages[selectedImage].src} alt={galleryImages[selectedImage].title} className="max-w-full max-h-full object-contain" />
 
               {/* Informações */}
               <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/90 to-transparent text-white">
@@ -331,35 +303,25 @@ const EAumark9T = () => {
               </div>
 
               {/* Botões de navegação */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handlePrevious();
-                }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all"
-              >
+              <button onClick={e => {
+            e.stopPropagation();
+            handlePrevious();
+          }} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all">
                 <ChevronLeft className="w-6 h-6 text-white" />
               </button>
 
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleNext();
-                }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all"
-              >
+              <button onClick={e => {
+            e.stopPropagation();
+            handleNext();
+          }} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all">
                 <ChevronRight className="w-6 h-6 text-white" />
               </button>
 
               {/* Botão fechar */}
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all"
-              >
+              <button onClick={() => setSelectedImage(null)} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all">
                 <X className="w-5 h-5 text-white" />
               </button>
-            </div>
-          )}
+            </div>}
         </DialogContent>
       </Dialog>
 
@@ -433,7 +395,7 @@ const EAumark9T = () => {
           <div className="mt-16 max-w-6xl mx-auto">
             <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-2 border-blue-200 dark:border-blue-800/30">
               <h3 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                Foton e-Aumark 9 (Setembro/2025)
+                Foton e-Aumark 9T  
               </h3>
 
               <div className="grid md:grid-cols-2 gap-8">
@@ -840,31 +802,17 @@ const EAumark9T = () => {
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <Button 
-                asChild 
-                size="lg" 
-                variant="whatsapp"
-                className="text-lg px-8"
-              >
+              <Button asChild size="lg" variant="whatsapp" className="text-lg px-8">
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   Falar com Especialista
                 </a>
               </Button>
-              <Button 
-                asChild 
-                size="lg" 
-                className="text-lg px-8 bg-white text-green-600 hover:bg-white/90"
-              >
+              <Button asChild size="lg" className="text-lg px-8 bg-white text-green-600 hover:bg-white/90">
                 <a href="/contato">
                   Solicitar Proposta
                 </a>
               </Button>
-              <Button 
-                asChild 
-                size="lg" 
-                variant="outline"
-                className="text-lg px-8 bg-white/10 hover:bg-white/20 border-white text-white"
-              >
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 hover:bg-white/20 border-white text-white">
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   Agendar Teste
                 </a>
@@ -882,8 +830,6 @@ const EAumark9T = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default EAumark9T;
