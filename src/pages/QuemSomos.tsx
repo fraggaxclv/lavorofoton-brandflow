@@ -1,261 +1,417 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Building2, Award, TrendingUp, Users, Wrench, Target, CheckCircle2, Settings } from "lucide-react";
+import { Building2, Award, CheckCircle2, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
 import danaLogo from "@/assets/dana-logo-icon.png";
+import dealershipImage from "@/assets/dealership.jpg";
+
 const QuemSomos = () => {
-  return <div className="min-h-screen">
+  const handleWhatsAppContact = () => {
+    window.open("https://wa.me/5531999999999", "_blank");
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero */}
-      <section className="mt-16 pt-20 pb-16 bg-gradient-to-br from-industrial-dark via-industrial-steel to-industrial-dark text-primary-foreground">
-        <div className="container-lavoro text-center">
-          <h1 className="mb-6">Quem Somos</h1>
-          <p className="text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 bg-muted/20">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+            Quem é a Lavoro
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Compromisso com a excelência, tradição no transporte e um novo capítulo com a Foton.
           </p>
         </div>
       </section>
 
       {/* Seção 1 - Nossa História */}
-      <section className="section-padding">
-        <div className="container-lavoro">
-          <h2 className="text-center mb-16">Nossa História</h2>
-          
-          <div className="max-w-5xl mx-auto space-y-12">
-            {/* Fundação */}
-            <div className="relative pl-12 pb-12 border-l-4 border-primary">
-              <div className="absolute -left-4 top-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                <Building2 className="w-4 h-4 text-primary-foreground" />
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-20 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Nossa História</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {/* Timeline Card 1 */}
+            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 mx-auto">
+                <Building2 className="w-8 h-8 text-primary" />
               </div>
-              <div className="card-premium p-8">
-                <h3 className="mb-4 text-primary">Fundação</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  A Lavoro Foton foi fundada em 2020 por <strong className="text-foreground">Orosimar Valentim Fraga — "Castelo Fraga"</strong>,
-                  um dos nomes mais respeitados do setor de transporte em Minas Gerais.
-                </p>
+              <h3 className="text-2xl font-bold text-center mb-4 text-foreground">1984–2020</h3>
+              <p className="text-muted-foreground text-center leading-relaxed">
+                40 anos liderando operações Mercedes-Benz como CEO do Grupo VDL
+              </p>
+            </div>
+
+            {/* Timeline Card 2 */}
+            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 mx-auto">
+                <Award className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-2xl font-bold text-center mb-4 text-foreground">Legado</h3>
+              <p className="text-muted-foreground text-center leading-relaxed">
+                27 prêmios StarClass — recorde dentro da Mercedes-Benz Brasil
+              </p>
+            </div>
+
+            {/* Timeline Card 3 */}
+            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 mx-auto">
+                <CheckCircle2 className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-2xl font-bold text-center mb-4 text-foreground">2020</h3>
+              <p className="text-muted-foreground text-center leading-relaxed">
+                Fundação da Lavoro Foton — um novo capítulo
+              </p>
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-8">
+            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+              A <strong className="text-foreground font-semibold">Lavoro Foton</strong> foi fundada em 2020 por <strong className="text-foreground font-semibold">Orosimar Valentim Fraga — Castelo Fraga</strong>, 
+              um dos nomes mais respeitados na história do transporte em Minas Gerais.
+            </p>
+            
+            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+              Antes da Lavoro, Castelo dedicou mais de 40 anos ao setor automotivo, 
+              liderando operações Mercedes-Benz como CEO do Grupo VDL (1984–2020).
+            </p>
+            
+            <div className="bg-muted/30 rounded-2xl p-10 my-12">
+              <h3 className="text-2xl md:text-3xl font-bold mb-8 text-foreground text-center">
+                Sob sua liderança, o grupo alcançou:
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex items-start gap-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-lg md:text-xl text-foreground">R$ 1,5 bilhão/ano em faturamento</p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-lg md:text-xl text-foreground">20 concessionárias Mercedes-Benz e Toyota operando simultaneamente</p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-lg md:text-xl text-foreground">87 mil veículos vendidos</p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-lg md:text-xl text-foreground">27 prêmios StarClass (recorde dentro da Mercedes-Benz Brasil)</p>
+                </div>
               </div>
             </div>
 
-            {/* Legado */}
-            <div className="relative pl-12 pb-12 border-l-4 border-primary">
-              <div className="absolute -left-4 top-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                <Award className="w-4 h-4 text-primary-foreground" />
-              </div>
-              <div className="card-premium p-8">
-                <h3 className="mb-4 text-primary">Um legado de mais de 40 anos</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                  Antes da Lavoro, Castelo construiu uma trajetória sólida ao longo de <strong className="text-foreground">quatro décadas na Mercedes-Benz</strong>,
-                  liderando operações comerciais, pós-venda e expansão de rede.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Foram + de 20 concessionárias Mercedes-Benz em Minas Gerais, Paraná, Goiás e Mato Grosso — caminhões, vans e ônibus — administradas com excelência, sempre entregando credibilidade, relacionamento e resultado. Com resultados de vendas de R$1,5 bilhão/ano. <strong className="text-foreground">+ de 20 concessionárias Mercedes-Benz</strong> em <strong className="text-foreground">Minas Gerais, Paraná, Goiás e Mato Grosso</strong> — caminhões, vans e ônibus — administradas com excelência, sempre entregando <strong className="text-foreground">credibilidade, relacionamento e resultado</strong>. Com realizações de vendas de <strong className="text-foreground">R$1,5 bilhão/ano</strong>.
-                </p>
-              </div>
-            </div>
+            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+              Castelo encerrou sua passagem no grupo em 2020, iniciando ali um novo capítulo: <strong className="text-foreground font-semibold">a Lavoro Foton</strong>.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Seção 2 - Por que a Foton? */}
-      <section className="section-padding bg-industrial-light">
-        <div className="container-lavoro">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="mb-6 text-center">Por que a Foton?</h2>
-            <p className="text-xl text-primary mb-12 text-center">A escolha pela nova vanguarda da indústria</p>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed mb-12 text-center max-w-4xl mx-auto">
-              Após vender as operações Mercedes-Benz, Castelo decidiu iniciar um novo ciclo.
-              A escolha pela Foton não foi casual: foi <strong className="text-foreground">estratégica, técnica e baseada em uma leitura clara do mercado mundial</strong>.
+      <section className="py-24 px-4 bg-muted/20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Por que a Foton?</h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-8 mb-16">
+            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+              Após vender suas operações Mercedes-Benz, Castelo decidiu iniciar uma nova fase.
             </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Qualidade Mecânica Real</h3>
-                <p className="text-muted-foreground">Componentes de primeira linha para máxima confiabilidade</p>
-              </div>
+            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+              A escolha pela Foton foi técnica, estratégica e alinhada ao futuro da indústria.
+            </p>
+            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+              O setor automotivo mundial entrou oficialmente na <strong className="text-foreground font-semibold">Era Chinesa</strong> — 
+              e marcas como Foton e BYD hoje lideram eficiência, tecnologia e produção global.
+            </p>
+            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground font-medium">
+              Castelo viu na Foton:
+            </p>
+          </div>
 
-              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                  <img src={cumminsLogo} alt="Cummins" className="w-full h-full object-contain" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Motores Cummins</h3>
-                <p className="text-muted-foreground">Potência e durabilidade reconhecidas mundialmente</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <CheckCircle2 className="w-6 h-6 text-primary" />
               </div>
-
-              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                  <img src={zfLogo} alt="ZF" className="w-full h-full object-contain" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Caixas ZF</h3>
-                <p className="text-muted-foreground">Transmissões premium para maior eficiência</p>
-              </div>
-
-              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                  <img src={boschLogo} alt="Bosch" className="w-full h-full object-contain" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Componentes Bosch</h3>
-                <p className="text-muted-foreground">Tecnologia de ponta em sistemas críticos</p>
-              </div>
-              
-              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                  <img src={danaLogo} alt="Dana" className="w-full h-full object-contain" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Componentes Dana</h3>
-                <p className="text-muted-foreground">Eixos e transmissões de alta performance</p>
-              </div>
-
-              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Liderança Global</h3>
-                <p className="text-muted-foreground">Nova vanguarda chinesa na manufatura mundial</p>
-              </div>
-
-              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Tecnologia Acessível</h3>
-                <p className="text-muted-foreground">Modernidade competitiva com excelente custo-benefício</p>
-              </div>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">Qualidade mecânica real</h3>
+              <p className="text-muted-foreground">Engenharia robusta e confiável</p>
             </div>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed text-center max-w-4xl mx-auto">
-              Castelo viu na Foton a combinação perfeita entre <strong className="text-foreground">confiabilidade, modernidade e custo-benefício</strong> — 
-              traços essenciais para o mercado brasileiro.
+
+            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
+                <img src={cumminsLogo} alt="Cummins" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">Motores Cummins</h3>
+              <p className="text-muted-foreground">Potência e durabilidade</p>
+            </div>
+
+            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
+                <img src={zfLogo} alt="ZF" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">Caixas de transmissão ZF</h3>
+              <p className="text-muted-foreground">Eficiência premium</p>
+            </div>
+
+            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
+                <img src={boschLogo} alt="Bosch" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">Componentes Bosch</h3>
+              <p className="text-muted-foreground">Tecnologia de ponta</p>
+            </div>
+
+            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
+                <img src={danaLogo} alt="Dana" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">Componentes Dana</h3>
+              <p className="text-muted-foreground">Alta performance</p>
+            </div>
+
+            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <CheckCircle2 className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">Engenharia global</h3>
+              <p className="text-muted-foreground">Montagem já no Brasil</p>
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+              A Foton representa a nova vanguarda da manufatura mundial — 
+              E a <strong className="text-foreground font-semibold">Lavoro</strong> escolheu estar ao lado de quem está puxando o mercado para frente.
             </p>
           </div>
         </div>
       </section>
 
       {/* Seção 3 - Nosso Compromisso */}
-      <section className="section-padding">
-        <div className="container-lavoro">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="mb-6">Nosso Compromisso</h2>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Na Lavoro Foton, trabalhamos com um princípio simples: <strong className="text-foreground">entregar mais valor ao cliente — sempre</strong>.
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">Nosso Compromisso</h2>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-4">
+              Na Lavoro Foton, seguimos um princípio simples:
+            </p>
+            <p className="text-2xl md:text-3xl font-bold text-primary">
+              entregar mais valor ao cliente, sempre.
+            </p>
+          </div>
+
+          <div className="mb-12">
+            <p className="text-xl md:text-2xl font-semibold mb-8 text-foreground text-center">
+              Acreditamos em:
             </p>
             
-            <div className="card-premium p-8 mb-8">
-              <h3 className="mb-6">Acreditamos em:</h3>
-              <div className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-muted-foreground">Relacionamento direto e humano</p>
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Relacionamento direto</h3>
+                    <p className="text-muted-foreground">Humano e transparente</p>
+                  </div>
                 </div>
+              </div>
+
+              <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-muted-foreground">Transparência comercial</p>
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Atendimento técnico</h3>
+                    <p className="text-muted-foreground">Baseado na engenharia e na boa prática</p>
+                  </div>
                 </div>
+              </div>
+
+              <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-muted-foreground">Suporte pós-venda real</p>
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Suporte pós-venda real</h3>
+                    <p className="text-muted-foreground">Presente quando você precisar</p>
+                  </div>
                 </div>
+              </div>
+
+              <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-muted-foreground">Operações orientadas pela engenharia e pela boa prática</p>
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Caminhões robustos</h3>
+                    <p className="text-muted-foreground">Eficientes e acessíveis</p>
+                  </div>
                 </div>
+              </div>
+
+              <div className="bg-card rounded-2xl p-8 shadow-sm border border-border md:col-span-2">
                 <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-lg text-muted-foreground">Caminhões que resolvem o dia a dia do transportador</p>
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Um marketplace honesto</h3>
+                    <p className="text-muted-foreground">Profissional e responsável</p>
+                  </div>
                 </div>
               </div>
             </div>
-            
-            <p className="text-xl text-center text-muted-foreground leading-relaxed">
-              Nada de glamour, nada de exagero. <br />
-              <strong className="text-foreground">Apenas trabalho sério e resultado.</strong>
+          </div>
+
+          <div className="text-center">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              O foco é um só: <strong className="text-foreground font-semibold">resolver o dia a dia do transportador</strong>.
             </p>
           </div>
         </div>
       </section>
 
       {/* Seção 4 - Nova Concessionária */}
-      <section className="section-padding bg-gradient-to-br from-primary/5 to-primary/10">
-        <div className="container-lavoro">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-              <Building2 className="w-8 h-8 text-primary" />
-            </div>
-            <h2 className="mb-6">Estamos construindo uma nova casa</h2>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              As obras da nova concessionária Lavoro Foton já estão em fase de preparação e serão iniciadas em breve.
-            </p>
-            
-            <div className="card-premium p-8 text-left mb-8">
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Um projeto moderno, amplo, preparado para:
+      <section className="py-24 px-4 bg-muted/20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-block px-5 py-2 bg-primary/10 rounded-full mb-6">
+                <span className="text-primary font-semibold text-sm uppercase tracking-wide">Em breve</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+                Estamos de mudança para uma NOVA casa.
+              </h2>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+                As obras da nova concessionária Lavoro Foton já estão em fase de preparação 
+                e serão iniciadas em breve.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-lg text-foreground">Atendimento mais rápido</span>
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
+                Será uma estrutura moderna, ampla e preparada para:
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-lg text-foreground">Atendimento mais rápido</p>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-lg text-foreground">Oficina completa</span>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-lg text-foreground">Oficina completa</p>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-lg text-foreground">Estoque de peças maior</span>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-lg text-foreground">Estoque de peças maior</p>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-lg text-foreground">Estrutura premium para clientes de MG</span>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-lg text-foreground">Espaço premium para clientes</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-lg text-foreground">Estrutura para caminhões elétricos e energias renováveis</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-lg text-foreground">Áreas de demonstração, test-drive e pós-venda estratégico</p>
                 </div>
               </div>
+
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mt-8">
+                Um passo importante para acompanhar o crescimento da Foton no Brasil 
+                e entregar ainda mais qualidade ao mercado mineiro.
+              </p>
             </div>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Um passo importante para acompanhar o crescimento da rede Foton no Brasil e oferecer ainda mais qualidade ao setor.
-            </p>
+
+            <div className="relative">
+              <img 
+                src={dealershipImage} 
+                alt="Nova concessionária Lavoro Foton" 
+                className="rounded-2xl shadow-2xl w-full h-auto"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Seção 5 - Nosso Propósito */}
-      <section className="section-padding">
-        <div className="container-lavoro">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-              <Target className="w-8 h-8 text-primary" />
-            </div>
-            <h2 className="mb-6">Nosso Propósito</h2>
-            <p className="text-2xl text-foreground font-semibold mb-8 leading-relaxed">
+      <section className="py-24 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-foreground">Nosso Propósito</h2>
+            <p className="text-2xl md:text-3xl font-bold text-primary mb-12">
               Servir o transportador com inteligência, respeito e tecnologia.
             </p>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              A Lavoro Foton nasceu com a missão de unir <strong className="text-foreground">experiência de décadas</strong>, 
-              <strong className="text-foreground"> nova engenharia global</strong> e <strong className="text-foreground">atendimento próximo e mineiro</strong>, 
-              criando uma concessionária que coloca o cliente no centro de tudo.
+          </div>
+
+          <div className="bg-muted/30 rounded-2xl p-10 md:p-12">
+            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-10 text-center">
+              A Lavoro Foton nasceu para unir:
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-8 mb-10">
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+                  <Award className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">A experiência de décadas</h3>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+                  <CheckCircle2 className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">A nova engenharia global</h3>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+                  <Building2 className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground">O atendimento próximo e mineiro</h3>
+              </div>
+            </div>
+            
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-center">
+              Criando uma concessionária que coloca o cliente no centro de tudo 
+              e trabalha todos os dias para entregar resultado, não discurso.
             </p>
           </div>
         </div>
       </section>
 
       {/* Seção 6 - CTA Final */}
-      <section className="section-padding bg-primary text-primary-foreground">
-        <div className="container-lavoro text-center">
-          <h2 className="mb-8 max-w-4xl mx-auto leading-tight">
-            A Lavoro Foton é a evolução natural de uma história construída com seriedade.
+      <section className="py-24 px-4 bg-primary text-primary-foreground">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-10 leading-tight">
+            A Lavoro Foton é a continuação de uma história construída com seriedade.
           </h2>
-          <a href="/contato" className="inline-block bg-background text-foreground px-10 py-5 rounded-lg text-xl font-semibold hover:bg-secondary hover:scale-105 transition-all shadow-[var(--shadow-strong)]">
-            Fale Conosco
-          </a>
+          <Button 
+            size="lg" 
+            variant="secondary"
+            onClick={handleWhatsAppContact}
+            className="text-lg md:text-xl px-10 py-7 h-auto font-semibold"
+          >
+            <Phone className="w-6 h-6 mr-3" />
+            Fale conosco
+          </Button>
         </div>
       </section>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default QuemSomos;
