@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone } from "lucide-react";
+import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
+import { useState } from "react";
 import cnhBIcon from "@/assets/cnh-b-icon.png";
 import aumarkS315Hero from "@/assets/aumark-s315-hero.png";
 import aumarkS315Exterior from "@/assets/aumark-s315-exterior.png";
@@ -27,15 +29,41 @@ import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 const S315 = () => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const productImages = [
+    { src: aumarkS315Exterior, alt: "Foton Aumark S315 - Vista Externa", caption: "Foto ilustrativa do S315 (exterior)" },
+    { src: aumarkS315Interior, alt: "Foton Aumark S315 - Vista Interna da Cabine", caption: "Foto ilustrativa do S315 (interior)" },
+    { src: aumarkS315Product1, alt: "Foton Aumark S315 - Vista Exterior", caption: "Foto ilustrativa do S315 (exterior)" },
+    { src: aumarkS315Product2, alt: "Foton Aumark S315 - Painel e Comandos", caption: "Foto ilustrativa do S315 (interior)" },
+    { src: aumarkS315EngineDetails, alt: "Motor Cummins do Foton Aumark S315", caption: "Motor Cummins ISF 2.8" }
+  ];
+
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark S315.");
+  
   const handleWhatsApp = () => {
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
   };
+  
   const handleQuoteClick = () => {
     document.getElementById('cta-final')?.scrollIntoView({
       behavior: 'smooth'
     });
+  };
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % productImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + productImages.length) % productImages.length);
   };
   return <div className="min-h-screen bg-background">
       <Navbar />
@@ -151,10 +179,16 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
 
           {/* Placeholders de Imagens */}
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mt-12">
-            <div className="aspect-video rounded-2xl border border-border overflow-hidden">
+            <div 
+              className="aspect-video rounded-2xl border border-border overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => openLightbox(0)}
+            >
               <img src={aumarkS315Exterior} alt="Foton Aumark S315 - Vista Externa" className="w-full h-full object-cover" />
             </div>
-            <div className="aspect-video rounded-2xl border border-border overflow-hidden">
+            <div 
+              className="aspect-video rounded-2xl border border-border overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => openLightbox(1)}
+            >
               <img src={aumarkS315Interior} alt="Foton Aumark S315 - Vista Interna da Cabine" className="w-full h-full object-cover" />
             </div>
           </div>
@@ -216,21 +250,30 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div className="space-y-3">
-              <div className="aspect-[4/3] rounded-lg overflow-hidden">
+              <div 
+                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={() => openLightbox(2)}
+              >
                 <img src={aumarkS315Product1} alt="Foton Aumark S315 - Vista Exterior" className="w-full h-full object-cover" />
               </div>
               <p className="text-sm text-center text-muted-foreground">Foto ilustrativa do S315 (exterior)</p>
             </div>
 
             <div className="space-y-3">
-              <div className="aspect-[4/3] rounded-lg overflow-hidden">
+              <div 
+                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={() => openLightbox(3)}
+              >
                 <img src={aumarkS315Product2} alt="Foton Aumark S315 - Painel e Comandos" className="w-full h-full object-cover" />
               </div>
               <p className="text-sm text-center text-muted-foreground">Foto ilustrativa do S315 (interior)</p>
             </div>
 
             <div className="space-y-3">
-              <div className="aspect-[4/3] rounded-lg overflow-hidden">
+              <div 
+                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={() => openLightbox(4)}
+              >
                 <img src={aumarkS315EngineDetails} alt="Motor Cummins do Foton Aumark S315" className="w-full h-full object-cover" />
               </div>
               <p className="text-sm text-center text-muted-foreground">Motor Cummins ISF 2.8</p>
@@ -418,6 +461,50 @@ dora            </h3>
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
+        <DialogContent className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-0">
+          <DialogClose className="absolute right-4 top-4 z-50 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+            <X className="h-6 w-6 text-white" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
+          
+          <div className="relative w-full h-full flex items-center justify-center p-4">
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevImage}
+              className="absolute left-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-8 w-8 text-white" />
+            </button>
+            
+            <button
+              onClick={nextImage}
+              className="absolute right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-8 w-8 text-white" />
+            </button>
+
+            {/* Image */}
+            <div className="w-full h-full flex flex-col items-center justify-center gap-4">
+              <img
+                src={productImages[currentImageIndex].src}
+                alt={productImages[currentImageIndex].alt}
+                className="max-w-full max-h-[calc(90vh-100px)] object-contain"
+              />
+              <div className="text-center">
+                <p className="text-white text-lg">{productImages[currentImageIndex].caption}</p>
+                <p className="text-white/60 text-sm mt-1">
+                  {currentImageIndex + 1} / {productImages.length}
+                </p>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>;
