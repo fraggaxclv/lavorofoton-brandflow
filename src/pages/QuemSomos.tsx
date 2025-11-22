@@ -189,7 +189,7 @@ const QuemSomos = () => {
               Após vender suas operações Mercedes-Benz, Castelo decidiu iniciar uma nova fase.
             </p>
             <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
-              A escolha pela Foton foi técnica, estratégica e alinhada ao futuro da indústria.
+              A escolha pela Foton foi <strong className="font-bold text-foreground">técnica, estratégica e alinhada ao futuro da indústria</strong>.
             </p>
             <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
               O setor automotivo mundial entrou oficialmente na <strong className="text-foreground font-semibold">Era Chinesa</strong> — 
