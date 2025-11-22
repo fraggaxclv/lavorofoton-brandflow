@@ -65,7 +65,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ModelCard name="Foton S315" description="Veículo urbano de carga. Pode ser dirigido com CNH B." image={fotonS315} link="/modelos/aumark-s315" />
             <ModelCard name="Foton 7T" description="Médio porte. Ideal para distribuição urbana e regional." image={foton7t} link="/modelos/aumark-715" />
-            <ModelCard name="Foton 17T" description="Alta capacidade. Para operações pesadas e longas distâncias." image={fotonHeavy} link="/modelos/17t" />
+            <ModelCard name="Foton 17T" description="Alta capacidade. Para operações pesadas e longas distâncias." image={fotonHeavy} link="/modelos/auman-d-1722" />
           </div>
         </div>
       </section>
