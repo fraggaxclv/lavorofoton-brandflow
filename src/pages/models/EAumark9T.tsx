@@ -2,12 +2,34 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { TrendingDown, Zap, Battery, Package, Shield, Truck, Box, LifeBuoy, Snowflake, Wrench, Droplet, Factory } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useState } from "react";
 import eaumark9tImg from "@/assets/eaumark-9t.jpg";
+import eaumarkLineupImg from "@/assets/eaumark-9t-lineup.jpg";
+import eaumarkChassisImg from "@/assets/eaumark-9t-chassis.webp";
+import eaumarkSpecsImg from "@/assets/eaumark-9t-specs-table.png";
 
 const EAumark9T = () => {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  
   const whatsappNumber = "5531992677600";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o e-Aumark 9T.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+  const galleryImages = [
+    { src: eaumarkLineupImg, title: "Família e-Aumark", description: "Linha completa de caminhões elétricos" },
+    { src: eaumarkChassisImg, title: "Chassi e Bateria", description: "Arquitetura avançada com bateria centralizada" },
+    { src: eaumark9tImg, title: "e-Aumark 9T", description: "Design moderno e funcional" },
+  ];
+
+  const handlePrevious = () => {
+    setSelectedImage((prev) => (prev !== null ? (prev > 0 ? prev - 1 : galleryImages.length - 1) : null));
+  };
+
+  const handleNext = () => {
+    setSelectedImage((prev) => (prev !== null ? (prev < galleryImages.length - 1 ? prev + 1 : 0) : null));
+  };
 
   return (
     <div className="min-h-screen">
@@ -256,8 +278,94 @@ const EAumark9T = () => {
         </div>
       </section>
 
-      {/* Especificações Técnicas */}
+      {/* Galeria de Fotos */}
       <section className="section-padding bg-industrial-light dark:bg-black">
+        <div className="container-lavoro">
+          <div className="text-center mb-16">
+            <h2 className="mb-4">Galeria de Fotos</h2>
+            <p className="text-xl text-muted-foreground">Conheça cada detalhe do e-Aumark 9T</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {galleryImages.map((image, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl transition-all duration-300"
+                onClick={() => setSelectedImage(index)}
+              >
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 className="text-xl font-bold mb-1">{image.title}</h3>
+                    <p className="text-sm text-gray-300">{image.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dialog para visualização em tela cheia */}
+      <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-none">
+          {selectedImage !== null && (
+            <div className="relative w-full h-full flex items-center justify-center">
+              {/* Imagem */}
+              <img
+                src={galleryImages[selectedImage].src}
+                alt={galleryImages[selectedImage].title}
+                className="max-w-full max-h-full object-contain"
+              />
+
+              {/* Informações */}
+              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/90 to-transparent text-white">
+                <h3 className="text-2xl font-bold mb-2">{galleryImages[selectedImage].title}</h3>
+                <p className="text-gray-300">{galleryImages[selectedImage].description}</p>
+                <p className="text-sm text-gray-400 mt-2">
+                  {selectedImage + 1} / {galleryImages.length}
+                </p>
+              </div>
+
+              {/* Botões de navegação */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrevious();
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all"
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNext();
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all"
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+
+              {/* Botão fechar */}
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all"
+              >
+                <X className="w-5 h-5 text-white" />
+              </button>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Especificações Técnicas */}
+      <section className="section-padding bg-white dark:bg-industrial-dark">
         <div className="container-lavoro">
           <div className="text-center mb-16">
             <h2 className="mb-4">Especificações Técnicas</h2>
@@ -319,6 +427,18 @@ const EAumark9T = () => {
                 <p className="text-sm text-muted-foreground mb-1">Autonomia</p>
                 <p className="text-xl font-bold text-green-600 dark:text-green-400">200 km</p>
               </div>
+            </div>
+          </div>
+
+          {/* Tabela de Especificações Completa */}
+          <div className="mt-16 max-w-5xl mx-auto">
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-industrial-light to-industrial-light/50 dark:from-black dark:to-industrial-dark/50 border border-border">
+              <h3 className="text-2xl font-bold mb-6 text-center">Ficha Técnica Completa</h3>
+              <img
+                src={eaumarkSpecsImg}
+                alt="Especificações Técnicas Detalhadas do e-Aumark 9T"
+                className="w-full rounded-xl shadow-lg"
+              />
             </div>
           </div>
         </div>
