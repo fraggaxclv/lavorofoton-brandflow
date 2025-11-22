@@ -44,6 +44,7 @@ import icon20Maior from "@/assets/icon-20-maior.png";
 import iconBancosPremium from "@/assets/icon-bancos-premium.png";
 import iconTecnologia from "@/assets/icon-tecnologia.png";
 import iconRobustez from "@/assets/icon-robustez.png";
+import icon10AnosGarantia from "@/assets/icon-10-anos-garantia.png";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
@@ -335,12 +336,12 @@ const TunlandV9 = () => {
             </div>
 
             <div className="bg-white p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
-              <div className="w-16 h-16 flex items-center justify-center mb-6 bg-primary/10 rounded-full">
-                <Volume2 className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 flex items-center justify-center mb-6">
+                <img src={icon10AnosGarantia} alt="10 Anos de Garantia" className="w-full h-full object-contain" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Silêncio e Refinamento</h3>
+              <h3 className="text-2xl font-bold mb-4">10 Anos de Garantia*</h3>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Isolamento acústico de nível premium, eliminando ruídos externos. O silêncio interno é comparável aos melhores SUVs de luxo do mercado.
+                Cobertura estendida de 10 anos* que demonstra a confiança da Foton na qualidade e durabilidade da Tunland V9. Dirija com tranquilidade e segurança.
               </p>
             </div>
 
