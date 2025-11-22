@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
+    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container-lavoro">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center">
