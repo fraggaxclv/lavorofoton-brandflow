@@ -171,19 +171,16 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-[4.5rem] h-[4.5rem] bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Settings className="w-9 h-9 text-primary" />
+              <div className="flex items-center justify-center gap-3 md:gap-4 mb-6">
+                <img src={cumminsLogo} alt="Cummins" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={zfLogo} alt="ZF" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={boschLogo} alt="Bosch" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                <img src={danaLogo} alt="Dana" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
               </div>
               <h3 className="text-xl font-bold mb-3">Conjunto mecânico global</h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-muted-foreground">
                 Motor Cummins, transmissão ZF, componentes Bosch e Dana.
               </p>
-              <div className="flex items-center justify-center gap-4 md:gap-6">
-                <img src={cumminsLogo} alt="Cummins" className="h-8 md:h-10 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src={zfLogo} alt="ZF" className="h-8 md:h-10 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src={boschLogo} alt="Bosch" className="h-8 md:h-10 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src={danaLogo} alt="Dana" className="h-8 md:h-10 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-              </div>
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
