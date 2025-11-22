@@ -14,17 +14,13 @@ const EAumark9T = () => {
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o e-Aumark 9T.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   const galleryImages = [{
-    src: eaumarkLineupImg,
-    title: "Família e-Aumark",
-    description: "Linha completa de caminhões elétricos"
+    src: eaumark9tImg,
+    title: "e-Aumark 9T",
+    description: "Design moderno e funcional"
   }, {
     src: eaumarkChassisImg,
     title: "Chassi e Bateria",
     description: "Arquitetura avançada com bateria centralizada"
-  }, {
-    src: eaumark9tImg,
-    title: "e-Aumark 9T",
-    description: "Design moderno e funcional"
   }];
   const handlePrevious = () => {
     setSelectedImage(prev => prev !== null ? prev > 0 ? prev - 1 : galleryImages.length - 1 : null);
