@@ -181,11 +181,11 @@ const TunlandV7 = () => {
           </p>
           
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
-            <div className="space-y-4 group cursor-pointer" onClick={() => openLightbox(2)}>
+            <div className="space-y-4 group cursor-pointer" onClick={() => openLightbox(0)}>
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:opacity-80 border-2 border-transparent hover:border-primary/30">
-                <img src={tunlandV7Photo3} alt="Tunland V7 Design Robusto" className="w-full h-full object-cover" />
+                <img src={tunlandV7Photo1} alt="Tunland V7 - Robustez e Confiabilidade" className="w-full h-full object-cover" />
               </div>
-              <p className="text-center font-semibold text-lg">Design Robusto</p>
+              <p className="text-center font-semibold text-lg">Robustez e Confiabilidade</p>
             </div>
             <div className="space-y-4 group cursor-pointer" onClick={() => openLightbox(1)}>
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:opacity-80 border-2 border-transparent hover:border-primary/30">
