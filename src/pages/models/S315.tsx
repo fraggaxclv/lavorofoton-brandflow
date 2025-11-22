@@ -5,14 +5,14 @@ import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, 
 import cnhBIcon from "@/assets/cnh-b-icon.png";
 import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
 import chassiReforcadoIcon from "@/assets/chassi-reforcado-icon.png";
-import garantia3AnosIcon from "@/assets/garantia-3anos-icon.png";
+import garantia3AnosIcon from "@/assets/garantia-3anos-foton.png";
 import tanqueAluminioIcon from "@/assets/tanque-aluminio-icon.png";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
 import danaLogo from "@/assets/dana-logo-icon.png";
 import motorCumminsFotonIcon from "@/assets/motor-cummins-foton-icon.png";
-import garantiaFabricaFotonIcon from "@/assets/garantia-3anos-icon.png";
+import garantiaFabricaFotonIcon from "@/assets/garantia-3anos-foton.png";
 import tecnologiaGlobalIcon from "@/assets/tecnologia-global-icon.png";
 import concessionariasIcon from "@/assets/70-concessionarias-icon.png";
 import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
