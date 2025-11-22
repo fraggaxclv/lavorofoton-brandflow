@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useState } from "react";
-import cumminsLogo from "@/assets/cummins-logo-icon.png";
-import zfLogo from "@/assets/zf-logo-icon.png";
-import boschLogo from "@/assets/bosch-logo-icon.png";
-import danaLogo from "@/assets/dana-logo-icon.png";
+import qualidadeMecanicaIcon from "@/assets/qualidade-mecanica-icon.png";
+import cumminsLogoFull from "@/assets/cummins-logo-full.png";
+import zfLogoFull from "@/assets/zf-logo-full.png";
+import boschLogoFull from "@/assets/bosch-logo-full.png";
+import danaLogoFull from "@/assets/dana-logo-full.png";
+import engenhariaGlobalIcon from "@/assets/engenharia-global-icon.png";
 import dealershipImage from "@/assets/dealership.jpg";
 import timelineContexto from "@/assets/timeline-contexto-historico.png";
 import timelineHistoria from "@/assets/timeline-historia-lavoro.png";
@@ -202,8 +204,8 @@ const QuemSomos = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <CheckCircle2 className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
+                <img src={qualidadeMecanicaIcon} alt="Qualidade mecânica" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-foreground">Qualidade mecânica real</h3>
               <p className="text-muted-foreground">Engenharia robusta e confiável</p>
@@ -211,7 +213,7 @@ const QuemSomos = () => {
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                <img src={cumminsLogo} alt="Cummins" className="w-full h-full object-contain" />
+                <img src={cumminsLogoFull} alt="Cummins" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-foreground">Motores Cummins</h3>
               <p className="text-muted-foreground">Potência e durabilidade</p>
@@ -219,7 +221,7 @@ const QuemSomos = () => {
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                <img src={zfLogo} alt="ZF" className="w-full h-full object-contain" />
+                <img src={zfLogoFull} alt="ZF" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-foreground">Caixas de transmissão ZF</h3>
               <p className="text-muted-foreground">Eficiência premium</p>
@@ -227,7 +229,7 @@ const QuemSomos = () => {
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                <img src={boschLogo} alt="Bosch" className="w-full h-full object-contain" />
+                <img src={boschLogoFull} alt="Bosch" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-foreground">Componentes Bosch</h3>
               <p className="text-muted-foreground">Tecnologia de ponta</p>
@@ -235,15 +237,15 @@ const QuemSomos = () => {
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
-                <img src={danaLogo} alt="Dana" className="w-full h-full object-contain" />
+                <img src={danaLogoFull} alt="Dana" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-foreground">Componentes Dana</h3>
               <p className="text-muted-foreground">Alta performance</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <CheckCircle2 className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
+                <img src={engenhariaGlobalIcon} alt="Engenharia global" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-foreground">Engenharia global</h3>
               <p className="text-muted-foreground">Montagem já no Brasil</p>
