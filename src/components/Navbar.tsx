@@ -22,6 +22,9 @@ const Navbar = () => {
             <Link to="/quem-somos" className="text-foreground hover:text-primary transition-colors font-medium">
               Conheça a LAVORO
             </Link>
+            <Link to="/sobre-foton" className="text-foreground hover:text-primary transition-colors font-medium">
+              Sobre a Foton
+            </Link>
             <Link to="/modelos" className="text-foreground hover:text-primary transition-colors font-medium">
               Modelos
             </Link>
@@ -58,6 +61,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Conheça a LAVORO
+            </Link>
+            <Link
+              to="/sobre-foton"
+              className="block text-foreground hover:text-primary transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Sobre a Foton
             </Link>
             <Link
               to="/modelos"
