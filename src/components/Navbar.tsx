@@ -20,7 +20,7 @@ const Navbar = () => {
               Home
             </Link>
             <Link to="/quem-somos" className="text-foreground hover:text-primary transition-colors font-medium">
-              Quem Somos
+              Conheça a LAVORO
             </Link>
             <Link to="/modelos" className="text-foreground hover:text-primary transition-colors font-medium">
               Modelos
@@ -57,7 +57,7 @@ const Navbar = () => {
               className="block text-foreground hover:text-primary transition-colors font-medium"
               onClick={() => setIsOpen(false)}
             >
-              Quem Somos
+              Conheça a LAVORO
             </Link>
             <Link
               to="/modelos"
