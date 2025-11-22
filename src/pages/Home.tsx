@@ -20,122 +20,7 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
         </div>
         <div className="container-lavoro relative z-10 text-center text-primary-foreground">
-          <h1 className="hero-text mb-6 animate-fade-in">
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-UM BOM NEGÓCIO NA LAVORO
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <br />
-            <span className="text-gradient"></span>
-          </h1>
+          
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/modelos" className="btn-primary-large">
@@ -152,11 +37,7 @@ UM BOM NEGÓCIO NA LAVORO
       <section className="section-padding bg-industrial-dark">
         <div className="container-lavoro">
           <div className="max-w-6xl mx-auto">
-            <img 
-              src={promocionalParceiros} 
-              alt="Foton Lavoro - Parceiros: ZF, Cummins, Dana, Bosch" 
-              className="w-full h-auto rounded-lg"
-            />
+            <img src={promocionalParceiros} alt="Foton Lavoro - Parceiros: ZF, Cummins, Dana, Bosch" className="w-full h-auto rounded-lg" />
           </div>
         </div>
       </section>
