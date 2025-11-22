@@ -74,6 +74,7 @@ const SobreFoton = () => {
     { label: "Colaboradores", value: "14→120", description: "Crescimento acelerado" },
     { label: "Market Share", value: "4,0%", description: "Alcançado em outubro/2024" },
     { label: "Crescimento", value: "+185%", description: "Vendas até out/2025" },
+    { label: "Concessionários", value: "+70", description: "Rede nacional em 2025" },
     { label: "Meta 2026", value: "6.000", description: "Veículos vendidos" },
   ];
 
@@ -217,7 +218,7 @@ const SobreFoton = () => {
             Estrutura nacional em expansão acelerada (2023–2025)
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 max-w-7xl mx-auto mb-12">
             {brazilMetrics.map((metric, index) => (
               <Card key={index} className="border-2 text-center">
                 <CardContent className="p-6">
