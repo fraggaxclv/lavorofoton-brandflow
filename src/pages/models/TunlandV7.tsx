@@ -300,11 +300,11 @@ const TunlandV7 = () => {
           </div>
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-            <div className="aspect-video rounded-2xl border-2 border-border overflow-hidden cursor-pointer hover:opacity-80 transition-opacity shadow-lg" onClick={() => openLightbox(2)}>
-              <img src={tunlandV7Photo3} alt="Potência e Performance" className="w-full h-full object-cover" />
+            <div className="aspect-video rounded-2xl border-2 border-border overflow-hidden cursor-pointer hover:opacity-80 transition-opacity shadow-lg" onClick={() => openLightbox(3)}>
+              <img src={tunlandV7Photo4} alt="Tunland V7 em Ação" className="w-full h-full object-cover" />
             </div>
-            <div className="aspect-video rounded-2xl border-2 border-border overflow-hidden cursor-pointer hover:opacity-80 transition-opacity shadow-lg" onClick={() => openLightbox(2)}>
-              <img src={tunlandV7Photo3} alt="Design e Robustez" className="w-full h-full object-cover" />
+            <div className="aspect-video rounded-2xl border-2 border-border overflow-hidden cursor-pointer hover:opacity-80 transition-opacity shadow-lg" onClick={() => openLightbox(7)}>
+              <img src={tunlandV7Photo8} alt="Potência e Durabilidade" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
