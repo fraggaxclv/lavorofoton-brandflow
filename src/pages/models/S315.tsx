@@ -6,6 +6,7 @@ import cnhBIcon from "@/assets/cnh-b-icon.png";
 import aumarkS315Hero from "@/assets/aumark-s315-hero.png";
 import aumarkS315Exterior from "@/assets/aumark-s315-exterior.png";
 import aumarkS315Interior from "@/assets/aumark-s315-interior.png";
+import aumarkS315Product1 from "@/assets/aumark-s315-product-1.png";
 import cnhBTruckIcon from "@/assets/cnh-b-truck-icon.png";
 import durabilityIcon from "@/assets/durability-icon.png";
 import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
@@ -217,11 +218,8 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div className="space-y-3">
-              <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden flex items-center justify-center">
-                <div className="text-center p-6">
-                  <Truck className="w-12 h-12 mx-auto mb-3 text-gray-400" />
-                  <p className="text-xs text-gray-500 font-mono">EXTERIOR_IMAGE_PLACEHOLDER</p>
-                </div>
+              <div className="aspect-[4/3] rounded-lg overflow-hidden">
+                <img src={aumarkS315Product1} alt="Foton Aumark S315 - Vista Exterior" className="w-full h-full object-cover" />
               </div>
               <p className="text-sm text-center text-muted-foreground">Foto ilustrativa do S315 (exterior)</p>
             </div>
