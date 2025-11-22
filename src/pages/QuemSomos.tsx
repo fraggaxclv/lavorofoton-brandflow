@@ -58,7 +58,7 @@ const QuemSomos = () => {
       <section className="pt-32 pb-20 px-4 bg-muted/20">
         <div className="container mx-auto max-w-4xl text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
-            Quem é a Lavoro
+            Quem é a LAVORO ?   
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Compromisso com a excelência, tradição no transporte e um novo capítulo com a Foton.
