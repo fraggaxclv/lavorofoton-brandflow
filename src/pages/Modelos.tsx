@@ -13,7 +13,7 @@ import ewonder from "@/assets/ewonder.jpg";
 import etoano from "@/assets/etoano.jpg";
 import iblue6t from "@/assets/iblue-6t.jpg";
 import eaumark12t from "@/assets/eaumark-12t.jpg";
-import eaumark9t from "@/assets/eaumark-9t.jpg";
+import eaumark9t from "@/assets/eaumark-9t-card.webp";
 import eview from "@/assets/eview.jpg";
 const Modelos = () => {
   return <div className="min-h-screen">
