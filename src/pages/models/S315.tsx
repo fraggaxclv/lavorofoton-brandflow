@@ -12,7 +12,7 @@ import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
 import danaLogo from "@/assets/dana-logo-icon.png";
 import motorCumminsFotonIcon from "@/assets/motor-cummins-foton-icon.png";
-import garantiaFabricaFotonIcon from "@/assets/garantia-fabrica-foton-icon.png";
+import garantiaFabricaFotonIcon from "@/assets/garantia-3anos-icon.png";
 const S315 = () => {
   const whatsappNumber = "5511999999999";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark S315.");
