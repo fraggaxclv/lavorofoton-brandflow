@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Phone, FileText, TestTube2, Battery, Zap, TrendingDown, Shield, Package } from "lucide-react";
+import { MessageCircle, FileText, TestTube2, Battery, Zap, TrendingDown, Shield, Package } from "lucide-react";
 import ewonderImg from "@/assets/ewonder.jpg";
 import ewonderCharging from "@/assets/ewonder-charging.jpg";
 import ewonderInteriorSeats from "@/assets/ewonder-interior-seats.jpg";
@@ -41,16 +41,16 @@ const EWonder = () => {
           <div className="flex flex-wrap gap-4 animate-fade-in" style={{
           animationDelay: "0.4s"
         }}>
-            <Button asChild size="lg" className="text-lg px-8">
-              <a href="/contato">
-                <FileText className="mr-2 h-5 w-5" />
-                Solicitar Proposta
+            <Button asChild size="lg" variant="whatsapp" className="text-lg px-8">
+              <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Falar no WhatsApp
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-white text-white">
               <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
-                <Phone className="mr-2 h-5 w-5" />
-                Falar com Especialista
+                <FileText className="mr-2 h-5 w-5" />
+                Solicitar Proposta
               </a>
             </Button>
           </div>
@@ -262,7 +262,7 @@ const EWonder = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-8 h-8 text-primary" />
+                <MessageCircle className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-2">Atendimento especializado</h3>
               <p className="text-muted-foreground">Time técnico treinado pela Foton</p>
@@ -296,20 +296,20 @@ const EWonder = () => {
               Descubra como reduzir custos em até 80% na sua operação
             </p>
             <div className="flex flex-wrap gap-4 justify-center mb-16">
-              <Button asChild size="lg" variant="secondary" className="text-lg px-8">
+              <Button asChild size="lg" variant="whatsapp" className="text-lg px-8">
                 <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Falar com Especialista
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Falar no WhatsApp
                 </a>
               </Button>
-              <Button asChild size="lg" variant="secondary" className="text-lg px-8">
-                <a href="/contato">
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-white text-white">
+                <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
                   <TestTube2 className="mr-2 h-5 w-5" />
                   Agendar Teste
                 </a>
               </Button>
-              <Button asChild size="lg" variant="secondary" className="text-lg px-8">
-                <a href="/contato">
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-white text-white">
+                <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
                   <FileText className="mr-2 h-5 w-5" />
                   Solicitar Proposta
                 </a>
