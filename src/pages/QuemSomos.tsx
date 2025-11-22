@@ -58,48 +58,69 @@ const QuemSomos = () => {
       {/* Seção 2 - Por que a Foton? */}
       <section className="section-padding bg-industrial-light">
         <div className="container-lavoro">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="mb-6">Por que a Foton?</h2>
-            <p className="text-xl text-primary mb-8">A escolha pela nova vanguarda da indústria</p>
+          <div className="max-w-6xl mx-auto">
+            <h2 className="mb-6 text-center">Por que a Foton?</h2>
+            <p className="text-xl text-primary mb-12 text-center">A escolha pela nova vanguarda da indústria</p>
             
-            <div className="card-premium p-8 mb-8">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Após vender as operações Mercedes-Benz, Castelo decidiu iniciar um novo ciclo.
-                A escolha pela Foton não foi casual: foi <strong className="text-foreground">estratégica, técnica e baseada em uma leitura clara do mercado mundial</strong>.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span className="text-lg text-foreground">Qualidade mecânica real</span>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-12 text-center max-w-4xl mx-auto">
+              Após vender as operações Mercedes-Benz, Castelo decidiu iniciar um novo ciclo.
+              A escolha pela Foton não foi casual: foi <strong className="text-foreground">estratégica, técnica e baseada em uma leitura clara do mercado mundial</strong>.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span className="text-lg text-foreground">Motores Cummins</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span className="text-lg text-foreground">Caixas ZF</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span className="text-lg text-foreground">Componentes Bosch e Dana</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span className="text-lg text-foreground">Nova liderança chinesa na manufatura global</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                  <span className="text-lg text-foreground">Tecnologia competitiva, moderna e acessível</span>
-                </div>
+                <h3 className="text-xl font-semibold mb-2">Qualidade Mecânica Real</h3>
+                <p className="text-muted-foreground">Componentes de primeira linha para máxima confiabilidade</p>
               </div>
-              
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Castelo viu na Foton a combinação perfeita entre <strong className="text-foreground">confiabilidade, modernidade e custo-benefício</strong> — 
-                traços essenciais para o mercado brasileiro.
-              </p>
+
+              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Motores Cummins</h3>
+                <p className="text-muted-foreground">Potência e durabilidade reconhecidas mundialmente</p>
+              </div>
+
+              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Caixas ZF</h3>
+                <p className="text-muted-foreground">Transmissões premium para maior eficiência</p>
+              </div>
+
+              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Componentes Bosch e Dana</h3>
+                <p className="text-muted-foreground">Tecnologia de ponta em sistemas críticos</p>
+              </div>
+
+              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Liderança Global</h3>
+                <p className="text-muted-foreground">Nova vanguarda chinesa na manufatura mundial</p>
+              </div>
+
+              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Tecnologia Acessível</h3>
+                <p className="text-muted-foreground">Modernidade competitiva com excelente custo-benefício</p>
+              </div>
             </div>
+            
+            <p className="text-lg text-muted-foreground leading-relaxed text-center max-w-4xl mx-auto">
+              Castelo viu na Foton a combinação perfeita entre <strong className="text-foreground">confiabilidade, modernidade e custo-benefício</strong> — 
+              traços essenciais para o mercado brasileiro.
+            </p>
           </div>
         </div>
       </section>
