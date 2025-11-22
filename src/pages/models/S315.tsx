@@ -196,8 +196,8 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                <Award className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 flex items-center justify-center mb-4">
+                <img src={garantia3AnosIcon} alt="3 Anos de Garantia" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-3">Garantia real</h3>
               <p className="text-muted-foreground">
