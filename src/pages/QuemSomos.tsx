@@ -14,6 +14,7 @@ import timelineContexto from "@/assets/timeline-contexto-historico.png";
 import timelineHistoria from "@/assets/timeline-historia-lavoro.png";
 import casteloFragaMercedes from "@/assets/castelo-fraga-mercedes.png";
 import lavoro40Years from "@/assets/lavoro-40-years.png";
+import globalPartnershipIcon from "@/assets/global-partnership-icon.png";
 const QuemSomos = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -71,9 +72,7 @@ const QuemSomos = () => {
 
             {/* Timeline Card 2 */}
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 mx-auto">
-                <Award className="w-8 h-8 text-primary" />
-              </div>
+              <img src={globalPartnershipIcon} alt="Legado Global" className="w-20 h-20 object-contain mb-6 mx-auto" />
               <h3 className="text-2xl font-bold text-center mb-4 text-foreground">Legado</h3>
               <p className="text-muted-foreground text-center leading-relaxed">
                 27 prêmios StarClass — recorde dentro da Mercedes-Benz Brasil
