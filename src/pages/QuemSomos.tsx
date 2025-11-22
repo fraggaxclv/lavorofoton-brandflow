@@ -13,40 +13,30 @@ import dealershipImage from "@/assets/dealership.jpg";
 import timelineContexto from "@/assets/timeline-contexto-historico.png";
 import timelineHistoria from "@/assets/timeline-historia-lavoro.png";
 import casteloFragaMercedes from "@/assets/castelo-fraga-mercedes.png";
-
 const QuemSomos = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
-
-  const timelineImages = [
-    {
-      src: timelineContexto,
-      alt: "Contexto histórico da indústria automotiva brasileira",
-      title: "Contexto Histórico (Brasil)"
-    },
-    {
-      src: timelineHistoria,
-      alt: "História da Lavoro desde 1974",
-      title: "História Lavoro"
-    },
-    {
-      src: casteloFragaMercedes,
-      alt: "Castelo Fraga em convenção Mercedes-Benz",
-      title: "Castelo Fraga - Mercedes-Benz"
-    }
-  ];
-
+  const timelineImages = [{
+    src: timelineContexto,
+    alt: "Contexto histórico da indústria automotiva brasileira",
+    title: "Contexto Histórico (Brasil)"
+  }, {
+    src: timelineHistoria,
+    alt: "História da Lavoro desde 1974",
+    title: "História Lavoro"
+  }, {
+    src: casteloFragaMercedes,
+    alt: "Castelo Fraga em convenção Mercedes-Benz",
+    title: "Castelo Fraga - Mercedes-Benz"
+  }];
   const handleWhatsAppContact = () => {
     window.open("https://wa.me/5531999999999", "_blank");
   };
-
   const openLightbox = (index: number) => {
     setSelectedImage(index);
     setIsLightboxOpen(true);
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Section */}
@@ -107,28 +97,17 @@ const QuemSomos = () => {
           <div className="my-20">
             <Carousel className="w-full max-w-5xl mx-auto">
               <CarouselContent>
-                {timelineImages.map((image, index) => (
-                  <CarouselItem key={index}>
+                {timelineImages.map((image, index) => <CarouselItem key={index}>
                     <div className="relative group">
                       <div className="rounded-2xl overflow-hidden shadow-lg border border-border bg-card">
-                        <img 
-                          src={image.src} 
-                          alt={image.alt}
-                          className="w-full h-auto cursor-pointer transition-transform duration-300 group-hover:scale-[1.02]"
-                          onClick={() => openLightbox(index)}
-                        />
+                        <img src={image.src} alt={image.alt} className="w-full h-auto cursor-pointer transition-transform duration-300 group-hover:scale-[1.02]" onClick={() => openLightbox(index)} />
                       </div>
-                      <button
-                        onClick={() => openLightbox(index)}
-                        className="absolute top-4 right-4 p-2 bg-background/80 backdrop-blur-sm rounded-lg border border-border opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-background"
-                        aria-label="Expandir imagem"
-                      >
+                      <button onClick={() => openLightbox(index)} className="absolute top-4 right-4 p-2 bg-background/80 backdrop-blur-sm rounded-lg border border-border opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-background" aria-label="Expandir imagem">
                         <Maximize2 className="w-5 h-5 text-foreground" />
                       </button>
                     </div>
                     <p className="text-center mt-4 text-sm text-muted-foreground">{image.title}</p>
-                  </CarouselItem>
-                ))}
+                  </CarouselItem>)}
               </CarouselContent>
               <CarouselPrevious className="left-4" />
               <CarouselNext className="right-4" />
@@ -136,12 +115,7 @@ const QuemSomos = () => {
             
             {/* Indicadores */}
             <div className="flex justify-center gap-2 mt-6">
-              {timelineImages.map((_, index) => (
-                <div
-                  key={index}
-                  className="w-2 h-2 rounded-full bg-muted transition-colors"
-                />
-              ))}
+              {timelineImages.map((_, index) => <div key={index} className="w-2 h-2 rounded-full bg-muted transition-colors" />)}
             </div>
           </div>
 
@@ -149,11 +123,7 @@ const QuemSomos = () => {
           <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
             <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-0 bg-transparent">
               <div className="relative w-full h-full flex items-center justify-center">
-                <img
-                  src={timelineImages[selectedImage].src}
-                  alt={timelineImages[selectedImage].alt}
-                  className="max-w-full max-h-[95vh] object-contain rounded-lg"
-                />
+                <img src={timelineImages[selectedImage].src} alt={timelineImages[selectedImage].alt} className="max-w-full max-h-[95vh] object-contain rounded-lg" />
               </div>
             </DialogContent>
           </Dialog>
@@ -180,15 +150,15 @@ const QuemSomos = () => {
                 </div>
                 <div className="flex items-start gap-4">
                   <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-lg md:text-xl text-foreground">20 concessionárias Mercedes-Benz e Toyota operando simultaneamente</p>
+                  <p className="text-lg md:text-xl text-foreground">+ de 20 concessionárias Mercedes-Benz e Toyota operando simultaneamente</p>
                 </div>
                 <div className="flex items-start gap-4">
                   <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-lg md:text-xl text-foreground">87 mil veículos vendidos</p>
+                  <p className="text-lg md:text-xl text-foreground">+ de 87 mil veículos vendidos</p>
                 </div>
                 <div className="flex items-start gap-4">
                   <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-lg md:text-xl text-foreground">27 prêmios StarClass (recorde dentro da Mercedes-Benz Brasil)</p>
+                  <p className="text-lg md:text-xl text-foreground">+ de 27 prêmios StarClass (recorde dentro da Mercedes-Benz Brasil)</p>
                 </div>
               </div>
             </div>
@@ -424,11 +394,7 @@ const QuemSomos = () => {
             </div>
 
             <div className="relative">
-              <img 
-                src={dealershipImage} 
-                alt="Nova concessionária Lavoro Foton" 
-                className="rounded-2xl shadow-2xl w-full h-auto"
-              />
+              <img src={dealershipImage} alt="Nova concessionária Lavoro Foton" className="rounded-2xl shadow-2xl w-full h-auto" />
             </div>
           </div>
         </div>
@@ -484,12 +450,7 @@ const QuemSomos = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-10 leading-tight">
             A Lavoro Foton é a continuação de uma história construída com seriedade.
           </h2>
-          <Button 
-            size="lg" 
-            variant="secondary"
-            onClick={handleWhatsAppContact}
-            className="text-lg md:text-xl px-10 py-7 h-auto font-semibold"
-          >
+          <Button size="lg" variant="secondary" onClick={handleWhatsAppContact} className="text-lg md:text-xl px-10 py-7 h-auto font-semibold">
             <Phone className="w-6 h-6 mr-3" />
             Fale conosco
           </Button>
@@ -497,8 +458,6 @@ const QuemSomos = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default QuemSomos;
