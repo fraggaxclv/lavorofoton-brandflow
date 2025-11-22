@@ -1,6 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Building2, Award, TrendingUp, Users, Wrench, Target, CheckCircle2 } from "lucide-react";
+import { Building2, Award, TrendingUp, Users, Wrench, Target, CheckCircle2, Settings } from "lucide-react";
+import cumminsLogo from "@/assets/cummins-logo-icon.png";
+import zfLogo from "@/assets/zf-logo-icon.png";
+import boschLogo from "@/assets/bosch-logo-icon.png";
+import danaLogo from "@/assets/dana-logo-icon.png";
 const QuemSomos = () => {
   return <div className="min-h-screen">
       <Navbar />
@@ -77,27 +81,35 @@ const QuemSomos = () => {
               </div>
 
               <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
+                  <img src={cumminsLogo} alt="Cummins" className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Motores Cummins</h3>
                 <p className="text-muted-foreground">Potência e durabilidade reconhecidas mundialmente</p>
               </div>
 
               <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
+                  <img src={zfLogo} alt="ZF" className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Caixas ZF</h3>
                 <p className="text-muted-foreground">Transmissões premium para maior eficiência</p>
               </div>
 
               <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
+                  <img src={boschLogo} alt="Bosch" className="w-full h-full object-contain" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Componentes Bosch e Dana</h3>
+                <h3 className="text-xl font-semibold mb-2">Componentes Bosch</h3>
                 <p className="text-muted-foreground">Tecnologia de ponta em sistemas críticos</p>
+              </div>
+              
+              <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 p-2">
+                  <img src={danaLogo} alt="Dana" className="w-full h-full object-contain" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Componentes Dana</h3>
+                <p className="text-muted-foreground">Eixos e transmissões de alta performance</p>
               </div>
 
               <div className="bg-background rounded-xl p-8 shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-border/50">
