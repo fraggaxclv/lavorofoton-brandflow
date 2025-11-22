@@ -83,8 +83,7 @@ const Footer = () => {
                 <Mail size={16} className="text-primary" />
                 contato@lavorofoton.com.br
               </li>
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <MapPin size={16} className="text-primary" />
+              <li className="flex items-center gap-2 text-muted-foreground">Rua Cornélio Vaz de Melo, 11, Contagem, Minas Gerais, Brasil<MapPin size={16} className="text-primary" />
                 Minas Gerais, Brasil
               </li>
             </ul>
