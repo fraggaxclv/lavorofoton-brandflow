@@ -43,12 +43,11 @@ const QuemSomos = () => {
               <div className="card-premium p-8">
                 <h3 className="mb-4 text-primary">Um legado de mais de 40 anos</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                  Antes da Lavoro, Castelo construiu uma trajetória sólida ao longo de quatro décadas na Mercedes-Benz,
+                  Antes da Lavoro, Castelo construiu uma trajetória sólida ao longo de <strong className="text-foreground">quatro décadas na Mercedes-Benz</strong>,
                   liderando operações comerciais, pós-venda e expansão de rede.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Foram + de 20 concessionárias Mercedes-Benz (em minas gerais, paraná, goiás e mato grosso) — caminhões, vans e ônibus — administradas com excelência, sempre entregando credibilidade, relacionamento e resultado. Com realizados de vendas de R$1.5bi/ano.  + de 20 concessionárias Mercedes-Benz — caminhões, vans e ônibus — administradas com excelência, sempre entregando credibilidade, relacionamento e resultado.                                                                                                                                                                                                <strong className="text-foreground">+ de 20 concessionárias Mercedes-Benz</strong> — caminhões, vans e ônibus — administradas com excelência,
-                  sempre entregando credibilidade, relacionamento e resultado.
+                  Foram <strong className="text-foreground">+ de 20 concessionárias Mercedes-Benz</strong> em <strong className="text-foreground">Minas Gerais, Paraná, Goiás e Mato Grosso</strong> — caminhões, vans e ônibus — administradas com excelência, sempre entregando <strong className="text-foreground">credibilidade, relacionamento e resultado</strong>. Com realizações de vendas de <strong className="text-foreground">R$1,5 bilhão/ano</strong>.
                 </p>
               </div>
             </div>
