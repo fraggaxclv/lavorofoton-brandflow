@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone } from "lucide-react";
 import cnhBIcon from "@/assets/cnh-b-icon.png";
 import aumarkS315Hero from "@/assets/aumark-s315-hero.png";
+import aumarkS315Exterior from "@/assets/aumark-s315-exterior.png";
 import cnhBTruckIcon from "@/assets/cnh-b-truck-icon.png";
 import durabilityIcon from "@/assets/durability-icon.png";
 import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
@@ -150,8 +151,8 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
 
           {/* Placeholders de Imagens */}
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mt-12">
-            <div className="aspect-video bg-muted rounded-2xl border border-border flex items-center justify-center">
-              <p className="text-muted-foreground text-sm font-medium">Foto externa do S315 aqui</p>
+            <div className="aspect-video rounded-2xl border border-border overflow-hidden">
+              <img src={aumarkS315Exterior} alt="Foton Aumark S315 - Vista Externa" className="w-full h-full object-cover" />
             </div>
             <div className="aspect-video bg-muted rounded-2xl border border-border flex items-center justify-center">
               <p className="text-muted-foreground text-sm font-medium">Foto interna da cabine aqui</p>
