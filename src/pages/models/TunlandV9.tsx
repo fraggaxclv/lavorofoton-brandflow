@@ -566,27 +566,27 @@ const TunlandV9 = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Fabricante/Modelo:</span>
-                      <span className="font-bold">AuCan 2.0 Turbo Diesel</span>
+                      <span className="font-bold">Aucan 4F20 2.0 Turbo Diesel</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
-                      <span className="text-muted-foreground font-medium">Tecnologia:</span>
-                      <span className="font-bold">Tecnologia Cummins</span>
+                      <span className="text-muted-foreground font-medium">Sistema híbrido:</span>
+                      <span className="font-bold">Bosch 48V</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Potência Máxima:</span>
-                      <span className="font-bold">190 cv</span>
+                      <span className="font-bold">175 cv @ 3.600 rpm</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Torque Máximo:</span>
-                      <span className="font-bold">450 Nm</span>
-                    </div>
-                    <div className="flex justify-between py-3 border-b border-border/50">
-                      <span className="text-muted-foreground font-medium">Sistema de Injeção:</span>
-                      <span className="font-bold">Common Rail</span>
+                      <span className="font-bold">445 Nm @ 1.500-2.600 rpm</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Combustível:</span>
                       <span className="font-bold">Diesel S10</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Tanque:</span>
+                      <span className="font-bold">76 litros</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -600,20 +600,32 @@ const TunlandV9 = () => {
                 <AccordionContent className="pt-6 pb-8 space-y-3">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="flex justify-between py-3 border-b border-border/50">
-                      <span className="text-muted-foreground font-medium">Fabricante:</span>
-                      <span className="font-bold">ZF</span>
+                      <span className="text-muted-foreground font-medium">Fabricante/Modelo:</span>
+                      <span className="font-bold">ZF 8HP50</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Tipo:</span>
-                      <span className="font-bold">Automática 8 marchas</span>
+                      <span className="font-bold">Automática 8 velocidades</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Paddle Shift:</span>
+                      <span className="font-bold">Aletas de troca de marcha no volante</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Tração:</span>
-                      <span className="font-bold">4x4 com reduzida</span>
+                      <span className="font-bold">4x4</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Diferencial:</span>
-                      <span className="font-bold">Bloqueio traseiro eletrônico</span>
+                      <span className="font-bold">Diferencial traseiro blocante</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Suspensão Dianteira:</span>
+                      <span className="font-bold text-xs">Independente formato Wishbone</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Suspensão Traseira:</span>
+                      <span className="font-bold">Independente</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -628,27 +640,51 @@ const TunlandV9 = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Comprimento total:</span>
-                      <span className="font-bold">5.460 mm</span>
+                      <span className="font-bold">5.617 mm</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
-                      <span className="text-muted-foreground font-medium">Largura:</span>
-                      <span className="font-bold">1.960 mm</span>
+                      <span className="text-muted-foreground font-medium">Largura sem espelhos:</span>
+                      <span className="font-bold">2.090 mm</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Altura:</span>
-                      <span className="font-bold">1.920 mm</span>
+                      <span className="font-bold">1.955 mm</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Entre-eixos:</span>
-                      <span className="font-bold">3.200 mm</span>
+                      <span className="font-bold">3.355 mm</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
-                      <span className="text-muted-foreground font-medium">Caçamba:</span>
-                      <span className="font-bold">1.520 x 1.520 mm</span>
+                      <span className="text-muted-foreground font-medium">Dimensões da caçamba:</span>
+                      <span className="font-bold text-xs">1.577 x 1.650 x 530 mm</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Volume da caçamba:</span>
+                      <span className="font-bold">1.379 litros</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Capacidade de carga:</span>
                       <span className="font-bold">1.000 kg</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Peso em ordem de marcha:</span>
+                      <span className="font-bold">2.335 kg</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Capacidade de imersão:</span>
+                      <span className="font-bold">700 mm</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Vão livre do solo:</span>
+                      <span className="font-bold">240 mm</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Ângulo de ataque:</span>
+                      <span className="font-bold">28°</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Ângulo de saída:</span>
+                      <span className="font-bold">26°</span>
                     </div>
                   </div>
                   <div className="mt-6 p-4 bg-primary/5 rounded-lg">
@@ -662,41 +698,81 @@ const TunlandV9 = () => {
               {/* Segurança e Tecnologia */}
               <AccordionItem value="seguranca" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
                 <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  Segurança e Tecnologia
+                  Segurança e Tecnologia ADAS
                 </AccordionTrigger>
                 <AccordionContent className="pt-6 pb-8 space-y-4">
-                  <div className="grid md:grid-cols-2 gap-2 text-base">
+                  <div className="grid md:grid-cols-2 gap-2 text-sm">
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Sistema de visão 360°</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Alarme Perimétrico</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>ADAS completo com frenagem autônoma</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Freio a disco nas 4 rodas</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Alerta de colisão frontal</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>ESC / TC (Controle eletrônico de estabilidade e tração)</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Assistente de permanência em faixa</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>6 Air bags: frontais, laterais e cortinas</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Controle de cruzeiro adaptativo</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>FCW - Alerta de colisão com aviso no painel</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Sensores de estacionamento dianteiro/traseiro</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>AEB - Assistente Autônomo de frenagem com detecção de pedestres</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>6 airbags</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>HSA - Assistente de partida em rampas</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>ABS + EBD + ESP + Controle de tração</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>LKW - Alerta de permanência em faixa</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>LKC - Auxiliar de centralização em faixa</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Frenagem pós-colisão</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Sistema de reconhecimento de placas de velocidade</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Trava da tampa da caçamba elétrica com chave</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>BLIS - Detector de ponto cego</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>RTCA - Detector de tráfego cruzado</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>DOW - Alerta de segurança para abertura de Porta</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>DMS - Detector de fadiga</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Câmera Panorâmica 360°</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Sensores de estacionamento traseiros e dianteiros</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -705,50 +781,105 @@ const TunlandV9 = () => {
               {/* Conforto e Acabamento */}
               <AccordionItem value="conforto" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
                 <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  Conforto e Acabamento
+                  Conforto, Acabamento e Tecnologia Embarcada
                 </AccordionTrigger>
                 <AccordionContent className="pt-6 pb-8 space-y-4">
-                  <div className="grid md:grid-cols-2 gap-2 text-base">
+                  <h4 className="font-bold text-base mb-3">Sistema Multimídia:</h4>
+                  <div className="grid md:grid-cols-2 gap-2 text-sm mb-6">
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Teto solar panorâmico</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Central multimídia tela touch screen HD 14.6"</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Bancos em couro premium com aquecimento</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>6 alto-falantes</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Ar-condicionado digital dual zone</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Conexão de celular via Bluetooth</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Multimídia 12" com Android Auto e Apple CarPlay</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Apple Car Play sem fio</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Painel digital TFT 12,3"</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Conectividade via aplicativo Carbit</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Sistema de som premium</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Comandos de áudio no volante</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Plásticos soft-touch</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Entradas USB</span>
+                    </div>
+                  </div>
+
+                  <h4 className="font-bold text-base mb-3 mt-6">Tecnologia Avançada:</h4>
+                  <div className="grid md:grid-cols-2 gap-2 text-sm">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Direção elétrica</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Costuras aparentes</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Start & Stop</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Elementos metálicos escovados</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Freio de mão eletrônico</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Iluminação LED ambiente personalizável</span>
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>TPMS - Sensor de monitoramento pressão dos pneus</span>
                     </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>6 modos de condução: Normal, Eco, Lama, Neve, Sport, Areia</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Cambio eletrônico mode Joystick</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Controle automático em descidas</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Limpadores para-brisas com sensor de chuva</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Câmera de ré</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Função Chassis Transparente</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Piloto automático</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Limitador de velocidade</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>ACC Stop & Go - Piloto automático adaptativo</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span>TJA - Assistente de movimentação automática no trânsito</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 p-4 bg-primary/5 rounded-lg">
+                    <p className="text-sm font-semibold text-primary">
+                      ⭐ Garantia de 10 anos*
+                    </p>
                   </div>
                 </AccordionContent>
               </AccordionItem>
