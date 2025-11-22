@@ -1,7 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Building2, Award, CheckCircle2, Phone } from "lucide-react";
+import { Building2, Award, CheckCircle2, Phone, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useState } from "react";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
@@ -12,8 +15,34 @@ import timelineHistoria from "@/assets/timeline-historia-lavoro.png";
 import casteloFragaMercedes from "@/assets/castelo-fraga-mercedes.png";
 
 const QuemSomos = () => {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(0);
+
+  const timelineImages = [
+    {
+      src: timelineContexto,
+      alt: "Contexto histórico da indústria automotiva brasileira",
+      title: "Contexto Histórico (Brasil)"
+    },
+    {
+      src: timelineHistoria,
+      alt: "História da Lavoro desde 1974",
+      title: "História Lavoro"
+    },
+    {
+      src: casteloFragaMercedes,
+      alt: "Castelo Fraga em convenção Mercedes-Benz",
+      title: "Castelo Fraga - Mercedes-Benz"
+    }
+  ];
+
   const handleWhatsAppContact = () => {
     window.open("https://wa.me/5531999999999", "_blank");
+  };
+
+  const openLightbox = (index: number) => {
+    setSelectedImage(index);
+    setIsLightboxOpen(true);
   };
 
   return (
@@ -74,30 +103,60 @@ const QuemSomos = () => {
             </div>
           </div>
 
-          {/* Timeline Visual */}
-          <div className="my-20 space-y-12">
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-border">
-              <img 
-                src={timelineContexto} 
-                alt="Contexto histórico da indústria automotiva brasileira" 
-                className="w-full h-auto"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-border">
-              <img 
-                src={timelineHistoria} 
-                alt="História da Lavoro desde 1974" 
-                className="w-full h-auto"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-border">
-              <img 
-                src={casteloFragaMercedes} 
-                alt="Castelo Fraga em convenção Mercedes-Benz" 
-                className="w-full h-auto"
-              />
+          {/* Timeline Visual - Carrossel */}
+          <div className="my-20">
+            <Carousel className="w-full max-w-5xl mx-auto">
+              <CarouselContent>
+                {timelineImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative group">
+                      <div className="rounded-2xl overflow-hidden shadow-lg border border-border bg-card">
+                        <img 
+                          src={image.src} 
+                          alt={image.alt}
+                          className="w-full h-auto cursor-pointer transition-transform duration-300 group-hover:scale-[1.02]"
+                          onClick={() => openLightbox(index)}
+                        />
+                      </div>
+                      <button
+                        onClick={() => openLightbox(index)}
+                        className="absolute top-4 right-4 p-2 bg-background/80 backdrop-blur-sm rounded-lg border border-border opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-background"
+                        aria-label="Expandir imagem"
+                      >
+                        <Maximize2 className="w-5 h-5 text-foreground" />
+                      </button>
+                    </div>
+                    <p className="text-center mt-4 text-sm text-muted-foreground">{image.title}</p>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-4" />
+              <CarouselNext className="right-4" />
+            </Carousel>
+            
+            {/* Indicadores */}
+            <div className="flex justify-center gap-2 mt-6">
+              {timelineImages.map((_, index) => (
+                <div
+                  key={index}
+                  className="w-2 h-2 rounded-full bg-muted transition-colors"
+                />
+              ))}
             </div>
           </div>
+
+          {/* Lightbox Modal */}
+          <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
+            <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-0 bg-transparent">
+              <div className="relative w-full h-full flex items-center justify-center">
+                <img
+                  src={timelineImages[selectedImage].src}
+                  alt={timelineImages[selectedImage].alt}
+                  className="max-w-full max-h-[95vh] object-contain rounded-lg"
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
 
           <div className="max-w-4xl mx-auto space-y-8">
             <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
