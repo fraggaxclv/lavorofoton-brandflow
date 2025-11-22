@@ -3,8 +3,8 @@ import Footer from "@/components/Footer";
 import ModelCard from "@/components/ModelCard";
 import { Link } from "react-router-dom";
 import { CheckCircle, Users, TrendingUp, Award } from "lucide-react";
-import heroTruck from "@/assets/hero-black-november.png";
-import blackNovember from "@/assets/black-november-promo.png";
+import heroTruck from "@/assets/hero-lavoro-bh.png";
+import promocionalParceiros from "@/assets/promocional-parceiros.png";
 import fotonS315 from "@/assets/foton-s315.jpg";
 import foton7t from "@/assets/foton-7t.jpg";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
@@ -148,11 +148,15 @@ UM BOM NEGÓCIO NA LAVORO
         </div>
       </section>
 
-      {/* Black November Promo */}
+      {/* Parceiros */}
       <section className="section-padding bg-industrial-dark">
         <div className="container-lavoro">
-          <div className="max-w-4xl mx-auto">
-            
+          <div className="max-w-6xl mx-auto">
+            <img 
+              src={promocionalParceiros} 
+              alt="Foton Lavoro - Parceiros: ZF, Cummins, Dana, Bosch" 
+              className="w-full h-auto rounded-lg"
+            />
           </div>
         </div>
       </section>
