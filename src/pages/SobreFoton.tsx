@@ -9,105 +9,101 @@ import cumminsLogo from "@/assets/cummins-logo-full.png";
 import boschLogo from "@/assets/bosch-logo-full.png";
 import zfLogo from "@/assets/zf-logo-full.png";
 import daimlerLogo from "@/assets/daimler-logo-full.png";
-
 const SobreFoton = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({
+        behavior: "smooth"
+      });
     }
   };
-
-  const timelineData = [
-    {
-      year: "1996",
-      title: "Início das Operações",
-      description: "Fundação da Foton Motor, iniciando a jornada para se tornar líder global em veículos comerciais.",
-    },
-    {
-      year: "2007",
-      title: "Parceria Cummins",
-      description: "Aliança estratégica para desenvolvimento de motores diesel de nova geração (linha ISF). Símbolo de eficiência, autonomia e robustez.",
-      logo: cumminsLogo,
-    },
-    {
-      year: "2012",
-      title: "Joint Venture Daimler",
-      description: "Parceria com Mercedes-Benz para desenvolvimento de veículos pesados. Referência mundial em engenharia, controle de qualidade e manufatura.",
-      logo: daimlerLogo,
-    },
-    {
-      year: "2017",
-      title: "Parceria ZF",
-      description: "Colaboração para transmissões de padrão europeu — precisão, suavidade e confiabilidade incomparáveis.",
-      logo: zfLogo,
-    },
-    {
-      year: "2025",
-      title: "12 Milhões de Veículos",
-      description: "Marca global alcançada com expansão acelerada na Ásia, Europa, América Latina e África.",
-    },
-  ];
-
-  const fotonFacts = [
-    {
-      icon: <Globe className="w-8 h-8" />,
-      text: "Uma das maiores fabricantes de veículos comerciais do planeta",
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      text: "Presente em mais de 110 países",
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      text: "Mais de 12 milhões de veículos produzidos até 2025",
-    },
-    {
-      icon: <Zap className="w-8 h-8" />,
-      text: "Líder global em tecnologia para caminhões leves, médios, pesados e elétricos",
-    },
-  ];
-
-  const brazilMetrics = [
-    { label: "Estoque de Peças", value: "R$ 95Mi", description: "Investimento nacional" },
-    { label: "Fill Rate", value: "88%", description: "Meta de 95% em 2026" },
-    { label: "Colaboradores", value: "14→120", description: "Crescimento acelerado" },
-    { label: "Market Share", value: "4,0%", description: "Alcançado em outubro/2024" },
-    { label: "Crescimento", value: "+185%", description: "Vendas até out/2025" },
-    { label: "Concessionários", value: "+70", description: "Rede nacional em 2025" },
-    { label: "Meta 2026", value: "6.000", description: "Veículos vendidos" },
-  ];
-
-  const escolhaLavoro = [
-    {
-      title: "Tecnologia Global",
-      description: "Parcerias estratégicas com Cummins, Daimler e ZF garantem engenharia de padrão internacional.",
-      icon: <Globe className="w-6 h-6" />,
-    },
-    {
-      title: "Qualidade Superior",
-      description: "Robustez real, consumo abaixo da média do mercado e confiabilidade comprovada.",
-      icon: <Shield className="w-6 h-6" />,
-    },
-    {
-      title: "Competitividade Estratégica",
-      description: "Preços que criam vantagem real para cliente final e concessionário.",
-      icon: <TrendingUp className="w-6 h-6" />,
-    },
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const timelineData = [{
+    year: "1996",
+    title: "Início das Operações",
+    description: "Fundação da Foton Motor, iniciando a jornada para se tornar líder global em veículos comerciais."
+  }, {
+    year: "2007",
+    title: "Parceria Cummins",
+    description: "Aliança estratégica para desenvolvimento de motores diesel de nova geração (linha ISF). Símbolo de eficiência, autonomia e robustez.",
+    logo: cumminsLogo
+  }, {
+    year: "2012",
+    title: "Joint Venture Daimler",
+    description: "Parceria com Mercedes-Benz para desenvolvimento de veículos pesados. Referência mundial em engenharia, controle de qualidade e manufatura.",
+    logo: daimlerLogo
+  }, {
+    year: "2017",
+    title: "Parceria ZF",
+    description: "Colaboração para transmissões de padrão europeu — precisão, suavidade e confiabilidade incomparáveis.",
+    logo: zfLogo
+  }, {
+    year: "2025",
+    title: "12 Milhões de Veículos",
+    description: "Marca global alcançada com expansão acelerada na Ásia, Europa, América Latina e África."
+  }];
+  const fotonFacts = [{
+    icon: <Globe className="w-8 h-8" />,
+    text: "Uma das maiores fabricantes de veículos comerciais do planeta"
+  }, {
+    icon: <TrendingUp className="w-8 h-8" />,
+    text: "Presente em mais de 110 países"
+  }, {
+    icon: <Shield className="w-8 h-8" />,
+    text: "Mais de 12 milhões de veículos produzidos até 2025"
+  }, {
+    icon: <Zap className="w-8 h-8" />,
+    text: "Líder global em tecnologia para caminhões leves, médios, pesados e elétricos"
+  }];
+  const brazilMetrics = [{
+    label: "Estoque de Peças",
+    value: "R$ 95Mi",
+    description: "Investimento nacional"
+  }, {
+    label: "Fill Rate",
+    value: "88%",
+    description: "Meta de 95% em 2026"
+  }, {
+    label: "Colaboradores",
+    value: "14→120",
+    description: "Crescimento acelerado"
+  }, {
+    label: "Market Share",
+    value: "4,0%",
+    description: "Alcançado em outubro/2024"
+  }, {
+    label: "Crescimento",
+    value: "+185%",
+    description: "Vendas até out/2025"
+  }, {
+    label: "Concessionários",
+    value: "+70",
+    description: "Rede nacional em 2025"
+  }, {
+    label: "Meta 2026",
+    value: "6.000",
+    description: "Veículos vendidos"
+  }];
+  const escolhaLavoro = [{
+    title: "Tecnologia Global",
+    description: "Parcerias estratégicas com Cummins, Daimler e ZF garantem engenharia de padrão internacional.",
+    icon: <Globe className="w-6 h-6" />
+  }, {
+    title: "Qualidade Superior",
+    description: "Robustez real, consumo abaixo da média do mercado e confiabilidade comprovada.",
+    icon: <Shield className="w-6 h-6" />
+  }, {
+    title: "Competitividade Estratégica",
+    description: "Preços que criam vantagem real para cliente final e concessionário.",
+    icon: <TrendingUp className="w-6 h-6" />
+  }];
+  return <div className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={heroTruck}
-            alt="Foton - Tecnologia Global"
-            className="w-full h-full object-cover"
-          />
+          <img src={heroTruck} alt="Foton - Tecnologia Global" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/98 via-background/90 to-background/70" />
         </div>
 
@@ -122,11 +118,7 @@ const SobreFoton = () => {
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
             A Lavoro representa no Brasil uma das maiores fabricantes de veículos comerciais do mundo.
           </p>
-          <Button
-            size="lg"
-            onClick={() => scrollToSection("quem-e-foton")}
-            className="text-lg px-8 py-6"
-          >
+          <Button size="lg" onClick={() => scrollToSection("quem-e-foton")} className="text-lg px-8 py-6">
             Conheça nossa história
           </Button>
         </div>
@@ -140,14 +132,12 @@ const SobreFoton = () => {
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {fotonFacts.map((fact, index) => (
-              <Card key={index} className="border-2 hover:border-primary transition-all duration-300">
+            {fotonFacts.map((fact, index) => <Card key={index} className="border-2 hover:border-primary transition-all duration-300">
                 <CardContent className="p-8 flex items-start gap-4">
                   <div className="text-primary mt-1">{fact.icon}</div>
                   <p className="text-lg leading-relaxed">{fact.text}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
 
           <p className="text-center text-lg text-muted-foreground mt-12 max-w-3xl mx-auto">
@@ -171,13 +161,7 @@ const SobreFoton = () => {
             <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-border" />
 
             <div className="space-y-12 md:space-y-0">
-              {timelineData.map((item, index) => (
-                <div
-                  key={index}
-                  className={`relative flex flex-col md:flex-row items-center gap-8 ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
-                >
+              {timelineData.map((item, index) => <div key={index} className={`relative flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                   {/* Content Card */}
                   <div className="w-full md:w-5/12">
                     <Card className="border-2 hover:border-primary transition-all duration-300">
@@ -185,11 +169,9 @@ const SobreFoton = () => {
                         <div className="text-3xl font-bold text-primary mb-2">{item.year}</div>
                         <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
                         <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-                        {item.logo && (
-                          <div className="mt-4 flex items-center">
+                        {item.logo && <div className="mt-4 flex items-center">
                             <img src={item.logo} alt={item.title} className="h-8 object-contain" />
-                          </div>
-                        )}
+                          </div>}
                       </CardContent>
                     </Card>
                   </div>
@@ -201,8 +183,7 @@ const SobreFoton = () => {
 
                   {/* Spacer */}
                   <div className="hidden md:block w-5/12" />
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
@@ -219,8 +200,7 @@ const SobreFoton = () => {
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 max-w-7xl mx-auto mb-12">
-            {brazilMetrics.map((metric, index) => (
-              <Card key={index} className="border-2 text-center">
+            {brazilMetrics.map((metric, index) => <Card key={index} className="border-2 text-center">
                 <CardContent className="p-6">
                   <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
                     {metric.value}
@@ -228,8 +208,7 @@ const SobreFoton = () => {
                   <div className="font-semibold mb-1">{metric.label}</div>
                   <div className="text-sm text-muted-foreground">{metric.description}</div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
 
           <div className="max-w-4xl mx-auto space-y-4">
@@ -270,7 +249,7 @@ const SobreFoton = () => {
 
           <div className="max-w-4xl mx-auto mb-12">
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              A Lavoro vem de <strong>40 anos de história no mercado automotivo</strong>, representando Mercedes-Benz no Grupo VDL. Em 2020, a família decidiu vender sua participação e buscar uma nova marca de futuro.
+              A Lavoro vem de 40 anos de história no mercado automotivo, representando +20 casas Mercedes-Benz/Toyota ao longo dos anos. Em 2020, a família vendeu sua participação e foi atrás de uma nova marca de futuro. <strong>40 anos de história no mercado automotivo</strong>, representando Mercedes-Benz no Grupo VDL. Em 2020, a família decidiu vender sua participação e buscar uma nova marca de futuro.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               A Foton reúne <strong>três pilares que nenhum outro fabricante oferecia ao mesmo tempo</strong>:
@@ -278,8 +257,7 @@ const SobreFoton = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-            {escolhaLavoro.map((item, index) => (
-              <Card key={index} className="border-2 hover:border-primary transition-all duration-300">
+            {escolhaLavoro.map((item, index) => <Card key={index} className="border-2 hover:border-primary transition-all duration-300">
                 <CardContent className="p-8 text-center">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
                     {item.icon}
@@ -287,8 +265,7 @@ const SobreFoton = () => {
                   <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{item.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
 
           <div className="max-w-4xl mx-auto text-center">
@@ -401,17 +378,8 @@ const SobreFoton = () => {
             <Button size="lg" className="text-lg px-8 py-6" asChild>
               <a href="/modelos">Ver Linha de Caminhões</a>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 py-6"
-              asChild
-            >
-              <a
-                href="https://wa.me/5531999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Foton."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
+              <a href="https://wa.me/5531999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Foton." target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Fale com um Consultor
               </a>
@@ -421,8 +389,6 @@ const SobreFoton = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default SobreFoton;
