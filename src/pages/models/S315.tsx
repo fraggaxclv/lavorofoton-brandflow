@@ -410,7 +410,7 @@ dora            </h3>
                 <MessageSquare className="mr-2 h-5 w-5" />
                 Falar com consultor pelo WhatsApp
               </Button>
-              <Button onClick={handleWhatsApp} size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-10 py-6 h-auto">
+              <Button onClick={handleWhatsApp} size="lg" variant="outline" className="border-white text-white text-lg px-10 py-6 h-auto bg-blue-900 hover:bg-blue-800">
                 <Phone className="mr-2 h-5 w-5" />
                 Solicitar proposta
               </Button>
