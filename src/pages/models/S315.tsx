@@ -58,7 +58,7 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
                   <MessageSquare className="mr-2 h-5 w-5" />
                   Falar no WhatsApp agora
                 </Button>
-                <Button onClick={handleQuoteClick} size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6 h-auto">
+                <Button onClick={handleQuoteClick} size="lg" variant="outline" className="border-white text-white text-lg px-8 py-6 h-auto bg-blue-900 hover:bg-blue-800">
                   Solicitar Proposta
                 </Button>
               </div>
