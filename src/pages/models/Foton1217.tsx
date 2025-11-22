@@ -506,11 +506,11 @@ const Foton1217New = () => {
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Potência Máxima:</span>
-                      <span className="font-medium">168 cv @ 2.600 rpm</span>
+                      <span className="font-medium">170 cv @ 2.600 rpm</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Torque Máximo:</span>
-                      <span className="font-medium">600 Nm @ 1.200-2.400 rpm</span>
+                      <span className="font-medium">600 Nm @ 1.200-1.900 rpm</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Sistema de Injeção:</span>
@@ -541,27 +541,31 @@ const Foton1217New = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Fabricante/Modelo:</span>
-                      <span className="font-medium">ZF S5-42</span>
+                      <span className="font-medium">ZF 6S558</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Tipo:</span>
-                      <span className="font-medium">Manual 5 marchas</span>
+                      <span className="font-medium">Manual 6 marchas</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Relações de transmissão:</span>
+                      <span className="font-medium text-xs">I:6.198 II:3.287 III:2.025 IV:1.371 V:1 VI:0.78 Ré:5.681</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Embreagem:</span>
-                      <span className="font-medium">Tipo seco Ø360mm</span>
+                      <span className="font-medium">Tipo seco, mola diafragma Ø362mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Eixo Dianteiro:</span>
+                      <span className="font-medium">Viga "I" Aço forjado - 4.0 ton</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Eixo Traseiro:</span>
-                      <span className="font-medium">Dana - Capacidade 7t</span>
+                      <span className="font-medium">7.5 ton - Relação 4.778</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Rodas e Pneus:</span>
-                      <span className="font-medium">Aço - 275/80R22.5</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Relação de diferencial:</span>
-                      <span className="font-medium">5.125:1</span>
+                      <span className="font-medium">Aço - 235/75 R17.5</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -576,27 +580,47 @@ const Foton1217New = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Comprimento total:</span>
-                      <span className="font-medium">7.550 mm</span>
+                      <span className="font-medium">7.995 / 6.885 mm</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Largura:</span>
-                      <span className="font-medium">2.380 mm</span>
+                      <span className="text-muted-foreground">Largura máx. dianteira:</span>
+                      <span className="font-medium">2.190 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Largura máx. traseira:</span>
+                      <span className="font-medium">2.150 mm</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Altura:</span>
-                      <span className="font-medium">2.780 mm</span>
+                      <span className="font-medium">2.335 mm</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Distância entre-eixos:</span>
-                      <span className="font-medium">3.950 mm</span>
+                      <span className="font-medium">4.500 / 3.800 mm</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Balanço dianteiro:</span>
-                      <span className="font-medium">1.290 mm</span>
+                      <span className="font-medium">1.130 mm</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Balanço traseiro:</span>
-                      <span className="font-medium">2.310 mm</span>
+                      <span className="font-medium">2.325 / 1.955 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Distância ao solo:</span>
+                      <span className="font-medium">190 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Bitola dianteira:</span>
+                      <span className="font-medium">1.715 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Bitola traseira:</span>
+                      <span className="font-medium">1.680 mm</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Plataforma de carga:</span>
+                      <span className="font-medium">6.150 / 5.140 mm</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -611,19 +635,35 @@ const Foton1217New = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">PBT (homologado):</span>
-                      <span className="font-medium">11.990 kg</span>
+                      <span className="font-medium">11.500 kg</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Peso em ordem de marcha:</span>
-                      <span className="font-medium">4.880 kg</span>
+                      <span className="font-medium">3.244 / 3.174 kg</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Capacidade de carga útil:</span>
-                      <span className="font-medium">7.110 kg</span>
+                      <span className="text-muted-foreground">Capacidade carga útil + carroceria:</span>
+                      <span className="font-medium">8.256 / 8.326 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Capacidade técnica total:</span>
+                      <span className="font-medium">12.000 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Eixo dianteiro:</span>
+                      <span className="font-medium">4.000 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Eixo traseiro:</span>
+                      <span className="font-medium">8.000 kg</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">PBTC (Combinado):</span>
-                      <span className="font-medium">17.000 kg</span>
+                      <span className="font-medium">14.000 kg</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">CMT (Cap. máx. tração):</span>
+                      <span className="font-medium">14.000 kg</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -638,15 +678,23 @@ const Foton1217New = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Suspensão Dianteira:</span>
-                      <span className="font-medium text-xs">Molas parabólicas + amortecedores</span>
+                      <span className="font-medium text-xs">Molas parabólicas, amortecedores hidráulicos telescópicos, barra estabilizadora (3 lâminas)</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Suspensão Traseira:</span>
-                      <span className="font-medium text-xs">Feixe de molas + amortecedores</span>
+                      <span className="font-medium text-xs">Molas parabólicas, amortecedores (4+3 lâminas)</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Freio de Serviço:</span>
-                      <span className="font-medium">Ar comprimido com ABS</span>
+                      <span className="font-medium">Ar, tambor dianteiro e traseiro com ABS+ASR+ESC</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Freio de Estacionamento:</span>
+                      <span className="font-medium">Câmara de molas acumuladoras</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Freio Motor:</span>
+                      <span className="font-medium">EAT</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Sistema Elétrico:</span>
@@ -658,11 +706,11 @@ const Foton1217New = () => {
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Tanque combustível:</span>
-                      <span className="font-medium">150L Alumínio</span>
+                      <span className="font-medium">200-A / 160-B / 60 L Alumínio</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Tanque ARLA 32:</span>
-                      <span className="font-medium">20L</span>
+                      <span className="font-medium">30L</span>
                     </div>
                   </div>
                 </AccordionContent>
@@ -690,35 +738,39 @@ const Foton1217New = () => {
                     <div className="grid md:grid-cols-2 gap-2 text-sm">
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>ABS + EBD</span>
+                        <span>ABS+ASR+ESC</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>Air-bag frontal duplo</span>
+                        <span>Volante multifuncional</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>Ar condicionado</span>
+                        <span>DRL (Luzes diurnas)</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>Painel digital LCD</span>
+                        <span>Controle de Cruzeiro - Função ACC</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>Vidro elétrico</span>
+                        <span>Sensor de marcha ré</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>Trava elétrica</span>
+                        <span>Campainha de marcha ré</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>Alarme</span>
+                        <span>MP3+Bluetooth</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>Rádio com Bluetooth</span>
+                        <span>Janelas elétricas</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Barra estabilizadora dianteira e traseira</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
@@ -726,15 +778,15 @@ const Foton1217New = () => {
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>Faróis de LED</span>
+                        <span>AC eletrônico</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>Volante multifunções</span>
+                        <span>Banco do condutor com amortecedor mecânico</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>Sensor de ré</span>
+                        <span>7 polegadas MP5 + câmera de ré + bluetooth (opcional)</span>
                       </div>
                     </div>
                   </div>
