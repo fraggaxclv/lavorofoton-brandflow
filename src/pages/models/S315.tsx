@@ -8,6 +8,7 @@ import aumarkS315Exterior from "@/assets/aumark-s315-exterior.png";
 import aumarkS315Interior from "@/assets/aumark-s315-interior.png";
 import aumarkS315Product1 from "@/assets/aumark-s315-product-1.png";
 import aumarkS315Product2 from "@/assets/aumark-s315-product-2.png";
+import aumarkS315EngineDetails from "@/assets/aumark-s315-engine-details.png";
 import cnhBTruckIcon from "@/assets/cnh-b-truck-icon.png";
 import durabilityIcon from "@/assets/durability-icon.png";
 import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
@@ -233,13 +234,10 @@ Força, robustez e economia no tamanho perfeito para seu trabalho.    <br />
             </div>
 
             <div className="space-y-3">
-              <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden flex items-center justify-center">
-                <div className="text-center p-6">
-                  <Wrench className="w-12 h-12 mx-auto mb-3 text-gray-400" />
-                  <p className="text-xs text-gray-500 font-mono">DETAILS_IMAGE_PLACEHOLDER_1</p>
-                </div>
+              <div className="aspect-[4/3] rounded-lg overflow-hidden">
+                <img src={aumarkS315EngineDetails} alt="Motor Cummins do Foton Aumark S315" className="w-full h-full object-cover" />
               </div>
-              <p className="text-sm text-center text-muted-foreground">Detalhe da construção/rodado</p>
+              <p className="text-sm text-center text-muted-foreground">Motor Cummins ISF 2.8</p>
             </div>
           </div>
         </div>
