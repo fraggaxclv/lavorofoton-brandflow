@@ -418,8 +418,8 @@ const QuemSomos = () => {
           </div>
 
           <div className="bg-background rounded-2xl p-8 md:p-12 border-4 border-primary/20 shadow-lg">
-            <p className="text-xl md:text-2xl text-foreground font-bold leading-relaxed mb-10 text-center">
-              A Lavoro Foton nasceu para unir:
+            <p className="text-xl md:text-2xl text-foreground leading-relaxed mb-10 text-center">
+              A <strong className="font-bold">Lavoro Foton</strong> nasceu para unir:
             </p>
             
             <div className="grid md:grid-cols-3 gap-8 mb-10">
