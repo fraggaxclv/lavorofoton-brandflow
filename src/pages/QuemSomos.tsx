@@ -25,6 +25,7 @@ import marketplaceHonestoIcon from "@/assets/marketplace-honesto-icon.png";
 import atendimentoTecnicoIcon from "@/assets/atendimento-tecnico-icon.png";
 import caminhõesRobustosIcon from "@/assets/caminhoes-robustos-icon.png";
 import atendimentoMineiroIcon from "@/assets/atendimento-mineiro-icon.png";
+import atendimentoProximoMineiroIcon from "@/assets/atendimento-proximo-mineiro-icon.png";
 const QuemSomos = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -313,6 +314,16 @@ const QuemSomos = () => {
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Caminhões robustos</h3>
                     <p className="text-muted-foreground">Eficientes e acessíveis</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
+                <div className="flex items-start gap-4">
+                  <img src={atendimentoProximoMineiroIcon} alt="Atendimento próximo e mineiro" className="w-10 h-10 object-contain flex-shrink-0" />
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Atendimento próximo e mineiro</h3>
+                    <p className="text-muted-foreground">Confiança em primeiro lugar</p>
                   </div>
                 </div>
               </div>
