@@ -5,15 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-
 const Contato = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Mensagem enviada! Retornaremos em breve.");
   };
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
 
       {/* Hero */}
@@ -52,11 +49,7 @@ const Contato = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Mensagem</label>
-                  <Textarea
-                    placeholder="Como podemos ajudar?"
-                    rows={5}
-                    required
-                  />
+                  <Textarea placeholder="Como podemos ajudar?" rows={5} required />
                 </div>
                 <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary-dark text-lg py-6">
                   Enviar Mensagem
@@ -77,12 +70,7 @@ const Contato = () => {
                     <div>
                       <h3 className="font-bold mb-1">WhatsApp</h3>
                       <p className="text-muted-foreground mb-2">(31) 2116-4735</p>
-                      <a
-                        href="https://wa.me/5531211647335"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary font-semibold hover:underline"
-                      >
+                      <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">
                         Iniciar conversa →
                       </a>
                     </div>
@@ -97,12 +85,7 @@ const Contato = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Telefone</h3>
-                      <a 
-                        href="https://wa.me/5531211647335" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
+                      <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         (31) 2116-4735
                       </a>
                       <p className="text-sm text-muted-foreground">Seg a Sex, 8h às 18h</p>
@@ -132,7 +115,9 @@ const Contato = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Localização</h3>
-                      <p className="text-muted-foreground">Minas Gerais, Brasil</p>
+                      <p className="text-muted-foreground">Rua Cornélio Vaz De Melo, 11 - 
+Jardim Industrial
+Minas Gerais, Brasil</p>
                       <p className="text-sm text-muted-foreground">Visite nossa concessionária</p>
                     </div>
                   </div>
@@ -171,8 +156,6 @@ const Contato = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Contato;
