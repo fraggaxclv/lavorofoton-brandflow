@@ -115,7 +115,7 @@ const SobreFoton = () => {
             <br />
             Performance para o Brasil.
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
+          <p className="text-xl md:text-2xl text-foreground font-bold mb-8 max-w-2xl">
             A Lavoro representa no Brasil uma das maiores fabricantes de veículos comerciais do mundo.
           </p>
           <Button size="lg" onClick={() => scrollToSection("quem-e-foton")} className="text-lg px-8 py-6">
