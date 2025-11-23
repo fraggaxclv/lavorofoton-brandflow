@@ -115,8 +115,9 @@ const Contato = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Localização</h3>
-                      <p className="text-muted-foreground">Rua Cornélio Vaz De Melo, 11 - 
-Jardim Industrial
+                      <p className="text-muted-foreground text-center">Rua Cornélio Vaz De Melo, 11 
+Jardim Industrial  
+Contagem, 
 Minas Gerais, Brasil</p>
                       <p className="text-sm text-muted-foreground">Visite nossa concessionária</p>
                     </div>
