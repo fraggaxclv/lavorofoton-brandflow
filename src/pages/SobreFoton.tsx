@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MessageCircle, TrendingUp, Globe, Users, Zap, Shield } from "lucide-react";
-import heroTruck from "@/assets/foton-lavoro-hero.png";
+import heroTruck from "@/assets/foton-lineup-hero.png";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
 import cumminsLogo from "@/assets/cummins-logo-full.png";
 import boschLogo from "@/assets/bosch-logo-full.png";
