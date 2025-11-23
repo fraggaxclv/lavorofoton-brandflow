@@ -18,7 +18,6 @@ import eview from "@/assets/eview.jpg";
 import linhaEletricaBadge from "@/assets/linha-eletrica-badge.png";
 import linhaDieselBadge from "@/assets/badge-linha-diesel.png";
 import linhaPicapesBadge from "@/assets/badge-linha-picapes.png";
-
 const Modelos = () => {
   return <div className="min-h-screen">
       <Navbar />
@@ -27,7 +26,8 @@ const Modelos = () => {
       <section className="mt-16 pt-20 pb-12 bg-industrial-dark text-primary-foreground">
         <div className="container-lavoro text-center">
           <h1 className="mb-4">Linha Completa FOTON        </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">Equipado: Motor CUMMINS - Caixa ZF - Diferencial DANA - Injeção BOSCH</p>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+        </p>
         </div>
       </section>
 
@@ -35,11 +35,7 @@ const Modelos = () => {
       <section className="section-padding">
         <div className="container-lavoro">
           <div className="text-center mb-12">
-            <img 
-              src={linhaDieselBadge} 
-              alt="Linha Diesel" 
-              className="mx-auto mb-4 h-12 md:h-16 rounded-2xl"
-            />
+            <img src={linhaDieselBadge} alt="Linha Diesel" className="mx-auto mb-4 h-12 md:h-16 rounded-2xl" />
             <h2>Linha Motores Diesel EURO-6</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -56,11 +52,7 @@ const Modelos = () => {
       <section className="section-padding bg-industrial-light">
         <div className="container-lavoro">
           <div className="text-center mb-12">
-            <img 
-              src={linhaEletricaBadge} 
-              alt="Linha Elétrica" 
-              className="mx-auto mb-4 h-12 md:h-16 rounded-2xl"
-            />
+            <img src={linhaEletricaBadge} alt="Linha Elétrica" className="mx-auto mb-4 h-12 md:h-16 rounded-2xl" />
             <h2>Linha e-Foton            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-4">
               Zero emissões. Economia de até 80%. O futuro do transporte chegou.
@@ -81,11 +73,7 @@ const Modelos = () => {
       <section className="section-padding">
         <div className="container-lavoro">
           <div className="text-center mb-12">
-            <img 
-              src={linhaPicapesBadge} 
-              alt="Linha Picapes" 
-              className="mx-auto mb-4 h-12 md:h-16 rounded-2xl"
-            />
+            <img src={linhaPicapesBadge} alt="Linha Picapes" className="mx-auto mb-4 h-12 md:h-16 rounded-2xl" />
             <h2>Tunland V9/V7</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
