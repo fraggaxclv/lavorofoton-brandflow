@@ -16,8 +16,6 @@ import eaumark12t from "@/assets/eaumark-12t.jpg";
 import eaumark9t from "@/assets/eaumark-9t-card.webp";
 import eview from "@/assets/eview.jpg";
 import linhaEletricaBadge from "@/assets/linha-eletrica-badge.png";
-import linhaDieselBadge from "@/assets/badge-linha-diesel.png";
-import linhaPicapesBadge from "@/assets/badge-linha-picapes.png";
 
 const Modelos = () => {
   return <div className="min-h-screen">
@@ -34,14 +32,7 @@ const Modelos = () => {
       {/* Lista de Modelos - Linha Tradicional */}
       <section className="section-padding">
         <div className="container-lavoro">
-          <div className="text-center mb-12">
-            <img 
-              src={linhaDieselBadge} 
-              alt="Linha Diesel" 
-              className="mx-auto mb-4 h-12 md:h-16 rounded-2xl"
-            />
-            <h2>Linha Motores Diesel EURO-6</h2>
-          </div>
+          <h2 className="mb-12">Linha Motores Diesel EURO-6</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ModelCard name="AUMARK S315" description="VUC. Pode ser dirigido com CNH B. Ideal para entregas urbanas." image={fotonS315} link="/modelos/aumark-s315" />
             <ModelCard name="AUMARK 715" description="Médio porte com excelente custo-benefício. Versatilidade comprovada." image={foton7t} link="/modelos/aumark-715" />
@@ -80,14 +71,7 @@ const Modelos = () => {
       {/* Linha Picapes */}
       <section className="section-padding">
         <div className="container-lavoro">
-          <div className="text-center mb-12">
-            <img 
-              src={linhaPicapesBadge} 
-              alt="Linha Picapes" 
-              className="mx-auto mb-4 h-12 md:h-16 rounded-2xl"
-            />
-            <h2>Tunland V9/V7</h2>
-          </div>
+          <h2 className="mb-12">Tunland V9/V7</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ModelCard name="TUNLAND V9" description="Picape 4x4 robusta. Força e versatilidade para trabalho e lazer." image={tunlandV9} link="/modelos/tunland-v9" />
             <ModelCard name="TUNLAND V7" description="Picape 4x2 versátil. Equilíbrio perfeito entre trabalho e mobilidade." image={tunlandV7} link="/modelos/tunland-v7" />
