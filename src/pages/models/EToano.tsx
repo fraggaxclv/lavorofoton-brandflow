@@ -10,20 +10,14 @@ import etoanoHeadlight from "@/assets/etoano-headlight.png";
 import etoanoInterior from "@/assets/etoano-interior.png";
 import etoanoNormalRoof from "@/assets/etoano-normal-roof.png";
 import etoanoHighRoof from "@/assets/etoano-high-roof.png";
-
 const EToano = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
 
       {/* Hero */}
       <section className="mt-16 relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={etoanoFront}
-            alt="Foton e-Toano Pro"
-            className="w-full h-full object-cover"
-          />
+          <img src={etoanoFront} alt="Foton e-Toano Pro" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
         </div>
         <div className="relative z-10 container-lavoro text-white">
@@ -31,19 +25,29 @@ const EToano = () => {
             <Zap className="w-5 h-5" />
             <span className="font-bold text-sm">⚡ 100% ELÉTRICO | TECNOLOGIA DE BATERIA ESTILO TESLA (CATL LFP)</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in max-w-4xl" style={{ animationDelay: "0.1s" }}>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in max-w-4xl" style={{
+          animationDelay: "0.1s"
+        }}>
             e-Toano Pro
           </h1>
-          <p className="text-2xl md:text-4xl mb-4 max-w-3xl animate-fade-in font-bold" style={{ animationDelay: "0.2s" }}>
+          <p className="text-2xl md:text-4xl mb-4 max-w-3xl animate-fade-in font-bold" style={{
+          animationDelay: "0.2s"
+        }}>
             A van elétrica mais completa do Brasil
           </p>
-          <p className="text-xl md:text-2xl mb-6 max-w-2xl text-gray-200 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          <p className="text-xl md:text-2xl mb-6 max-w-2xl text-gray-200 animate-fade-in" style={{
+          animationDelay: "0.3s"
+        }}>
             230 km reais · até 12,2 m³ de volume · custo por km até 80% menor
           </p>
-          <p className="text-lg mb-8 max-w-2xl text-gray-300 animate-fade-in" style={{ animationDelay: "0.35s" }}>
+          <p className="text-lg mb-8 max-w-2xl text-gray-300 animate-fade-in" style={{
+          animationDelay: "0.35s"
+        }}>
             130 kW de potência · 330 N.m de torque · 77 kWh CATL LFP · 8 anos/400.000 km de garantia
           </p>
-          <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          <div className="flex flex-wrap gap-4 animate-fade-in" style={{
+          animationDelay: "0.4s"
+        }}>
             <Button asChild size="lg" variant="whatsapp" className="text-lg px-8">
               <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
@@ -139,77 +143,49 @@ const EToano = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
-              <img
-                src={etoanoBattery}
-                alt="e-Toano Pro - Sistema de Bateria CATL LFP"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+              <img src={etoanoBattery} alt="e-Toano Pro - Sistema de Bateria CATL LFP" className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <p className="text-white font-semibold">Sistema de Bateria CATL LFP</p>
               </div>
             </div>
 
             <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
-              <img
-                src={etoanoSide}
-                alt="e-Toano Pro - Vista Lateral"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+              <img src={etoanoSide} alt="e-Toano Pro - Vista Lateral" className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <p className="text-white font-semibold">Vista Lateral</p>
               </div>
             </div>
 
             <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
-              <img
-                src={etoanoChassisBattery}
-                alt="e-Toano Pro - Chassi com Bateria"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+              <img src={etoanoChassisBattery} alt="e-Toano Pro - Chassi com Bateria" className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <p className="text-white font-semibold">Chassi com Bateria</p>
               </div>
             </div>
 
             <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
-              <img
-                src={etoanoInterior}
-                alt="e-Toano Pro - Interior Premium"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+              <img src={etoanoInterior} alt="e-Toano Pro - Interior Premium" className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <p className="text-white font-semibold">Interior Premium</p>
               </div>
             </div>
 
             <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
-              <img
-                src={etoanoHeadlight}
-                alt="e-Toano Pro - Tecnologia LED"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+              <img src={etoanoHeadlight} alt="e-Toano Pro - Tecnologia LED" className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <p className="text-white font-semibold">Farol Full LED</p>
               </div>
             </div>
 
             <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all">
-              <img
-                src={etoanoNormalRoof}
-                alt="e-Toano Pro - Teto Normal"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+              <img src={etoanoNormalRoof} alt="e-Toano Pro - Teto Normal" className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <p className="text-white font-semibold">Versão Teto Normal (2445 mm)</p>
               </div>
             </div>
 
             <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all md:col-span-2 lg:col-span-1">
-              <img
-                src={etoanoHighRoof}
-                alt="e-Toano Pro - Teto Alto"
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+              <img src={etoanoHighRoof} alt="e-Toano Pro - Teto Alto" className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <p className="text-white font-semibold">Versão Teto Alto (2720 mm)</p>
               </div>
@@ -365,24 +341,9 @@ const EToano = () => {
           <h2 className="mb-12 text-center">Ideal para</h2>
           
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              "Logística urbana",
-              "Middle-mile",
-              "Transferências regionais",
-              "Pharma",
-              "E-commerce",
-              "Food service",
-              "Hortifruti",
-              "Franquias",
-              "Empresas ESG"
-            ].map((segment, index) => (
-              <div
-                key={index}
-                className="card-premium p-6 text-center hover:border-primary transition-all cursor-default"
-              >
+            {["Logística urbana", "Middle-mile", "Transferências regionais", "Pharma", "E-commerce", "Food service", "Hortifruti", "Franquias", "Empresas ESG"].map((segment, index) => <div key={index} className="card-premium p-6 text-center hover:border-primary transition-all cursor-default">
                 <p className="font-semibold">{segment}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -413,7 +374,7 @@ const EToano = () => {
               <Leaf className="h-12 w-12 text-primary mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-3">Tradição de 40 anos</h3>
               <p className="text-muted-foreground">
-                A credibilidade da família Fraga e do legado Castelo Fraga.
+                A credibilidade da família.  
               </p>
             </div>
           </div>
@@ -461,8 +422,6 @@ const EToano = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default EToano;
