@@ -10,37 +10,42 @@ import eviewDimensions from "@/assets/eview-dimensions.png";
 import eviewDimensions2 from "@/assets/eview-dimensions-2.png";
 import eviewInteriorSeats from "@/assets/eview-interior-seats.png";
 import eviewInteriorDashboard from "@/assets/eview-interior-dashboard.png";
-
 const EView = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-
-  const galleryImages = [
-    { src: eviewInteriorCockpit, alt: "Interior premium do e-View Grand", title: "Cockpit Premium" },
-    { src: eviewDimensions, alt: "Dimensões do e-View Grand", title: "Dimensões do Veículo" },
-    { src: eviewDimensions2, alt: "Vista comparativa das dimensões", title: "Vista Comparativa" },
-    { src: eviewInteriorSeats, alt: "Interior e bancos do e-View Grand", title: "Interior e Bancos" },
-    { src: eviewInteriorDashboard, alt: "Painel completo do e-View Grand", title: "Painel Completo" },
-  ];
-
+  const galleryImages = [{
+    src: eviewInteriorCockpit,
+    alt: "Interior premium do e-View Grand",
+    title: "Cockpit Premium"
+  }, {
+    src: eviewDimensions,
+    alt: "Dimensões do e-View Grand",
+    title: "Dimensões do Veículo"
+  }, {
+    src: eviewDimensions2,
+    alt: "Vista comparativa das dimensões",
+    title: "Vista Comparativa"
+  }, {
+    src: eviewInteriorSeats,
+    alt: "Interior e bancos do e-View Grand",
+    title: "Interior e Bancos"
+  }, {
+    src: eviewInteriorDashboard,
+    alt: "Painel completo do e-View Grand",
+    title: "Painel Completo"
+  }];
   const handlePrevious = () => {
-    setSelectedImage((prev) => (prev === null || prev === 0 ? galleryImages.length - 1 : prev - 1));
+    setSelectedImage(prev => prev === null || prev === 0 ? galleryImages.length - 1 : prev - 1);
   };
-
   const handleNext = () => {
-    setSelectedImage((prev) => (prev === null || prev === galleryImages.length - 1 ? 0 : prev + 1));
+    setSelectedImage(prev => prev === null || prev === galleryImages.length - 1 ? 0 : prev + 1);
   };
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
 
       {/* Hero */}
       <section className="mt-16 relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={eviewImg}
-            alt="Foton e-View Grand"
-            className="w-full h-full object-cover"
-          />
+          <img src={eviewImg} alt="Foton e-View Grand" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
         </div>
         <div className="relative z-10 container-lavoro text-white">
@@ -48,19 +53,29 @@ const EView = () => {
             <Zap className="w-5 h-5" />
             <span className="font-bold text-sm">⚡ 100% ELÉTRICO | BATERIA CATL LFP (Tecnologia estilo Tesla)</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in max-w-4xl" style={{ animationDelay: "0.1s" }}>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in max-w-4xl" style={{
+          animationDelay: "0.1s"
+        }}>
             e-View Grand
           </h1>
-          <p className="text-2xl md:text-4xl mb-4 max-w-3xl animate-fade-in font-bold" style={{ animationDelay: "0.2s" }}>
+          <p className="text-2xl md:text-4xl mb-4 max-w-3xl animate-fade-in font-bold" style={{
+          animationDelay: "0.2s"
+        }}>
             A van elétrica ideal para entregas urbanas
           </p>
-          <p className="text-xl md:text-2xl mb-6 max-w-2xl text-gray-200 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          <p className="text-xl md:text-2xl mb-6 max-w-2xl text-gray-200 animate-fade-in" style={{
+          animationDelay: "0.3s"
+        }}>
             Até 300 km de autonomia · 7 m³ de carga · cockpit premium · custos até 80% menores
           </p>
-          <p className="text-lg mb-8 max-w-2xl text-gray-300 animate-fade-in" style={{ animationDelay: "0.35s" }}>
+          <p className="text-lg mb-8 max-w-2xl text-gray-300 animate-fade-in" style={{
+          animationDelay: "0.35s"
+        }}>
             130 kW de potência · 330 N.m de torque · 54/77 kWh CATL LFP · 7 m³ de volume
           </p>
-          <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          <div className="flex flex-wrap gap-4 animate-fade-in" style={{
+          animationDelay: "0.4s"
+        }}>
             <Button asChild size="lg" variant="whatsapp" className="text-lg px-8">
               <a href="https://wa.me/5531211647335" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
@@ -156,18 +171,9 @@ const EView = () => {
           <h2 className="mb-12 text-center">Galeria de Fotos</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((image, index) => (
-              <div 
-                key={index}
-                className="card-premium overflow-hidden group cursor-pointer"
-                onClick={() => setSelectedImage(index)}
-              >
+            {galleryImages.map((image, index) => <div key={index} className="card-premium overflow-hidden group cursor-pointer" onClick={() => setSelectedImage(index)}>
                 <div className="relative overflow-hidden aspect-video">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                     <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-semibold">
                       Clique para ampliar
@@ -177,8 +183,7 @@ const EView = () => {
                 <div className="p-4">
                   <p className="font-semibold text-center">{image.title}</p>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -187,32 +192,17 @@ const EView = () => {
       <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-none">
           <div className="relative w-full h-full flex items-center justify-center">
-            {selectedImage !== null && (
-              <>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute top-4 right-4 z-50 text-white hover:bg-white/20"
-                  onClick={() => setSelectedImage(null)}
-                >
+            {selectedImage !== null && <>
+                <Button variant="ghost" size="icon" className="absolute top-4 right-4 z-50 text-white hover:bg-white/20" onClick={() => setSelectedImage(null)}>
                   <X className="h-6 w-6" />
                 </Button>
 
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-white hover:bg-white/20"
-                  onClick={handlePrevious}
-                >
+                <Button variant="ghost" size="icon" className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-white hover:bg-white/20" onClick={handlePrevious}>
                   <ChevronLeft className="h-8 w-8" />
                 </Button>
 
                 <div className="flex flex-col items-center justify-center w-full h-full p-8">
-                  <img
-                    src={galleryImages[selectedImage].src}
-                    alt={galleryImages[selectedImage].alt}
-                    className="max-w-full max-h-[calc(100%-80px)] object-contain"
-                  />
+                  <img src={galleryImages[selectedImage].src} alt={galleryImages[selectedImage].alt} className="max-w-full max-h-[calc(100%-80px)] object-contain" />
                   <p className="text-white text-lg font-semibold mt-4">
                     {galleryImages[selectedImage].title}
                   </p>
@@ -221,16 +211,10 @@ const EView = () => {
                   </p>
                 </div>
 
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-white hover:bg-white/20"
-                  onClick={handleNext}
-                >
+                <Button variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-white hover:bg-white/20" onClick={handleNext}>
                   <ChevronRight className="h-8 w-8" />
                 </Button>
-              </>
-            )}
+              </>}
           </div>
         </DialogContent>
       </Dialog>
@@ -387,24 +371,9 @@ const EView = () => {
           <h2 className="mb-12 text-center">Ideal para</h2>
           
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              "E-commerce",
-              "Entregas urbanas",
-              "Pharma / laboratório",
-              "Food service",
-              "Hortifruti",
-              "Franquias",
-              "Logística leve",
-              "Serviços técnicos",
-              "Empresas ESG"
-            ].map((segment, index) => (
-              <div
-                key={index}
-                className="card-premium p-6 text-center hover:border-primary transition-all cursor-default"
-              >
+            {["E-commerce", "Entregas urbanas", "Pharma / laboratório", "Food service", "Hortifruti", "Franquias", "Logística leve", "Serviços técnicos", "Empresas ESG"].map((segment, index) => <div key={index} className="card-premium p-6 text-center hover:border-primary transition-all cursor-default">
                 <p className="font-semibold">{segment}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -435,7 +404,7 @@ const EView = () => {
               <Leaf className="h-12 w-12 text-primary mx-auto mb-4" />
               <h3 className="text-xl font-bold mb-3">Credibilidade de 40 anos</h3>
               <p className="text-muted-foreground">
-                Legado da família Fraga, confiança e tradição.
+                Legado de família.
               </p>
             </div>
           </div>
@@ -482,8 +451,6 @@ const EView = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default EView;
