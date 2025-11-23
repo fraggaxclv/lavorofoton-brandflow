@@ -6,6 +6,9 @@ import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
 import foton1722 from "@/assets/foton-1722.jpg";
+import auman1722Lateral from "@/assets/auman-1722-lateral.jpg";
+import auman1722Frontal45 from "@/assets/auman-1722-frontal-45.jpg";
+import auman1722Traseira from "@/assets/auman-1722-traseira.jpg";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
@@ -34,19 +37,24 @@ const Foton17T = () => {
       caption: "Foton Auman D 1722 - Exterior"
     },
     {
-      src: foton1722,
+      src: auman1722Lateral,
       alt: "Foton Auman D 1722 - Vista Lateral",
-      caption: "Foton Auman D 1722 - Lateral"
+      caption: "Foton Auman D 1722 - Vista Lateral"
+    },
+    {
+      src: auman1722Frontal45,
+      alt: "Foton Auman D 1722 - Vista Frontal 45 graus",
+      caption: "Foton Auman D 1722 - Vista Frontal 45°"
+    },
+    {
+      src: auman1722Traseira,
+      alt: "Foton Auman D 1722 - Vista Traseira",
+      caption: "Foton Auman D 1722 - Vista Traseira"
     },
     {
       src: foton1722,
       alt: "Foton Auman D 1722 - Cabine",
       caption: "Foton Auman D 1722 - Cabine"
-    },
-    {
-      src: foton1722,
-      alt: "Foton Auman D 1722 - Detalhes",
-      caption: "Foton Auman D 1722 - Detalhes"
     },
     {
       src: foton1722,
