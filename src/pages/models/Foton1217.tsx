@@ -8,6 +8,16 @@ import { useState } from "react";
 import cnhBIcon from "@/assets/cnh-b-icon.png";
 import foton1217 from "@/assets/foton-1217.jpg";
 import cnhBTruckIcon from "@/assets/cnh-b-truck-icon.png";
+import aumarkFrenteLinha from "@/assets/aumark-frente-linha.jpg";
+import aumarkVolantePainel from "@/assets/aumark-volante-painel.jpg";
+import aumarkChassisLateral from "@/assets/aumark-chassis-lateral.webp";
+import aumarkFrenteUrbano from "@/assets/aumark-frente-urbano.jpg";
+import aumarkChassisAberto from "@/assets/aumark-chassis-aberto.jpg";
+import aumarkLineupFabrica from "@/assets/aumark-lineup-fabrica.jpg";
+import aumarkPainelCentral from "@/assets/aumark-painel-central.jpg";
+import aumarkChassisSuperior from "@/assets/aumark-chassis-superior.jpg";
+import aumarkMotorDetalhe from "@/assets/aumark-motor-detalhe.jpg";
+import aumarkInteriorCompleto from "@/assets/aumark-interior-completo.jpg";
 import durabilityIcon from "@/assets/durability-icon.png";
 import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
 import chassiReforcadoIcon from "@/assets/chassi-reforcado-icon.png";
@@ -32,29 +42,54 @@ const Foton1217New = () => {
 
   const productImages = [
     {
-      src: foton1217,
-      alt: "Foton Aumark 1217 - Vista Externa",
-      caption: "Foto ilustrativa do 1217 (exterior)"
+      src: aumarkFrenteLinha,
+      alt: "Foton Aumark 1217 - Linha de Caminhões",
+      caption: "Linha Aumark - Design frontal"
     },
     {
-      src: foton1217,
-      alt: "Foton Aumark 1217 - Vista Lateral",
-      caption: "Foto ilustrativa do 1217 (lateral)"
+      src: aumarkFrenteUrbano,
+      alt: "Foton Aumark 1217 - Vista Frontal Urbana",
+      caption: "Aumark 1217 em ambiente urbano"
     },
     {
-      src: foton1217,
-      alt: "Foton Aumark 1217 - Interior da Cabine",
-      caption: "Foto ilustrativa do 1217 (interior)"
+      src: aumarkVolantePainel,
+      alt: "Foton Aumark 1217 - Volante e Painel",
+      caption: "Volante multifuncional e painel digital"
     },
     {
-      src: foton1217,
-      alt: "Foton Aumark 1217 - Chassi",
-      caption: "Chassi reforçado do 1217"
+      src: aumarkInteriorCompleto,
+      alt: "Foton Aumark 1217 - Interior Completo",
+      caption: "Interior completo da cabine"
     },
     {
-      src: foton1217,
+      src: aumarkPainelCentral,
+      alt: "Foton Aumark 1217 - Painel Central",
+      caption: "Console central com multimídia"
+    },
+    {
+      src: aumarkChassisLateral,
+      alt: "Foton Aumark 1217 - Chassi Lateral",
+      caption: "Chassi robusto - Vista lateral"
+    },
+    {
+      src: aumarkChassisAberto,
+      alt: "Foton Aumark 1217 - Chassi Aberto",
+      caption: "Estrutura do chassi"
+    },
+    {
+      src: aumarkChassisSuperior,
+      alt: "Foton Aumark 1217 - Chassi Superior",
+      caption: "Chassi completo - Vista superior"
+    },
+    {
+      src: aumarkMotorDetalhe,
       alt: "Motor Cummins do Foton Aumark 1217",
-      caption: "Motor Cummins ISF 3.8"
+      caption: "Motor Cummins ISF 3.8 - Detalhe"
+    },
+    {
+      src: aumarkLineupFabrica,
+      alt: "Foton Aumark 1217 - Lineup Fábrica",
+      caption: "Linha de produção Foton"
     }
   ];
 
@@ -126,7 +161,7 @@ const Foton1217New = () => {
             <div className="order-1 lg:order-2">
               <div className="relative w-full aspect-[4/5] md:aspect-video rounded-lg overflow-hidden">
                 <img 
-                  src={foton1217} 
+                  src={aumarkFrenteUrbano} 
                   alt="Foton Aumark 1217" 
                   className="w-full h-full object-cover"
                 />
@@ -217,18 +252,18 @@ const Foton1217New = () => {
               onClick={() => openLightbox(0)}
             >
               <img 
-                src={foton1217} 
-                alt="Foton Aumark 1217 - Vista Externa" 
+                src={aumarkFrenteLinha} 
+                alt="Foton Aumark 1217 - Linha de Caminhões" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div 
               className="aspect-video rounded-2xl border border-border overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-              onClick={() => openLightbox(2)}
+              onClick={() => openLightbox(3)}
             >
               <img 
-                src={foton1217} 
-                alt="Foton Aumark 1217 - Vista Interna da Cabine" 
+                src={aumarkInteriorCompleto} 
+                alt="Foton Aumark 1217 - Interior Completo" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -293,29 +328,15 @@ const Foton1217New = () => {
             <div className="space-y-3">
               <div 
                 className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(0)}
+                onClick={() => openLightbox(1)}
               >
                 <img 
-                  src={foton1217} 
-                  alt="Foton Aumark 1217 - Vista Exterior" 
+                  src={aumarkFrenteUrbano} 
+                  alt="Foton Aumark 1217 - Vista Frontal Urbana" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-sm text-center text-muted-foreground">Foto ilustrativa do 1217 (exterior)</p>
-            </div>
-
-            <div className="space-y-3">
-              <div 
-                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(2)}
-              >
-                <img 
-                  src={foton1217} 
-                  alt="Foton Aumark 1217 - Interior" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-sm text-center text-muted-foreground">Foto ilustrativa do 1217 (interior)</p>
+              <p className="text-sm text-center text-muted-foreground">Aumark 1217 em ambiente urbano</p>
             </div>
 
             <div className="space-y-3">
@@ -324,12 +345,26 @@ const Foton1217New = () => {
                 onClick={() => openLightbox(4)}
               >
                 <img 
-                  src={foton1217} 
+                  src={aumarkPainelCentral} 
+                  alt="Foton Aumark 1217 - Painel Central" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-sm text-center text-muted-foreground">Console central com multimídia</p>
+            </div>
+
+            <div className="space-y-3">
+              <div 
+                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
+                onClick={() => openLightbox(8)}
+              >
+                <img 
+                  src={aumarkMotorDetalhe} 
                   alt="Motor Cummins do Foton Aumark 1217" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-sm text-center text-muted-foreground">Motor Cummins ISF 3.8</p>
+              <p className="text-sm text-center text-muted-foreground">Motor Cummins ISF 3.8 - Detalhe</p>
             </div>
           </div>
         </div>

@@ -2,6 +2,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import foton916 from "@/assets/foton-916.jpg";
+import aumarkFrenteLinha from "@/assets/aumark-frente-linha.jpg";
+import aumarkVolantePainel from "@/assets/aumark-volante-painel.jpg";
+import aumarkChassisLateral from "@/assets/aumark-chassis-lateral.webp";
+import aumarkFrenteUrbano from "@/assets/aumark-frente-urbano.jpg";
+import aumarkChassisAberto from "@/assets/aumark-chassis-aberto.jpg";
+import aumarkLineupFabrica from "@/assets/aumark-lineup-fabrica.jpg";
+import aumarkPainelCentral from "@/assets/aumark-painel-central.jpg";
+import aumarkChassisSuperior from "@/assets/aumark-chassis-superior.jpg";
+import aumarkMotorDetalhe from "@/assets/aumark-motor-detalhe.jpg";
+import aumarkInteriorCompleto from "@/assets/aumark-interior-completo.jpg";
 
 const Foton9T = () => {
   return (
@@ -32,7 +42,7 @@ const Foton9T = () => {
               </div>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[var(--shadow-strong)]">
-              <img src={foton916} alt="AUMARK 916" className="w-full h-full object-cover" />
+              <img src={aumarkFrenteUrbano} alt="AUMARK 916" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
