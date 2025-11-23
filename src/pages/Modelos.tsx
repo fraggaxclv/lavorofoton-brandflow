@@ -50,7 +50,7 @@ const Modelos = () => {
             <img 
               src={linhaEletricaBadge} 
               alt="Linha Elétrica" 
-              className="mx-auto mb-4 h-12 md:h-16 rounded-lg"
+              className="mx-auto mb-4 h-12 md:h-16 rounded-2xl"
             />
             <h2>Linha e-Foton            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-4">
