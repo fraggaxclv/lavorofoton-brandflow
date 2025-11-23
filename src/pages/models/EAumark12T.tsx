@@ -7,46 +7,31 @@ import { useState } from "react";
 import eaumarkFrontalImg from "@/assets/eaumark-9t-frontal.png";
 import eaumarkLateralImg from "@/assets/eaumark-9t-lateral.png";
 import eaumarkInteriorImg from "@/assets/eaumark-9t-interior.png";
-
 const EAumark12T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-
   const whatsappNumber = "5531992677600";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o e-Aumark 12T.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-
-  const galleryImages = [
-    {
-      src: eaumarkFrontalImg,
-      title: "e-Aumark 12T - Vista Frontal",
-      description: "Design moderno com grade distintiva e tecnologia elétrica"
-    },
-    {
-      src: eaumarkLateralImg,
-      title: "e-Aumark 12T - Vista Lateral",
-      description: "Design robusto e profissional com baú para operações exigentes"
-    },
-    {
-      src: eaumarkInteriorImg,
-      title: "Interior Premium",
-      description: "Cabine confortável com painel digital e acabamento moderno"
-    }
-  ];
-
+  const galleryImages = [{
+    src: eaumarkFrontalImg,
+    title: "e-Aumark 12T - Vista Frontal",
+    description: "Design moderno com grade distintiva e tecnologia elétrica"
+  }, {
+    src: eaumarkLateralImg,
+    title: "e-Aumark 12T - Vista Lateral",
+    description: "Design robusto e profissional com baú para operações exigentes"
+  }, {
+    src: eaumarkInteriorImg,
+    title: "Interior Premium",
+    description: "Cabine confortável com painel digital e acabamento moderno"
+  }];
   const handlePrevious = () => {
-    setSelectedImage((prev) =>
-      prev !== null ? (prev > 0 ? prev - 1 : galleryImages.length - 1) : null
-    );
+    setSelectedImage(prev => prev !== null ? prev > 0 ? prev - 1 : galleryImages.length - 1 : null);
   };
-
   const handleNext = () => {
-    setSelectedImage((prev) =>
-      prev !== null ? (prev < galleryImages.length - 1 ? prev + 1 : 0) : null
-    );
+    setSelectedImage(prev => prev !== null ? prev < galleryImages.length - 1 ? prev + 1 : 0 : null);
   };
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
 
       {/* 🟥 SEÇÃO 1 — HERO */}
@@ -103,12 +88,7 @@ const EAumark12T = () => {
                     Falar com Especialista
                   </a>
                 </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-8 bg-white/10 hover:bg-white/20 border-white/20 text-white"
-                >
+                <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 hover:bg-white/20 border-white/20 text-white">
                   <a href="/contato">Solicitar Proposta</a>
                 </Button>
               </div>
@@ -117,11 +97,7 @@ const EAumark12T = () => {
             {/* Right: Image */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-green-500/20 to-blue-500/20 rounded-3xl blur-3xl" />
-              <img
-                src={eaumarkFrontalImg}
-                alt="e-Aumark 12T"
-                className="relative z-10 w-full rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
-              />
+              <img src={eaumarkFrontalImg} alt="e-Aumark 12T" className="relative z-10 w-full rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
         </div>
@@ -265,25 +241,15 @@ const EAumark12T = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer hover:shadow-xl transition-all duration-300"
-                onClick={() => setSelectedImage(index)}
-              >
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+            {galleryImages.map((image, index) => <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer hover:shadow-xl transition-all duration-300" onClick={() => setSelectedImage(index)}>
+                <img src={image.src} alt={image.title} className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                     <h3 className="text-xl font-bold mb-2">{image.title}</h3>
                     <p className="text-sm text-gray-300">{image.description}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -291,13 +257,8 @@ const EAumark12T = () => {
       {/* Dialog para visualização em tela cheia */}
       <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-none">
-          {selectedImage !== null && (
-            <div className="relative w-full h-full flex items-center justify-center">
-              <img
-                src={galleryImages[selectedImage].src}
-                alt={galleryImages[selectedImage].title}
-                className="max-w-full max-h-full object-contain"
-              />
+          {selectedImage !== null && <div className="relative w-full h-full flex items-center justify-center">
+              <img src={galleryImages[selectedImage].src} alt={galleryImages[selectedImage].title} className="max-w-full max-h-full object-contain" />
 
               <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/90 to-transparent text-white">
                 <h3 className="text-2xl font-bold mb-2">
@@ -309,34 +270,24 @@ const EAumark12T = () => {
                 </p>
               </div>
 
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handlePrevious();
-                }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all"
-              >
+              <button onClick={e => {
+            e.stopPropagation();
+            handlePrevious();
+          }} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all">
                 <ChevronLeft className="w-6 h-6 text-white" />
               </button>
 
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleNext();
-                }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all"
-              >
+              <button onClick={e => {
+            e.stopPropagation();
+            handleNext();
+          }} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all">
                 <ChevronRight className="w-6 h-6 text-white" />
               </button>
 
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all"
-              >
+              <button onClick={() => setSelectedImage(null)} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all">
                 <X className="w-5 h-5 text-white" />
               </button>
-            </div>
-          )}
+            </div>}
         </DialogContent>
       </Dialog>
 
@@ -654,25 +605,31 @@ const EAumark12T = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {[
-              { name: "Baú (com ou sem plataforma) e Sider", icon: Package },
-              { name: "Plataforma de Auto Socorro", icon: Wrench },
-              { name: "Baús refrigerados", icon: Snowflake },
-              { name: "Cesto aéreo", icon: Zap },
-              { name: "Tanque D'água", icon: Battery },
-              { name: "Carga Seca, Gaiola de Gás", icon: Truck },
-            ].map((app, index) => {
-              const Icon = app.icon;
-              return (
-                <div
-                  key={index}
-                  className="p-6 rounded-2xl bg-white dark:bg-industrial-dark border border-border hover:border-primary hover:shadow-lg transition-all duration-300"
-                >
+            {[{
+            name: "Baú (com ou sem plataforma) e Sider",
+            icon: Package
+          }, {
+            name: "Plataforma de Auto Socorro",
+            icon: Wrench
+          }, {
+            name: "Baús refrigerados",
+            icon: Snowflake
+          }, {
+            name: "Cesto aéreo",
+            icon: Zap
+          }, {
+            name: "Tanque D'água",
+            icon: Battery
+          }, {
+            name: "Carga Seca, Gaiola de Gás",
+            icon: Truck
+          }].map((app, index) => {
+            const Icon = app.icon;
+            return <div key={index} className="p-6 rounded-2xl bg-white dark:bg-industrial-dark border border-border hover:border-primary hover:shadow-lg transition-all duration-300">
                   <Icon className="w-8 h-8 text-primary mx-auto mb-4" />
                   <p className="text-lg font-bold text-center">{app.name}</p>
-                </div>
-              );
-            })}
+                </div>;
+          })}
           </div>
         </div>
       </section>
@@ -716,7 +673,8 @@ const EAumark12T = () => {
               </div>
               <h3 className="text-xl font-bold mb-4">Tradição e confiança</h3>
               <p className="text-muted-foreground">
-                40 anos de credibilidade Castelo Fraga. Experiência que faz a diferença.
+                40 anos de credibilidade. 
+Experiência que faz a diferença.
               </p>
             </div>
           </div>
@@ -740,12 +698,7 @@ const EAumark12T = () => {
                 Falar com Especialista (WhatsApp)
               </a>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 bg-white text-primary hover:bg-white/90 border-white"
-            >
+            <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white text-primary hover:bg-white/90 border-white">
               <a href="/contato">Solicitar Proposta</a>
             </Button>
           </div>
@@ -763,8 +716,6 @@ const EAumark12T = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default EAumark12T;
