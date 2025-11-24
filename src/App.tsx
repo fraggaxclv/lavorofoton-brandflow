@@ -22,6 +22,7 @@ import EView from "./pages/models/EView";
 import EAumark9T from "./pages/models/EAumark9T";
 import EAumark12T from "./pages/models/EAumark12T";
 import NotFound from "./pages/NotFound";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <WhatsAppButton />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/quem-somos" element={<QuemSomos />} />
