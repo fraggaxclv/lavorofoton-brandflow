@@ -63,7 +63,7 @@ const TunlandV7 = () => {
     { src: tunlandV7Photo10, alt: "Foton Tunland V7 - Imagem 10", caption: "Versatilidade Profissional" }
   ];
 
-  const whatsappNumber = "553121167435";
+  const whatsappNumber = "553121164735";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre a Foton Tunland V7.");
 
   const handleWhatsApp = () => window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
