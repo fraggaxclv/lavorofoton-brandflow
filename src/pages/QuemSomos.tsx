@@ -45,7 +45,7 @@ const QuemSomos = () => {
     title: "Castelo Fraga - Mercedes-Benz"
   }];
   const handleWhatsAppContact = () => {
-    window.open("https://wa.me/5531211647335", "_blank");
+    window.open("https://wa.me/553121167435", "_blank");
   };
   const openLightbox = (index: number) => {
     setSelectedImage(index);
