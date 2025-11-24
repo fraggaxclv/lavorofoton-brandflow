@@ -91,7 +91,7 @@ const Foton9T = () => {
     }
   ];
 
-  const whatsappNumber = "553121167435";
+  const whatsappNumber = "553121164735";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark 916.");
 
   const handleWhatsApp = () => {
