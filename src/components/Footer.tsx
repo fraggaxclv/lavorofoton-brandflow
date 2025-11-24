@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-foton-lavoro.png";
 const Footer = () => {
@@ -86,8 +86,15 @@ const Footer = () => {
                 <Mail size={16} className="text-primary" />
                 contato@lavorofoton.com.br
               </li>
-              <li className="flex items-center gap-2 text-muted-foreground">Rua Cornélio Vaz de Melo, 11, Contagem, Minas Gerais, Brasil<MapPin size={16} className="text-primary" />
-                Minas Gerais, Brasil
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <Instagram size={16} className="text-primary" />
+                <a href="https://www.instagram.com/lavorofoton" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  @lavorofoton
+                </a>
+              </li>
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <MapPin size={16} className="text-primary" />
+                Rua Cornélio Vaz de Melo, 11, Contagem, Minas Gerais, Brasil
               </li>
             </ul>
           </div>
