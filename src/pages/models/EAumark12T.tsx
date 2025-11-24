@@ -9,7 +9,7 @@ import eaumarkLateralImg from "@/assets/eaumark-9t-lateral.png";
 import eaumarkInteriorImg from "@/assets/eaumark-9t-interior.png";
 const EAumark12T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const whatsappNumber = "5531992677600";
+  const whatsappNumber = "553121167435";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o e-Aumark 12T.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   const galleryImages = [{
