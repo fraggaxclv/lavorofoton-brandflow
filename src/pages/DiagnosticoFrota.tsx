@@ -33,6 +33,9 @@ const DiagnosticoFrota = () => {
     // Bloco 1
     cnpj: "",
     razaoSocial: "",
+    nomeResponsavel: "",
+    telefoneWhatsapp: "",
+    emailResponsavel: "",
     telefone: "",
     estado: "",
     segmento: "",
@@ -289,8 +292,39 @@ const DiagnosticoFrota = () => {
                     />
                   </div>
                   
+                  <div className="space-y-2 md:col-span-2">
+                    <Label htmlFor="nomeResponsavel">Nome Completo do Responsável *</Label>
+                    <Input 
+                      id="nomeResponsavel"
+                      placeholder="Nome completo"
+                      value={formData.nomeResponsavel}
+                      onChange={(e) => handleInputChange('nomeResponsavel', e.target.value)}
+                    />
+                  </div>
+                  
                   <div className="space-y-2">
-                    <Label htmlFor="telefone">Telefone *</Label>
+                    <Label htmlFor="telefoneWhatsapp">Telefone com WhatsApp *</Label>
+                    <Input 
+                      id="telefoneWhatsapp"
+                      placeholder="(00) 00000-0000"
+                      value={formData.telefoneWhatsapp}
+                      onChange={(e) => handleInputChange('telefoneWhatsapp', e.target.value)}
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="emailResponsavel">E-mail *</Label>
+                    <Input 
+                      id="emailResponsavel"
+                      type="email"
+                      placeholder="seuemail@empresa.com"
+                      value={formData.emailResponsavel}
+                      onChange={(e) => handleInputChange('emailResponsavel', e.target.value)}
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="telefone">Telefone Empresa</Label>
                     <Input 
                       id="telefone"
                       placeholder="(00) 00000-0000"
