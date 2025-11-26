@@ -1,7 +1,4 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "https://esm.sh/resend@4.0.0";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -376,21 +373,10 @@ const handler = async (req: Request): Promise<Response> => {
 
     const pdfHTML = gerarPDFHTML(pedido);
 
-    // Enviar email com o HTML do pedido
-    const emailResponse = await resend.emails.send({
-      from: "Lavoro Foton <onboarding@resend.dev>",
-      to: ["matheus@lavorofoton.com.br", "fernando@lavorofoton.com.br"],
-      subject: `Novo Pedido de Faturamento - ${pedido.numero_pedido}`,
-      html: pdfHTML,
-    });
-
-    console.log("Email enviado com sucesso:", emailResponse);
-
     return new Response(
       JSON.stringify({ 
         success: true,
-        pdfHTML,
-        emailResponse 
+        pdfHTML
       }),
       {
         status: 200,
