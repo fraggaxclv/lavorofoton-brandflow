@@ -219,7 +219,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
     <body>
       <div class="container">
         <div class="header">
-          <img src="${supabaseUrl}/storage/v1/object/public/assets/logo-foton-lavoro.png" alt="Foton Lavoro" class="logo" onerror="this.src=''; this.style.display='none';">
+          <img src="${supabaseUrl}/storage/v1/object/public/assets/logo-linha-lavoro.png" alt="Linha Lavoro Foton" class="logo" onerror="this.src=''; this.style.display='none';">
           <h1>PEDIDO DE FATURAMENTO</h1>
           <div class="pedido-numero">Nº ${pedido.numero_pedido}</div>
         </div>
