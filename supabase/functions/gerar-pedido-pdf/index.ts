@@ -286,12 +286,12 @@ function gerarPDFHTML(pedido: PedidoData): string {
             </thead>
             <tbody>
               ${produtosHTML}
+              <tr style="background-color: #f8f9fa; border-top: 2px solid #0f2557;">
+                <td colspan="4" style="padding: 12px 8px; text-align: right; font-weight: 700; border-bottom: none;">VALOR TOTAL DOS PRODUTOS:</td>
+                <td style="padding: 12px 8px; text-align: right; font-weight: 700; color: #0f2557; font-size: 16px; border-bottom: none;">R$ ${pedido.valor_total_produtos.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+              </tr>
             </tbody>
           </table>
-          <div class="total-box">
-            <div class="label">VALOR TOTAL DOS PRODUTOS</div>
-            <div class="value">R$ ${pedido.valor_total_produtos.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
-          </div>
         </div>
 
         <div class="info-section">
