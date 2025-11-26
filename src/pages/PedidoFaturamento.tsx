@@ -82,15 +82,21 @@ const PedidoFaturamento = () => {
   };
 
   const formatarMoeda = (valor: number): string => {
-    return valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return new Intl.NumberFormat('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(valor);
   };
 
-  const parseMoeda = (valor: string): number => {
-    return parseFloat(valor.replace(/\./g, '').replace(',', '.')) || 0;
-  };
-
-  const handleValorChange = (index: number, campo: 'valorUnitario' | 'valorTotal', valorString: string) => {
-    const valor = parseMoeda(valorString);
+  const handleValorChange = (index: number, campo: 'valorUnitario' | 'valorTotal', e: React.ChangeEvent<HTMLInputElement>) => {
+    let valorString = e.target.value;
+    
+    // Remove tudo exceto números
+    valorString = valorString.replace(/\D/g, '');
+    
+    // Converte para número dividindo por 100 (centavos)
+    const valor = parseFloat(valorString) / 100 || 0;
+    
     atualizarProduto(index, campo, valor);
   };
 
@@ -174,7 +180,7 @@ const PedidoFaturamento = () => {
       setPdfPreview(pdfData.pdfHTML);
       setShowPreview(true);
 
-      toast.success("Pedido criado com sucesso! E-mail enviado para Matheus e Fernando.");
+      toast.success("Pedido criado com sucesso!");
       
       // Reset form
       reset();
@@ -360,7 +366,7 @@ const PedidoFaturamento = () => {
                       <Label>Valor Unit. (R$) *</Label>
                       <Input
                         value={formatarMoeda(produto.valorUnitario)}
-                        onChange={(e) => handleValorChange(index, "valorUnitario", e.target.value)}
+                        onChange={(e) => handleValorChange(index, "valorUnitario", e)}
                         placeholder="0,00"
                       />
                     </div>
@@ -368,7 +374,7 @@ const PedidoFaturamento = () => {
                       <Label>Valor Total (R$)</Label>
                       <Input
                         value={formatarMoeda(produto.valorTotal)}
-                        onChange={(e) => handleValorChange(index, "valorTotal", e.target.value)}
+                        onChange={(e) => handleValorChange(index, "valorTotal", e)}
                         placeholder="0,00"
                       />
                     </div>
@@ -533,7 +539,7 @@ const PedidoFaturamento = () => {
           <DialogHeader>
             <DialogTitle>Pré-visualização do Pedido</DialogTitle>
             <DialogDescription>
-              Um e-mail foi enviado para Matheus e Fernando com o pedido em anexo.
+              O pedido foi gerado e enviado por email automaticamente.
             </DialogDescription>
           </DialogHeader>
           {pdfPreview && (
