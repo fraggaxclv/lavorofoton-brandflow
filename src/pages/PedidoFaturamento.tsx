@@ -11,6 +11,7 @@ import { Plus, Trash2, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import logoLinhaLavoro from "@/assets/logo-linha-lavoro.png";
 const MODELOS_VEICULOS = ["Foton Aumark S315", "Foton Aumark 715", "Foton Aumark 916", "Foton Aumark 1217", "Foton eWonder", "Foton Auman D 1722", "Foton eAumark 9T", "Foton eAumark 12T", "Foton eToano", "Foton eView", "Tunland V7", "Tunland V9"];
 const ESTADOS_BR = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
 interface Produto {
@@ -202,6 +203,7 @@ const PedidoFaturamento = () => {
   return <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-8 px-4">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-8">
+          <img src={logoLinhaLavoro} alt="Linha Lavoro Foton" className="h-16 mx-auto mb-6" />
           <h1 className="text-4xl font-bold text-primary mb-2">Pedido de Faturamento</h1>
           <p className="text-muted-foreground">Lavoro Foton - Sistema Interno</p>
         </div>
