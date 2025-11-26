@@ -24,7 +24,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import logoFotonLavoro from "@/assets/logo-foton-lavoro.png";
+import logoFotonLavoro from "@/assets/linhafotonlavoro.png";
 
 const DiagnosticoFrota = () => {
   const { toast } = useToast();
