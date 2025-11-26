@@ -55,6 +55,7 @@ const PedidoFaturamento = () => {
   const [loading, setLoading] = useState(false);
   const [pdfPreview, setPdfPreview] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
+  const [entradaValor, setEntradaValor] = useState(0);
 
   const faturamentoTipo = watch("faturamento_tipo");
   const financiamentoForma = watch("financiamento_forma");
@@ -98,6 +99,19 @@ const PedidoFaturamento = () => {
     const valor = parseFloat(valorString) / 100 || 0;
     
     atualizarProduto(index, campo, valor);
+  };
+
+  const handleEntradaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let valorString = e.target.value;
+    
+    // Remove tudo exceto números
+    valorString = valorString.replace(/\D/g, '');
+    
+    // Converte para número dividindo por 100 (centavos)
+    const valor = parseFloat(valorString) / 100 || 0;
+    
+    setEntradaValor(valor);
+    setValue("entrada", valor);
   };
 
   const calcularTotalProdutos = () => {
@@ -490,11 +504,9 @@ const PedidoFaturamento = () => {
                   <Label htmlFor="entrada">Entrada (R$)</Label>
                   <Input
                     id="entrada"
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    {...register("entrada")}
-                    placeholder="0.00"
+                    value={formatarMoeda(entradaValor)}
+                    onChange={handleEntradaChange}
+                    placeholder="0,00"
                   />
                 </div>
               </div>
