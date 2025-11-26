@@ -10,6 +10,8 @@ import Modelos from "./pages/Modelos";
 import Servicos from "./pages/Servicos";
 import Contato from "./pages/Contato";
 import DiagnosticoFrota from "./pages/DiagnosticoFrota";
+import PedidoFaturamento from "./pages/PedidoFaturamento";
+import ListaPedidos from "./pages/ListaPedidos";
 import S315 from "./pages/models/S315";
 import Foton7T from "./pages/models/Foton7T";
 import Foton9T from "./pages/models/Foton9T";
@@ -54,6 +56,8 @@ const App = () => (
           <Route path="/servicos" element={<Servicos />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/diagnostico-frota" element={<DiagnosticoFrota />} />
+          <Route path="/pedido-faturamento-lavoro" element={<PedidoFaturamento />} />
+          <Route path="/admin/pedidos-faturamento" element={<ListaPedidos />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
