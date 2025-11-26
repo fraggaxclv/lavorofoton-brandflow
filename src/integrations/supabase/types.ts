@@ -136,6 +136,96 @@ export type Database = {
         }
         Relationships: []
       }
+      pedidos_faturamento: {
+        Row: {
+          bairro: string | null
+          cep: string | null
+          cidade: string | null
+          cnpj: string
+          created_at: string
+          data: string
+          email_responsavel: string | null
+          entrada: number | null
+          estado: string | null
+          faturamento_tipo: string
+          financiamento_forma: string
+          financiamento_forma_outros: string | null
+          id: string
+          ie_rg: string | null
+          local: string | null
+          nome_cliente: string
+          nome_instituicao: string | null
+          nome_vendedor: string
+          numero: string | null
+          numero_pedido: string
+          observacoes: string | null
+          produtos: Json
+          responsavel_frota: string | null
+          rua: string | null
+          telefone_cliente: string | null
+          updated_at: string
+          valor_total_produtos: number
+        }
+        Insert: {
+          bairro?: string | null
+          cep?: string | null
+          cidade?: string | null
+          cnpj: string
+          created_at?: string
+          data: string
+          email_responsavel?: string | null
+          entrada?: number | null
+          estado?: string | null
+          faturamento_tipo: string
+          financiamento_forma: string
+          financiamento_forma_outros?: string | null
+          id?: string
+          ie_rg?: string | null
+          local?: string | null
+          nome_cliente: string
+          nome_instituicao?: string | null
+          nome_vendedor: string
+          numero?: string | null
+          numero_pedido: string
+          observacoes?: string | null
+          produtos: Json
+          responsavel_frota?: string | null
+          rua?: string | null
+          telefone_cliente?: string | null
+          updated_at?: string
+          valor_total_produtos: number
+        }
+        Update: {
+          bairro?: string | null
+          cep?: string | null
+          cidade?: string | null
+          cnpj?: string
+          created_at?: string
+          data?: string
+          email_responsavel?: string | null
+          entrada?: number | null
+          estado?: string | null
+          faturamento_tipo?: string
+          financiamento_forma?: string
+          financiamento_forma_outros?: string | null
+          id?: string
+          ie_rg?: string | null
+          local?: string | null
+          nome_cliente?: string
+          nome_instituicao?: string | null
+          nome_vendedor?: string
+          numero?: string | null
+          numero_pedido?: string
+          observacoes?: string | null
+          produtos?: Json
+          responsavel_frota?: string | null
+          rua?: string | null
+          telefone_cliente?: string | null
+          updated_at?: string
+          valor_total_produtos?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
