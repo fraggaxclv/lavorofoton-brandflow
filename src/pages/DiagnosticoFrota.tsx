@@ -219,6 +219,51 @@ const DiagnosticoFrota = () => {
         </div>
       </section>
 
+      {/* URGÊNCIA - Seção Movida */}
+      <section className="section-padding bg-muted/30">
+        <div className="container-lavoro">
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary/30 rounded-2xl p-6 md:p-8 space-y-6 shadow-xl">
+              <h3 className="text-2xl font-bold text-center">
+                Quanto antes você agir, mais cedo aparece a solução.
+              </h3>
+              
+              <div className="space-y-2">
+                <Label className="text-base font-semibold">Qual o seu nível de urgência para ampliar a frota?</Label>
+                <Select onValueChange={value => handleInputChange('urgencia', value)}>
+                  <SelectTrigger className="bg-background">
+                    <SelectValue placeholder="Selecione seu nível de urgência" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="alta">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <span className="font-semibold text-red-600">Alta</span>
+                        <span className="text-muted-foreground">(preciso imediatamente)</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="media">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <span className="font-semibold text-yellow-600">Média</span>
+                        <span className="text-muted-foreground">(30 dias)</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="baixa">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span className="font-semibold text-green-600">Baixa</span>
+                        <span className="text-muted-foreground">(planejamento +60D)</span>
+                      </div>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FORMULÁRIO */}
       <section id="formulario" className="section-padding">
         <div className="container-lavoro">
@@ -491,45 +536,6 @@ const DiagnosticoFrota = () => {
                 <div className="flex items-start gap-3 p-4 bg-muted/50 rounded-lg border border-border">
                   <Shield className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <p className="text-sm text-muted-foreground">Seus dados são tratados com estrita confidencialidade e criptografia avançada. </p>
-                </div>
-              </div>
-
-              {/* URGÊNCIA */}
-              <div className="bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary/30 rounded-2xl p-6 md:p-8 space-y-6 shadow-xl">
-                <h3 className="text-2xl font-bold text-center">
-                  Quanto antes você agir, mais cedo aparece a solução.
-                </h3>
-                
-                <div className="space-y-2">
-                  <Label className="text-base font-semibold">Qual o seu nível de urgência para ampliar a frota?</Label>
-                  <Select onValueChange={value => handleInputChange('urgencia', value)}>
-                    <SelectTrigger className="bg-background">
-                      <SelectValue placeholder="Selecione seu nível de urgência" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="alta">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                          <span className="font-semibold text-red-600">Alta</span>
-                          <span className="text-muted-foreground">(preciso imediatamente)</span>
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="media">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                          <span className="font-semibold text-yellow-600">Média</span>
-                          <span className="text-muted-foreground">(30 dias)</span>
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="baixa">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                          <span className="font-semibold text-green-600">Baixa</span>
-                          <span className="text-muted-foreground">(planejamento +60D)</span>
-                        </div>
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
               </div>
 
