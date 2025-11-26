@@ -80,18 +80,18 @@ function gerarPDFHTML(pedido: PedidoData): string {
         .header {
           text-align: center;
           margin-bottom: 40px;
-          padding: 30px 20px;
-          background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%);
-          border-radius: 8px;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          background: #ffffff;
+          border-bottom: 3px solid #0f2557;
         }
         .logo {
-          max-width: 350px;
+          max-width: 280px;
           height: auto;
-          margin-bottom: 20px;
+          margin: 0 auto 15px auto;
+          display: block;
         }
         .header h1 {
-          color: #ffffff;
+          color: #0f2557;
           margin: 15px 0 10px 0;
           font-size: 28px;
           font-weight: 700;
