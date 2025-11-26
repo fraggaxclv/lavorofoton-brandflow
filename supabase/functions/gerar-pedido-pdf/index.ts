@@ -225,7 +225,8 @@ function gerarPDFHTML(pedido: PedidoData): string {
         </div>
 
         <div class="info-grid" style="margin-bottom: 30px;">
-          <div class="info-item" style="grid-column: 1 / -1; text-align: center; padding: 15px; background-color: #f8f9fa; border-radius: 6px;">
+          <div class="info-item" style="grid-column: 1 / -1; text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 6px;">
+            <img src="${supabaseUrl}/storage/v1/object/public/assets/logo-linha-lavoro.png" alt="Linha Lavoro Foton" style="max-width: 200px; height: auto; margin: 0 auto 15px auto; display: block;" onerror="this.style.display='none';">
             <div style="font-weight: 700; color: #0f2557; font-size: 18px; margin-bottom: 8px;">Lavoro Foton</div>
             <div style="color: #1a1a1a; font-size: 14px; margin-bottom: 4px;">Razão Social: <strong>Lavoro Veiculos e Pecas Ltda</strong></div>
             <div style="color: #1a1a1a; font-size: 14px;">CNPJ: <strong>38.455.415/0001-22</strong></div>
