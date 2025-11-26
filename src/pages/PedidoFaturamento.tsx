@@ -490,9 +490,9 @@ const PedidoFaturamento = () => {
                 )}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t">
                 <div>
-                  <Label>Valor Total do Financiamento (R$)</Label>
+                  <Label>Valor Total dos Produtos (R$)</Label>
                   <Input
                     type="text"
                     value={`R$ ${calcularTotalProdutos().toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
@@ -507,6 +507,15 @@ const PedidoFaturamento = () => {
                     value={formatarMoeda(entradaValor)}
                     onChange={handleEntradaChange}
                     placeholder="0,00"
+                  />
+                </div>
+                <div>
+                  <Label>Saldo Financiado (R$)</Label>
+                  <Input
+                    type="text"
+                    value={`R$ ${(calcularTotalProdutos() - entradaValor).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
+                    disabled
+                    className="font-bold text-destructive"
                   />
                 </div>
               </div>
