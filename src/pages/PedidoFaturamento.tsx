@@ -100,6 +100,16 @@ const PedidoFaturamento = () => {
       return;
     }
 
+    if (!data.faturamento_tipo) {
+      toast.error("Selecione o tipo de faturamento (Estoque ou FADIRETO)");
+      return;
+    }
+
+    if (!data.financiamento_forma) {
+      toast.error("Selecione a forma de financiamento");
+      return;
+    }
+
     setLoading(true);
     try {
       const numeroPedido = gerarNumeroPedido();
@@ -391,50 +401,55 @@ const PedidoFaturamento = () => {
             <CardContent className="space-y-6">
               <div>
                 <Label>Faturamento *</Label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                <div className="space-y-3 mt-2">
                   <div>
                     <Input
                       placeholder="Nome da Instituição Financeira"
                       {...register("nome_instituicao")}
                     />
                   </div>
-                  <RadioGroup
-                    onValueChange={(value) => setValue("faturamento_tipo", value)}
-                    className="flex gap-4"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="Estoque" id="estoque" />
-                      <Label htmlFor="estoque">Estoque</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="FADIRETO" id="fadireto" />
-                      <Label htmlFor="fadireto">FADIRETO</Label>
-                    </div>
-                  </RadioGroup>
+                  <div>
+                    <Label className="text-sm text-muted-foreground mb-2 block">Tipo de Faturamento *</Label>
+                    <RadioGroup
+                      value={faturamentoTipo}
+                      onValueChange={(value) => setValue("faturamento_tipo", value)}
+                      className="flex gap-4"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="Estoque" id="estoque" />
+                        <Label htmlFor="estoque" className="cursor-pointer">Estoque</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="FADIRETO" id="fadireto" />
+                        <Label htmlFor="fadireto" className="cursor-pointer">FADIRETO</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
                 </div>
               </div>
 
               <div>
                 <Label>Financiamento / Forma de Pagamento *</Label>
                 <RadioGroup
+                  value={financiamentoForma}
                   onValueChange={(value) => setValue("financiamento_forma", value)}
                   className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2"
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="À vista" id="avista" />
-                    <Label htmlFor="avista">À vista</Label>
+                    <Label htmlFor="avista" className="cursor-pointer">À vista</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="Consórcio" id="consorcio" />
-                    <Label htmlFor="consorcio">Consórcio</Label>
+                    <Label htmlFor="consorcio" className="cursor-pointer">Consórcio</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="CDC" id="cdc" />
-                    <Label htmlFor="cdc">CDC</Label>
+                    <Label htmlFor="cdc" className="cursor-pointer">CDC</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="Outros" id="outros" />
-                    <Label htmlFor="outros">Outros</Label>
+                    <Label htmlFor="outros" className="cursor-pointer">Outros</Label>
                   </div>
                 </RadioGroup>
                 {financiamentoForma === "Outros" && (
