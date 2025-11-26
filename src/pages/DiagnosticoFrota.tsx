@@ -191,9 +191,7 @@ const DiagnosticoFrota = () => {
                 <span className="font-semibold text-foreground"> a equipe da Lavoro analisa sua empresa, seu faturamento, sua frota atual e sua capacidade de crédito.</span>
               </p>
               
-              <p className="text-lg md:text-xl leading-relaxed text-primary font-semibold">
-                Quando você chega para conversar, já existe uma proposta pensada exclusivamente para você.
-              </p>
+              <p className="text-lg md:text-xl leading-relaxed text-primary font-semibold">Desta forma você consegue tomar decisões melhores para seu negócio. </p>
             </div>
           </div>
         </div>
