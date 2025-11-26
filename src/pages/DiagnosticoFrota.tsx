@@ -590,9 +590,27 @@ const DiagnosticoFrota = () => {
                       <SelectValue placeholder="Selecione seu nível de urgência" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="alta">Alta (preciso imediatamente)</SelectItem>
-                      <SelectItem value="media">Média (30 dias)</SelectItem>
-                      <SelectItem value="baixa">Baixa (planejamento 2025)</SelectItem>
+                      <SelectItem value="alta">
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                          <span className="font-semibold text-red-600">Alta</span>
+                          <span className="text-muted-foreground">(preciso imediatamente)</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="media">
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                          <span className="font-semibold text-yellow-600">Média</span>
+                          <span className="text-muted-foreground">(30 dias)</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="baixa">
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                          <span className="font-semibold text-green-600">Baixa</span>
+                          <span className="text-muted-foreground">(planejamento 2025)</span>
+                        </div>
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
