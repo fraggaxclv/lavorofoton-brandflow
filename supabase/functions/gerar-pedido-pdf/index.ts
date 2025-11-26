@@ -311,7 +311,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
               <div class="info-value">${pedido.financiamento_forma}${pedido.financiamento_forma_outros ? ` (${pedido.financiamento_forma_outros})` : ''}</div>
             </div>
             <div class="info-item">
-              <div class="info-label">Valor Total do Financiamento:</div>
+              <div class="info-label">Valor Total dos Produtos:</div>
               <div class="info-value" style="font-weight: 700; color: #0f2557;">R$ ${pedido.valor_total_produtos.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
             </div>
             <div class="info-item">
@@ -319,7 +319,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
               <div class="info-value" style="font-weight: 700; color: #16a34a;">R$ ${(pedido.entrada || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
             </div>
             <div class="info-item">
-              <div class="info-label">Saldo Financiado:</div>
+              <div class="info-label">Saldo Financiado (Total - Entrada):</div>
               <div class="info-value" style="font-weight: 700; color: #dc2626;">R$ ${saldoFinanciado.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
             </div>
           </div>
