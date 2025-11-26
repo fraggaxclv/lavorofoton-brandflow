@@ -105,9 +105,7 @@ const DiagnosticoFrota = () => {
             
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in" style={{
             animationDelay: '0.3s'
-          }}>
-              Receba uma análise completa da sua frota, das suas rotas e do seu potencial de crédito — antes mesmo de conversarmos.
-            </p>
+          }}>Deixe a Lavoro de ajudar. Sem compromisso — antes mesmo de conversarmos.</p>
             
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-8 max-w-2xl mx-auto text-left animate-fade-in" style={{
             animationDelay: '0.4s'
@@ -166,11 +164,7 @@ const DiagnosticoFrota = () => {
               
               <div className="relative">
                 <div className="aspect-square rounded-2xl overflow-hidden">
-                  <img 
-                    src={diagnosticoTruck} 
-                    alt="Diagnóstico de Frota Foton Lavoro" 
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={diagnosticoTruck} alt="Diagnóstico de Frota Foton Lavoro" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
