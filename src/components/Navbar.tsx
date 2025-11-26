@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-foton-lavoro-transparente.png";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isAdmin, signOut } = useAuth();
+
   return <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50">
       <div className="container-lavoro">
         <div className="flex items-center justify-between h-16">
@@ -31,9 +35,25 @@ const Navbar = () => {
             <Link to="/diagnostico-frota" className="text-foreground hover:text-primary transition-colors font-medium">
               Diagnóstico de Frota
             </Link>
+            {isAdmin && (
+              <Link to="/admin/pedidos-faturamento" className="text-foreground hover:text-primary transition-colors font-medium">
+                Pedidos
+              </Link>
+            )}
             <Link to="/contato" className="bg-primary text-primary-foreground px-6 py-2 rounded font-semibold hover:bg-primary-dark transition-all">
               Contato
             </Link>
+            {isAdmin && (
+              <Button 
+                onClick={signOut} 
+                variant="outline" 
+                size="sm"
+                className="flex items-center gap-2"
+              >
+                <LogOut className="h-4 w-4" />
+                Sair
+              </Button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -62,9 +82,27 @@ const Navbar = () => {
             <Link to="/diagnostico-frota" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsOpen(false)}>
               Diagnóstico de Frota
             </Link>
+            {isAdmin && (
+              <Link to="/admin/pedidos-faturamento" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsOpen(false)}>
+                Pedidos
+              </Link>
+            )}
             <Link to="/contato" className="block bg-primary text-primary-foreground px-6 py-2 rounded font-semibold text-center" onClick={() => setIsOpen(false)}>
               Contato
             </Link>
+            {isAdmin && (
+              <Button 
+                onClick={() => {
+                  signOut();
+                  setIsOpen(false);
+                }} 
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2"
+              >
+                <LogOut className="h-4 w-4" />
+                Sair
+              </Button>
+            )}
           </div>}
       </div>
     </nav>;
