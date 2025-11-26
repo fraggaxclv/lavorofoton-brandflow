@@ -293,7 +293,7 @@ const DiagnosticoFrota = () => {
                   </div>
                   
                   <div className="space-y-2 md:col-span-2">
-                    <Label htmlFor="nomeResponsavel">Nome Completo do Responsável *</Label>
+                    <Label htmlFor="nomeResponsavel">Nome do Responsável *</Label>
                     <Input 
                       id="nomeResponsavel"
                       placeholder="Nome completo"
