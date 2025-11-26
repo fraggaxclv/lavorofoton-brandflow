@@ -224,6 +224,14 @@ function gerarPDFHTML(pedido: PedidoData): string {
           <div class="pedido-numero">Nº ${pedido.numero_pedido}</div>
         </div>
 
+        <div class="info-grid" style="margin-bottom: 30px;">
+          <div class="info-item" style="grid-column: 1 / -1; text-align: center; padding: 15px; background-color: #f8f9fa; border-radius: 6px;">
+            <div style="font-weight: 700; color: #0f2557; font-size: 18px; margin-bottom: 8px;">Lavoro Foton</div>
+            <div style="color: #1a1a1a; font-size: 14px; margin-bottom: 4px;">Razão Social: <strong>Lavoro Veiculos e Pecas Ltda</strong></div>
+            <div style="color: #1a1a1a; font-size: 14px;">CNPJ: <strong>38.455.415/0001-22</strong></div>
+          </div>
+        </div>
+
         <div class="info-grid">
           <div class="info-item">
             <div class="info-label">Data:</div>
