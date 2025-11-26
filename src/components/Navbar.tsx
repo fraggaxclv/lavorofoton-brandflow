@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import logo from "@/assets/logo-foton-lavoro.png";
+import logo from "@/assets/logo-foton-lavoro-transparente.png";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50">
