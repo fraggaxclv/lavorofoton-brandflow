@@ -14,7 +14,128 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      diagnosticos_arquivos: {
+        Row: {
+          arquivo_url: string
+          created_at: string
+          diagnostico_id: string
+          id: string
+          nome_arquivo: string
+          tipo_arquivo: string
+        }
+        Insert: {
+          arquivo_url: string
+          created_at?: string
+          diagnostico_id: string
+          id?: string
+          nome_arquivo: string
+          tipo_arquivo: string
+        }
+        Update: {
+          arquivo_url?: string
+          created_at?: string
+          diagnostico_id?: string
+          id?: string
+          nome_arquivo?: string
+          tipo_arquivo?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "diagnosticos_arquivos_diagnostico_id_fkey"
+            columns: ["diagnostico_id"]
+            isOneToOne: false
+            referencedRelation: "diagnosticos_frota"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      diagnosticos_frota: {
+        Row: {
+          bancos_usados: string | null
+          cnpj: string
+          created_at: string
+          email_responsavel: string
+          estado: string
+          faturamento: string | null
+          financiamentos_ativos: string | null
+          id: string
+          idade_media: string | null
+          km_mes: string | null
+          marcas_atuais: string | null
+          margem: string | null
+          modelos_desejados: string | null
+          nome_responsavel: string
+          operacao: string | null
+          prazo: string | null
+          qtd_desejada: string | null
+          qtd_veiculos: string | null
+          razao_social: string
+          segmento: string
+          telefone: string | null
+          telefone_whatsapp: string
+          tipos_veiculos: string | null
+          updated_at: string
+          urgencia: string | null
+          uso_operacional: string | null
+        }
+        Insert: {
+          bancos_usados?: string | null
+          cnpj: string
+          created_at?: string
+          email_responsavel: string
+          estado: string
+          faturamento?: string | null
+          financiamentos_ativos?: string | null
+          id?: string
+          idade_media?: string | null
+          km_mes?: string | null
+          marcas_atuais?: string | null
+          margem?: string | null
+          modelos_desejados?: string | null
+          nome_responsavel: string
+          operacao?: string | null
+          prazo?: string | null
+          qtd_desejada?: string | null
+          qtd_veiculos?: string | null
+          razao_social: string
+          segmento: string
+          telefone?: string | null
+          telefone_whatsapp: string
+          tipos_veiculos?: string | null
+          updated_at?: string
+          urgencia?: string | null
+          uso_operacional?: string | null
+        }
+        Update: {
+          bancos_usados?: string | null
+          cnpj?: string
+          created_at?: string
+          email_responsavel?: string
+          estado?: string
+          faturamento?: string | null
+          financiamentos_ativos?: string | null
+          id?: string
+          idade_media?: string | null
+          km_mes?: string | null
+          marcas_atuais?: string | null
+          margem?: string | null
+          modelos_desejados?: string | null
+          nome_responsavel?: string
+          operacao?: string | null
+          prazo?: string | null
+          qtd_desejada?: string | null
+          qtd_veiculos?: string | null
+          razao_social?: string
+          segmento?: string
+          telefone?: string | null
+          telefone_whatsapp?: string
+          tipos_veiculos?: string | null
+          updated_at?: string
+          urgencia?: string | null
+          uso_operacional?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
