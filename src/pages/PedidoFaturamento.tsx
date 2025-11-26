@@ -510,7 +510,7 @@ const PedidoFaturamento = () => {
                   />
                 </div>
                 <div>
-                  <Label>Saldo Financiado (R$)</Label>
+                  <Label>Valor Financiado (R$)</Label>
                   <Input
                     type="text"
                     value={`R$ ${(calcularTotalProdutos() - entradaValor).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}

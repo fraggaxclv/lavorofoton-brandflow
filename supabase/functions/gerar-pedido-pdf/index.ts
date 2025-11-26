@@ -319,7 +319,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
               <div class="info-value" style="font-weight: 700; color: #16a34a;">R$ ${(pedido.entrada || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
             </div>
             <div class="info-item">
-              <div class="info-label">Saldo Financiado (Total - Entrada):</div>
+              <div class="info-label">Valor Financiado (Total - Entrada):</div>
               <div class="info-value" style="font-weight: 700; color: #dc2626;">R$ ${saldoFinanciado.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
             </div>
           </div>
