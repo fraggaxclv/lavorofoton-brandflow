@@ -528,7 +528,7 @@ const DiagnosticoFrota = () => {
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 rounded-full bg-green-500"></div>
                           <span className="font-semibold text-green-600">Baixa</span>
-                          <span className="text-muted-foreground">(planejamento 2025)</span>
+                          <span className="text-muted-foreground">(planejamento +60D)</span>
                         </div>
                       </SelectItem>
                     </SelectContent>
