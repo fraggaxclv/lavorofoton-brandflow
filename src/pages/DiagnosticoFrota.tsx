@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { TrendingUp, FileText, Target, CheckCircle2, Shield, Upload, Building2, Truck, DollarSign, ArrowRight, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import logoFotonLavoro from "@/assets/linhafotonlavoro.png";
+import diagnosticoTruck from "@/assets/diagnostico-frota-truck.png";
 const DiagnosticoFrota = () => {
   const {
     toast
@@ -164,8 +165,12 @@ const DiagnosticoFrota = () => {
               </div>
               
               <div className="relative">
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/20 flex items-center justify-center">
-                  <Truck className="w-32 h-32 text-primary/40" />
+                <div className="aspect-square rounded-2xl overflow-hidden">
+                  <img 
+                    src={diagnosticoTruck} 
+                    alt="Diagnóstico de Frota Foton Lavoro" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>
