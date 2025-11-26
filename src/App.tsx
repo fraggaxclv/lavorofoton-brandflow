@@ -9,6 +9,7 @@ import SobreFoton from "./pages/SobreFoton";
 import Modelos from "./pages/Modelos";
 import Servicos from "./pages/Servicos";
 import Contato from "./pages/Contato";
+import DiagnosticoFrota from "./pages/DiagnosticoFrota";
 import S315 from "./pages/models/S315";
 import Foton7T from "./pages/models/Foton7T";
 import Foton9T from "./pages/models/Foton9T";
@@ -52,6 +53,7 @@ const App = () => (
           <Route path="/modelos/eaumark-12t" element={<EAumark12T />} />
           <Route path="/servicos" element={<Servicos />} />
           <Route path="/contato" element={<Contato />} />
+          <Route path="/diagnostico-frota" element={<DiagnosticoFrota />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

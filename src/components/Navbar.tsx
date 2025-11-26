@@ -28,6 +28,9 @@ const Navbar = () => {
             <Link to="/servicos" className="text-foreground hover:text-primary transition-colors font-medium">
               Serviços
             </Link>
+            <Link to="/diagnostico-frota" className="text-foreground hover:text-primary transition-colors font-medium">
+              Diagnóstico de Frota
+            </Link>
             <Link to="/contato" className="bg-primary text-primary-foreground px-6 py-2 rounded font-semibold hover:bg-primary-dark transition-all">
               Contato
             </Link>
@@ -55,6 +58,9 @@ const Navbar = () => {
             </Link>
             <Link to="/servicos" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsOpen(false)}>
               Serviços
+            </Link>
+            <Link to="/diagnostico-frota" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsOpen(false)}>
+              Diagnóstico de Frota
             </Link>
             <Link to="/contato" className="block bg-primary text-primary-foreground px-6 py-2 rounded font-semibold text-center" onClick={() => setIsOpen(false)}>
               Contato
