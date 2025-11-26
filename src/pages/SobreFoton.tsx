@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MessageCircle, TrendingUp, Globe, Users, Zap, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroTruck from "@/assets/foton-lineup-hero.png";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
 import cumminsLogo from "@/assets/cummins-logo-full.png";
@@ -376,7 +377,7 @@ const SobreFoton = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-lg px-8 py-6" asChild>
-              <a href="/modelos">Ver Linha de Caminhões</a>
+              <Link to="/modelos">Ver Linha de Caminhões</Link>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
               <a href="https://wa.me/553121164735?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Foton." target="_blank" rel="noopener noreferrer">
