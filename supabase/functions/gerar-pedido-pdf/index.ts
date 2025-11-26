@@ -44,13 +44,13 @@ interface PedidoData {
 }
 
 function gerarPDFHTML(pedido: PedidoData): string {
-  const produtosHTML = pedido.produtos.map(p => `
-    <tr>
-      <td style="border: 1px solid #ddd; padding: 8px;">${p.produto}</td>
-      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">${p.quantidade}</td>
-      <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">${p.anoModelo}</td>
-      <td style="border: 1px solid #ddd; padding: 8px; text-align: right;">R$ ${p.valorUnitario.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
-      <td style="border: 1px solid #ddd; padding: 8px; text-align: right;">R$ ${p.valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+  const produtosHTML = pedido.produtos.map((p, index) => `
+    <tr style="background-color: ${index % 2 === 0 ? '#f8f9fa' : '#ffffff'};">
+      <td style="padding: 12px 8px; border-bottom: 1px solid #e9ecef;">${p.produto}</td>
+      <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.quantidade}</td>
+      <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.anoModelo}</td>
+      <td style="padding: 12px 8px; text-align: right; border-bottom: 1px solid #e9ecef;">R$ ${p.valorUnitario.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+      <td style="padding: 12px 8px; text-align: right; font-weight: 600; border-bottom: 1px solid #e9ecef;">R$ ${p.valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
     </tr>
   `).join('');
 
@@ -62,197 +62,297 @@ function gerarPDFHTML(pedido: PedidoData): string {
     <head>
       <meta charset="UTF-8">
       <style>
+        @page {
+          margin: 20mm;
+        }
         body {
-          font-family: Arial, sans-serif;
-          padding: 40px;
-          color: #333;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          padding: 0;
+          margin: 0;
+          color: #1a1a1a;
+          line-height: 1.6;
+        }
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
         }
         .header {
           text-align: center;
-          margin-bottom: 30px;
-          border-bottom: 3px solid #1e40af;
-          padding-bottom: 20px;
+          margin-bottom: 40px;
+          padding: 30px 20px;
+          background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%);
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+          max-width: 300px;
+          height: auto;
+          margin-bottom: 20px;
+          filter: brightness(0) invert(1);
         }
         .header h1 {
-          color: #1e40af;
-          margin: 10px 0;
+          color: #ffffff;
+          margin: 15px 0 10px 0;
+          font-size: 28px;
+          font-weight: 700;
+          letter-spacing: 1px;
+        }
+        .pedido-numero {
+          background-color: #ef4444;
+          color: white;
+          padding: 8px 20px;
+          border-radius: 20px;
+          display: inline-block;
+          font-size: 16px;
+          font-weight: 600;
+          margin-top: 10px;
         }
         .info-section {
-          margin: 20px 0;
+          margin: 25px 0;
+          page-break-inside: avoid;
         }
         .info-section h2 {
-          background-color: #1e40af;
+          background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%);
           color: white;
-          padding: 10px;
-          margin: 20px 0 10px 0;
+          padding: 12px 15px;
+          margin: 20px 0 15px 0;
+          border-radius: 6px;
+          font-size: 16px;
+          font-weight: 600;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .info-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 10px;
-          margin: 10px 0;
+          gap: 15px;
+          margin: 15px 0;
+          background-color: #f8f9fa;
+          padding: 20px;
+          border-radius: 6px;
         }
         .info-item {
-          padding: 5px;
+          padding: 8px;
         }
         .info-label {
-          font-weight: bold;
-          color: #666;
+          font-weight: 600;
+          color: #0f2557;
+          margin-bottom: 4px;
+          font-size: 13px;
+        }
+        .info-value {
+          color: #1a1a1a;
+          font-size: 14px;
         }
         table {
           width: 100%;
           border-collapse: collapse;
           margin: 15px 0;
+          background-color: white;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+          border-radius: 6px;
+          overflow: hidden;
         }
         th {
-          background-color: #1e40af;
+          background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%);
           color: white;
-          padding: 10px;
+          padding: 14px 10px;
           text-align: left;
+          font-weight: 600;
+          font-size: 14px;
         }
         td {
-          padding: 8px;
-          border: 1px solid #ddd;
+          padding: 12px 10px;
+          font-size: 14px;
         }
         .total-box {
-          background-color: #f0f9ff;
-          border: 2px solid #1e40af;
-          padding: 15px;
-          margin: 20px 0;
+          background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+          border-left: 4px solid #f59e0b;
+          padding: 20px;
+          margin: 25px 0;
           text-align: right;
+          border-radius: 6px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .total-box .label {
+          color: #92400e;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 8px;
         }
         .total-box .value {
-          font-size: 24px;
-          font-weight: bold;
-          color: #1e40af;
+          font-size: 32px;
+          font-weight: 700;
+          color: #92400e;
         }
         .signatures {
-          margin-top: 60px;
+          margin-top: 80px;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           gap: 40px;
+          page-break-inside: avoid;
         }
         .signature-line {
-          border-top: 1px solid #333;
-          padding-top: 5px;
+          border-top: 2px solid #0f2557;
+          padding-top: 8px;
           text-align: center;
+          font-weight: 600;
+          color: #0f2557;
+          font-size: 13px;
+        }
+        .footer {
+          margin-top: 40px;
+          padding-top: 20px;
+          border-top: 2px solid #e5e7eb;
+          text-align: center;
+          color: #6b7280;
+          font-size: 12px;
+        }
+        .observacoes-box {
+          background-color: #f1f5f9;
+          border-left: 4px solid #1e40af;
+          padding: 15px;
+          border-radius: 4px;
+          margin: 15px 0;
         }
       </style>
     </head>
     <body>
-      <div class="header">
-        <h1>PEDIDO DE FATURAMENTO</h1>
-        <h3>LAVORO FOTON</h3>
-        <p style="font-size: 18px; font-weight: bold;">Nº ${pedido.numero_pedido}</p>
-      </div>
+      <div class="container">
+        <div class="header">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 100" class="logo">
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="48" font-weight="bold" font-family="Arial, sans-serif">
+              FOTON LAVORO
+            </text>
+          </svg>
+          <h1>PEDIDO DE FATURAMENTO</h1>
+          <div class="pedido-numero">Nº ${pedido.numero_pedido}</div>
+        </div>
 
-      <div class="info-grid">
-        <div class="info-item">
-          <span class="info-label">Data:</span> ${new Date(pedido.data).toLocaleDateString('pt-BR')}
-        </div>
-        <div class="info-item">
-          <span class="info-label">Local:</span> ${pedido.local || '-'}
-        </div>
-        <div class="info-item">
-          <span class="info-label">Vendedor:</span> ${pedido.nome_vendedor}
-        </div>
-      </div>
-
-      <div class="info-section">
-        <h2>DADOS DO CLIENTE</h2>
         <div class="info-grid">
           <div class="info-item">
-            <span class="info-label">Nome/Razão Social:</span> ${pedido.nome_cliente}
+            <div class="info-label">Data:</div>
+            <div class="info-value">${new Date(pedido.data).toLocaleDateString('pt-BR')}</div>
           </div>
           <div class="info-item">
-            <span class="info-label">CNPJ/CPF:</span> ${pedido.cnpj}
+            <div class="info-label">Local:</div>
+            <div class="info-value">${pedido.local || '-'}</div>
           </div>
           <div class="info-item">
-            <span class="info-label">IE/RG:</span> ${pedido.ie_rg || '-'}
-          </div>
-          <div class="info-item">
-            <span class="info-label">Telefone:</span> ${pedido.telefone_cliente || '-'}
+            <div class="info-label">Vendedor:</div>
+            <div class="info-value">${pedido.nome_vendedor}</div>
           </div>
         </div>
-        <div class="info-item" style="margin: 10px 0;">
-          <span class="info-label">Endereço:</span> ${pedido.rua || ''} ${pedido.numero || ''}, ${pedido.bairro || ''} - ${pedido.cidade || ''} / ${pedido.estado || ''} - CEP: ${pedido.cep || '-'}
-        </div>
-        <div class="info-grid">
-          <div class="info-item">
-            <span class="info-label">Responsável pela Frota:</span> ${pedido.responsavel_frota || '-'}
-          </div>
-          <div class="info-item">
-            <span class="info-label">E-mail do Responsável:</span> ${pedido.email_responsavel || '-'}
-          </div>
-        </div>
-      </div>
 
-      <div class="info-section">
-        <h2>DESCRIÇÃO DOS PRODUTOS</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Produto</th>
-              <th style="text-align: center;">Qtd</th>
-              <th style="text-align: center;">Ano/Modelo</th>
-              <th style="text-align: right;">Valor Unit.</th>
-              <th style="text-align: right;">Valor Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${produtosHTML}
-          </tbody>
-        </table>
-        <div class="total-box">
-          <div>VALOR TOTAL DOS PRODUTOS</div>
-          <div class="value">R$ ${pedido.valor_total_produtos.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+        <div class="info-section">
+          <h2>📋 DADOS DO CLIENTE</h2>
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-label">Nome/Razão Social:</div>
+              <div class="info-value">${pedido.nome_cliente}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">CNPJ/CPF:</div>
+              <div class="info-value">${pedido.cnpj}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">IE/RG:</div>
+              <div class="info-value">${pedido.ie_rg || '-'}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Telefone:</div>
+              <div class="info-value">${pedido.telefone_cliente || '-'}</div>
+            </div>
+            <div class="info-item" style="grid-column: 1 / -1;">
+              <div class="info-label">Endereço:</div>
+              <div class="info-value">${pedido.rua || ''} ${pedido.numero || ''}, ${pedido.bairro || ''} - ${pedido.cidade || ''} / ${pedido.estado || ''} - CEP: ${pedido.cep || '-'}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Responsável pela Frota:</div>
+              <div class="info-value">${pedido.responsavel_frota || '-'}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">E-mail do Responsável:</div>
+              <div class="info-value">${pedido.email_responsavel || '-'}</div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="info-section">
-        <h2>CONDIÇÕES COMERCIAIS & FINANCEIRAS</h2>
-        <div class="info-grid">
-          <div class="info-item">
-            <span class="info-label">Tipo de Faturamento:</span> ${pedido.faturamento_tipo}
-          </div>
-          <div class="info-item">
-            <span class="info-label">Instituição Financeira:</span> ${pedido.nome_instituicao || '-'}
-          </div>
-          <div class="info-item">
-            <span class="info-label">Forma de Pagamento:</span> ${pedido.financiamento_forma}${pedido.financiamento_forma_outros ? ` (${pedido.financiamento_forma_outros})` : ''}
-          </div>
-        </div>
-        <div class="info-grid" style="margin-top: 15px;">
-          <div class="info-item">
-            <span class="info-label">Valor Total do Financiamento:</span> R$ ${pedido.valor_total_produtos.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-          </div>
-          <div class="info-item">
-            <span class="info-label">Entrada:</span> R$ ${(pedido.entrada || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-          </div>
-          <div class="info-item">
-            <span class="info-label">Saldo Financiado:</span> R$ ${saldoFinanciado.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+        <div class="info-section">
+          <h2>🚛 DESCRIÇÃO DOS PRODUTOS</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th style="text-align: center;">Qtd</th>
+                <th style="text-align: center;">Ano/Modelo</th>
+                <th style="text-align: right;">Valor Unit.</th>
+                <th style="text-align: right;">Valor Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${produtosHTML}
+            </tbody>
+          </table>
+          <div class="total-box">
+            <div class="label">VALOR TOTAL DOS PRODUTOS</div>
+            <div class="value">R$ ${pedido.valor_total_produtos.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
           </div>
         </div>
-      </div>
 
-      ${pedido.observacoes ? `
-      <div class="info-section">
-        <h2>OBSERVAÇÕES</h2>
-        <div style="padding: 10px; background-color: #f9f9f9; border-left: 3px solid #1e40af;">
-          ${pedido.observacoes}
+        <div class="info-section">
+          <h2>💰 CONDIÇÕES COMERCIAIS & FINANCEIRAS</h2>
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-label">Tipo de Faturamento:</div>
+              <div class="info-value">${pedido.faturamento_tipo}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Instituição Financeira:</div>
+              <div class="info-value">${pedido.nome_instituicao || '-'}</div>
+            </div>
+            <div class="info-item" style="grid-column: 1 / -1;">
+              <div class="info-label">Forma de Pagamento:</div>
+              <div class="info-value">${pedido.financiamento_forma}${pedido.financiamento_forma_outros ? ` (${pedido.financiamento_forma_outros})` : ''}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Valor Total do Financiamento:</div>
+              <div class="info-value" style="font-weight: 700; color: #0f2557;">R$ ${pedido.valor_total_produtos.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Entrada:</div>
+              <div class="info-value" style="font-weight: 700; color: #16a34a;">R$ ${(pedido.entrada || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Saldo Financiado:</div>
+              <div class="info-value" style="font-weight: 700; color: #dc2626;">R$ ${saldoFinanciado.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+            </div>
+          </div>
         </div>
-      </div>
-      ` : ''}
 
-      <div class="signatures">
-        <div class="signature-line">
-          <div>Assinatura do Cliente</div>
+        ${pedido.observacoes ? `
+        <div class="info-section">
+          <h2>📝 OBSERVAÇÕES</h2>
+          <div class="observacoes-box">
+            ${pedido.observacoes}
+          </div>
         </div>
-        <div class="signature-line">
-          <div>Assinatura do Vendedor</div>
+        ` : ''}
+
+        <div class="signatures">
+          <div class="signature-line">
+            Assinatura do Cliente
+          </div>
+          <div class="signature-line">
+            Assinatura do Vendedor
+          </div>
+          <div class="signature-line">
+            Assinatura do Gerente
+          </div>
         </div>
-        <div class="signature-line">
-          <div>Assinatura do Gerente</div>
+
+        <div class="footer">
+          <p><strong>FOTON LAVORO</strong></p>
+          <p>Pedido gerado automaticamente em ${new Date().toLocaleDateString('pt-BR')} às ${new Date().toLocaleTimeString('pt-BR')}</p>
         </div>
       </div>
     </body>
