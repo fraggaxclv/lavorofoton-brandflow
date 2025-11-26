@@ -24,6 +24,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import logoFotonLavoro from "@/assets/logo-foton-lavoro.png";
 
 const DiagnosticoFrota = () => {
   const { toast } = useToast();
@@ -103,20 +104,25 @@ const DiagnosticoFrota = () => {
         
         <div className="container-lavoro relative z-10 py-20 md:py-32">
           <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 animate-fade-in">
+            {/* Logo Lavoro Foton */}
+            <div className="flex justify-center mb-4 animate-fade-in">
+              <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-14 md:h-20 w-auto" />
+            </div>
+            
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
               <Sparkles className="w-4 h-4" />
               <span className="text-sm font-medium">Análise Estratégica Gratuita</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in" style={{ animationDelay: '0.2s' }}>
               Todo grande crescimento começa com uma decisão inteligente.
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
               Receba uma análise completa da sua frota, das suas rotas e do seu potencial de crédito — antes mesmo de conversarmos.
             </p>
             
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-8 max-w-2xl mx-auto text-left animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-8 max-w-2xl mx-auto text-left animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <p className="text-white/90 leading-relaxed space-y-2">
                 <span className="block">Empresas que expandem rápido não improvisam.</span>
                 <span className="block">Elas se preparam, analisam e tomam decisões com dados.</span>
@@ -128,7 +134,7 @@ const DiagnosticoFrota = () => {
               size="lg" 
               onClick={scrollToForm}
               className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto shadow-2xl animate-fade-in group"
-              style={{ animationDelay: '0.4s' }}
+              style={{ animationDelay: '0.5s' }}
             >
               Iniciar Diagnóstico Estratégico
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
