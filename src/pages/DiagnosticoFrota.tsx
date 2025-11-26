@@ -105,7 +105,7 @@ const DiagnosticoFrota = () => {
             
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in" style={{
             animationDelay: '0.3s'
-          }}>Deixe a Lavoro de ajudar. Sem compromisso — antes mesmo de conversarmos.</p>
+          }}>Deixe a Lavoro te ajudar. Análisamos sua frota e seu crédito para sugerirmos produtos que cabem na sua operação</p>
             
             <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-8 max-w-2xl mx-auto text-left animate-fade-in" style={{
             animationDelay: '0.4s'
