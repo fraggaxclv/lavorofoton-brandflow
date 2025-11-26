@@ -81,6 +81,19 @@ const PedidoFaturamento = () => {
     setProdutos(novosProdutos);
   };
 
+  const formatarMoeda = (valor: number): string => {
+    return valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+
+  const parseMoeda = (valor: string): number => {
+    return parseFloat(valor.replace(/\./g, '').replace(',', '.')) || 0;
+  };
+
+  const handleValorChange = (index: number, campo: 'valorUnitario' | 'valorTotal', valorString: string) => {
+    const valor = parseMoeda(valorString);
+    atualizarProduto(index, campo, valor);
+  };
+
   const calcularTotalProdutos = () => {
     return produtos.reduce((total, p) => total + p.valorTotal, 0);
   };
@@ -346,21 +359,17 @@ const PedidoFaturamento = () => {
                     <div className="md:col-span-2">
                       <Label>Valor Unit. (R$) *</Label>
                       <Input
-                        type="number"
-                        step="0.01"
-                        min="0"
-                        value={produto.valorUnitario}
-                        onChange={(e) => atualizarProduto(index, "valorUnitario", parseFloat(e.target.value) || 0)}
+                        value={formatarMoeda(produto.valorUnitario)}
+                        onChange={(e) => handleValorChange(index, "valorUnitario", e.target.value)}
+                        placeholder="0,00"
                       />
                     </div>
                     <div className="md:col-span-2">
                       <Label>Valor Total (R$)</Label>
                       <Input
-                        type="number"
-                        step="0.01"
-                        min="0"
-                        value={produto.valorTotal}
-                        onChange={(e) => atualizarProduto(index, "valorTotal", parseFloat(e.target.value) || 0)}
+                        value={formatarMoeda(produto.valorTotal)}
+                        onChange={(e) => handleValorChange(index, "valorTotal", e.target.value)}
+                        placeholder="0,00"
                       />
                     </div>
                   </div>
