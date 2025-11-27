@@ -28,6 +28,12 @@ import atendimentoTecnicoIcon from "@/assets/atendimento-tecnico-icon.png";
 import caminhõesRobustosIcon from "@/assets/caminhoes-robustos-icon.png";
 import atendimentoMineiroIcon from "@/assets/atendimento-mineiro-icon.png";
 import atendimentoProximoMineiroIcon from "@/assets/atendimento-proximo-mineiro-icon.png";
+import valadaresDieselConcessionaria from "@/assets/valadares-diesel-concessionaria.jpg";
+import valadaresDieselNoturna from "@/assets/valadares-diesel-noturna.jpeg";
+import cardieselConcessionaria from "@/assets/cardiesel-concessionaria.jpeg";
+import feiraMercedesShowroom from "@/assets/feira-mercedes-showroom.jpg";
+import fabricaMercedesVisita from "@/assets/fabrica-mercedes-visita.jpg";
+import mercedesCaminhaoAzul from "@/assets/mercedes-caminhao-azul.jpg";
 const QuemSomos = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -43,6 +49,30 @@ const QuemSomos = () => {
     src: casteloFragaMercedes,
     alt: "Castelo Fraga em convenção Mercedes-Benz",
     title: "Castelo Fraga - Mercedes-Benz"
+  }, {
+    src: valadaresDieselConcessionaria,
+    alt: "Concessionária Valadares Diesel Mercedes-Benz",
+    title: "Valadares Diesel"
+  }, {
+    src: valadaresDieselNoturna,
+    alt: "Valadares Diesel iluminada à noite",
+    title: "Valadares Diesel - Vista Noturna"
+  }, {
+    src: cardieselConcessionaria,
+    alt: "Concessionária Cardiesel Mercedes-Benz",
+    title: "Cardiesel"
+  }, {
+    src: feiraMercedesShowroom,
+    alt: "Castelo Fraga em feira Mercedes-Benz",
+    title: "Feira Mercedes-Benz"
+  }, {
+    src: fabricaMercedesVisita,
+    alt: "Visita à fábrica Mercedes-Benz",
+    title: "Fábrica Mercedes-Benz"
+  }, {
+    src: mercedesCaminhaoAzul,
+    alt: "Caminhão Mercedes-Benz azul em exposição",
+    title: "Mercedes-Benz Atego"
   }];
   const handleWhatsAppContact = () => {
     window.open("https://wa.me/553121164735", "_blank");
