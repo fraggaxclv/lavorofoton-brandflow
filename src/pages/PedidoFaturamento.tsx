@@ -309,6 +309,7 @@ const PedidoFaturamento = () => {
                 </div>
                 <div>
                   <Label htmlFor="email_responsavel">E-mail do Responsável</Label>
+                  <p className="text-xs text-muted-foreground mb-1">&nbsp;</p>
                   <Input id="email_responsavel" type="email" {...register("email_responsavel")} />
                 </div>
               </div>
