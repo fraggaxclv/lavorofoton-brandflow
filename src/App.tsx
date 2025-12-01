@@ -62,6 +62,7 @@ const App = () => (
             <Route path="/contato" element={<Contato />} />
             <Route path="/diagnostico-frota" element={<DiagnosticoFrota />} />
             <Route path="/pedido-faturamento-lavoro" element={<PedidoFaturamento />} />
+            <Route path="/pedido-faturamento-foton" element={<PedidoFaturamento />} />
             <Route 
               path="/admin/pedidos-faturamento" 
               element={
