@@ -276,7 +276,7 @@ export default function PropostaComercial() {
             ` : '<div style="width: 100%; height: 180px; background: #f3f4f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 14px;">Imagem não disponível</div>'}
           </div>
 
-          <!-- Grid: 10 Qualificações + Tabela Técnica - 25% maior -->
+          <!-- Grid: 10 Qualificações + Tabela Técnica + Valor -->
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
             <!-- 10 Informações Relevantes -->
             <div>
@@ -291,9 +291,16 @@ export default function PropostaComercial() {
               </ul>
             </div>
 
-            <!-- Tabela Técnica -->
-            <div>
+            <!-- Coluna Direita: Tabela Técnica + Valor -->
+            <div style="display: flex; flex-direction: column; gap: 16px;">
               ${tabelaTecnica}
+              
+              <!-- Valor deste produto - abaixo da tabela técnica -->
+              <div style="background: #f8fafc; padding: 14px 20px; border-radius: 8px; border: 1px solid #003366; text-align: right;">
+                <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Valor Unitário</div>
+                <div style="font-size: 20px; font-weight: 800; color: #003366;">${formatarMoeda(p.valorUnitario)}</div>
+                <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">Qtd: ${p.quantidade} | Total: ${formatarMoeda(p.valorTotal)}</div>
+              </div>
             </div>
           </div>
 
@@ -304,15 +311,6 @@ export default function PropostaComercial() {
             <p style="font-size: 13px; color: #78350f; margin: 0; line-height: 1.6;">${p.opcionais}</p>
           </div>
           ` : ''}
-
-          <!-- Valor deste produto -->
-          <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
-            <div style="background: #f8fafc; padding: 14px 20px; border-radius: 8px; border: 1px solid #003366; text-align: right;">
-              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Valor Unitário</div>
-              <div style="font-size: 20px; font-weight: 800; color: #003366;">${formatarMoeda(p.valorUnitario)}</div>
-              <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">Qtd: ${p.quantidade} | Total: ${formatarMoeda(p.valorTotal)}</div>
-            </div>
-          </div>
         </div>
       `;
     }).join('');
