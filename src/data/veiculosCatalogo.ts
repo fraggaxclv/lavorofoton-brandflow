@@ -248,12 +248,12 @@ export const veiculosCatalogo: Veiculo[] = [
     aplicacao: 'Trabalho e Lazer',
     caracteristicas: [
       'Motor Diesel 2.0L Turbo',
-      'Potência: 163 cv',
+      'Potência: 175 cv',
       'Tração 4x4 com reduzida',
       'Transmissão automática 8 marchas',
       'Central multimídia 12"',
       'Câmera 360°',
-      'Garantia de 3 anos'
+      'Garantia de 10 anos'
     ],
     cores: ['Branco', 'Preto', 'Prata', 'Cinza']
   },
@@ -267,12 +267,12 @@ export const veiculosCatalogo: Veiculo[] = [
     aplicacao: 'Trabalho e Mobilidade',
     caracteristicas: [
       'Motor Diesel 2.0L Turbo',
-      'Potência: 163 cv',
+      'Potência: 175 cv',
       'Tração 4x2',
       'Transmissão manual 6 marchas',
       'Central multimídia 10"',
       'Câmera de ré',
-      'Garantia de 3 anos'
+      'Garantia de 10 anos'
     ],
     cores: ['Branco', 'Prata', 'Cinza']
   }
