@@ -250,6 +250,78 @@ export type Database = {
         }
         Relationships: []
       }
+      propostas_comerciais: {
+        Row: {
+          cidade: string | null
+          cnpj: string
+          created_at: string
+          data: string
+          estado: string | null
+          faturamento_tipo: string
+          id: string
+          local: string | null
+          nome_cliente: string
+          nome_vendedor: string
+          numero_proposta: string
+          observacoes: string | null
+          pagamento_outros: string | null
+          pagamento_tipo: string
+          prazo_entrega: number | null
+          produtos: Json
+          tributacao: string | null
+          updated_at: string
+          valor_entrada: number | null
+          valor_frete: number | null
+          valor_total: number
+        }
+        Insert: {
+          cidade?: string | null
+          cnpj: string
+          created_at?: string
+          data?: string
+          estado?: string | null
+          faturamento_tipo: string
+          id?: string
+          local?: string | null
+          nome_cliente: string
+          nome_vendedor: string
+          numero_proposta: string
+          observacoes?: string | null
+          pagamento_outros?: string | null
+          pagamento_tipo: string
+          prazo_entrega?: number | null
+          produtos?: Json
+          tributacao?: string | null
+          updated_at?: string
+          valor_entrada?: number | null
+          valor_frete?: number | null
+          valor_total?: number
+        }
+        Update: {
+          cidade?: string | null
+          cnpj?: string
+          created_at?: string
+          data?: string
+          estado?: string | null
+          faturamento_tipo?: string
+          id?: string
+          local?: string | null
+          nome_cliente?: string
+          nome_vendedor?: string
+          numero_proposta?: string
+          observacoes?: string | null
+          pagamento_outros?: string | null
+          pagamento_tipo?: string
+          prazo_entrega?: number | null
+          produtos?: Json
+          tributacao?: string | null
+          updated_at?: string
+          valor_entrada?: number | null
+          valor_frete?: number | null
+          valor_total?: number
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -276,6 +348,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      gerar_numero_proposta: { Args: never; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
