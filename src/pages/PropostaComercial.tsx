@@ -468,6 +468,30 @@ export default function PropostaComercial() {
       </header>
 
       <main className="container mx-auto px-4 py-8 max-w-6xl">
+        {/* Resumo Institucional */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <Card className="bg-gradient-to-br from-slate-50 to-white border-l-4 border-l-primary">
+            <CardContent className="pt-6">
+              <h3 className="font-bold text-lg text-industrial-dark mb-2">Sobre a FOTON</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                A FOTON é uma das maiores fabricantes de veículos comerciais do mundo, presente em mais de 110 países. 
+                Com tecnologia de ponta e parcerias globais com Cummins, ZF e Bosch, oferece caminhões e picapes 
+                com a melhor relação custo-benefício do mercado, garantia de 3 anos e peças com alta disponibilidade.
+              </p>
+            </CardContent>
+          </Card>
+          <Card className="bg-gradient-to-br from-slate-50 to-white border-l-4 border-l-primary">
+            <CardContent className="pt-6">
+              <h3 className="font-bold text-lg text-industrial-dark mb-2">Sobre a Lavoro</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                A Lavoro é a concessionária oficial FOTON em Minas Gerais, com mais de 40 anos de tradição 
+                no mercado de veículos comerciais. Oferecemos atendimento consultivo, pós-venda especializado, 
+                estoque próprio e as melhores condições de financiamento para sua frota.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
         <form onSubmit={handleSubmit(salvarProposta)} className="space-y-8">
           
           {/* Seção 1: Cabeçalho da Proposta */}
