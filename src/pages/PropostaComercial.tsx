@@ -22,6 +22,8 @@ import logoLavoro from "@/assets/logo-foton-lavoro.png";
 interface ProdutoProposta {
   id: string;
   modelo: string;
+  cor: string;
+  anoModelo: string;
   quantidade: number;
   valorUnitario: number;
   valorTotal: number;
@@ -146,6 +148,8 @@ export default function PropostaComercial() {
     const novoProduto: ProdutoProposta = {
       id: crypto.randomUUID(),
       modelo: "",
+      cor: "",
+      anoModelo: "",
       quantidade: 1,
       valorUnitario: 0,
       valorTotal: 0
@@ -247,33 +251,35 @@ export default function PropostaComercial() {
       const tabelaTecnica = p.veiculo ? gerarTabelaTecnica(p.veiculo) : '';
       
       return `
-        <div style="page-break-before: always; min-height: 100vh; padding-top: 32px;">
+        <div style="page-break-before: always; min-height: 100vh; padding: 24px 0;">
           <!-- Cabeçalho do Produto -->
-          <div style="margin-bottom: 24px;">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-              <span style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 6px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${categoriaLabel}</span>
-              <span style="background: #f0f9ff; color: #003366; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 600;">CNH ${p.veiculo?.cnh || '-'}</span>
+          <div style="margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+              <span style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 4px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${categoriaLabel}</span>
+              <span style="background: #f0f9ff; color: #003366; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600;">CNH ${p.veiculo?.cnh || '-'}</span>
+              ${p.cor ? `<span style="background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600;">Cor: ${p.cor}</span>` : ''}
+              ${p.anoModelo ? `<span style="background: #e0e7ff; color: #3730a3; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600;">${p.anoModelo}</span>` : ''}
             </div>
-            <h2 style="font-size: 32px; font-weight: 800; color: #1a1a2e; margin: 0 0 8px 0; letter-spacing: -0.5px;">${p.modelo}</h2>
-            <p style="font-size: 15px; color: #6b7280; margin: 0;">${p.veiculo?.aplicacao || 'Aplicação versátil'} • Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
+            <h2 style="font-size: 24px; font-weight: 800; color: #1a1a2e; margin: 0 0 4px 0; letter-spacing: -0.5px;">${p.modelo}</h2>
+            <p style="font-size: 12px; color: #6b7280; margin: 0;">${p.veiculo?.aplicacao || 'Aplicação versátil'} • Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
           </div>
 
-          <!-- Imagem Principal -->
-          <div style="margin-bottom: 32px;">
+          <!-- Imagem Principal - Menor -->
+          <div style="margin-bottom: 16px;">
             ${p.veiculo ? `
-              <img src="${p.veiculo.imagem}" alt="${p.modelo}" style="width: 100%; height: 280px; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);" />
-            ` : '<div style="width: 100%; height: 280px; background: #f3f4f6; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #9ca3af;">Imagem não disponível</div>'}
+              <img src="${p.veiculo.imagem}" alt="${p.modelo}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
+            ` : '<div style="width: 100%; height: 180px; background: #f3f4f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 12px;">Imagem não disponível</div>'}
           </div>
 
           <!-- Grid: 10 Qualificações + Tabela Técnica -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
             <!-- 10 Informações Relevantes -->
             <div>
-              <h3 style="font-size: 14px; font-weight: 700; color: #1a1a2e; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 3px solid #003366; padding-bottom: 10px; display: inline-block;">Por que este veículo?</h3>
+              <h3 style="font-size: 11px; font-weight: 700; color: #1a1a2e; margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #003366; padding-bottom: 6px; display: inline-block;">Por que este veículo?</h3>
               <ul style="margin: 0; padding: 0; list-style: none;">
                 ${infos.map((info, i) => `
-                  <li style="display: flex; gap: 12px; margin-bottom: 12px; font-size: 12px; line-height: 1.6; color: #374151;">
-                    <span style="flex-shrink: 0; width: 22px; height: 22px; background: linear-gradient(135deg, #003366, #001a33); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;">${i + 1}</span>
+                  <li style="display: flex; gap: 8px; margin-bottom: 6px; font-size: 10px; line-height: 1.5; color: #374151;">
+                    <span style="flex-shrink: 0; width: 16px; height: 16px; background: linear-gradient(135deg, #003366, #001a33); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 700;">${i + 1}</span>
                     <span>${info}</span>
                   </li>
                 `).join('')}
@@ -286,12 +292,12 @@ export default function PropostaComercial() {
             </div>
           </div>
 
-          <!-- Valor deste produto -->
-          <div style="margin-top: 32px; display: flex; justify-content: flex-end;">
-            <div style="background: #f8fafc; padding: 16px 24px; border-radius: 8px; border: 2px solid #003366; text-align: right;">
-              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Valor Unitário</div>
-              <div style="font-size: 24px; font-weight: 800; color: #003366;">${formatarMoeda(p.valorUnitario)}</div>
-              <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">Qtd: ${p.quantidade} | Total: ${formatarMoeda(p.valorTotal)}</div>
+          <!-- Valor deste produto - Menor -->
+          <div style="margin-top: 16px; display: flex; justify-content: flex-end;">
+            <div style="background: #f8fafc; padding: 10px 16px; border-radius: 6px; border: 1px solid #003366; text-align: right;">
+              <div style="font-size: 9px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Valor Unitário</div>
+              <div style="font-size: 16px; font-weight: 800; color: #003366;">${formatarMoeda(p.valorUnitario)}</div>
+              <div style="font-size: 10px; color: #6b7280; margin-top: 2px;">Qtd: ${p.quantidade} | Total: ${formatarMoeda(p.valorTotal)}</div>
             </div>
           </div>
         </div>
@@ -730,7 +736,7 @@ export default function PropostaComercial() {
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
-                        <div className="grid grid-cols-4 gap-3">
+                        <div className="grid grid-cols-6 gap-3">
                           <div className="col-span-2 space-y-1">
                             <Label className="text-xs">Modelo</Label>
                             <Select
@@ -769,7 +775,38 @@ export default function PropostaComercial() {
                             </Select>
                           </div>
                           <div className="space-y-1">
-                            <Label className="text-xs">Quantidade</Label>
+                            <Label className="text-xs">Cor</Label>
+                            <Select
+                              value={produto.cor}
+                              onValueChange={(v) => atualizarProduto(produto.id, 'cor', v)}
+                            >
+                              <SelectTrigger className="bg-white">
+                                <SelectValue placeholder="Cor" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {produto.veiculo?.cores.map(cor => (
+                                  <SelectItem key={cor} value={cor}>{cor}</SelectItem>
+                                )) || (
+                                  <>
+                                    <SelectItem value="Branco">Branco</SelectItem>
+                                    <SelectItem value="Prata">Prata</SelectItem>
+                                    <SelectItem value="Preto">Preto</SelectItem>
+                                  </>
+                                )}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="space-y-1">
+                            <Label className="text-xs">Ano/Modelo</Label>
+                            <Input
+                              placeholder="25/25"
+                              value={produto.anoModelo}
+                              onChange={(e) => atualizarProduto(produto.id, 'anoModelo', e.target.value)}
+                              className="bg-white"
+                            />
+                          </div>
+                          <div className="space-y-1">
+                            <Label className="text-xs">Qtd</Label>
                             <Input
                               type="number"
                               min="1"
@@ -779,11 +816,12 @@ export default function PropostaComercial() {
                             />
                           </div>
                           <div className="space-y-1">
-                            <Label className="text-xs">Valor Unitário</Label>
+                            <Label className="text-xs">Valor Unit.</Label>
                             <Input
-                              placeholder="R$ 0,00"
-                              value={produto.valorUnitario ? formatarMoeda(produto.valorUnitario) : ''}
-                              onChange={(e) => atualizarProduto(produto.id, 'valorUnitario', parseMoeda(e.target.value))}
+                              type="number"
+                              placeholder="0"
+                              value={produto.valorUnitario || ''}
+                              onChange={(e) => atualizarProduto(produto.id, 'valorUnitario', parseFloat(e.target.value) || 0)}
                               className="bg-white"
                             />
                           </div>
@@ -813,10 +851,10 @@ export default function PropostaComercial() {
                 )}
 
                 {produtos.length > 0 && (
-                  <div className="mt-6 pt-4 border-t border-slate-200 flex justify-end">
+                  <div className="mt-4 pt-3 border-t border-slate-200 flex justify-end">
                     <div className="text-right">
                       <p className="text-xs text-slate-500 uppercase tracking-wider">Total Geral</p>
-                      <p className="text-2xl font-bold text-slate-900">{formatarMoeda(calcularTotalProdutos())}</p>
+                      <p className="text-lg font-bold text-slate-900">{formatarMoeda(calcularTotalProdutos())}</p>
                     </div>
                   </div>
                 )}
