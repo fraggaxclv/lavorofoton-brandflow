@@ -380,26 +380,15 @@ export default function PropostaComercial() {
           </div>
         </div>
 
-        <!-- Sobre Foton e Lavoro - NA PRIMEIRA PÁGINA -->
-        <div style="margin-bottom: 40px;">
-          <h3 style="font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px;">Quem Somos</h3>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div style="background: #f8fafc; padding: 24px; border-radius: 12px; border-left: 4px solid #003366;">
-              <h4 style="font-size: 14px; font-weight: 700; color: #003366; margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px;">Sobre a FOTON</h4>
-              <p style="font-size: 12px; color: #374151; line-height: 1.7; margin: 0;">
-                A FOTON é uma das maiores fabricantes de veículos comerciais do mundo, com presença em mais de 110 países. 
-                Com mais de 28 anos de experiência, a marca combina engenharia de ponta com parcerias estratégicas globais 
-                (Cummins, ZF, Dana) para entregar veículos robustos, eficientes e com excelente custo-benefício.
-              </p>
-            </div>
-            <div style="background: #f8fafc; padding: 24px; border-radius: 12px; border-left: 4px solid #003366;">
-              <h4 style="font-size: 14px; font-weight: 700; color: #003366; margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px;">Sobre a Lavoro</h4>
-              <p style="font-size: 12px; color: #374151; line-height: 1.7; margin: 0;">
-                A Lavoro é concessionária oficial FOTON em Minas Gerais, com mais de 40 anos de tradição 
-                no mercado de veículos comerciais. Nossa equipe oferece atendimento consultivo, 
-                soluções de financiamento personalizadas e suporte pós-venda completo.
-              </p>
-            </div>
+        <!-- Sobre Foton e Lavoro - Seção Fluida -->
+        <div style="margin-bottom: 24px; display: flex; gap: 16px;">
+          <div style="flex: 1; background: #f8fafc; padding: 14px 16px; border-radius: 8px; border-left: 3px solid #003366;">
+            <h4 style="font-size: 11px; font-weight: 700; color: #003366; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.3px;">FOTON</h4>
+            <p style="font-size: 11px; color: #374151; line-height: 1.5; margin: 0;">Uma das maiores fabricantes de veículos comerciais do mundo, com presença em mais de 110 países e parcerias globais com Cummins, ZF e Dana.</p>
+          </div>
+          <div style="flex: 1; background: #f8fafc; padding: 14px 16px; border-radius: 8px; border-left: 3px solid #003366;">
+            <h4 style="font-size: 11px; font-weight: 700; color: #003366; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.3px;">LAVORO</h4>
+            <p style="font-size: 11px; color: #374151; line-height: 1.5; margin: 0;">Concessionária oficial FOTON em Minas Gerais, com mais de 40 anos de tradição. Atendimento consultivo, financiamento personalizado e suporte pós-venda completo.</p>
           </div>
         </div>
 
@@ -454,9 +443,9 @@ export default function PropostaComercial() {
                 <div style="font-size: 18px; font-weight: 700; color: #1a1a2e;">${formaPagamento}</div>
                 ${formData.financeira ? `<div style="font-size: 13px; color: #6b7280; margin-top: 8px;">Instituição: ${formData.financeira}</div>` : ''}
               </div>
-              <div style="background: linear-gradient(135deg, #003366, #001a33); padding: 24px; border-radius: 12px; color: white;">
-                <div style="font-size: 12px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Valor Total da Proposta</div>
-                <div style="font-size: 32px; font-weight: 800; letter-spacing: -0.5px;">${formatarMoeda(totalProdutos)}</div>
+              <div style="background: linear-gradient(135deg, #003366, #001a33); padding: 18px 20px; border-radius: 10px; color: white;">
+                <div style="font-size: 10px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Valor Total da Proposta</div>
+                <div style="font-size: 22px; font-weight: 800; letter-spacing: -0.3px;">${formatarMoeda(totalProdutos)}</div>
               </div>
             </div>
           </div>
