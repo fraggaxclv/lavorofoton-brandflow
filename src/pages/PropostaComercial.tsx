@@ -215,20 +215,19 @@ export default function PropostaComercial() {
     specs.push({ label: 'Capacidade', valor: veiculo.capacidade });
     specs.push({ label: 'CNH Exigida', valor: veiculo.cnh });
     specs.push({ label: 'Aplicação', valor: veiculo.aplicacao });
-    specs.push({ label: 'Cores Disponíveis', valor: veiculo.cores.join(', ') });
 
     const rows = specs.map(s => `
       <tr>
-        <td style="padding: 8px 12px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #003366; width: 40%;">${s.label}</td>
-        <td style="padding: 8px 12px; border-bottom: 1px solid #e5e7eb; color: #374151;">${s.valor}</td>
+        <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #003366; width: 40%; font-size: 12px;">${s.label}</td>
+        <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; color: #374151; font-size: 12px;">${s.valor}</td>
       </tr>
     `).join('');
 
     return `
-      <table style="width: 100%; border-collapse: collapse; font-size: 12px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+      <table style="width: 100%; border-collapse: collapse; font-size: 13px; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
         <thead>
           <tr style="background: #003366; color: white;">
-            <th colspan="2" style="padding: 12px; text-align: left; font-size: 13px; font-weight: 700;">ESPECIFICAÇÕES TÉCNICAS</th>
+            <th colspan="2" style="padding: 14px 16px; text-align: left; font-size: 14px; font-weight: 700;">ESPECIFICAÇÕES TÉCNICAS</th>
           </tr>
         </thead>
         <tbody>
@@ -251,35 +250,35 @@ export default function PropostaComercial() {
       const tabelaTecnica = p.veiculo ? gerarTabelaTecnica(p.veiculo) : '';
       
       return `
-        <div style="page-break-before: always; min-height: 100vh; padding: 24px 0;">
-          <!-- Cabeçalho do Produto -->
-          <div style="margin-bottom: 16px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-              <span style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 4px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${categoriaLabel}</span>
-              <span style="background: #f0f9ff; color: #003366; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600;">CNH ${p.veiculo?.cnh || '-'}</span>
-              ${p.cor ? `<span style="background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600;">Cor: ${p.cor}</span>` : ''}
-              ${p.anoModelo ? `<span style="background: #e0e7ff; color: #3730a3; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600;">${p.anoModelo}</span>` : ''}
+        <div style="page-break-before: always; min-height: 100vh; padding: 32px 0;">
+          <!-- Cabeçalho do Produto - 25% maior -->
+          <div style="margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <span style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 6px 16px; border-radius: 6px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${categoriaLabel}</span>
+              <span style="background: #f0f9ff; color: #003366; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">CNH ${p.veiculo?.cnh || '-'}</span>
+              ${p.cor ? `<span style="background: #fef3c7; color: #92400e; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">Cor: ${p.cor}</span>` : ''}
+              ${p.anoModelo ? `<span style="background: #e0e7ff; color: #3730a3; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">${p.anoModelo}</span>` : ''}
             </div>
-            <h2 style="font-size: 24px; font-weight: 800; color: #1a1a2e; margin: 0 0 4px 0; letter-spacing: -0.5px;">${p.modelo}</h2>
-            <p style="font-size: 12px; color: #6b7280; margin: 0;">${p.veiculo?.aplicacao || 'Aplicação versátil'} • Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
+            <h2 style="font-size: 30px; font-weight: 800; color: #1a1a2e; margin: 0 0 6px 0; letter-spacing: -0.5px;">${p.modelo}</h2>
+            <p style="font-size: 15px; color: #6b7280; margin: 0;">${p.veiculo?.aplicacao || 'Aplicação versátil'} • Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
           </div>
 
-          <!-- Imagem Principal - Menor -->
-          <div style="margin-bottom: 16px;">
+          <!-- Imagem Principal - Mantendo tamanho atual -->
+          <div style="margin-bottom: 20px;">
             ${p.veiculo ? `
-              <img src="${p.veiculo.imagem}" alt="${p.modelo}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
-            ` : '<div style="width: 100%; height: 180px; background: #f3f4f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 12px;">Imagem não disponível</div>'}
+              <img src="${p.veiculo.imagem}" alt="${p.modelo}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
+            ` : '<div style="width: 100%; height: 180px; background: #f3f4f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 14px;">Imagem não disponível</div>'}
           </div>
 
-          <!-- Grid: 10 Qualificações + Tabela Técnica -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <!-- Grid: 10 Qualificações + Tabela Técnica - 25% maior -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
             <!-- 10 Informações Relevantes -->
             <div>
-              <h3 style="font-size: 11px; font-weight: 700; color: #1a1a2e; margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #003366; padding-bottom: 6px; display: inline-block;">Por que este veículo?</h3>
+              <h3 style="font-size: 14px; font-weight: 700; color: #1a1a2e; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #003366; padding-bottom: 8px; display: inline-block;">Por que este veículo?</h3>
               <ul style="margin: 0; padding: 0; list-style: none;">
                 ${infos.map((info, i) => `
-                  <li style="display: flex; gap: 8px; margin-bottom: 6px; font-size: 10px; line-height: 1.5; color: #374151;">
-                    <span style="flex-shrink: 0; width: 16px; height: 16px; background: linear-gradient(135deg, #003366, #001a33); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 700;">${i + 1}</span>
+                  <li style="display: flex; gap: 10px; margin-bottom: 8px; font-size: 12px; line-height: 1.6; color: #374151;">
+                    <span style="flex-shrink: 0; width: 20px; height: 20px; background: linear-gradient(135deg, #003366, #001a33); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;">${i + 1}</span>
                     <span>${info}</span>
                   </li>
                 `).join('')}
@@ -292,12 +291,12 @@ export default function PropostaComercial() {
             </div>
           </div>
 
-          <!-- Valor deste produto - Menor -->
-          <div style="margin-top: 16px; display: flex; justify-content: flex-end;">
-            <div style="background: #f8fafc; padding: 10px 16px; border-radius: 6px; border: 1px solid #003366; text-align: right;">
-              <div style="font-size: 9px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Valor Unitário</div>
-              <div style="font-size: 16px; font-weight: 800; color: #003366;">${formatarMoeda(p.valorUnitario)}</div>
-              <div style="font-size: 10px; color: #6b7280; margin-top: 2px;">Qtd: ${p.quantidade} | Total: ${formatarMoeda(p.valorTotal)}</div>
+          <!-- Valor deste produto -->
+          <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+            <div style="background: #f8fafc; padding: 14px 20px; border-radius: 8px; border: 1px solid #003366; text-align: right;">
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Valor Unitário</div>
+              <div style="font-size: 20px; font-weight: 800; color: #003366;">${formatarMoeda(p.valorUnitario)}</div>
+              <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">Qtd: ${p.quantidade} | Total: ${formatarMoeda(p.valorTotal)}</div>
             </div>
           </div>
         </div>
@@ -348,69 +347,91 @@ export default function PropostaComercial() {
         </style>
       </head>
       <body>
-        <!-- ========== PÁGINA 1: CAPA ========== -->
+        <!-- ========== PÁGINA 1: CAPA PREMIUM ========== -->
         
-        <!-- Cabeçalho Premium -->
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 3px solid #003366;">
-          <div>
-            <img src="${logoLavoro}" alt="Lavoro Foton" style="height: 56px; margin-bottom: 12px;" />
-            <div style="font-size: 11px; color: #6b7280; line-height: 1.5;">
-              Concessionária Oficial FOTON<br/>
-              Minas Gerais • 40+ anos de tradição
+        <!-- Hero Header com Gradiente -->
+        <div style="background: linear-gradient(135deg, #003366 0%, #001a33 50%, #0a0a1a 100%); color: white; margin: -40px -48px 0 -48px; padding: 48px; position: relative; overflow: hidden;">
+          <!-- Padrão decorativo -->
+          <div style="position: absolute; top: 0; right: 0; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); pointer-events: none;"></div>
+          <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none;"></div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1;">
+            <div>
+              <img src="${logoLavoro}" alt="Lavoro Foton" style="height: 64px; margin-bottom: 20px; filter: brightness(1.1);" />
+              <div style="font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.6;">
+                Concessionária Oficial FOTON<br/>
+                <span style="color: rgba(255,255,255,0.5);">Minas Gerais • Desde 1984</span>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 10px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Proposta Comercial</div>
+              <div style="font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px;">${formData.numeroProposta}</div>
+              <div style="font-size: 13px; color: rgba(255,255,255,0.8);">${formData.local} • ${dataFormatada}</div>
             </div>
           </div>
-          <div style="text-align: right;">
-            <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Proposta Comercial</div>
-            <div style="font-size: 24px; font-weight: 800; color: #003366; letter-spacing: -0.5px;">${formData.numeroProposta}</div>
-            <div style="font-size: 12px; color: #374151; margin-top: 8px;">${formData.local} • ${dataFormatada}</div>
+          
+          <!-- Cliente Destaque -->
+          <div style="margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">Elaborada exclusivamente para</div>
+            <div style="font-size: 28px; font-weight: 700; margin-bottom: 16px;">${formData.nomeCliente}</div>
+            <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+              <span style="font-size: 12px; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 6px;">
+                <span style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></span>
+                ${formData.cidade} - ${formData.estado}
+              </span>
+              <span style="font-size: 12px; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 6px;">
+                <span style="width: 6px; height: 6px; background: #3b82f6; border-radius: 50%;"></span>
+                Consultor: ${formData.nomeConsultor}
+              </span>
+            </div>
           </div>
         </div>
 
-        <!-- Apresentação Narrativa do Cliente -->
-        <div style="margin-bottom: 40px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); padding: 28px; border-radius: 12px;">
-          <p style="font-size: 16px; color: #374151; line-height: 1.9; margin-bottom: 16px;">
-            Esta proposta comercial foi elaborada exclusivamente para atender às necessidades operacionais de 
-            <strong style="color: #003366; font-size: 18px;">${formData.nomeCliente}</strong>, considerando seu perfil logístico, 
-            objetivos de crescimento e capacidade operacional.
-          </p>
-          <div style="display: flex; gap: 32px; font-size: 13px; color: #6b7280; flex-wrap: wrap;">
-            <span><strong style="color: #003366;">Localização:</strong> ${formData.cidade} - ${formData.estado}</span>
-            <span><strong style="color: #003366;">Consultor:</strong> ${formData.nomeConsultor}</span>
-            <span><strong style="color: #003366;">Data:</strong> ${dataFormatada}</span>
-          </div>
-        </div>
-
-        <!-- Sobre Foton e Lavoro - Seção Fluida -->
-        <div style="margin-bottom: 24px; display: flex; gap: 16px;">
-          <div style="flex: 1; background: #f8fafc; padding: 14px 16px; border-radius: 8px; border-left: 3px solid #003366;">
-            <h4 style="font-size: 11px; font-weight: 700; color: #003366; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.3px;">FOTON</h4>
-            <p style="font-size: 11px; color: #374151; line-height: 1.5; margin: 0;">Uma das maiores fabricantes de veículos comerciais do mundo, com presença em mais de 110 países e parcerias globais com Cummins, ZF e Dana.</p>
-          </div>
-          <div style="flex: 1; background: #f8fafc; padding: 14px 16px; border-radius: 8px; border-left: 3px solid #003366;">
-            <h4 style="font-size: 11px; font-weight: 700; color: #003366; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 0.3px;">LAVORO</h4>
-            <p style="font-size: 11px; color: #374151; line-height: 1.5; margin: 0;">Concessionária oficial FOTON em Minas Gerais, com mais de 40 anos de tradição. Atendimento consultivo, financiamento personalizado e suporte pós-venda completo.</p>
-          </div>
-        </div>
-
-        <!-- Resumo dos produtos desta proposta -->
-        <div style="margin-bottom: 32px;">
-          <h3 style="font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Produtos desta Proposta</h3>
-          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-            ${produtos.map(p => `
-              <div style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 12px 20px; border-radius: 8px;">
-                <div style="font-weight: 700; font-size: 14px;">${p.modelo}</div>
-                <div style="font-size: 11px; opacity: 0.9;">${p.quantidade} unidade${p.quantidade > 1 ? 's' : ''}</div>
+        <!-- Conteúdo Principal -->
+        <div style="padding-top: 40px;">
+          
+          <!-- Quem Somos - Cards Premium -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px;">
+            <div style="background: linear-gradient(145deg, #f8fafc, #ffffff); padding: 24px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #003366, #001a33); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                  <span style="color: white; font-weight: 800; font-size: 14px;">F</span>
+                </div>
+                <h4 style="font-size: 16px; font-weight: 700; color: #1a1a2e; margin: 0;">FOTON</h4>
               </div>
-            `).join('')}
+              <p style="font-size: 13px; color: #64748b; line-height: 1.7; margin: 0;">Uma das maiores fabricantes de veículos comerciais do mundo, presente em mais de 110 países. Parcerias estratégicas com Cummins, ZF e Dana garantem tecnologia de ponta.</p>
+            </div>
+            <div style="background: linear-gradient(145deg, #f8fafc, #ffffff); padding: 24px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                  <span style="color: white; font-weight: 800; font-size: 14px;">L</span>
+                </div>
+                <h4 style="font-size: 16px; font-weight: 700; color: #1a1a2e; margin: 0;">LAVORO</h4>
+              </div>
+              <p style="font-size: 13px; color: #64748b; line-height: 1.7; margin: 0;">Concessionária oficial FOTON em Minas Gerais com mais de 40 anos de tradição. Atendimento consultivo, financiamento personalizado e suporte pós-venda completo.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- Texto de Autoridade -->
-        <div style="background: #fffbeb; border-left: 4px solid #f59e0b; padding: 20px 24px; border-radius: 0 8px 8px 0;">
-          <p style="font-size: 13px; color: #92400e; line-height: 1.7; margin: 0; font-style: italic;">
-            "A configuração apresentada foi analisada considerando eficiência operacional, segurança financeira e retorno do investimento. 
-            Uma escolha que reduz risco, protege caixa e aumenta previsibilidade."
-          </p>
+          <!-- Produtos desta Proposta -->
+          <div style="margin-bottom: 40px;">
+            <h3 style="font-size: 13px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px;">Soluções selecionadas para sua operação</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+              ${produtos.map(p => `
+                <div style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 20px 28px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,51,102,0.3);">
+                  <div style="font-weight: 800; font-size: 18px; margin-bottom: 4px;">${p.modelo}</div>
+                  <div style="font-size: 12px; opacity: 0.8;">${p.quantidade} unidade${p.quantidade > 1 ? 's' : ''} ${p.cor ? `• ${p.cor}` : ''}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Citação de Autoridade -->
+          <div style="background: linear-gradient(145deg, #fefce8, #fef9c3); border-left: 4px solid #eab308; padding: 24px 28px; border-radius: 0 16px 16px 0; margin-bottom: 20px;">
+            <p style="font-size: 14px; color: #854d0e; line-height: 1.8; margin: 0; font-style: italic;">
+              "Esta proposta foi elaborada considerando eficiência operacional, segurança financeira e retorno do investimento. Uma configuração que reduz risco, protege seu caixa e aumenta a previsibilidade da sua operação."
+            </p>
+            <div style="margin-top: 12px; font-size: 12px; color: #a16207; font-weight: 600;">— Equipe Lavoro Foton</div>
+          </div>
         </div>
 
         <!-- ========== PÁGINAS DE PRODUTOS (1 por produto) ========== -->
@@ -765,25 +786,12 @@ export default function PropostaComercial() {
                           </div>
                           <div className="space-y-1">
                             <Label className="text-xs">Cor</Label>
-                            <Select
+                            <Input
+                              placeholder="Ex: Branco"
                               value={produto.cor}
-                              onValueChange={(v) => atualizarProduto(produto.id, 'cor', v)}
-                            >
-                              <SelectTrigger className="bg-white">
-                                <SelectValue placeholder="Cor" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                {produto.veiculo?.cores.map(cor => (
-                                  <SelectItem key={cor} value={cor}>{cor}</SelectItem>
-                                )) || (
-                                  <>
-                                    <SelectItem value="Branco">Branco</SelectItem>
-                                    <SelectItem value="Prata">Prata</SelectItem>
-                                    <SelectItem value="Preto">Preto</SelectItem>
-                                  </>
-                                )}
-                              </SelectContent>
-                            </Select>
+                              onChange={(e) => atualizarProduto(produto.id, 'cor', e.target.value)}
+                              className="bg-white"
+                            />
                           </div>
                           <div className="space-y-1">
                             <Label className="text-xs">Ano/Modelo</Label>
