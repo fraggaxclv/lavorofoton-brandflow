@@ -58,7 +58,7 @@ const ESTADOS_BR = [
 const gerarInformacoesPersuasivas = (veiculo: Veiculo): string[] => {
   const infoBase: Record<string, string[]> = {
     'diesel': [
-      `Projetado para operações de ${veiculo.aplicacao.toLowerCase()}, entrega performance consistente em rotas urbanas e regionais.`,
+      `Projetado para operações versáteis, entrega performance consistente em rotas urbanas e regionais.`,
       `Capacidade de carga de ${veiculo.capacidade} — dimensionado para maximizar produtividade por viagem.`,
       `${veiculo.caracteristicas.find(c => c.includes('Motor')) || 'Motorização premium'} — tecnologia validada globalmente.`,
       `Consumo otimizado para reduzir custo por quilômetro rodado em até 15% comparado à média do segmento.`,
@@ -70,7 +70,7 @@ const gerarInformacoesPersuasivas = (veiculo: Veiculo): string[] => {
       `TCO (Custo Total de Propriedade) até 20% inferior — economia real ao longo da vida útil.`
     ],
     'eletrico': [
-      `Tecnologia 100% elétrica para operações de ${veiculo.aplicacao.toLowerCase()} — zero emissões, zero restrições ambientais.`,
+      `Tecnologia 100% elétrica — zero emissões, zero restrições ambientais.`,
       `${veiculo.caracteristicas.find(c => c.includes('Autonomia')) || 'Autonomia estendida'} — suficiente para ciclos operacionais completos.`,
       `${veiculo.caracteristicas.find(c => c.includes('Motor')) || 'Motor elétrico de alta eficiência'} — torque instantâneo e resposta imediata.`,
       `Economia de até 80% em combustível — ROI acelerado e previsibilidade de custos.`,
@@ -82,7 +82,7 @@ const gerarInformacoesPersuasivas = (veiculo: Veiculo): string[] => {
       `Imagem corporativa sustentável — diferencial competitivo junto a clientes conscientes.`
     ],
     'picape': [
-      `Versatilidade para ${veiculo.aplicacao.toLowerCase()} — performa tanto no campo quanto na cidade.`,
+      `Versatilidade total — performa tanto no campo quanto na cidade.`,
       `${veiculo.caracteristicas.find(c => c.includes('Motor')) || 'Motorização diesel turbo'} — potência para qualquer terreno.`,
       `${veiculo.caracteristicas.find(c => c.includes('Tração')) || 'Sistema de tração avançado'} — segurança em qualquer condição.`,
       `${veiculo.caracteristicas.find(c => c.includes('Transmissão')) || 'Transmissão de ponta'} — dirigibilidade superior.`,
@@ -216,7 +216,6 @@ export default function PropostaComercial() {
     // Adicionar dados fixos
     specs.push({ label: 'Capacidade', valor: veiculo.capacidade });
     specs.push({ label: 'CNH Exigida', valor: veiculo.cnh });
-    specs.push({ label: 'Aplicação', valor: veiculo.aplicacao });
     specs.push({ label: 'Garantia de Fábrica', valor: veiculo.categoria === 'eletrico' ? '5 anos (bateria)' : '3 anos ou 100.000 km' });
 
     const rows = specs.map(s => `
@@ -266,7 +265,7 @@ export default function PropostaComercial() {
               <span style="background: #dcfce7; color: #166534; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">Garantia: ${garantiaLabel}</span>
             </div>
             <h2 style="font-size: 30px; font-weight: 800; color: #1a1a2e; margin: 0 0 6px 0; letter-spacing: -0.5px;">${p.modelo}</h2>
-            <p style="font-size: 15px; color: #6b7280; margin: 0;">${p.veiculo?.aplicacao || 'Aplicação versátil'} • Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
+            <p style="font-size: 15px; color: #6b7280; margin: 0;">Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
           </div>
 
           <!-- Imagem Principal - Mantendo tamanho atual -->
@@ -885,8 +884,8 @@ export default function PropostaComercial() {
                               className="w-16 h-12 object-cover rounded"
                             />
                             <div className="text-xs text-slate-500">
-                              <p className="font-medium text-slate-700">{produto.veiculo.aplicacao}</p>
-                              <p>CNH: {produto.veiculo.cnh} • {produto.veiculo.capacidade}</p>
+                              <p className="font-medium text-slate-700">{produto.veiculo.capacidade}</p>
+                              <p>CNH: {produto.veiculo.cnh}</p>
                             </div>
                             {produto.valorTotal > 0 && (
                               <div className="ml-auto text-right">
