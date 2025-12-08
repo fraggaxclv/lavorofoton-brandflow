@@ -650,26 +650,25 @@ export default function PropostaComercial() {
                                 <SelectValue placeholder="Selecione o modelo" />
                               </SelectTrigger>
                               <SelectContent>
-                                <SelectItem value="" disabled>Selecione o modelo</SelectItem>
-                                <SelectItem value="__diesel" disabled className="font-bold text-slate-500">
+                                <div className="px-2 py-1.5 text-xs font-bold text-slate-500">
                                   ─ Linha Diesel ─
-                                </SelectItem>
+                                </div>
                                 {veiculosCatalogo.filter(v => v.categoria === 'diesel').map(v => (
                                   <SelectItem key={v.id} value={v.modelo}>
                                     {v.modelo} ({v.capacidade})
                                   </SelectItem>
                                 ))}
-                                <SelectItem value="__eletrico" disabled className="font-bold text-slate-500">
+                                <div className="px-2 py-1.5 text-xs font-bold text-slate-500">
                                   ─ Linha Elétrica ─
-                                </SelectItem>
+                                </div>
                                 {veiculosCatalogo.filter(v => v.categoria === 'eletrico').map(v => (
                                   <SelectItem key={v.id} value={v.modelo}>
                                     {v.modelo} ({v.capacidade})
                                   </SelectItem>
                                 ))}
-                                <SelectItem value="__picape" disabled className="font-bold text-slate-500">
+                                <div className="px-2 py-1.5 text-xs font-bold text-slate-500">
                                   ─ Picapes ─
-                                </SelectItem>
+                                </div>
                                 {veiculosCatalogo.filter(v => v.categoria === 'picape').map(v => (
                                   <SelectItem key={v.id} value={v.modelo}>
                                     {v.modelo} ({v.capacidade})
