@@ -14,6 +14,7 @@ import Contato from "./pages/Contato";
 import DiagnosticoFrota from "./pages/DiagnosticoFrota";
 import PedidoFaturamento from "./pages/PedidoFaturamento";
 import ListaPedidos from "./pages/ListaPedidos";
+import PropostaComercial from "./pages/PropostaComercial";
 import Auth from "./pages/Auth";
 import S315 from "./pages/models/S315";
 import Foton7T from "./pages/models/Foton7T";
@@ -63,6 +64,7 @@ const App = () => (
             <Route path="/diagnostico-frota" element={<DiagnosticoFrota />} />
             <Route path="/pedido-faturamento-lavoro" element={<PedidoFaturamento />} />
             <Route path="/pedido-faturamento-foton" element={<PedidoFaturamento />} />
+            <Route path="/proposta-comercial-lavoro" element={<PropostaComercial />} />
             <Route 
               path="/admin/pedidos-faturamento" 
               element={
