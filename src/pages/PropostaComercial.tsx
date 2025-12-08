@@ -364,120 +364,110 @@ export default function PropostaComercial() {
         <!-- ========== PÁGINA 1: CAPA EXECUTIVA PREMIUM ========== -->
         
         <!-- HEADER INSTITUCIONAL DISCRETO -->
-        <div style="background: white; margin: -40px -48px 0 -48px; padding: 40px 48px 32px 48px;">
+        <div style="background: white; margin: -40px -48px 0 -48px; padding: 28px 48px 20px 48px;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <!-- Lado Esquerdo: Logomarca e Slogan -->
             <div>
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                <img src="${logoLavoro}" alt="Foton Lavoro" style="height: 48px;" />
-              </div>
-              <div style="font-size: 13px; color: #64748b; line-height: 1.5;">
+              <img src="${logoLavoro}" alt="Foton Lavoro" style="height: 42px; margin-bottom: 8px;" />
+              <div style="font-size: 11px; color: #64748b; line-height: 1.4;">
                 Concessionária Oficial FOTON – Minas Gerais
               </div>
-              <div style="font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 4px;">
+              <div style="font-size: 10px; color: #94a3b8; font-style: italic; margin-top: 2px;">
                 "40 anos de confiança."
               </div>
             </div>
-            
-            <!-- Lado Direito: Dados da Proposta (menor destaque) -->
             <div style="text-align: right;">
-              <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">Proposta Comercial</div>
-              <div style="font-size: 14px; color: #64748b; margin-bottom: 4px;">Código: <span style="font-weight: 600; color: #475569;">${formData.numeroProposta}</span></div>
-              <div style="font-size: 13px; color: #94a3b8;">Data: ${dataFormatada}</div>
+              <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Proposta Comercial</div>
+              <div style="font-size: 12px; color: #64748b;">Código: <span style="font-weight: 600; color: #475569;">${formData.numeroProposta}</span></div>
+              <div style="font-size: 11px; color: #94a3b8;">Data: ${dataFormatada}</div>
             </div>
           </div>
         </div>
 
-        <!-- TÍTULO CENTRAL (elemento mais forte da página) -->
-        <div style="text-align: center; padding: 64px 40px 56px 40px; background: white;">
-          <h1 style="font-size: 32px; font-weight: 700; color: #0f172a; line-height: 1.3; margin: 0 0 20px 0; letter-spacing: -0.5px;">
+        <!-- TÍTULO CENTRAL -->
+        <div style="text-align: center; padding: 36px 32px 28px 32px; background: white;">
+          <h1 style="font-size: 24px; font-weight: 700; color: #0f172a; line-height: 1.35; margin: 0 0 12px 0; letter-spacing: -0.3px;">
             Uma decisão pensada para eficiência,<br/>segurança e crescimento.
           </h1>
-          <p style="font-size: 16px; color: #64748b; margin: 0; font-weight: 400; letter-spacing: 0.2px;">
+          <p style="font-size: 13px; color: #64748b; margin: 0; font-weight: 400;">
             Proposta de solução logística elaborada sob medida para sua operação.
           </p>
         </div>
 
-        <!-- BLOCO DO CLIENTE (personalização clara) -->
-        <div style="text-align: center; padding: 48px 40px; background: white;">
-          <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 16px; font-weight: 500;">
+        <!-- BLOCO DO CLIENTE -->
+        <div style="text-align: center; padding: 28px 32px; background: white;">
+          <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-weight: 500;">
             Elaborada exclusivamente para
           </div>
-          <div style="font-size: 28px; font-weight: 700; color: #0f172a; margin-bottom: 20px; padding: 12px 0;">
+          <div style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">
             ${formData.nomeCliente}
           </div>
-          <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
-            <span style="font-size: 14px; color: #64748b;">
-              ${formData.cidade} – ${formData.estado}
-            </span>
-            <span style="font-size: 14px; color: #64748b;">
-              Consultor responsável: <span style="font-weight: 600; color: #475569;">${formData.nomeConsultor}</span>
-            </span>
+          <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+            <span style="font-size: 12px; color: #64748b;">${formData.cidade} – ${formData.estado}</span>
+            <span style="font-size: 12px; color: #64748b;">Consultor: <span style="font-weight: 600; color: #475569;">${formData.nomeConsultor}</span></span>
           </div>
         </div>
 
-        <!-- TEXTO DE CONTEXTO (copy consultiva, não técnica) -->
-        <div style="padding: 40px 56px; background: white;">
-          <div style="max-width: 680px; margin: 0 auto; text-align: center;">
-            <p style="font-size: 15px; color: #475569; line-height: 1.9; margin: 0;">
-              Esta proposta foi desenvolvida a partir da análise do perfil operacional de <strong style="color: #0f172a;">${formData.nomeCliente}</strong>, considerando suas necessidades logísticas atuais, capacidade de investimento e objetivos de expansão.
-            </p>
-            <p style="font-size: 15px; color: #475569; line-height: 1.9; margin: 24px 0 0 0;">
-              A solução apresentada reflete uma configuração amplamente utilizada por empresas que buscam previsibilidade operacional, eficiência financeira e segurança na tomada de decisão.
+        <!-- TEXTO DE CONTEXTO -->
+        <div style="padding: 24px 40px; background: white;">
+          <div style="max-width: 620px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 12px; color: #475569; line-height: 1.8; margin: 0;">
+              Esta proposta foi desenvolvida a partir da análise do perfil operacional de <strong style="color: #0f172a;">${formData.nomeCliente}</strong>, considerando suas necessidades logísticas atuais, capacidade de investimento e objetivos de expansão. A solução apresentada reflete uma configuração amplamente utilizada por empresas que buscam previsibilidade operacional, eficiência financeira e segurança na tomada de decisão.
             </p>
           </div>
         </div>
 
-        <!-- BLOCO DE AUTORIDADE (FOTON + LAVORO) -->
-        <div style="padding: 48px 48px; background: white;">
-          <div style="display: flex; gap: 28px;">
-            <!-- Card FOTON -->
-            <div style="flex: 1; background: #f8fafc; padding: 28px 24px; border-radius: 12px; border: 1px solid #e2e8f0;">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #003366, #001a33); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                  <span style="color: white; font-weight: 800; font-size: 16px;">F</span>
-                </div>
-                <h4 style="font-size: 16px; font-weight: 700; color: #0f172a; margin: 0;">FOTON</h4>
+        <!-- BLOCO DE AUTORIDADE (FOTON + LAVORO) - VERTICAL -->
+        <div style="padding: 24px 40px; background: white;">
+          <!-- Card FOTON -->
+          <div style="background: #f8fafc; padding: 16px 20px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #003366, #001a33); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <span style="color: white; font-weight: 800; font-size: 14px;">F</span>
               </div>
-              <p style="font-size: 13px; color: #64748b; line-height: 1.7; margin: 0;">
-                Uma das maiores fabricantes de veículos comerciais do mundo, presente em mais de 110 países. Reconhecida globalmente por confiabilidade, robustez e inovação industrial.
-              </p>
+              <div style="flex: 1;">
+                <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">FOTON</h4>
+                <p style="font-size: 11px; color: #64748b; line-height: 1.5; margin: 0;">
+                  Uma das maiores fabricantes de veículos comerciais do mundo, presente em mais de 110 países. Reconhecida globalmente por confiabilidade, robustez e inovação industrial.
+                </p>
+              </div>
             </div>
-            
-            <!-- Card LAVORO -->
-            <div style="flex: 1; background: #f8fafc; padding: 28px 24px; border-radius: 12px; border: 1px solid #e2e8f0;">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                  <span style="color: white; font-weight: 800; font-size: 16px;">L</span>
-                </div>
-                <h4 style="font-size: 16px; font-weight: 700; color: #0f172a; margin: 0;">LAVORO</h4>
+          </div>
+          
+          <!-- Card LAVORO -->
+          <div style="background: #f8fafc; padding: 16px 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <span style="color: white; font-weight: 800; font-size: 14px;">L</span>
               </div>
-              <p style="font-size: 13px; color: #64748b; line-height: 1.7; margin: 0;">
-                Concessionária oficial FOTON em Minas Gerais, com mais de 40 anos de atuação no setor de veículos comerciais, oferecendo atendimento consultivo, suporte completo e relacionamento de longo prazo.
-              </p>
+              <div style="flex: 1;">
+                <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">LAVORO</h4>
+                <p style="font-size: 11px; color: #64748b; line-height: 1.5; margin: 0;">
+                  Concessionária oficial FOTON em Minas Gerais, com mais de 40 anos de atuação no setor de veículos comerciais, oferecendo atendimento consultivo, suporte completo e relacionamento de longo prazo.
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- BLOCO "SOLUÇÃO SELECIONADA" (antecipação do produto) -->
-        <div style="padding: 48px 48px 64px 48px; background: white;">
-          <div style="text-align: center; margin-bottom: 28px;">
-            <h3 style="font-size: 14px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 2px; margin: 0;">
+        <!-- BLOCO "SOLUÇÃO SELECIONADA" -->
+        <div style="padding: 28px 40px 36px 40px; background: white;">
+          <div style="text-align: center; margin-bottom: 16px;">
+            <h3 style="font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
               Soluções selecionadas para sua operação
             </h3>
           </div>
           
-          <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 32px;">
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 16px;">
             ${produtos.map(p => `
-              <div style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 20px 32px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,51,102,0.2); min-width: 200px; text-align: center;">
-                <div style="font-weight: 800; font-size: 18px; margin-bottom: 4px;">${p.modelo}</div>
-                <div style="font-size: 12px; opacity: 0.85;">${p.quantidade} unidade${p.quantidade > 1 ? 's' : ''}</div>
+              <div style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 14px 24px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,51,102,0.18); min-width: 160px; text-align: center;">
+                <div style="font-weight: 800; font-size: 15px; margin-bottom: 2px;">${p.modelo}</div>
+                <div style="font-size: 10px; opacity: 0.85;">${p.quantidade} unidade${p.quantidade > 1 ? 's' : ''}</div>
               </div>
             `).join('')}
           </div>
           
-          <div style="text-align: center; max-width: 560px; margin: 0 auto;">
-            <p style="font-size: 13px; color: #94a3b8; line-height: 1.7; margin: 0;">
+          <div style="text-align: center; max-width: 520px; margin: 0 auto;">
+            <p style="font-size: 11px; color: #94a3b8; line-height: 1.6; margin: 0;">
               Configuração recomendada após análise do perfil operacional da empresa, considerando eficiência logística, rentabilidade e disponibilidade.
             </p>
           </div>
