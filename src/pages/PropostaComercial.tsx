@@ -240,6 +240,26 @@ export default function PropostaComercial() {
           </div>
         </div>
 
+        <!-- Resumo Institucional -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 32px;">
+          <div style="background: #f8fafc; padding: 16px; border-radius: 8px; border-left: 4px solid #c41e3a;">
+            <h3 style="font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px;">Sobre a FOTON</h3>
+            <p style="font-size: 12px; color: #4b5563; line-height: 1.5; margin: 0;">
+              A FOTON é uma das maiores fabricantes de veículos comerciais do mundo, presente em mais de 110 países. 
+              Com tecnologia de ponta e parcerias globais com Cummins, ZF e Bosch, oferece caminhões e picapes 
+              com a melhor relação custo-benefício do mercado, garantia de 3 anos e peças com alta disponibilidade.
+            </p>
+          </div>
+          <div style="background: #f8fafc; padding: 16px; border-radius: 8px; border-left: 4px solid #c41e3a;">
+            <h3 style="font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px;">Sobre a Lavoro</h3>
+            <p style="font-size: 12px; color: #4b5563; line-height: 1.5; margin: 0;">
+              A Lavoro é a concessionária oficial FOTON em Minas Gerais, com mais de 40 anos de tradição 
+              no mercado de veículos comerciais. Oferecemos atendimento consultivo, pós-venda especializado, 
+              estoque próprio e as melhores condições de financiamento para sua frota.
+            </p>
+          </div>
+        </div>
+
         <!-- Informações da Proposta -->
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; background: #f8fafc; padding: 20px; border-radius: 8px;">
           <div>
