@@ -206,7 +206,7 @@ export default function PropostaComercial() {
           <!-- Cabeçalho do Produto -->
           <div style="margin-bottom: 24px;">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-              <span style="background: linear-gradient(135deg, #c41e3a, #8b1528); color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${categoriaLabel}</span>
+              <span style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${categoriaLabel}</span>
             </div>
             <h2 style="font-size: 28px; font-weight: 800; color: #1a1a2e; margin: 0 0 4px 0; letter-spacing: -0.5px;">${p.modelo}</h2>
             <p style="font-size: 14px; color: #6b7280; margin: 0;">${p.veiculo?.aplicacao || 'Aplicação versátil'} • Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
@@ -223,11 +223,11 @@ export default function PropostaComercial() {
 
             <!-- 10 Informações Relevantes -->
             <div>
-              <h3 style="font-size: 14px; font-weight: 700; color: #1a1a2e; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #c41e3a; padding-bottom: 8px; display: inline-block;">Por que este veículo?</h3>
+              <h3 style="font-size: 14px; font-weight: 700; color: #1a1a2e; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #003366; padding-bottom: 8px; display: inline-block;">Por que este veículo?</h3>
               <ul style="margin: 0; padding: 0; list-style: none;">
                 ${infos.map((info, i) => `
                   <li style="display: flex; gap: 10px; margin-bottom: 10px; font-size: 12px; line-height: 1.5; color: #374151;">
-                    <span style="flex-shrink: 0; width: 20px; height: 20px; background: linear-gradient(135deg, #c41e3a, #8b1528); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;">${i + 1}</span>
+                    <span style="flex-shrink: 0; width: 20px; height: 20px; background: linear-gradient(135deg, #003366, #001a33); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;">${i + 1}</span>
                     <span>${info}</span>
                   </li>
                 `).join('')}
@@ -242,7 +242,7 @@ export default function PropostaComercial() {
                 c.includes('Motor') || c.includes('Transmissão') || c.includes('Potência') || c.includes('Eixo')
               ).map(c => `
                 <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="width: 6px; height: 6px; background: #c41e3a; border-radius: 50%;"></span>
+                  <span style="width: 6px; height: 6px; background: #003366; border-radius: 50%;"></span>
                   <span style="color: #374151; font-weight: 500;">${c}</span>
                 </div>
               `).join('') || ''}
@@ -297,7 +297,7 @@ export default function PropostaComercial() {
       </head>
       <body>
         <!-- Cabeçalho Premium -->
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 3px solid #c41e3a;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 3px solid #003366;">
           <div>
             <img src="${logoLavoro}" alt="Lavoro Foton" style="height: 56px; margin-bottom: 12px;" />
             <div style="font-size: 11px; color: #6b7280; line-height: 1.5;">
@@ -307,7 +307,7 @@ export default function PropostaComercial() {
           </div>
           <div style="text-align: right;">
             <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Proposta Comercial</div>
-            <div style="font-size: 24px; font-weight: 800; color: #c41e3a; letter-spacing: -0.5px;">${formData.numeroProposta}</div>
+            <div style="font-size: 24px; font-weight: 800; color: #003366; letter-spacing: -0.5px;">${formData.numeroProposta}</div>
             <div style="font-size: 12px; color: #374151; margin-top: 8px;">${formData.local} • ${dataFormatada}</div>
           </div>
         </div>
@@ -352,7 +352,7 @@ export default function PropostaComercial() {
               <div style="font-size: 16px; font-weight: 600; color: #1a1a2e;">${formaPagamento}</div>
               ${formData.financeira ? `<div style="font-size: 13px; color: #6b7280; margin-top: 4px;">Instituição: ${formData.financeira}</div>` : ''}
             </div>
-            <div style="background: linear-gradient(135deg, #c41e3a, #8b1528); padding: 20px; border-radius: 8px; color: white;">
+            <div style="background: linear-gradient(135deg, #003366, #001a33); padding: 20px; border-radius: 8px; color: white;">
               <div style="font-size: 12px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Valor Total</div>
               <div style="font-size: 28px; font-weight: 800; letter-spacing: -0.5px;">${formatarMoeda(totalProdutos)}</div>
             </div>
@@ -397,8 +397,34 @@ export default function PropostaComercial() {
           </div>
         </div>
 
+        <!-- Sobre Foton e Lavoro -->
+        <div style="page-break-inside: avoid; margin-top: 48px; margin-bottom: 32px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div style="background: #f8fafc; padding: 24px; border-radius: 12px; border-left: 4px solid #003366;">
+              <h4 style="font-size: 14px; font-weight: 700; color: #003366; margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px;">Sobre a FOTON</h4>
+              <p style="font-size: 12px; color: #374151; line-height: 1.7; margin: 0;">
+                A FOTON é uma das maiores fabricantes de veículos comerciais do mundo, com presença em mais de 110 países. 
+                Com mais de 28 anos de experiência, a marca combina engenharia de ponta com parcerias estratégicas globais 
+                (Cummins, ZF, Dana) para entregar veículos robustos, eficientes e com excelente custo-benefício. 
+                No Brasil, a FOTON oferece uma linha completa de caminhões leves, médios e picapes, 
+                todos desenvolvidos para as exigências do mercado brasileiro.
+              </p>
+            </div>
+            <div style="background: #f8fafc; padding: 24px; border-radius: 12px; border-left: 4px solid #003366;">
+              <h4 style="font-size: 14px; font-weight: 700; color: #003366; margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px;">Sobre a Lavoro</h4>
+              <p style="font-size: 12px; color: #374151; line-height: 1.7; margin: 0;">
+                A Lavoro é concessionária oficial FOTON em Minas Gerais, com mais de 40 anos de tradição 
+                no mercado de veículos comerciais. Nossa equipe especializada oferece atendimento consultivo, 
+                soluções de financiamento personalizadas e suporte pós-venda completo. 
+                Trabalhamos para que cada cliente encontre a solução ideal para sua operação, 
+                com transparência, agilidade e compromisso com resultados.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <!-- Rodapé Premium -->
-        <div style="margin-top: 64px; padding-top: 24px; border-top: 1px solid #e5e7eb; text-align: center;">
+        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb; text-align: center;">
           <p style="font-size: 11px; color: #9ca3af; margin-bottom: 8px;">
             Proposta válida por 7 dias a partir da data de emissão. Este documento não possui valor contratual.
           </p>
