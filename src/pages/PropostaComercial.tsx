@@ -216,7 +216,17 @@ export default function PropostaComercial() {
     // Adicionar dados fixos
     specs.push({ label: 'Capacidade', valor: veiculo.capacidade });
     specs.push({ label: 'CNH Exigida', valor: veiculo.cnh });
-    specs.push({ label: 'Garantia de Fábrica', valor: veiculo.categoria === 'eletrico' ? '5 anos (bateria)' : '3 anos ou 100.000 km' });
+    
+    // Garantia diferenciada por categoria
+    let garantiaLabel = '';
+    if (veiculo.categoria === 'eletrico') {
+      garantiaLabel = '5 anos (bateria)';
+    } else if (veiculo.categoria === 'picape') {
+      garantiaLabel = '**10 anos ou 200.000 km';
+    } else {
+      garantiaLabel = '**3 anos ou 100.000 km';
+    }
+    specs.push({ label: 'Garantia de Fábrica', valor: garantiaLabel });
 
     const rows = specs.map(s => `
       <tr>
@@ -251,7 +261,14 @@ export default function PropostaComercial() {
                              p.veiculo?.categoria === 'eletrico' ? 'Linha Elétrica' : 'Linha Picapes';
       const tabelaTecnica = p.veiculo ? gerarTabelaTecnica(p.veiculo) : '';
       
-      const garantiaLabel = p.veiculo?.categoria === 'eletrico' ? '5 anos (bateria)' : '3 anos ou 100.000 km';
+      let garantiaLabel = '';
+      if (p.veiculo?.categoria === 'eletrico') {
+        garantiaLabel = '5 anos (bateria)';
+      } else if (p.veiculo?.categoria === 'picape') {
+        garantiaLabel = '**10 anos';
+      } else {
+        garantiaLabel = '**3 anos';
+      }
       
       return `
         <div style="page-break-before: always; min-height: 100vh; padding: 32px 0;">
@@ -314,16 +331,16 @@ export default function PropostaComercial() {
       `;
     }).join('');
 
-    // Condições comerciais
+    // Condições comerciais - Compacto
     const condicoesHtml = produtos.map(p => `
-      <div style="display: grid; grid-template-columns: 3fr 1fr 1fr 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid #e5e7eb; align-items: center;">
+      <div style="display: grid; grid-template-columns: 3fr 1fr 1fr 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e5e7eb; align-items: center;">
         <div>
-          <div style="font-weight: 600; color: #1a1a2e;">${p.modelo}</div>
-          <div style="font-size: 12px; color: #6b7280;">${p.veiculo?.capacidade || ''}</div>
+          <div style="font-weight: 600; color: #1a1a2e; font-size: 12px;">${p.modelo}</div>
+          <div style="font-size: 10px; color: #6b7280;">${p.veiculo?.capacidade || ''}</div>
         </div>
-        <div style="text-align: center; color: #374151;">${p.quantidade} un.</div>
-        <div style="text-align: right; color: #374151;">${formatarMoeda(p.valorUnitario)}</div>
-        <div style="text-align: right; font-weight: 700; color: #1a1a2e;">${formatarMoeda(p.valorTotal)}</div>
+        <div style="text-align: center; color: #374151; font-size: 11px;">${p.quantidade} un.</div>
+        <div style="text-align: right; color: #374151; font-size: 11px;">${formatarMoeda(p.valorUnitario)}</div>
+        <div style="text-align: right; font-weight: 700; color: #1a1a2e; font-size: 11px;">${formatarMoeda(p.valorTotal)}</div>
       </div>
     `).join('');
 
@@ -482,27 +499,27 @@ export default function PropostaComercial() {
               Condições Comerciais
             </h2>
 
-            <!-- Tabela de Produtos -->
-            <div style="margin-bottom: 32px;">
-              <div style="display: grid; grid-template-columns: 3fr 1fr 1fr 1fr; gap: 16px; padding: 14px 0; border-bottom: 2px solid #1a1a2e; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #6b7280;">
+            <!-- Tabela de Produtos Compacta -->
+            <div style="margin-bottom: 20px;">
+              <div style="display: grid; grid-template-columns: 3fr 1fr 1fr 1fr; gap: 12px; padding: 10px 0; border-bottom: 2px solid #1a1a2e; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #6b7280;">
                 <div>Produto</div>
-                <div style="text-align: center;">Quantidade</div>
-                <div style="text-align: right;">Valor Unitário</div>
+                <div style="text-align: center;">Qtd</div>
+                <div style="text-align: right;">Unit.</div>
                 <div style="text-align: right;">Total</div>
               </div>
               ${condicoesHtml}
             </div>
 
-            <!-- Total e Forma de Pagamento -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-              <div style="background: #f8fafc; padding: 24px; border-radius: 12px;">
-                <div style="font-size: 12px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Forma de Pagamento</div>
-                <div style="font-size: 18px; font-weight: 700; color: #1a1a2e;">${formaPagamento}</div>
-                ${formData.financeira ? `<div style="font-size: 13px; color: #6b7280; margin-top: 8px;">Instituição: ${formData.financeira}</div>` : ''}
+            <!-- Total e Forma de Pagamento - Compacto -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div style="background: #f8fafc; padding: 14px 16px; border-radius: 8px;">
+                <div style="font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Forma de Pagamento</div>
+                <div style="font-size: 14px; font-weight: 700; color: #1a1a2e;">${formaPagamento}</div>
+                ${formData.financeira ? `<div style="font-size: 11px; color: #6b7280; margin-top: 4px;">Instituição: ${formData.financeira}</div>` : ''}
               </div>
-              <div style="background: linear-gradient(135deg, #003366, #001a33); padding: 18px 20px; border-radius: 10px; color: white;">
-                <div style="font-size: 10px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Valor Total da Proposta</div>
-                <div style="font-size: 22px; font-weight: 800; letter-spacing: -0.3px;">${formatarMoeda(totalProdutos)}</div>
+              <div style="background: linear-gradient(135deg, #003366, #001a33); padding: 14px 16px; border-radius: 8px; color: white;">
+                <div style="font-size: 9px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Valor Total</div>
+                <div style="font-size: 18px; font-weight: 800; letter-spacing: -0.3px;">${formatarMoeda(totalProdutos)}</div>
               </div>
             </div>
           </div>
