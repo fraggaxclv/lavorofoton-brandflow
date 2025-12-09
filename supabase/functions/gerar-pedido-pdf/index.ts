@@ -351,6 +351,37 @@ function gerarPDFHTML(pedido: PedidoData): string {
           </div>
         </div>
 
+        <!-- Seção - Previsão de Entrega do Veículo -->
+        <div style="margin-top: 60px; background: #fff; border: 2px solid #0f2557; border-radius: 6px; page-break-inside: avoid;">
+          <div style="background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%); padding: 12px 16px;">
+            <h4 style="font-size: 14px; font-weight: 700; color: white; margin: 0; text-transform: uppercase;">PREVISÃO DE ENTREGA DO VEÍCULO</h4>
+          </div>
+          <div style="padding: 16px;">
+            <p style="font-size: 12px; color: #1a1a1a; margin: 0 0 8px 0; line-height: 1.6;">
+              DE ACORDO COM A DISPONIBILIDADE DE ESTOQUE E FÁBRICA.<br/>
+              O REPRESENTANTE DA ENTREGA TÉCNICA LAVORO ENTRARÁ EM CONTATO PARA AGENDAMENTO DA ENTREGA.
+            </p>
+          </div>
+          <div style="border-top: 1px solid #e5e7eb; padding: 16px;">
+            <p style="font-size: 12px; color: #dc2626; margin: 0 0 12px 0; font-weight: 700;">OBS.: PEDIDO SUJEITO À APROVAÇÃO DE CRÉDITO.</p>
+            <p style="font-size: 11px; color: #374151; margin: 0 0 10px 0; line-height: 1.7; text-align: justify;">
+              <strong>1.</strong> OS PREÇOS COTADOS SÃO OS VIGENTES NESTA OCASIÃO E ESTARÃO SUJEITOS À ALTERAÇÕES CASO O FABRICANTE MODIFIQUE SUAS NORMAS DE COMERCIALIZAÇÃO, NO QUE TANGE À PREÇOS, DESCONTOS OU PRAZOS DE PAGAMENTOS, E TAMBÉM A ALTERAÇÃO DE ALÍQUOTA DO ICMS/IPI CONFORME LEGISLAÇÃO ESTADUAL E FEDERAL.
+            </p>
+            <p style="font-size: 11px; color: #374151; margin: 0; line-height: 1.7; text-align: justify;">
+              <strong>2.</strong> O PEDIDO DE VENDA NÃO TERÁ VALIDADE SE NÃO ESTIVER DEVIDAMENTE PREENCHIDO E ASSINADO, SEM RASURAS.
+            </p>
+          </div>
+          <div style="border-top: 1px solid #e5e7eb; padding: 16px; background-color: #f8f9fa;">
+            <p style="font-size: 12px; color: #0f2557; margin: 0 0 10px 0; font-weight: 700;">APRESENTAR CÓPIA DOS DOCUMENTOS:</p>
+            <p style="font-size: 11px; color: #374151; margin: 0 0 6px 0; line-height: 1.6;">
+              <strong>PESSOA FÍSICA:</strong> CÓPIA RG, CPF E COMPROVANTE DE ENDEREÇO ATUALIZADO.
+            </p>
+            <p style="font-size: 11px; color: #374151; margin: 0; line-height: 1.6;">
+              <strong>PESSOA JURÍDICA:</strong> CONTRATO SOCIAL, ÚLTIMA ALTERAÇÃO, RG E CPF DO SÓCIO ADMINISTRADOR.
+            </p>
+          </div>
+        </div>
+
         <div class="footer">
           <p><strong>FOTON LAVORO</strong></p>
           <p>Pedido gerado automaticamente em ${new Date().toLocaleDateString('pt-BR')} às ${new Date().toLocaleTimeString('pt-BR')}</p>
