@@ -556,8 +556,39 @@ export default function PropostaComercial() {
             </div>
           </div>
 
+          <!-- Seção 5 - Previsão de Entrega do Veículo -->
+          <div style="margin-top: 48px; background: #fff; border: 2px solid #1a1a2e;">
+            <div style="background: #1a1a2e; padding: 10px 16px;">
+              <h4 style="font-size: 12px; font-weight: 700; color: white; margin: 0; text-transform: uppercase;">5 - PREVISÃO DE ENTREGA DO VEÍCULO</h4>
+            </div>
+            <div style="padding: 16px;">
+              <p style="font-size: 11px; color: #1a1a2e; margin: 0 0 8px 0; line-height: 1.6;">
+                DE ACORDO COM A DISPONIBILIDADE DE ESTOQUE E FÁBRICA.<br/>
+                O REPRESENTANTE DA ENTREGA TÉCNICA LAVORO ENTRARÁ EM CONTATO PARA AGENDAMENTO DA ENTREGA.
+              </p>
+            </div>
+            <div style="border-top: 2px solid #1a1a2e; padding: 16px;">
+              <p style="font-size: 11px; color: #1a1a2e; margin: 0 0 12px 0; font-weight: 700;">OBS.: PEDIDO SUJEITO À APROVAÇÃO DE CRÉDITO.</p>
+              <p style="font-size: 10px; color: #374151; margin: 0 0 8px 0; line-height: 1.7; text-align: justify;">
+                1. OS PREÇOS COTADOS SÃO OS VIGENTES NESTA OCASIÃO E ESTARÃO SUJEITOS À ALTERAÇÕES CASO O FABRICANTE MODIFIQUE SUAS NORMAS DE COMERCIALIZAÇÃO, NO QUE TANGE À PREÇOS, DESCONTOS OU PRAZOS DE PAGAMENTOS, E TAMBÉM A ALTERAÇÃO DE ALÍQUOTA DO ICMS/IPI CONFORME LEGISLAÇÃO ESTADUAL E FEDERAL.
+              </p>
+              <p style="font-size: 10px; color: #374151; margin: 0; line-height: 1.7; text-align: justify;">
+                2. O PEDIDO DE VENDA NÃO TERÁ VALIDADE SE NÃO ESTIVER DEVIDAMENTE PREENCHIDO E ASSINADO, SEM RASURAS.
+              </p>
+            </div>
+            <div style="border-top: 2px solid #1a1a2e; padding: 16px;">
+              <p style="font-size: 11px; color: #1a1a2e; margin: 0 0 8px 0; font-weight: 700;">APRESENTAR CÓPIA DOS DOCUMENTOS:</p>
+              <p style="font-size: 10px; color: #374151; margin: 0 0 6px 0; line-height: 1.6;">
+                <strong>PESSOA FÍSICA:</strong> CÓPIA RG, CPF E COMPROVANTE DE ENDEREÇO ATUALIZADO.
+              </p>
+              <p style="font-size: 10px; color: #374151; margin: 0; line-height: 1.6;">
+                <strong>PESSOA JURÍDICA:</strong> CONTRATO SOCIAL, ÚLTIMA ALTERAÇÃO, RG E CPF DO SÓCIO ADMINISTRADOR.
+              </p>
+            </div>
+          </div>
+
           <!-- Rodapé Premium -->
-          <div style="margin-top: 64px; padding-top: 24px; border-top: 1px solid #e5e7eb; text-align: center;">
+          <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #e5e7eb; text-align: center;">
             <p style="font-size: 11px; color: #9ca3af; margin-bottom: 8px;">
               Proposta válida por 7 dias a partir da data de emissão. Este documento não possui valor contratual.
             </p>
