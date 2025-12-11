@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Plus, Trash2, FileText } from "lucide-react";
+import { Plus, Trash2, FileText, Eye } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -40,6 +40,8 @@ const PedidoFaturamento = () => {
   const [pdfPreview, setPdfPreview] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
   const [entradaValor, setEntradaValor] = useState(0);
+  const [isPreviewMode, setIsPreviewMode] = useState(false);
+  const [previewLoading, setPreviewLoading] = useState(false);
   const faturamentoTipo = watch("faturamento_tipo");
   const financiamentoForma = watch("financiamento_forma");
   const adicionarProduto = () => {
@@ -106,6 +108,63 @@ const PedidoFaturamento = () => {
     const random = String(Math.floor(Math.random() * 10000)).padStart(4, '0');
     return `LAV-${ano}${mes}-${random}`;
   };
+
+  const handlePreview = async () => {
+    const data = watch();
+    
+    // Validações básicas
+    if (produtos.some(p => !p.produto || p.quantidade <= 0 || p.valorUnitario <= 0)) {
+      toast.error("Preencha todos os produtos corretamente para visualizar");
+      return;
+    }
+    
+    setPreviewLoading(true);
+    try {
+      const numeroPedido = "PREVIEW";
+      const valorTotal = calcularTotalProdutos();
+      const pedidoData = {
+        numero_pedido: numeroPedido,
+        local: data.local || null,
+        data: data.data || new Date().toISOString().split('T')[0],
+        nome_vendedor: data.nome_vendedor || "Vendedor",
+        nome_cliente: data.nome_cliente || "Cliente",
+        cnpj: data.cnpj || "00.000.000/0000-00",
+        ie_rg: data.ie_rg || null,
+        rua: data.rua || null,
+        numero: data.numero || null,
+        bairro: data.bairro || null,
+        cep: data.cep || null,
+        cidade: data.cidade || null,
+        estado: data.estado || null,
+        telefone_cliente: data.telefone_cliente || null,
+        responsavel_frota: data.responsavel_frota || null,
+        email_responsavel: data.email_responsavel || null,
+        faturamento_tipo: data.faturamento_tipo || "Estoque",
+        nome_instituicao: data.nome_instituicao || null,
+        financiamento_forma: data.financiamento_forma || "À vista",
+        financiamento_forma_outros: data.financiamento_forma_outros || null,
+        valor_total_produtos: valorTotal,
+        entrada: parseFloat(data.entrada || "0"),
+        observacoes: data.observacoes || null,
+        produtos: produtos as any
+      };
+
+      const { data: pdfData, error: pdfError } = await supabase.functions.invoke("gerar-pedido-pdf", {
+        body: pedidoData
+      });
+      
+      if (pdfError) throw pdfError;
+
+      setPdfPreview(pdfData.pdfHTML);
+      setIsPreviewMode(true);
+      setShowPreview(true);
+    } catch (error: any) {
+      console.error("Erro ao gerar preview:", error);
+      toast.error("Erro ao gerar preview: " + error.message);
+    } finally {
+      setPreviewLoading(false);
+    }
+  };
   const onSubmit = async (data: any) => {
     // Validações básicas
     if (produtos.some(p => !p.produto || p.quantidade <= 0 || p.valorUnitario <= 0)) {
@@ -168,6 +227,7 @@ const PedidoFaturamento = () => {
 
       // Mostrar preview do PDF
       setPdfPreview(pdfData.pdfHTML);
+      setIsPreviewMode(false);
       setShowPreview(true);
       toast.success("Pedido criado com sucesso!");
 
@@ -465,22 +525,43 @@ const PedidoFaturamento = () => {
             </CardContent>
           </Card>
 
-          <Button type="submit" size="lg" className="w-full" disabled={loading}>
-            {loading ? "Gerando Pedido..." : <>
-                <FileText className="w-5 h-5 mr-2" />
-                Gerar Pedido de Faturamento
+          <div className="flex gap-4">
+            <Button 
+              type="button" 
+              variant="outline" 
+              size="lg" 
+              className="flex-1" 
+              onClick={handlePreview}
+              disabled={previewLoading}
+            >
+              {previewLoading ? "Gerando Preview..." : <>
+                <Eye className="w-5 h-5 mr-2" />
+                Visualizar Pedido
               </>}
-          </Button>
+            </Button>
+            <Button type="submit" size="lg" className="flex-1" disabled={loading}>
+              {loading ? "Gerando Pedido..." : <>
+                <FileText className="w-5 h-5 mr-2" />
+                Salvar e Gerar PDF
+              </>}
+            </Button>
+          </div>
         </form>
       </div>
 
       {/* Preview Dialog */}
-      <Dialog open={showPreview} onOpenChange={setShowPreview}>
+      <Dialog open={showPreview} onOpenChange={(open) => {
+        setShowPreview(open);
+        if (!open) setIsPreviewMode(false);
+      }}>
         <DialogContent className="max-w-4xl max-h-[80vh] overflow-auto">
           <DialogHeader>
             <DialogTitle>Pré-visualização do Pedido</DialogTitle>
             <DialogDescription>
-              O pedido foi gerado e enviado por email automaticamente.
+              {isPreviewMode 
+                ? "Esta é uma pré-visualização. Para salvar o pedido, feche e clique em 'Salvar e Gerar PDF'."
+                : "O pedido foi gerado e salvo com sucesso."
+              }
             </DialogDescription>
           </DialogHeader>
           {pdfPreview && <div>
