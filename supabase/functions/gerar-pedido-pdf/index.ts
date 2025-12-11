@@ -64,9 +64,11 @@ function gerarPDFHTML(pedido: PedidoData): string {
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
           color-adjust: exact !important;
+          box-sizing: border-box;
         }
         @page {
-          margin: 20mm;
+          margin: 10mm 15mm;
+          size: A4;
         }
         @media print {
           * {
@@ -74,153 +76,175 @@ function gerarPDFHTML(pedido: PedidoData): string {
             print-color-adjust: exact !important;
             color-adjust: exact !important;
           }
-          body {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
+          html, body {
+            width: 210mm;
+            height: auto;
+            margin: 0 !important;
+            padding: 0 !important;
           }
+          .container {
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          .info-section {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+          .signatures {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+        }
+        html {
+          margin: 0;
+          padding: 0;
         }
         body {
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           padding: 0;
           margin: 0;
           color: #1a1a1a;
-          line-height: 1.6;
+          line-height: 1.5;
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
         }
         .container {
           max-width: 800px;
           margin: 0 auto;
+          padding: 0;
         }
         .header {
           text-align: center;
-          margin-bottom: 40px;
-          padding: 20px;
+          margin-bottom: 20px;
+          padding: 15px;
           background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%);
           border-bottom: 3px solid #0f2557;
         }
         .logo {
-          max-width: 280px;
+          max-width: 240px;
           height: auto;
-          margin: 0 auto 15px auto;
+          margin: 0 auto 10px auto;
           display: block;
         }
         .header h1 {
           color: #ffffff;
-          margin: 15px 0 10px 0;
-          font-size: 28px;
+          margin: 10px 0 8px 0;
+          font-size: 24px;
           font-weight: 700;
           letter-spacing: 1px;
         }
         .pedido-numero {
           background-color: #ef4444;
           color: white;
-          padding: 8px 20px;
+          padding: 6px 16px;
           border-radius: 20px;
           display: inline-block;
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 600;
-          margin-top: 10px;
+          margin-top: 8px;
         }
         .info-section {
-          margin: 25px 0;
+          margin: 15px 0;
           page-break-inside: avoid;
+          break-inside: avoid;
         }
         .info-section h2 {
           background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%);
           color: white;
-          padding: 12px 15px;
-          margin: 20px 0 15px 0;
-          border-radius: 6px;
-          font-size: 16px;
+          padding: 10px 12px;
+          margin: 12px 0 10px 0;
+          border-radius: 4px;
+          font-size: 14px;
           font-weight: 600;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         .info-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 15px;
-          margin: 15px 0;
+          gap: 10px;
+          margin: 10px 0;
           background-color: #f8f9fa;
-          padding: 20px;
-          border-radius: 6px;
+          padding: 12px;
+          border-radius: 4px;
         }
         .info-item {
-          padding: 8px;
+          padding: 4px;
         }
         .info-label {
           font-weight: 600;
           color: #0f2557;
-          margin-bottom: 4px;
-          font-size: 13px;
+          margin-bottom: 2px;
+          font-size: 11px;
         }
         .info-value {
           color: #1a1a1a;
-          font-size: 14px;
+          font-size: 12px;
         }
         table {
           width: 100%;
           border-collapse: collapse;
-          margin: 15px 0;
+          margin: 10px 0;
           background-color: white;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-          border-radius: 6px;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+          border-radius: 4px;
           overflow: hidden;
         }
         th {
           background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%);
           color: white;
-          padding: 14px 10px;
+          padding: 10px 8px;
           text-align: left;
           font-weight: 600;
-          font-size: 14px;
+          font-size: 12px;
         }
         td {
-          padding: 12px 10px;
-          font-size: 14px;
+          padding: 8px;
+          font-size: 12px;
         }
         .total-box {
           background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
           border-left: 4px solid #f59e0b;
-          padding: 20px;
-          margin: 25px 0;
+          padding: 12px;
+          margin: 15px 0;
           text-align: right;
-          border-radius: 6px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
         .total-box .label {
           color: #92400e;
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 600;
-          margin-bottom: 8px;
+          margin-bottom: 4px;
         }
         .total-box .value {
-          font-size: 32px;
+          font-size: 24px;
           font-weight: 700;
           color: #92400e;
         }
         .signatures {
-          margin-top: 80px;
+          margin-top: 40px;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
-          gap: 40px;
+          gap: 30px;
           page-break-inside: avoid;
+          break-inside: avoid;
         }
         .signature-line {
           border-top: 2px solid #0f2557;
-          padding-top: 8px;
+          padding-top: 6px;
           text-align: center;
           font-weight: 600;
           color: #0f2557;
-          font-size: 13px;
+          font-size: 11px;
         }
         .footer {
-          margin-top: 40px;
-          padding-top: 20px;
-          border-top: 2px solid #e5e7eb;
+          margin-top: 20px;
+          padding-top: 15px;
+          border-top: 1px solid #e5e7eb;
           text-align: center;
           color: #6b7280;
-          font-size: 12px;
+          font-size: 10px;
         }
         .observacoes-box {
           background-color: #f1f5f9;
@@ -358,35 +382,35 @@ function gerarPDFHTML(pedido: PedidoData): string {
         ` : ''}
 
         <!-- Seção - Termos e Condições (ANTES das assinaturas) -->
-        <div style="margin-top: 40px; background: #fff; border: 1px solid #d1d5db; border-radius: 6px; page-break-inside: avoid;">
-          <div style="padding: 16px;">
-            <p style="font-size: 11px; color: #1a1a1a; margin: 0 0 12px 0; line-height: 1.6; text-transform: uppercase;">
+        <div style="margin-top: 20px; background: #fff; border: 1px solid #d1d5db; border-radius: 4px; page-break-inside: avoid; break-inside: avoid;">
+          <div style="padding: 12px;">
+            <p style="font-size: 10px; color: #1a1a1a; margin: 0 0 8px 0; line-height: 1.5; text-transform: uppercase;">
               DE ACORDO COM A DISPONIBILIDADE DE ESTOQUE E FÁBRICA.<br/>
               O REPRESENTANTE DA ENTREGA TÉCNICA LAVORO ENTRARÁ EM CONTATO PARA AGENDAMENTO DA ENTREGA.
             </p>
             
-            <p style="font-size: 11px; color: #1a1a1a; margin: 16px 0 8px 0; font-weight: 700;">OBS.:</p>
+            <p style="font-size: 10px; color: #1a1a1a; margin: 10px 0 6px 0; font-weight: 700;">OBS.:</p>
             
-            <p style="font-size: 10px; color: #374151; margin: 0 0 8px 0; line-height: 1.6; text-align: justify; padding-left: 12px;">
+            <p style="font-size: 9px; color: #374151; margin: 0 0 5px 0; line-height: 1.5; text-align: justify; padding-left: 10px;">
               <strong>1.</strong> OS PREÇOS COTADOS SÃO OS VIGENTES NESTA OCASIÃO E ESTARÃO SUJEITOS À ALTERAÇÕES CASO O FABRICANTE MODIFIQUE SUAS NORMAS DE COMERCIALIZAÇÃO, NO QUE TANGE À PREÇOS, DESCONTOS OU PRAZOS DE PAGAMENTOS, E TAMBÉM A ALTERAÇÃO DE ALÍQUOTA DO ICMS/IPI CONFORME LEGISLAÇÃO ESTADUAL E FEDERAL.
             </p>
             
-            <p style="font-size: 10px; color: #374151; margin: 0 0 8px 0; line-height: 1.6; text-align: justify; padding-left: 12px;">
+            <p style="font-size: 9px; color: #374151; margin: 0 0 5px 0; line-height: 1.5; text-align: justify; padding-left: 10px;">
               <strong>2.</strong> O pedido de venda não terá validade se não estiver devidamente preenchido e assinado, sem rasurar.
             </p>
             
-            <p style="font-size: 10px; color: #374151; margin: 0 0 8px 0; line-height: 1.6; text-align: justify; padding-left: 12px;">
+            <p style="font-size: 9px; color: #374151; margin: 0 0 5px 0; line-height: 1.5; text-align: justify; padding-left: 10px;">
               <strong>3.</strong> Em caso de desistência, o comprador não terá direito à restituição do valor do sinal. Respaldo legal nos artigos 417 e 418 do Código Civil, sendo denominado juridicamente como arras. Caso haja majoração de preço, o mesmo será repassado ao comprador.
             </p>
             
-            <p style="font-size: 10px; color: #374151; margin: 0 0 12px 0; line-height: 1.6; text-align: justify; padding-left: 12px;">
+            <p style="font-size: 9px; color: #374151; margin: 0 0 8px 0; line-height: 1.5; text-align: justify; padding-left: 10px;">
               <strong>4.</strong> Caso parte do pagamento do veículo adquirido seja efetivado com outro veículo usado (troca com torna), o veículo usado não será, em nenhuma hipótese, restituído ao COMPRADOR, ainda que venha a ocorrer desistência, cancelamento da compra, resolução contratual, vício, arrependimento, devolução do veículo novo ou qualquer outra causa que impeça ou inviabilize a conclusão da venda. O COMPRADOR declara estar ciente de que o veículo usado será desde logo disposto, negociado ou revendido pelo CONCESSIONÁRIO.
             </p>
             
-            <p style="font-size: 10px; color: #374151; margin: 0 0 4px 0; line-height: 1.6;">
+            <p style="font-size: 9px; color: #374151; margin: 0 0 3px 0; line-height: 1.4;">
               <strong>PESSOA FÍSICA:</strong> CÓPIA RG, CPF E COMPROVANTE DE ENDEREÇO ATUALIZADO.
             </p>
-            <p style="font-size: 10px; color: #374151; margin: 0; line-height: 1.6;">
+            <p style="font-size: 9px; color: #374151; margin: 0; line-height: 1.4;">
               <strong>PESSOA JURÍDICA:</strong> CONTRATO SOCIAL, ÚLTIMA ALTERAÇÃO, RG E CPF DO SÓCIO ADMINISTRADOR.
             </p>
           </div>
