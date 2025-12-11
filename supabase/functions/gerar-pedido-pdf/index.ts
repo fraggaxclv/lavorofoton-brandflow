@@ -60,8 +60,24 @@ function gerarPDFHTML(pedido: PedidoData): string {
     <head>
       <meta charset="UTF-8">
       <style>
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
+        }
         @page {
           margin: 20mm;
+        }
+        @media print {
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+          }
+          body {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
         }
         body {
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -69,6 +85,8 @@ function gerarPDFHTML(pedido: PedidoData): string {
           margin: 0;
           color: #1a1a1a;
           line-height: 1.6;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
         }
         .container {
           max-width: 800px;
