@@ -590,7 +590,7 @@ export default function PropostaComercial() {
           <!-- Rodapé Premium -->
           <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #e5e7eb; text-align: center;">
             <p style="font-size: 11px; color: #9ca3af; margin-bottom: 8px;">
-              Proposta válida por 7 dias a partir da data de emissão. Este documento não possui valor contratual.
+              Proposta válida por 5 dias corridos a partir da data de emissão. Este documento não possui valor contratual.
             </p>
             <p style="font-size: 10px; color: #9ca3af;">
               Lavoro Foton • Concessionária Oficial FOTON em Minas Gerais • 40+ anos de tradição no mercado de veículos comerciais
