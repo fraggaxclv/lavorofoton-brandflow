@@ -248,24 +248,53 @@ const PedidoFaturamento = () => {
     }
   };
   const downloadPDF = () => {
-    if (pdfPreview) {
-      // Abre uma nova janela com o HTML e aciona a impressão como PDF
-      const printWindow = window.open('', '_blank');
-      if (printWindow) {
-        printWindow.document.write(pdfPreview);
-        printWindow.document.close();
-        
-        // Aguarda o carregamento completo antes de imprimir
-        printWindow.onload = () => {
-          printWindow.print();
-        };
-        
-        // Fallback para navegadores que não disparam onload
-        setTimeout(() => {
-          printWindow.print();
-        }, 500);
+    if (!pdfPreview) return;
+
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) return;
+
+    printWindow.document.open();
+    printWindow.document.write(pdfPreview);
+    printWindow.document.close();
+
+    let printed = false;
+    const doPrint = () => {
+      if (printed) return;
+      printed = true;
+      printWindow.focus();
+      printWindow.print();
+    };
+
+    const waitForAssetsAndPrint = async () => {
+      try {
+        // @ts-expect-error - fonts may not exist in all browsers
+        await printWindow.document.fonts?.ready;
+      } catch {
+        // ignore
       }
-    }
+
+      const images = Array.from(printWindow.document.images || []);
+      await Promise.all(
+        images.map(
+          (img) =>
+            img.complete
+              ? Promise.resolve()
+              : new Promise<void>((resolve) => {
+                  img.onload = () => resolve();
+                  img.onerror = () => resolve();
+                })
+        )
+      );
+
+      doPrint();
+    };
+
+    // Imprime após carregar + fallback (apenas 1x)
+    printWindow.addEventListener("load", () => {
+      void waitForAssetsAndPrint();
+    }, { once: true });
+
+    setTimeout(doPrint, 2000);
   };
   return <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-8 px-4">
       <div className="max-w-5xl mx-auto">

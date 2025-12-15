@@ -85,8 +85,6 @@ function gerarPDFHTML(pedido: PedidoData): string {
             color-adjust: exact !important;
           }
           html, body {
-            width: 210mm;
-            height: auto;
             margin: 0 !important;
             padding: 0 !important;
           }
@@ -94,6 +92,26 @@ function gerarPDFHTML(pedido: PedidoData): string {
             max-width: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
+          }
+
+          /* Evita bugs de impressão com CSS Grid (páginas em branco) */
+          .info-grid {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 6px !important;
+          }
+          .info-item {
+            width: 50% !important;
+          }
+          .info-item[style*="grid-column: 1 / -1"] {
+            width: 100% !important;
+          }
+          .signatures {
+            display: flex !important;
+            gap: 12px !important;
+          }
+          .signature-line {
+            flex: 1 1 0 !important;
           }
         }
         html {
