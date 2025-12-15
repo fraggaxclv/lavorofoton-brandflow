@@ -40,14 +40,22 @@ interface PedidoData {
   produtos: Produto[];
 }
 
+// Função para formatar valores monetários corretamente em BRL
+function formatarMoeda(valor: number): string {
+  const valorFormatado = valor.toFixed(2);
+  const [inteiro, decimal] = valorFormatado.split('.');
+  const inteiroComMilhares = inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  return `${inteiroComMilhares},${decimal}`;
+}
+
 function gerarPDFHTML(pedido: PedidoData): string {
   const produtosHTML = pedido.produtos.map((p, index) => `
     <tr style="background-color: ${index % 2 === 0 ? '#f8f9fa' : '#ffffff'};">
       <td style="padding: 12px 8px; border-bottom: 1px solid #e9ecef;">${p.produto}</td>
       <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.quantidade}</td>
       <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.anoModelo}</td>
-      <td style="padding: 12px 8px; text-align: right; border-bottom: 1px solid #e9ecef;">R$ ${p.valorUnitario.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
-      <td style="padding: 12px 8px; text-align: right; font-weight: 600; border-bottom: 1px solid #e9ecef;">R$ ${p.valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+      <td style="padding: 12px 8px; text-align: right; border-bottom: 1px solid #e9ecef;">R$ ${formatarMoeda(p.valorUnitario)}</td>
+      <td style="padding: 12px 8px; text-align: right; font-weight: 600; border-bottom: 1px solid #e9ecef;">R$ ${formatarMoeda(p.valorTotal)}</td>
     </tr>
   `).join('');
 
@@ -336,7 +344,8 @@ function gerarPDFHTML(pedido: PedidoData): string {
               ${produtosHTML}
               <tr style="background-color: #f8f9fa; border-top: 2px solid #0f2557;">
                 <td colspan="4" style="padding: 12px 8px; text-align: right; font-weight: 700; border-bottom: none;">VALOR TOTAL DOS PRODUTOS:</td>
-                <td style="padding: 12px 8px; text-align: right; font-weight: 700; color: #0f2557; font-size: 16px; border-bottom: none;">R$ ${pedido.valor_total_produtos.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                <td style="padding: 12px 8px; text-align: right; font-weight: 700; color: #0f2557; font-size: 16px; border-bottom: none;">R$ ${formatarMoeda(pedido.valor_total_produtos)}</td>
+                
               </tr>
             </tbody>
           </table>
@@ -359,15 +368,15 @@ function gerarPDFHTML(pedido: PedidoData): string {
             </div>
             <div class="info-item">
               <div class="info-label">Valor Total dos Produtos:</div>
-              <div class="info-value" style="font-weight: 700; color: #0f2557;">R$ ${pedido.valor_total_produtos.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+              <div class="info-value" style="font-weight: 700; color: #0f2557;">R$ ${formatarMoeda(pedido.valor_total_produtos)}</div>
             </div>
             <div class="info-item">
               <div class="info-label">Entrada:</div>
-              <div class="info-value" style="font-weight: 700; color: #16a34a;">R$ ${(pedido.entrada || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+              <div class="info-value" style="font-weight: 700; color: #16a34a;">R$ ${formatarMoeda(pedido.entrada || 0)}</div>
             </div>
             <div class="info-item">
               <div class="info-label">Valor Financiado (Total - Entrada):</div>
-              <div class="info-value" style="font-weight: 700; color: #dc2626;">R$ ${saldoFinanciado.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+              <div class="info-value" style="font-weight: 700; color: #dc2626;">R$ ${formatarMoeda(saldoFinanciado)}</div>
             </div>
           </div>
         </div>
