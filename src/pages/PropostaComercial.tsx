@@ -230,16 +230,16 @@ export default function PropostaComercial() {
 
     const rows = specs.map(s => `
       <tr>
-        <td style="padding: 6px 10px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #003366; width: 40%; font-size: 10px;">${s.label}</td>
-        <td style="padding: 6px 10px; border-bottom: 1px solid #e5e7eb; color: #374151; font-size: 10px;">${s.valor}</td>
+        <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #003366; width: 40%; font-size: 12px;">${s.label}</td>
+        <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; color: #374151; font-size: 12px;">${s.valor}</td>
       </tr>
     `).join('');
 
     return `
-      <table style="width: 100%; border-collapse: collapse; font-size: 11px; background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+      <table style="width: 100%; border-collapse: collapse; font-size: 13px; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
         <thead>
           <tr style="background: #003366; color: white;">
-            <th colspan="2" style="padding: 8px 10px; text-align: left; font-size: 10px; font-weight: 700;">ESPECIFICAÇÕES TÉCNICAS</th>
+            <th colspan="2" style="padding: 14px 16px; text-align: left; font-size: 14px; font-weight: 700;">ESPECIFICAÇÕES TÉCNICAS</th>
           </tr>
         </thead>
         <tbody>
@@ -271,36 +271,36 @@ export default function PropostaComercial() {
       }
       
       return `
-        <div style="page-break-before: always; padding: 20px 0;">
-          <!-- Cabeçalho do Produto -->
-          <div style="margin-bottom: 14px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
-              <span style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 4px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase;">${categoriaLabel}</span>
-              <span style="background: #f0f9ff; color: #003366; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600;">CNH ${p.veiculo?.cnh || '-'}</span>
-              ${p.cor ? `<span style="background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600;">Cor: ${p.cor}</span>` : ''}
-              ${p.anoModelo ? `<span style="background: #e0e7ff; color: #3730a3; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600;">${p.anoModelo}</span>` : ''}
-              <span style="background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: 4px; font-size: 10px; font-weight: 600;">Garantia: ${garantiaLabel}</span>
+        <div style="page-break-before: always; min-height: 100vh; padding: 32px 0;">
+          <!-- Cabeçalho do Produto - 25% maior -->
+          <div style="margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <span style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 6px 16px; border-radius: 6px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${categoriaLabel}</span>
+              <span style="background: #f0f9ff; color: #003366; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">CNH ${p.veiculo?.cnh || '-'}</span>
+              ${p.cor ? `<span style="background: #fef3c7; color: #92400e; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">Cor: ${p.cor}</span>` : ''}
+              ${p.anoModelo ? `<span style="background: #e0e7ff; color: #3730a3; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">${p.anoModelo}</span>` : ''}
+              <span style="background: #dcfce7; color: #166534; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">Garantia: ${garantiaLabel}</span>
             </div>
-            <h2 style="font-size: 22px; font-weight: 800; color: #1a1a2e; margin: 0 0 4px 0;">${p.modelo}</h2>
-            <p style="font-size: 12px; color: #6b7280; margin: 0;">Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
+            <h2 style="font-size: 30px; font-weight: 800; color: #1a1a2e; margin: 0 0 6px 0; letter-spacing: -0.5px;">${p.modelo}</h2>
+            <p style="font-size: 15px; color: #6b7280; margin: 0;">Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
           </div>
 
-          <!-- Imagem Principal -->
-          <div style="margin-bottom: 14px;">
+          <!-- Imagem Principal - Mantendo tamanho atual -->
+          <div style="margin-bottom: 20px;">
             ${p.veiculo ? `
-              <img src="${p.veiculo.imagem}" alt="${p.modelo}" style="width: 100%; height: 140px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
-            ` : '<div style="width: 100%; height: 140px; background: #f3f4f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 12px;">Imagem não disponível</div>'}
+              <img src="${p.veiculo.imagem}" alt="${p.modelo}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
+            ` : '<div style="width: 100%; height: 180px; background: #f3f4f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 14px;">Imagem não disponível</div>'}
           </div>
 
-          <!-- Grid: Qualificações + Tabela Técnica + Valor -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-            <!-- Informações Relevantes -->
+          <!-- Grid: 10 Qualificações + Tabela Técnica + Valor -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <!-- 10 Informações Relevantes -->
             <div>
-              <h3 style="font-size: 11px; font-weight: 700; color: #1a1a2e; margin: 0 0 10px 0; text-transform: uppercase; border-bottom: 2px solid #003366; padding-bottom: 6px; display: inline-block;">Por que este veículo?</h3>
+              <h3 style="font-size: 14px; font-weight: 700; color: #1a1a2e; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #003366; padding-bottom: 8px; display: inline-block;">Por que este veículo?</h3>
               <ul style="margin: 0; padding: 0; list-style: none;">
                 ${infos.map((info, i) => `
-                  <li style="display: flex; gap: 8px; margin-bottom: 5px; font-size: 10px; line-height: 1.5; color: #374151;">
-                    <span style="flex-shrink: 0; width: 16px; height: 16px; background: linear-gradient(135deg, #003366, #001a33); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 700;">${i + 1}</span>
+                  <li style="display: flex; gap: 10px; margin-bottom: 8px; font-size: 12px; line-height: 1.6; color: #374151;">
+                    <span style="flex-shrink: 0; width: 20px; height: 20px; background: linear-gradient(135deg, #003366, #001a33); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;">${i + 1}</span>
                     <span>${info}</span>
                   </li>
                 `).join('')}
@@ -308,23 +308,23 @@ export default function PropostaComercial() {
             </div>
 
             <!-- Coluna Direita: Tabela Técnica + Valor -->
-            <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
               ${tabelaTecnica}
               
-              <!-- Valor deste produto -->
-              <div style="background: #f8fafc; padding: 10px 14px; border-radius: 6px; border: 1px solid #003366; text-align: right;">
-                <div style="font-size: 9px; color: #6b7280; text-transform: uppercase; margin-bottom: 2px;">Valor Unitário</div>
-                <div style="font-size: 16px; font-weight: 800; color: #003366;">${formatarMoeda(p.valorUnitario)}</div>
-                <div style="font-size: 10px; color: #6b7280; margin-top: 2px;">Qtd: ${p.quantidade} | Total: ${formatarMoeda(p.valorTotal)}</div>
+              <!-- Valor deste produto - abaixo da tabela técnica -->
+              <div style="background: #f8fafc; padding: 14px 20px; border-radius: 8px; border: 1px solid #003366; text-align: right;">
+                <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Valor Unitário</div>
+                <div style="font-size: 20px; font-weight: 800; color: #003366;">${formatarMoeda(p.valorUnitario)}</div>
+                <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">Qtd: ${p.quantidade} | Total: ${formatarMoeda(p.valorTotal)}</div>
               </div>
             </div>
           </div>
 
           ${p.opcionais ? `
           <!-- Opcionais -->
-          <div style="margin-top: 14px; background: #fffbeb; padding: 10px 14px; border-radius: 6px; border-left: 3px solid #f59e0b;">
-            <div style="font-size: 9px; color: #92400e; text-transform: uppercase; margin-bottom: 4px; font-weight: 600;">Opcionais Inclusos</div>
-            <p style="font-size: 11px; color: #78350f; margin: 0; line-height: 1.5;">${p.opcionais}</p>
+          <div style="margin-top: 20px; background: #fffbeb; padding: 16px 20px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+            <div style="font-size: 11px; color: #92400e; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; font-weight: 600;">Opcionais Inclusos</div>
+            <p style="font-size: 13px; color: #78350f; margin: 0; line-height: 1.6;">${p.opcionais}</p>
           </div>
           ` : ''}
         </div>
@@ -333,14 +333,14 @@ export default function PropostaComercial() {
 
     // Condições comerciais - Compacto
     const condicoesHtml = produtos.map(p => `
-      <div style="display: grid; grid-template-columns: 3fr 1fr 1fr 1fr; gap: 8px; padding: 6px 0; border-bottom: 1px solid #e5e7eb; align-items: center;">
+      <div style="display: grid; grid-template-columns: 3fr 1fr 1fr 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e5e7eb; align-items: center;">
         <div>
-          <div style="font-weight: 600; color: #1a1a2e; font-size: 10px;">${p.modelo}</div>
-          <div style="font-size: 9px; color: #6b7280;">${p.veiculo?.capacidade || ''}</div>
+          <div style="font-weight: 600; color: #1a1a2e; font-size: 12px;">${p.modelo}</div>
+          <div style="font-size: 10px; color: #6b7280;">${p.veiculo?.capacidade || ''}</div>
         </div>
-        <div style="text-align: center; color: #374151; font-size: 10px;">${p.quantidade} un.</div>
-        <div style="text-align: right; color: #374151; font-size: 10px;">${formatarMoeda(p.valorUnitario)}</div>
-        <div style="text-align: right; font-weight: 700; color: #1a1a2e; font-size: 10px;">${formatarMoeda(p.valorTotal)}</div>
+        <div style="text-align: center; color: #374151; font-size: 11px;">${p.quantidade} un.</div>
+        <div style="text-align: right; color: #374151; font-size: 11px;">${formatarMoeda(p.valorUnitario)}</div>
+        <div style="text-align: right; font-weight: 700; color: #1a1a2e; font-size: 11px;">${formatarMoeda(p.valorTotal)}</div>
       </div>
     `).join('');
 
@@ -362,111 +362,146 @@ export default function PropostaComercial() {
           body { 
             font-family: 'Inter', -apple-system, sans-serif; 
             color: #1a1a2e; 
-            line-height: 1.5;
-            padding: 20px 32px;
+            line-height: 1.6;
+            padding: 40px 48px;
             max-width: 900px;
             margin: 0 auto;
             background: white;
           }
           @media print {
-            body { padding: 16px 24px; }
+            body { padding: 24px; }
             .no-print { display: none !important; }
           }
         </style>
       </head>
       <body>
-        <!-- ========== PÁGINA 1: CAPA EXECUTIVA ========== -->
+        <!-- ========== PÁGINA 1: CAPA EXECUTIVA PREMIUM ========== -->
         
-        <!-- HEADER INSTITUCIONAL -->
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 2px solid #003366;">
-          <div>
-            <img src="${logoLavoro}" alt="Foton Lavoro" style="height: 38px; margin-bottom: 6px;" />
-            <div style="font-size: 10px; color: #64748b;">Concessionária Oficial FOTON – MG</div>
-          </div>
-          <div style="text-align: right;">
-            <div style="font-size: 9px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px;">Proposta Comercial</div>
-            <div style="font-size: 11px; color: #475569; font-weight: 600;">${formData.numeroProposta}</div>
-            <div style="font-size: 10px; color: #94a3b8;">${dataFormatada}</div>
+        <!-- HEADER INSTITUCIONAL DISCRETO -->
+        <div style="background: white; margin: -40px -48px 0 -48px; padding: 28px 48px 20px 48px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <img src="${logoLavoro}" alt="Foton Lavoro" style="height: 42px; margin-bottom: 8px;" />
+              <div style="font-size: 11px; color: #64748b; line-height: 1.4;">
+                Concessionária Oficial FOTON – Minas Gerais
+              </div>
+              <div style="font-size: 10px; color: #94a3b8; font-style: italic; margin-top: 2px;">
+                "40 anos de confiança."
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Proposta Comercial</div>
+              <div style="font-size: 12px; color: #64748b;">Código: <span style="font-weight: 600; color: #475569;">${formData.numeroProposta}</span></div>
+              <div style="font-size: 11px; color: #94a3b8;">Data: ${dataFormatada}</div>
+            </div>
           </div>
         </div>
 
-        <!-- TÍTULO E CLIENTE -->
-        <div style="text-align: center; margin-bottom: 20px;">
-          <h1 style="font-size: 20px; font-weight: 700; color: #0f172a; margin: 0 0 8px 0;">
-            Proposta de Solução Logística
+        <!-- TÍTULO CENTRAL -->
+        <div style="text-align: center; padding: 36px 32px 28px 32px; background: white;">
+          <h1 style="font-size: 24px; font-weight: 700; color: #0f172a; line-height: 1.35; margin: 0 0 12px 0; letter-spacing: -0.3px;">
+            Uma decisão pensada para eficiência,<br/>segurança e crescimento.
           </h1>
-          <p style="font-size: 11px; color: #64748b; margin: 0 0 16px 0;">Elaborada sob medida para sua operação</p>
-          
-          <div style="background: #f8fafc; padding: 14px 20px; border-radius: 8px; display: inline-block;">
-            <div style="font-size: 9px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Cliente</div>
-            <div style="font-size: 16px; font-weight: 700; color: #0f172a;">${formData.nomeCliente}</div>
-            <div style="font-size: 11px; color: #64748b; margin-top: 4px;">${formData.cidade} – ${formData.estado} • Consultor: ${formData.nomeConsultor}</div>
-          </div>
-        </div>
-
-        <!-- TEXTO DE CONTEXTO COMPACTO -->
-        <div style="margin-bottom: 20px;">
-          <p style="font-size: 11px; color: #475569; line-height: 1.7; text-align: center; max-width: 600px; margin: 0 auto;">
-            Proposta desenvolvida considerando necessidades logísticas, capacidade de investimento e objetivos de expansão de <strong>${formData.nomeCliente}</strong>.
+          <p style="font-size: 13px; color: #64748b; margin: 0; font-weight: 400;">
+            Proposta de solução logística elaborada sob medida para sua operação.
           </p>
         </div>
 
-        <!-- FOTON + LAVORO EM LINHA -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
-          <div style="background: #f8fafc; padding: 12px 14px; border-radius: 8px; border: 1px solid #e2e8f0;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <div style="width: 28px; height: 28px; background: linear-gradient(135deg, #003366, #001a33); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                <span style="color: white; font-weight: 800; font-size: 12px;">F</span>
+        <!-- BLOCO DO CLIENTE -->
+        <div style="text-align: center; padding: 28px 32px; background: white;">
+          <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-weight: 500;">
+            Elaborada exclusivamente para
+          </div>
+          <div style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">
+            ${formData.nomeCliente}
+          </div>
+          <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+            <span style="font-size: 12px; color: #64748b;">${formData.cidade} – ${formData.estado}</span>
+            <span style="font-size: 12px; color: #64748b;">Consultor: <span style="font-weight: 600; color: #475569;">${formData.nomeConsultor}</span></span>
+          </div>
+        </div>
+
+        <!-- TEXTO DE CONTEXTO -->
+        <div style="padding: 24px 40px; background: white;">
+          <div style="max-width: 620px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 12px; color: #475569; line-height: 1.8; margin: 0;">
+              Esta proposta foi desenvolvida a partir da análise do perfil operacional de <strong style="color: #0f172a;">${formData.nomeCliente}</strong>, considerando suas necessidades logísticas atuais, capacidade de investimento e objetivos de expansão. A solução apresentada reflete uma configuração amplamente utilizada por empresas que buscam previsibilidade operacional, eficiência financeira e segurança na tomada de decisão.
+            </p>
+          </div>
+        </div>
+
+        <!-- BLOCO DE AUTORIDADE (FOTON + LAVORO) - VERTICAL -->
+        <div style="padding: 24px 40px; background: white;">
+          <!-- Card FOTON -->
+          <div style="background: #f8fafc; padding: 16px 20px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #003366, #001a33); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <span style="color: white; font-weight: 800; font-size: 14px;">F</span>
               </div>
-              <div>
-                <h4 style="font-size: 11px; font-weight: 700; color: #0f172a; margin: 0;">FOTON</h4>
-                <p style="font-size: 9px; color: #64748b; margin: 0;">Fabricante global • +110 países</p>
+              <div style="flex: 1;">
+                <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">FOTON</h4>
+                <p style="font-size: 11px; color: #64748b; line-height: 1.5; margin: 0;">
+                  Uma das maiores fabricantes de veículos comerciais do mundo, presente em mais de 110 países. Reconhecida globalmente por confiabilidade, robustez e inovação industrial.
+                </p>
               </div>
             </div>
           </div>
-          <div style="background: #f8fafc; padding: 12px 14px; border-radius: 8px; border: 1px solid #e2e8f0;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <div style="width: 28px; height: 28px; background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-                <span style="color: white; font-weight: 800; font-size: 12px;">L</span>
+          
+          <!-- Card LAVORO -->
+          <div style="background: #f8fafc; padding: 16px 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <span style="color: white; font-weight: 800; font-size: 14px;">L</span>
               </div>
-              <div>
-                <h4 style="font-size: 11px; font-weight: 700; color: #0f172a; margin: 0;">LAVORO</h4>
-                <p style="font-size: 9px; color: #64748b; margin: 0;">40+ anos em MG • Suporte completo</p>
+              <div style="flex: 1;">
+                <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">LAVORO</h4>
+                <p style="font-size: 11px; color: #64748b; line-height: 1.5; margin: 0;">
+                  Concessionária oficial FOTON em Minas Gerais, com mais de 40 anos de atuação no setor de veículos comerciais, oferecendo atendimento consultivo, suporte completo e relacionamento de longo prazo.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- SOLUÇÕES SELECIONADAS -->
-        <div style="margin-bottom: 16px;">
-          <h3 style="font-size: 10px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 12px 0; text-align: center;">
-            Soluções Selecionadas
-          </h3>
-          <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+        <!-- BLOCO "SOLUÇÃO SELECIONADA" -->
+        <div style="padding: 28px 40px 36px 40px; background: white;">
+          <div style="text-align: center; margin-bottom: 16px;">
+            <h3 style="font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
+              Soluções selecionadas para sua operação
+            </h3>
+          </div>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 16px;">
             ${produtos.map(p => `
-              <div style="background: linear-gradient(145deg, #0055a4, #003366); color: white; padding: 12px 20px; border-radius: 8px; text-align: center;">
-                <div style="font-weight: 800; font-size: 14px;">${p.modelo}</div>
-                <div style="font-size: 10px; opacity: 0.9;">${p.quantidade} un.</div>
+              <div style="background: linear-gradient(145deg, #0055a4, #003366); color: white; padding: 20px 32px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,51,102,0.35), 0 4px 12px rgba(0,85,164,0.25), inset 0 1px 0 rgba(255,255,255,0.15); min-width: 180px; text-align: center; border: 2px solid rgba(255,255,255,0.2); transform: translateY(0); transition: all 0.3s;">
+                <div style="font-weight: 900; font-size: 18px; margin-bottom: 4px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); letter-spacing: 0.5px;">${p.modelo}</div>
+                <div style="font-size: 11px; opacity: 0.9; font-weight: 500;">${p.quantidade} unidade${p.quantidade > 1 ? 's' : ''}</div>
               </div>
             `).join('')}
           </div>
+          
+          <div style="text-align: center; max-width: 520px; margin: 0 auto;">
+            <p style="font-size: 11px; color: #94a3b8; line-height: 1.6; margin: 0;">
+              Configuração recomendada após análise do perfil operacional da empresa, considerando eficiência logística, rentabilidade e disponibilidade.
+            </p>
+          </div>
         </div>
 
-        <!-- ========== PÁGINAS DE PRODUTOS ========== -->
+        <!-- ========== PÁGINAS DE PRODUTOS (1 por produto) ========== -->
         ${produtosHtml}
 
         <!-- ========== PÁGINA FINAL: CONDIÇÕES E ASSINATURAS ========== -->
-        <div style="page-break-before: always; padding-top: 20px;">
+        <div style="page-break-before: always; padding-top: 32px;">
           
           <!-- Condições Comerciais -->
-          <div style="margin-bottom: 24px;">
-            <h2 style="font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #003366;">
+          <div style="margin-bottom: 48px;">
+            <h2 style="font-size: 20px; font-weight: 700; color: #1a1a2e; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 3px solid #003366;">
               Condições Comerciais
             </h2>
 
-            <!-- Tabela de Produtos -->
-            <div style="margin-bottom: 14px;">
-              <div style="display: grid; grid-template-columns: 3fr 1fr 1fr 1fr; gap: 8px; padding: 8px 0; border-bottom: 2px solid #1a1a2e; font-size: 9px; font-weight: 700; text-transform: uppercase; color: #6b7280;">
+            <!-- Tabela de Produtos Compacta -->
+            <div style="margin-bottom: 20px;">
+              <div style="display: grid; grid-template-columns: 3fr 1fr 1fr 1fr; gap: 12px; padding: 10px 0; border-bottom: 2px solid #1a1a2e; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #6b7280;">
                 <div>Produto</div>
                 <div style="text-align: center;">Qtd</div>
                 <div style="text-align: right;">Unit.</div>
@@ -475,90 +510,98 @@ export default function PropostaComercial() {
               ${condicoesHtml}
             </div>
 
-            <!-- Total e Forma de Pagamento -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-              <div style="background: #f8fafc; padding: 10px 12px; border-radius: 6px;">
-                <div style="font-size: 9px; color: #6b7280; text-transform: uppercase; margin-bottom: 2px;">Forma de Pagamento</div>
-                <div style="font-size: 12px; font-weight: 700; color: #1a1a2e;">${formaPagamento}</div>
-                ${formData.financeira ? `<div style="font-size: 10px; color: #6b7280; margin-top: 2px;">Instituição: ${formData.financeira}</div>` : ''}
+            <!-- Total e Forma de Pagamento - Compacto -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div style="background: #f8fafc; padding: 14px 16px; border-radius: 8px;">
+                <div style="font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Forma de Pagamento</div>
+                <div style="font-size: 14px; font-weight: 700; color: #1a1a2e;">${formaPagamento}</div>
+                ${formData.financeira ? `<div style="font-size: 11px; color: #6b7280; margin-top: 4px;">Instituição: ${formData.financeira}</div>` : ''}
               </div>
-              <div style="background: linear-gradient(135deg, #003366, #001a33); padding: 10px 12px; border-radius: 6px; color: white;">
-                <div style="font-size: 8px; opacity: 0.9; text-transform: uppercase; margin-bottom: 2px;">Valor Total</div>
-                <div style="font-size: 16px; font-weight: 800;">${formatarMoeda(totalProdutos)}</div>
+              <div style="background: linear-gradient(135deg, #003366, #001a33); padding: 14px 16px; border-radius: 8px; color: white;">
+                <div style="font-size: 9px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Valor Total</div>
+                <div style="font-size: 18px; font-weight: 800; letter-spacing: -0.3px;">${formatarMoeda(totalProdutos)}</div>
               </div>
             </div>
           </div>
 
           ${formData.observacoes ? `
           <!-- Observações -->
-          <div style="margin-bottom: 20px;">
-            <h3 style="font-size: 11px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px;">Observações</h3>
-            <div style="background: #f8fafc; padding: 12px; border-radius: 6px;">
-              <p style="font-size: 11px; color: #374151; line-height: 1.6; white-space: pre-wrap; margin: 0;">${formData.observacoes}</p>
+          <div style="margin-bottom: 48px;">
+            <h3 style="font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px;">Observações</h3>
+            <div style="background: #f8fafc; padding: 20px; border-radius: 8px;">
+              <p style="font-size: 13px; color: #374151; line-height: 1.7; white-space: pre-wrap; margin: 0;">${formData.observacoes}</p>
             </div>
           </div>
           ` : ''}
 
           <!-- Assinaturas -->
-          <div style="margin-top: 24px;">
-            <h3 style="font-size: 11px; font-weight: 700; color: #1a1a2e; margin-bottom: 16px; text-transform: uppercase;">Aceite da Proposta</h3>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+          <div style="margin-top: 64px;">
+            <h3 style="font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 32px; text-transform: uppercase; letter-spacing: 0.5px;">Aceite da Proposta</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;">
               <div style="text-align: center;">
-                <div style="border-bottom: 2px solid #1a1a2e; margin-bottom: 8px; height: 50px;"></div>
-                <div style="font-size: 11px; font-weight: 700; color: #1a1a2e;">Cliente</div>
-                <div style="font-size: 10px; color: #6b7280; margin-top: 2px;">${formData.nomeCliente}</div>
+                <div style="border-bottom: 2px solid #1a1a2e; margin-bottom: 12px; height: 80px;"></div>
+                <div style="font-size: 14px; font-weight: 700; color: #1a1a2e;">Cliente</div>
+                <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">${formData.nomeCliente}</div>
               </div>
               <div style="text-align: center;">
-                <div style="border-bottom: 2px solid #1a1a2e; margin-bottom: 8px; height: 50px;"></div>
-                <div style="font-size: 11px; font-weight: 700; color: #1a1a2e;">Consultor Lavoro</div>
-                <div style="font-size: 10px; color: #6b7280; margin-top: 2px;">${formData.nomeConsultor}</div>
+                <div style="border-bottom: 2px solid #1a1a2e; margin-bottom: 12px; height: 80px;"></div>
+                <div style="font-size: 14px; font-weight: 700; color: #1a1a2e;">Consultor Lavoro</div>
+                <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">${formData.nomeConsultor}</div>
               </div>
               <div style="text-align: center;">
-                <div style="border-bottom: 2px solid #1a1a2e; margin-bottom: 8px; height: 50px;"></div>
-                <div style="font-size: 11px; font-weight: 700; color: #1a1a2e;">Gerência</div>
-                <div style="font-size: 10px; color: #6b7280; margin-top: 2px;">Lavoro Foton</div>
+                <div style="border-bottom: 2px solid #1a1a2e; margin-bottom: 12px; height: 80px;"></div>
+                <div style="font-size: 14px; font-weight: 700; color: #1a1a2e;">Gerência</div>
+                <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">Lavoro Foton</div>
               </div>
             </div>
           </div>
 
-          <!-- Seção Entrega + Termos -->
-          <div style="margin-top: 20px; background: #fff; border: 1px solid #1a1a2e; font-size: 9px;">
-            <div style="background: #1a1a2e; padding: 6px 12px;">
-              <h4 style="font-size: 10px; font-weight: 700; color: white; margin: 0; text-transform: uppercase;">Previsão de Entrega</h4>
+          <!-- Seção 5 - Previsão de Entrega do Veículo -->
+          <div style="margin-top: 48px; background: #fff; border: 2px solid #1a1a2e;">
+            <div style="background: #1a1a2e; padding: 10px 16px;">
+              <h4 style="font-size: 12px; font-weight: 700; color: white; margin: 0; text-transform: uppercase;">5 - PREVISÃO DE ENTREGA DO VEÍCULO</h4>
             </div>
-            <div style="padding: 10px 12px;">
-              <p style="color: #1a1a2e; margin: 0 0 6px 0; line-height: 1.5;">
-                De acordo com disponibilidade de estoque e fábrica. O representante da entrega técnica Lavoro entrará em contato para agendamento.
+            <div style="padding: 16px;">
+              <p style="font-size: 11px; color: #1a1a2e; margin: 0 0 8px 0; line-height: 1.6;">
+                DE ACORDO COM A DISPONIBILIDADE DE ESTOQUE E FÁBRICA.<br/>
+                O REPRESENTANTE DA ENTREGA TÉCNICA LAVORO ENTRARÁ EM CONTATO PARA AGENDAMENTO DA ENTREGA.
               </p>
-              <p style="color: #1a1a2e; margin: 0 0 6px 0; font-weight: 700;">Pedido sujeito à aprovação de crédito.</p>
-              <p style="color: #374151; margin: 0 0 4px 0; line-height: 1.5;">
-                1. Preços sujeitos a alterações conforme normas do fabricante e legislação tributária vigente.
+            </div>
+            <div style="border-top: 2px solid #1a1a2e; padding: 16px;">
+              <p style="font-size: 11px; color: #1a1a2e; margin: 0 0 12px 0; font-weight: 700;">OBS.: PEDIDO SUJEITO À APROVAÇÃO DE CRÉDITO.</p>
+              <p style="font-size: 10px; color: #374151; margin: 0 0 8px 0; line-height: 1.7; text-align: justify;">
+                1. OS PREÇOS COTADOS SÃO OS VIGENTES NESTA OCASIÃO E ESTARÃO SUJEITOS À ALTERAÇÕES CASO O FABRICANTE MODIFIQUE SUAS NORMAS DE COMERCIALIZAÇÃO, NO QUE TANGE À PREÇOS, DESCONTOS OU PRAZOS DE PAGAMENTOS, E TAMBÉM A ALTERAÇÃO DE ALÍQUOTA DO ICMS/IPI CONFORME LEGISLAÇÃO ESTADUAL E FEDERAL.
               </p>
-              <p style="color: #374151; margin: 0 0 8px 0; line-height: 1.5;">
-                2. Pedido válido somente se preenchido e assinado corretamente.
+              <p style="font-size: 10px; color: #374151; margin: 0; line-height: 1.7; text-align: justify;">
+                2. O PEDIDO DE VENDA NÃO TERÁ VALIDADE SE NÃO ESTIVER DEVIDAMENTE PREENCHIDO E ASSINADO, SEM RASURAS.
               </p>
-              <p style="color: #1a1a2e; margin: 0 0 4px 0; font-weight: 700;">Documentos necessários:</p>
-              <p style="color: #374151; margin: 0; line-height: 1.5;">
-                <strong>PF:</strong> RG, CPF, comprovante de endereço. <strong>PJ:</strong> Contrato social, última alteração, RG/CPF do sócio administrador.
+            </div>
+            <div style="border-top: 2px solid #1a1a2e; padding: 16px;">
+              <p style="font-size: 11px; color: #1a1a2e; margin: 0 0 8px 0; font-weight: 700;">APRESENTAR CÓPIA DOS DOCUMENTOS:</p>
+              <p style="font-size: 10px; color: #374151; margin: 0 0 6px 0; line-height: 1.6;">
+                <strong>PESSOA FÍSICA:</strong> CÓPIA RG, CPF E COMPROVANTE DE ENDEREÇO ATUALIZADO.
+              </p>
+              <p style="font-size: 10px; color: #374151; margin: 0; line-height: 1.6;">
+                <strong>PESSOA JURÍDICA:</strong> CONTRATO SOCIAL, ÚLTIMA ALTERAÇÃO, RG E CPF DO SÓCIO ADMINISTRADOR.
               </p>
             </div>
           </div>
 
-          <!-- Rodapé -->
-          <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid #e5e7eb; text-align: center;">
-            <p style="font-size: 9px; color: #9ca3af; margin: 0 0 4px 0;">
-              Proposta válida por 5 dias corridos. Este documento não possui valor contratual.
+          <!-- Rodapé Premium -->
+          <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #e5e7eb; text-align: center;">
+            <p style="font-size: 11px; color: #9ca3af; margin-bottom: 8px;">
+              Proposta válida por 5 dias corridos a partir da data de emissão. Este documento não possui valor contratual.
             </p>
-            <p style="font-size: 8px; color: #9ca3af; margin: 0;">
-              Lavoro Foton • Concessionária Oficial FOTON em MG • 40+ anos de tradição
+            <p style="font-size: 10px; color: #9ca3af;">
+              Lavoro Foton • Concessionária Oficial FOTON em Minas Gerais • 40+ anos de tradição no mercado de veículos comerciais
             </p>
           </div>
 
-          <!-- Termos -->
-          <div style="margin-top: 12px; padding: 10px 12px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <h4 style="font-size: 8px; font-weight: 700; color: #64748b; text-transform: uppercase; margin: 0 0 6px 0;">Termos e Condições</h4>
-            <p style="font-size: 8px; color: #94a3b8; line-height: 1.6; margin: 0; text-align: justify;">
-              Informações técnicas sujeitas à confirmação conforme manual do fabricante. Preços, condições e prazos sujeitos a alterações. Imagens ilustrativas. Garantia conforme termos do fabricante. Esta proposta não constitui contrato de compra e venda.
+          <!-- Letras Miúdas / Disclaimer -->
+          <div style="margin-top: 40px; padding: 20px 24px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <h4 style="font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0;">Termos e Condições</h4>
+            <p style="font-size: 9px; color: #94a3b8; line-height: 1.7; margin: 0; text-align: justify;">
+              As informações técnicas, especificações e características dos veículos apresentados nesta proposta são de caráter informativo e estão sujeitas à confirmação de acordo com o manual do produto específico e documentação oficial do fabricante. Preços, condições de pagamento, prazos de entrega e disponibilidade de modelos estão sujeitos a alterações sem aviso prévio, de acordo com políticas de fábrica, variações cambiais, tributárias e de mercado. Imagens ilustrativas podem apresentar acessórios e equipamentos não inclusos no valor apresentado. A garantia de fábrica segue os termos e condições estabelecidos pelo fabricante, conforme certificado de garantia entregue no momento da aquisição. Esta proposta não constitui contrato de compra e venda, sendo apenas um documento comercial para fins de negociação. Para formalização da aquisição, será necessário instrumento contratual específico.
             </p>
           </div>
         </div>
