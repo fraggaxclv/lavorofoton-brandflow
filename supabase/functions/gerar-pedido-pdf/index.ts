@@ -51,11 +51,11 @@ function formatarMoeda(valor: number): string {
 function gerarPDFHTML(pedido: PedidoData): string {
   const produtosHTML = pedido.produtos.map((p, index) => `
     <tr style="background-color: ${index % 2 === 0 ? '#f8f9fa' : '#ffffff'};">
-      <td style="padding: 12px 8px; border-bottom: 1px solid #e9ecef;">${p.produto}</td>
-      <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.quantidade}</td>
-      <td style="padding: 12px 8px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.anoModelo}</td>
-      <td style="padding: 12px 8px; text-align: right; border-bottom: 1px solid #e9ecef;">R$ ${formatarMoeda(p.valorUnitario)}</td>
-      <td style="padding: 12px 8px; text-align: right; font-weight: 600; border-bottom: 1px solid #e9ecef;">R$ ${formatarMoeda(p.valorTotal)}</td>
+      <td style="padding: 6px; border-bottom: 1px solid #e9ecef;">${p.produto}</td>
+      <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.quantidade}</td>
+      <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.anoModelo}</td>
+      <td style="padding: 6px; text-align: right; border-bottom: 1px solid #e9ecef;">R$ ${formatarMoeda(p.valorUnitario)}</td>
+      <td style="padding: 6px; text-align: right; font-weight: 600; border-bottom: 1px solid #e9ecef;">R$ ${formatarMoeda(p.valorTotal)}</td>
     </tr>
   `).join('');
 
@@ -75,7 +75,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
           box-sizing: border-box;
         }
         @page {
-          margin: 10mm 15mm;
+          margin: 8mm 12mm;
           size: A4;
         }
         @media print {
@@ -95,14 +95,6 @@ function gerarPDFHTML(pedido: PedidoData): string {
             margin: 0 !important;
             padding: 0 !important;
           }
-          .info-section {
-            page-break-inside: avoid;
-            break-inside: avoid;
-          }
-          .signatures {
-            page-break-inside: avoid;
-            break-inside: avoid;
-          }
         }
         html {
           margin: 0;
@@ -113,7 +105,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
           padding: 0;
           margin: 0;
           color: #1a1a1a;
-          line-height: 1.5;
+          line-height: 1.4;
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
         }
@@ -124,142 +116,117 @@ function gerarPDFHTML(pedido: PedidoData): string {
         }
         .header {
           text-align: center;
-          margin-bottom: 20px;
-          padding: 15px;
+          margin-bottom: 10px;
+          padding: 10px;
           background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%);
-          border-bottom: 3px solid #0f2557;
+          border-bottom: 2px solid #0f2557;
         }
         .logo {
-          max-width: 240px;
+          max-width: 200px;
           height: auto;
-          margin: 0 auto 10px auto;
+          margin: 0 auto 6px auto;
           display: block;
         }
         .header h1 {
           color: #ffffff;
-          margin: 10px 0 8px 0;
-          font-size: 24px;
+          margin: 6px 0 4px 0;
+          font-size: 20px;
           font-weight: 700;
           letter-spacing: 1px;
         }
         .pedido-numero {
           background-color: #ef4444;
           color: white;
-          padding: 6px 16px;
-          border-radius: 20px;
+          padding: 4px 12px;
+          border-radius: 16px;
           display: inline-block;
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 600;
-          margin-top: 8px;
+          margin-top: 4px;
         }
         .info-section {
-          margin: 15px 0;
-          page-break-inside: avoid;
-          break-inside: avoid;
+          margin: 8px 0;
         }
         .info-section h2 {
           background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%);
           color: white;
-          padding: 10px 12px;
-          margin: 12px 0 10px 0;
-          border-radius: 4px;
-          font-size: 14px;
+          padding: 6px 10px;
+          margin: 8px 0 6px 0;
+          border-radius: 3px;
+          font-size: 12px;
           font-weight: 600;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         .info-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 10px;
-          margin: 10px 0;
+          gap: 6px;
+          margin: 6px 0;
           background-color: #f8f9fa;
-          padding: 12px;
-          border-radius: 4px;
+          padding: 8px;
+          border-radius: 3px;
         }
         .info-item {
-          padding: 4px;
+          padding: 2px;
         }
         .info-label {
           font-weight: 600;
           color: #0f2557;
-          margin-bottom: 2px;
-          font-size: 11px;
+          margin-bottom: 1px;
+          font-size: 10px;
         }
         .info-value {
           color: #1a1a1a;
-          font-size: 12px;
+          font-size: 11px;
         }
         table {
           width: 100%;
           border-collapse: collapse;
-          margin: 10px 0;
+          margin: 6px 0;
           background-color: white;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-          border-radius: 4px;
+          border-radius: 3px;
           overflow: hidden;
         }
         th {
           background: linear-gradient(135deg, #0f2557 0%, #1e40af 100%);
           color: white;
-          padding: 10px 8px;
+          padding: 6px 6px;
           text-align: left;
           font-weight: 600;
-          font-size: 12px;
+          font-size: 10px;
         }
         td {
-          padding: 8px;
-          font-size: 12px;
-        }
-        .total-box {
-          background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-          border-left: 4px solid #f59e0b;
-          padding: 12px;
-          margin: 15px 0;
-          text-align: right;
-          border-radius: 4px;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
-        .total-box .label {
-          color: #92400e;
-          font-size: 12px;
-          font-weight: 600;
-          margin-bottom: 4px;
-        }
-        .total-box .value {
-          font-size: 24px;
-          font-weight: 700;
-          color: #92400e;
+          padding: 6px;
+          font-size: 10px;
         }
         .signatures {
-          margin-top: 40px;
+          margin-top: 20px;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
-          gap: 30px;
-          page-break-inside: avoid;
-          break-inside: avoid;
+          gap: 20px;
         }
         .signature-line {
           border-top: 2px solid #0f2557;
-          padding-top: 6px;
+          padding-top: 4px;
           text-align: center;
           font-weight: 600;
           color: #0f2557;
-          font-size: 11px;
+          font-size: 10px;
         }
         .footer {
-          margin-top: 20px;
-          padding-top: 15px;
+          margin-top: 12px;
+          padding-top: 8px;
           border-top: 1px solid #e5e7eb;
           text-align: center;
           color: #6b7280;
-          font-size: 10px;
+          font-size: 9px;
         }
         .observacoes-box {
           background-color: #f1f5f9;
-          border-left: 4px solid #1e40af;
-          padding: 15px;
-          border-radius: 4px;
-          margin: 15px 0;
+          border-left: 3px solid #1e40af;
+          padding: 8px;
+          border-radius: 3px;
+          margin: 8px 0;
+          font-size: 10px;
         }
       </style>
     </head>
@@ -271,11 +238,11 @@ function gerarPDFHTML(pedido: PedidoData): string {
           <div class="pedido-numero">Nº ${pedido.numero_pedido}</div>
         </div>
 
-        <div class="info-grid" style="margin-bottom: 30px;">
-          <div class="info-item" style="grid-column: 1 / -1; text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 6px;">
-            <div style="font-weight: 700; color: #0f2557; font-size: 18px; margin-bottom: 8px;">Lavoro Foton</div>
-            <div style="color: #1a1a1a; font-size: 14px; margin-bottom: 4px;">Razão Social: <strong>Lavoro Veiculos e Pecas Ltda</strong></div>
-            <div style="color: #1a1a1a; font-size: 14px;">CNPJ: <strong>38.455.415/0001-22</strong></div>
+        <div class="info-grid" style="margin-bottom: 10px;">
+          <div class="info-item" style="grid-column: 1 / -1; text-align: center; padding: 10px; background-color: #f8f9fa; border-radius: 4px;">
+            <div style="font-weight: 700; color: #0f2557; font-size: 14px; margin-bottom: 4px;">Lavoro Foton</div>
+            <div style="color: #1a1a1a; font-size: 11px; margin-bottom: 2px;">Razão Social: <strong>Lavoro Veiculos e Pecas Ltda</strong></div>
+            <div style="color: #1a1a1a; font-size: 11px;">CNPJ: <strong>38.455.415/0001-22</strong></div>
           </div>
         </div>
 
@@ -343,9 +310,8 @@ function gerarPDFHTML(pedido: PedidoData): string {
             <tbody>
               ${produtosHTML}
               <tr style="background-color: #f8f9fa; border-top: 2px solid #0f2557;">
-                <td colspan="4" style="padding: 12px 8px; text-align: right; font-weight: 700; border-bottom: none;">VALOR TOTAL DOS PRODUTOS:</td>
-                <td style="padding: 12px 8px; text-align: right; font-weight: 700; color: #0f2557; font-size: 16px; border-bottom: none;">R$ ${formatarMoeda(pedido.valor_total_produtos)}</td>
-                
+                <td colspan="4" style="padding: 8px 6px; text-align: right; font-weight: 700; border-bottom: none;">VALOR TOTAL:</td>
+                <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #0f2557; font-size: 12px; border-bottom: none;">R$ ${formatarMoeda(pedido.valor_total_produtos)}</td>
               </tr>
             </tbody>
           </table>
@@ -367,7 +333,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
               <div class="info-value">${pedido.financiamento_forma}${pedido.financiamento_forma_outros ? ` (${pedido.financiamento_forma_outros})` : ''}</div>
             </div>
             <div class="info-item">
-              <div class="info-label">Valor Total dos Produtos:</div>
+              <div class="info-label">Valor Total:</div>
               <div class="info-value" style="font-weight: 700; color: #0f2557;">R$ ${formatarMoeda(pedido.valor_total_produtos)}</div>
             </div>
             <div class="info-item">
@@ -375,7 +341,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
               <div class="info-value" style="font-weight: 700; color: #16a34a;">R$ ${formatarMoeda(pedido.entrada || 0)}</div>
             </div>
             <div class="info-item">
-              <div class="info-label">Valor Financiado (Total - Entrada):</div>
+              <div class="info-label">Saldo Financiado:</div>
               <div class="info-value" style="font-weight: 700; color: #dc2626;">R$ ${formatarMoeda(saldoFinanciado)}</div>
             </div>
           </div>
@@ -390,36 +356,35 @@ function gerarPDFHTML(pedido: PedidoData): string {
         </div>
         ` : ''}
 
-        <!-- Seção - Termos e Condições (ANTES das assinaturas) -->
-        <div style="margin-top: 20px; background: #fff; border: 1px solid #d1d5db; border-radius: 4px; page-break-inside: avoid; break-inside: avoid;">
-          <div style="padding: 12px;">
-            <p style="font-size: 10px; color: #1a1a1a; margin: 0 0 8px 0; line-height: 1.5; text-transform: uppercase;">
-              DE ACORDO COM A DISPONIBILIDADE DE ESTOQUE E FÁBRICA.<br/>
-              O REPRESENTANTE DA ENTREGA TÉCNICA LAVORO ENTRARÁ EM CONTATO PARA AGENDAMENTO DA ENTREGA.
+        <!-- Seção - Termos e Condições -->
+        <div style="margin-top: 10px; background: #fff; border: 1px solid #d1d5db; border-radius: 3px;">
+          <div style="padding: 8px;">
+            <p style="font-size: 8px; color: #1a1a1a; margin: 0 0 4px 0; line-height: 1.3; text-transform: uppercase;">
+              DE ACORDO COM A DISPONIBILIDADE DE ESTOQUE E FÁBRICA. O REPRESENTANTE DA ENTREGA TÉCNICA LAVORO ENTRARÁ EM CONTATO PARA AGENDAMENTO DA ENTREGA.
             </p>
             
-            <p style="font-size: 10px; color: #1a1a1a; margin: 10px 0 6px 0; font-weight: 700;">OBS.:</p>
+            <p style="font-size: 8px; color: #1a1a1a; margin: 6px 0 3px 0; font-weight: 700;">OBS.:</p>
             
-            <p style="font-size: 9px; color: #374151; margin: 0 0 5px 0; line-height: 1.5; text-align: justify; padding-left: 10px;">
+            <p style="font-size: 7px; color: #374151; margin: 0 0 2px 0; line-height: 1.3; text-align: justify; padding-left: 8px;">
               <strong>1.</strong> OS PREÇOS COTADOS SÃO OS VIGENTES NESTA OCASIÃO E ESTARÃO SUJEITOS À ALTERAÇÕES CASO O FABRICANTE MODIFIQUE SUAS NORMAS DE COMERCIALIZAÇÃO, NO QUE TANGE À PREÇOS, DESCONTOS OU PRAZOS DE PAGAMENTOS, E TAMBÉM A ALTERAÇÃO DE ALÍQUOTA DO ICMS/IPI CONFORME LEGISLAÇÃO ESTADUAL E FEDERAL.
             </p>
             
-            <p style="font-size: 9px; color: #374151; margin: 0 0 5px 0; line-height: 1.5; text-align: justify; padding-left: 10px;">
+            <p style="font-size: 7px; color: #374151; margin: 0 0 2px 0; line-height: 1.3; text-align: justify; padding-left: 8px;">
               <strong>2.</strong> O pedido de venda não terá validade se não estiver devidamente preenchido e assinado, sem rasurar.
             </p>
             
-            <p style="font-size: 9px; color: #374151; margin: 0 0 5px 0; line-height: 1.5; text-align: justify; padding-left: 10px;">
+            <p style="font-size: 7px; color: #374151; margin: 0 0 2px 0; line-height: 1.3; text-align: justify; padding-left: 8px;">
               <strong>3.</strong> Em caso de desistência, o comprador não terá direito à restituição do valor do sinal. Respaldo legal nos artigos 417 e 418 do Código Civil, sendo denominado juridicamente como arras. Caso haja majoração de preço, o mesmo será repassado ao comprador.
             </p>
             
-            <p style="font-size: 9px; color: #374151; margin: 0 0 8px 0; line-height: 1.5; text-align: justify; padding-left: 10px;">
+            <p style="font-size: 7px; color: #374151; margin: 0 0 4px 0; line-height: 1.3; text-align: justify; padding-left: 8px;">
               <strong>4.</strong> Caso parte do pagamento do veículo adquirido seja efetivado com outro veículo usado (troca com torna), o veículo usado não será, em nenhuma hipótese, restituído ao COMPRADOR, ainda que venha a ocorrer desistência, cancelamento da compra, resolução contratual, vício, arrependimento, devolução do veículo novo ou qualquer outra causa que impeça ou inviabilize a conclusão da venda. O COMPRADOR declara estar ciente de que o veículo usado será desde logo disposto, negociado ou revendido pelo CONCESSIONÁRIO.
             </p>
             
-            <p style="font-size: 9px; color: #374151; margin: 0 0 3px 0; line-height: 1.4;">
+            <p style="font-size: 7px; color: #374151; margin: 0 0 2px 0; line-height: 1.3;">
               <strong>PESSOA FÍSICA:</strong> CÓPIA RG, CPF E COMPROVANTE DE ENDEREÇO ATUALIZADO.
             </p>
-            <p style="font-size: 9px; color: #374151; margin: 0; line-height: 1.4;">
+            <p style="font-size: 7px; color: #374151; margin: 0; line-height: 1.3;">
               <strong>PESSOA JURÍDICA:</strong> CONTRATO SOCIAL, ÚLTIMA ALTERAÇÃO, RG E CPF DO SÓCIO ADMINISTRADOR.
             </p>
           </div>
