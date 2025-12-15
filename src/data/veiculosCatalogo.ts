@@ -94,7 +94,7 @@ export const veiculosCatalogo: Veiculo[] = [
     aplicacao: 'Pesado',
     caracteristicas: [
       'Motor Cummins ISF 3.8L Diesel',
-      'Potência: 185 cv',
+      'Potência: 170 cv',
       'Torque: 600 Nm',
       'Transmissão manual de 6 marchas',
       'Freios a ar ABS',
