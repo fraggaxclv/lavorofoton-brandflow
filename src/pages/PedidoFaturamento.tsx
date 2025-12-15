@@ -267,8 +267,7 @@ const PedidoFaturamento = () => {
 
     const waitForAssetsAndPrint = async () => {
       try {
-        // @ts-expect-error - fonts may not exist in all browsers
-        await printWindow.document.fonts?.ready;
+        await (printWindow.document as any).fonts?.ready;
       } catch {
         // ignore
       }
