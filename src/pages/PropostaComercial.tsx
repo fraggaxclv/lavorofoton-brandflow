@@ -270,8 +270,11 @@ export default function PropostaComercial() {
         garantiaLabel = '**3 anos';
       }
       
+      // Primeiro produto NÃO quebra página (continua da capa)
+      const pageBreak = index === 0 ? '' : 'page-break-before: always;';
+      
       return `
-        <div style="page-break-before: always; min-height: 100vh; padding: 32px 0;">
+        <div style="${pageBreak} min-height: 100vh; padding: 32px 0;">
           <!-- Cabeçalho do Produto - 25% maior -->
           <div style="margin-bottom: 20px;">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
@@ -463,8 +466,8 @@ export default function PropostaComercial() {
           </div>
         </div>
 
-        <!-- BLOCO "SOLUÇÃO SELECIONADA" -->
-        <div style="padding: 28px 40px 36px 40px; background: white;">
+        <!-- BLOCO "SOLUÇÃO SELECIONADA" - com page-break-after para o produto seguir na próxima página -->
+        <div style="padding: 28px 40px 20px 40px; background: white; page-break-after: always;">
           <div style="text-align: center; margin-bottom: 16px;">
             <h3 style="font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
               Soluções selecionadas para sua operação
