@@ -9,6 +9,7 @@ interface Produto {
   produto: string;
   quantidade: number;
   anoModelo: string;
+  cor: string;
   valorUnitario: number;
   valorTotal: number;
 }
@@ -54,6 +55,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
       <td style="padding: 6px; border-bottom: 1px solid #e9ecef;">${p.produto}</td>
       <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.quantidade}</td>
       <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.anoModelo}</td>
+      <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.cor || '-'}</td>
       <td style="padding: 6px; text-align: right; border-bottom: 1px solid #e9ecef;">R$ ${formatarMoeda(p.valorUnitario)}</td>
       <td style="padding: 6px; text-align: right; font-weight: 600; border-bottom: 1px solid #e9ecef;">R$ ${formatarMoeda(p.valorTotal)}</td>
     </tr>
@@ -321,6 +323,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
                 <th>Produto</th>
                 <th style="text-align: center;">Qtd</th>
                 <th style="text-align: center;">Ano/Modelo</th>
+                <th style="text-align: center;">Cor</th>
                 <th style="text-align: right;">Valor Unit.</th>
                 <th style="text-align: right;">Valor Total</th>
               </tr>
@@ -328,7 +331,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
             <tbody>
               ${produtosHTML}
               <tr style="background-color: #f8f9fa; border-top: 2px solid #0f2557;">
-                <td colspan="4" style="padding: 8px 6px; text-align: right; font-weight: 700; border-bottom: none;">VALOR TOTAL:</td>
+                <td colspan="5" style="padding: 8px 6px; text-align: right; font-weight: 700; border-bottom: none;">VALOR TOTAL:</td>
                 <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #0f2557; font-size: 12px; border-bottom: none;">R$ ${formatarMoeda(pedido.valor_total_produtos)}</td>
               </tr>
             </tbody>
