@@ -18,6 +18,7 @@ interface Produto {
   produto: string;
   quantidade: number;
   anoModelo: string;
+  cor: string;
   valorUnitario: number;
   valorTotal: number;
 }
@@ -33,6 +34,7 @@ const PedidoFaturamento = () => {
     produto: "",
     quantidade: 1,
     anoModelo: "2025/2026",
+    cor: "",
     valorUnitario: 0,
     valorTotal: 0
   }]);
@@ -49,6 +51,7 @@ const PedidoFaturamento = () => {
       produto: "",
       quantidade: 1,
       anoModelo: "2025/2026",
+      cor: "",
       valorUnitario: 0,
       valorTotal: 0
     }]);
@@ -237,6 +240,7 @@ const PedidoFaturamento = () => {
         produto: "",
         quantidade: 1,
         anoModelo: "2025/2026",
+        cor: "",
         valorUnitario: 0,
         valorTotal: 0
       }]);
@@ -420,7 +424,7 @@ const PedidoFaturamento = () => {
             <CardContent className="space-y-4">
               {produtos.map((produto, index) => <div key={index} className="p-4 border rounded-lg space-y-4 bg-secondary/30">
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                    <div className="md:col-span-4">
+                    <div className="md:col-span-3">
                       <Label>Produto *</Label>
                       <Select value={produto.produto} onValueChange={value => atualizarProduto(index, "produto", value)}>
                         <SelectTrigger>
@@ -431,13 +435,17 @@ const PedidoFaturamento = () => {
                         </SelectContent>
                       </Select>
                     </div>
-                    <div className="md:col-span-2">
-                      <Label>Quantidade *</Label>
+                    <div className="md:col-span-1">
+                      <Label>Qtd *</Label>
                       <Input type="number" min="1" value={produto.quantidade} onChange={e => atualizarProduto(index, "quantidade", parseInt(e.target.value) || 0)} />
                     </div>
                     <div className="md:col-span-2">
                       <Label>Ano/Modelo</Label>
                       <Input value={produto.anoModelo} onChange={e => atualizarProduto(index, "anoModelo", e.target.value)} />
+                    </div>
+                    <div className="md:col-span-2">
+                      <Label>Cor *</Label>
+                      <Input value={produto.cor} onChange={e => atualizarProduto(index, "cor", e.target.value)} placeholder="Ex: Branco" />
                     </div>
                     <div className="md:col-span-2">
                       <Label>Valor Unit. (R$) *</Label>
