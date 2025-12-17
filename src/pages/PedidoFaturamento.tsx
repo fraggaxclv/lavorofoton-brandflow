@@ -554,7 +554,7 @@ const PedidoFaturamento = () => {
           {/* Observações */}
           <Card>
             <CardHeader>
-              <CardTitle>Observações</CardTitle>
+              <CardTitle>Observações / Bonificações</CardTitle>
             </CardHeader>
             <CardContent>
               <Textarea {...register("observacoes")} placeholder="Digite aqui qualquer observação importante sobre este pedido..." rows={5} />

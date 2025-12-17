@@ -370,7 +370,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
 
         ${pedido.observacoes ? `
         <div class="info-section">
-          <h2>📝 OBSERVAÇÕES</h2>
+          <h2>📝 OBSERVAÇÕES / BONIFICAÇÕES</h2>
           <div class="observacoes-box">
             ${pedido.observacoes}
           </div>
