@@ -401,67 +401,67 @@ export default function PropostaComercial() {
         </div>
 
         <!-- TÍTULO CENTRAL -->
-        <div style="text-align: center; padding: 36px 32px 28px 32px; background: white;">
-          <h1 style="font-size: 24px; font-weight: 700; color: #0f172a; line-height: 1.35; margin: 0 0 12px 0; letter-spacing: -0.3px;">
+        <div style="text-align: center; padding: 20px 32px 16px 32px; background: white;">
+          <h1 style="font-size: 22px; font-weight: 700; color: #0f172a; line-height: 1.35; margin: 0 0 8px 0; letter-spacing: -0.3px;">
             Uma decisão pensada para eficiência,<br/>segurança e crescimento.
           </h1>
-          <p style="font-size: 13px; color: #64748b; margin: 0; font-weight: 400;">
+          <p style="font-size: 12px; color: #64748b; margin: 0; font-weight: 400;">
             Proposta de solução logística elaborada sob medida para sua operação.
           </p>
         </div>
 
         <!-- BLOCO DO CLIENTE -->
-        <div style="text-align: center; padding: 28px 32px; background: white;">
-          <div style="font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-weight: 500;">
+        <div style="text-align: center; padding: 16px 32px; background: white;">
+          <div style="font-size: 9px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; font-weight: 500;">
             Elaborada exclusivamente para
           </div>
-          <div style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">
+          <div style="font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 8px;">
             ${formData.nomeCliente}
           </div>
           <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
-            <span style="font-size: 12px; color: #64748b;">${formData.cidade} – ${formData.estado}</span>
-            <span style="font-size: 12px; color: #64748b;">Consultor: <span style="font-weight: 600; color: #475569;">${formData.nomeConsultor}</span></span>
+            <span style="font-size: 11px; color: #64748b;">${formData.cidade} – ${formData.estado}</span>
+            <span style="font-size: 11px; color: #64748b;">Consultor: <span style="font-weight: 600; color: #475569;">${formData.nomeConsultor}</span></span>
           </div>
         </div>
 
         <!-- TEXTO DE CONTEXTO -->
-        <div style="padding: 24px 40px; background: white;">
+        <div style="padding: 12px 40px; background: white;">
           <div style="max-width: 620px; margin: 0 auto; text-align: center;">
-            <p style="font-size: 12px; color: #475569; line-height: 1.8; margin: 0;">
-              Esta proposta foi desenvolvida a partir da análise do perfil operacional de <strong style="color: #0f172a;">${formData.nomeCliente}</strong>, considerando suas necessidades logísticas atuais, capacidade de investimento e objetivos de expansão. A solução apresentada reflete uma configuração amplamente utilizada por empresas que buscam previsibilidade operacional, eficiência financeira e segurança na tomada de decisão.
+            <p style="font-size: 11px; color: #475569; line-height: 1.7; margin: 0;">
+              Esta proposta foi desenvolvida a partir da análise do perfil operacional de <strong style="color: #0f172a;">${formData.nomeCliente}</strong>, considerando suas necessidades logísticas atuais, capacidade de investimento e objetivos de expansão.
             </p>
           </div>
         </div>
 
         <!-- BLOCO DE AUTORIDADE (FOTON + LAVORO) - VERTICAL -->
-        <div style="padding: 24px 40px; background: white;">
+        <div style="padding: 12px 40px; background: white;">
           <!-- Card FOTON -->
-          <div style="background: #f8fafc; padding: 16px 20px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 12px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #003366, #001a33); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="color: white; font-weight: 800; font-size: 14px;">F</span>
+          <div style="background: #f8fafc; padding: 12px 16px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #003366, #001a33); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <span style="color: white; font-weight: 800; font-size: 12px;">F</span>
               </div>
               <div style="flex: 1;">
-                <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">FOTON</h4>
-                <p style="font-size: 11px; color: #64748b; line-height: 1.5; margin: 0;">
-                  Uma das maiores fabricantes de veículos comerciais do mundo, presente em mais de 110 países. Reconhecida globalmente por confiabilidade, robustez e inovação industrial.
+                <h4 style="font-size: 12px; font-weight: 700; color: #0f172a; margin: 0 0 2px 0;">FOTON</h4>
+                <p style="font-size: 10px; color: #64748b; line-height: 1.4; margin: 0;">
+                  Uma das maiores fabricantes de veículos comerciais do mundo, presente em mais de 110 países. Reconhecida globalmente por confiabilidade e robustez.
                 </p>
               </div>
             </div>
           </div>
           
           <!-- Card LAVORO -->
-          <div style="background: #f8fafc; padding: 16px 20px; border-radius: 10px; border: 1px solid #e2e8f0;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="color: white; font-weight: 800; font-size: 14px;">L</span>
+          <div style="background: #f8fafc; padding: 12px 16px; border-radius: 8px; border: 1px solid #e2e8f0;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <span style="color: white; font-weight: 800; font-size: 12px;">L</span>
               </div>
               <div style="flex: 1;">
-                <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">LAVORO • 40+ ANOS DE TRADIÇÃO</h4>
-                <p style="font-size: 11px; color: #64748b; line-height: 1.5; margin: 0;">
-                  Há mais de 40 anos no mercado de caminhões, a Lavoro é herdeira do renomado Grupo VDL, referência no setor até 2020. Após a transição estratégica, escolhemos a FOTON pela excelência em qualidade, tecnologia e custo-benefício — valores que sempre guiaram nossa trajetória. Oferecemos atendimento consultivo, suporte completo e relacionamento de longo prazo.
+                <h4 style="font-size: 12px; font-weight: 700; color: #0f172a; margin: 0 0 2px 0;">LAVORO • 40+ ANOS DE TRADIÇÃO</h4>
+                <p style="font-size: 10px; color: #64748b; line-height: 1.4; margin: 0;">
+                  Herdeira do renomado Grupo VDL, referência no setor até 2020. Escolhemos a FOTON pela excelência em qualidade, tecnologia e custo-benefício — valores que sempre guiaram nossa trajetória.
                 </p>
-                <p style="font-size: 10px; color: #94a3b8; font-style: italic; margin: 6px 0 0 0;">— Castelo Fraga</p>
+                <p style="font-size: 9px; color: #94a3b8; font-style: italic; margin: 4px 0 0 0;">— Castelo Fraga</p>
               </div>
             </div>
           </div>
