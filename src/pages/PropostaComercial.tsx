@@ -457,9 +457,9 @@ export default function PropostaComercial() {
                 <span style="color: white; font-weight: 800; font-size: 14px;">L</span>
               </div>
               <div style="flex: 1;">
-                <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">LAVORO</h4>
+                <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">LAVORO • 40+ ANOS DE TRADIÇÃO</h4>
                 <p style="font-size: 11px; color: #64748b; line-height: 1.5; margin: 0;">
-                  Concessionária oficial FOTON em Minas Gerais, com mais de 40 anos de atuação no setor de veículos comerciais, oferecendo atendimento consultivo, suporte completo e relacionamento de longo prazo.
+                  Há mais de 40 anos no mercado de caminhões, a Lavoro é herdeira do renomado Grupo VDL, referência no setor até 2020. Após a transição estratégica, escolhemos a FOTON pela excelência em qualidade, tecnologia e custo-benefício — valores que sempre guiaram nossa trajetória. Oferecemos atendimento consultivo, suporte completo e relacionamento de longo prazo.
                 </p>
               </div>
             </div>
