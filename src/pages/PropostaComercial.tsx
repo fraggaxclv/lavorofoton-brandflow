@@ -59,9 +59,9 @@ const gerarInformacoesPersuasivas = (veiculo: Veiculo): string[] => {
   const infoBase: Record<string, string[]> = {
     'diesel': [
       `Projetado para operações versáteis, entrega performance consistente em rotas urbanas e regionais.`,
-      `Capacidade de carga de ${veiculo.capacidade} — dimensionado para maximizar produtividade por viagem.`,
+      `Capacidade de carga de ${veiculo.capacidade} — 1 tonelada a mais de capacidade comparado aos concorrentes.`,
       `${veiculo.caracteristicas.find(c => c.includes('Motor')) || 'Motorização premium'} — tecnologia validada globalmente.`,
-      `Consumo otimizado para reduzir custo por quilômetro rodado em até 15% comparado à média do segmento.`,
+      `Economia média de 15% em combustível — redução significativa no custo operacional por quilômetro.`,
       `Chassi e estrutura desenvolvidos para suportar operação intensiva — durabilidade comprovada.`,
       `Cabine ergonômica com ajustes personalizáveis — menor fadiga do operador, maior produtividade.`,
       `Rede de assistência técnica em todo Brasil — disponibilidade de peças superior a 95%.`,
