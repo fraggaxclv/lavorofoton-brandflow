@@ -476,9 +476,9 @@ export default function PropostaComercial() {
           
           <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 16px;">
             ${produtos.map(p => `
-              <div style="background: linear-gradient(145deg, #0055a4, #003366); color: white; padding: 20px 32px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,51,102,0.35), 0 4px 12px rgba(0,85,164,0.25), inset 0 1px 0 rgba(255,255,255,0.15); min-width: 180px; text-align: center; border: 2px solid rgba(255,255,255,0.2); transform: translateY(0); transition: all 0.3s;">
-                <div style="font-weight: 900; font-size: 18px; margin-bottom: 4px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); letter-spacing: 0.5px;">${p.modelo}</div>
-                <div style="font-size: 11px; opacity: 0.9; font-weight: 500;">${p.quantidade} unidade${p.quantidade > 1 ? 's' : ''}</div>
+              <div style="background-color: #003366 !important; color: #ffffff !important; padding: 20px 32px; border-radius: 12px; min-width: 180px; text-align: center; border: 3px solid #003366;">
+                <div style="font-weight: 900; font-size: 18px; margin-bottom: 4px; letter-spacing: 0.5px; color: #ffffff !important;">${p.modelo}</div>
+                <div style="font-size: 12px; font-weight: 600; color: #ffffff !important;">${p.quantidade} unidade${p.quantidade > 1 ? 's' : ''}</div>
               </div>
             `).join('')}
           </div>
