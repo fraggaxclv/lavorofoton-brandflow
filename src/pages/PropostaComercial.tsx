@@ -284,7 +284,7 @@ export default function PropostaComercial() {
               ${p.anoModelo ? `<span style="background: #e0e7ff; color: #4338ca; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 2px solid #4338ca;">${p.anoModelo}</span>` : ''}
               <span style="background: #dcfce7; color: #15803d; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 2px solid #15803d;">Garantia: ${garantiaLabel}</span>
             </div>
-            <h2 style="font-size: 30px; font-weight: 800; color: #1a1a2e; margin: 0 0 6px 0; letter-spacing: -0.5px;">${p.modelo}</h2>
+            <h2 style="font-size: 30px; font-weight: 800; color: #000000 !important; margin: 0 0 6px 0; letter-spacing: -0.5px; background: #003366; color: #ffffff !important; padding: 12px 20px; border-radius: 8px; display: inline-block;">${p.modelo}</h2>
             <p style="font-size: 15px; color: #6b7280; margin: 0;">Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
           </div>
 
