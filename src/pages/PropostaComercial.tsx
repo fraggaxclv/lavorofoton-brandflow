@@ -476,9 +476,9 @@ export default function PropostaComercial() {
           
           <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 16px;">
             ${produtos.map(p => `
-              <div style="background-color: #003366 !important; color: #ffffff !important; padding: 20px 32px; border-radius: 12px; min-width: 180px; text-align: center; border: 3px solid #003366;">
-                <div style="font-weight: 900; font-size: 18px; margin-bottom: 4px; letter-spacing: 0.5px; color: #ffffff !important;">${p.modelo}</div>
-                <div style="font-size: 12px; font-weight: 600; color: #ffffff !important;">${p.quantidade} unidade${p.quantidade > 1 ? 's' : ''}</div>
+              <div style="background-color: #ffffff; padding: 20px 32px; border-radius: 12px; min-width: 180px; text-align: center; border: 3px solid #003366;">
+                <div style="font-weight: 900; font-size: 18px; margin-bottom: 4px; letter-spacing: 0.5px; color: #003366;">${p.modelo}</div>
+                <div style="font-size: 12px; font-weight: 600; color: #003366;">${p.quantidade} unidade${p.quantidade > 1 ? 's' : ''}</div>
               </div>
             `).join('')}
           </div>
