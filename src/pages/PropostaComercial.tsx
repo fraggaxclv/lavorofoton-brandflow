@@ -457,7 +457,7 @@ export default function PropostaComercial() {
               <div style="flex: 1;">
                 <h4 style="font-size: 12px; font-weight: 700; color: #0f172a; margin: 0 0 2px 0;">LAVORO • 40+ ANOS DE TRADIÇÃO</h4>
                 <p style="font-size: 10px; color: #64748b; line-height: 1.4; margin: 0;">
-                  Herdeira do renomado Grupo VDL, referência no setor até 2020. Escolhemos a FOTON pela excelência em qualidade, tecnologia e custo-benefício — valores que sempre guiaram nossa trajetória.
+                  Herdeira da Renomada Cardiesel/Grupo VDL, referência no setor até 2020. Escolhemos a FOTON pela excelência em qualidade, tecnologia e custo-benefício — valores que sempre guiaram nossa trajetória.
                 </p>
                 <p style="font-size: 9px; color: #94a3b8; font-style: italic; margin: 4px 0 0 0;">— Castelo Fraga</p>
               </div>
