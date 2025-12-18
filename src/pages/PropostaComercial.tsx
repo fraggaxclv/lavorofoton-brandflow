@@ -226,7 +226,7 @@ export default function PropostaComercial() {
     } else if (veiculo.categoria === 'picape') {
       garantiaLabel = '**10 anos ou 200.000 km';
     } else {
-      garantiaLabel = '**3 anos ou 100.000 km';
+      garantiaLabel = '**3 anos sem limite de km';
     }
     specs.push({ label: 'Garantia de Fábrica', valor: garantiaLabel });
 
@@ -269,7 +269,7 @@ export default function PropostaComercial() {
       } else if (p.veiculo?.categoria === 'picape') {
         garantiaLabel = '**10 anos';
       } else {
-        garantiaLabel = '**3 anos';
+        garantiaLabel = '**3 anos sem limite de km';
       }
       
       // Primeiro produto NÃO quebra página (continua da capa)
