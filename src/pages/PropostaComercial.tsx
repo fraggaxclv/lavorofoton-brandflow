@@ -20,6 +20,10 @@ import { veiculosCatalogo, getVeiculoByModelo, type Veiculo } from "@/data/veicu
 import logoLavoro from "@/assets/logo-foton-lavoro.png";
 import fotonIconTransparent from "@/assets/foton-logo-icon-transparent.png";
 import lavoroIconTransparent from "@/assets/lavoro-logo-icon-transparent.png";
+import cumminsLogo from "@/assets/cummins-logo-full.png";
+import zfLogo from "@/assets/zf-logo-full.png";
+import boschLogo from "@/assets/bosch-logo-full.png";
+import danaLogo from "@/assets/dana-logo-full.png";
 
 interface ProdutoProposta {
   id: string;
@@ -486,6 +490,19 @@ export default function PropostaComercial() {
             <p style="font-size: 11px; color: #94a3b8; line-height: 1.6; margin: 0;">
               Configuração recomendada após análise do perfil operacional da empresa, considerando eficiência logística, rentabilidade e disponibilidade.
             </p>
+          </div>
+
+          <!-- Marcas Parceiras -->
+          <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+            <div style="text-align: center; margin-bottom: 12px;">
+              <span style="font-size: 9px; font-weight: 500; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px;">Componentes de Classe Mundial</span>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 32px; flex-wrap: wrap;">
+              <img src="${cumminsLogo}" alt="Cummins" style="height: 24px; object-fit: contain; opacity: 0.7; filter: grayscale(100%);" />
+              <img src="${zfLogo}" alt="ZF" style="height: 22px; object-fit: contain; opacity: 0.7; filter: grayscale(100%);" />
+              <img src="${boschLogo}" alt="Bosch" style="height: 22px; object-fit: contain; opacity: 0.7; filter: grayscale(100%);" />
+              <img src="${danaLogo}" alt="Dana" style="height: 22px; object-fit: contain; opacity: 0.7; filter: grayscale(100%);" />
+            </div>
           </div>
         </div>
 
