@@ -461,6 +461,7 @@ export default function PropostaComercial() {
                 <p style="font-size: 11px; color: #64748b; line-height: 1.5; margin: 0;">
                   Há mais de 40 anos no mercado de caminhões, a Lavoro é herdeira do renomado Grupo VDL, referência no setor até 2020. Após a transição estratégica, escolhemos a FOTON pela excelência em qualidade, tecnologia e custo-benefício — valores que sempre guiaram nossa trajetória. Oferecemos atendimento consultivo, suporte completo e relacionamento de longo prazo.
                 </p>
+                <p style="font-size: 10px; color: #94a3b8; font-style: italic; margin: 6px 0 0 0;">— Castelo Fraga, Diretor</p>
               </div>
             </div>
           </div>
