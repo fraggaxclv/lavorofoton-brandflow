@@ -18,6 +18,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { veiculosCatalogo, getVeiculoByModelo, type Veiculo } from "@/data/veiculosCatalogo";
 
 import logoLavoro from "@/assets/logo-foton-lavoro.png";
+import fotonIconTransparent from "@/assets/foton-logo-icon-transparent.png";
+import lavoroIconTransparent from "@/assets/lavoro-logo-icon-transparent.png";
 
 interface ProdutoProposta {
   id: string;
@@ -438,9 +440,7 @@ export default function PropostaComercial() {
           <!-- Card FOTON -->
           <div style="background: #f8fafc; padding: 12px 16px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 8px;">
             <div style="display: flex; align-items: center; gap: 10px;">
-              <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #003366, #001a33); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="color: white; font-weight: 800; font-size: 12px;">F</span>
-              </div>
+              <img src="${fotonIconTransparent}" alt="FOTON" style="width: 32px; height: 32px; object-fit: contain; flex-shrink: 0;" />
               <div style="flex: 1;">
                 <h4 style="font-size: 12px; font-weight: 700; color: #0f172a; margin: 0 0 2px 0;">FOTON</h4>
                 <p style="font-size: 10px; color: #64748b; line-height: 1.4; margin: 0;">
@@ -453,9 +453,7 @@ export default function PropostaComercial() {
           <!-- Card LAVORO -->
           <div style="background: #f8fafc; padding: 12px 16px; border-radius: 8px; border: 1px solid #e2e8f0;">
             <div style="display: flex; align-items: center; gap: 10px;">
-              <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="color: white; font-weight: 800; font-size: 12px;">L</span>
-              </div>
+              <img src="${lavoroIconTransparent}" alt="LAVORO" style="width: 32px; height: 32px; object-fit: contain; flex-shrink: 0;" />
               <div style="flex: 1;">
                 <h4 style="font-size: 12px; font-weight: 700; color: #0f172a; margin: 0 0 2px 0;">LAVORO • 40+ ANOS DE TRADIÇÃO</h4>
                 <p style="font-size: 10px; color: #64748b; line-height: 1.4; margin: 0;">
