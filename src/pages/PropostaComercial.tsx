@@ -277,12 +277,12 @@ export default function PropostaComercial() {
         <div style="${pageBreak} min-height: 100vh; padding: 32px 0;">
           <!-- Cabeçalho do Produto - 25% maior -->
           <div style="margin-bottom: 20px;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-              <span style="background: linear-gradient(135deg, #003366, #001a33); color: white; padding: 6px 16px; border-radius: 6px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${categoriaLabel}</span>
-              <span style="background: #f0f9ff; color: #003366; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">CNH ${p.veiculo?.cnh || '-'}</span>
-              ${p.cor ? `<span style="background: #fef3c7; color: #92400e; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">Cor: ${p.cor}</span>` : ''}
-              ${p.anoModelo ? `<span style="background: #e0e7ff; color: #3730a3; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">${p.anoModelo}</span>` : ''}
-              <span style="background: #dcfce7; color: #166534; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;">Garantia: ${garantiaLabel}</span>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;">
+              <span style="background: #003366; color: white; padding: 6px 16px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border: 2px solid #003366;">${categoriaLabel}</span>
+              <span style="background: #e0f2fe; color: #0369a1; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 2px solid #0369a1;">CNH ${p.veiculo?.cnh || '-'}</span>
+              ${p.cor ? `<span style="background: #fef3c7; color: #b45309; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 2px solid #b45309;">Cor: ${p.cor}</span>` : ''}
+              ${p.anoModelo ? `<span style="background: #e0e7ff; color: #4338ca; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 2px solid #4338ca;">${p.anoModelo}</span>` : ''}
+              <span style="background: #dcfce7; color: #15803d; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 2px solid #15803d;">Garantia: ${garantiaLabel}</span>
             </div>
             <h2 style="font-size: 30px; font-weight: 800; color: #1a1a2e; margin: 0 0 6px 0; letter-spacing: -0.5px;">${p.modelo}</h2>
             <p style="font-size: 15px; color: #6b7280; margin: 0;">Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
