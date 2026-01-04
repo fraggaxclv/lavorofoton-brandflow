@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X, FileText } from "lucide-react";
+import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X, FileText, Gauge } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
@@ -423,8 +423,7 @@ const Foton9T = () => {
               <AccordionItem value="motor" className="bg-white rounded-lg shadow-sm px-6">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
                   <div className="flex items-center gap-3">
-                    <Settings className="w-5 h-5 text-primary" />
-                    Motor
+                    🔧 Motor e Desempenho
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="pt-4 pb-6">
@@ -465,12 +464,41 @@ const Foton9T = () => {
                 </AccordionContent>
               </AccordionItem>
 
+              {/* Consumo e Eficiência */}
+              <AccordionItem value="consumo" className="bg-white rounded-lg shadow-sm px-6">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  <div className="flex items-center gap-3">
+                    <Gauge className="w-5 h-5 text-primary" />
+                    Consumo e Eficiência
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 pb-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex justify-between py-2 border-b border-gray-100">
+                      <span className="text-muted-foreground">Consumo urbano</span>
+                      <span className="font-semibold text-amber-600">[A preencher] km/l</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-gray-100">
+                      <span className="text-muted-foreground">Consumo rodoviário</span>
+                      <span className="font-semibold text-amber-600">[A preencher] km/l</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-gray-100">
+                      <span className="text-muted-foreground">Autonomia estimada</span>
+                      <span className="font-semibold text-amber-600">[A preencher] km</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-gray-100">
+                      <span className="text-muted-foreground">Intervalo de revisão</span>
+                      <span className="font-semibold text-amber-600">[A preencher] km</span>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
               {/* Transmissão */}
               <AccordionItem value="transmissao" className="bg-white rounded-lg shadow-sm px-6">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
                   <div className="flex items-center gap-3">
-                    <Package className="w-5 h-5 text-primary" />
-                    Transmissão
+                    ⚙️ Transmissão
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="pt-4 pb-6">
