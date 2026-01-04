@@ -6,11 +6,17 @@ interface ModelCardProps {
   description: string;
   image: string;
   link: string;
+  comingSoon?: boolean;
 }
 
-const ModelCard = ({ name, description, image, link }: ModelCardProps) => {
+const ModelCard = ({ name, description, image, link, comingSoon = false }: ModelCardProps) => {
   return (
-    <Link to={link} className="group card-premium overflow-hidden">
+    <Link to={link} className="group card-premium overflow-hidden relative">
+      {comingSoon && (
+        <div className="absolute top-4 right-4 z-10 bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg animate-pulse">
+          EM BREVE
+        </div>
+      )}
       <div className="aspect-video overflow-hidden bg-secondary">
         <img
           src={image}

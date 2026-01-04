@@ -9,7 +9,8 @@ import {
   ChevronRight, 
   X, 
   FileText,
-  Mountain
+  Mountain,
+  Gauge
 } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -455,7 +456,7 @@ const TunlandV7 = () => {
               {/* Motor */}
               <AccordionItem value="motor" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
                 <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  Motor e Desempenho
+                  <span className="flex items-center gap-2">🔧 Motor e Desempenho</span>
                 </AccordionTrigger>
                 <AccordionContent className="pt-6 pb-8 space-y-3">
                   <div className="grid md:grid-cols-2 gap-6">
@@ -487,10 +488,37 @@ const TunlandV7 = () => {
                 </AccordionContent>
               </AccordionItem>
 
+              {/* Consumo e Eficiência */}
+              <AccordionItem value="consumo" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
+                <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
+                  <span className="flex items-center gap-2"><Gauge className="w-5 h-5" /> Consumo e Eficiência</span>
+                </AccordionTrigger>
+                <AccordionContent className="pt-6 pb-8 space-y-3">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Consumo urbano:</span>
+                      <span className="font-bold text-amber-600">[A preencher] km/l</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Consumo rodoviário:</span>
+                      <span className="font-bold text-amber-600">[A preencher] km/l</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Autonomia estimada:</span>
+                      <span className="font-bold text-amber-600">[A preencher] km</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-border/50">
+                      <span className="text-muted-foreground font-medium">Intervalo de revisão:</span>
+                      <span className="font-bold text-amber-600">[A preencher] km</span>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
               {/* Transmissão */}
               <AccordionItem value="transmissao" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
                 <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  Transmissão e Tração
+                  <span className="flex items-center gap-2">⚙️ Transmissão e Tração</span>
                 </AccordionTrigger>
                 <AccordionContent className="pt-6 pb-8 space-y-3">
                   <div className="grid md:grid-cols-2 gap-6">
@@ -529,7 +557,7 @@ const TunlandV7 = () => {
               {/* Dimensões */}
               <AccordionItem value="dimensoes" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
                 <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  Dimensões e Capacidades
+                  <span className="flex items-center gap-2">📏 Dimensões e Capacidades</span>
                 </AccordionTrigger>
                 <AccordionContent className="pt-6 pb-8 space-y-3">
                   <div className="grid md:grid-cols-2 gap-6">
