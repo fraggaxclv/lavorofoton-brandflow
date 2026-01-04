@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X, FileText, Gauge } from "lucide-react";
+import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X, FileText } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
@@ -495,30 +495,31 @@ const Foton17T = () => {
                 </AccordionContent>
               </AccordionItem>
 
-              {/* Consumo e Eficiência */}
-              <AccordionItem value="consumo" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
+              {/* Diferenciais Técnicos */}
+              <AccordionItem value="diferenciais" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2"><Gauge className="w-5 h-5" /> Consumo e Eficiência</span>
+                  <span className="flex items-center gap-2">⭐ Diferenciais Técnicos</span>
                 </AccordionTrigger>
                 <AccordionContent className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Consumo urbano:</span>
-                      <span className="font-medium text-amber-600">[A preencher] km/l</span>
+                    <div className="flex flex-col py-2 border-b border-border/50">
+                      <span className="font-medium text-primary">Trem de força premium</span>
+                      <span className="text-muted-foreground text-sm">Conjunto mecânico Cummins + ZF com eficiência comprovada</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Consumo rodoviário:</span>
-                      <span className="font-medium text-amber-600">[A preencher] km/l</span>
+                    <div className="flex flex-col py-2 border-b border-border/50">
+                      <span className="font-medium text-primary">Engenharia global</span>
+                      <span className="text-muted-foreground text-sm">Tecnologia de padrão internacional aplicada ao mercado brasileiro</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Autonomia estimada:</span>
-                      <span className="font-medium text-amber-600">[A preencher] km</span>
+                    <div className="flex flex-col py-2 border-b border-border/50">
+                      <span className="font-medium text-primary">Economia operacional</span>
+                      <span className="text-muted-foreground text-sm">Estimativa de 12% a 15% de redução de custos vs conjuntos convencionais*</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-border/50">
-                      <span className="text-muted-foreground">Intervalo de revisão:</span>
-                      <span className="font-medium text-amber-600">[A preencher] km</span>
+                    <div className="flex flex-col py-2 border-b border-border/50">
+                      <span className="font-medium text-primary">Durabilidade</span>
+                      <span className="text-muted-foreground text-sm">Componentes dimensionados para alta quilometragem</span>
                     </div>
                   </div>
+                  <p className="text-xs text-muted-foreground italic mt-4">*Dados estimados podem variar conforme condições de uso e operação</p>
                 </AccordionContent>
               </AccordionItem>
 

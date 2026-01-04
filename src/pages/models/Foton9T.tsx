@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X, FileText, Gauge } from "lucide-react";
+import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X, FileText, Snowflake } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
@@ -25,20 +25,23 @@ import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
 import danaLogo from "@/assets/dana-logo-icon.png";
-import motorCumminsFotonIcon from "@/assets/motor-cummins-foton-icon.png";
 import garantiaFabricaFotonIcon from "@/assets/garantia-3anos-foton.png";
 import tecnologiaGlobalIcon from "@/assets/tecnologia-global-icon.png";
 import concessionariasIcon from "@/assets/70-concessionarias-icon.png";
 import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
-import qualidadeIcon from "@/assets/qualidade-icon.png";
 
 const Foton9T = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const productImages = [
+    {
+      src: foton916,
+      alt: "Foton Aumark 916 - Vista Externa",
+      caption: "Foton Aumark 916 - Especialista em Cadeia Fria"
+    },
     {
       src: aumarkFrenteLinha,
       alt: "Foton Aumark 916 - Linha de Caminhões",
@@ -70,29 +73,14 @@ const Foton9T = () => {
       caption: "Chassi robusto - Vista lateral"
     },
     {
-      src: aumarkChassisAberto,
-      alt: "Foton Aumark 916 - Chassi Aberto",
-      caption: "Estrutura do chassi"
-    },
-    {
-      src: aumarkChassisSuperior,
-      alt: "Foton Aumark 916 - Chassi Superior",
-      caption: "Chassi completo - Vista superior"
-    },
-    {
       src: aumarkMotorDetalhe,
       alt: "Motor Cummins do Foton Aumark 916",
-      caption: "Motor Cummins F3.8 - Detalhe"
-    },
-    {
-      src: aumarkLineupFabrica,
-      alt: "Foton Aumark 916 - Lineup Fábrica",
-      caption: "Linha de produção Foton"
+      caption: "Motor Cummins F3.8 - 160 cv"
     }
   ];
 
   const whatsappNumber = "553121164735";
-  const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark 916.");
+  const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark 916 para transporte refrigerado.");
 
   const handleWhatsApp = () => {
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
@@ -121,20 +109,23 @@ const Foton9T = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* 1. HERO */}
-      <section className="relative bg-industrial-dark text-white overflow-hidden">
-        <div className="container mx-auto px-4 py-12 md:py-20">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6 order-2 lg:order-1">
+      {/* 1. HERO - ESPECIALISTA EM CADEIA FRIA */}
+      <section className="relative bg-gradient-to-br from-[#0a1628] via-[#0f2847] to-[#1a3a5c] text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyem0wLTR2Mkgy0di0yaDEyem0tMjItNnY0SDR2LTRoMTB6bTI0IDR2NEgyOHYtNGgxMHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-50"></div>
+        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8 order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 bg-cyan-500/20 border border-cyan-400/30 rounded-full px-4 py-2">
+                <Snowflake className="w-5 h-5 text-cyan-400 animate-pulse" />
+                <span className="text-cyan-300 font-semibold text-sm">Especialista em Cadeia Fria</span>
+              </div>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Foton Aumark 916
+                Foton Aumark S 916
+                <span className="block text-2xl md:text-3xl text-cyan-400 mt-2 font-medium">O campeão do transporte refrigerado</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
-                Potência e capacidade para rotas regionais exigentes.
-                <br />
-                <span className="text-primary font-semibold">
-                  9 toneladas de PBT, motor Cummins F3.8 de 160cv, transmissão ZF 6 marchas, componentes globais e 3 anos de garantia.
-                </span>
+                9 toneladas de PBT. Motor Cummins F3.8 de <span className="text-cyan-400 font-bold">160 cv</span>. 
+                Transmissão ZF 6 marchas. Chassi dimensionado para baús térmicos.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button 
@@ -149,18 +140,19 @@ const Foton9T = () => {
                   onClick={handleQuoteClick} 
                   size="lg" 
                   variant="outline" 
-                  className="border-white text-white text-lg px-8 py-6 h-auto bg-blue-900 hover:bg-blue-800"
+                  className="border-cyan-400 text-cyan-400 text-lg px-8 py-6 h-auto bg-cyan-500/10 hover:bg-cyan-500/20"
                 >
                   Solicitar Proposta
                 </Button>
               </div>
             </div>
             
-            <div className="order-1 lg:order-2">
-              <div className="relative w-full aspect-[4/5] md:aspect-video rounded-lg overflow-hidden">
+            <div className="order-1 lg:order-2 relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl"></div>
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border-2 border-cyan-500/30">
                 <img 
-                  src={aumarkFrenteUrbano} 
-                  alt="Foton Aumark 916" 
+                  src={foton916} 
+                  alt="Foton Aumark 916 - Especialista em Cadeia Fria" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -169,731 +161,514 @@ const Foton9T = () => {
         </div>
       </section>
 
-      {/* 2. PRINCIPAIS MOTIVOS */}
-      <section className="py-16 md:py-24 bg-background">
+      {/* 2. DIFERENCIAIS DO 916 - CARDS DESTACADOS */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-secondary/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 md:mb-20 text-foreground">
-            Principais motivos para escolher o <span className="text-primary">916</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 text-foreground">
+            Por que o <span className="text-cyan-600">916</span> é o campeão da cadeia fria?
           </h2>
           
-          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-16">
-            {/* 1. 9 toneladas */}
-            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <Truck className="w-full h-full text-primary" />
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1 - Refrigeração */}
+            <div className="group bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border-2 border-cyan-500/30 rounded-2xl p-6 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300">
+              <div className="w-16 h-16 mb-4 flex items-center justify-center bg-cyan-500/20 rounded-xl">
+                <span className="text-3xl">❄️</span>
               </div>
-              <p className="font-semibold text-sm md:text-base text-foreground">9 toneladas de capacidade</p>
+              <h3 className="font-bold text-lg mb-2 text-foreground">Especialista em Refrigeração</h3>
+              <p className="text-muted-foreground text-sm">Chassi dimensionado especialmente para baús térmicos e isotérmicos</p>
             </div>
 
-            {/* 2. Motor Cummins */}
-            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
+            {/* Card 2 - Potência */}
+            <div className="group bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-orange-500/30 rounded-2xl p-6 hover:border-orange-400 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-300">
+              <div className="w-16 h-16 mb-4 flex items-center justify-center bg-orange-500/20 rounded-xl">
+                <span className="text-3xl">💪</span>
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-foreground">160 CV de Potência</h3>
+              <p className="text-muted-foreground text-sm">Motor Cummins F3.8 com 500 Nm de torque para cargas pesadas</p>
+            </div>
+
+            {/* Card 3 - Transmissão */}
+            <div className="group bg-gradient-to-br from-purple-500/10 to-indigo-500/10 border-2 border-purple-500/30 rounded-2xl p-6 hover:border-purple-400 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300">
+              <div className="w-16 h-16 mb-4 flex items-center justify-center bg-purple-500/20 rounded-xl">
+                <span className="text-3xl">⚙️</span>
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-foreground">ZF 6 Marchas</h3>
+              <p className="text-muted-foreground text-sm">Transmissão premium ZF 6S558 para máxima eficiência</p>
+            </div>
+
+            {/* Card 4 - Segurança */}
+            <div className="group bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-2 border-green-500/30 rounded-2xl p-6 hover:border-green-400 hover:shadow-xl hover:shadow-green-500/10 transition-all duration-300">
+              <div className="w-16 h-16 mb-4 flex items-center justify-center bg-green-500/20 rounded-xl">
+                <span className="text-3xl">🛡️</span>
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-foreground">Segurança Total</h3>
+              <p className="text-muted-foreground text-sm">ABS + ASR + ESC de série para proteção completa</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. APLICAÇÕES - CADEIA FRIA */}
+      <section className="py-16 md:py-20 bg-gradient-to-r from-[#0a1628] to-[#1a3a5c] text-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Ideal para <span className="text-cyan-400">transporte refrigerado</span>
+          </h2>
+          <p className="text-center text-gray-300 mb-12 max-w-2xl mx-auto">
+            Chassis preparado para as exigências do transporte de produtos perecíveis
+          </p>
+          
+          <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="flex flex-col items-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+              <span className="text-4xl mb-2">🧊</span>
+              <span className="text-sm font-medium">Congelados</span>
+            </div>
+            <div className="flex flex-col items-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+              <span className="text-4xl mb-2">🍖</span>
+              <span className="text-sm font-medium">Frigoríficos</span>
+            </div>
+            <div className="flex flex-col items-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+              <span className="text-4xl mb-2">🥛</span>
+              <span className="text-sm font-medium">Laticínios</span>
+            </div>
+            <div className="flex flex-col items-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+              <span className="text-4xl mb-2">💊</span>
+              <span className="text-sm font-medium">Farmácias</span>
+            </div>
+            <div className="flex flex-col items-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+              <span className="text-4xl mb-2">🌽</span>
+              <span className="text-sm font-medium">Agricultura</span>
+            </div>
+            <div className="flex flex-col items-center p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+              <span className="text-4xl mb-2">🐟</span>
+              <span className="text-sm font-medium">Pescados</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. GALERIA DE IMAGENS */}
+      <section className="py-12 md:py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">Conheça o Aumark 916</h2>
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {productImages.slice(0, 3).map((image, index) => (
+              <div key={index} className="space-y-3">
+                <div 
+                  className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity border border-border" 
+                  onClick={() => openLightbox(index)}
+                >
+                  <img 
+                    src={image.src} 
+                    alt={image.alt} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <p className="text-sm text-center text-muted-foreground">{image.caption}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. POR QUE ESCOLHER A FOTON LAVORO */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-industrial-dark via-industrial-dark to-industrial-light">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 text-white">
+            Por que escolher a <span className="text-primary-light">Foton Lavoro</span>
+          </h2>
+          <p className="text-lg md:text-xl text-center text-gray-300 mb-16 max-w-3xl mx-auto">
+            Tecnologia global, montagem nacional e o melhor custo-benefício do mercado brasileiro.
+          </p>
+
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={garantiaFabricaFotonIcon} alt="Garantia de Fábrica 3 Anos" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Garantia de fábrica (3 anos)</h3>
+              <p className="text-sm text-gray-600 text-center">Caminhões projetados para rodar sem sustos.</p>
+            </div>
+
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
                 <img src={cumminsLogo} alt="Motor Cummins" className="w-full h-full object-contain" />
               </div>
-              <p className="font-semibold text-sm md:text-base text-foreground">Motor Cummins F3.8 160cv</p>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Motores Cummins</h3>
+              <p className="text-sm text-gray-600 text-center">Referência global em durabilidade e performance.</p>
             </div>
 
-            {/* 3. Caixa ZF */}
-            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <img src={zfLogo} alt="Caixa ZF" className="w-full h-full object-contain" />
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={tecnologiaGlobalIcon} alt="Tecnologia Global" className="w-full h-full object-contain" />
               </div>
-              <p className="font-semibold text-sm md:text-base text-foreground">Caixa ZF 6 marchas</p>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Tecnologia global</h3>
+              <p className="text-sm text-gray-600 text-center">Engenharia de classe mundial adaptada ao Brasil.</p>
             </div>
 
-            {/* 4. Componentes Bosch + Dana */}
-            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center gap-2">
-                <img src={boschLogo} alt="Bosch" className="h-full w-auto object-contain" />
-                <img src={danaLogo} alt="Dana" className="h-full w-auto object-contain" />
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={concessionariasIcon} alt="+70 Concessionárias" className="w-full h-full object-contain" />
               </div>
-              <p className="font-semibold text-sm md:text-base text-foreground">Componentes Bosch + Dana</p>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">+70 concessionárias</h3>
+              <p className="text-sm text-gray-600 text-center">Rede de suporte em todo o Brasil.</p>
             </div>
 
-            {/* 5. Chassi reforçado */}
-            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <img src={chassiReforcadoIcon} alt="Chassi Reforçado" className="w-full h-full object-contain" />
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={fillRateIcon} alt="Fill Rate" className="w-full h-full object-contain" />
               </div>
-              <p className="font-semibold text-sm md:text-base text-foreground">Chassi reforçado</p>
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">95% fill rate de peças</h3>
+              <p className="text-sm text-gray-600 text-center">Seu caminhão não para por falta de peças.</p>
             </div>
 
-            {/* 6. Tanque de alumínio */}
-            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <img src={tanqueAluminioIcon} alt="Tanque de Alumínio" className="w-full h-full object-contain" />
+            <div className="group bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hover:bg-gray-50 hover:border-primary/50 hover:shadow-lg transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 mb-6 flex items-center justify-center mx-auto">
+                <img src={aprovacaoClientesIcon} alt="Aprovação dos Clientes" className="w-full h-full object-contain" />
               </div>
-              <p className="font-semibold text-sm md:text-base text-foreground">Tanque de alumínio 160L</p>
-            </div>
-
-            {/* 7. Rodado duplo */}
-            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <img src={rodadoDuploIcon} alt="Rodado Duplo" className="w-full h-full object-contain" />
-              </div>
-              <p className="font-semibold text-sm md:text-base text-foreground">Rodado duplo traseiro</p>
-            </div>
-
-            {/* 8. 3 anos de garantia */}
-            <div className="group bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col items-center text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-6 flex items-center justify-center">
-                <img src={garantia3AnosIcon} alt="3 Anos de Garantia" className="w-full h-full object-contain" />
-              </div>
-              <p className="font-semibold text-sm md:text-base text-foreground">3 anos de garantia de fábrica</p>
-            </div>
-          </div>
-
-          {/* Imagens do produto */}
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mt-12">
-            <div 
-              className="aspect-video rounded-2xl border border-border overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-              onClick={() => openLightbox(0)}
-            >
-              <img 
-                src={aumarkFrenteLinha} 
-                alt="Foton Aumark 916 - Linha de Caminhões" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div 
-              className="aspect-video rounded-2xl border border-border overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-              onClick={() => openLightbox(3)}
-            >
-              <img 
-                src={aumarkInteriorCompleto} 
-                alt="Foton Aumark 916 - Interior Completo" 
-                className="w-full h-full object-cover"
-              />
+              <h3 className="font-bold text-lg mb-2 text-center text-industrial-dark">Alta aprovação</h3>
+              <p className="text-sm text-gray-600 text-center">Milhares de clientes satisfeitos em todo Brasil.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. DESTAQUES TÉCNICOS */}
-      <section className="py-12 md:py-16 bg-gray-50">
+      {/* 6. FICHA TÉCNICA COMPLETA */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center justify-center gap-3 md:gap-4 mb-6">
-                <img src={cumminsLogo} alt="Cummins" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src={zfLogo} alt="ZF" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src={boschLogo} alt="Bosch" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
-                <img src={danaLogo} alt="Dana" className="h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-cyan-500/10 mb-4">
+                <FileText className="w-8 h-8 text-cyan-600" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Conjunto mecânico global de alta performance</h3>
-              <p className="text-muted-foreground">
-                Motor Cummins F3.8 de 160cv e 500Nm de torque, transmissão ZF 6S558 com 6 marchas, componentes Bosch e Dana. Tecnologia mundial para operações exigentes.
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                Ficha Técnica Completa
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Todas as especificações técnicas do Foton Aumark 916
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 flex items-center justify-center mb-4">
-                <img src={durabilityIcon} alt="Durabilidade" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Durabilidade e robustez comprovadas</h3>
-              <p className="text-muted-foreground">
-                Chassi reforçado dimensionado para 9 toneladas, rodado duplo traseiro e estrutura preparada para alta quilometragem e cargas pesadas.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 flex items-center justify-center mb-4">
-                <Truck className="w-full h-full text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Capacidade e versatilidade ampliadas</h3>
-              <p className="text-muted-foreground">
-                9 toneladas de PBT com 6 toneladas de carga útil. Ideal para distribuição regional, transporte intermunicipal e cargas volumosas.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 flex items-center justify-center mb-4">
-                <img src={garantia3AnosIcon} alt="Garantia" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Garantia e pós-venda nacionais</h3>
-              <p className="text-muted-foreground">
-                3 anos de garantia de fábrica + rede de +70 concessionárias e centro logístico nacional prontos para te atender.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. IMAGENS DO PRODUTO */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <div className="space-y-3">
-              <div 
-                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(1)}
-              >
-                <img 
-                  src={aumarkFrenteUrbano} 
-                  alt="Foton Aumark 916 - Vista Frontal Urbana" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-sm text-center text-muted-foreground">Aumark 916 em ambiente urbano</p>
-            </div>
-
-            <div className="space-y-3">
-              <div 
-                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(4)}
-              >
-                <img 
-                  src={aumarkPainelCentral} 
-                  alt="Foton Aumark 916 - Painel Central" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-sm text-center text-muted-foreground">Console central com multimídia MP5</p>
-            </div>
-
-            <div className="space-y-3">
-              <div 
-                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(8)}
-              >
-                <img 
-                  src={aumarkMotorDetalhe} 
-                  alt="Motor Cummins do Foton Aumark 916" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-sm text-center text-muted-foreground">Motor Cummins F3.8 - 160cv</p>
-            </div>
-
-            <div className="space-y-3">
-              <div 
-                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(5)}
-              >
-                <img 
-                  src={aumarkChassisLateral} 
-                  alt="Foton Aumark 916 - Chassi Lateral" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-sm text-center text-muted-foreground">Chassi robusto - Vista lateral</p>
-            </div>
-
-            <div className="space-y-3">
-              <div 
-                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(2)}
-              >
-                <img 
-                  src={aumarkVolantePainel} 
-                  alt="Foton Aumark 916 - Volante e Painel" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-sm text-center text-muted-foreground">Volante multifuncional</p>
-            </div>
-
-            <div className="space-y-3">
-              <div 
-                className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(6)}
-              >
-                <img 
-                  src={aumarkChassisAberto} 
-                  alt="Foton Aumark 916 - Chassi Aberto" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-sm text-center text-muted-foreground">Estrutura do chassi</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. ESPECIFICAÇÕES TÉCNICAS DETALHADAS */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-foreground">
-            Especificações Técnicas Completas
-          </h2>
-          
-          <div className="max-w-5xl mx-auto">
             <Accordion type="single" collapsible className="space-y-4">
               {/* Motor */}
-              <AccordionItem value="motor" className="bg-white rounded-lg shadow-sm px-6">
+              <AccordionItem value="motor" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    🔧 Motor e Desempenho
-                  </div>
+                  <span className="flex items-center gap-2">🔧 Motor e Desempenho</span>
                 </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
+                <AccordionContent className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Fabricante/Modelo</span>
-                      <span className="font-semibold">Cummins F3.8</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Fabricante/Modelo:</span>
+                      <span className="font-medium">Cummins F3.8</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Nº de cilindros</span>
-                      <span className="font-semibold">4</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Nº de cilindros:</span>
+                      <span className="font-medium">4</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Cilindrada</span>
-                      <span className="font-semibold">3.760 cm³</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Cilindrada:</span>
+                      <span className="font-medium">3.760 cm³</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Potência Líq. Máx.</span>
-                      <span className="font-semibold">160cv @ 2.600rpm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Potência Máxima:</span>
+                      <span className="font-medium text-cyan-600 font-bold">160 cv @ 2.600 rpm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Torque Líq. Máx.</span>
-                      <span className="font-semibold">500Nm (1.100 a 1.900rpm)</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Torque Máximo:</span>
+                      <span className="font-medium text-cyan-600 font-bold">500 Nm @ 1.100-1.900 rpm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Sistema de injeção</span>
-                      <span className="font-semibold">Common Rail</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Sistema de Injeção:</span>
+                      <span className="font-medium">Common Rail</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Norma de emissões</span>
-                      <span className="font-semibold">CONAMA P8</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Combustível:</span>
+                      <span className="font-medium">Diesel S10</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Tecnologia de Emissões</span>
-                      <span className="font-semibold">SCR+DOC+DPF</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Norma de Emissões:</span>
+                      <span className="font-medium">CONAMA P8 (EURO 6)</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Tecnologia de Emissões:</span>
+                      <span className="font-medium">SCR+DOC+DPF</span>
                     </div>
                   </div>
                 </AccordionContent>
               </AccordionItem>
 
-              {/* Consumo e Eficiência */}
-              <AccordionItem value="consumo" className="bg-white rounded-lg shadow-sm px-6">
+              {/* Diferenciais Técnicos */}
+              <AccordionItem value="diferenciais" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <Gauge className="w-5 h-5 text-primary" />
-                    Consumo e Eficiência
-                  </div>
+                  <span className="flex items-center gap-2">⭐ Diferenciais Técnicos</span>
                 </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
+                <AccordionContent className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Consumo urbano</span>
-                      <span className="font-semibold text-amber-600">[A preencher] km/l</span>
+                    <div className="flex flex-col py-2 border-b border-border/50">
+                      <span className="font-medium text-primary">Trem de força Cummins + ZF</span>
+                      <span className="text-muted-foreground text-sm">Conjunto mecânico premium com eficiência comprovada</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Consumo rodoviário</span>
-                      <span className="font-semibold text-amber-600">[A preencher] km/l</span>
+                    <div className="flex flex-col py-2 border-b border-border/50">
+                      <span className="font-medium text-primary">Homologação IBAMA/PROCONVE</span>
+                      <span className="text-muted-foreground text-sm">Atende todas as normas ambientais brasileiras</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Autonomia estimada</span>
-                      <span className="font-semibold text-amber-600">[A preencher] km</span>
+                    <div className="flex flex-col py-2 border-b border-border/50">
+                      <span className="font-medium text-primary">Estrutura para cargas refrigeradas</span>
+                      <span className="text-muted-foreground text-sm">Chassi dimensionado para baús térmicos e isotérmicos</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Intervalo de revisão</span>
-                      <span className="font-semibold text-amber-600">[A preencher] km</span>
+                    <div className="flex flex-col py-2 border-b border-border/50">
+                      <span className="font-medium text-primary">Economia operacional</span>
+                      <span className="text-muted-foreground text-sm">Estimativa de 12% a 15% de redução de custos vs convencionais*</span>
                     </div>
                   </div>
+                  <p className="text-xs text-muted-foreground italic mt-4">*Dados estimados podem variar conforme condições de uso e operação</p>
                 </AccordionContent>
               </AccordionItem>
 
               {/* Transmissão */}
-              <AccordionItem value="transmissao" className="bg-white rounded-lg shadow-sm px-6">
+              <AccordionItem value="transmissao" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    ⚙️ Transmissão
-                  </div>
+                  <span className="flex items-center gap-2">⚙️ Transmissão e Trem de Força</span>
                 </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
+                <AccordionContent className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Fabricante/Modelo</span>
-                      <span className="font-semibold">ZF 6S558</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Fabricante/Modelo:</span>
+                      <span className="font-medium">ZF 6S558</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Tipo/Acionamento</span>
-                      <span className="font-semibold">Manual a cabos</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Tipo/Acionamento:</span>
+                      <span className="font-medium">Manual a cabos - 6MT</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Nº de marchas</span>
-                      <span className="font-semibold">6MT</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Relações:</span>
+                      <span className="font-medium text-xs">I:6.198 II:3.267 III:2.025 IV:1.371 V:1.0 VI:0.78 Ré:5.681</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Relação I</span>
-                      <span className="font-semibold">6.198</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Embreagem:</span>
+                      <span className="font-medium">Tipo seco, mola diafragma Ø362mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Relação II</span>
-                      <span className="font-semibold">3.267</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Eixo Dianteiro:</span>
+                      <span className="font-medium">Viga "I" Aço forjado - 3.0 ton</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Relação III</span>
-                      <span className="font-semibold">2.025</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Eixo Traseiro:</span>
+                      <span className="font-medium">6.0 ton - Relação 5.571</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Relação IV</span>
-                      <span className="font-semibold">1.371</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Relação V</span>
-                      <span className="font-semibold">1.0</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Relação VI</span>
-                      <span className="font-semibold">0.78</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Relação Ré</span>
-                      <span className="font-semibold">5.681</span>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              {/* Embreagem */}
-              <AccordionItem value="embreagem" className="bg-white rounded-lg shadow-sm px-6">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <Settings className="w-5 h-5 text-primary" />
-                    Embreagem
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Fabricante/Tipo</span>
-                      <span className="font-semibold">Tipo seco, mola de diafragma</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Diâmetro do disco</span>
-                      <span className="font-semibold">Ø362mm</span>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              {/* Eixos */}
-              <AccordionItem value="eixos" className="bg-white rounded-lg shadow-sm px-6">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <Truck className="w-5 h-5 text-primary" />
-                    Eixos Dianteiro e Traseiro
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
-                  <div className="space-y-6">
-                    <div>
-                      <h4 className="font-semibold mb-3 text-foreground">Eixo Dianteiro</h4>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="flex justify-between py-2 border-b border-gray-100">
-                          <span className="text-muted-foreground">Modelo/Tipo</span>
-                          <span className="font-semibold">Viga "I" Aço forjado</span>
-                        </div>
-                        <div className="flex justify-between py-2 border-b border-gray-100">
-                          <span className="text-muted-foreground">Capacidade</span>
-                          <span className="font-semibold">3,0 Ton</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-3 text-foreground">Eixo Traseiro</h4>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="flex justify-between py-2 border-b border-gray-100">
-                          <span className="text-muted-foreground">Capacidade</span>
-                          <span className="font-semibold">6,0 Ton</span>
-                        </div>
-                        <div className="flex justify-between py-2 border-b border-gray-100">
-                          <span className="text-muted-foreground">Relação de redução</span>
-                          <span className="font-semibold">4.33</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              {/* Suspensão */}
-              <AccordionItem value="suspensao" className="bg-white rounded-lg shadow-sm px-6">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <Settings className="w-5 h-5 text-primary" />
-                    Suspensão
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
-                  <div className="space-y-4">
-                    <p className="text-muted-foreground">
-                      Molas parabólicas, amortecedores hidráulicos telescópicos de dupla ação. Barra estabilizadora.
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="flex justify-between py-2 border-b border-gray-100">
-                        <span className="text-muted-foreground">Dianteiro</span>
-                        <span className="font-semibold">3 lâminas</span>
-                      </div>
-                      <div className="flex justify-between py-2 border-b border-gray-100">
-                        <span className="text-muted-foreground">Traseira</span>
-                        <span className="font-semibold">4+2 lâminas</span>
-                      </div>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              {/* Rodas e Pneus */}
-              <AccordionItem value="rodas" className="bg-white rounded-lg shadow-sm px-6">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <Settings className="w-5 h-5 text-primary" />
-                    Rodas e Pneus
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Aro das rodas</span>
-                      <span className="font-semibold">Aço</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Pneus</span>
-                      <span className="font-semibold">215/75 R17,5</span>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              {/* Freios */}
-              <AccordionItem value="freios" className="bg-white rounded-lg shadow-sm px-6">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <Shield className="w-5 h-5 text-primary" />
-                    Freios
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Freio de serviço</span>
-                      <span className="font-semibold">Ar, tambor com ABS+ASR+ESC</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Freio de estacionamento</span>
-                      <span className="font-semibold">Câmara de molas acumuladoras</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Freio Motor</span>
-                      <span className="font-semibold">EAT</span>
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              {/* Sistema Elétrico e Volumes */}
-              <AccordionItem value="eletrico" className="bg-white rounded-lg shadow-sm px-6">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <Settings className="w-5 h-5 text-primary" />
-                    Sistema Elétrico e Volumes
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
-                  <div className="space-y-6">
-                    <div>
-                      <h4 className="font-semibold mb-3 text-foreground">Sistema Elétrico</h4>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="flex justify-between py-2 border-b border-gray-100">
-                          <span className="text-muted-foreground">Tensão nominal</span>
-                          <span className="font-semibold">24V</span>
-                        </div>
-                        <div className="flex justify-between py-2 border-b border-gray-100">
-                          <span className="text-muted-foreground">Bateria</span>
-                          <span className="font-semibold">2x 100Ah</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-3 text-foreground">Volumes de abastecimento</h4>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="flex justify-between py-2 border-b border-gray-100">
-                          <span className="text-muted-foreground">Combustível</span>
-                          <span className="font-semibold">160L Alumínio</span>
-                        </div>
-                        <div className="flex justify-between py-2 border-b border-gray-100">
-                          <span className="text-muted-foreground">Tanque de ARLA 32</span>
-                          <span className="font-semibold">30L</span>
-                        </div>
-                      </div>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Rodas e Pneus:</span>
+                      <span className="font-medium">Aço - 215/75 R17.5</span>
                     </div>
                   </div>
                 </AccordionContent>
               </AccordionItem>
 
               {/* Dimensões */}
-              <AccordionItem value="dimensoes" className="bg-white rounded-lg shadow-sm px-6">
+              <AccordionItem value="dimensoes" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <FileText className="w-5 h-5 text-primary" />
-                    Dimensões
-                  </div>
+                  <span className="flex items-center gap-2">📏 Dimensões e Capacidades</span>
                 </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
+                <AccordionContent className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Comprimento total</span>
-                      <span className="font-semibold">6.920mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Comprimento total:</span>
+                      <span className="font-medium">6.885 mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Largura máxima dianteira</span>
-                      <span className="font-semibold">2.136mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Largura máx. dianteira:</span>
+                      <span className="font-medium">2.070 mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Largura máxima traseira</span>
-                      <span className="font-semibold">2.045mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Largura máx. traseira:</span>
+                      <span className="font-medium">1.940 mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Altura</span>
-                      <span className="font-semibold">2.280mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Altura:</span>
+                      <span className="font-medium">2.315 mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Distância entre eixos</span>
-                      <span className="font-semibold">3.800mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Distância entre-eixos:</span>
+                      <span className="font-medium">3.800 mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Balanço dianteiro</span>
-                      <span className="font-semibold">1.110mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Balanço dianteiro:</span>
+                      <span className="font-medium">1.130 mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Balanço traseiro</span>
-                      <span className="font-semibold">1.490mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Balanço traseiro:</span>
+                      <span className="font-medium">1.955 mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Distância do solo</span>
-                      <span className="font-semibold">185mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Distância ao solo:</span>
+                      <span className="font-medium">188 mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Bitola dianteira</span>
-                      <span className="font-semibold">1.750mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Bitola dianteira:</span>
+                      <span className="font-medium">1.715 mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Bitola traseira</span>
-                      <span className="font-semibold">1.615mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Bitola traseira:</span>
+                      <span className="font-medium">1.540 mm</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Comprimento plataforma de carga</span>
-                      <span className="font-semibold">5.140mm</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Plataforma de carga:</span>
+                      <span className="font-medium">5.140 mm</span>
                     </div>
                   </div>
                 </AccordionContent>
               </AccordionItem>
 
               {/* Pesos */}
-              <AccordionItem value="pesos" className="bg-white rounded-lg shadow-sm px-6">
+              <AccordionItem value="pesos" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <Truck className="w-5 h-5 text-primary" />
-                    Pesos e Capacidades
-                  </div>
+                  <span className="flex items-center gap-2">⚖️ Pesos e Capacidades de Carga</span>
                 </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
+                <AccordionContent className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">PBT - homologado</span>
-                      <span className="font-semibold">9.000 kg</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">PBT (homologado):</span>
+                      <span className="font-medium text-cyan-600 font-bold">9.000 kg</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Peso em ordem de marcha</span>
-                      <span className="font-semibold">2.979 kg</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Peso em ordem de marcha:</span>
+                      <span className="font-medium">2.820 kg</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Capacidade máx. de carga útil</span>
-                      <span className="font-semibold">6.021 kg</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Capacidade carga útil + carroceria:</span>
+                      <span className="font-medium">6.180 kg</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Capacidade técnica (Total)</span>
-                      <span className="font-semibold">9.800 kg</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Capacidade técnica total:</span>
+                      <span className="font-medium">9.500 kg</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Eixo dianteiro</span>
-                      <span className="font-semibold">3.500 kg</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Eixo dianteiro:</span>
+                      <span className="font-medium">3.000 kg</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">Eixo traseiro</span>
-                      <span className="font-semibold">6.300 kg</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Eixo traseiro:</span>
+                      <span className="font-medium">6.500 kg</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">PBTC</span>
-                      <span className="font-semibold">12.000 kg</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">PBTC (Combinado):</span>
+                      <span className="font-medium">12.000 kg</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">CMT - Cap. máx. de tração</span>
-                      <span className="font-semibold">12.000 kg</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">CMT (Cap. máx. tração):</span>
+                      <span className="font-medium">12.000 kg</span>
                     </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-4">
-                    Obs.: os pesos podem sofrer alterações devido aos itens opcionais. Tolerância = ou - 3%. (Referência NBR ISO 1176)
-                  </p>
                 </AccordionContent>
               </AccordionItem>
 
-              {/* Itens de Série */}
-              <AccordionItem value="itens" className="bg-white rounded-lg shadow-sm px-6">
+              {/* Sistemas */}
+              <AccordionItem value="sistemas" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
                 <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                    Itens de Série
-                  </div>
+                  <span className="flex items-center gap-2">🛞 Suspensão, Freios e Sistema Elétrico</span>
                 </AccordionTrigger>
-                <AccordionContent className="pt-4 pb-6">
-                  <div className="grid md:grid-cols-2 gap-3">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">ABS+ASR+ESC</span>
+                <AccordionContent className="pt-4 space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Suspensão Dianteira:</span>
+                      <span className="font-medium text-xs">Molas parabólicas, amortecedores hidráulicos, barra estabilizadora (3 lâminas)</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">Volante multifuncional</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Suspensão Traseira:</span>
+                      <span className="font-medium text-xs">Molas parabólicas, amortecedores (4+2 lâminas)</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">DRL</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Freio de Serviço:</span>
+                      <span className="font-medium">Ar, tambor com ABS+ASR+ESC</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">Controle de Cruzeiro - Função ACC</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Freio de Estacionamento:</span>
+                      <span className="font-medium">Câmara de molas acumuladoras</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">Sensor de marcha ré</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Freio Motor:</span>
+                      <span className="font-medium">EAT</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">Campainha de marcha ré</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Sistema Elétrico:</span>
+                      <span className="font-medium">24V</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">MP3+Bluetooth</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Bateria:</span>
+                      <span className="font-medium">2x 100 Ah</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">Janelas elétricas</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Tanque combustível:</span>
+                      <span className="font-medium">160L Alumínio</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">Barra estabilizadora dianteira e traseira</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">Defletor de ar</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">AC eletrônico</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                      <span className="text-sm">Banco do condutor com amortecedor mecânico</span>
+                    <div className="flex justify-between py-2 border-b border-border/50">
+                      <span className="text-muted-foreground">Tanque ARLA 32:</span>
+                      <span className="font-medium">30L</span>
                     </div>
                   </div>
-                  <div className="mt-4 pt-4 border-t border-gray-100">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-muted-foreground">Opcional:</span>
-                      <span className="text-sm">7 polegadas MP5 + câmera de ré + bluetooth</span>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* CNH e Garantia */}
+              <AccordionItem value="outros" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
+                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
+                  <span className="flex items-center gap-2">✅ Habilitação, Garantia e Itens de Série</span>
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4 pb-4 border-b border-border">
+                    <div className="flex justify-between py-2">
+                      <span className="text-muted-foreground">CNH necessária:</span>
+                      <span className="font-medium text-primary font-semibold">Categoria C</span>
+                    </div>
+                    <div className="flex justify-between py-2">
+                      <span className="text-muted-foreground">Garantia de fábrica:</span>
+                      <span className="font-medium text-primary font-semibold">3 anos ou 100.000 km</span>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold mb-3">Itens de Série - Versão Padrão:</h4>
+                    <div className="grid md:grid-cols-2 gap-2 text-sm">
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>ABS+ASR+ESC</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Air-bag frontal motorista e passageiro</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Ar condicionado</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Vidros e travas elétricas</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Direção hidráulica</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Central multimídia 10.1"</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Banco do motorista c/ ajuste altura</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Sensor de fadiga</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Câmera de ré</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>Rodado duplo traseiro</span>
+                      </div>
                     </div>
                   </div>
                 </AccordionContent>
@@ -903,146 +678,72 @@ const Foton9T = () => {
         </div>
       </section>
 
-      {/* 6. POR QUE A FOTON LAVORO? */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 text-foreground">
-            Por que escolher a <span className="text-primary">Foton Lavoro</span>?
-          </h2>
-          
-          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 flex items-center justify-center">
-                <img src={motorCumminsFotonIcon} alt="Motor Cummins" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Tecnologia global</h3>
-              <p className="text-muted-foreground">
-                Componentes globais Cummins, ZF, Bosch e Dana. Performance e confiabilidade comprovadas.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 flex items-center justify-center">
-                <img src={garantiaFabricaFotonIcon} alt="Garantia de Fábrica" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">3 anos de garantia de fábrica</h3>
-              <p className="text-muted-foreground">
-                Tranquilidade e segurança para seu investimento com garantia estendida.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 flex items-center justify-center">
-                <img src={concessionariasIcon} alt="Rede de Concessionárias" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">+70 concessionárias</h3>
-              <p className="text-muted-foreground">
-                Rede nacional pronta para atender suas necessidades de vendas, peças e serviços.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 flex items-center justify-center">
-                <img src={centroLogisticoIcon} alt="Centro Logístico" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Centro logístico nacional</h3>
-              <p className="text-muted-foreground">
-                Peças sempre disponíveis para manter sua operação rodando sem paradas.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 flex items-center justify-center">
-                <img src={fillRateIcon} alt="Fill Rate" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Fill rate superior</h3>
-              <p className="text-muted-foreground">
-                Alta disponibilidade de peças no estoque para atendimento rápido e eficiente.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 flex items-center justify-center">
-                <img src={aprovacaoClientesIcon} alt="Aprovação de Clientes" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Alta aprovação dos clientes</h3>
-              <p className="text-muted-foreground">
-                Milhares de clientes satisfeitos em todo Brasil. Qualidade comprovada no dia a dia.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 7. CTA FINAL */}
-      <section id="cta-final" className="py-16 md:py-24 bg-primary text-primary-foreground">
+      <section id="cta-final" className="py-16 md:py-20 bg-gradient-to-r from-cyan-600 to-blue-700 text-white">
         <div className="container mx-auto px-4 text-center">
+          <Snowflake className="w-16 h-16 mx-auto mb-6 animate-pulse" />
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Pronto para elevar sua operação?
+            Pronto para liderar sua operação de cadeia fria?
           </h2>
-          <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-90">
-            O Foton Aumark 916 oferece 9 toneladas de capacidade com tecnologia global, componentes premium e 3 anos de garantia.
+          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+            Fale agora com nossos especialistas e descubra as condições especiais para o Aumark 916.
           </p>
-          
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              onClick={handleWhatsApp} 
-              size="lg" 
-              className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-10 py-7 h-auto"
+              onClick={handleWhatsApp}
+              size="lg"
+              className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-8 py-6 h-auto"
             >
-              <MessageSquare className="mr-2 h-6 w-6" />
-              Falar com especialista no WhatsApp
+              <MessageSquare className="mr-2 h-5 w-5" />
+              Falar no WhatsApp
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-2 border-white text-primary-foreground text-lg px-10 py-7 h-auto bg-white/10 hover:bg-white hover:text-primary"
-              onClick={() => window.location.href = '/contato'}
+            <a 
+              href="/contato" 
+              className="inline-flex items-center justify-center bg-white text-cyan-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all"
             >
-              <Phone className="mr-2 h-6 w-6" />
-              Solicitar contato de vendedor
-            </Button>
+              <Phone className="mr-2 h-5 w-5" />
+              Ligar Agora
+            </a>
           </div>
-          
-          <p className="text-sm mt-8 opacity-75">
-            Atendimento personalizado • Propostas competitivas • Test-drive disponível
-          </p>
         </div>
       </section>
 
-      {/* Lightbox para Galeria */}
+      {/* Lightbox */}
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-        <DialogContent className="max-w-6xl w-full p-0 bg-black/95 border-none">
-          <div className="relative aspect-video">
-            <img 
-              src={productImages[currentImageIndex].src}
-              alt={productImages[currentImageIndex].alt}
-              className="w-full h-full object-contain"
-            />
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-full text-sm">
-              {productImages[currentImageIndex].caption}
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full"
-              onClick={prevImage}
-            >
-              <ChevronLeft className="h-8 w-8" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full"
-              onClick={nextImage}
-            >
-              <ChevronRight className="h-8 w-8" />
-            </Button>
-          </div>
-          <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+        <DialogContent className="max-w-5xl bg-black/95 border-none p-2">
+          <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-white/10 p-2 hover:bg-white/20 transition-colors">
             <X className="h-6 w-6 text-white" />
-            <span className="sr-only">Close</span>
           </DialogClose>
+          
+          <div className="relative">
+            <button 
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-40 rounded-full bg-white/10 p-3 hover:bg-white/20 transition-colors"
+            >
+              <ChevronLeft className="h-8 w-8 text-white" />
+            </button>
+            
+            <div className="flex flex-col items-center">
+              <img 
+                src={productImages[currentImageIndex]?.src} 
+                alt={productImages[currentImageIndex]?.alt}
+                className="max-h-[75vh] w-auto object-contain rounded-lg"
+              />
+              <p className="text-white text-center mt-4 text-lg">
+                {productImages[currentImageIndex]?.caption}
+              </p>
+              <p className="text-gray-400 text-sm mt-2">
+                {currentImageIndex + 1} / {productImages.length}
+              </p>
+            </div>
+            
+            <button 
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-40 rounded-full bg-white/10 p-3 hover:bg-white/20 transition-colors"
+            >
+              <ChevronRight className="h-8 w-8 text-white" />
+            </button>
+          </div>
         </DialogContent>
       </Dialog>
 

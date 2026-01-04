@@ -21,8 +21,7 @@ import {
   Ruler,
   Armchair,
   Cpu,
-  Mountain,
-  Gauge
+  Mountain
 } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -604,30 +603,31 @@ const TunlandV9 = () => {
                 </AccordionContent>
               </AccordionItem>
 
-              {/* Consumo e Eficiência */}
-              <AccordionItem value="consumo" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
+              {/* Diferenciais Técnicos */}
+              <AccordionItem value="diferenciais" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
                 <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  <span className="flex items-center gap-2"><Gauge className="w-5 h-5" /> Consumo e Eficiência</span>
+                  <span className="flex items-center gap-2">⭐ Diferenciais Técnicos</span>
                 </AccordionTrigger>
                 <AccordionContent className="pt-6 pb-8 space-y-3">
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="flex justify-between py-3 border-b border-border/50">
-                      <span className="text-muted-foreground font-medium">Consumo urbano:</span>
-                      <span className="font-bold text-amber-600">[A preencher] km/l</span>
+                    <div className="flex flex-col py-3 border-b border-border/50">
+                      <span className="font-bold text-primary">Trem de força premium</span>
+                      <span className="text-muted-foreground text-sm">Conjunto mecânico Aucan + ZF com eficiência comprovada</span>
                     </div>
-                    <div className="flex justify-between py-3 border-b border-border/50">
-                      <span className="text-muted-foreground font-medium">Consumo rodoviário:</span>
-                      <span className="font-bold text-amber-600">[A preencher] km/l</span>
+                    <div className="flex flex-col py-3 border-b border-border/50">
+                      <span className="font-bold text-primary">Engenharia global</span>
+                      <span className="text-muted-foreground text-sm">Tecnologia de padrão internacional aplicada ao mercado brasileiro</span>
                     </div>
-                    <div className="flex justify-between py-3 border-b border-border/50">
-                      <span className="text-muted-foreground font-medium">Autonomia estimada:</span>
-                      <span className="font-bold text-amber-600">[A preencher] km</span>
+                    <div className="flex flex-col py-3 border-b border-border/50">
+                      <span className="font-bold text-primary">Economia operacional</span>
+                      <span className="text-muted-foreground text-sm">Estimativa de 12% a 15% de redução de custos vs conjuntos convencionais*</span>
                     </div>
-                    <div className="flex justify-between py-3 border-b border-border/50">
-                      <span className="text-muted-foreground font-medium">Intervalo de revisão:</span>
-                      <span className="font-bold text-amber-600">[A preencher] km</span>
+                    <div className="flex flex-col py-3 border-b border-border/50">
+                      <span className="font-bold text-primary">Durabilidade</span>
+                      <span className="text-muted-foreground text-sm">Componentes dimensionados para alta quilometragem</span>
                     </div>
                   </div>
+                  <p className="text-xs text-muted-foreground italic mt-4">*Dados estimados podem variar conforme condições de uso e operação</p>
                 </AccordionContent>
               </AccordionItem>
 
