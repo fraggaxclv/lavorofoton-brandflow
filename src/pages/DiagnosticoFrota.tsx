@@ -4,16 +4,28 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { TrendingUp, FileText, Target, CheckCircle2, Shield, Upload, Building2, Truck, DollarSign, ArrowRight, Sparkles } from "lucide-react";
+import { TrendingUp, FileText, Target, CheckCircle2, Shield, Upload, Building2, Truck, DollarSign, ArrowRight, Sparkles, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import logoFotonLavoro from "@/assets/linhafotonlavoro.png";
 import diagnosticoTruck from "@/assets/diagnostico-frota-truck.png";
+import { useFormSecurity } from "@/hooks/useFormSecurity";
+
+// File validation configuration
+const FILE_VALIDATION_CONFIG = {
+  maxSizeMB: 10,
+  allowedTypes: ['.pdf', '.jpg', '.jpeg', '.png', '.docx'],
+  allowedMimeTypes: [
+    'application/pdf',
+    'image/jpeg',
+    'image/png',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  ]
+};
+
 const DiagnosticoFrota = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
   const [currentBlock, setCurrentBlock] = useState(0);
   const [formData, setFormData] = useState({
     // Bloco 1
@@ -45,43 +57,160 @@ const DiagnosticoFrota = () => {
     // Bloco 5
     urgencia: ""
   });
-  const [uploadedFiles, setUploadedFiles] = useState<{
-    [key: string]: File;
-  }>({});
+  const [uploadedFiles, setUploadedFiles] = useState<{ [key: string]: File }>({});
+  const [fileErrors, setFileErrors] = useState<{ [key: string]: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Security hook with rate limiting (5 uploads per hour) and file validation
+  const { 
+    honeypotValue, 
+    setHoneypotValue, 
+    incrementRateLimit, 
+    validateFile,
+    canSubmit 
+  } = useFormSecurity(
+    {
+      maxAttempts: 5,
+      windowMs: 60 * 60 * 1000, // 1 hour
+      key: 'diagnostico-frota'
+    },
+    FILE_VALIDATION_CONFIG
+  );
+
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
   };
+
   const handleFileUpload = (key: string, file: File | null) => {
     if (file) {
+      // Validate file
+      const validation = validateFile(file);
+      
+      if (!validation.valid) {
+        setFileErrors(prev => ({ ...prev, [key]: validation.error || 'Arquivo inválido' }));
+        toast({
+          title: "Arquivo inválido",
+          description: validation.error,
+          variant: "destructive",
+          duration: 5000
+        });
+        return;
+      }
+      
+      // Clear any previous error
+      setFileErrors(prev => ({ ...prev, [key]: '' }));
+      
       setUploadedFiles(prev => ({
         ...prev,
         [key]: file
       }));
+      
+      toast({
+        title: "Arquivo adicionado",
+        description: `${file.name} foi adicionado com sucesso.`,
+        duration: 3000
+      });
     }
   };
-  const handleSubmit = () => {
-    toast({
-      title: "Diagnóstico enviado!",
-      description: "Nas próximas horas você receberá uma análise completa da sua operação, preparada sob medida pela equipe Lavoro Foton.",
-      duration: 6000
-    });
 
-    // Aqui você pode integrar com backend/API
-    console.log("Form Data:", formData);
-    console.log("Uploaded Files:", uploadedFiles);
+  const handleSubmit = async () => {
+    // Security checks
+    const securityCheck = canSubmit();
+    if (!securityCheck.allowed) {
+      toast({
+        title: "Erro de segurança",
+        description: securityCheck.error,
+        variant: "destructive",
+        duration: 5000
+      });
+      return;
+    }
+
+    // Basic validation
+    if (!formData.cnpj || !formData.razaoSocial || !formData.nomeResponsavel || 
+        !formData.telefoneWhatsapp || !formData.emailResponsavel || !formData.estado || !formData.segmento) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Por favor, preencha todos os campos obrigatórios (*) do Perfil da Empresa.",
+        variant: "destructive",
+        duration: 5000
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Increment rate limit
+      incrementRateLimit();
+
+      toast({
+        title: "Diagnóstico enviado!",
+        description: "Nas próximas horas você receberá uma análise completa da sua operação, preparada sob medida pela equipe Lavoro Foton.",
+        duration: 6000
+      });
+
+      // Reset form after successful submission
+      setFormData({
+        cnpj: "",
+        razaoSocial: "",
+        nomeResponsavel: "",
+        telefoneWhatsapp: "",
+        emailResponsavel: "",
+        telefone: "",
+        estado: "",
+        segmento: "",
+        qtdVeiculos: "",
+        tiposVeiculos: "",
+        idadeMedia: "",
+        operacao: "",
+        kmMes: "",
+        marcasAtuais: "",
+        faturamento: "",
+        margem: "",
+        bancosUsados: "",
+        financiamentosAtivos: "",
+        modelosDesejados: "",
+        qtdDesejada: "",
+        prazo: "",
+        usoOperacional: "",
+        urgencia: ""
+      });
+      setUploadedFiles({});
+    } catch {
+      toast({
+        title: "Erro ao enviar",
+        description: "Ocorreu um erro. Tente novamente.",
+        variant: "destructive",
+        duration: 5000
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-  const beneficios = ["Pré-análise de crédito que aumenta a chance de aprovação", "Proposta personalizada em vez de improviso", "Estudo de economia por km", "Simulação de expansão com impacto real no caixa", "Economia de tempo na negociação", "Prioridade na disponibilidade dos veículos", "Análise consultiva de 40 anos de experiência no setor"];
+
+  const beneficios = [
+    "Pré-análise de crédito que aumenta a chance de aprovação",
+    "Proposta personalizada em vez de improviso",
+    "Estudo de economia por km",
+    "Simulação de expansão com impacto real no caixa",
+    "Economia de tempo na negociação",
+    "Prioridade na disponibilidade dos veículos",
+    "Análise consultiva de 40 anos de experiência no setor"
+  ];
+
   const scrollToForm = () => {
     const formSection = document.getElementById('formulario');
-    formSection?.scrollIntoView({
-      behavior: 'smooth'
-    });
+    formSection?.scrollIntoView({ behavior: 'smooth' });
   };
-  return <div className="min-h-screen bg-background">
+
+  return (
+    <div className="min-h-screen bg-background">
       <Navbar />
+      
       {/* HERO */}
       <section className="relative gradient-hero text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20"></div>
@@ -93,26 +222,20 @@ const DiagnosticoFrota = () => {
               <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-14 md:h-20 w-auto" />
             </div>
             
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 animate-fade-in" style={{
-            animationDelay: '0.1s'
-          }}>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
               <Sparkles className="w-4 h-4" />
               <span className="text-sm font-medium">Análise Estratégica Gratuita</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in" style={{
-            animationDelay: '0.2s'
-          }}>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in" style={{ animationDelay: '0.2s' }}>
               Todo grande crescimento começa com uma decisão inteligente.
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in" style={{
-            animationDelay: '0.3s'
-          }}>Deixe a Lavoro te ajudar. Análisamos sua frota e seu crédito para sugerirmos produtos que cabem na sua operação</p>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              Deixe a Lavoro te ajudar. Análisamos sua frota e seu crédito para sugerirmos produtos que cabem na sua operação
+            </p>
             
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-8 max-w-2xl mx-auto text-left animate-fade-in" style={{
-            animationDelay: '0.4s'
-          }}>
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-8 max-w-2xl mx-auto text-left animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <p className="text-white/90 leading-relaxed space-y-2">
                 <span className="block">Empresas que expandem rápido não improvisam.</span>
                 <span className="block">Elas se preparam, analisam e tomam decisões com dados.</span>
@@ -120,9 +243,7 @@ const DiagnosticoFrota = () => {
               </p>
             </div>
             
-            <Button size="lg" onClick={scrollToForm} className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto shadow-2xl animate-fade-in group" style={{
-            animationDelay: '0.5s'
-          }}>
+            <Button size="lg" onClick={scrollToForm} className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto shadow-2xl animate-fade-in group" style={{ animationDelay: '0.5s' }}>
               Iniciar Diagnóstico Estratégico
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -194,7 +315,9 @@ const DiagnosticoFrota = () => {
                 <span className="font-semibold text-foreground"> a equipe da Lavoro analisa sua empresa, seu faturamento, sua frota atual e sua capacidade de crédito.</span>
               </p>
               
-              <p className="text-lg md:text-xl leading-relaxed text-primary font-semibold">Desta forma você consegue tomar decisões melhores para seu negócio. </p>
+              <p className="text-lg md:text-xl leading-relaxed text-primary font-semibold">
+                Desta forma você consegue tomar decisões melhores para seu negócio.
+              </p>
             </div>
           </div>
         </div>
@@ -211,12 +334,14 @@ const DiagnosticoFrota = () => {
             </div>
             
             <div className="grid md:grid-cols-2 gap-6">
-              {beneficios.map((beneficio, index) => <div key={index} className="flex items-start gap-4 p-6 bg-card border border-border rounded-xl hover:shadow-lg transition-all hover:scale-105 group">
+              {beneficios.map((beneficio, index) => (
+                <div key={index} className="flex items-start gap-4 p-6 bg-card border border-border rounded-xl hover:shadow-lg transition-all hover:scale-105 group">
                   <div className="flex-shrink-0">
                     <CheckCircle2 className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
                   </div>
                   <p className="text-base md:text-lg leading-relaxed">{beneficio}</p>
-                </div>)}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -280,6 +405,20 @@ const DiagnosticoFrota = () => {
               </p>
             </div>
 
+            {/* Honeypot field - hidden from users, visible to bots */}
+            <div className="absolute left-[-9999px] opacity-0 h-0 overflow-hidden" aria-hidden="true">
+              <label htmlFor="company_website">Company Website</label>
+              <input
+                type="text"
+                id="company_website"
+                name="company_website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypotValue}
+                onChange={(e) => setHoneypotValue(e.target.value)}
+              />
+            </div>
+
             {/* BLOCO 1 - Perfil da Empresa */}
             <div className="space-y-8">
               <div className="bg-card border-2 border-primary/20 rounded-2xl p-6 md:p-8 space-y-6 shadow-xl">
@@ -296,32 +435,32 @@ const DiagnosticoFrota = () => {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="cnpj">CNPJ *</Label>
-                    <Input id="cnpj" placeholder="00.000.000/0000-00" value={formData.cnpj} onChange={e => handleInputChange('cnpj', e.target.value)} />
+                    <Input id="cnpj" placeholder="00.000.000/0000-00" value={formData.cnpj} onChange={e => handleInputChange('cnpj', e.target.value)} maxLength={18} />
                   </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="razaoSocial">Razão Social *</Label>
-                    <Input id="razaoSocial" placeholder="Nome da empresa" value={formData.razaoSocial} onChange={e => handleInputChange('razaoSocial', e.target.value)} />
+                    <Input id="razaoSocial" placeholder="Nome da empresa" value={formData.razaoSocial} onChange={e => handleInputChange('razaoSocial', e.target.value)} maxLength={200} />
                   </div>
                   
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="nomeResponsavel">Nome do Responsável *</Label>
-                    <Input id="nomeResponsavel" placeholder="Nome completo" value={formData.nomeResponsavel} onChange={e => handleInputChange('nomeResponsavel', e.target.value)} />
+                    <Input id="nomeResponsavel" placeholder="Nome completo" value={formData.nomeResponsavel} onChange={e => handleInputChange('nomeResponsavel', e.target.value)} maxLength={100} />
                   </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="telefoneWhatsapp">Telefone com WhatsApp *</Label>
-                    <Input id="telefoneWhatsapp" placeholder="(00) 00000-0000" value={formData.telefoneWhatsapp} onChange={e => handleInputChange('telefoneWhatsapp', e.target.value)} />
+                    <Input id="telefoneWhatsapp" placeholder="(00) 00000-0000" value={formData.telefoneWhatsapp} onChange={e => handleInputChange('telefoneWhatsapp', e.target.value)} maxLength={20} />
                   </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="emailResponsavel">E-mail *</Label>
-                    <Input id="emailResponsavel" type="email" placeholder="seuemail@empresa.com" value={formData.emailResponsavel} onChange={e => handleInputChange('emailResponsavel', e.target.value)} />
+                    <Input id="emailResponsavel" type="email" placeholder="seuemail@empresa.com" value={formData.emailResponsavel} onChange={e => handleInputChange('emailResponsavel', e.target.value)} maxLength={255} />
                   </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="telefone">Telefone Empresa</Label>
-                    <Input id="telefone" placeholder="(00) 00000-0000" value={formData.telefone} onChange={e => handleInputChange('telefone', e.target.value)} />
+                    <Input id="telefone" placeholder="(00) 00000-0000" value={formData.telefone} onChange={e => handleInputChange('telefone', e.target.value)} maxLength={20} />
                   </div>
                   
                   <div className="space-y-2">
@@ -342,7 +481,7 @@ const DiagnosticoFrota = () => {
                   
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="segmento">Segmento de Atuação *</Label>
-                    <Input id="segmento" placeholder="Ex: Distribuição, Mudanças, Agricultura..." value={formData.segmento} onChange={e => handleInputChange('segmento', e.target.value)} />
+                    <Input id="segmento" placeholder="Ex: Distribuição, Mudanças, Agricultura..." value={formData.segmento} onChange={e => handleInputChange('segmento', e.target.value)} maxLength={100} />
                   </div>
                 </div>
               </div>
@@ -362,32 +501,32 @@ const DiagnosticoFrota = () => {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="qtdVeiculos">Quantidade de Veículos</Label>
-                    <Input id="qtdVeiculos" type="number" placeholder="Ex: 5" value={formData.qtdVeiculos} onChange={e => handleInputChange('qtdVeiculos', e.target.value)} />
+                    <Input id="qtdVeiculos" type="number" placeholder="Ex: 5" value={formData.qtdVeiculos} onChange={e => handleInputChange('qtdVeiculos', e.target.value)} min={0} max={9999} />
                   </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="tiposVeiculos">Tipos de Veículos</Label>
-                    <Input id="tiposVeiculos" placeholder="Ex: 3/4, Toco, Truck..." value={formData.tiposVeiculos} onChange={e => handleInputChange('tiposVeiculos', e.target.value)} />
+                    <Input id="tiposVeiculos" placeholder="Ex: 3/4, Toco, Truck..." value={formData.tiposVeiculos} onChange={e => handleInputChange('tiposVeiculos', e.target.value)} maxLength={200} />
                   </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="idadeMedia">Idade Média da Frota</Label>
-                    <Input id="idadeMedia" placeholder="Ex: 5 anos" value={formData.idadeMedia} onChange={e => handleInputChange('idadeMedia', e.target.value)} />
+                    <Input id="idadeMedia" placeholder="Ex: 5 anos" value={formData.idadeMedia} onChange={e => handleInputChange('idadeMedia', e.target.value)} maxLength={20} />
                   </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="kmMes">Km/Mês (média)</Label>
-                    <Input id="kmMes" placeholder="Ex: 5000 km/mês" value={formData.kmMes} onChange={e => handleInputChange('kmMes', e.target.value)} />
+                    <Input id="kmMes" placeholder="Ex: 5000 km/mês" value={formData.kmMes} onChange={e => handleInputChange('kmMes', e.target.value)} maxLength={20} />
                   </div>
                   
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="operacao">Tipo de Operação</Label>
-                    <Input id="operacao" placeholder="Ex: Urbana, rodoviária, mista..." value={formData.operacao} onChange={e => handleInputChange('operacao', e.target.value)} />
+                    <Input id="operacao" placeholder="Ex: Urbana, rodoviária, mista..." value={formData.operacao} onChange={e => handleInputChange('operacao', e.target.value)} maxLength={100} />
                   </div>
                   
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="marcasAtuais">Marcas Atuais</Label>
-                    <Input id="marcasAtuais" placeholder="Ex: Mercedes, Volkswagen..." value={formData.marcasAtuais} onChange={e => handleInputChange('marcasAtuais', e.target.value)} />
+                    <Input id="marcasAtuais" placeholder="Ex: Mercedes, Volkswagen..." value={formData.marcasAtuais} onChange={e => handleInputChange('marcasAtuais', e.target.value)} maxLength={200} />
                   </div>
                 </div>
               </div>
@@ -438,12 +577,12 @@ const DiagnosticoFrota = () => {
                   
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="bancosUsados">Bancos que Você Usa</Label>
-                    <Input id="bancosUsados" placeholder="Ex: Banco do Brasil, Bradesco..." value={formData.bancosUsados} onChange={e => handleInputChange('bancosUsados', e.target.value)} />
+                    <Input id="bancosUsados" placeholder="Ex: Banco do Brasil, Bradesco..." value={formData.bancosUsados} onChange={e => handleInputChange('bancosUsados', e.target.value)} maxLength={200} />
                   </div>
                   
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="financiamentosAtivos">Financiamentos Ativos?</Label>
-                    <Textarea id="financiamentosAtivos" placeholder="Descreva brevemente..." value={formData.financiamentosAtivos} onChange={e => handleInputChange('financiamentosAtivos', e.target.value)} rows={3} />
+                    <Textarea id="financiamentosAtivos" placeholder="Descreva brevemente..." value={formData.financiamentosAtivos} onChange={e => handleInputChange('financiamentosAtivos', e.target.value)} rows={3} maxLength={500} />
                   </div>
                 </div>
               </div>
@@ -463,12 +602,12 @@ const DiagnosticoFrota = () => {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="modelosDesejados">Modelos Desejados</Label>
-                    <Input id="modelosDesejados" placeholder="Ex: Aumark S315, Tunland V9..." value={formData.modelosDesejados} onChange={e => handleInputChange('modelosDesejados', e.target.value)} />
+                    <Input id="modelosDesejados" placeholder="Ex: Aumark S315, Tunland V9..." value={formData.modelosDesejados} onChange={e => handleInputChange('modelosDesejados', e.target.value)} maxLength={200} />
                   </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="qtdDesejada">Quantidade Desejada</Label>
-                    <Input id="qtdDesejada" type="number" placeholder="Ex: 3" value={formData.qtdDesejada} onChange={e => handleInputChange('qtdDesejada', e.target.value)} />
+                    <Input id="qtdDesejada" type="number" placeholder="Ex: 3" value={formData.qtdDesejada} onChange={e => handleInputChange('qtdDesejada', e.target.value)} min={0} max={999} />
                   </div>
                   
                   <div className="space-y-2">
@@ -488,7 +627,7 @@ const DiagnosticoFrota = () => {
                   
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="usoOperacional">Uso Operacional Pretendido</Label>
-                    <Textarea id="usoOperacional" placeholder="Descreva como pretende usar os veículos..." value={formData.usoOperacional} onChange={e => handleInputChange('usoOperacional', e.target.value)} rows={3} />
+                    <Textarea id="usoOperacional" placeholder="Descreva como pretende usar os veículos..." value={formData.usoOperacional} onChange={e => handleInputChange('usoOperacional', e.target.value)} rows={3} maxLength={500} />
                   </div>
                 </div>
               </div>
@@ -501,44 +640,62 @@ const DiagnosticoFrota = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">Upload de Documentos</h3>
-                    <p className="text-sm text-muted-foreground">se antecipe e envie os documentos para que o atendimento Lavoro seja mais rápido.</p>
+                    <p className="text-sm text-muted-foreground">Se antecipe e envie os documentos para que o atendimento Lavoro seja mais rápido.</p>
+                  </div>
+                </div>
+
+                {/* File requirements notice */}
+                <div className="flex items-start gap-3 p-4 bg-muted/50 rounded-lg border border-border">
+                  <AlertCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div className="text-sm text-muted-foreground">
+                    <p className="font-medium text-foreground mb-1">Requisitos de arquivo:</p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>Formatos aceitos: PDF, JPG, PNG, DOCX</li>
+                      <li>Tamanho máximo: 10MB por arquivo</li>
+                    </ul>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  {[{
-                  key: 'comprovante',
-                  label: 'Comprovante de Endereço'
-                }, {
-                  key: 'extratos',
-                  label: 'Extratos dos Últimos 90 Dias'
-                }, {
-                  key: 'balanco',
-                  label: 'Balanço / DRE'
-                }, {
-                  key: 'contrato',
-                  label: 'Contrato Social'
-                }, {
-                  key: 'documentos',
-                  label: 'Documentos dos Sócios'
-                }].map(doc => <div key={doc.key} className="flex items-center justify-between p-4 border border-border rounded-lg hover:border-primary/50 transition-colors">
+                  {[
+                    { key: 'comprovante', label: 'Comprovante de Endereço' },
+                    { key: 'extratos', label: 'Extratos dos Últimos 90 Dias' },
+                    { key: 'balanco', label: 'Balanço / DRE' },
+                    { key: 'contrato', label: 'Contrato Social' },
+                    { key: 'documentos', label: 'Documentos dos Sócios' }
+                  ].map(doc => (
+                    <div key={doc.key} className={`flex items-center justify-between p-4 border rounded-lg transition-colors ${fileErrors[doc.key] ? 'border-destructive bg-destructive/5' : 'border-border hover:border-primary/50'}`}>
                       <Label htmlFor={doc.key} className="cursor-pointer flex items-center gap-2 flex-1">
                         <Upload className="w-4 h-4 text-muted-foreground" />
                         <span>{doc.label}</span>
-                        {uploadedFiles[doc.key] && <span className="text-xs text-primary">({uploadedFiles[doc.key].name})</span>}
+                        {uploadedFiles[doc.key] && (
+                          <span className="text-xs text-primary">({uploadedFiles[doc.key].name})</span>
+                        )}
+                        {fileErrors[doc.key] && (
+                          <span className="text-xs text-destructive">({fileErrors[doc.key]})</span>
+                        )}
                       </Label>
-                      <Input id={doc.key} type="file" className="hidden" onChange={e => handleFileUpload(doc.key, e.target.files?.[0] || null)} />
+                      <Input 
+                        id={doc.key} 
+                        type="file" 
+                        className="hidden" 
+                        accept=".pdf,.jpg,.jpeg,.png,.docx"
+                        onChange={e => handleFileUpload(doc.key, e.target.files?.[0] || null)} 
+                      />
                       <Button variant="outline" size="sm" asChild>
                         <label htmlFor={doc.key} className="cursor-pointer">
                           Escolher arquivo
                         </label>
                       </Button>
-                    </div>)}
+                    </div>
+                  ))}
                 </div>
 
                 <div className="flex items-start gap-3 p-4 bg-muted/50 rounded-lg border border-border">
                   <Shield className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <p className="text-sm text-muted-foreground">Seus dados são tratados com estrita confidencialidade e criptografia avançada. </p>
+                  <p className="text-sm text-muted-foreground">
+                    Seus dados são tratados com estrita confidencialidade e criptografia avançada.
+                  </p>
                 </div>
               </div>
 
@@ -553,8 +710,13 @@ const DiagnosticoFrota = () => {
                   </p>
                 </div>
                 
-                <Button size="lg" onClick={handleSubmit} className="btn-primary-large text-lg px-12 py-6 h-auto group">
-                  Finalizar Diagnóstico e Receber Análise Estratégica
+                <Button 
+                  size="lg" 
+                  onClick={handleSubmit} 
+                  disabled={isSubmitting}
+                  className="btn-primary-large text-lg px-12 py-6 h-auto group"
+                >
+                  {isSubmitting ? 'Enviando...' : 'Finalizar Diagnóstico e Receber Análise Estratégica'}
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
@@ -562,7 +724,10 @@ const DiagnosticoFrota = () => {
           </div>
         </div>
       </section>
+      
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default DiagnosticoFrota;
