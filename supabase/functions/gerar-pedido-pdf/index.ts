@@ -41,6 +41,17 @@ interface PedidoData {
   produtos: Produto[];
 }
 
+// Função para escapar HTML e prevenir XSS
+function escapeHtml(unsafe: string | null | undefined): string {
+  if (!unsafe) return '';
+  return String(unsafe)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 // Função para formatar valores monetários corretamente em BRL
 function formatarMoeda(valor: number): string {
   const valorFormatado = valor.toFixed(2);
@@ -52,10 +63,10 @@ function formatarMoeda(valor: number): string {
 function gerarPDFHTML(pedido: PedidoData): string {
   const produtosHTML = pedido.produtos.map((p, index) => `
     <tr style="background-color: ${index % 2 === 0 ? '#f8f9fa' : '#ffffff'};">
-      <td style="padding: 6px; border-bottom: 1px solid #e9ecef;">${p.produto}</td>
-      <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.quantidade}</td>
-      <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.anoModelo}</td>
-      <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${p.cor || '-'}</td>
+      <td style="padding: 6px; border-bottom: 1px solid #e9ecef;">${escapeHtml(p.produto)}</td>
+      <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${escapeHtml(String(p.quantidade))}</td>
+      <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${escapeHtml(p.anoModelo)}</td>
+      <td style="padding: 6px; text-align: center; border-bottom: 1px solid #e9ecef;">${escapeHtml(p.cor) || '-'}</td>
       <td style="padding: 6px; text-align: right; border-bottom: 1px solid #e9ecef;">R$ ${formatarMoeda(p.valorUnitario)}</td>
       <td style="padding: 6px; text-align: right; font-weight: 600; border-bottom: 1px solid #e9ecef;">R$ ${formatarMoeda(p.valorTotal)}</td>
     </tr>
@@ -255,7 +266,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
         <div class="header">
           <img src="${supabaseUrl}/storage/v1/object/public/assets/logo-linha-lavoro.png" alt="Linha Lavoro Foton" class="logo" onerror="this.style.display='none';">
           <h1>PEDIDO DE FATURAMENTO</h1>
-          <div class="pedido-numero">Nº ${pedido.numero_pedido}</div>
+          <div class="pedido-numero">Nº ${escapeHtml(pedido.numero_pedido)}</div>
         </div>
 
         <div class="info-grid" style="margin-bottom: 10px;">
@@ -273,11 +284,11 @@ function gerarPDFHTML(pedido: PedidoData): string {
           </div>
           <div class="info-item">
             <div class="info-label">Local:</div>
-            <div class="info-value">${pedido.local || '-'}</div>
+            <div class="info-value">${escapeHtml(pedido.local) || '-'}</div>
           </div>
           <div class="info-item">
             <div class="info-label">Vendedor:</div>
-            <div class="info-value">${pedido.nome_vendedor}</div>
+            <div class="info-value">${escapeHtml(pedido.nome_vendedor)}</div>
           </div>
         </div>
 
@@ -286,31 +297,31 @@ function gerarPDFHTML(pedido: PedidoData): string {
           <div class="info-grid">
             <div class="info-item">
               <div class="info-label">Nome/Razão Social:</div>
-              <div class="info-value">${pedido.nome_cliente}</div>
+              <div class="info-value">${escapeHtml(pedido.nome_cliente)}</div>
             </div>
             <div class="info-item">
               <div class="info-label">CNPJ/CPF:</div>
-              <div class="info-value">${pedido.cnpj}</div>
+              <div class="info-value">${escapeHtml(pedido.cnpj)}</div>
             </div>
             <div class="info-item">
               <div class="info-label">IE/RG:</div>
-              <div class="info-value">${pedido.ie_rg || '-'}</div>
+              <div class="info-value">${escapeHtml(pedido.ie_rg) || '-'}</div>
             </div>
             <div class="info-item">
               <div class="info-label">Telefone:</div>
-              <div class="info-value">${pedido.telefone_cliente || '-'}</div>
+              <div class="info-value">${escapeHtml(pedido.telefone_cliente) || '-'}</div>
             </div>
             <div class="info-item" style="grid-column: 1 / -1;">
               <div class="info-label">Endereço:</div>
-              <div class="info-value">${pedido.rua || ''} ${pedido.numero || ''}, ${pedido.bairro || ''} - ${pedido.cidade || ''} / ${pedido.estado || ''} - CEP: ${pedido.cep || '-'}</div>
+              <div class="info-value">${escapeHtml(pedido.rua) || ''} ${escapeHtml(pedido.numero) || ''}, ${escapeHtml(pedido.bairro) || ''} - ${escapeHtml(pedido.cidade) || ''} / ${escapeHtml(pedido.estado) || ''} - CEP: ${escapeHtml(pedido.cep) || '-'}</div>
             </div>
             <div class="info-item">
               <div class="info-label">Responsável pela Frota:</div>
-              <div class="info-value">${pedido.responsavel_frota || '-'}</div>
+              <div class="info-value">${escapeHtml(pedido.responsavel_frota) || '-'}</div>
             </div>
             <div class="info-item">
               <div class="info-label">E-mail do Responsável:</div>
-              <div class="info-value">${pedido.email_responsavel || '-'}</div>
+              <div class="info-value">${escapeHtml(pedido.email_responsavel) || '-'}</div>
             </div>
           </div>
         </div>
@@ -343,15 +354,15 @@ function gerarPDFHTML(pedido: PedidoData): string {
           <div class="info-grid">
             <div class="info-item">
               <div class="info-label">Tipo de Faturamento:</div>
-              <div class="info-value">${pedido.faturamento_tipo}</div>
+              <div class="info-value">${escapeHtml(pedido.faturamento_tipo)}</div>
             </div>
             <div class="info-item">
               <div class="info-label">Instituição Financeira:</div>
-              <div class="info-value">${pedido.nome_instituicao || '-'}</div>
+              <div class="info-value">${escapeHtml(pedido.nome_instituicao) || '-'}</div>
             </div>
             <div class="info-item" style="grid-column: 1 / -1;">
               <div class="info-label">Forma de Pagamento:</div>
-              <div class="info-value">${pedido.financiamento_forma}${pedido.financiamento_forma_outros ? ` (${pedido.financiamento_forma_outros})` : ''}</div>
+              <div class="info-value">${escapeHtml(pedido.financiamento_forma)}${pedido.financiamento_forma_outros ? ` (${escapeHtml(pedido.financiamento_forma_outros)})` : ''}</div>
             </div>
             <div class="info-item">
               <div class="info-label">Valor Total:</div>
@@ -372,7 +383,7 @@ function gerarPDFHTML(pedido: PedidoData): string {
         <div class="info-section">
           <h2>📝 OBSERVAÇÕES / BONIFICAÇÕES</h2>
           <div class="observacoes-box">
-            ${pedido.observacoes}
+            ${escapeHtml(pedido.observacoes)}
           </div>
         </div>
         ` : ''}

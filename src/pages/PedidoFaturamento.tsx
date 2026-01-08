@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import DOMPurify from "dompurify";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -602,7 +603,7 @@ const PedidoFaturamento = () => {
           </DialogHeader>
           {pdfPreview && <div>
               <div className="border rounded-lg p-4 bg-white" dangerouslySetInnerHTML={{
-            __html: pdfPreview
+            __html: DOMPurify.sanitize(pdfPreview, { USE_PROFILES: { html: true } })
           }} />
               <Button onClick={downloadPDF} className="w-full mt-4">
                 Baixar PDF
