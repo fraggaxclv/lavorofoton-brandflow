@@ -49,13 +49,13 @@ const EToano = () => {
           animationDelay: "0.4s"
         }}>
             <Button asChild size="lg" variant="whatsapp" className="text-lg px-8">
-              <a href="https://wa.me/553121164735" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5531996970656" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Falar no WhatsApp
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-white text-white">
-              <a href="https://wa.me/553121164735" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5531996970656" target="_blank" rel="noopener noreferrer">
                 <FileText className="mr-2 h-5 w-5" />
                 Solicitar Proposta
               </a>
@@ -391,19 +391,19 @@ const EToano = () => {
             </p>
             <div className="flex flex-wrap gap-4 justify-center mb-12">
               <Button asChild size="lg" variant="whatsapp" className="text-lg px-8">
-                <a href="https://wa.me/553121164735" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5531996970656" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-5 w-5" />
                   Falar no WhatsApp
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-white text-white">
-                <a href="https://wa.me/553121164735" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5531996970656" target="_blank" rel="noopener noreferrer">
                   <TestTube2 className="mr-2 h-5 w-5" />
                   Agendar Teste
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 backdrop-blur-sm hover:bg-white/20 border-white text-white">
-                <a href="https://wa.me/553121164735" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5531996970656" target="_blank" rel="noopener noreferrer">
                   <FileText className="mr-2 h-5 w-5" />
                   Solicitar Proposta
                 </a>

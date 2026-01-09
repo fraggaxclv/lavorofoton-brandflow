@@ -251,7 +251,7 @@ const Servicos = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/5531991871653?text=Olá! Vim pelo site e gostaria de falar com um consultor."
+              href="https://wa.me/5531996970656?text=Olá! Vim pelo site e gostaria de falar com um consultor."
               target="_blank"
               rel="noopener noreferrer"
             >

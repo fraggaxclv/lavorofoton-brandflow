@@ -79,7 +79,7 @@ const Foton9T = () => {
     }
   ];
 
-  const whatsappNumber = "553121164735";
+  const whatsappNumber = "5531996970656";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark 916 para transporte refrigerado.");
 
   const handleWhatsApp = () => {
