@@ -221,6 +221,12 @@ export default function PropostaComercial() {
 
     // Adicionar dados fixos
     specs.push({ label: 'Capacidade', valor: veiculo.capacidade });
+    
+    // Adicionar Carga útil + Carroceria se disponível
+    if (veiculo.cargaUtilCarroceria) {
+      specs.push({ label: 'Carga útil + Carroceria', valor: veiculo.cargaUtilCarroceria });
+    }
+    
     specs.push({ label: 'CNH Exigida', valor: veiculo.cnh });
     
     // Garantia diferenciada por categoria
