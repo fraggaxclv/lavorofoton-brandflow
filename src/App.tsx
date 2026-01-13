@@ -28,6 +28,7 @@ import EToano from "./pages/models/EToano";
 import EView from "./pages/models/EView";
 import EAumark9T from "./pages/models/EAumark9T";
 import EAumark12T from "./pages/models/EAumark12T";
+import IBlue6T from "./pages/models/IBlue6T";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 
@@ -59,6 +60,7 @@ const App = () => (
             <Route path="/modelos/eview" element={<EView />} />
             <Route path="/modelos/eaumark-9t" element={<EAumark9T />} />
             <Route path="/modelos/eaumark-12t" element={<EAumark12T />} />
+            <Route path="/modelos/iblue-6t" element={<IBlue6T />} />
             <Route path="/servicos" element={<Servicos />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/diagnostico-frota" element={<DiagnosticoFrota />} />
