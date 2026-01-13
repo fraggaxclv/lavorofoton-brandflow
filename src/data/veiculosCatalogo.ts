@@ -23,6 +23,7 @@ export interface Veiculo {
   aplicacao: string;
   caracteristicas: string[];
   cores: string[];
+  cargaUtilCarroceria?: string; // Carga útil + Carroceria (apenas para caminhões)
 }
 
 export const veiculosCatalogo: Veiculo[] = [
@@ -63,7 +64,8 @@ export const veiculosCatalogo: Veiculo[] = [
       'Direção hidráulica',
       'Garantia de 3 anos'
     ],
-    cores: ['Branco', 'Prata', 'Azul']
+    cores: ['Branco', 'Prata', 'Azul'],
+    cargaUtilCarroceria: '4.520 kg'
   },
   {
     id: 'aumark-916',
@@ -82,7 +84,8 @@ export const veiculosCatalogo: Veiculo[] = [
       'Suspensão reforçada',
       'Garantia de 3 anos'
     ],
-    cores: ['Branco', 'Prata']
+    cores: ['Branco', 'Prata'],
+    cargaUtilCarroceria: '6.021 kg'
   },
   {
     id: 'aumark-1217',
@@ -101,7 +104,8 @@ export const veiculosCatalogo: Veiculo[] = [
       'Chassi reforçado',
       'Garantia de 3 anos'
     ],
-    cores: ['Branco', 'Azul']
+    cores: ['Branco', 'Azul'],
+    cargaUtilCarroceria: '8.326 kg'
   },
   {
     id: 'auman-d-1722',
@@ -120,7 +124,8 @@ export const veiculosCatalogo: Veiculo[] = [
       'Cabine leito',
       'Garantia de 3 anos'
     ],
-    cores: ['Branco', 'Azul', 'Vermelho']
+    cores: ['Branco', 'Azul', 'Vermelho'],
+    cargaUtilCarroceria: '11.375 kg'
   },
   // Linha Elétrica
   {
@@ -161,7 +166,8 @@ export const veiculosCatalogo: Veiculo[] = [
       'ABS + ESP + ESC + HSA',
       'Piloto automático e vidro elétrico'
     ],
-    cores: ['Branco', 'Azul']
+    cores: ['Branco', 'Azul'],
+    cargaUtilCarroceria: '3.575 kg'
   },
   {
     id: 'etoano',
@@ -201,7 +207,8 @@ export const veiculosCatalogo: Veiculo[] = [
       'ABS + ESC + EBS + EBD + HSA',
       'Câmera e sensor de ré, ePTO, TPMS'
     ],
-    cores: ['Branco', 'Verde']
+    cores: ['Branco', 'Verde'],
+    cargaUtilCarroceria: '5.550 kg'
   },
   {
     id: 'eaumark-12t',
@@ -222,7 +229,8 @@ export const veiculosCatalogo: Veiculo[] = [
       'ABS + EBD + EPB + AEBS + ESP',
       'Aquecedor para retrovisor, farol de neblina'
     ],
-    cores: ['Branco', 'Azul']
+    cores: ['Branco', 'Azul'],
+    cargaUtilCarroceria: '7.150 kg'
   },
   {
     id: 'eview',
