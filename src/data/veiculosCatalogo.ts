@@ -149,15 +149,17 @@ export const veiculosCatalogo: Veiculo[] = [
     imagem: iblue6t,
     capacidade: '6 toneladas',
     cnh: 'C',
-    aplicacao: 'Urbano/Regional - Zero Emissões',
+    aplicacao: 'Urbano - Zero Emissões',
     caracteristicas: [
-      'Motor elétrico 150 kW',
-      'Autonomia de até 250 km',
-      'Bateria de lítio LFP 141 kWh',
-      'Carregamento rápido DC',
-      'Regeneração de energia',
-      'Painel digital',
-      'Garantia de 5 anos bateria'
+      'Motor síncrono de imã permanente, redução simples',
+      'Potência: 64 kW @ 115 kW',
+      'Torque: 430 N.m @ 920 N.m',
+      'Bateria CATL LFP 81,14 kWh',
+      'Autonomia: 220 km',
+      'PBT: 6.000 kg | Carga útil: 3.575 kg',
+      'Conector CCS2 (AC/DC) | 540V',
+      'ABS + ESP + ESC + HSA',
+      'Piloto automático e vidro elétrico'
     ],
     cores: ['Branco', 'Azul']
   },
@@ -187,15 +189,17 @@ export const veiculosCatalogo: Veiculo[] = [
     imagem: eaumark9t,
     capacidade: '9 toneladas',
     cnh: 'C',
-    aplicacao: 'Regional - Zero Emissões',
+    aplicacao: 'Urbano/Regional - Zero Emissões',
     caracteristicas: [
-      'Motor elétrico 180 kW',
-      'Autonomia de até 280 km',
-      'Bateria de lítio LFP 188 kWh',
-      'Carregamento rápido DC',
-      'Sistema de gerenciamento térmico',
-      'Painel multimídia',
-      'Garantia de 5 anos bateria'
+      'Motor Rear e-Axle',
+      'Potência: 75 kW @ 150 kW',
+      'Torque: 250 N.m @ 560 N.m',
+      'Bateria CATL LFP 100,46 kWh',
+      'Autonomia: 200 km',
+      'PBT: 8.500 kg | Carga útil: 5.550 kg',
+      'Conector CCS2 (AC - OBC 22kW / DC) | 540V',
+      'ABS + ESC + EBS + EBD + HSA',
+      'Câmera e sensor de ré, ePTO, TPMS'
     ],
     cores: ['Branco', 'Verde']
   },
@@ -208,13 +212,15 @@ export const veiculosCatalogo: Veiculo[] = [
     cnh: 'D/E',
     aplicacao: 'Pesado - Zero Emissões',
     caracteristicas: [
-      'Motor elétrico 200 kW',
-      'Autonomia de até 250 km',
-      'Bateria de lítio LFP 220 kWh',
-      'Carregamento rápido DC',
-      'Sistema de regeneração avançado',
-      'Cabine premium',
-      'Garantia de 5 anos bateria'
+      'Motor síncrono de imã permanente',
+      'Potência: 135 kW @ 260 kW',
+      'Torque: 1.430 N.m @ 2.800 N.m',
+      'Bateria CATL LFP 162,28 kWh',
+      'Autonomia: 220 km',
+      'PBT: 11.500 kg | Carga útil: 7.150 kg',
+      'Conector CCS2 (AC - max.22kW / DC - max.108kW) | 540V',
+      'ABS + EBD + EPB + AEBS + ESP',
+      'Aquecedor para retrovisor, farol de neblina'
     ],
     cores: ['Branco', 'Azul']
   },
