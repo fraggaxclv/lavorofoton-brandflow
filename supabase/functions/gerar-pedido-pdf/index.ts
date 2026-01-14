@@ -75,6 +75,39 @@ function gerarPDFHTML(pedido: PedidoData): string {
   const saldoFinanciado = pedido.valor_total_produtos - (pedido.entrada || 0);
   const supabaseUrl = Deno.env.get('SUPABASE_URL');
 
+  // Determinar dados de faturamento baseado na origem (ESTOQUE ou FADIRETO)
+  const isFadireto = pedido.faturamento_tipo?.toUpperCase() === 'FADIRETO';
+  
+  const dadosFaturamento = isFadireto ? {
+    nomeFantasia: 'Foton Motor do Brasil',
+    razaoSocial: 'FOTON MOTOR DO BRASIL VENDAS LTDA.',
+    cnpj: '27.580.185/0001-07',
+    banco: 'SANTANDER',
+    codigoBanco: '033',
+    agencia: '3689',
+    contaCorrente: '13006801-7'
+  } : {
+    nomeFantasia: 'Lavoro Foton',
+    razaoSocial: 'Lavoro Veiculos e Pecas Ltda',
+    cnpj: '38.455.415/0001-22',
+    banco: null,
+    codigoBanco: null,
+    agencia: null,
+    contaCorrente: null
+  };
+
+  // HTML para dados bancários (somente FADIRETO)
+  const dadosBancariosHTML = isFadireto ? `
+    <div style="margin-top: 8px; padding: 10px; background-color: #fef3c7; border: 1px solid #f59e0b; border-radius: 4px;">
+      <div style="font-weight: 700; color: #92400e; font-size: 11px; margin-bottom: 6px;">💳 DADOS BANCÁRIOS PARA DEPÓSITO:</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+        <div style="font-size: 10px; color: #1a1a1a;"><strong>Banco:</strong> ${dadosFaturamento.banco} (Código ${dadosFaturamento.codigoBanco})</div>
+        <div style="font-size: 10px; color: #1a1a1a;"><strong>Agência:</strong> ${dadosFaturamento.agencia}</div>
+        <div style="font-size: 10px; color: #1a1a1a; grid-column: 1 / -1;"><strong>Conta Corrente:</strong> ${dadosFaturamento.contaCorrente}</div>
+      </div>
+    </div>
+  ` : '';
+
   return `
     <!DOCTYPE html>
     <html>
@@ -270,12 +303,15 @@ function gerarPDFHTML(pedido: PedidoData): string {
         </div>
 
         <div class="info-grid" style="margin-bottom: 10px;">
-          <div class="info-item" style="grid-column: 1 / -1; text-align: center; padding: 10px; background-color: #f8f9fa; border-radius: 4px;">
-            <div style="font-weight: 700; color: #0f2557; font-size: 14px; margin-bottom: 4px;">Lavoro Foton</div>
-            <div style="color: #1a1a1a; font-size: 11px; margin-bottom: 2px;">Razão Social: <strong>Lavoro Veiculos e Pecas Ltda</strong></div>
-            <div style="color: #1a1a1a; font-size: 11px;">CNPJ: <strong>38.455.415/0001-22</strong></div>
+          <div class="info-item" style="grid-column: 1 / -1; text-align: center; padding: 10px; background-color: ${isFadireto ? '#e0f2fe' : '#f8f9fa'}; border-radius: 4px; ${isFadireto ? 'border: 2px solid #0284c7;' : ''}">
+            <div style="font-weight: 700; color: #0f2557; font-size: 14px; margin-bottom: 4px;">${dadosFaturamento.nomeFantasia}</div>
+            <div style="color: #1a1a1a; font-size: 11px; margin-bottom: 2px;">Razão Social: <strong>${dadosFaturamento.razaoSocial}</strong></div>
+            <div style="color: #1a1a1a; font-size: 11px;">CNPJ: <strong>${dadosFaturamento.cnpj}</strong></div>
+            ${isFadireto ? '<div style="margin-top: 6px; padding: 4px 8px; background-color: #0284c7; color: white; border-radius: 12px; display: inline-block; font-size: 10px; font-weight: 600;">FATURAMENTO DIRETO DE FÁBRICA</div>' : ''}
           </div>
         </div>
+        
+        ${dadosBancariosHTML}
 
         <div class="info-grid">
           <div class="info-item">
