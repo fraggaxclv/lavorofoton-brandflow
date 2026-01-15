@@ -44,7 +44,9 @@ import {
   FileText,
   Mail,
   LayoutList,
-  Kanban
+  Kanban,
+  Factory,
+  Package
 } from "lucide-react";
 import { 
   Negociacao, 
@@ -75,6 +77,7 @@ export default function InternoNegociacoes() {
   const { user, isAdmin } = useInternoAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [tipoVendaFilter, setTipoVendaFilter] = useState<string>("all");
   const [viewMode, setViewMode] = useState<"list" | "kanban">("kanban");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
@@ -86,6 +89,11 @@ export default function InternoNegociacoes() {
   const { clientes } = useClientes({});
 
   const filteredNegociacoes = negociacoes.filter(neg => {
+    // Filtro por tipo de venda
+    if (tipoVendaFilter !== "all" && neg.tipo_venda !== tipoVendaFilter) {
+      return false;
+    }
+    // Filtro por busca
     if (!searchTerm) return true;
     const search = searchTerm.toLowerCase();
     return (
@@ -208,6 +216,28 @@ export default function InternoNegociacoes() {
               </SelectContent>
             </Select>
           )}
+
+          {/* Filtro por tipo de venda */}
+          <Select value={tipoVendaFilter} onValueChange={setTipoVendaFilter}>
+            <SelectTrigger className="w-full sm:w-44">
+              <SelectValue placeholder="Tipo de Venda" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Todos os Tipos</SelectItem>
+              <SelectItem value="estoque">
+                <span className="flex items-center gap-2">
+                  <Package className="h-4 w-4" />
+                  Estoque
+                </span>
+              </SelectItem>
+              <SelectItem value="fadireto">
+                <span className="flex items-center gap-2">
+                  <Factory className="h-4 w-4" />
+                  Fábrica Direto
+                </span>
+              </SelectItem>
+            </SelectContent>
+          </Select>
 
           <ToggleGroup 
             type="single" 
