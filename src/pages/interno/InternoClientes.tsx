@@ -63,9 +63,12 @@ export default function InternoClientes() {
 
   const handleSubmit = async (formData: FormData) => {
     const vendedorResponsavel = formData.get("vendedor_responsavel") as string;
+    const tipoRaw = formData.get("tipo") as string;
+    // Banco espera 'PF' ou 'PJ' em maiúsculas
+    const tipo = tipoRaw.toUpperCase() as "PF" | "PJ";
     const data = {
       nome_razao: formData.get("nome_razao") as string,
-      tipo: formData.get("tipo") as "pf" | "pj",
+      tipo,
       cpf_cnpj: formData.get("cpf_cnpj") as string,
       endereco: formData.get("endereco") as string || undefined,
       numero: formData.get("numero") as string || undefined,
@@ -164,7 +167,7 @@ export default function InternoClientes() {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex items-start gap-4">
                       <div className="p-3 rounded-lg bg-primary/10">
-                        {cliente.tipo === "pj" ? (
+                      {cliente.tipo?.toLowerCase() === "pj" ? (
                           <Building2 className="h-6 w-6 text-primary" />
                         ) : (
                           <User className="h-6 w-6 text-primary" />
@@ -187,7 +190,7 @@ export default function InternoClientes() {
                         </div>
                         {cliente.cpf_cnpj && (
                           <p className="text-sm text-muted-foreground">
-                            {cliente.tipo === "pj" ? "CNPJ" : "CPF"}: {cliente.cpf_cnpj}
+                            {cliente.tipo?.toLowerCase() === "pj" ? "CNPJ" : "CPF"}: {cliente.cpf_cnpj}
                           </p>
                         )}
                         <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">

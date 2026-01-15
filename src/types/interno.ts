@@ -33,7 +33,7 @@ export type OrigemLead =
   | 'evento'
   | 'outro';
 
-export type TipoCliente = 'pj' | 'pf';
+export type TipoCliente = 'pj' | 'pf' | 'PJ' | 'PF';
 
 export type TipoVenda = 'estoque' | 'fadireto';
 
