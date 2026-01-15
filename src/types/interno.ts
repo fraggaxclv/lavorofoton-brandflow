@@ -7,9 +7,6 @@ export type UserRole = 'admin' | 'vendedor' | 'financeiro';
 export type StatusNegociacao = 
   | 'lead_novo'
   | 'proposta_enviada'
-  | 'negociacao'
-  | 'credito_analise'
-  | 'aprovado'
   | 'faturado'
   | 'perdido';
 
@@ -116,9 +113,6 @@ export interface Atividade {
 export const STATUS_LABELS: Record<StatusNegociacao, string> = {
   lead_novo: 'Lead Novo',
   proposta_enviada: 'Proposta Enviada',
-  negociacao: 'Em Negociação',
-  credito_analise: 'Crédito em Análise',
-  aprovado: 'Aprovado',
   faturado: 'Faturado',
   perdido: 'Perdido',
 };
@@ -126,9 +120,6 @@ export const STATUS_LABELS: Record<StatusNegociacao, string> = {
 export const STATUS_COLORS: Record<StatusNegociacao, string> = {
   lead_novo: '#3b82f6',
   proposta_enviada: '#8b5cf6',
-  negociacao: '#f59e0b',
-  credito_analise: '#f97316',
-  aprovado: '#10b981',
   faturado: '#22c55e',
   perdido: '#ef4444',
 };

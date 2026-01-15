@@ -88,7 +88,7 @@ export default function InternoDashboard() {
                 </div>
               ) : (
                 <div className="space-y-3">
-                  {(['lead_novo', 'proposta_enviada', 'negociacao', 'credito_analise', 'aprovado'] as StatusNegociacao[]).map((status) => (
+                  {(['lead_novo', 'proposta_enviada'] as StatusNegociacao[]).map((status) => (
                     <div key={status} className="flex items-center justify-between p-3 bg-muted rounded-lg">
                       <div className="flex items-center gap-2">
                         <div 
