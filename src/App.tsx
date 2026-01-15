@@ -4,7 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { InternoAuthProvider } from "@/contexts/InternoAuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import InternoProtectedRoute from "@/components/interno/InternoProtectedRoute";
 import Home from "./pages/Home";
 import QuemSomos from "./pages/QuemSomos";
 import SobreFoton from "./pages/SobreFoton";
@@ -32,6 +34,12 @@ import IBlue6T from "./pages/models/IBlue6T";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 
+// Páginas do sistema interno
+import InternoLogin from "./pages/interno/InternoLogin";
+import InternoDashboard from "./pages/interno/InternoDashboard";
+import InternoClientes from "./pages/interno/InternoClientes";
+import InternoNegociacoes from "./pages/interno/InternoNegociacoes";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -43,6 +51,7 @@ const App = () => (
         <AuthProvider>
           <WhatsAppButton />
           <Routes>
+            {/* Rotas públicas do site */}
             <Route path="/" element={<Home />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/quem-somos" element={<QuemSomos />} />
@@ -75,6 +84,47 @@ const App = () => (
                 </ProtectedRoute>
               } 
             />
+
+            {/* Rotas do sistema interno */}
+            <Route 
+              path="/interno/login" 
+              element={
+                <InternoAuthProvider>
+                  <InternoLogin />
+                </InternoAuthProvider>
+              } 
+            />
+            <Route 
+              path="/interno/dashboard" 
+              element={
+                <InternoAuthProvider>
+                  <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
+                    <InternoDashboard />
+                  </InternoProtectedRoute>
+                </InternoAuthProvider>
+              } 
+            />
+            <Route 
+              path="/interno/clientes" 
+              element={
+                <InternoAuthProvider>
+                  <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
+                    <InternoClientes />
+                  </InternoProtectedRoute>
+                </InternoAuthProvider>
+              } 
+            />
+            <Route 
+              path="/interno/negociacoes" 
+              element={
+                <InternoAuthProvider>
+                  <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
+                    <InternoNegociacoes />
+                  </InternoProtectedRoute>
+                </InternoAuthProvider>
+              } 
+            />
+
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

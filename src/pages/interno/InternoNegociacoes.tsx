@@ -152,7 +152,7 @@ export default function InternoNegociacoes() {
               <NovaNegociacaoForm 
                 clientes={clientes || []}
                 onSubmit={handleSubmit}
-                isLoading={createNegociacao.isPending}
+                isLoading={isCreating}
               />
             </DialogContent>
           </Dialog>
@@ -360,8 +360,8 @@ function NovaNegociacaoForm({ clientes, onSubmit, isLoading }: NovaNegociacaoFor
       </div>
 
       <div className="flex justify-end gap-2 pt-4">
-      <Button type="submit" disabled={isCreating}>
-          {isCreating && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+        <Button type="submit" disabled={isLoading}>
+          {isLoading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
           Criar Negociação
         </Button>
       </div>
@@ -378,18 +378,16 @@ interface NegociacaoDetailsProps {
 
 function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange }: NegociacaoDetailsProps) {
   const { user } = useInternoAuth();
-  const { data: atividades, isLoading: atividadesLoading } = useAtividades(negociacao.id);
-  const createAtividade = useCreateAtividade();
+  const { atividades, isLoading: atividadesLoading, createAtividade, isCreating: atividadeIsCreating } = useAtividades(negociacao.id);
   const [novaAtividade, setNovaAtividade] = useState(false);
 
   const handleNovaAtividade = async (formData: FormData) => {
     try {
-      await createAtividade.mutateAsync({
+      await createAtividade({
         negociacao_id: negociacao.id,
-        tipo: formData.get("tipo") as string,
+        tipo: formData.get("tipo") as "ligacao" | "whatsapp" | "reuniao" | "proposta" | "documento" | "email" | "visita" | "outro",
         titulo: formData.get("titulo") as string,
         nota: formData.get("nota") as string || undefined,
-        created_by: user!.id,
       });
       toast.success("Atividade registrada!");
       setNovaAtividade(false);
@@ -527,8 +525,8 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange }: N
                     <Textarea name="nota" rows={2} />
                   </div>
                   <div className="flex gap-2">
-                    <Button type="submit" size="sm" disabled={createAtividade.isPending}>
-                      {createAtividade.isPending && <Loader2 className="h-4 w-4 mr-1 animate-spin" />}
+                    <Button type="submit" size="sm" disabled={atividadeIsCreating}>
+                      {atividadeIsCreating && <Loader2 className="h-4 w-4 mr-1 animate-spin" />}
                       Salvar
                     </Button>
                     <Button type="button" variant="outline" size="sm" onClick={() => setNovaAtividade(false)}>
