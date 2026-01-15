@@ -34,9 +34,10 @@ import {
   StatusNegociacao, 
   STATUS_LABELS, 
   STATUS_COLORS,
+  TIPO_VENDA_LABELS,
   formatCurrency 
 } from "@/types/interno";
-import { Calendar, DollarSign, GripVertical, Loader2 } from "lucide-react";
+import { Calendar, DollarSign, GripVertical, Loader2, Factory, Package } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { cn } from "@/lib/utils";
@@ -131,6 +132,19 @@ function KanbanCard({ negociacao, onClick, isDragging }: KanbanCardProps) {
                 {negociacao.produto_principal}
               </p>
             )}
+            <div className="flex items-center gap-2">
+              <Badge 
+                variant={negociacao.tipo_venda === 'fadireto' ? 'default' : 'secondary'} 
+                className="text-[10px] px-1.5 py-0"
+              >
+                {negociacao.tipo_venda === 'fadireto' ? (
+                  <Factory className="h-2.5 w-2.5 mr-0.5" />
+                ) : (
+                  <Package className="h-2.5 w-2.5 mr-0.5" />
+                )}
+                {TIPO_VENDA_LABELS[negociacao.tipo_venda] || 'Estoque'}
+              </Badge>
+            </div>
             <div className="flex items-center justify-between text-xs text-muted-foreground">
               <span className="flex items-center gap-1">
                 <DollarSign className="h-3 w-3" />

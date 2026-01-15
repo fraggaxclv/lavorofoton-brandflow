@@ -49,10 +49,12 @@ import {
 import { 
   Negociacao, 
   StatusNegociacao,
+  TipoVenda,
   STATUS_LABELS, 
   STATUS_COLORS,
   ORIGEM_LABELS,
   TIPO_ATIVIDADE_LABELS,
+  TIPO_VENDA_LABELS,
   formatCurrency
 } from "@/types/interno";
 import { toast } from "sonner";
@@ -105,6 +107,7 @@ export default function InternoNegociacoes() {
     const data = {
       cliente_id: formData.get("cliente_id") as string,
       origem_lead: formData.get("origem_lead") as string,
+      tipo_venda: (formData.get("tipo_venda") as TipoVenda) || "estoque",
       produto_principal: formData.get("produto_principal") as string || undefined,
       valor_estimado: parseFloat(formData.get("valor_estimado") as string) || 0,
       observacoes: formData.get("observacoes") as string || undefined,
@@ -379,6 +382,20 @@ function NovaNegociacaoForm({ clientes, onSubmit, isLoading }: NovaNegociacaoFor
       </div>
 
       <div>
+        <Label htmlFor="tipo_venda">Tipo de Venda *</Label>
+        <Select name="tipo_venda" defaultValue="estoque">
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {Object.entries(TIPO_VENDA_LABELS).map(([value, label]) => (
+              <SelectItem key={value} value={value}>{label}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div>
         <Label htmlFor="produto_principal">Produto Principal</Label>
         <Input
           id="produto_principal"
@@ -572,6 +589,13 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
               <div>
                 <Label className="text-muted-foreground">Origem</Label>
                 <p className="font-medium">{ORIGEM_LABELS[negociacao.origem_lead]}</p>
+              </div>
+              
+              <div>
+                <Label className="text-muted-foreground">Tipo de Venda</Label>
+                <Badge variant={negociacao.tipo_venda === 'fadireto' ? 'default' : 'secondary'}>
+                  {TIPO_VENDA_LABELS[negociacao.tipo_venda] || 'Estoque'}
+                </Badge>
               </div>
               
               {/* Produto Principal - Editável */}

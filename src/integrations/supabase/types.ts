@@ -71,6 +71,7 @@ export type Database = {
           telefone: string | null
           tipo: string
           updated_at: string
+          vendedor_responsavel: string | null
         }
         Insert: {
           ativo?: boolean | null
@@ -87,6 +88,7 @@ export type Database = {
           telefone?: string | null
           tipo: string
           updated_at?: string
+          vendedor_responsavel?: string | null
         }
         Update: {
           ativo?: boolean | null
@@ -103,6 +105,7 @@ export type Database = {
           telefone?: string | null
           tipo?: string
           updated_at?: string
+          vendedor_responsavel?: string | null
         }
         Relationships: []
       }
@@ -246,6 +249,7 @@ export type Database = {
           produtos: Json | null
           proximo_passo: string | null
           status: string
+          tipo_venda: string | null
           ultima_atualizacao: string
           updated_at: string
           valor_estimado: number | null
@@ -267,6 +271,7 @@ export type Database = {
           produtos?: Json | null
           proximo_passo?: string | null
           status?: string
+          tipo_venda?: string | null
           ultima_atualizacao?: string
           updated_at?: string
           valor_estimado?: number | null
@@ -288,6 +293,7 @@ export type Database = {
           produtos?: Json | null
           proximo_passo?: string | null
           status?: string
+          tipo_venda?: string | null
           ultima_atualizacao?: string
           updated_at?: string
           valor_estimado?: number | null

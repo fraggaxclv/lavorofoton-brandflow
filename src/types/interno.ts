@@ -35,6 +35,8 @@ export type OrigemLead =
 
 export type TipoCliente = 'pj' | 'pf';
 
+export type TipoVenda = 'estoque' | 'fadireto';
+
 export interface Cliente {
   id: string;
   tipo: TipoCliente;
@@ -50,6 +52,7 @@ export interface Cliente {
   created_at: string;
   updated_at: string;
   created_by?: string;
+  vendedor_responsavel?: string;
 }
 
 export interface Negociacao {
@@ -58,6 +61,7 @@ export interface Negociacao {
   cliente_id: string;
   owner_user_id: string;
   origem_lead: OrigemLead;
+  tipo_venda: TipoVenda;
   produto_principal?: string;
   produtos: ProdutoNegociacao[];
   valor_estimado: number;
@@ -145,6 +149,11 @@ export const ORIGEM_LEAD_LABELS: Record<OrigemLead, string> = {
 };
 
 export const ORIGEM_LABELS = ORIGEM_LEAD_LABELS;
+
+export const TIPO_VENDA_LABELS: Record<TipoVenda, string> = {
+  estoque: 'Estoque',
+  fadireto: 'Fábrica Direto',
+};
 
 export const TIPO_ATIVIDADE_LABELS: Record<TipoAtividade, string> = {
   ligacao: 'Ligação',

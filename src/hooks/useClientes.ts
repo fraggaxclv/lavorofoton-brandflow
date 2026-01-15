@@ -13,6 +13,7 @@ interface CreateClienteData {
   email?: string;
   responsavel?: string;
   observacoes?: string;
+  vendedor_responsavel?: string;
 }
 
 interface UpdateClienteData extends Partial<CreateClienteData> {
