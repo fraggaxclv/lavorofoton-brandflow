@@ -126,7 +126,6 @@ export default function InternoNegociacoes() {
     const data = {
       cliente_id: formData.get("cliente_id") as string,
       origem_lead: formData.get("origem_lead") as string,
-      tipo_venda: (formData.get("tipo_venda") as TipoVenda) || "estoque",
       produto_principal: produtoPrincipal,
       valor_estimado: valorFinal,
       observacoes: formData.get("observacoes") as string || undefined,
@@ -142,11 +141,23 @@ export default function InternoNegociacoes() {
     }
   };
 
-  const handleStatusChange = async (negociacao: Negociacao, newStatus: StatusNegociacao) => {
+  // Estado para modal de conclusão de venda (faturado)
+  const [conclusaoVendaOpen, setConclusaoVendaOpen] = useState(false);
+  const [negociacaoParaConcluir, setNegociacaoParaConcluir] = useState<Negociacao | null>(null);
+
+  const handleStatusChange = async (negociacao: Negociacao, newStatus: StatusNegociacao, tipoVenda?: TipoVenda) => {
+    // Se for faturar, abre o modal para selecionar tipo de venda
+    if (newStatus === "faturado" && !tipoVenda) {
+      setNegociacaoParaConcluir(negociacao);
+      setConclusaoVendaOpen(true);
+      return;
+    }
+
     try {
       await updateNegociacao({ 
         id: negociacao.id, 
         status: newStatus,
+        tipo_venda: tipoVenda,
         data_fechamento: newStatus === "faturado" || newStatus === "perdido"
           ? new Date().toISOString().split("T")[0] 
           : undefined
@@ -154,6 +165,24 @@ export default function InternoNegociacoes() {
       toast.success("Status atualizado!");
     } catch (error) {
       toast.error("Erro ao atualizar status");
+    }
+  };
+
+  const handleConcluirVenda = async (tipoVenda: TipoVenda) => {
+    if (!negociacaoParaConcluir) return;
+    
+    try {
+      await updateNegociacao({ 
+        id: negociacaoParaConcluir.id, 
+        status: "faturado",
+        tipo_venda: tipoVenda,
+        data_fechamento: new Date().toISOString().split("T")[0]
+      });
+      toast.success("Venda concluída com sucesso!");
+      setConclusaoVendaOpen(false);
+      setNegociacaoParaConcluir(null);
+    } catch (error) {
+      toast.error("Erro ao concluir venda");
     }
   };
 
@@ -372,6 +401,48 @@ export default function InternoNegociacoes() {
             isUpdating={isUpdating}
           />
         )}
+
+        {/* Modal de Conclusão de Venda - Tipo de Venda */}
+        <Dialog open={conclusaoVendaOpen} onOpenChange={setConclusaoVendaOpen}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <DollarSign className="h-5 w-5 text-green-600" />
+                Concluir Venda
+              </DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4 py-4">
+              <p className="text-sm text-muted-foreground">
+                Parabéns pela venda! Selecione o tipo de faturamento:
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <Button
+                  variant="outline"
+                  className="h-24 flex flex-col gap-2 hover:border-primary hover:bg-primary/5"
+                  onClick={() => handleConcluirVenda("estoque")}
+                  disabled={isUpdating}
+                >
+                  <Package className="h-8 w-8" />
+                  <span>Estoque</span>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="h-24 flex flex-col gap-2 hover:border-primary hover:bg-primary/5"
+                  onClick={() => handleConcluirVenda("fadireto")}
+                  disabled={isUpdating}
+                >
+                  <Factory className="h-8 w-8" />
+                  <span>Fábrica Direto</span>
+                </Button>
+              </div>
+            </div>
+            <DialogFooter>
+              <Button variant="ghost" onClick={() => setConclusaoVendaOpen(false)}>
+                Cancelar
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </InternoLayout>
   );
@@ -430,19 +501,6 @@ function NovaNegociacaoForm({ clientes, onSubmit, isLoading }: NovaNegociacaoFor
         </Select>
       </div>
 
-      <div>
-        <Label htmlFor="tipo_venda">Tipo de Venda *</Label>
-        <Select name="tipo_venda" defaultValue="estoque">
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {Object.entries(TIPO_VENDA_LABELS).map(([value, label]) => (
-              <SelectItem key={value} value={value}>{label}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
 
       {/* Seletor de Produtos do Catálogo */}
       <ProdutoSelector produtos={produtos} onChange={setProdutos} />
@@ -490,7 +548,7 @@ interface NegociacaoDetailsProps {
   negociacao: Negociacao;
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onStatusChange: (negociacao: Negociacao, status: StatusNegociacao) => void;
+  onStatusChange: (negociacao: Negociacao, status: StatusNegociacao, tipoVenda?: TipoVenda) => void;
   onLossStatusChange: (negociacao: Negociacao, motivo: string) => Promise<void>;
   onUpdate: (data: { id: string; valor_estimado?: number; probabilidade?: number; produto_principal?: string; proximo_passo?: string; data_proximo_passo?: string; observacoes?: string }) => Promise<unknown>;
   isUpdating?: boolean;
@@ -645,9 +703,15 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
               
               <div>
                 <Label className="text-muted-foreground">Tipo de Venda</Label>
-                <Badge variant={negociacao.tipo_venda === 'fadireto' ? 'default' : 'secondary'}>
-                  {TIPO_VENDA_LABELS[negociacao.tipo_venda] || 'Estoque'}
-                </Badge>
+                {negociacao.tipo_venda ? (
+                  <Badge variant={negociacao.tipo_venda === 'fadireto' ? 'default' : 'secondary'}>
+                    {TIPO_VENDA_LABELS[negociacao.tipo_venda]}
+                  </Badge>
+                ) : (
+                  <Badge variant="outline" className="text-muted-foreground">
+                    Definido ao faturar
+                  </Badge>
+                )}
               </div>
               
               {/* Produto Principal - Editável */}
