@@ -168,11 +168,19 @@ export default function InternoClientes() {
                         )}
                       </div>
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                           <h3 className="font-semibold">{cliente.nome_razao}</h3>
                           <Badge variant="outline">
                             {TIPO_CLIENTE_LABELS[cliente.tipo]}
                           </Badge>
+                          {cliente.vendedor_responsavel && (
+                            <Badge variant="secondary" className="text-xs">
+                              <UserCheck className="h-3 w-3 mr-1" />
+                              {vendedores.find(v => v.id === cliente.vendedor_responsavel)?.nome_exibicao || 
+                               vendedores.find(v => v.id === cliente.vendedor_responsavel)?.full_name || 
+                               "Vendedor"}
+                            </Badge>
+                          )}
                         </div>
                         {cliente.cpf_cnpj && (
                           <p className="text-sm text-muted-foreground">
