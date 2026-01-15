@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNegociacoes } from "@/hooks/useNegociacoes";
 import { useClientes } from "@/hooks/useClientes";
 import { useAtividades } from "@/hooks/useAtividades";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
+import { useCheckinDiario } from "@/hooks/useCheckinDiario";
 import InternoLayout from "@/components/interno/InternoLayout";
 import KanbanBoard from "@/components/interno/KanbanBoard";
+import CheckinModal from "@/components/interno/CheckinModal";
 import ProdutoSelector, { ProdutoNegociacao } from "@/components/interno/ProdutoSelector";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -88,7 +90,7 @@ const statusOrder: StatusNegociacao[] = [
 ];
 
 export default function InternoNegociacoes() {
-  const { user, isAdmin } = useInternoAuth();
+  const { user, isAdmin, isVendedor } = useInternoAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [tipoVendaFilter, setTipoVendaFilter] = useState<string>("all");
@@ -96,6 +98,24 @@ export default function InternoNegociacoes() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [selectedNegociacao, setSelectedNegociacao] = useState<Negociacao | null>(null);
+  const [checkinOpen, setCheckinOpen] = useState(false);
+
+  // Check-in diário gamificado
+  const {
+    showCheckin,
+    pendingNegociacoes,
+    checkinState,
+    completeCheckin,
+    removeFromPending,
+    isLoading: isLoadingCheckin,
+  } = useCheckinDiario(user?.id);
+
+  // Mostrar modal de check-in automaticamente para vendedores
+  useEffect(() => {
+    if (showCheckin && isVendedor && !isLoadingCheckin && pendingNegociacoes.length > 0) {
+      setCheckinOpen(true);
+    }
+  }, [showCheckin, isVendedor, isLoadingCheckin, pendingNegociacoes.length]);
 
   const { negociacoes, isLoading, createNegociacao, updateNegociacao, deleteNegociacao, isCreating, isUpdating, isDeleting } = useNegociacoes({
     status: statusFilter !== "all" ? statusFilter as StatusNegociacao : undefined,
@@ -215,6 +235,17 @@ export default function InternoNegociacoes() {
 
   return (
     <InternoLayout>
+      {/* Check-in Modal Gamificado */}
+      <CheckinModal
+        open={checkinOpen}
+        onClose={() => setCheckinOpen(false)}
+        negociacoes={pendingNegociacoes}
+        streak={checkinState.streak}
+        totalResolvidos={checkinState.totalResolvidos}
+        onComplete={completeCheckin}
+        onRemoveNegociacao={removeFromPending}
+      />
+
       <div className="space-y-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
