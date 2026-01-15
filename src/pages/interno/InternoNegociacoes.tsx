@@ -278,6 +278,8 @@ export default function InternoNegociacoes() {
             open={detailsOpen}
             onOpenChange={setDetailsOpen}
             onStatusChange={handleStatusChange}
+            onUpdate={updateNegociacao}
+            isUpdating={isUpdating}
           />
         )}
       </div>
@@ -374,12 +376,41 @@ interface NegociacaoDetailsProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onStatusChange: (negociacao: Negociacao, status: StatusNegociacao) => void;
+  onUpdate: (data: { id: string; valor_estimado?: number; probabilidade?: number; produto_principal?: string; proximo_passo?: string; data_proximo_passo?: string; observacoes?: string }) => Promise<unknown>;
+  isUpdating?: boolean;
 }
 
-function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange }: NegociacaoDetailsProps) {
+function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onUpdate, isUpdating }: NegociacaoDetailsProps) {
   const { user } = useInternoAuth();
   const { atividades, isLoading: atividadesLoading, createAtividade, isCreating: atividadeIsCreating } = useAtividades(negociacao.id);
   const [novaAtividade, setNovaAtividade] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [formValues, setFormValues] = useState({
+    valor_estimado: negociacao.valor_estimado || 0,
+    probabilidade: negociacao.probabilidade || 50,
+    produto_principal: negociacao.produto_principal || "",
+    proximo_passo: negociacao.proximo_passo || "",
+    data_proximo_passo: negociacao.data_proximo_passo || "",
+    observacoes: negociacao.observacoes || "",
+  });
+
+  const handleSaveChanges = async () => {
+    try {
+      await onUpdate({
+        id: negociacao.id,
+        valor_estimado: formValues.valor_estimado,
+        probabilidade: formValues.probabilidade,
+        produto_principal: formValues.produto_principal || undefined,
+        proximo_passo: formValues.proximo_passo || undefined,
+        data_proximo_passo: formValues.data_proximo_passo || undefined,
+        observacoes: formValues.observacoes || undefined,
+      });
+      toast.success("Negociação atualizada!");
+      setEditMode(false);
+    } catch (error) {
+      toast.error("Erro ao atualizar negociação");
+    }
+  };
 
   const handleNovaAtividade = async (formData: FormData) => {
     try {
@@ -411,10 +442,25 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange }: N
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
+          <DialogTitle className="flex items-center gap-2 justify-between">
             <span className="font-mono text-muted-foreground">
               {negociacao.numero_negociacao}
             </span>
+            {!editMode ? (
+              <Button variant="outline" size="sm" onClick={() => setEditMode(true)}>
+                Editar
+              </Button>
+            ) : (
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm" onClick={() => setEditMode(false)}>
+                  Cancelar
+                </Button>
+                <Button size="sm" onClick={handleSaveChanges} disabled={isUpdating}>
+                  {isUpdating && <Loader2 className="h-4 w-4 mr-1 animate-spin" />}
+                  Salvar
+                </Button>
+              </div>
+            )}
           </DialogTitle>
         </DialogHeader>
 
@@ -455,35 +501,108 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange }: N
                 <Label className="text-muted-foreground">Origem</Label>
                 <p className="font-medium">{ORIGEM_LABELS[negociacao.origem_lead]}</p>
               </div>
+              
+              {/* Produto Principal - Editável */}
               <div>
                 <Label className="text-muted-foreground">Produto Principal</Label>
-                <p className="font-medium">{negociacao.produto_principal || "-"}</p>
+                {editMode ? (
+                  <Input 
+                    value={formValues.produto_principal}
+                    onChange={(e) => setFormValues(prev => ({ ...prev, produto_principal: e.target.value }))}
+                    placeholder="Ex: Foton 7T"
+                  />
+                ) : (
+                  <p className="font-medium">{negociacao.produto_principal || "-"}</p>
+                )}
               </div>
+              
+              {/* Valor Estimado - Editável */}
               <div>
                 <Label className="text-muted-foreground">Valor Estimado</Label>
-                <p className="font-medium">{formatCurrency(negociacao.valor_estimado || 0)}</p>
+                {editMode ? (
+                  <Input 
+                    type="number"
+                    value={formValues.valor_estimado}
+                    onChange={(e) => setFormValues(prev => ({ ...prev, valor_estimado: parseFloat(e.target.value) || 0 }))}
+                    placeholder="0.00"
+                  />
+                ) : (
+                  <p className="font-medium">{formatCurrency(negociacao.valor_estimado || 0)}</p>
+                )}
               </div>
+              
+              {/* Probabilidade - Editável */}
               <div>
                 <Label className="text-muted-foreground">Probabilidade</Label>
-                <p className="font-medium">{negociacao.probabilidade || 50}%</p>
+                {editMode ? (
+                  <Select 
+                    value={String(formValues.probabilidade)}
+                    onValueChange={(value) => setFormValues(prev => ({ ...prev, probabilidade: parseInt(value) }))}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {[10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map(p => (
+                        <SelectItem key={p} value={String(p)}>{p}%</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                ) : (
+                  <p className="font-medium">{negociacao.probabilidade || 50}%</p>
+                )}
               </div>
+              
+              {/* Data Próximo Passo - Editável */}
               <div>
                 <Label className="text-muted-foreground">Próximo Passo</Label>
-                <p className="font-medium">
-                  {negociacao.data_proximo_passo 
-                    ? format(new Date(negociacao.data_proximo_passo), "dd/MM/yyyy", { locale: ptBR })
-                    : "-"
-                  }
-                </p>
+                {editMode ? (
+                  <Input 
+                    type="date"
+                    value={formValues.data_proximo_passo}
+                    onChange={(e) => setFormValues(prev => ({ ...prev, data_proximo_passo: e.target.value }))}
+                  />
+                ) : (
+                  <p className="font-medium">
+                    {negociacao.data_proximo_passo 
+                      ? format(new Date(negociacao.data_proximo_passo), "dd/MM/yyyy", { locale: ptBR })
+                      : "-"
+                    }
+                  </p>
+                )}
               </div>
             </div>
 
-            {negociacao.observacoes && (
+            {/* Descrição do Próximo Passo - Editável */}
+            {(editMode || negociacao.proximo_passo) && (
               <div>
-                <Label className="text-muted-foreground">Observações</Label>
-                <p className="text-sm mt-1">{negociacao.observacoes}</p>
+                <Label className="text-muted-foreground">Descrição do Próximo Passo</Label>
+                {editMode ? (
+                  <Input 
+                    value={formValues.proximo_passo}
+                    onChange={(e) => setFormValues(prev => ({ ...prev, proximo_passo: e.target.value }))}
+                    placeholder="Ex: Ligar para confirmar interesse"
+                  />
+                ) : (
+                  <p className="text-sm mt-1">{negociacao.proximo_passo}</p>
+                )}
               </div>
             )}
+
+            {/* Observações - Editável */}
+            <div>
+              <Label className="text-muted-foreground">Observações</Label>
+              {editMode ? (
+                <Textarea 
+                  value={formValues.observacoes}
+                  onChange={(e) => setFormValues(prev => ({ ...prev, observacoes: e.target.value }))}
+                  placeholder="Anotações sobre a negociação..."
+                  rows={3}
+                />
+              ) : (
+                <p className="text-sm mt-1">{negociacao.observacoes || "-"}</p>
+              )}
+            </div>
           </TabsContent>
 
           <TabsContent value="atividades" className="space-y-4 mt-4">
