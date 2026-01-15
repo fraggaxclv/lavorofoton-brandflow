@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useClientes } from "@/hooks/useClientes";
+import { useVendedores } from "@/hooks/useVendedores";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import InternoLayout from "@/components/interno/InternoLayout";
 import { Button } from "@/components/ui/button";
@@ -32,17 +33,19 @@ import {
   Mail,
   MapPin,
   Edit,
-  Loader2
+  Loader2,
+  UserCheck
 } from "lucide-react";
 import { Cliente, TIPO_CLIENTE_LABELS } from "@/types/interno";
 import { toast } from "sonner";
 
 export default function InternoClientes() {
-  const { user } = useInternoAuth();
+  const { user, isAdmin } = useInternoAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [tipoFilter, setTipoFilter] = useState<string>("all");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingCliente, setEditingCliente] = useState<Cliente | null>(null);
+  const { data: vendedores = [] } = useVendedores();
 
   const { clientes, isLoading, createCliente, updateCliente, isCreating, isUpdating } = useClientes({ 
     search: searchTerm,
@@ -59,6 +62,7 @@ export default function InternoClientes() {
   };
 
   const handleSubmit = async (formData: FormData) => {
+    const vendedorResponsavel = formData.get("vendedor_responsavel") as string;
     const data = {
       nome_razao: formData.get("nome_razao") as string,
       tipo: formData.get("tipo") as "pf" | "pj",
@@ -69,6 +73,7 @@ export default function InternoClientes() {
       estado: formData.get("estado") as string || undefined,
       responsavel: formData.get("responsavel") as string || undefined,
       observacoes: formData.get("observacoes") as string || undefined,
+      vendedor_responsavel: vendedorResponsavel && vendedorResponsavel !== "none" ? vendedorResponsavel : undefined,
     };
 
     try {
@@ -111,6 +116,8 @@ export default function InternoClientes() {
                 cliente={editingCliente} 
                 onSubmit={handleSubmit}
                 isLoading={isCreating || isUpdating}
+                vendedores={vendedores}
+                isAdmin={isAdmin}
               />
             </DialogContent>
           </Dialog>
@@ -233,9 +240,11 @@ interface ClienteFormProps {
   cliente: Cliente | null;
   onSubmit: (formData: FormData) => void;
   isLoading: boolean;
+  vendedores: { id: string; email: string; full_name?: string; nome_exibicao?: string }[];
+  isAdmin: boolean;
 }
 
-function ClienteForm({ cliente, onSubmit, isLoading }: ClienteFormProps) {
+function ClienteForm({ cliente, onSubmit, isLoading, vendedores, isAdmin }: ClienteFormProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -323,6 +332,31 @@ function ClienteForm({ cliente, onSubmit, isLoading }: ClienteFormProps) {
             defaultValue={cliente?.responsavel || ""}
           />
         </div>
+
+        {isAdmin && (
+          <div className="col-span-2">
+            <Label htmlFor="vendedor_responsavel" className="flex items-center gap-2">
+              <UserCheck className="h-4 w-4" />
+              Vendedor Responsável
+            </Label>
+            <Select name="vendedor_responsavel" defaultValue={cliente?.vendedor_responsavel || "none"}>
+              <SelectTrigger>
+                <SelectValue placeholder="Selecione um vendedor" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="none">Nenhum</SelectItem>
+                {vendedores.map(v => (
+                  <SelectItem key={v.id} value={v.id}>
+                    {v.nome_exibicao || v.full_name || v.email}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <p className="text-xs text-muted-foreground mt-1">
+              O vendedor responsável terá acesso a este cliente
+            </p>
+          </div>
+        )}
 
         <div className="col-span-2">
           <Label htmlFor="observacoes">Observações</Label>

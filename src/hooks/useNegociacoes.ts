@@ -1,11 +1,12 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { Negociacao, StatusNegociacao, ProdutoNegociacao } from "@/types/interno";
+import { Negociacao, StatusNegociacao, ProdutoNegociacao, TipoVenda } from "@/types/interno";
 import { useToast } from "@/hooks/use-toast";
 
 interface CreateNegociacaoData {
   cliente_id: string;
   origem_lead: string;
+  tipo_venda?: TipoVenda;
   produto_principal?: string;
   produtos?: ProdutoNegociacao[];
   valor_estimado?: number;
@@ -20,6 +21,7 @@ interface UpdateNegociacaoData extends Partial<CreateNegociacaoData> {
   id: string;
   motivo_perda?: string;
   data_fechamento?: string;
+  tipo_venda?: TipoVenda;
 }
 
 interface UseNegociacoesOptions {
@@ -88,6 +90,7 @@ export function useNegociacoes(options: UseNegociacoesOptions = {}) {
           produtos,
           origem_lead: neg.origem_lead as Negociacao['origem_lead'],
           status: neg.status as StatusNegociacao,
+          tipo_venda: (neg.tipo_venda || 'estoque') as TipoVenda,
         } as unknown as Negociacao;
       });
     },
