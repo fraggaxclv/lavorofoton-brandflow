@@ -54,20 +54,14 @@ interface KanbanBoardProps {
 const statusOrder: StatusNegociacao[] = [
   "lead_novo",
   "proposta_enviada", 
-  "negociacao",
-  "credito_analise",
-  "aprovado",
   "faturado",
   "perdido"
 ];
 
-// Status columns to show in kanban (excluding closed statuses for cleaner view)
+// Status columns to show in kanban - simplified view
 const kanbanColumns: StatusNegociacao[] = [
   "lead_novo",
   "proposta_enviada", 
-  "negociacao",
-  "credito_analise",
-  "aprovado",
   "faturado",
   "perdido"
 ];
