@@ -16,8 +16,20 @@ import {
   DialogHeader, 
   DialogTitle, 
   DialogTrigger,
-  DialogFooter
+  DialogFooter,
+  DialogDescription
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import {
   Select,
   SelectContent,
@@ -47,7 +59,8 @@ import {
   LayoutList,
   Kanban,
   Factory,
-  Package
+  Package,
+  Trash2
 } from "lucide-react";
 import { 
   Negociacao, 
@@ -84,7 +97,7 @@ export default function InternoNegociacoes() {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [selectedNegociacao, setSelectedNegociacao] = useState<Negociacao | null>(null);
 
-  const { negociacoes, isLoading, createNegociacao, updateNegociacao, isCreating, isUpdating } = useNegociacoes({
+  const { negociacoes, isLoading, createNegociacao, updateNegociacao, deleteNegociacao, isCreating, isUpdating, isDeleting } = useNegociacoes({
     status: statusFilter !== "all" ? statusFilter as StatusNegociacao : undefined,
   });
   const { clientes } = useClientes({});
@@ -398,7 +411,13 @@ export default function InternoNegociacoes() {
             onStatusChange={handleStatusChange}
             onLossStatusChange={handleLossStatusChange}
             onUpdate={updateNegociacao}
+            onDelete={async (id) => {
+              await deleteNegociacao(id);
+              setDetailsOpen(false);
+              setSelectedNegociacao(null);
+            }}
             isUpdating={isUpdating}
+            isDeleting={isDeleting}
           />
         )}
 
@@ -551,10 +570,12 @@ interface NegociacaoDetailsProps {
   onStatusChange: (negociacao: Negociacao, status: StatusNegociacao, tipoVenda?: TipoVenda) => void;
   onLossStatusChange: (negociacao: Negociacao, motivo: string) => Promise<void>;
   onUpdate: (data: { id: string; valor_estimado?: number; probabilidade?: number; produto_principal?: string; proximo_passo?: string; data_proximo_passo?: string; observacoes?: string }) => Promise<unknown>;
+  onDelete: (id: string) => Promise<void>;
   isUpdating?: boolean;
+  isDeleting?: boolean;
 }
 
-function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onLossStatusChange, onUpdate, isUpdating }: NegociacaoDetailsProps) {
+function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onLossStatusChange, onUpdate, onDelete, isUpdating, isDeleting }: NegociacaoDetailsProps) {
   const { user } = useInternoAuth();
   const { atividades, isLoading: atividadesLoading, createAtividade, isCreating: atividadeIsCreating } = useAtividades(negociacao.id);
   const [novaAtividade, setNovaAtividade] = useState(false);
@@ -562,6 +583,7 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
   const [lossDialogOpen, setLossDialogOpen] = useState(false);
   const [lossReason, setLossReason] = useState("");
   const [isSubmittingLoss, setIsSubmittingLoss] = useState(false);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [formValues, setFormValues] = useState({
     valor_estimado: negociacao.valor_estimado || 0,
     probabilidade: negociacao.probabilidade || 50,
@@ -570,6 +592,15 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
     data_proximo_passo: negociacao.data_proximo_passo || "",
     observacoes: negociacao.observacoes || "",
   });
+
+  const handleDelete = async () => {
+    try {
+      await onDelete(negociacao.id);
+      toast.success("Negociação excluída!");
+    } catch (error) {
+      toast.error("Erro ao excluir negociação");
+    }
+  };
 
   const handleStatusChangeInternal = (status: StatusNegociacao) => {
     if (status === "perdido") {
@@ -645,22 +676,56 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
             <span className="font-mono text-muted-foreground">
               {negociacao.numero_negociacao}
             </span>
-            {!editMode ? (
-              <Button variant="outline" size="sm" onClick={() => setEditMode(true)}>
-                Editar
-              </Button>
-            ) : (
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" onClick={() => setEditMode(false)}>
-                  Cancelar
-                </Button>
-                <Button size="sm" onClick={handleSaveChanges} disabled={isUpdating}>
-                  {isUpdating && <Loader2 className="h-4 w-4 mr-1 animate-spin" />}
-                  Salvar
-                </Button>
-              </div>
-            )}
+            <div className="flex gap-2">
+              {!editMode ? (
+                <>
+                  <Button variant="outline" size="sm" onClick={() => setEditMode(true)}>
+                    Editar
+                  </Button>
+                  <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+                    <AlertDialogTrigger asChild>
+                      <Button variant="outline" size="sm" className="text-destructive hover:text-destructive">
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Excluir Negociação</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          Tem certeza que deseja excluir a negociação <strong>{negociacao.numero_negociacao}</strong>?
+                          Esta ação não pode ser desfeita.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={handleDelete}
+                          disabled={isDeleting}
+                          className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                        >
+                          {isDeleting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+                          Excluir
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </>
+              ) : (
+                <>
+                  <Button variant="outline" size="sm" onClick={() => setEditMode(false)}>
+                    Cancelar
+                  </Button>
+                  <Button size="sm" onClick={handleSaveChanges} disabled={isUpdating}>
+                    {isUpdating && <Loader2 className="h-4 w-4 mr-1 animate-spin" />}
+                    Salvar
+                  </Button>
+                </>
+              )}
+            </div>
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            Detalhes e ações da negociação {negociacao.numero_negociacao}
+          </DialogDescription>
         </DialogHeader>
 
         <Tabs defaultValue="detalhes" className="w-full">

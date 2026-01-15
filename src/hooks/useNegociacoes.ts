@@ -183,6 +183,32 @@ export function useNegociacoes(options: UseNegociacoesOptions = {}) {
     },
   });
 
+  const deleteMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase
+        .from("negociacoes")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["negociacoes"] });
+      queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+      toast({
+        title: "Negociação excluída",
+        description: "A negociação foi removida com sucesso.",
+      });
+    },
+    onError: (error) => {
+      toast({
+        title: "Erro ao excluir",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
   return {
     negociacoes: query.data || [],
     isLoading: query.isLoading,
@@ -190,8 +216,10 @@ export function useNegociacoes(options: UseNegociacoesOptions = {}) {
     refetch: query.refetch,
     createNegociacao: createMutation.mutateAsync,
     updateNegociacao: updateMutation.mutateAsync,
+    deleteNegociacao: deleteMutation.mutateAsync,
     isCreating: createMutation.isPending,
     isUpdating: updateMutation.isPending,
+    isDeleting: deleteMutation.isPending,
   };
 }
 
