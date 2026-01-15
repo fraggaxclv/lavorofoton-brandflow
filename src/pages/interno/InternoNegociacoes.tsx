@@ -4,9 +4,11 @@ import { useClientes } from "@/hooks/useClientes";
 import { useAtividades } from "@/hooks/useAtividades";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import { useCheckinDiario } from "@/hooks/useCheckinDiario";
+import { useWelcomeCheckin } from "@/hooks/useWelcomeCheckin";
 import InternoLayout from "@/components/interno/InternoLayout";
 import KanbanBoard from "@/components/interno/KanbanBoard";
 import CheckinModal from "@/components/interno/CheckinModal";
+import WelcomeCheckinModal from "@/components/interno/WelcomeCheckinModal";
 import ProdutoSelector, { ProdutoNegociacao } from "@/components/interno/ProdutoSelector";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -96,6 +98,7 @@ export default function InternoNegociacoes() {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [selectedNegociacao, setSelectedNegociacao] = useState<Negociacao | null>(null);
   const [checkinOpen, setCheckinOpen] = useState(false);
+  const [welcomeOpen, setWelcomeOpen] = useState(false);
 
   // Check-in diário gamificado
   const {
@@ -107,12 +110,20 @@ export default function InternoNegociacoes() {
     isLoading: isLoadingCheckin,
   } = useCheckinDiario(user?.id);
 
-  // Mostrar modal de check-in automaticamente para vendedores
+  // Welcome check-in com resumo
+  const {
+    showWelcome,
+    stats: welcomeStats,
+    isLoading: isLoadingWelcome,
+    completeWelcome,
+  } = useWelcomeCheckin(user?.id);
+
+  // Mostrar welcome modal automaticamente para vendedores
   useEffect(() => {
-    if (showCheckin && isVendedor && !isLoadingCheckin && pendingNegociacoes.length > 0) {
-      setCheckinOpen(true);
+    if (showWelcome && isVendedor && !isLoadingWelcome) {
+      setWelcomeOpen(true);
     }
-  }, [showCheckin, isVendedor, isLoadingCheckin, pendingNegociacoes.length]);
+  }, [showWelcome, isVendedor, isLoadingWelcome]);
 
   const { negociacoes, isLoading, createNegociacao, updateNegociacao, deleteNegociacao, isCreating, isUpdating, isDeleting } = useNegociacoes({
     status: statusFilter !== "all" ? statusFilter as StatusNegociacao : undefined,
@@ -232,6 +243,20 @@ export default function InternoNegociacoes() {
 
   return (
     <InternoLayout>
+      {/* Welcome Check-in Modal */}
+      <WelcomeCheckinModal
+        open={welcomeOpen}
+        onClose={() => {
+          setWelcomeOpen(false);
+          completeWelcome();
+        }}
+        stats={welcomeStats}
+        streak={checkinState.streak}
+        onComplete={completeWelcome}
+        onOpenCheckin={() => setCheckinOpen(true)}
+        hasPendingNegociacoes={pendingNegociacoes.length > 0}
+      />
+
       {/* Check-in Modal Gamificado */}
       <CheckinModal
         open={checkinOpen}
