@@ -82,9 +82,6 @@ import { ptBR } from "date-fns/locale";
 const statusOrder: StatusNegociacao[] = [
   "lead_novo",
   "proposta_enviada", 
-  "negociacao",
-  "credito_analise",
-  "aprovado",
   "faturado",
   "perdido"
 ];
