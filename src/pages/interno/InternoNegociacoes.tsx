@@ -4,6 +4,7 @@ import { useClientes } from "@/hooks/useClientes";
 import { useAtividades } from "@/hooks/useAtividades";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import InternoLayout from "@/components/interno/InternoLayout";
+import KanbanBoard from "@/components/interno/KanbanBoard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -26,6 +27,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { 
   Plus, 
   Search, 
@@ -39,7 +41,9 @@ import {
   Phone,
   Users,
   FileText,
-  Mail
+  Mail,
+  LayoutList,
+  Kanban
 } from "lucide-react";
 import { 
   Negociacao, 
@@ -68,6 +72,7 @@ export default function InternoNegociacoes() {
   const { user, isAdmin } = useInternoAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [viewMode, setViewMode] = useState<"list" | "kanban">("kanban");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [selectedNegociacao, setSelectedNegociacao] = useState<Negociacao | null>(null);
@@ -158,8 +163,8 @@ export default function InternoNegociacoes() {
           </Dialog>
         </div>
 
-        {/* Filtros */}
-        <div className="flex flex-col sm:flex-row gap-4">
+        {/* Filtros e Toggle de Visualização */}
+        <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
@@ -169,28 +174,52 @@ export default function InternoNegociacoes() {
               className="pl-10"
             />
           </div>
-          <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="w-full sm:w-48">
-              <SelectValue placeholder="Status" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">Todos os Status</SelectItem>
-              {statusOrder.map(status => (
-                <SelectItem key={status} value={status}>
-                  {STATUS_LABELS[status]}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          
+          {viewMode === "list" && (
+            <Select value={statusFilter} onValueChange={setStatusFilter}>
+              <SelectTrigger className="w-full sm:w-48">
+                <SelectValue placeholder="Status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Todos os Status</SelectItem>
+                {statusOrder.map(status => (
+                  <SelectItem key={status} value={status}>
+                    {STATUS_LABELS[status]}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+
+          <ToggleGroup 
+            type="single" 
+            value={viewMode} 
+            onValueChange={(value) => value && setViewMode(value as "list" | "kanban")}
+            className="border rounded-lg p-1"
+          >
+            <ToggleGroupItem value="list" aria-label="Visualização em lista" className="px-3">
+              <LayoutList className="h-4 w-4" />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="kanban" aria-label="Visualização Kanban" className="px-3">
+              <Kanban className="h-4 w-4" />
+            </ToggleGroupItem>
+          </ToggleGroup>
         </div>
 
-        {/* Pipeline Board */}
+        {/* Conteúdo */}
         {isLoading ? (
           <div className="grid gap-4">
             {[1, 2, 3].map(i => (
               <Skeleton key={i} className="h-24 w-full" />
             ))}
           </div>
+        ) : viewMode === "kanban" ? (
+          <KanbanBoard
+            negociacoes={filteredNegociacoes}
+            onStatusChange={handleStatusChange}
+            onCardClick={handleOpenDetails}
+            isUpdating={isUpdating}
+          />
         ) : filteredNegociacoes.length > 0 ? (
           <div className="space-y-3">
             {filteredNegociacoes.map(negociacao => (
