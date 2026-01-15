@@ -41,7 +41,10 @@ export interface Cliente {
   id: string;
   tipo: TipoCliente;
   nome_razao: string;
-  cpf_cnpj?: string;
+  cpf_cnpj: string;
+  endereco?: string;
+  numero?: string;
+  cep?: string;
   cidade?: string;
   estado?: string;
   telefone?: string;
