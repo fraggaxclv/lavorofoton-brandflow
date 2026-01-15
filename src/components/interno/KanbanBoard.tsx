@@ -31,7 +31,8 @@ import {
 } from "@/components/ui/dialog";
 import { 
   Negociacao, 
-  StatusNegociacao, 
+  StatusNegociacao,
+  TipoVenda,
   STATUS_LABELS, 
   STATUS_COLORS,
   TIPO_VENDA_LABELS,
@@ -44,7 +45,7 @@ import { cn } from "@/lib/utils";
 
 interface KanbanBoardProps {
   negociacoes: Negociacao[];
-  onStatusChange: (negociacao: Negociacao, newStatus: StatusNegociacao) => Promise<void>;
+  onStatusChange: (negociacao: Negociacao, newStatus: StatusNegociacao, tipoVenda?: TipoVenda) => Promise<void>;
   onLossStatusChange: (negociacao: Negociacao, motivo: string) => Promise<void>;
   onCardClick: (negociacao: Negociacao) => void;
   isUpdating?: boolean;
