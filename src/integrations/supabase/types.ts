@@ -14,6 +14,98 @@ export type Database = {
   }
   public: {
     Tables: {
+      atividades: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          data_hora: string
+          id: string
+          negociacao_id: string
+          nota: string | null
+          tipo: string
+          titulo: string | null
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          data_hora?: string
+          id?: string
+          negociacao_id: string
+          nota?: string | null
+          tipo?: string
+          titulo?: string | null
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          data_hora?: string
+          id?: string
+          negociacao_id?: string
+          nota?: string | null
+          tipo?: string
+          titulo?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "atividades_negociacao_id_fkey"
+            columns: ["negociacao_id"]
+            isOneToOne: false
+            referencedRelation: "negociacoes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      clientes: {
+        Row: {
+          ativo: boolean | null
+          cidade: string | null
+          cpf_cnpj: string | null
+          created_at: string
+          created_by: string | null
+          email: string | null
+          estado: string | null
+          id: string
+          nome_razao: string
+          observacoes: string | null
+          responsavel: string | null
+          telefone: string | null
+          tipo: string
+          updated_at: string
+        }
+        Insert: {
+          ativo?: boolean | null
+          cidade?: string | null
+          cpf_cnpj?: string | null
+          created_at?: string
+          created_by?: string | null
+          email?: string | null
+          estado?: string | null
+          id?: string
+          nome_razao: string
+          observacoes?: string | null
+          responsavel?: string | null
+          telefone?: string | null
+          tipo: string
+          updated_at?: string
+        }
+        Update: {
+          ativo?: boolean | null
+          cidade?: string | null
+          cpf_cnpj?: string | null
+          created_at?: string
+          created_by?: string | null
+          email?: string | null
+          estado?: string | null
+          id?: string
+          nome_razao?: string
+          observacoes?: string | null
+          responsavel?: string | null
+          telefone?: string | null
+          tipo?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       diagnosticos_arquivos: {
         Row: {
           arquivo_url: string
@@ -136,6 +228,80 @@ export type Database = {
         }
         Relationships: []
       }
+      negociacoes: {
+        Row: {
+          cliente_id: string
+          created_at: string
+          created_by: string | null
+          data_fechamento: string | null
+          data_proximo_passo: string | null
+          id: string
+          motivo_perda: string | null
+          numero_negociacao: string
+          observacoes: string | null
+          origem_lead: string
+          owner_user_id: string
+          probabilidade: number | null
+          produto_principal: string | null
+          produtos: Json | null
+          proximo_passo: string | null
+          status: string
+          ultima_atualizacao: string
+          updated_at: string
+          valor_estimado: number | null
+        }
+        Insert: {
+          cliente_id: string
+          created_at?: string
+          created_by?: string | null
+          data_fechamento?: string | null
+          data_proximo_passo?: string | null
+          id?: string
+          motivo_perda?: string | null
+          numero_negociacao: string
+          observacoes?: string | null
+          origem_lead?: string
+          owner_user_id: string
+          probabilidade?: number | null
+          produto_principal?: string | null
+          produtos?: Json | null
+          proximo_passo?: string | null
+          status?: string
+          ultima_atualizacao?: string
+          updated_at?: string
+          valor_estimado?: number | null
+        }
+        Update: {
+          cliente_id?: string
+          created_at?: string
+          created_by?: string | null
+          data_fechamento?: string | null
+          data_proximo_passo?: string | null
+          id?: string
+          motivo_perda?: string | null
+          numero_negociacao?: string
+          observacoes?: string | null
+          origem_lead?: string
+          owner_user_id?: string
+          probabilidade?: number | null
+          produto_principal?: string | null
+          produtos?: Json | null
+          proximo_passo?: string | null
+          status?: string
+          ultima_atualizacao?: string
+          updated_at?: string
+          valor_estimado?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "negociacoes_cliente_id_fkey"
+            columns: ["cliente_id"]
+            isOneToOne: false
+            referencedRelation: "clientes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       pedidos_faturamento: {
         Row: {
           bairro: string | null
@@ -228,24 +394,36 @@ export type Database = {
       }
       profiles: {
         Row: {
+          ativo: boolean | null
+          avatar_url: string | null
           created_at: string
           email: string
           full_name: string | null
           id: string
+          nome_exibicao: string | null
+          telefone: string | null
           updated_at: string
         }
         Insert: {
+          ativo?: boolean | null
+          avatar_url?: string | null
           created_at?: string
           email: string
           full_name?: string | null
           id: string
+          nome_exibicao?: string | null
+          telefone?: string | null
           updated_at?: string
         }
         Update: {
+          ativo?: boolean | null
+          avatar_url?: string | null
           created_at?: string
           email?: string
           full_name?: string | null
           id?: string
+          nome_exibicao?: string | null
+          telefone?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -348,7 +526,9 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      gerar_numero_negociacao: { Args: never; Returns: string }
       gerar_numero_proposta: { Args: never; Returns: string }
+      get_user_role: { Args: never; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -359,6 +539,32 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user" | "vendedor" | "financeiro"
+      origem_lead:
+        | "site"
+        | "whatsapp"
+        | "indicacao"
+        | "trafego_pago"
+        | "telefone"
+        | "visita_loja"
+        | "evento"
+        | "outro"
+      status_negociacao:
+        | "lead_novo"
+        | "proposta_enviada"
+        | "negociacao"
+        | "credito_analise"
+        | "aprovado"
+        | "faturado"
+        | "perdido"
+      tipo_atividade:
+        | "ligacao"
+        | "whatsapp"
+        | "reuniao"
+        | "proposta"
+        | "documento"
+        | "email"
+        | "visita"
+        | "outro"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -487,6 +693,35 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user", "vendedor", "financeiro"],
+      origem_lead: [
+        "site",
+        "whatsapp",
+        "indicacao",
+        "trafego_pago",
+        "telefone",
+        "visita_loja",
+        "evento",
+        "outro",
+      ],
+      status_negociacao: [
+        "lead_novo",
+        "proposta_enviada",
+        "negociacao",
+        "credito_analise",
+        "aprovado",
+        "faturado",
+        "perdido",
+      ],
+      tipo_atividade: [
+        "ligacao",
+        "whatsapp",
+        "reuniao",
+        "proposta",
+        "documento",
+        "email",
+        "visita",
+        "outro",
+      ],
     },
   },
 } as const
