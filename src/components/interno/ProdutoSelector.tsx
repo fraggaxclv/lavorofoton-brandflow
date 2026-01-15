@@ -207,18 +207,22 @@ export default function ProdutoSelector({ produtos, onChange }: ProdutoSelectorP
           })}
           
           {/* Resumo */}
-          <div className="flex items-center justify-between pt-2 border-t text-sm">
-            <span className="text-muted-foreground">
-              {produtos.length} produto(s) | {produtos.reduce((acc, p) => acc + p.quantidade, 0)} unidade(s)
-            </span>
-            {produtos.some(p => p.valor_unitario) && (
-              <Badge variant="secondary">
-                Total: R$ {produtos
-                  .filter(p => p.valor_unitario)
-                  .reduce((acc, p) => acc + (p.valor_unitario! * p.quantidade), 0)
+          <div className="pt-3 border-t space-y-2">
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
+              <span>
+                {produtos.length} produto(s) | {produtos.reduce((acc, p) => acc + p.quantidade, 0)} unidade(s)
+              </span>
+            </div>
+            
+            {/* Valor Total Destacado */}
+            <div className="flex items-center justify-between p-3 bg-primary/10 rounded-lg border border-primary/20">
+              <span className="font-medium text-foreground">Valor Total da Negociação:</span>
+              <span className="text-xl font-bold text-primary">
+                R$ {produtos
+                  .reduce((acc, p) => acc + ((p.valor_unitario || 0) * p.quantidade), 0)
                   .toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-              </Badge>
-            )}
+              </span>
+            </div>
           </div>
         </div>
       )}
