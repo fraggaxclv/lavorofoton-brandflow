@@ -5,6 +5,7 @@ import { useAtividades } from "@/hooks/useAtividades";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import InternoLayout from "@/components/interno/InternoLayout";
 import KanbanBoard from "@/components/interno/KanbanBoard";
+import ProdutoSelector, { ProdutoNegociacao } from "@/components/interno/ProdutoSelector";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -111,13 +112,23 @@ export default function InternoNegociacoes() {
     setDetailsOpen(true);
   };
 
-  const handleSubmit = async (formData: FormData) => {
+  const handleSubmit = async (formData: FormData, produtos: ProdutoNegociacao[]) => {
+    // Gera produto_principal a partir dos produtos selecionados
+    const produtoPrincipal = produtos.length > 0 
+      ? produtos.map(p => `${p.quantidade}x ${p.modelo}`).join(", ")
+      : formData.get("produto_principal") as string || undefined;
+    
+    // Calcula valor estimado a partir dos produtos se houver valores
+    const valorProdutos = produtos.reduce((acc, p) => acc + ((p.valor_unitario || 0) * p.quantidade), 0);
+    const valorManual = parseFloat(formData.get("valor_estimado") as string) || 0;
+    const valorFinal = valorProdutos > 0 ? valorProdutos : valorManual;
+
     const data = {
       cliente_id: formData.get("cliente_id") as string,
       origem_lead: formData.get("origem_lead") as string,
       tipo_venda: (formData.get("tipo_venda") as TipoVenda) || "estoque",
-      produto_principal: formData.get("produto_principal") as string || undefined,
-      valor_estimado: parseFloat(formData.get("valor_estimado") as string) || 0,
+      produto_principal: produtoPrincipal,
+      valor_estimado: valorFinal,
       observacoes: formData.get("observacoes") as string || undefined,
       owner_user_id: user!.id,
     };
@@ -368,16 +379,24 @@ export default function InternoNegociacoes() {
 
 interface NovaNegociacaoFormProps {
   clientes: { id: string; nome_razao: string }[];
-  onSubmit: (formData: FormData) => void;
+  onSubmit: (formData: FormData, produtos: ProdutoNegociacao[]) => void;
   isLoading: boolean;
 }
 
 function NovaNegociacaoForm({ clientes, onSubmit, isLoading }: NovaNegociacaoFormProps) {
+  const [produtos, setProdutos] = useState<ProdutoNegociacao[]>([]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    onSubmit(formData);
+    onSubmit(formData, produtos);
   };
+
+  // Calcula valor total dos produtos para exibir
+  const valorTotalProdutos = produtos.reduce(
+    (acc, p) => acc + ((p.valor_unitario || 0) * p.quantidade), 
+    0
+  );
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -425,23 +444,26 @@ function NovaNegociacaoForm({ clientes, onSubmit, isLoading }: NovaNegociacaoFor
         </Select>
       </div>
 
-      <div>
-        <Label htmlFor="produto_principal">Produto Principal</Label>
-        <Input
-          id="produto_principal"
-          name="produto_principal"
-          placeholder="Ex: Foton Aumark 916"
-        />
-      </div>
+      {/* Seletor de Produtos do Catálogo */}
+      <ProdutoSelector produtos={produtos} onChange={setProdutos} />
 
       <div>
-        <Label htmlFor="valor_estimado">Valor Estimado (R$)</Label>
+        <Label htmlFor="valor_estimado">
+          Valor Estimado (R$)
+          {valorTotalProdutos > 0 && (
+            <span className="text-muted-foreground font-normal ml-2">
+              (calculado dos produtos: R$ {valorTotalProdutos.toLocaleString('pt-BR', { minimumFractionDigits: 2 })})
+            </span>
+          )}
+        </Label>
         <Input
           id="valor_estimado"
           name="valor_estimado"
           type="number"
           step="0.01"
-          placeholder="0,00"
+          placeholder={valorTotalProdutos > 0 ? valorTotalProdutos.toFixed(2) : "0,00"}
+          disabled={valorTotalProdutos > 0}
+          value={valorTotalProdutos > 0 ? valorTotalProdutos.toFixed(2) : undefined}
         />
       </div>
 
