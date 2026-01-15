@@ -14,7 +14,8 @@ import {
   DialogContent, 
   DialogHeader, 
   DialogTitle, 
-  DialogTrigger 
+  DialogTrigger,
+  DialogFooter
 } from "@/components/ui/dialog";
 import {
   Select,
@@ -134,6 +135,20 @@ export default function InternoNegociacoes() {
     }
   };
 
+  const handleLossStatusChange = async (negociacao: Negociacao, motivo: string) => {
+    try {
+      await updateNegociacao({ 
+        id: negociacao.id, 
+        status: "perdido",
+        motivo_perda: motivo,
+        data_fechamento: new Date().toISOString().split("T")[0]
+      });
+      toast.success("Negociação marcada como perdida");
+    } catch (error) {
+      toast.error("Erro ao atualizar status");
+    }
+  };
+
   return (
     <InternoLayout>
       <div className="space-y-6">
@@ -217,6 +232,7 @@ export default function InternoNegociacoes() {
           <KanbanBoard
             negociacoes={filteredNegociacoes}
             onStatusChange={handleStatusChange}
+            onLossStatusChange={handleLossStatusChange}
             onCardClick={handleOpenDetails}
             isUpdating={isUpdating}
           />
@@ -307,6 +323,7 @@ export default function InternoNegociacoes() {
             open={detailsOpen}
             onOpenChange={setDetailsOpen}
             onStatusChange={handleStatusChange}
+            onLossStatusChange={handleLossStatusChange}
             onUpdate={updateNegociacao}
             isUpdating={isUpdating}
           />
@@ -405,15 +422,19 @@ interface NegociacaoDetailsProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onStatusChange: (negociacao: Negociacao, status: StatusNegociacao) => void;
+  onLossStatusChange: (negociacao: Negociacao, motivo: string) => Promise<void>;
   onUpdate: (data: { id: string; valor_estimado?: number; probabilidade?: number; produto_principal?: string; proximo_passo?: string; data_proximo_passo?: string; observacoes?: string }) => Promise<unknown>;
   isUpdating?: boolean;
 }
 
-function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onUpdate, isUpdating }: NegociacaoDetailsProps) {
+function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onLossStatusChange, onUpdate, isUpdating }: NegociacaoDetailsProps) {
   const { user } = useInternoAuth();
   const { atividades, isLoading: atividadesLoading, createAtividade, isCreating: atividadeIsCreating } = useAtividades(negociacao.id);
   const [novaAtividade, setNovaAtividade] = useState(false);
   const [editMode, setEditMode] = useState(false);
+  const [lossDialogOpen, setLossDialogOpen] = useState(false);
+  const [lossReason, setLossReason] = useState("");
+  const [isSubmittingLoss, setIsSubmittingLoss] = useState(false);
   const [formValues, setFormValues] = useState({
     valor_estimado: negociacao.valor_estimado || 0,
     probabilidade: negociacao.probabilidade || 50,
@@ -422,6 +443,28 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onU
     data_proximo_passo: negociacao.data_proximo_passo || "",
     observacoes: negociacao.observacoes || "",
   });
+
+  const handleStatusChangeInternal = (status: StatusNegociacao) => {
+    if (status === "perdido") {
+      setLossReason("");
+      setLossDialogOpen(true);
+    } else {
+      onStatusChange(negociacao, status);
+    }
+  };
+
+  const handleConfirmLoss = async () => {
+    if (!lossReason.trim()) return;
+    
+    setIsSubmittingLoss(true);
+    try {
+      await onLossStatusChange(negociacao, lossReason.trim());
+      setLossDialogOpen(false);
+      setLossReason("");
+    } finally {
+      setIsSubmittingLoss(false);
+    }
+  };
 
   const handleSaveChanges = async () => {
     try {
@@ -505,7 +548,7 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onU
               <Label>Status</Label>
               <Select 
                 value={negociacao.status}
-                onValueChange={(value) => onStatusChange(negociacao, value as StatusNegociacao)}
+                onValueChange={(value) => handleStatusChangeInternal(value as StatusNegociacao)}
               >
                 <SelectTrigger>
                   <SelectValue />
@@ -726,6 +769,43 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onU
           </TabsContent>
         </Tabs>
       </DialogContent>
+
+      {/* Dialog para motivo de perda */}
+      <Dialog open={lossDialogOpen} onOpenChange={(open) => !open && setLossDialogOpen(false)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Motivo da Perda</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              Para marcar a negociação como perdida, informe o motivo:
+            </p>
+            <div className="space-y-2">
+              <Label htmlFor="loss-reason-details">Motivo *</Label>
+              <Textarea
+                id="loss-reason-details"
+                value={lossReason}
+                onChange={(e) => setLossReason(e.target.value)}
+                placeholder="Ex: Cliente optou pela concorrência, preço acima do orçamento, desistiu da compra..."
+                rows={4}
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setLossDialogOpen(false)}>
+              Cancelar
+            </Button>
+            <Button 
+              onClick={handleConfirmLoss} 
+              disabled={!lossReason.trim() || isSubmittingLoss}
+              variant="destructive"
+            >
+              {isSubmittingLoss && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+              Confirmar Perda
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </Dialog>
   );
 }

@@ -19,6 +19,16 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { 
   Negociacao, 
   StatusNegociacao, 
@@ -26,7 +36,7 @@ import {
   STATUS_COLORS,
   formatCurrency 
 } from "@/types/interno";
-import { Calendar, DollarSign, GripVertical } from "lucide-react";
+import { Calendar, DollarSign, GripVertical, Loader2 } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { cn } from "@/lib/utils";
@@ -34,6 +44,7 @@ import { cn } from "@/lib/utils";
 interface KanbanBoardProps {
   negociacoes: Negociacao[];
   onStatusChange: (negociacao: Negociacao, newStatus: StatusNegociacao) => Promise<void>;
+  onLossStatusChange: (negociacao: Negociacao, motivo: string) => Promise<void>;
   onCardClick: (negociacao: Negociacao) => void;
   isUpdating?: boolean;
 }
@@ -197,11 +208,16 @@ function KanbanColumn({ status, negociacoes, onCardClick }: KanbanColumnProps) {
 
 export default function KanbanBoard({ 
   negociacoes, 
-  onStatusChange, 
+  onStatusChange,
+  onLossStatusChange,
   onCardClick,
   isUpdating 
 }: KanbanBoardProps) {
   const [activeCard, setActiveCard] = useState<Negociacao | null>(null);
+  const [lossDialogOpen, setLossDialogOpen] = useState(false);
+  const [pendingLossNegociacao, setPendingLossNegociacao] = useState<Negociacao | null>(null);
+  const [lossReason, setLossReason] = useState("");
+  const [isSubmittingLoss, setIsSubmittingLoss] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -268,40 +284,107 @@ export default function KanbanBoard({
 
     // If status changed, update it
     if (targetStatus && targetStatus !== activeNegociacao.status) {
-      await onStatusChange(activeNegociacao, targetStatus);
+      // If moving to "perdido", show loss reason dialog
+      if (targetStatus === "perdido") {
+        setPendingLossNegociacao(activeNegociacao);
+        setLossReason("");
+        setLossDialogOpen(true);
+      } else {
+        await onStatusChange(activeNegociacao, targetStatus);
+      }
     }
   };
 
-  return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCorners}
-      onDragStart={handleDragStart}
-      onDragOver={handleDragOver}
-      onDragEnd={handleDragEnd}
-    >
-      <div className="flex gap-4 overflow-x-auto pb-4">
-        {kanbanColumns.map(status => (
-          <KanbanColumn
-            key={status}
-            status={status}
-            negociacoes={getColumnNegociacoes(status)}
-            onCardClick={onCardClick}
-          />
-        ))}
-      </div>
+  const handleConfirmLoss = async () => {
+    if (!pendingLossNegociacao || !lossReason.trim()) return;
+    
+    setIsSubmittingLoss(true);
+    try {
+      await onLossStatusChange(pendingLossNegociacao, lossReason.trim());
+      setLossDialogOpen(false);
+      setPendingLossNegociacao(null);
+      setLossReason("");
+    } finally {
+      setIsSubmittingLoss(false);
+    }
+  };
 
-      <DragOverlay>
-        {activeCard && (
-          <div className="w-[280px]">
-            <KanbanCard
-              negociacao={activeCard}
-              onClick={() => {}}
-              isDragging
+  const handleCancelLoss = () => {
+    setLossDialogOpen(false);
+    setPendingLossNegociacao(null);
+    setLossReason("");
+  };
+
+  return (
+    <>
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCorners}
+        onDragStart={handleDragStart}
+        onDragOver={handleDragOver}
+        onDragEnd={handleDragEnd}
+      >
+        <div className="flex gap-4 overflow-x-auto pb-4">
+          {kanbanColumns.map(status => (
+            <KanbanColumn
+              key={status}
+              status={status}
+              negociacoes={getColumnNegociacoes(status)}
+              onCardClick={onCardClick}
             />
+          ))}
+        </div>
+
+        <DragOverlay>
+          {activeCard && (
+            <div className="w-[280px]">
+              <KanbanCard
+                negociacao={activeCard}
+                onClick={() => {}}
+                isDragging
+              />
+            </div>
+          )}
+        </DragOverlay>
+      </DndContext>
+
+      {/* Dialog para motivo de perda */}
+      <Dialog open={lossDialogOpen} onOpenChange={handleCancelLoss}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Motivo da Perda</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              Para marcar a negociação <strong>{pendingLossNegociacao?.numero_negociacao}</strong> como perdida, 
+              informe o motivo:
+            </p>
+            <div className="space-y-2">
+              <Label htmlFor="loss-reason">Motivo *</Label>
+              <Textarea
+                id="loss-reason"
+                value={lossReason}
+                onChange={(e) => setLossReason(e.target.value)}
+                placeholder="Ex: Cliente optou pela concorrência, preço acima do orçamento, desistiu da compra..."
+                rows={4}
+              />
+            </div>
           </div>
-        )}
-      </DragOverlay>
-    </DndContext>
+          <DialogFooter>
+            <Button variant="outline" onClick={handleCancelLoss}>
+              Cancelar
+            </Button>
+            <Button 
+              onClick={handleConfirmLoss} 
+              disabled={!lossReason.trim() || isSubmittingLoss}
+              variant="destructive"
+            >
+              {isSubmittingLoss && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+              Confirmar Perda
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
