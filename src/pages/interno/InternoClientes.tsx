@@ -66,11 +66,14 @@ export default function InternoClientes() {
     const data = {
       nome_razao: formData.get("nome_razao") as string,
       tipo: formData.get("tipo") as "pf" | "pj",
-      cpf_cnpj: formData.get("cpf_cnpj") as string || undefined,
-      telefone: formData.get("telefone") as string || undefined,
-      email: formData.get("email") as string || undefined,
+      cpf_cnpj: formData.get("cpf_cnpj") as string,
+      endereco: formData.get("endereco") as string || undefined,
+      numero: formData.get("numero") as string || undefined,
+      cep: formData.get("cep") as string || undefined,
       cidade: formData.get("cidade") as string || undefined,
       estado: formData.get("estado") as string || undefined,
+      telefone: formData.get("telefone") as string || undefined,
+      email: formData.get("email") as string || undefined,
       responsavel: formData.get("responsavel") as string || undefined,
       observacoes: formData.get("observacoes") as string || undefined,
       vendedor_responsavel: vendedorResponsavel && vendedorResponsavel !== "none" ? vendedorResponsavel : undefined,
@@ -286,11 +289,12 @@ function ClienteForm({ cliente, onSubmit, isLoading, vendedores, isAdmin }: Clie
         </div>
 
         <div>
-          <Label htmlFor="cpf_cnpj">CPF/CNPJ</Label>
+          <Label htmlFor="cpf_cnpj">CPF/CNPJ *</Label>
           <Input
             id="cpf_cnpj"
             name="cpf_cnpj"
             defaultValue={cliente?.cpf_cnpj || ""}
+            required
           />
         </div>
 
@@ -313,6 +317,36 @@ function ClienteForm({ cliente, onSubmit, isLoading, vendedores, isAdmin }: Clie
           />
         </div>
 
+        <div className="col-span-2">
+          <Label htmlFor="endereco">Endereço</Label>
+          <Input
+            id="endereco"
+            name="endereco"
+            placeholder="Rua, Avenida..."
+            defaultValue={cliente?.endereco || ""}
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="numero">Número</Label>
+          <Input
+            id="numero"
+            name="numero"
+            defaultValue={cliente?.numero || ""}
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="cep">CEP</Label>
+          <Input
+            id="cep"
+            name="cep"
+            placeholder="00000-000"
+            maxLength={9}
+            defaultValue={cliente?.cep || ""}
+          />
+        </div>
+
         <div>
           <Label htmlFor="cidade">Cidade</Label>
           <Input
@@ -328,6 +362,7 @@ function ClienteForm({ cliente, onSubmit, isLoading, vendedores, isAdmin }: Clie
             id="estado"
             name="estado"
             maxLength={2}
+            placeholder="MG"
             defaultValue={cliente?.estado || ""}
           />
         </div>
