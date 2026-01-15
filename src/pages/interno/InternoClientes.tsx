@@ -73,10 +73,10 @@ export default function InternoClientes() {
 
     try {
       if (editingCliente) {
-        await updateCliente.mutateAsync({ id: editingCliente.id, ...data });
+        await updateCliente({ id: editingCliente.id, ...data });
         toast.success("Cliente atualizado com sucesso!");
       } else {
-        await createCliente.mutateAsync({ ...data, created_by: user!.id });
+        await createCliente({ ...data });
         toast.success("Cliente criado com sucesso!");
       }
       setDialogOpen(false);
@@ -110,7 +110,7 @@ export default function InternoClientes() {
               <ClienteForm 
                 cliente={editingCliente} 
                 onSubmit={handleSubmit}
-                isLoading={createCliente.isPending || updateCliente.isPending}
+                isLoading={isCreating || isUpdating}
               />
             </DialogContent>
           </Dialog>

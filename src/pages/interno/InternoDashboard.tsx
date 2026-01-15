@@ -4,7 +4,6 @@ import InternoLayout from "@/components/interno/InternoLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { 
-  Users, 
   Briefcase, 
   DollarSign, 
   AlertTriangle,
@@ -42,14 +41,8 @@ export default function InternoDashboard() {
         {/* Métricas Principais */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <MetricCard
-            title="Total de Clientes"
-            value={metrics?.totalClientes}
-            icon={Users}
-            isLoading={isLoading}
-          />
-          <MetricCard
-            title="Negociações Ativas"
-            value={metrics?.negociacoesAtivas}
+            title="Negociações Abertas"
+            value={metrics?.negociacoesAbertas}
             icon={Briefcase}
             isLoading={isLoading}
           />
@@ -61,8 +54,15 @@ export default function InternoDashboard() {
             isLoading={isLoading}
           />
           <MetricCard
-            title="Tarefas Atrasadas"
-            value={metrics?.tarefasAtrasadas}
+            title="Faturado (Mês)"
+            value={metrics?.valorFaturadoMes}
+            format="currency"
+            icon={CheckCircle2}
+            isLoading={isLoading}
+          />
+          <MetricCard
+            title="Passos Vencidos"
+            value={metrics?.proximosPassosVencidos}
             icon={AlertTriangle}
             variant="warning"
             isLoading={isLoading}
@@ -120,21 +120,21 @@ export default function InternoDashboard() {
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="h-6 w-6 text-green-600" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Ganhas</p>
+                    <p className="text-sm text-muted-foreground">Faturados (Mês)</p>
                     <p className="text-xl font-bold text-green-600">
-                      {isLoading ? <Skeleton className="h-7 w-16" /> : metrics?.ganhas || 0}
+                      {isLoading ? <Skeleton className="h-7 w-16" /> : metrics?.faturadosMes || 0}
                     </p>
                   </div>
                 </div>
               </div>
               
-              <div className="flex items-center justify-between p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <XCircle className="h-6 w-6 text-red-600" />
+                  <Briefcase className="h-6 w-6 text-purple-600" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Perdidas</p>
-                    <p className="text-xl font-bold text-red-600">
-                      {isLoading ? <Skeleton className="h-7 w-16" /> : metrics?.perdidas || 0}
+                    <p className="text-sm text-muted-foreground">Propostas Enviadas</p>
+                    <p className="text-xl font-bold text-purple-600">
+                      {isLoading ? <Skeleton className="h-7 w-16" /> : metrics?.propostasEnviadas || 0}
                     </p>
                   </div>
                 </div>
@@ -144,9 +144,9 @@ export default function InternoDashboard() {
                 <div className="flex items-center gap-3">
                   <Clock className="h-6 w-6 text-primary" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Próximos Passos Hoje</p>
+                    <p className="text-sm text-muted-foreground">Sem Atualização (7+ dias)</p>
                     <p className="text-xl font-bold">
-                      {isLoading ? <Skeleton className="h-7 w-16" /> : metrics?.proximosPassosHoje || 0}
+                      {isLoading ? <Skeleton className="h-7 w-16" /> : metrics?.negociacoesSemAtualizacao || 0}
                     </p>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ export default function InternoDashboard() {
               <div className="space-y-3">
                 {ranking.map((vendedor, index) => (
                   <div 
-                    key={vendedor.userId}
+                    key={vendedor.id}
                     className="flex items-center justify-between p-4 bg-muted rounded-lg"
                   >
                     <div className="flex items-center gap-4">
@@ -179,13 +179,13 @@ export default function InternoDashboard() {
                       <div>
                         <p className="font-medium">{vendedor.nome}</p>
                         <p className="text-sm text-muted-foreground">
-                          {vendedor.totalNegociacoes} negociações
+                          {vendedor.negociacoesAbertas} negociações abertas
                         </p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="font-bold text-lg">{formatCurrency(vendedor.valorTotal)}</p>
-                      <p className="text-sm text-green-600">{vendedor.ganhas} ganhas</p>
+                      <p className="font-bold text-lg">{formatCurrency(vendedor.totalPipeline)}</p>
+                      <p className="text-sm text-green-600">{formatCurrency(vendedor.totalFaturado)} faturado</p>
                     </div>
                   </div>
                 ))}

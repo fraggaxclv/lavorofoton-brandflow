@@ -33,7 +33,7 @@ export type OrigemLead =
   | 'evento'
   | 'outro';
 
-export type TipoCliente = 'PJ' | 'PF';
+export type TipoCliente = 'pj' | 'pf';
 
 export interface Cliente {
   id: string;
@@ -133,14 +133,18 @@ export const TIPO_CLIENTE_LABELS: Record<string, string> = {
   PJ: 'Pessoa Jurídica',
 };
 
-export const ORIGEM_LABELS = ORIGEM_LEAD_LABELS;
+export const ORIGEM_LEAD_LABELS: Record<OrigemLead, string> = {
+  site: 'Site',
+  whatsapp: 'WhatsApp',
+  indicacao: 'Indicação',
+  trafego_pago: 'Tráfego Pago',
+  telefone: 'Telefone',
+  visita_loja: 'Visita à Loja',
+  evento: 'Evento',
+  outro: 'Outro',
+};
 
-export function formatCurrency(value: number): string {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(value);
-}
+export const ORIGEM_LABELS = ORIGEM_LEAD_LABELS;
 
 export const TIPO_ATIVIDADE_LABELS: Record<TipoAtividade, string> = {
   ligacao: 'Ligação',
@@ -164,22 +168,18 @@ export const TIPO_ATIVIDADE_ICONS: Record<TipoAtividade, string> = {
   outro: '📌',
 };
 
-export const ORIGEM_LEAD_LABELS: Record<OrigemLead, string> = {
-  site: 'Site',
-  whatsapp: 'WhatsApp',
-  indicacao: 'Indicação',
-  trafego_pago: 'Tráfego Pago',
-  telefone: 'Telefone',
-  visita_loja: 'Visita à Loja',
-  evento: 'Evento',
-  outro: 'Outro',
-};
-
 export const ESTADOS_BR = [
   'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA',
   'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN',
   'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
 ];
+
+export function formatCurrency(value: number): string {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(value);
+}
 
 // Métricas para Dashboard
 export interface DashboardMetrics {
