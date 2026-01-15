@@ -117,14 +117,30 @@ export const STATUS_LABELS: Record<StatusNegociacao, string> = {
 };
 
 export const STATUS_COLORS: Record<StatusNegociacao, string> = {
-  lead_novo: 'bg-blue-100 text-blue-800 border-blue-200',
-  proposta_enviada: 'bg-purple-100 text-purple-800 border-purple-200',
-  negociacao: 'bg-amber-100 text-amber-800 border-amber-200',
-  credito_analise: 'bg-orange-100 text-orange-800 border-orange-200',
-  aprovado: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-  faturado: 'bg-green-100 text-green-800 border-green-200',
-  perdido: 'bg-red-100 text-red-800 border-red-200',
+  lead_novo: '#3b82f6',
+  proposta_enviada: '#8b5cf6',
+  negociacao: '#f59e0b',
+  credito_analise: '#f97316',
+  aprovado: '#10b981',
+  faturado: '#22c55e',
+  perdido: '#ef4444',
 };
+
+export const TIPO_CLIENTE_LABELS: Record<string, string> = {
+  pf: 'Pessoa Física',
+  pj: 'Pessoa Jurídica',
+  PF: 'Pessoa Física',
+  PJ: 'Pessoa Jurídica',
+};
+
+export const ORIGEM_LABELS = ORIGEM_LEAD_LABELS;
+
+export function formatCurrency(value: number): string {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(value);
+}
 
 export const TIPO_ATIVIDADE_LABELS: Record<TipoAtividade, string> = {
   ligacao: 'Ligação',
