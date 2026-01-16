@@ -39,6 +39,7 @@ export default function InternoDashboard() {
     upsertMetaIndividual,
     isUpdatingIndividual,
     valorMetaIndividual,
+    isLoadingIndividual,
   } = useMetaMensal(user?.id);
   
   const [metaDialogOpen, setMetaDialogOpen] = useState(false);
@@ -209,6 +210,56 @@ export default function InternoDashboard() {
             )}
           </CardContent>
         </Card>
+
+        {/* Card de Meta Individual do Vendedor (apenas para vendedores) */}
+        {!isAdmin && (
+          <Card className="border-2 border-blue-500/30">
+            <CardHeader className="pb-2">
+              <CardTitle className="flex items-center gap-2">
+                <Target className="h-5 w-5 text-blue-500" />
+                Minha Meta Individual
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {isLoadingIndividual ? (
+                <Skeleton className="h-20 w-full" />
+              ) : valorMetaIndividual > 0 ? (
+                <div className="space-y-4">
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Meus Faturados</p>
+                      <p className="text-2xl font-bold text-blue-600">{faturadosMes} unidades</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm text-muted-foreground">Minha Meta</p>
+                      <p className="text-2xl font-bold text-blue-500">{valorMetaIndividual} unidades</p>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Progress 
+                      value={Math.min((faturadosMes / valorMetaIndividual) * 100, 100)} 
+                      className="h-4 bg-blue-100 dark:bg-blue-900/30 [&>div]:bg-blue-500" 
+                    />
+                    <p className="text-center text-sm font-medium">
+                      {((faturadosMes / valorMetaIndividual) * 100).toFixed(1)}% da minha meta
+                    </p>
+                  </div>
+                  {faturadosMes >= valorMetaIndividual && (
+                    <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-center">
+                      <p className="text-blue-700 dark:text-blue-400 font-bold">
+                        🎉 Você atingiu sua meta! Parabéns!
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center py-4 text-muted-foreground">
+                  <p>Nenhuma meta individual definida para você este mês</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
 
         {/* Conversão e Status */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
