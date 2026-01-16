@@ -5,6 +5,7 @@ import { useAtividades } from "@/hooks/useAtividades";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import { useCheckinDiario } from "@/hooks/useCheckinDiario";
 import { useWelcomeCheckin } from "@/hooks/useWelcomeCheckin";
+import { useMetaMensal } from "@/hooks/useMetaMensal";
 import InternoLayout from "@/components/interno/InternoLayout";
 import KanbanBoard from "@/components/interno/KanbanBoard";
 import CheckinModal from "@/components/interno/CheckinModal";
@@ -117,6 +118,9 @@ export default function InternoNegociacoes() {
     isLoading: isLoadingWelcome,
     completeWelcome,
   } = useWelcomeCheckin(user?.id);
+
+  // Meta mensal
+  const { valorMeta } = useMetaMensal();
 
   // Mostrar welcome modal automaticamente para vendedores
   useEffect(() => {
@@ -255,6 +259,7 @@ export default function InternoNegociacoes() {
         onComplete={completeWelcome}
         onOpenCheckin={() => setCheckinOpen(true)}
         hasPendingNegociacoes={pendingNegociacoes.length > 0}
+        valorMeta={valorMeta}
       />
 
       {/* Check-in Modal Gamificado */}

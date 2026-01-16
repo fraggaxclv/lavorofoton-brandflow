@@ -240,6 +240,36 @@ export type Database = {
         }
         Relationships: []
       }
+      metas_mensais: {
+        Row: {
+          ano: number
+          created_at: string
+          created_by: string | null
+          id: string
+          mes: number
+          updated_at: string
+          valor_meta: number
+        }
+        Insert: {
+          ano: number
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          mes: number
+          updated_at?: string
+          valor_meta?: number
+        }
+        Update: {
+          ano?: number
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          mes?: number
+          updated_at?: string
+          valor_meta?: number
+        }
+        Relationships: []
+      }
       negociacoes: {
         Row: {
           cliente_id: string
