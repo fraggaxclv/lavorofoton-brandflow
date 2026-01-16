@@ -360,7 +360,7 @@ export default function WelcomeCheckinModal({
         );
 
       case "summary":
-        const progressoMeta = valorMeta > 0 ? Math.min((stats.valorFaturados / valorMeta) * 100, 100) : 0;
+        const progressoMeta = valorMeta > 0 ? Math.min((stats.faturados / valorMeta) * 100, 100) : 0;
         
         return (
           <motion.div
@@ -389,7 +389,7 @@ export default function WelcomeCheckinModal({
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium">Meta do Mês</span>
                     <span className="text-sm text-muted-foreground">
-                      {formatCurrency(stats.valorFaturados)} / {formatCurrency(valorMeta)}
+                      {stats.faturados} / {valorMeta} unidades
                     </span>
                   </div>
                   <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
