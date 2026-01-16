@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import { useDashboard, useRankingVendedores } from "@/hooks/useDashboard";
+import { useMetaMensal } from "@/hooks/useMetaMensal";
 import InternoLayout from "@/components/interno/InternoLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Progress } from "@/components/ui/progress";
+import { toast } from "sonner";
 import { 
   Briefcase, 
   DollarSign, 
@@ -10,7 +17,8 @@ import {
   TrendingUp,
   Clock,
   CheckCircle2,
-  XCircle
+  Target,
+  Settings
 } from "lucide-react";
 import { formatCurrency, STATUS_LABELS, STATUS_COLORS, StatusNegociacao } from "@/types/interno";
 
@@ -18,12 +26,41 @@ export default function InternoDashboard() {
   const { isAdmin, profile, user } = useInternoAuth();
   const dashboardQuery = useDashboard(isAdmin ? {} : { owner_user_id: user?.id });
   const rankingQuery = useRankingVendedores();
+  const { valorMeta, upsertMeta, isUpdating, isLoading: isLoadingMeta } = useMetaMensal();
+  
+  const [metaDialogOpen, setMetaDialogOpen] = useState(false);
+  const [novoValorMeta, setNovoValorMeta] = useState("");
   
   const metrics = dashboardQuery.data?.metrics;
   const ranking = rankingQuery.data;
   const isLoading = dashboardQuery.isLoading;
 
   const displayName = profile?.nome_exibicao || profile?.full_name || "Usuário";
+  
+  const faturadoMes = metrics?.valorFaturadoMes || 0;
+  const progressoMeta = valorMeta > 0 ? Math.min((faturadoMes / valorMeta) * 100, 100) : 0;
+
+  const handleSaveMeta = async () => {
+    const valor = parseFloat(novoValorMeta.replace(/\D/g, "")) / 100;
+    if (isNaN(valor) || valor <= 0) {
+      toast.error("Informe um valor válido");
+      return;
+    }
+    try {
+      await upsertMeta(valor);
+      toast.success("Meta atualizada com sucesso!");
+      setMetaDialogOpen(false);
+      setNovoValorMeta("");
+    } catch (error) {
+      toast.error("Erro ao atualizar meta");
+    }
+  };
+
+  const formatInputMeta = (value: string) => {
+    const numericValue = value.replace(/\D/g, "");
+    const number = parseInt(numericValue || "0", 10) / 100;
+    return number.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  };
 
   return (
     <InternoLayout>
@@ -68,6 +105,70 @@ export default function InternoDashboard() {
             isLoading={isLoading}
           />
         </div>
+
+        {/* Card da Meta Mensal */}
+        <Card className="border-2 border-primary/30">
+          <CardHeader className="pb-2">
+            <div className="flex items-center justify-between">
+              <CardTitle className="flex items-center gap-2">
+                <Target className="h-5 w-5 text-primary" />
+                Meta Mensal
+              </CardTitle>
+              {isAdmin && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    setNovoValorMeta("");
+                    setMetaDialogOpen(true);
+                  }}
+                >
+                  <Settings className="h-4 w-4 mr-1" />
+                  Configurar
+                </Button>
+              )}
+            </div>
+          </CardHeader>
+          <CardContent>
+            {isLoadingMeta ? (
+              <Skeleton className="h-20 w-full" />
+            ) : valorMeta > 0 ? (
+              <div className="space-y-4">
+                <div className="flex items-end justify-between">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Faturado</p>
+                    <p className="text-2xl font-bold text-green-600">{formatCurrency(faturadoMes)}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm text-muted-foreground">Meta</p>
+                    <p className="text-2xl font-bold text-primary">{formatCurrency(valorMeta)}</p>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Progress value={progressoMeta} className="h-4" />
+                  <p className="text-center text-sm font-medium">
+                    {progressoMeta.toFixed(1)}% da meta
+                  </p>
+                </div>
+                {faturadoMes >= valorMeta && (
+                  <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg text-center">
+                    <p className="text-green-700 dark:text-green-400 font-bold">
+                      🎉 Meta atingida! Parabéns!
+                    </p>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="text-center py-4 text-muted-foreground">
+                {isAdmin ? (
+                  <p>Clique em "Configurar" para definir a meta mensal</p>
+                ) : (
+                  <p>Meta não definida para este mês</p>
+                )}
+              </div>
+            )}
+          </CardContent>
+        </Card>
 
         {/* Conversão e Status */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -193,6 +294,37 @@ export default function InternoDashboard() {
             </CardContent>
           </Card>
         )}
+
+        {/* Dialog para configurar meta */}
+        <Dialog open={metaDialogOpen} onOpenChange={setMetaDialogOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Configurar Meta Mensal</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4 py-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Valor da Meta</label>
+                <Input
+                  placeholder="R$ 0,00"
+                  value={novoValorMeta ? formatInputMeta(novoValorMeta) : ""}
+                  onChange={(e) => setNovoValorMeta(e.target.value.replace(/\D/g, ""))}
+                  autoFocus
+                />
+                <p className="text-sm text-muted-foreground">
+                  Meta atual: {valorMeta > 0 ? formatCurrency(valorMeta) : "Não definida"}
+                </p>
+              </div>
+            </div>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setMetaDialogOpen(false)}>
+                Cancelar
+              </Button>
+              <Button onClick={handleSaveMeta} disabled={isUpdating}>
+                {isUpdating ? "Salvando..." : "Salvar"}
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </InternoLayout>
   );

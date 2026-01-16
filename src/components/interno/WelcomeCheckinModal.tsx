@@ -39,6 +39,7 @@ interface WelcomeCheckinModalProps {
   onComplete: () => void;
   onOpenCheckin: () => void;
   hasPendingNegociacoes: boolean;
+  valorMeta?: number;
 }
 
 type Step = "welcome" | "new_client_question" | "new_client_form" | "summary";
@@ -59,6 +60,7 @@ export default function WelcomeCheckinModal({
   onComplete,
   onOpenCheckin,
   hasPendingNegociacoes,
+  valorMeta = 0,
 }: WelcomeCheckinModalProps) {
   const [step, setStep] = useState<Step>("welcome");
   const [direction, setDirection] = useState(0);
@@ -358,6 +360,8 @@ export default function WelcomeCheckinModal({
         );
 
       case "summary":
+        const progressoMeta = valorMeta > 0 ? Math.min((stats.valorFaturados / valorMeta) * 100, 100) : 0;
+        
         return (
           <motion.div
             key="summary"
@@ -377,6 +381,37 @@ export default function WelcomeCheckinModal({
                 Veja como estão suas negociações
               </p>
             </div>
+
+            {/* Barra de progresso da meta */}
+            {valorMeta > 0 && (
+              <Card className="border-2 border-primary/50 bg-primary/5">
+                <CardContent className="p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium">Meta do Mês</span>
+                    <span className="text-sm text-muted-foreground">
+                      {formatCurrency(stats.valorFaturados)} / {formatCurrency(valorMeta)}
+                    </span>
+                  </div>
+                  <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${progressoMeta}%` }}
+                      transition={{ duration: 1, ease: "easeOut" }}
+                      className={`h-full rounded-full ${
+                        progressoMeta >= 100 
+                          ? "bg-green-500" 
+                          : progressoMeta >= 70 
+                            ? "bg-yellow-500" 
+                            : "bg-primary"
+                      }`}
+                    />
+                  </div>
+                  <p className="text-center text-sm font-bold mt-2">
+                    {progressoMeta >= 100 ? "🎉 Meta atingida!" : `${progressoMeta.toFixed(0)}% da meta`}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
 
             <div className="grid gap-3">
               {/* Propostas Enviadas */}
