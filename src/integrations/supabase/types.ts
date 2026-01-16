@@ -249,6 +249,7 @@ export type Database = {
           mes: number
           updated_at: string
           valor_meta: number
+          vendedor_id: string | null
         }
         Insert: {
           ano: number
@@ -258,6 +259,7 @@ export type Database = {
           mes: number
           updated_at?: string
           valor_meta?: number
+          vendedor_id?: string | null
         }
         Update: {
           ano?: number
@@ -267,6 +269,7 @@ export type Database = {
           mes?: number
           updated_at?: string
           valor_meta?: number
+          vendedor_id?: string | null
         }
         Relationships: []
       }

@@ -120,7 +120,7 @@ export default function InternoNegociacoes() {
   } = useWelcomeCheckin(user?.id);
 
   // Meta mensal
-  const { valorMeta } = useMetaMensal();
+  const { valorMetaGeral } = useMetaMensal(user?.id);
 
   // Mostrar welcome modal automaticamente para vendedores
   useEffect(() => {
@@ -259,7 +259,7 @@ export default function InternoNegociacoes() {
         onComplete={completeWelcome}
         onOpenCheckin={() => setCheckinOpen(true)}
         hasPendingNegociacoes={pendingNegociacoes.length > 0}
-        valorMeta={valorMeta}
+        valorMeta={valorMetaGeral}
       />
 
       {/* Check-in Modal Gamificado */}

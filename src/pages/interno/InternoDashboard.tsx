@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
-import { useDashboard, useRankingVendedores } from "@/hooks/useDashboard";
-import { useMetaMensal } from "@/hooks/useMetaMensal";
+import { useDashboard, useRankingVendedores, useVendedores } from "@/hooks/useDashboard";
+import { useMetaMensal, getMetaVendedor } from "@/hooks/useMetaMensal";
 import InternoLayout from "@/components/interno/InternoLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { 
   Briefcase, 
@@ -18,7 +20,8 @@ import {
   Clock,
   CheckCircle2,
   Target,
-  Settings
+  Settings,
+  Users
 } from "lucide-react";
 import { formatCurrency, STATUS_LABELS, STATUS_COLORS, StatusNegociacao } from "@/types/interno";
 
@@ -26,34 +29,77 @@ export default function InternoDashboard() {
   const { isAdmin, profile, user } = useInternoAuth();
   const dashboardQuery = useDashboard(isAdmin ? {} : { owner_user_id: user?.id });
   const rankingQuery = useRankingVendedores();
-  const { valorMeta, upsertMeta, isUpdating, isLoading: isLoadingMeta } = useMetaMensal();
+  const vendedoresQuery = useVendedores();
+  const { 
+    valorMetaGeral, 
+    upsertMetaGeral, 
+    isUpdatingGeral, 
+    isLoadingGeral,
+    todasMetasIndividuais,
+    upsertMetaIndividual,
+    isUpdatingIndividual,
+    valorMetaIndividual,
+  } = useMetaMensal(user?.id);
   
   const [metaDialogOpen, setMetaDialogOpen] = useState(false);
+  const [metaIndividualDialogOpen, setMetaIndividualDialogOpen] = useState(false);
   const [novoValorMeta, setNovoValorMeta] = useState("");
+  const [selectedVendedorId, setSelectedVendedorId] = useState<string>("");
+  const [novoValorMetaIndividual, setNovoValorMetaIndividual] = useState("");
   
   const metrics = dashboardQuery.data?.metrics;
   const ranking = rankingQuery.data;
+  const vendedores = vendedoresQuery.data || [];
   const isLoading = dashboardQuery.isLoading;
 
   const displayName = profile?.nome_exibicao || profile?.full_name || "Usuário";
   
   const faturadosMes = metrics?.faturadosMes || 0;
-  const progressoMeta = valorMeta > 0 ? Math.min((faturadosMes / valorMeta) * 100, 100) : 0;
+  const progressoMetaGeral = valorMetaGeral > 0 ? Math.min((faturadosMes / valorMetaGeral) * 100, 100) : 0;
 
-  const handleSaveMeta = async () => {
+  const handleSaveMetaGeral = async () => {
     const valor = parseInt(novoValorMeta, 10);
     if (isNaN(valor) || valor <= 0) {
       toast.error("Informe uma quantidade válida");
       return;
     }
     try {
-      await upsertMeta(valor);
-      toast.success("Meta atualizada com sucesso!");
+      await upsertMetaGeral(valor);
+      toast.success("Meta geral atualizada com sucesso!");
       setMetaDialogOpen(false);
       setNovoValorMeta("");
     } catch (error) {
       toast.error("Erro ao atualizar meta");
     }
+  };
+
+  const handleSaveMetaIndividual = async () => {
+    if (!selectedVendedorId) {
+      toast.error("Selecione um vendedor");
+      return;
+    }
+    const valor = parseInt(novoValorMetaIndividual, 10);
+    if (isNaN(valor) || valor <= 0) {
+      toast.error("Informe uma quantidade válida");
+      return;
+    }
+    try {
+      await upsertMetaIndividual({ vendedorId: selectedVendedorId, valorMeta: valor });
+      toast.success("Meta individual atualizada com sucesso!");
+      setMetaIndividualDialogOpen(false);
+      setSelectedVendedorId("");
+      setNovoValorMetaIndividual("");
+    } catch (error) {
+      toast.error("Erro ao atualizar meta individual");
+    }
+  };
+
+  const getVendedorMetaProgress = (vendedorId: string) => {
+    const vendedorMeta = getMetaVendedor(todasMetasIndividuais || [], vendedorId);
+    const vendedorData = ranking?.find(v => v.id === vendedorId);
+    // Count faturados from ranking - we need to get actual count not value
+    // For now, approximate using value and assume similar behavior
+    return { meta: vendedorMeta, vendedorData };
   };
 
   return (
@@ -124,9 +170,9 @@ export default function InternoDashboard() {
             </div>
           </CardHeader>
           <CardContent>
-            {isLoadingMeta ? (
+            {isLoadingGeral ? (
               <Skeleton className="h-20 w-full" />
-            ) : valorMeta > 0 ? (
+            ) : valorMetaGeral > 0 ? (
               <div className="space-y-4">
                 <div className="flex items-end justify-between">
                   <div>
@@ -134,17 +180,17 @@ export default function InternoDashboard() {
                     <p className="text-2xl font-bold text-green-600">{faturadosMes} unidades</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm text-muted-foreground">Meta</p>
-                    <p className="text-2xl font-bold text-primary">{valorMeta} unidades</p>
+                    <p className="text-sm text-muted-foreground">Meta Geral</p>
+                    <p className="text-2xl font-bold text-primary">{valorMetaGeral} unidades</p>
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Progress value={progressoMeta} className="h-4" />
+                  <Progress value={progressoMetaGeral} className="h-4" />
                   <p className="text-center text-sm font-medium">
-                    {progressoMeta.toFixed(1)}% da meta
+                    {progressoMetaGeral.toFixed(1)}% da meta
                   </p>
                 </div>
-                {faturadosMes >= valorMeta && (
+                {faturadosMes >= valorMetaGeral && (
                   <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg text-center">
                     <p className="text-green-700 dark:text-green-400 font-bold">
                       🎉 Meta atingida! Parabéns!
@@ -250,54 +296,86 @@ export default function InternoDashboard() {
           </Card>
         </div>
 
-        {/* Ranking de Vendedores (apenas admin) */}
+        {/* Ranking de Vendedores com Metas (apenas admin) */}
         {isAdmin && ranking && ranking.length > 0 && (
           <Card>
             <CardHeader>
-              <CardTitle>Ranking de Vendedores</CardTitle>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="h-5 w-5 text-primary" />
+                  Metas Individuais
+                </CardTitle>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setSelectedVendedorId("");
+                    setNovoValorMetaIndividual("");
+                    setMetaIndividualDialogOpen(true);
+                  }}
+                >
+                  <Target className="h-4 w-4 mr-1" />
+                  Definir Meta
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
-                {ranking.map((vendedor, index) => (
-                  <div 
-                    key={vendedor.id}
-                    className="flex items-center justify-between p-4 bg-muted rounded-lg"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className={`text-xl font-bold ${
-                        index === 0 ? 'text-yellow-500' :
-                        index === 1 ? 'text-gray-400' :
-                        index === 2 ? 'text-amber-600' : 'text-muted-foreground'
-                      }`}>
-                        #{index + 1}
-                      </span>
-                      <div>
-                        <p className="font-medium">{vendedor.nome}</p>
-                        <p className="text-sm text-muted-foreground">
-                          {vendedor.negociacoesAbertas} negociações abertas
-                        </p>
+                {ranking.map((vendedor, index) => {
+                  const metaIndividual = getMetaVendedor(todasMetasIndividuais || [], vendedor.id);
+                  // We need actual count - for now use negociacoesAbertas as proxy
+                  // In real scenario, we would count faturados per vendedor
+                  return (
+                    <div 
+                      key={vendedor.id}
+                      className="p-4 bg-muted rounded-lg space-y-2"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <span className={`text-xl font-bold ${
+                            index === 0 ? 'text-yellow-500' :
+                            index === 1 ? 'text-gray-400' :
+                            index === 2 ? 'text-amber-600' : 'text-muted-foreground'
+                          }`}>
+                            #{index + 1}
+                          </span>
+                          <div>
+                            <p className="font-medium">{vendedor.nome}</p>
+                            <p className="text-sm text-muted-foreground">
+                              {vendedor.negociacoesAbertas} negociações abertas
+                            </p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="font-bold text-lg">{formatCurrency(vendedor.totalPipeline)}</p>
+                          <p className="text-sm text-green-600">{formatCurrency(vendedor.totalFaturado)} faturado</p>
+                        </div>
                       </div>
+                      {metaIndividual > 0 && (
+                        <div className="pt-2 border-t border-border/50">
+                          <div className="flex items-center justify-between text-sm mb-1">
+                            <span className="text-muted-foreground">Meta individual</span>
+                            <span className="font-medium">{metaIndividual} unidades</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    <div className="text-right">
-                      <p className="font-bold text-lg">{formatCurrency(vendedor.totalPipeline)}</p>
-                      <p className="text-sm text-green-600">{formatCurrency(vendedor.totalFaturado)} faturado</p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </CardContent>
           </Card>
         )}
 
-        {/* Dialog para configurar meta */}
+        {/* Dialog para configurar meta geral */}
         <Dialog open={metaDialogOpen} onOpenChange={setMetaDialogOpen}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Configurar Meta Mensal</DialogTitle>
+              <DialogTitle>Configurar Meta Geral do Time</DialogTitle>
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Quantidade de Veículos</label>
+                <Label>Quantidade de Veículos (Total do Time)</Label>
                 <Input
                   type="number"
                   placeholder="Ex: 10"
@@ -307,7 +385,7 @@ export default function InternoDashboard() {
                   autoFocus
                 />
                 <p className="text-sm text-muted-foreground">
-                  Meta atual: {valorMeta > 0 ? `${valorMeta} unidades` : "Não definida"}
+                  Meta atual: {valorMetaGeral > 0 ? `${valorMetaGeral} unidades` : "Não definida"}
                 </p>
               </div>
             </div>
@@ -315,8 +393,57 @@ export default function InternoDashboard() {
               <Button variant="outline" onClick={() => setMetaDialogOpen(false)}>
                 Cancelar
               </Button>
-              <Button onClick={handleSaveMeta} disabled={isUpdating}>
-                {isUpdating ? "Salvando..." : "Salvar"}
+              <Button onClick={handleSaveMetaGeral} disabled={isUpdatingGeral}>
+                {isUpdatingGeral ? "Salvando..." : "Salvar"}
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        {/* Dialog para configurar meta individual */}
+        <Dialog open={metaIndividualDialogOpen} onOpenChange={setMetaIndividualDialogOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Configurar Meta Individual</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4 py-4">
+              <div className="space-y-2">
+                <Label>Vendedor</Label>
+                <Select value={selectedVendedorId} onValueChange={setSelectedVendedorId}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione o vendedor" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {vendedores.map((v) => (
+                      <SelectItem key={v.id} value={v.id}>
+                        {v.nome}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Quantidade de Veículos</Label>
+                <Input
+                  type="number"
+                  placeholder="Ex: 5"
+                  value={novoValorMetaIndividual}
+                  onChange={(e) => setNovoValorMetaIndividual(e.target.value)}
+                  min={1}
+                />
+                {selectedVendedorId && (
+                  <p className="text-sm text-muted-foreground">
+                    Meta atual: {getMetaVendedor(todasMetasIndividuais || [], selectedVendedorId) || "Não definida"}
+                  </p>
+                )}
+              </div>
+            </div>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setMetaIndividualDialogOpen(false)}>
+                Cancelar
+              </Button>
+              <Button onClick={handleSaveMetaIndividual} disabled={isUpdatingIndividual}>
+                {isUpdatingIndividual ? "Salvando..." : "Salvar"}
               </Button>
             </DialogFooter>
           </DialogContent>
