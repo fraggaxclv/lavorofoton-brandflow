@@ -37,13 +37,13 @@ export default function InternoDashboard() {
 
   const displayName = profile?.nome_exibicao || profile?.full_name || "Usuário";
   
-  const faturadoMes = metrics?.valorFaturadoMes || 0;
-  const progressoMeta = valorMeta > 0 ? Math.min((faturadoMes / valorMeta) * 100, 100) : 0;
+  const faturadosMes = metrics?.faturadosMes || 0;
+  const progressoMeta = valorMeta > 0 ? Math.min((faturadosMes / valorMeta) * 100, 100) : 0;
 
   const handleSaveMeta = async () => {
-    const valor = parseFloat(novoValorMeta.replace(/\D/g, "")) / 100;
+    const valor = parseInt(novoValorMeta, 10);
     if (isNaN(valor) || valor <= 0) {
-      toast.error("Informe um valor válido");
+      toast.error("Informe uma quantidade válida");
       return;
     }
     try {
@@ -54,12 +54,6 @@ export default function InternoDashboard() {
     } catch (error) {
       toast.error("Erro ao atualizar meta");
     }
-  };
-
-  const formatInputMeta = (value: string) => {
-    const numericValue = value.replace(/\D/g, "");
-    const number = parseInt(numericValue || "0", 10) / 100;
-    return number.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
   };
 
   return (
@@ -136,12 +130,12 @@ export default function InternoDashboard() {
               <div className="space-y-4">
                 <div className="flex items-end justify-between">
                   <div>
-                    <p className="text-sm text-muted-foreground">Faturado</p>
-                    <p className="text-2xl font-bold text-green-600">{formatCurrency(faturadoMes)}</p>
+                    <p className="text-sm text-muted-foreground">Faturados</p>
+                    <p className="text-2xl font-bold text-green-600">{faturadosMes} unidades</p>
                   </div>
                   <div className="text-right">
                     <p className="text-sm text-muted-foreground">Meta</p>
-                    <p className="text-2xl font-bold text-primary">{formatCurrency(valorMeta)}</p>
+                    <p className="text-2xl font-bold text-primary">{valorMeta} unidades</p>
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -150,7 +144,7 @@ export default function InternoDashboard() {
                     {progressoMeta.toFixed(1)}% da meta
                   </p>
                 </div>
-                {faturadoMes >= valorMeta && (
+                {faturadosMes >= valorMeta && (
                   <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg text-center">
                     <p className="text-green-700 dark:text-green-400 font-bold">
                       🎉 Meta atingida! Parabéns!
@@ -303,15 +297,17 @@ export default function InternoDashboard() {
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Valor da Meta</label>
+                <label className="text-sm font-medium">Quantidade de Veículos</label>
                 <Input
-                  placeholder="R$ 0,00"
-                  value={novoValorMeta ? formatInputMeta(novoValorMeta) : ""}
-                  onChange={(e) => setNovoValorMeta(e.target.value.replace(/\D/g, ""))}
+                  type="number"
+                  placeholder="Ex: 10"
+                  value={novoValorMeta}
+                  onChange={(e) => setNovoValorMeta(e.target.value)}
+                  min={1}
                   autoFocus
                 />
                 <p className="text-sm text-muted-foreground">
-                  Meta atual: {valorMeta > 0 ? formatCurrency(valorMeta) : "Não definida"}
+                  Meta atual: {valorMeta > 0 ? `${valorMeta} unidades` : "Não definida"}
                 </p>
               </div>
             </div>
