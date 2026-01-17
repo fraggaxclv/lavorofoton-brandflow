@@ -21,11 +21,15 @@ import {
   CheckCircle2,
   Target,
   Settings,
-  Users
+  Users,
+  Plus,
+  UserPlus
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { formatCurrency, STATUS_LABELS, STATUS_COLORS, StatusNegociacao } from "@/types/interno";
 
 export default function InternoDashboard() {
+  const navigate = useNavigate();
   const { isAdmin, profile, user } = useInternoAuth();
   const dashboardQuery = useDashboard(isAdmin ? {} : { owner_user_id: user?.id });
   const rankingQuery = useRankingVendedores();
@@ -107,13 +111,34 @@ export default function InternoDashboard() {
     <InternoLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div>
-          <h1 className="text-2xl font-bold text-foreground">
-            Olá, {displayName}!
-          </h1>
-          <p className="text-muted-foreground">
-            {isAdmin ? "Visão geral do time de vendas" : "Acompanhe suas negociações"}
-          </p>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold text-foreground">
+              Olá, {displayName}!
+            </h1>
+            <p className="text-muted-foreground">
+              {isAdmin ? "Visão geral do time de vendas" : "Acompanhe suas negociações"}
+            </p>
+          </div>
+          
+          {/* Botões de ação rápida */}
+          <div className="flex gap-2">
+            <Button 
+              onClick={() => navigate("/interno/negociacoes")} 
+              className="gap-2"
+            >
+              <Plus className="h-4 w-4" />
+              Nova Negociação
+            </Button>
+            <Button 
+              variant="outline" 
+              onClick={() => navigate("/interno/clientes")}
+              className="gap-2"
+            >
+              <UserPlus className="h-4 w-4" />
+              Novo Cliente
+            </Button>
+          </div>
         </div>
 
         {/* Métricas Principais */}
@@ -147,15 +172,15 @@ export default function InternoDashboard() {
           />
         </div>
 
-        {/* Card da Meta Mensal */}
-        <Card className="border-2 border-primary/30">
-          <CardHeader className="pb-2">
-            <div className="flex items-center justify-between">
-              <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5 text-primary" />
-                Meta Mensal
-              </CardTitle>
-              {isAdmin && (
+        {/* Card da Meta Mensal - apenas admin */}
+        {isAdmin && (
+          <Card className="border-2 border-primary/30">
+            <CardHeader className="pb-2">
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center gap-2">
+                  <Target className="h-5 w-5 text-primary" />
+                  Meta Mensal do Time
+                </CardTitle>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -167,49 +192,45 @@ export default function InternoDashboard() {
                   <Settings className="h-4 w-4 mr-1" />
                   Configurar
                 </Button>
-              )}
-            </div>
-          </CardHeader>
-          <CardContent>
-            {isLoadingGeral ? (
-              <Skeleton className="h-20 w-full" />
-            ) : valorMetaGeral > 0 ? (
-              <div className="space-y-4">
-                <div className="flex items-end justify-between">
-                  <div>
-                    <p className="text-sm text-muted-foreground">Faturados</p>
-                    <p className="text-2xl font-bold text-green-600">{faturadosMes} unidades</p>
+              </div>
+            </CardHeader>
+            <CardContent>
+              {isLoadingGeral ? (
+                <Skeleton className="h-20 w-full" />
+              ) : valorMetaGeral > 0 ? (
+                <div className="space-y-4">
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Faturados</p>
+                      <p className="text-2xl font-bold text-green-600">{faturadosMes} unidades</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm text-muted-foreground">Meta Geral</p>
+                      <p className="text-2xl font-bold text-primary">{valorMetaGeral} unidades</p>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm text-muted-foreground">Meta Geral</p>
-                    <p className="text-2xl font-bold text-primary">{valorMetaGeral} unidades</p>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Progress value={progressoMetaGeral} className="h-4" />
-                  <p className="text-center text-sm font-medium">
-                    {progressoMetaGeral.toFixed(1)}% da meta
-                  </p>
-                </div>
-                {faturadosMes >= valorMetaGeral && (
-                  <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg text-center">
-                    <p className="text-green-700 dark:text-green-400 font-bold">
-                      🎉 Meta atingida! Parabéns!
+                  <div className="space-y-2">
+                    <Progress value={progressoMetaGeral} className="h-4" />
+                    <p className="text-center text-sm font-medium">
+                      {progressoMetaGeral.toFixed(1)}% da meta
                     </p>
                   </div>
-                )}
-              </div>
-            ) : (
-              <div className="text-center py-4 text-muted-foreground">
-                {isAdmin ? (
+                  {faturadosMes >= valorMetaGeral && (
+                    <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg text-center">
+                      <p className="text-green-700 dark:text-green-400 font-bold">
+                        🎉 Meta atingida! Parabéns!
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-center py-4 text-muted-foreground">
                   <p>Clique em "Configurar" para definir a meta mensal</p>
-                ) : (
-                  <p>Meta não definida para este mês</p>
-                )}
-              </div>
-            )}
-          </CardContent>
-        </Card>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
 
         {/* Card de Meta Individual do Vendedor (apenas para vendedores) */}
         {!isAdmin && (
