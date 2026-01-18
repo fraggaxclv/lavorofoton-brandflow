@@ -38,7 +38,7 @@ import {
   TIPO_VENDA_LABELS,
   formatCurrency 
 } from "@/types/interno";
-import { Calendar, DollarSign, GripVertical, Loader2, Factory, Package } from "lucide-react";
+import { Calendar, DollarSign, GripVertical, Loader2, Factory, Package, User } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { cn } from "@/lib/utils";
@@ -158,6 +158,15 @@ function KanbanCard({ negociacao, onClick, isDragging }: KanbanCardProps) {
                 </span>
               )}
             </div>
+            {/* Consultor responsável */}
+            {negociacao.owner && (
+              <div className="flex items-center gap-1 text-xs text-muted-foreground pt-1 border-t border-border/50 mt-1">
+                <User className="h-3 w-3" />
+                <span className="truncate">
+                  {negociacao.owner.nome_exibicao || negociacao.owner.full_name || negociacao.owner.email?.split('@')[0]}
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </CardContent>

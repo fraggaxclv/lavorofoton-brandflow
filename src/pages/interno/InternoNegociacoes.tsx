@@ -486,6 +486,8 @@ export default function InternoNegociacoes() {
               setDetailsOpen(false);
               setSelectedNegociacao(null);
             }}
+            consultores={consultores}
+            isAdmin={isAdmin}
             isUpdating={isUpdating}
             isDeleting={isDeleting}
           />
@@ -667,13 +669,15 @@ interface NegociacaoDetailsProps {
   onOpenChange: (open: boolean) => void;
   onStatusChange: (negociacao: Negociacao, status: StatusNegociacao, tipoVenda?: TipoVenda) => void;
   onLossStatusChange: (negociacao: Negociacao, motivo: string) => Promise<void>;
-  onUpdate: (data: { id: string; valor_estimado?: number; probabilidade?: number; produto_principal?: string; proximo_passo?: string; data_proximo_passo?: string; observacoes?: string }) => Promise<unknown>;
+  onUpdate: (data: { id: string; valor_estimado?: number; probabilidade?: number; produto_principal?: string; proximo_passo?: string; data_proximo_passo?: string; observacoes?: string; owner_user_id?: string }) => Promise<unknown>;
   onDelete: (id: string) => Promise<void>;
+  consultores: { id: string; nome_exibicao?: string; full_name?: string; email: string; ativo?: boolean }[];
+  isAdmin: boolean;
   isUpdating?: boolean;
   isDeleting?: boolean;
 }
 
-function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onLossStatusChange, onUpdate, onDelete, isUpdating, isDeleting }: NegociacaoDetailsProps) {
+function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onLossStatusChange, onUpdate, onDelete, consultores, isAdmin, isUpdating, isDeleting }: NegociacaoDetailsProps) {
   const { user } = useInternoAuth();
   const { atividades, isLoading: atividadesLoading, createAtividade, isCreating: atividadeIsCreating } = useAtividades(negociacao.id);
   const [novaAtividade, setNovaAtividade] = useState(false);
@@ -689,6 +693,7 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
     proximo_passo: negociacao.proximo_passo || "",
     data_proximo_passo: negociacao.data_proximo_passo || "",
     observacoes: negociacao.observacoes || "",
+    owner_user_id: negociacao.owner_user_id || "",
   });
 
   const handleDelete = async () => {
@@ -724,7 +729,7 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
 
   const handleSaveChanges = async () => {
     try {
-      await onUpdate({
+      const updateData: { id: string; valor_estimado?: number; probabilidade?: number; produto_principal?: string; proximo_passo?: string; data_proximo_passo?: string; observacoes?: string; owner_user_id?: string } = {
         id: negociacao.id,
         valor_estimado: formValues.valor_estimado,
         probabilidade: formValues.probabilidade,
@@ -732,7 +737,14 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
         proximo_passo: formValues.proximo_passo || undefined,
         data_proximo_passo: formValues.data_proximo_passo || undefined,
         observacoes: formValues.observacoes || undefined,
-      });
+      };
+      
+      // Only include owner_user_id if it changed and user is admin
+      if (isAdmin && formValues.owner_user_id && formValues.owner_user_id !== negociacao.owner_user_id) {
+        updateData.owner_user_id = formValues.owner_user_id;
+      }
+      
+      await onUpdate(updateData);
       toast.success("Negociação atualizada!");
       setEditMode(false);
     } catch (error) {
@@ -862,6 +874,32 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
               <div>
                 <Label className="text-muted-foreground">Origem</Label>
                 <p className="font-medium">{ORIGEM_LABELS[negociacao.origem_lead]}</p>
+              </div>
+              
+              {/* Consultor Responsável - Editável apenas para admins */}
+              <div>
+                <Label className="text-muted-foreground">Consultor Responsável</Label>
+                {editMode && isAdmin ? (
+                  <Select 
+                    value={formValues.owner_user_id}
+                    onValueChange={(value) => setFormValues(prev => ({ ...prev, owner_user_id: value }))}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione o consultor" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {consultores.filter(c => c.ativo !== false).map(consultor => (
+                        <SelectItem key={consultor.id} value={consultor.id}>
+                          {consultor.nome_exibicao || consultor.full_name || consultor.email}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                ) : (
+                  <p className="font-medium">
+                    {negociacao.owner?.nome_exibicao || negociacao.owner?.full_name || negociacao.owner?.email || "-"}
+                  </p>
+                )}
               </div>
               
               <div>
