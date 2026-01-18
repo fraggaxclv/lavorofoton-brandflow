@@ -40,8 +40,8 @@ const navItems = [
     roles: ["admin", "vendedor"] as const
   },
   { 
-    path: "/interno/vendedores", 
-    label: "Vendedores", 
+    path: "/interno/consultores", 
+    label: "Consultores", 
     icon: UserCog,
     roles: ["admin"] as const
   },

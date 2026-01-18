@@ -90,7 +90,7 @@ const statusOrder: StatusNegociacao[] = [
 ];
 
 export default function InternoNegociacoes() {
-  const { user, isAdmin, isVendedor } = useInternoAuth();
+  const { user, isAdmin, isConsultor } = useInternoAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [tipoVendaFilter, setTipoVendaFilter] = useState<string>("all");
@@ -122,12 +122,12 @@ export default function InternoNegociacoes() {
   // Meta mensal
   const { valorMetaGeral } = useMetaMensal(user?.id);
 
-  // Mostrar welcome modal automaticamente para vendedores
+  // Mostrar welcome modal automaticamente para consultores
   useEffect(() => {
-    if (showWelcome && isVendedor && !isLoadingWelcome) {
+    if (showWelcome && isConsultor && !isLoadingWelcome) {
       setWelcomeOpen(true);
     }
-  }, [showWelcome, isVendedor, isLoadingWelcome]);
+  }, [showWelcome, isConsultor, isLoadingWelcome]);
 
   const { negociacoes, isLoading, createNegociacao, updateNegociacao, deleteNegociacao, isCreating, isUpdating, isDeleting } = useNegociacoes({
     status: statusFilter !== "all" ? statusFilter as StatusNegociacao : undefined,
