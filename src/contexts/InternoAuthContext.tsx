@@ -18,7 +18,7 @@ interface InternoAuthContextType {
   profile: UserProfile | null;
   userRole: UserRole | null;
   isAdmin: boolean;
-  isVendedor: boolean;
+  isConsultor: boolean;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
@@ -31,7 +31,7 @@ const InternoAuthContext = createContext<InternoAuthContextType>({
   profile: null,
   userRole: null,
   isAdmin: false,
-  isVendedor: false,
+  isConsultor: false,
   loading: true,
   signIn: async () => ({ error: null }),
   signOut: async () => {},
@@ -185,7 +185,7 @@ export const InternoAuthProvider = ({ children }: { children: React.ReactNode })
   };
 
   const isAdmin = userRole === 'admin';
-  const isVendedor = userRole === 'vendedor';
+  const isConsultor = userRole === 'vendedor';
 
   return (
     <InternoAuthContext.Provider
@@ -195,7 +195,7 @@ export const InternoAuthProvider = ({ children }: { children: React.ReactNode })
         profile,
         userRole,
         isAdmin,
-        isVendedor,
+        isConsultor,
         loading,
         signIn,
         signOut,

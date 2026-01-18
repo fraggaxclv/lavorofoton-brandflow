@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useClientes } from "@/hooks/useClientes";
-import { useVendedores } from "@/hooks/useVendedores";
+import { useConsultores } from "@/hooks/useConsultores";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import InternoLayout from "@/components/interno/InternoLayout";
 import { Button } from "@/components/ui/button";
@@ -51,8 +51,8 @@ export default function InternoClientes() {
   const [editingCliente, setEditingCliente] = useState<Cliente | null>(null);
   const [assignDialogOpen, setAssignDialogOpen] = useState(false);
   const [assigningCliente, setAssigningCliente] = useState<Cliente | null>(null);
-  const [selectedVendedor, setSelectedVendedor] = useState<string>("");
-  const { data: vendedores = [] } = useVendedores();
+  const [selectedConsultor, setSelectedConsultor] = useState<string>("");
+  const { data: consultores = [] } = useConsultores();
 
   const { clientes, isLoading, createCliente, updateCliente, isCreating, isUpdating } = useClientes({ 
     search: searchTerm,
@@ -75,23 +75,23 @@ export default function InternoClientes() {
 
   const handleOpenAssign = (cliente: Cliente) => {
     setAssigningCliente(cliente);
-    setSelectedVendedor(cliente.vendedor_responsavel || "");
+    setSelectedConsultor(cliente.vendedor_responsavel || "");
     setAssignDialogOpen(true);
   };
 
-  const handleAssignVendedor = async () => {
+  const handleAssignConsultor = async () => {
     if (!assigningCliente) return;
     
     try {
       await updateCliente({ 
         id: assigningCliente.id, 
-        vendedor_responsavel: selectedVendedor || undefined 
+        vendedor_responsavel: selectedConsultor || undefined 
       });
-      toast.success("Vendedor atribuído com sucesso!");
+      toast.success("Consultor atribuído com sucesso!");
       setAssignDialogOpen(false);
       setAssigningCliente(null);
     } catch (error) {
-      toast.error("Erro ao atribuir vendedor");
+      toast.error("Erro ao atribuir consultor");
     }
   };
 
@@ -165,7 +165,7 @@ export default function InternoClientes() {
                 cliente={editingCliente} 
                 onSubmit={handleSubmit}
                 isLoading={isCreating || isUpdating}
-                vendedores={vendedores}
+                consultores={consultores}
                 isAdmin={isAdmin}
               />
             </DialogContent>
@@ -228,9 +228,9 @@ export default function InternoClientes() {
                           {cliente.vendedor_responsavel && (
                             <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
                               <UserCheck className="h-2.5 w-2.5 mr-0.5" />
-                              {vendedores.find(v => v.id === cliente.vendedor_responsavel)?.nome_exibicao || 
-                               vendedores.find(v => v.id === cliente.vendedor_responsavel)?.full_name || 
-                               "Vendedor"}
+                              {consultores.find(v => v.id === cliente.vendedor_responsavel)?.nome_exibicao || 
+                               consultores.find(v => v.id === cliente.vendedor_responsavel)?.full_name || 
+                               "Consultor"}
                             </Badge>
                           )}
                         </div>
@@ -278,7 +278,7 @@ export default function InternoClientes() {
                           size="sm"
                           className="h-8 px-2 text-xs"
                           onClick={() => handleOpenAssign(cliente)}
-                          title="Atribuir Vendedor"
+                          title="Atribuir Consultor"
                         >
                           <Users className="h-3.5 w-3.5 mr-1" />
                           <span className="hidden sm:inline">Atribuir</span>
@@ -318,25 +318,25 @@ export default function InternoClientes() {
           </Card>
         )}
 
-        {/* Dialog: Atribuir Vendedor */}
+        {/* Dialog: Atribuir Consultor */}
         <Dialog open={assignDialogOpen} onOpenChange={setAssignDialogOpen}>
           <DialogContent className="max-w-sm">
             <DialogHeader>
-              <DialogTitle className="text-base">Atribuir Vendedor</DialogTitle>
+              <DialogTitle className="text-base">Atribuir Consultor</DialogTitle>
             </DialogHeader>
             <div className="space-y-4">
               <div>
                 <p className="text-sm text-muted-foreground mb-3">
                   Cliente: <span className="font-medium text-foreground">{assigningCliente?.nome_fantasia || assigningCliente?.razao_social}</span>
                 </p>
-                <Label htmlFor="assign-vendedor" className="text-sm">Vendedor Responsável</Label>
-                <Select value={selectedVendedor} onValueChange={setSelectedVendedor}>
+                <Label htmlFor="assign-consultor" className="text-sm">Consultor Responsável</Label>
+                <Select value={selectedConsultor} onValueChange={setSelectedConsultor}>
                   <SelectTrigger className="mt-1.5">
-                    <SelectValue placeholder="Selecione um vendedor" />
+                    <SelectValue placeholder="Selecione um consultor" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="">Nenhum (remover atribuição)</SelectItem>
-                    {vendedores.map(v => (
+                    {consultores.filter(c => c.ativo !== false).map(v => (
                       <SelectItem key={v.id} value={v.id}>
                         {v.nome_exibicao || v.full_name || v.email}
                       </SelectItem>
@@ -348,7 +348,7 @@ export default function InternoClientes() {
                 <Button variant="outline" size="sm" onClick={() => setAssignDialogOpen(false)}>
                   Cancelar
                 </Button>
-                <Button size="sm" onClick={handleAssignVendedor} disabled={isUpdating}>
+                <Button size="sm" onClick={handleAssignConsultor} disabled={isUpdating}>
                   {isUpdating && <Loader2 className="h-3 w-3 mr-1 animate-spin" />}
                   Confirmar
                 </Button>
@@ -365,11 +365,11 @@ interface ClienteFormProps {
   cliente: Cliente | null;
   onSubmit: (formData: FormData) => void;
   isLoading: boolean;
-  vendedores: { id: string; email: string; full_name?: string; nome_exibicao?: string }[];
+  consultores: { id: string; email: string; full_name?: string; nome_exibicao?: string; ativo?: boolean }[];
   isAdmin: boolean;
 }
 
-function ClienteForm({ cliente, onSubmit, isLoading, vendedores, isAdmin }: ClienteFormProps) {
+function ClienteForm({ cliente, onSubmit, isLoading, consultores, isAdmin }: ClienteFormProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -514,15 +514,15 @@ function ClienteForm({ cliente, onSubmit, isLoading, vendedores, isAdmin }: Clie
           <div className="col-span-2">
             <Label htmlFor="vendedor_responsavel" className="text-xs flex items-center gap-1">
               <UserCheck className="h-3 w-3" />
-              Vendedor Responsável
+              Consultor Responsável
             </Label>
             <Select name="vendedor_responsavel" defaultValue={cliente?.vendedor_responsavel || "none"}>
               <SelectTrigger className="h-8 text-sm">
-                <SelectValue placeholder="Selecione um vendedor" />
+                <SelectValue placeholder="Selecione um consultor" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="none">Nenhum</SelectItem>
-                {vendedores.map(v => (
+                {consultores.filter(c => c.ativo !== false).map(v => (
                   <SelectItem key={v.id} value={v.id}>
                     {v.nome_exibicao || v.full_name || v.email}
                   </SelectItem>

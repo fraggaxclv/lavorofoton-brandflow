@@ -39,7 +39,7 @@ import InternoLogin from "./pages/interno/InternoLogin";
 import InternoDashboard from "./pages/interno/InternoDashboard";
 import InternoClientes from "./pages/interno/InternoClientes";
 import InternoNegociacoes from "./pages/interno/InternoNegociacoes";
-import InternoVendedores from "./pages/interno/InternoVendedores";
+import InternoConsultores from "./pages/interno/InternoConsultores";
 
 const queryClient = new QueryClient();
 
@@ -125,11 +125,11 @@ const App = () => (
               } 
             />
             <Route 
-              path="/interno/vendedores" 
+              path="/interno/consultores" 
               element={
                 <InternoAuthProvider>
                   <InternoProtectedRoute allowedRoles={['admin']}>
-                    <InternoVendedores />
+                    <InternoConsultores />
                   </InternoProtectedRoute>
                 </InternoAuthProvider>
               } 
