@@ -335,7 +335,7 @@ export default function InternoClientes() {
                     <SelectValue placeholder="Selecione um consultor" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Nenhum (remover atribuição)</SelectItem>
+                    <SelectItem value="none">Nenhum (remover atribuição)</SelectItem>
                     {consultores.filter(c => c.ativo !== false).map(v => (
                       <SelectItem key={v.id} value={v.id}>
                         {v.nome_exibicao || v.full_name || v.email}
