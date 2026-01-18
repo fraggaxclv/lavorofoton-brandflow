@@ -46,7 +46,7 @@ export function useNegociacoes(options: UseNegociacoesOptions = {}) {
         .from("negociacoes")
         .select(`
           *,
-          cliente:clientes(id, nome_razao, cidade, estado, telefone),
+          cliente:clientes(id, nome_fantasia, razao_social, cidade, estado, telefone),
           owner:profiles!negociacoes_owner_user_id_profiles_fkey(id, email, full_name, nome_exibicao)
         `)
         .order("ultima_atualizacao", { ascending: false });
@@ -239,7 +239,7 @@ export function useNegociacao(id: string | undefined) {
         .from("negociacoes")
         .select(`
           *,
-          cliente:clientes(id, nome_razao, cidade, estado, telefone, email, cpf_cnpj, tipo, responsavel)
+          cliente:clientes(id, nome_fantasia, razao_social, cidade, estado, telefone, email, cpf_cnpj, tipo, responsavel)
         `)
         .eq("id", id)
         .single();
