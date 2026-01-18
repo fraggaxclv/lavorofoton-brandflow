@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo, useCallback } from "react";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import { useDashboard, useRankingVendedores, useVendedores } from "@/hooks/useDashboard";
 import { useMetaMensal, getMetaVendedor } from "@/hooks/useMetaMensal";
@@ -23,9 +23,13 @@ import {
   Settings,
   Users,
   Plus,
-  UserPlus
+  UserPlus,
+  ArrowRight,
+  Phone,
+  FileText,
+  ChevronRight
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { formatCurrency, STATUS_LABELS, STATUS_COLORS, StatusNegociacao } from "@/types/interno";
 
 export default function InternoDashboard() {
@@ -107,47 +111,83 @@ export default function InternoDashboard() {
     return { meta: vendedorMeta, vendedorData };
   };
 
+  // Negociações urgentes (sem atualização ou passos vencidos)
+  const negociacoesUrgentes = [
+    ...(dashboardQuery.data?.negociacoesPassosVencidos || []),
+    ...(dashboardQuery.data?.negociacoesSemAtualizacao || [])
+  ].slice(0, 5);
+
   return (
     <InternoLayout>
-      <div className="space-y-6">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="space-y-5">
+        {/* Header Compacto */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground">
               Olá, {displayName}!
             </h1>
-            <p className="text-muted-foreground">
-              {isAdmin ? "Visão geral do time de vendas" : "Acompanhe suas negociações"}
+            <p className="text-sm text-muted-foreground">
+              {isAdmin ? "Visão geral do time" : "Continue suas vendas"}
             </p>
           </div>
           
-          {/* Botões de ação rápida */}
+          {/* Ações Rápidas - Destacadas */}
           <div className="flex gap-2">
             <Button 
               onClick={() => navigate("/interno/negociacoes")} 
-              className="gap-2"
+              size="sm"
+              className="gap-1.5"
             >
               <Plus className="h-4 w-4" />
-              Nova Negociação
+              <span className="hidden sm:inline">Nova </span>Negociação
             </Button>
             <Button 
               variant="outline" 
+              size="sm"
               onClick={() => navigate("/interno/clientes")}
-              className="gap-2"
+              className="gap-1.5"
             >
               <UserPlus className="h-4 w-4" />
-              Novo Cliente
+              <span className="hidden sm:inline">Novo </span>Cliente
             </Button>
           </div>
         </div>
 
-        {/* Métricas Principais */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Navegação Rápida para Consultor */}
+        {!isAdmin && (
+          <div className="grid grid-cols-3 gap-2">
+            <Link
+              to="/interno/negociacoes"
+              className="flex items-center justify-center gap-2 p-3 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors text-primary font-medium text-sm"
+            >
+              <Briefcase className="h-4 w-4" />
+              <span>Negociações</span>
+            </Link>
+            <Link
+              to="/interno/clientes"
+              className="flex items-center justify-center gap-2 p-3 bg-muted hover:bg-muted/80 rounded-lg transition-colors text-foreground font-medium text-sm"
+            >
+              <Users className="h-4 w-4" />
+              <span>Clientes</span>
+            </Link>
+            <Link
+              to="/interno/meu-perfil"
+              className="flex items-center justify-center gap-2 p-3 bg-muted hover:bg-muted/80 rounded-lg transition-colors text-foreground font-medium text-sm"
+            >
+              <Target className="h-4 w-4" />
+              <span>Meu Perfil</span>
+            </Link>
+          </div>
+        )}
+
+        {/* Métricas Compactas */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           <MetricCard
-            title="Negociações Abertas"
+            title="Abertas"
             value={metrics?.negociacoesAbertas}
             icon={Briefcase}
             isLoading={isLoading}
+            onClick={() => navigate("/interno/negociacoes")}
           />
           <MetricCard
             title="Pipeline"
@@ -157,29 +197,131 @@ export default function InternoDashboard() {
             isLoading={isLoading}
           />
           <MetricCard
-            title="Faturado (Mês)"
+            title="Faturado"
             value={metrics?.valorFaturadoMes}
             format="currency"
             icon={CheckCircle2}
+            variant="success"
             isLoading={isLoading}
           />
           <MetricCard
-            title="Passos Vencidos"
-            value={metrics?.proximosPassosVencidos}
+            title="Pendências"
+            value={(metrics?.proximosPassosVencidos || 0) + (metrics?.negociacoesSemAtualizacao || 0)}
             icon={AlertTriangle}
             variant="warning"
             isLoading={isLoading}
+            onClick={() => navigate("/interno/negociacoes")}
           />
         </div>
 
-        {/* Card da Meta Mensal - apenas admin */}
+        {/* Negociações que Precisam de Atenção - Para Consultor */}
+        {!isAdmin && negociacoesUrgentes.length > 0 && (
+          <Card className="border-orange-200 dark:border-orange-900/50 bg-orange-50/50 dark:bg-orange-950/20">
+            <CardHeader className="pb-2">
+              <CardTitle className="flex items-center gap-2 text-base text-orange-700 dark:text-orange-400">
+                <Clock className="h-4 w-4" />
+                Precisam de Atenção
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <div className="space-y-2">
+                {negociacoesUrgentes.map((neg) => (
+                  <Link
+                    key={neg.id}
+                    to={`/interno/negociacoes?id=${neg.id}`}
+                    className="flex items-center justify-between p-3 bg-card hover:bg-muted/80 rounded-lg transition-colors group"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-sm truncate">
+                        {neg.cliente?.nome_fantasia || neg.cliente?.razao_social || 'Cliente'}
+                      </p>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span 
+                          className="text-xs px-1.5 py-0.5 rounded"
+                          style={{ 
+                            backgroundColor: `${STATUS_COLORS[neg.status as StatusNegociacao]}20`,
+                            color: STATUS_COLORS[neg.status as StatusNegociacao]
+                          }}
+                        >
+                          {STATUS_LABELS[neg.status as StatusNegociacao]}
+                        </span>
+                        {neg.data_proximo_passo && (
+                          <span className="text-xs text-muted-foreground">
+                            {new Date(neg.data_proximo_passo).toLocaleDateString('pt-BR')}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                  </Link>
+                ))}
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="w-full mt-2 text-orange-600 hover:text-orange-700 hover:bg-orange-100/50"
+                onClick={() => navigate("/interno/negociacoes")}
+              >
+                Ver todas negociações
+                <ArrowRight className="h-4 w-4 ml-1" />
+              </Button>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Meta do Vendedor - Compacta e Motivacional */}
+        {!isAdmin && (
+          <Card className="border-primary/20 bg-gradient-to-r from-primary/5 to-transparent">
+            <CardContent className="p-4">
+              {isLoadingIndividual ? (
+                <Skeleton className="h-16 w-full" />
+              ) : valorMetaIndividual > 0 ? (
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Target className="h-5 w-5 text-primary" />
+                      <span className="font-medium">Minha Meta</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-2xl font-bold text-primary">{faturadosMes}</span>
+                      <span className="text-muted-foreground">/{valorMetaIndividual}</span>
+                    </div>
+                  </div>
+                  <Progress 
+                    value={Math.min((faturadosMes / valorMetaIndividual) * 100, 100)} 
+                    className="h-2" 
+                  />
+                  {faturadosMes >= valorMetaIndividual ? (
+                    <p className="text-center text-sm font-medium text-green-600">
+                      🎉 Meta atingida!
+                    </p>
+                  ) : (
+                    <p className="text-center text-sm text-muted-foreground">
+                      Faltam {valorMetaIndividual - faturadosMes} para bater a meta
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Target className="h-5 w-5 text-muted-foreground" />
+                    <span className="text-muted-foreground">Meta não definida</span>
+                  </div>
+                  <span className="text-lg font-bold">{faturadosMes} faturados</span>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Meta do Time - Admin */}
         {isAdmin && (
-          <Card className="border-2 border-primary/30">
+          <Card className="border-primary/30">
             <CardHeader className="pb-2">
               <div className="flex items-center justify-between">
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 text-base">
                   <Target className="h-5 w-5 text-primary" />
-                  Meta Mensal do Time
+                  Meta do Time
                 </CardTitle>
                 <Button
                   variant="ghost"
@@ -189,94 +331,34 @@ export default function InternoDashboard() {
                     setMetaDialogOpen(true);
                   }}
                 >
-                  <Settings className="h-4 w-4 mr-1" />
-                  Configurar
+                  <Settings className="h-4 w-4" />
                 </Button>
               </div>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-0">
               {isLoadingGeral ? (
-                <Skeleton className="h-20 w-full" />
+                <Skeleton className="h-16 w-full" />
               ) : valorMetaGeral > 0 ? (
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <div className="flex items-end justify-between">
                     <div>
                       <p className="text-sm text-muted-foreground">Faturados</p>
-                      <p className="text-2xl font-bold text-green-600">{faturadosMes} unidades</p>
+                      <p className="text-xl font-bold text-green-600">{faturadosMes}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm text-muted-foreground">Meta Geral</p>
-                      <p className="text-2xl font-bold text-primary">{valorMetaGeral} unidades</p>
+                      <p className="text-sm text-muted-foreground">Meta</p>
+                      <p className="text-xl font-bold text-primary">{valorMetaGeral}</p>
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <Progress value={progressoMetaGeral} className="h-4" />
-                    <p className="text-center text-sm font-medium">
-                      {progressoMetaGeral.toFixed(1)}% da meta
-                    </p>
-                  </div>
-                  {faturadosMes >= valorMetaGeral && (
-                    <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg text-center">
-                      <p className="text-green-700 dark:text-green-400 font-bold">
-                        🎉 Meta atingida! Parabéns!
-                      </p>
-                    </div>
-                  )}
+                  <Progress value={progressoMetaGeral} className="h-3" />
+                  <p className="text-center text-sm text-muted-foreground">
+                    {progressoMetaGeral.toFixed(0)}% concluído
+                  </p>
                 </div>
               ) : (
-                <div className="text-center py-4 text-muted-foreground">
-                  <p>Clique em "Configurar" para definir a meta mensal</p>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Card de Meta Individual do Vendedor (apenas para vendedores) */}
-        {!isAdmin && (
-          <Card className="border-2 border-blue-500/30">
-            <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5 text-blue-500" />
-                Minha Meta Individual
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {isLoadingIndividual ? (
-                <Skeleton className="h-20 w-full" />
-              ) : valorMetaIndividual > 0 ? (
-                <div className="space-y-4">
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <p className="text-sm text-muted-foreground">Meus Faturados</p>
-                      <p className="text-2xl font-bold text-blue-600">{faturadosMes} unidades</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-sm text-muted-foreground">Minha Meta</p>
-                      <p className="text-2xl font-bold text-blue-500">{valorMetaIndividual} unidades</p>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Progress 
-                      value={Math.min((faturadosMes / valorMetaIndividual) * 100, 100)} 
-                      className="h-4 bg-blue-100 dark:bg-blue-900/30 [&>div]:bg-blue-500" 
-                    />
-                    <p className="text-center text-sm font-medium">
-                      {((faturadosMes / valorMetaIndividual) * 100).toFixed(1)}% da minha meta
-                    </p>
-                  </div>
-                  {faturadosMes >= valorMetaIndividual && (
-                    <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-center">
-                      <p className="text-blue-700 dark:text-blue-400 font-bold">
-                        🎉 Você atingiu sua meta! Parabéns!
-                      </p>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div className="text-center py-4 text-muted-foreground">
-                  <p>Nenhuma meta individual definida para você este mês</p>
-                </div>
+                <p className="text-center py-2 text-muted-foreground text-sm">
+                  Clique no ícone para definir a meta
+                </p>
               )}
             </CardContent>
           </Card>
@@ -530,41 +612,73 @@ interface MetricCardProps {
   value?: number;
   icon: React.ElementType;
   format?: "number" | "currency";
-  variant?: "default" | "warning";
+  variant?: "default" | "warning" | "success";
   isLoading?: boolean;
+  onClick?: () => void;
 }
 
-function MetricCard({ 
+const MetricCard = memo(function MetricCard({ 
   title, 
   value, 
   icon: Icon, 
   format = "number", 
   variant = "default",
-  isLoading 
+  isLoading,
+  onClick
 }: MetricCardProps) {
   const displayValue = format === "currency" 
     ? formatCurrency(value || 0) 
     : (value ?? 0).toString();
 
+  const variantStyles = {
+    default: {
+      border: "",
+      text: "",
+      bg: "bg-primary/10",
+      iconColor: "text-primary"
+    },
+    warning: {
+      border: (value || 0) > 0 ? "border-orange-300 dark:border-orange-800" : "",
+      text: (value || 0) > 0 ? "text-orange-600" : "",
+      bg: (value || 0) > 0 ? "bg-orange-100 dark:bg-orange-900/30" : "bg-primary/10",
+      iconColor: (value || 0) > 0 ? "text-orange-600" : "text-primary"
+    },
+    success: {
+      border: "border-green-200 dark:border-green-900",
+      text: "text-green-600",
+      bg: "bg-green-100 dark:bg-green-900/30",
+      iconColor: "text-green-600"
+    }
+  };
+
+  const styles = variantStyles[variant];
+  
+  const CardWrapper = onClick ? 'button' : 'div';
+
   return (
-    <Card className={variant === "warning" && (value || 0) > 0 ? "border-yellow-500" : ""}>
-      <CardContent className="p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-sm text-muted-foreground">{title}</p>
-            {isLoading ? (
-              <Skeleton className="h-8 w-24 mt-1" />
-            ) : (
-              <p className={`text-2xl font-bold ${variant === "warning" && (value || 0) > 0 ? "text-yellow-600" : ""}`}>
-                {displayValue}
-              </p>
-            )}
+    <Card className={`${styles.border} ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow' : ''}`}>
+      <CardWrapper 
+        className="w-full text-left"
+        onClick={onClick}
+      >
+        <CardContent className="p-4">
+          <div className="flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <p className="text-xs text-muted-foreground truncate">{title}</p>
+              {isLoading ? (
+                <Skeleton className="h-6 w-16 mt-1" />
+              ) : (
+                <p className={`text-lg font-bold truncate ${styles.text}`}>
+                  {displayValue}
+                </p>
+              )}
+            </div>
+            <div className={`p-2 rounded-lg shrink-0 ${styles.bg}`}>
+              <Icon className={`h-4 w-4 ${styles.iconColor}`} />
+            </div>
           </div>
-          <div className={`p-3 rounded-lg ${variant === "warning" && (value || 0) > 0 ? "bg-yellow-100" : "bg-primary/10"}`}>
-            <Icon className={`h-6 w-6 ${variant === "warning" && (value || 0) > 0 ? "text-yellow-600" : "text-primary"}`} />
-          </div>
-        </div>
-      </CardContent>
+        </CardContent>
+      </CardWrapper>
     </Card>
   );
-}
+});
