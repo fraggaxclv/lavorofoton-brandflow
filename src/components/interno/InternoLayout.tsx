@@ -173,15 +173,29 @@ export default function InternoLayout({ children }: InternoLayoutProps) {
         <div className="p-4 lg:p-8">
           {/* Back Button - only show when not on dashboard */}
           {!isDashboard && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleGoBack}
-              className="mb-4 -ml-2 text-muted-foreground hover:text-foreground"
-            >
-              <ChevronLeft className="h-4 w-4 mr-1" />
-              Voltar
-            </Button>
+            <div className="flex items-center justify-between mb-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleGoBack}
+                className="-ml-2 text-muted-foreground hover:text-foreground"
+              >
+                <ChevronLeft className="h-4 w-4 mr-1" />
+                Voltar
+              </Button>
+              
+              {/* Quick access to negotiations - always visible */}
+              {location.pathname !== "/interno/negociacoes" && (
+                <Button
+                  size="sm"
+                  onClick={() => navigate("/interno/negociacoes")}
+                  className="gap-2"
+                >
+                  <Briefcase className="h-4 w-4" />
+                  <span className="hidden sm:inline">Negociações</span>
+                </Button>
+              )}
+            </div>
           )}
           {children}
         </div>
