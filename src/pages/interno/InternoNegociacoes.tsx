@@ -6,6 +6,7 @@ import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import { useCheckinDiario } from "@/hooks/useCheckinDiario";
 import { useWelcomeCheckin } from "@/hooks/useWelcomeCheckin";
 import { useMetaMensal } from "@/hooks/useMetaMensal";
+import { useConsultores } from "@/hooks/useConsultores";
 import InternoLayout from "@/components/interno/InternoLayout";
 import KanbanBoard from "@/components/interno/KanbanBoard";
 import CheckinModal from "@/components/interno/CheckinModal";
@@ -133,6 +134,7 @@ export default function InternoNegociacoes() {
     status: statusFilter !== "all" ? statusFilter as StatusNegociacao : undefined,
   });
   const { clientes } = useClientes({});
+  const { data: consultores = [] } = useConsultores();
 
   const filteredNegociacoes = negociacoes.filter(neg => {
     // Filtro por tipo de venda
@@ -169,13 +171,19 @@ export default function InternoNegociacoes() {
     const valorManual = parseFloat(formData.get("valor_estimado") as string) || 0;
     const valorFinal = valorProdutos > 0 ? valorProdutos : valorManual;
 
+    // Get selected consultant or default to current user
+    const consultorSelecionado = formData.get("consultor_responsavel") as string;
+    const ownerUserId = consultorSelecionado && consultorSelecionado !== "current" 
+      ? consultorSelecionado 
+      : user!.id;
+
     const data = {
       cliente_id: formData.get("cliente_id") as string,
       origem_lead: formData.get("origem_lead") as string,
       produto_principal: produtoPrincipal,
       valor_estimado: valorFinal,
       observacoes: formData.get("observacoes") as string || undefined,
-      owner_user_id: user!.id,
+      owner_user_id: ownerUserId,
     };
 
     try {
@@ -294,6 +302,9 @@ export default function InternoNegociacoes() {
               </DialogHeader>
               <NovaNegociacaoForm 
                 clientes={clientes || []}
+                consultores={consultores}
+                isAdmin={isAdmin}
+                currentUserId={user?.id || ""}
                 onSubmit={handleSubmit}
                 isLoading={isCreating}
               />
@@ -528,11 +539,14 @@ export default function InternoNegociacoes() {
 
 interface NovaNegociacaoFormProps {
   clientes: { id: string; nome_fantasia?: string; razao_social: string }[];
+  consultores: { id: string; nome_exibicao?: string; full_name?: string; email: string; ativo?: boolean }[];
+  isAdmin: boolean;
+  currentUserId: string;
   onSubmit: (formData: FormData, produtos: ProdutoNegociacao[]) => void;
   isLoading: boolean;
 }
 
-function NovaNegociacaoForm({ clientes, onSubmit, isLoading }: NovaNegociacaoFormProps) {
+function NovaNegociacaoForm({ clientes, consultores, isAdmin, currentUserId, onSubmit, isLoading }: NovaNegociacaoFormProps) {
   const [produtos, setProdutos] = useState<ProdutoNegociacao[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -547,8 +561,33 @@ function NovaNegociacaoForm({ clientes, onSubmit, isLoading }: NovaNegociacaoFor
     0
   );
 
+  // Filter active consultants only
+  const activeConsultores = consultores.filter(c => c.ativo !== false);
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Seletor de Consultor - apenas para admins */}
+      {isAdmin && (
+        <div>
+          <Label htmlFor="consultor_responsavel">Consultor Responsável *</Label>
+          <Select name="consultor_responsavel" defaultValue="current">
+            <SelectTrigger>
+              <SelectValue placeholder="Selecione o consultor" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="current">Eu mesmo</SelectItem>
+              {activeConsultores
+                .filter(c => c.id !== currentUserId)
+                .map(consultor => (
+                  <SelectItem key={consultor.id} value={consultor.id}>
+                    {consultor.nome_exibicao || consultor.full_name || consultor.email}
+                  </SelectItem>
+                ))}
+            </SelectContent>
+          </Select>
+        </div>
+      )}
+
       <div>
         <Label htmlFor="cliente_id">Cliente *</Label>
         <Select name="cliente_id" required>

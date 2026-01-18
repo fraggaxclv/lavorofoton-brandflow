@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 interface CreateNegociacaoData {
   cliente_id: string;
   origem_lead: string;
+  owner_user_id?: string; // Admin can assign to another consultant
   tipo_venda?: TipoVenda;
   produto_principal?: string;
   produtos?: ProdutoNegociacao[];
@@ -107,12 +108,15 @@ export function useNegociacoes(options: UseNegociacoesOptions = {}) {
 
       if (rpcError) throw rpcError;
 
+      // Use provided owner_user_id or default to current user
+      const ownerUserId = data.owner_user_id || user.id;
+
       const { data: negociacao, error } = await supabase
         .from("negociacoes")
         .insert({
           ...data,
           numero_negociacao: numeroNegociacao,
-          owner_user_id: user.id,
+          owner_user_id: ownerUserId,
           created_by: user.id,
           produtos: JSON.stringify(data.produtos || []),
         })
