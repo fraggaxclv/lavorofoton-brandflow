@@ -40,6 +40,7 @@ import InternoDashboard from "./pages/interno/InternoDashboard";
 import InternoClientes from "./pages/interno/InternoClientes";
 import InternoNegociacoes from "./pages/interno/InternoNegociacoes";
 import InternoConsultores from "./pages/interno/InternoConsultores";
+import InternoConsultorPerfil from "./pages/interno/InternoConsultorPerfil";
 
 const queryClient = new QueryClient();
 
@@ -130,6 +131,26 @@ const App = () => (
                 <InternoAuthProvider>
                   <InternoProtectedRoute allowedRoles={['admin']}>
                     <InternoConsultores />
+                  </InternoProtectedRoute>
+                </InternoAuthProvider>
+              } 
+            />
+            <Route 
+              path="/interno/consultor/:id" 
+              element={
+                <InternoAuthProvider>
+                  <InternoProtectedRoute allowedRoles={['admin']}>
+                    <InternoConsultorPerfil />
+                  </InternoProtectedRoute>
+                </InternoAuthProvider>
+              } 
+            />
+            <Route 
+              path="/interno/meu-perfil" 
+              element={
+                <InternoAuthProvider>
+                  <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
+                    <InternoConsultorPerfil />
                   </InternoProtectedRoute>
                 </InternoAuthProvider>
               } 

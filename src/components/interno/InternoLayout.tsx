@@ -114,15 +114,20 @@ export default function InternoLayout({ children }: InternoLayoutProps) {
 
           {/* User Info */}
           <div className="p-4 border-b border-border">
-            <div className="flex items-center gap-3">
+            <Link
+              to="/interno/meu-perfil"
+              onClick={() => setSidebarOpen(false)}
+              className="flex items-center gap-3 hover:bg-muted/50 -m-2 p-2 rounded-lg transition-colors"
+            >
               <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                 <User className="h-5 w-5 text-primary" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="font-medium text-foreground truncate">{displayName}</p>
-                <p className="text-xs text-muted-foreground capitalize">{userRole}</p>
+                <p className="text-xs text-muted-foreground capitalize">{userRole === 'vendedor' ? 'consultor' : userRole}</p>
               </div>
-            </div>
+              <ChevronRight className="h-4 w-4 text-muted-foreground" />
+            </Link>
           </div>
 
           {/* Navigation */}

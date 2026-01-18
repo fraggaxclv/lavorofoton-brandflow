@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useConsultores, useCreateConsultor, useToggleConsultorAtivo, Consultor, CreateConsultorData } from "@/hooks/useConsultores";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import InternoLayout from "@/components/interno/InternoLayout";
@@ -23,7 +24,8 @@ import {
   UserCog,
   Plus,
   Eye,
-  EyeOff
+  EyeOff,
+  ChevronRight
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -49,6 +51,7 @@ type ConsultorFormData = z.infer<typeof consultorSchema>;
 
 export default function InternoConsultores() {
   const { isAdmin } = useInternoAuth();
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [showInactive, setShowInactive] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -165,6 +168,7 @@ export default function InternoConsultores() {
                 consultor={consultor}
                 onToggleAtivo={() => handleToggleAtivo(consultor)}
                 isToggling={toggleAtivo.isPending}
+                onViewProfile={() => navigate(`/interno/consultor/${consultor.id}`)}
               />
             ))}
           </div>
@@ -304,14 +308,18 @@ interface ConsultorCardProps {
   consultor: Consultor;
   onToggleAtivo: () => void;
   isToggling: boolean;
+  onViewProfile: () => void;
 }
 
-function ConsultorCard({ consultor, onToggleAtivo, isToggling }: ConsultorCardProps) {
+function ConsultorCard({ consultor, onToggleAtivo, isToggling, onViewProfile }: ConsultorCardProps) {
   const displayName = consultor.nome_exibicao || consultor.full_name || consultor.email;
   const isInactive = consultor.ativo === false;
 
   return (
-    <Card className={`transition-colors ${isInactive ? 'opacity-60' : 'hover:bg-muted/30'}`}>
+    <Card 
+      className={`transition-colors cursor-pointer ${isInactive ? 'opacity-60' : 'hover:bg-muted/30'}`}
+      onClick={onViewProfile}
+    >
       <CardContent className="p-3">
         <div className="flex items-center gap-3">
           <div className={`p-2 rounded-md shrink-0 ${isInactive ? 'bg-muted' : 'bg-primary/10'}`}>
@@ -337,9 +345,14 @@ function ConsultorCard({ consultor, onToggleAtivo, isToggling }: ConsultorCardPr
           <div className="flex items-center gap-2">
             <Switch
               checked={consultor.ativo !== false}
-              onCheckedChange={onToggleAtivo}
+              onCheckedChange={(checked) => {
+                // Stop propagation to prevent card click
+                onToggleAtivo();
+              }}
+              onClick={(e) => e.stopPropagation()}
               disabled={isToggling}
             />
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
           </div>
         </div>
       </CardContent>
