@@ -62,6 +62,7 @@ export type Database = {
           cep: string | null
           cidade: string | null
           complemento: string | null
+          consultor_responsavel: string | null
           cpf_cnpj: string
           created_at: string
           created_by: string | null
@@ -85,6 +86,7 @@ export type Database = {
           cep?: string | null
           cidade?: string | null
           complemento?: string | null
+          consultor_responsavel?: string | null
           cpf_cnpj: string
           created_at?: string
           created_by?: string | null
@@ -108,6 +110,7 @@ export type Database = {
           cep?: string | null
           cidade?: string | null
           complemento?: string | null
+          consultor_responsavel?: string | null
           cpf_cnpj?: string
           created_at?: string
           created_by?: string | null
