@@ -37,10 +37,13 @@ export type TipoVenda = 'estoque' | 'fadireto';
 export interface Cliente {
   id: string;
   tipo: TipoCliente;
-  nome_razao: string;
+  nome_fantasia?: string;
+  razao_social: string;
   cpf_cnpj: string;
   endereco?: string;
   numero?: string;
+  complemento?: string;
+  bairro?: string;
   cep?: string;
   cidade?: string;
   estado?: string;

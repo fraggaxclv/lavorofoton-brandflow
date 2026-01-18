@@ -67,11 +67,14 @@ export default function InternoClientes() {
     // Banco espera 'PF' ou 'PJ' em maiúsculas
     const tipo = tipoRaw.toUpperCase() as "PF" | "PJ";
     const data = {
-      nome_razao: formData.get("nome_razao") as string,
+      nome_fantasia: formData.get("nome_fantasia") as string || undefined,
+      razao_social: formData.get("razao_social") as string,
       tipo,
       cpf_cnpj: formData.get("cpf_cnpj") as string,
       endereco: formData.get("endereco") as string || undefined,
       numero: formData.get("numero") as string || undefined,
+      complemento: formData.get("complemento") as string || undefined,
+      bairro: formData.get("bairro") as string || undefined,
       cep: formData.get("cep") as string || undefined,
       cidade: formData.get("cidade") as string || undefined,
       estado: formData.get("estado") as string || undefined,
@@ -175,7 +178,7 @@ export default function InternoClientes() {
                       </div>
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="font-semibold">{cliente.nome_razao}</h3>
+                          <h3 className="font-semibold">{cliente.nome_fantasia || cliente.razao_social}</h3>
                           <Badge variant="outline">
                             {TIPO_CLIENTE_LABELS[cliente.tipo]}
                           </Badge>
@@ -268,12 +271,21 @@ function ClienteForm({ cliente, onSubmit, isLoading, vendedores, isAdmin }: Clie
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
-        <div className="col-span-2">
-          <Label htmlFor="nome_razao">Nome / Razão Social *</Label>
+        <div>
+          <Label htmlFor="nome_fantasia">Nome Fantasia</Label>
           <Input
-            id="nome_razao"
-            name="nome_razao"
-            defaultValue={cliente?.nome_razao}
+            id="nome_fantasia"
+            name="nome_fantasia"
+            defaultValue={cliente?.nome_fantasia || ""}
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="razao_social">Razão Social *</Label>
+          <Input
+            id="razao_social"
+            name="razao_social"
+            defaultValue={cliente?.razao_social}
             required
           />
         </div>

@@ -318,7 +318,7 @@ export default function CheckinModal({
                 <Building2 className="w-4 h-4 text-muted-foreground mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-lg leading-tight">
-                    {currentNegociacao.cliente?.nome_razao || "Cliente não informado"}
+                    {currentNegociacao.cliente?.nome_fantasia || currentNegociacao.cliente?.razao_social || "Cliente não informado"}
                   </p>
                 </div>
               </div>
