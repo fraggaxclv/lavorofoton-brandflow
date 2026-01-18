@@ -58,8 +58,10 @@ export type Database = {
       clientes: {
         Row: {
           ativo: boolean | null
+          bairro: string | null
           cep: string | null
           cidade: string | null
+          complemento: string | null
           cpf_cnpj: string
           created_at: string
           created_by: string | null
@@ -78,8 +80,10 @@ export type Database = {
         }
         Insert: {
           ativo?: boolean | null
+          bairro?: string | null
           cep?: string | null
           cidade?: string | null
+          complemento?: string | null
           cpf_cnpj: string
           created_at?: string
           created_by?: string | null
@@ -98,8 +102,10 @@ export type Database = {
         }
         Update: {
           ativo?: boolean | null
+          bairro?: string | null
           cep?: string | null
           cidade?: string | null
+          complemento?: string | null
           cpf_cnpj?: string
           created_at?: string
           created_by?: string | null
