@@ -74,7 +74,7 @@ export function useCheckinDiario(userId: string | undefined) {
         .from("negociacoes")
         .select(`
           *,
-          cliente:clientes(id, nome_razao, cidade, estado, telefone)
+          cliente:clientes(id, nome_fantasia, razao_social, cidade, estado, telefone)
         `)
         .eq("owner_user_id", userId)
         .eq("status", "proposta_enviada")
