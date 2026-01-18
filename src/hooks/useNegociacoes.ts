@@ -23,6 +23,7 @@ interface UpdateNegociacaoData extends Partial<CreateNegociacaoData> {
   motivo_perda?: string;
   data_fechamento?: string;
   tipo_venda?: TipoVenda;
+  owner_user_id?: string; // Allow reassigning the owner
 }
 
 interface UseNegociacoesOptions {
@@ -45,7 +46,8 @@ export function useNegociacoes(options: UseNegociacoesOptions = {}) {
         .from("negociacoes")
         .select(`
           *,
-          cliente:clientes(id, nome_razao, cidade, estado, telefone)
+          cliente:clientes(id, nome_razao, cidade, estado, telefone),
+          owner:profiles!negociacoes_owner_user_id_fkey(id, email, full_name, nome_exibicao)
         `)
         .order("ultima_atualizacao", { ascending: false });
 
