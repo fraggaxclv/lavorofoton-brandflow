@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useClientes } from "@/hooks/useClientes";
 import { useVendedores } from "@/hooks/useVendedores";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
@@ -34,21 +35,32 @@ import {
   MapPin,
   Edit,
   Loader2,
-  UserCheck
+  UserCheck,
+  Handshake,
+  Users
 } from "lucide-react";
 import { Cliente, TIPO_CLIENTE_LABELS } from "@/types/interno";
 import { toast } from "sonner";
 
 export default function InternoClientes() {
+  const navigate = useNavigate();
   const { user, isAdmin } = useInternoAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [tipoFilter, setTipoFilter] = useState<string>("all");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingCliente, setEditingCliente] = useState<Cliente | null>(null);
+  const [assignDialogOpen, setAssignDialogOpen] = useState(false);
+  const [assigningCliente, setAssigningCliente] = useState<Cliente | null>(null);
+  const [selectedVendedor, setSelectedVendedor] = useState<string>("");
   const { data: vendedores = [] } = useVendedores();
 
   const { clientes, isLoading, createCliente, updateCliente, isCreating, isUpdating } = useClientes({ 
     search: searchTerm,
+  });
+
+  const filteredClientes = clientes.filter(cliente => {
+    if (tipoFilter === "all") return true;
+    return cliente.tipo?.toLowerCase() === tipoFilter;
   });
 
   const handleOpenCreate = () => {
@@ -61,10 +73,36 @@ export default function InternoClientes() {
     setDialogOpen(true);
   };
 
+  const handleOpenAssign = (cliente: Cliente) => {
+    setAssigningCliente(cliente);
+    setSelectedVendedor(cliente.vendedor_responsavel || "");
+    setAssignDialogOpen(true);
+  };
+
+  const handleAssignVendedor = async () => {
+    if (!assigningCliente) return;
+    
+    try {
+      await updateCliente({ 
+        id: assigningCliente.id, 
+        vendedor_responsavel: selectedVendedor || undefined 
+      });
+      toast.success("Vendedor atribuído com sucesso!");
+      setAssignDialogOpen(false);
+      setAssigningCliente(null);
+    } catch (error) {
+      toast.error("Erro ao atribuir vendedor");
+    }
+  };
+
+  const handleNewNegociacao = (cliente: Cliente) => {
+    // Navigate to negociacoes page with cliente pre-selected
+    navigate(`/interno/negociacoes?novo=true&cliente_id=${cliente.id}`);
+  };
+
   const handleSubmit = async (formData: FormData) => {
     const vendedorResponsavel = formData.get("vendedor_responsavel") as string;
     const tipoRaw = formData.get("tipo") as string;
-    // Banco espera 'PF' ou 'PJ' em maiúsculas
     const tipo = tipoRaw.toUpperCase() as "PF" | "PJ";
     const data = {
       nome_fantasia: formData.get("nome_fantasia") as string || undefined,
@@ -101,17 +139,19 @@ export default function InternoClientes() {
 
   return (
     <InternoLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">Clientes</h1>
-            <p className="text-muted-foreground">Gerencie sua base de clientes</p>
+            <h1 className="text-xl font-bold text-foreground">Clientes</h1>
+            <p className="text-sm text-muted-foreground">
+              {filteredClientes.length} cliente{filteredClientes.length !== 1 ? 's' : ''} encontrado{filteredClientes.length !== 1 ? 's' : ''}
+            </p>
           </div>
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <DialogTrigger asChild>
-              <Button onClick={handleOpenCreate}>
-                <Plus className="h-4 w-4 mr-2" />
+              <Button size="sm" onClick={handleOpenCreate}>
+                <Plus className="h-4 w-4 mr-1" />
                 Novo Cliente
               </Button>
             </DialogTrigger>
@@ -133,18 +173,18 @@ export default function InternoClientes() {
         </div>
 
         {/* Filtros */}
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Buscar por nome, CNPJ, telefone..."
+              placeholder="Buscar por nome, CNPJ, cidade..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
+              className="pl-8 h-9 text-sm"
             />
           </div>
           <Select value={tipoFilter} onValueChange={setTipoFilter}>
-            <SelectTrigger className="w-full sm:w-40">
+            <SelectTrigger className="w-full sm:w-36 h-9 text-sm">
               <SelectValue placeholder="Tipo" />
             </SelectTrigger>
             <SelectContent>
@@ -157,75 +197,104 @@ export default function InternoClientes() {
 
         {/* Lista de Clientes */}
         {isLoading ? (
-          <div className="grid gap-4">
-            {[1, 2, 3].map(i => (
-              <Skeleton key={i} className="h-32 w-full" />
+          <div className="grid gap-2">
+            {[1, 2, 3, 4, 5].map(i => (
+              <Skeleton key={i} className="h-20 w-full" />
             ))}
           </div>
-        ) : clientes && clientes.length > 0 ? (
-          <div className="grid gap-4">
-            {clientes.map(cliente => (
-              <Card key={cliente.id} className="hover:shadow-md transition-shadow">
-                <CardContent className="p-4">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-lg bg-primary/10">
-                      {cliente.tipo?.toLowerCase() === "pj" ? (
-                          <Building2 className="h-6 w-6 text-primary" />
+        ) : filteredClientes.length > 0 ? (
+          <div className="grid gap-2">
+            {filteredClientes.map(cliente => (
+              <Card key={cliente.id} className="hover:bg-muted/30 transition-colors">
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-3">
+                    {/* Left: Icon + Info */}
+                    <div className="flex items-center gap-3 min-w-0 flex-1">
+                      <div className="p-2 rounded-md bg-primary/10 shrink-0">
+                        {cliente.tipo?.toLowerCase() === "pj" ? (
+                          <Building2 className="h-4 w-4 text-primary" />
                         ) : (
-                          <User className="h-6 w-6 text-primary" />
+                          <User className="h-4 w-4 text-primary" />
                         )}
                       </div>
-                      <div className="space-y-1">
+                      <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="font-semibold">{cliente.nome_fantasia || cliente.razao_social}</h3>
-                          <Badge variant="outline">
+                          <h3 className="text-sm font-medium truncate">
+                            {cliente.nome_fantasia || cliente.razao_social}
+                          </h3>
+                          <Badge variant="outline" className="text-[10px] px-1.5 py-0">
                             {TIPO_CLIENTE_LABELS[cliente.tipo]}
                           </Badge>
                           {cliente.vendedor_responsavel && (
-                            <Badge variant="secondary" className="text-xs">
-                              <UserCheck className="h-3 w-3 mr-1" />
+                            <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
+                              <UserCheck className="h-2.5 w-2.5 mr-0.5" />
                               {vendedores.find(v => v.id === cliente.vendedor_responsavel)?.nome_exibicao || 
                                vendedores.find(v => v.id === cliente.vendedor_responsavel)?.full_name || 
                                "Vendedor"}
                             </Badge>
                           )}
                         </div>
-                        {cliente.cpf_cnpj && (
-                          <p className="text-sm text-muted-foreground">
-                            {cliente.tipo?.toLowerCase() === "pj" ? "CNPJ" : "CPF"}: {cliente.cpf_cnpj}
-                          </p>
-                        )}
-                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-muted-foreground mt-0.5">
+                          {cliente.cpf_cnpj && (
+                            <span>{cliente.tipo?.toLowerCase() === "pj" ? "CNPJ" : "CPF"}: {cliente.cpf_cnpj}</span>
+                          )}
                           {cliente.telefone && (
-                            <span className="flex items-center gap-1">
-                              <Phone className="h-3 w-3" />
+                            <span className="flex items-center gap-0.5">
+                              <Phone className="h-2.5 w-2.5" />
                               {cliente.telefone}
                             </span>
                           )}
                           {cliente.email && (
-                            <span className="flex items-center gap-1">
-                              <Mail className="h-3 w-3" />
+                            <span className="flex items-center gap-0.5 truncate max-w-[180px]">
+                              <Mail className="h-2.5 w-2.5" />
                               {cliente.email}
                             </span>
                           )}
                           {(cliente.cidade || cliente.estado) && (
-                            <span className="flex items-center gap-1">
-                              <MapPin className="h-3 w-3" />
+                            <span className="flex items-center gap-0.5">
+                              <MapPin className="h-2.5 w-2.5" />
                               {[cliente.cidade, cliente.estado].filter(Boolean).join(" - ")}
                             </span>
                           )}
                         </div>
                       </div>
                     </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => handleOpenEdit(cliente)}
-                    >
-                      <Edit className="h-4 w-4 mr-2" />
-                      Editar
-                    </Button>
+
+                    {/* Right: Action Buttons */}
+                    <div className="flex items-center gap-1 shrink-0">
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        className="h-8 px-2 text-xs"
+                        onClick={() => handleNewNegociacao(cliente)}
+                        title="Nova Negociação"
+                      >
+                        <Handshake className="h-3.5 w-3.5 mr-1" />
+                        <span className="hidden sm:inline">+Negociação</span>
+                      </Button>
+                      {isAdmin && (
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          className="h-8 px-2 text-xs"
+                          onClick={() => handleOpenAssign(cliente)}
+                          title="Atribuir Vendedor"
+                        >
+                          <Users className="h-3.5 w-3.5 mr-1" />
+                          <span className="hidden sm:inline">Atribuir</span>
+                        </Button>
+                      )}
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        className="h-8 px-2 text-xs"
+                        onClick={() => handleOpenEdit(cliente)}
+                        title="Editar Cliente"
+                      >
+                        <Edit className="h-3.5 w-3.5 mr-1" />
+                        <span className="hidden sm:inline">Editar</span>
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -233,21 +302,60 @@ export default function InternoClientes() {
           </div>
         ) : (
           <Card>
-            <CardContent className="p-12 text-center">
-              <User className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-              <h3 className="text-lg font-medium mb-2">Nenhum cliente encontrado</h3>
-              <p className="text-muted-foreground mb-4">
+            <CardContent className="p-8 text-center">
+              <User className="h-10 w-10 mx-auto text-muted-foreground mb-3" />
+              <h3 className="text-sm font-medium mb-1">Nenhum cliente encontrado</h3>
+              <p className="text-xs text-muted-foreground mb-3">
                 {searchTerm ? "Tente ajustar sua busca" : "Comece adicionando seu primeiro cliente"}
               </p>
               {!searchTerm && (
-                <Button onClick={handleOpenCreate}>
-                  <Plus className="h-4 w-4 mr-2" />
+                <Button size="sm" onClick={handleOpenCreate}>
+                  <Plus className="h-4 w-4 mr-1" />
                   Novo Cliente
                 </Button>
               )}
             </CardContent>
           </Card>
         )}
+
+        {/* Dialog: Atribuir Vendedor */}
+        <Dialog open={assignDialogOpen} onOpenChange={setAssignDialogOpen}>
+          <DialogContent className="max-w-sm">
+            <DialogHeader>
+              <DialogTitle className="text-base">Atribuir Vendedor</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4">
+              <div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Cliente: <span className="font-medium text-foreground">{assigningCliente?.nome_fantasia || assigningCliente?.razao_social}</span>
+                </p>
+                <Label htmlFor="assign-vendedor" className="text-sm">Vendedor Responsável</Label>
+                <Select value={selectedVendedor} onValueChange={setSelectedVendedor}>
+                  <SelectTrigger className="mt-1.5">
+                    <SelectValue placeholder="Selecione um vendedor" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="">Nenhum (remover atribuição)</SelectItem>
+                    {vendedores.map(v => (
+                      <SelectItem key={v.id} value={v.id}>
+                        {v.nome_exibicao || v.full_name || v.email}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button variant="outline" size="sm" onClick={() => setAssignDialogOpen(false)}>
+                  Cancelar
+                </Button>
+                <Button size="sm" onClick={handleAssignVendedor} disabled={isUpdating}>
+                  {isUpdating && <Loader2 className="h-3 w-3 mr-1 animate-spin" />}
+                  Confirmar
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </InternoLayout>
   );
@@ -269,31 +377,33 @@ function ClienteForm({ cliente, onSubmit, isLoading, vendedores, isAdmin }: Clie
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <div className="grid grid-cols-2 gap-3">
         <div>
-          <Label htmlFor="nome_fantasia">Nome Fantasia</Label>
+          <Label htmlFor="nome_fantasia" className="text-xs">Nome Fantasia</Label>
           <Input
             id="nome_fantasia"
             name="nome_fantasia"
             defaultValue={cliente?.nome_fantasia || ""}
+            className="h-8 text-sm"
           />
         </div>
 
         <div>
-          <Label htmlFor="razao_social">Razão Social *</Label>
+          <Label htmlFor="razao_social" className="text-xs">Razão Social *</Label>
           <Input
             id="razao_social"
             name="razao_social"
             defaultValue={cliente?.razao_social}
             required
+            className="h-8 text-sm"
           />
         </div>
 
         <div>
-          <Label htmlFor="tipo">Tipo *</Label>
+          <Label htmlFor="tipo" className="text-xs">Tipo *</Label>
           <Select name="tipo" defaultValue={cliente?.tipo || "pj"}>
-            <SelectTrigger>
+            <SelectTrigger className="h-8 text-sm">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -304,101 +414,110 @@ function ClienteForm({ cliente, onSubmit, isLoading, vendedores, isAdmin }: Clie
         </div>
 
         <div>
-          <Label htmlFor="cpf_cnpj">CPF/CNPJ *</Label>
+          <Label htmlFor="cpf_cnpj" className="text-xs">CPF/CNPJ *</Label>
           <Input
             id="cpf_cnpj"
             name="cpf_cnpj"
             defaultValue={cliente?.cpf_cnpj || ""}
             required
+            className="h-8 text-sm"
           />
         </div>
 
         <div>
-          <Label htmlFor="telefone">Telefone</Label>
+          <Label htmlFor="telefone" className="text-xs">Telefone</Label>
           <Input
             id="telefone"
             name="telefone"
             defaultValue={cliente?.telefone || ""}
+            className="h-8 text-sm"
           />
         </div>
 
         <div>
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email" className="text-xs">Email</Label>
           <Input
             id="email"
             name="email"
             type="email"
             defaultValue={cliente?.email || ""}
+            className="h-8 text-sm"
           />
         </div>
 
         <div className="col-span-2">
-          <Label htmlFor="endereco">Endereço</Label>
+          <Label htmlFor="endereco" className="text-xs">Endereço</Label>
           <Input
             id="endereco"
             name="endereco"
             placeholder="Rua, Avenida..."
             defaultValue={cliente?.endereco || ""}
+            className="h-8 text-sm"
           />
         </div>
 
         <div>
-          <Label htmlFor="numero">Número</Label>
+          <Label htmlFor="numero" className="text-xs">Número</Label>
           <Input
             id="numero"
             name="numero"
             defaultValue={cliente?.numero || ""}
+            className="h-8 text-sm"
           />
         </div>
 
         <div>
-          <Label htmlFor="cep">CEP</Label>
+          <Label htmlFor="cep" className="text-xs">CEP</Label>
           <Input
             id="cep"
             name="cep"
             placeholder="00000-000"
             maxLength={9}
             defaultValue={cliente?.cep || ""}
+            className="h-8 text-sm"
           />
         </div>
 
         <div>
-          <Label htmlFor="cidade">Cidade</Label>
+          <Label htmlFor="cidade" className="text-xs">Cidade</Label>
           <Input
             id="cidade"
             name="cidade"
             defaultValue={cliente?.cidade || ""}
+            className="h-8 text-sm"
           />
         </div>
 
         <div>
-          <Label htmlFor="estado">Estado</Label>
+          <Label htmlFor="estado" className="text-xs">Estado</Label>
           <Input
             id="estado"
             name="estado"
             maxLength={2}
             placeholder="MG"
             defaultValue={cliente?.estado || ""}
+            className="h-8 text-sm"
           />
         </div>
 
         <div className="col-span-2">
-          <Label htmlFor="responsavel">Responsável</Label>
+          <Label htmlFor="responsavel" className="text-xs">Responsável</Label>
           <Input
             id="responsavel"
             name="responsavel"
             defaultValue={cliente?.responsavel || ""}
+            className="h-8 text-sm"
           />
         </div>
 
         {isAdmin && (
           <div className="col-span-2">
-            <Label htmlFor="vendedor_responsavel" className="flex items-center gap-2">
-              <UserCheck className="h-4 w-4" />
+            <Label htmlFor="vendedor_responsavel" className="text-xs flex items-center gap-1">
+              <UserCheck className="h-3 w-3" />
               Vendedor Responsável
             </Label>
             <Select name="vendedor_responsavel" defaultValue={cliente?.vendedor_responsavel || "none"}>
-              <SelectTrigger>
+              <SelectTrigger className="h-8 text-sm">
                 <SelectValue placeholder="Selecione um vendedor" />
               </SelectTrigger>
               <SelectContent>
@@ -410,27 +529,25 @@ function ClienteForm({ cliente, onSubmit, isLoading, vendedores, isAdmin }: Clie
                 ))}
               </SelectContent>
             </Select>
-            <p className="text-xs text-muted-foreground mt-1">
-              O vendedor responsável terá acesso a este cliente
-            </p>
           </div>
         )}
 
         <div className="col-span-2">
-          <Label htmlFor="observacoes">Observações</Label>
+          <Label htmlFor="observacoes" className="text-xs">Observações</Label>
           <Textarea
             id="observacoes"
             name="observacoes"
-            rows={3}
+            rows={2}
             defaultValue={cliente?.observacoes || ""}
+            className="text-sm"
           />
         </div>
       </div>
 
-      <div className="flex justify-end gap-2 pt-4">
-        <Button type="submit" disabled={isLoading}>
-          {isLoading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-          {cliente ? "Salvar Alterações" : "Criar Cliente"}
+      <div className="flex justify-end gap-2 pt-2">
+        <Button type="submit" size="sm" disabled={isLoading}>
+          {isLoading && <Loader2 className="h-3 w-3 mr-1 animate-spin" />}
+          {cliente ? "Salvar" : "Criar Cliente"}
         </Button>
       </div>
     </form>
