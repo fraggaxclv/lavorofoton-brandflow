@@ -17,7 +17,7 @@ import DiagnosticoFrota from "./pages/DiagnosticoFrota";
 import PedidoFaturamento from "./pages/PedidoFaturamento";
 import ListaPedidos from "./pages/ListaPedidos";
 import PropostaComercial from "./pages/PropostaComercial";
-import Auth from "./pages/Auth";
+
 import S315 from "./pages/models/S315";
 import Foton7T from "./pages/models/Foton7T";
 import Foton9T from "./pages/models/Foton9T";
@@ -54,7 +54,6 @@ const App = () => (
           <Routes>
             {/* Rotas públicas do site */}
             <Route path="/" element={<Home />} />
-            <Route path="/auth" element={<Auth />} />
             <Route path="/quem-somos" element={<QuemSomos />} />
             <Route path="/sobre-foton" element={<SobreFoton />} />
             <Route path="/modelos" element={<Modelos />} />

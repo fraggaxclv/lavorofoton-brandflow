@@ -56,18 +56,27 @@ export const InternoAuthProvider = ({ children }: { children: React.ReactNode })
 
   const fetchUserRole = useCallback(async (userId: string): Promise<UserRole | null> => {
     try {
+      // Fetch all roles for user (may have multiple)
       const { data, error } = await supabase
         .from("user_roles")
         .select("role")
-        .eq("user_id", userId)
-        .maybeSingle();
+        .eq("user_id", userId);
 
       if (error) {
         console.error("Erro ao buscar role:", error);
         return null;
       }
 
-      return data?.role as UserRole || null;
+      if (!data || data.length === 0) {
+        return null;
+      }
+
+      // Priority: admin > vendedor
+      const roles = data.map(r => r.role);
+      if (roles.includes('admin')) return 'admin';
+      if (roles.includes('vendedor')) return 'vendedor';
+      
+      return roles[0] as UserRole;
     } catch (error) {
       console.error("Erro ao buscar role:", error);
       return null;
