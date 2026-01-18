@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import { Button } from "@/components/ui/button";
 import { 
@@ -10,7 +10,9 @@ import {
   Menu, 
   X,
   ChevronRight,
-  User
+  User,
+  ChevronLeft,
+  UserCog
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -37,18 +39,31 @@ const navItems = [
     icon: Briefcase,
     roles: ["admin", "vendedor"] as const
   },
+  { 
+    path: "/interno/vendedores", 
+    label: "Vendedores", 
+    icon: UserCog,
+    roles: ["admin"] as const
+  },
 ];
 
 export default function InternoLayout({ children }: InternoLayoutProps) {
   const { profile, userRole, signOut } = useInternoAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const displayName = profile?.nome_exibicao || profile?.full_name || profile?.email || "Usuário";
 
   const filteredNavItems = navItems.filter(item => 
-    userRole && item.roles.includes(userRole as "admin" | "vendedor")
+    userRole && (item.roles as readonly string[]).includes(userRole)
   );
+
+  const isDashboard = location.pathname === "/interno/dashboard";
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="min-h-screen bg-muted">
@@ -151,6 +166,18 @@ export default function InternoLayout({ children }: InternoLayoutProps) {
       {/* Main Content */}
       <main className="lg:ml-64 pt-16 lg:pt-0 min-h-screen">
         <div className="p-4 lg:p-8">
+          {/* Back Button - only show when not on dashboard */}
+          {!isDashboard && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleGoBack}
+              className="mb-4 -ml-2 text-muted-foreground hover:text-foreground"
+            >
+              <ChevronLeft className="h-4 w-4 mr-1" />
+              Voltar
+            </Button>
+          )}
           {children}
         </div>
       </main>
