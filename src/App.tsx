@@ -42,7 +42,20 @@ import InternoNegociacoes from "./pages/interno/InternoNegociacoes";
 import InternoConsultores from "./pages/interno/InternoConsultores";
 import InternoConsultorPerfil from "./pages/interno/InternoConsultorPerfil";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 2, // 2 minutes
+      gcTime: 1000 * 60 * 10, // 10 minutes (previously cacheTime)
+      retry: 2,
+      refetchOnWindowFocus: false,
+      refetchOnMount: true,
+    },
+    mutations: {
+      retry: 1,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
