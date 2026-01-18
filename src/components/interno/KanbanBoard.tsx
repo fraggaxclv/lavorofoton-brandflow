@@ -120,7 +120,7 @@ function KanbanCard({ negociacao, onClick, isDragging }: KanbanCardProps) {
               </span>
             </div>
             <p className="font-medium text-sm truncate">
-              {negociacao.cliente?.nome_razao || "Cliente"}
+              {negociacao.cliente?.nome_fantasia || negociacao.cliente?.razao_social || "Cliente"}
             </p>
             {negociacao.produto_principal && (
               <p className="text-xs text-muted-foreground truncate">

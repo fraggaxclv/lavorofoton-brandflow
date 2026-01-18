@@ -144,7 +144,8 @@ export default function InternoNegociacoes() {
     const search = searchTerm.toLowerCase();
     return (
       neg.numero_negociacao.toLowerCase().includes(search) ||
-      neg.cliente?.nome_razao?.toLowerCase().includes(search)
+      neg.cliente?.nome_fantasia?.toLowerCase().includes(search) ||
+      neg.cliente?.razao_social?.toLowerCase().includes(search)
     );
   });
 
@@ -417,7 +418,7 @@ export default function InternoNegociacoes() {
                           </Badge>
                         </div>
                         <h3 className="font-semibold">
-                          {negociacao.cliente?.nome_razao || "Cliente não informado"}
+                          {negociacao.cliente?.nome_fantasia || negociacao.cliente?.razao_social || "Cliente não informado"}
                         </h3>
                         <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                           {negociacao.produto_principal && (
@@ -526,7 +527,7 @@ export default function InternoNegociacoes() {
 }
 
 interface NovaNegociacaoFormProps {
-  clientes: { id: string; nome_razao: string }[];
+  clientes: { id: string; nome_fantasia?: string; razao_social: string }[];
   onSubmit: (formData: FormData, produtos: ProdutoNegociacao[]) => void;
   isLoading: boolean;
 }
@@ -557,7 +558,7 @@ function NovaNegociacaoForm({ clientes, onSubmit, isLoading }: NovaNegociacaoFor
           <SelectContent>
             {clientes.map(cliente => (
               <SelectItem key={cliente.id} value={cliente.id}>
-                {cliente.nome_razao}
+                {cliente.nome_fantasia || cliente.razao_social}
               </SelectItem>
             ))}
           </SelectContent>
@@ -817,7 +818,7 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label className="text-muted-foreground">Cliente</Label>
-                <p className="font-medium">{negociacao.cliente?.nome_razao}</p>
+                <p className="font-medium">{negociacao.cliente?.nome_fantasia || negociacao.cliente?.razao_social}</p>
               </div>
               <div>
                 <Label className="text-muted-foreground">Origem</Label>

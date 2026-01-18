@@ -28,7 +28,8 @@ interface NegociacaoRaw {
   updated_at: string;
   created_by: string | null;
   cliente?: {
-    nome_razao: string;
+    nome_fantasia: string | null;
+    razao_social: string;
     cidade: string | null;
   };
 }
@@ -46,7 +47,7 @@ export function useDashboard(options: UseDashboardOptions = {}) {
         .from("negociacoes")
         .select(`
           *,
-          cliente:clientes(nome_razao, cidade)
+          cliente:clientes(nome_fantasia, razao_social, cidade)
         `);
 
       if (options.owner_user_id) {

@@ -5,10 +5,13 @@ import { useToast } from "@/hooks/use-toast";
 
 interface CreateClienteData {
   tipo: TipoCliente | "PF" | "PJ";
-  nome_razao: string;
+  nome_fantasia?: string;
+  razao_social: string;
   cpf_cnpj: string;
   endereco?: string;
   numero?: string;
+  complemento?: string;
+  bairro?: string;
   cep?: string;
   cidade?: string;
   estado?: string;
@@ -43,7 +46,7 @@ export function useClientes(options: UseClientesOptions = {}) {
         .order("nome_razao", { ascending: true });
 
       if (options.search) {
-        query = query.or(`nome_razao.ilike.%${options.search}%,cpf_cnpj.ilike.%${options.search}%,cidade.ilike.%${options.search}%`);
+        query = query.or(`razao_social.ilike.%${options.search}%,nome_fantasia.ilike.%${options.search}%,cpf_cnpj.ilike.%${options.search}%,cidade.ilike.%${options.search}%`);
       }
 
       if (options.estado) {

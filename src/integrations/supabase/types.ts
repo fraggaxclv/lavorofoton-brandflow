@@ -69,9 +69,10 @@ export type Database = {
           endereco: string | null
           estado: string | null
           id: string
-          nome_razao: string
+          nome_fantasia: string | null
           numero: string | null
           observacoes: string | null
+          razao_social: string
           responsavel: string | null
           telefone: string | null
           tipo: string
@@ -91,9 +92,10 @@ export type Database = {
           endereco?: string | null
           estado?: string | null
           id?: string
-          nome_razao: string
+          nome_fantasia?: string | null
           numero?: string | null
           observacoes?: string | null
+          razao_social: string
           responsavel?: string | null
           telefone?: string | null
           tipo: string
@@ -113,9 +115,10 @@ export type Database = {
           endereco?: string | null
           estado?: string | null
           id?: string
-          nome_razao?: string
+          nome_fantasia?: string | null
           numero?: string | null
           observacoes?: string | null
+          razao_social?: string
           responsavel?: string | null
           telefone?: string | null
           tipo?: string
