@@ -100,6 +100,25 @@ export default function InternoConsultorPerfil() {
   return (
     <InternoLayout>
       <div className="space-y-6">
+        {/* Quick Access Button - Always visible for consultants */}
+        <div className="flex flex-wrap gap-2">
+          <Button
+            onClick={() => navigate("/interno/negociacoes")}
+            className="flex-1 sm:flex-none"
+          >
+            <Briefcase className="h-4 w-4 mr-2" />
+            Minhas Negociações
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => navigate("/interno/dashboard")}
+            className="flex-1 sm:flex-none"
+          >
+            <BarChart3 className="h-4 w-4 mr-2" />
+            Dashboard
+          </Button>
+        </div>
+
         {/* Profile Header */}
         <Card>
           <CardContent className="p-6">
