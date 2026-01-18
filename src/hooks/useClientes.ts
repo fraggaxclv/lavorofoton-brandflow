@@ -43,7 +43,7 @@ export function useClientes(options: UseClientesOptions = {}) {
       let query = supabase
         .from("clientes")
         .select("*")
-        .order("nome_razao", { ascending: true });
+        .order("razao_social", { ascending: true });
 
       if (options.search) {
         query = query.or(`razao_social.ilike.%${options.search}%,nome_fantasia.ilike.%${options.search}%,cpf_cnpj.ilike.%${options.search}%,cidade.ilike.%${options.search}%`);
