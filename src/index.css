@@ -96,8 +96,21 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  /* Mobile optimizations */
+  html {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    /* Safe area for notched devices */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    /* Prevent pull-to-refresh on Android */
+    overscroll-behavior-y: contain;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -114,6 +127,18 @@ All colors MUST be HSL.
 
   h3 {
     @apply text-3xl md:text-4xl;
+  }
+
+  /* Minimum touch target size for accessibility */
+  button, a, input[type="checkbox"], input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Exception for inline elements that don't need large touch targets */
+  a:not(.btn):not([class*="button"]) {
+    min-height: auto;
+    min-width: auto;
   }
 }
 
@@ -148,5 +173,43 @@ All colors MUST be HSL.
 
   .btn-primary-large {
     @apply bg-primary text-primary-foreground px-8 py-4 rounded text-lg font-semibold hover:bg-[hsl(var(--primary-dark))] transition-all duration-300 shadow-[var(--shadow-premium)];
+  }
+
+  /* Safe area utilities for notched devices (iPhone X+, etc) */
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-inset-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-area-inset-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Mobile scroll behavior */
+  .overscroll-contain {
+    overscroll-behavior: contain;
+  }
+
+  /* Touch-friendly scrolling */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Hide scrollbar on mobile but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }

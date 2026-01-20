@@ -85,13 +85,14 @@ function InternoLayout({ children }: InternoLayoutProps) {
 
   return (
     <div className="min-h-screen bg-muted">
-      {/* Mobile Header */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-[60] bg-card border-b border-border h-14 flex items-center justify-between px-4">
+      {/* Mobile Header - Otimizado para touch */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-[60] bg-card border-b border-border h-14 flex items-center justify-between px-3 safe-area-inset-top">
         <Button 
           variant="ghost" 
           size="icon"
           onClick={() => setSidebarOpen(true)}
           aria-label="Abrir menu"
+          className="h-11 w-11 min-w-[44px] min-h-[44px]"
         >
           <Menu className="h-5 w-5" />
         </Button>
@@ -101,7 +102,7 @@ function InternoLayout({ children }: InternoLayoutProps) {
           </div>
           <span className="font-semibold text-sm text-foreground">Foton Lavoro</span>
         </Link>
-        <div className="w-10" />
+        <div className="w-11" />
       </header>
 
       {/* Mobile Sidebar Overlay */}
@@ -113,9 +114,9 @@ function InternoLayout({ children }: InternoLayoutProps) {
         />
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar - Maior área de toque para mobile */}
       <aside className={cn(
-        "fixed top-0 left-0 z-[60] h-full w-64 bg-card border-r border-border transform transition-transform duration-200 ease-in-out lg:translate-x-0",
+        "fixed top-0 left-0 z-[60] h-full w-72 sm:w-64 bg-card border-r border-border transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:w-64 safe-area-inset-left",
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         <div className="flex flex-col h-full">
@@ -130,23 +131,23 @@ function InternoLayout({ children }: InternoLayoutProps) {
             <Button 
               variant="ghost" 
               size="icon"
-              className="lg:hidden h-8 w-8"
+              className="lg:hidden h-11 w-11 min-w-[44px] min-h-[44px]"
               onClick={closeSidebar}
               aria-label="Fechar menu"
             >
-              <X className="h-4 w-4" />
+              <X className="h-5 w-5" />
             </Button>
           </div>
 
-          {/* User Info */}
+          {/* User Info - Toque maior */}
           <div className="p-3 border-b border-border">
             <Link
               to="/interno/meu-perfil"
               onClick={closeSidebar}
-              className="flex items-center gap-3 hover:bg-muted/50 -m-1 p-2 rounded-lg transition-colors"
+              className="flex items-center gap-3 hover:bg-muted/50 -m-1 p-3 rounded-lg transition-colors min-h-[56px]"
             >
-              <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center">
-                <User className="h-4 w-4 text-primary" />
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <User className="h-5 w-5 text-primary" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="font-medium text-sm text-foreground truncate">{displayName}</p>
@@ -154,12 +155,12 @@ function InternoLayout({ children }: InternoLayoutProps) {
                   {userRole === 'vendedor' ? 'Consultor' : userRole === 'admin' ? 'Administrador' : userRole}
                 </p>
               </div>
-              <ChevronRight className="h-4 w-4 text-muted-foreground" />
+              <ChevronRight className="h-5 w-5 text-muted-foreground flex-shrink-0" />
             </Link>
           </div>
 
-          {/* Navigation */}
-          <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+          {/* Navigation - Itens maiores para touch */}
+          <nav className="flex-1 p-3 space-y-1 overflow-y-auto overscroll-contain">
             {filteredNavItems.map((item) => {
               const isActive = location.pathname === item.path;
               return (
@@ -168,29 +169,29 @@ function InternoLayout({ children }: InternoLayoutProps) {
                   to={item.path}
                   onClick={closeSidebar}
                   className={cn(
-                    "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                    "flex items-center gap-3 px-4 py-3.5 rounded-lg text-sm font-medium transition-colors min-h-[52px]",
                     isActive 
                       ? "bg-primary text-primary-foreground" 
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted active:bg-muted/80"
                   )}
                 >
-                  <item.icon className="h-4 w-4" />
-                  <span>{item.label}</span>
-                  {isActive && <ChevronRight className="h-4 w-4 ml-auto" />}
+                  <item.icon className="h-5 w-5 flex-shrink-0" />
+                  <span className="flex-1">{item.label}</span>
+                  {isActive && <ChevronRight className="h-5 w-5" />}
                 </Link>
               );
             })}
           </nav>
 
           {/* Footer */}
-          <div className="p-3 border-t border-border">
+          <div className="p-3 border-t border-border safe-area-inset-bottom">
             <Button
               variant="ghost"
-              size="sm"
-              className="w-full justify-start text-muted-foreground hover:text-destructive"
+              size="lg"
+              className="w-full justify-start text-muted-foreground hover:text-destructive min-h-[52px]"
               onClick={signOut}
             >
-              <LogOut className="h-4 w-4 mr-2" />
+              <LogOut className="h-5 w-5 mr-3" />
               Sair
             </Button>
           </div>
@@ -199,33 +200,35 @@ function InternoLayout({ children }: InternoLayoutProps) {
 
       {/* Main Content */}
       <main className="lg:ml-64 pt-14 lg:pt-0 min-h-screen">
-        <div className="p-4 lg:p-6">
-          {/* Breadcrumb */}
-          <Breadcrumb />
+        <div className="p-3 sm:p-4 lg:p-6">
+          {/* Breadcrumb - Oculto em mobile para economia de espaço */}
+          <div className="hidden sm:block">
+            <Breadcrumb />
+          </div>
           
-          {/* Back Button - only show when not on dashboard */}
+          {/* Back Button - Maior área de toque, só em páginas internas */}
           {!isDashboard && (
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={handleGoBack}
-                className="-ml-2 text-muted-foreground hover:text-foreground h-8 px-2"
+                className="-ml-2 text-muted-foreground hover:text-foreground h-10 px-3 min-h-[44px]"
               >
-                <ChevronLeft className="h-4 w-4 mr-1" />
-                Voltar
+                <ChevronLeft className="h-5 w-5 mr-1" />
+                <span className="hidden xs:inline">Voltar</span>
               </Button>
               
-              {/* Quick access to common actions */}
+              {/* Quick access buttons - Maiores para touch */}
               <div className="flex gap-2">
                 {location.pathname !== "/interno/negociacoes" && (
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => navigate("/interno/negociacoes")}
-                    className="gap-1.5 h-8"
+                    className="gap-1.5 h-10 px-3 min-h-[44px]"
                   >
-                    <Briefcase className="h-3.5 w-3.5" />
+                    <Briefcase className="h-4 w-4" />
                     <span className="hidden sm:inline">Negociações</span>
                   </Button>
                 )}
@@ -234,9 +237,9 @@ function InternoLayout({ children }: InternoLayoutProps) {
                     size="sm"
                     variant="outline"
                     onClick={() => navigate("/interno/clientes")}
-                    className="gap-1.5 h-8"
+                    className="gap-1.5 h-10 px-3 min-h-[44px]"
                   >
-                    <Users className="h-3.5 w-3.5" />
+                    <Users className="h-4 w-4" />
                     <span className="hidden sm:inline">Clientes</span>
                   </Button>
                 )}
