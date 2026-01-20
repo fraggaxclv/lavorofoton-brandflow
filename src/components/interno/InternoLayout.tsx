@@ -86,7 +86,7 @@ function InternoLayout({ children }: InternoLayoutProps) {
   return (
     <div className="min-h-screen bg-muted">
       {/* Mobile Header */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-card border-b border-border h-14 flex items-center justify-between px-4">
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-[60] bg-card border-b border-border h-14 flex items-center justify-between px-4">
         <Button 
           variant="ghost" 
           size="icon"
@@ -107,7 +107,7 @@ function InternoLayout({ children }: InternoLayoutProps) {
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div 
-          className="lg:hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+          className="lg:hidden fixed inset-0 z-[55] bg-black/50 backdrop-blur-sm"
           onClick={closeSidebar}
           aria-hidden="true"
         />
@@ -115,7 +115,7 @@ function InternoLayout({ children }: InternoLayoutProps) {
 
       {/* Sidebar */}
       <aside className={cn(
-        "fixed top-0 left-0 z-50 h-full w-64 bg-card border-r border-border transform transition-transform duration-200 ease-in-out lg:translate-x-0",
+        "fixed top-0 left-0 z-[60] h-full w-64 bg-card border-r border-border transform transition-transform duration-200 ease-in-out lg:translate-x-0",
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         <div className="flex flex-col h-full">
