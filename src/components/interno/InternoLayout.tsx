@@ -31,16 +31,22 @@ const navItems = [
     roles: ["admin", "vendedor"] as const
   },
   { 
+    path: "/interno/negociacoes", 
+    label: "Negociações", 
+    icon: Briefcase,
+    roles: ["admin", "vendedor"] as const
+  },
+  { 
     path: "/interno/clientes", 
     label: "Clientes", 
     icon: Users,
     roles: ["admin", "vendedor"] as const
   },
   { 
-    path: "/interno/negociacoes", 
-    label: "Negociações", 
-    icon: Briefcase,
-    roles: ["admin", "vendedor"] as const
+    path: "/interno/meu-perfil", 
+    label: "Meu Perfil", 
+    icon: User,
+    roles: ["vendedor"] as const
   },
   { 
     path: "/interno/consultores", 
