@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -133,7 +133,7 @@ export default function InternoLogin() {
                 </div>
               </div>
 
-              <Button type="submit" className="w-full" disabled={loading}>
+              <Button type="submit" className="w-full min-h-[44px]" disabled={loading}>
                 {loading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -143,6 +143,15 @@ export default function InternoLogin() {
                   "Entrar"
                 )}
               </Button>
+
+              <div className="text-center">
+                <Link 
+                  to="/interno/recuperar-senha" 
+                  className="text-sm text-primary hover:underline"
+                >
+                  Esqueci minha senha
+                </Link>
+              </div>
             </form>
           </CardContent>
         </Card>

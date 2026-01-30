@@ -36,6 +36,8 @@ import WhatsAppButton from "./components/WhatsAppButton";
 
 // Páginas do sistema interno
 import InternoLogin from "./pages/interno/InternoLogin";
+import RecuperarSenha from "./pages/interno/RecuperarSenha";
+import RedefinirSenha from "./pages/interno/RedefinirSenha";
 import InternoDashboard from "./pages/interno/InternoDashboard";
 import InternoClientes from "./pages/interno/InternoClientes";
 import InternoNegociacoes from "./pages/interno/InternoNegociacoes";
@@ -107,6 +109,14 @@ const App = () => (
                   <InternoLogin />
                 </InternoAuthProvider>
               } 
+            />
+            <Route 
+              path="/interno/recuperar-senha" 
+              element={<RecuperarSenha />} 
+            />
+            <Route 
+              path="/interno/redefinir-senha" 
+              element={<RedefinirSenha />} 
             />
             <Route 
               path="/interno/dashboard" 
