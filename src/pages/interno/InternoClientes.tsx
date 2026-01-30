@@ -4,6 +4,7 @@ import { useClientes } from "@/hooks/useClientes";
 import { useConsultores } from "@/hooks/useConsultores";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import InternoLayout from "@/components/interno/InternoLayout";
+import ExportButton from "@/components/interno/ExportButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -40,7 +41,11 @@ import {
   Users
 } from "lucide-react";
 import { Cliente, TIPO_CLIENTE_LABELS } from "@/types/interno";
+import { exportClientesToCSV } from "@/lib/exportUtils";
 import { toast } from "sonner";
+
+// Type for export function
+type ClienteExportType = Parameters<typeof exportClientesToCSV>[0][0];
 
 export default function InternoClientes() {
   const navigate = useNavigate();
@@ -148,28 +153,35 @@ export default function InternoClientes() {
               {filteredClientes.length} cliente{filteredClientes.length !== 1 ? 's' : ''} encontrado{filteredClientes.length !== 1 ? 's' : ''}
             </p>
           </div>
-          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <DialogTrigger asChild>
-              <Button size="sm" onClick={handleOpenCreate}>
-                <Plus className="h-4 w-4 mr-1" />
-                Novo Cliente
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
-              <DialogHeader>
-                <DialogTitle>
-                  {editingCliente ? "Editar Cliente" : "Novo Cliente"}
-                </DialogTitle>
-              </DialogHeader>
-              <ClienteForm 
-                cliente={editingCliente} 
-                onSubmit={handleSubmit}
-                isLoading={isCreating || isUpdating}
-                consultores={consultores}
-                isAdmin={isAdmin}
-              />
-            </DialogContent>
-          </Dialog>
+          <div className="flex gap-2">
+            <ExportButton 
+              onExport={() => exportClientesToCSV(filteredClientes as ClienteExportType[])} 
+              label="Exportar"
+              disabled={filteredClientes.length === 0}
+            />
+            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+              <DialogTrigger asChild>
+                <Button size="sm" onClick={handleOpenCreate}>
+                  <Plus className="h-4 w-4 mr-1" />
+                  Novo Cliente
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle>
+                    {editingCliente ? "Editar Cliente" : "Novo Cliente"}
+                  </DialogTitle>
+                </DialogHeader>
+                <ClienteForm 
+                  cliente={editingCliente} 
+                  onSubmit={handleSubmit}
+                  isLoading={isCreating || isUpdating}
+                  consultores={consultores}
+                  isAdmin={isAdmin}
+                />
+              </DialogContent>
+            </Dialog>
+          </div>
         </div>
 
         {/* Filtros */}
