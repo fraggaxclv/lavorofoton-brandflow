@@ -1,8 +1,13 @@
 import { useState, memo, useCallback } from "react";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import { useDashboard, useRankingVendedores, useVendedores } from "@/hooks/useDashboard";
+import { useDashboardAnalytics, useRankingConsultores } from "@/hooks/useDashboardAnalytics";
 import { useMetaMensal, getMetaVendedor } from "@/hooks/useMetaMensal";
 import InternoLayout from "@/components/interno/InternoLayout";
+import DashboardKPIs from "@/components/interno/DashboardKPIs";
+import TrendChart from "@/components/interno/TrendChart";
+import RankingConsultores from "@/components/interno/RankingConsultores";
+import ExportButton from "@/components/interno/ExportButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -12,6 +17,7 @@ import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { exportDashboardToCSV } from "@/lib/exportUtils";
 import { 
   Briefcase, 
   DollarSign, 
@@ -25,8 +31,6 @@ import {
   Plus,
   UserPlus,
   ArrowRight,
-  Phone,
-  FileText,
   ChevronRight
 } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
@@ -36,7 +40,9 @@ export default function InternoDashboard() {
   const navigate = useNavigate();
   const { isAdmin, profile, user } = useInternoAuth();
   const dashboardQuery = useDashboard(isAdmin ? {} : { owner_user_id: user?.id });
+  const analyticsQuery = useDashboardAnalytics(isAdmin ? {} : { owner_user_id: user?.id });
   const rankingQuery = useRankingVendedores();
+  const rankingConsultoresQuery = useRankingConsultores();
   const vendedoresQuery = useVendedores();
   const { 
     valorMetaGeral, 
@@ -57,7 +63,10 @@ export default function InternoDashboard() {
   const [novoValorMetaIndividual, setNovoValorMetaIndividual] = useState("");
   
   const metrics = dashboardQuery.data?.metrics;
+  const kpis = analyticsQuery.data?.kpis;
+  const tendencia = analyticsQuery.data?.tendencia;
   const ranking = rankingQuery.data;
+  const rankingConsultores = rankingConsultoresQuery.data;
   const vendedores = vendedoresQuery.data || [];
   const isLoading = dashboardQuery.isLoading;
 
@@ -117,6 +126,18 @@ export default function InternoDashboard() {
     ...(dashboardQuery.data?.negociacoesSemAtualizacao || [])
   ].slice(0, 5);
 
+  // Exportar dashboard
+  const handleExportDashboard = () => {
+    if (kpis && tendencia && rankingConsultores) {
+      exportDashboardToCSV({
+        kpis,
+        faturadosMes: analyticsQuery.data?.faturadosMesAtual || 0,
+        tendencia,
+        ranking: rankingConsultores,
+      });
+    }
+  };
+
   return (
     <InternoLayout>
       <div className="space-y-5">
@@ -133,6 +154,13 @@ export default function InternoDashboard() {
           
           {/* Ações Rápidas - Destacadas */}
           <div className="flex gap-2">
+            {isAdmin && (
+              <ExportButton 
+                onExport={handleExportDashboard} 
+                label="Exportar"
+                disabled={analyticsQuery.isLoading}
+              />
+            )}
             <Button 
               onClick={() => navigate("/interno/negociacoes")} 
               size="sm"
@@ -152,6 +180,9 @@ export default function InternoDashboard() {
             </Button>
           </div>
         </div>
+
+        {/* KPIs Analytics - Novo */}
+        <DashboardKPIs kpis={kpis} isLoading={analyticsQuery.isLoading} />
 
         {/* Navegação Rápida para Consultor */}
         {!isAdmin && (
@@ -362,6 +393,14 @@ export default function InternoDashboard() {
               )}
             </CardContent>
           </Card>
+        )}
+
+        {/* Gráfico de Tendência e Ranking - Novo Layout */}
+        {isAdmin && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <TrendChart data={tendencia} isLoading={analyticsQuery.isLoading} />
+            <RankingConsultores ranking={rankingConsultores} isLoading={rankingConsultoresQuery.isLoading} />
+          </div>
         )}
 
         {/* Conversão e Status */}

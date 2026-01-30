@@ -12,6 +12,7 @@ import KanbanBoard from "@/components/interno/KanbanBoard";
 import CheckinModal from "@/components/interno/CheckinModal";
 import WelcomeCheckinModal from "@/components/interno/WelcomeCheckinModal";
 import ProdutoSelector, { ProdutoNegociacao } from "@/components/interno/ProdutoSelector";
+import ExportButton from "@/components/interno/ExportButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -79,6 +80,7 @@ import {
   TIPO_VENDA_LABELS,
   formatCurrency
 } from "@/types/interno";
+import { exportNegociacoesToCSV } from "@/lib/exportUtils";
 import { toast } from "sonner";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -89,6 +91,9 @@ const statusOrder: StatusNegociacao[] = [
   "faturado",
   "perdido"
 ];
+
+// Type for export function
+type NegociacaoExportType = Parameters<typeof exportNegociacoesToCSV>[0][0];
 
 export default function InternoNegociacoes() {
   const { user, isAdmin, isConsultor } = useInternoAuth();
@@ -289,27 +294,34 @@ export default function InternoNegociacoes() {
             <h1 className="text-2xl font-bold text-foreground">Negociações</h1>
             <p className="text-muted-foreground">Gerencie seu pipeline de vendas</p>
           </div>
-          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <DialogTrigger asChild>
-              <Button onClick={handleOpenCreate}>
-                <Plus className="h-4 w-4 mr-2" />
-                Nova Negociação
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-lg">
-              <DialogHeader>
-                <DialogTitle>Nova Negociação</DialogTitle>
-              </DialogHeader>
-              <NovaNegociacaoForm 
-                clientes={clientes || []}
-                consultores={consultores}
-                isAdmin={isAdmin}
-                currentUserId={user?.id || ""}
-                onSubmit={handleSubmit}
-                isLoading={isCreating}
-              />
-            </DialogContent>
-          </Dialog>
+          <div className="flex gap-2">
+            <ExportButton 
+              onExport={() => exportNegociacoesToCSV(filteredNegociacoes as NegociacaoExportType[])} 
+              label="Exportar"
+              disabled={filteredNegociacoes.length === 0}
+            />
+            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+              <DialogTrigger asChild>
+                <Button onClick={handleOpenCreate}>
+                  <Plus className="h-4 w-4 mr-2" />
+                  Nova Negociação
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-lg">
+                <DialogHeader>
+                  <DialogTitle>Nova Negociação</DialogTitle>
+                </DialogHeader>
+                <NovaNegociacaoForm 
+                  clientes={clientes || []}
+                  consultores={consultores}
+                  isAdmin={isAdmin}
+                  currentUserId={user?.id || ""}
+                  onSubmit={handleSubmit}
+                  isLoading={isCreating}
+                />
+              </DialogContent>
+            </Dialog>
+          </div>
         </div>
 
         {/* Filtros e Toggle de Visualização */}
