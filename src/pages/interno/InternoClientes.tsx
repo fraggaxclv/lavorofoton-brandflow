@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query";
 import { useClientes } from "@/hooks/useClientes";
 import { useConsultores } from "@/hooks/useConsultores";
 import { useInternoAuth } from "@/contexts/InternoAuthContext";
@@ -38,8 +39,10 @@ import {
   Loader2,
   UserCheck,
   Handshake,
-  Users
+  Users,
+  FileUp
 } from "lucide-react";
+import ImportClientesModal from "@/components/interno/ImportClientesModal";
 import { Cliente, TIPO_CLIENTE_LABELS } from "@/types/interno";
 import { exportClientesToCSV } from "@/lib/exportUtils";
 import { toast } from "sonner";
@@ -49,10 +52,12 @@ type ClienteExportType = Parameters<typeof exportClientesToCSV>[0][0];
 
 export default function InternoClientes() {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { user, isAdmin } = useInternoAuth();
   const [searchTerm, setSearchTerm] = useState("");
   const [tipoFilter, setTipoFilter] = useState<string>("all");
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [importOpen, setImportOpen] = useState(false);
   const [editingCliente, setEditingCliente] = useState<Cliente | null>(null);
   const [assignDialogOpen, setAssignDialogOpen] = useState(false);
   const [assigningCliente, setAssigningCliente] = useState<Cliente | null>(null);
@@ -159,6 +164,10 @@ export default function InternoClientes() {
               label="Exportar"
               disabled={filteredClientes.length === 0}
             />
+            <Button size="sm" variant="outline" onClick={() => setImportOpen(true)}>
+              <FileUp className="h-4 w-4 mr-1" />
+              Importar
+            </Button>
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
                 <Button size="sm" onClick={handleOpenCreate}>
@@ -368,6 +377,12 @@ export default function InternoClientes() {
             </div>
           </DialogContent>
         </Dialog>
+        {/* Import Modal */}
+        <ImportClientesModal
+          open={importOpen}
+          onOpenChange={setImportOpen}
+          onComplete={() => queryClient.invalidateQueries({ queryKey: ["clientes"] })}
+        />
       </div>
     </InternoLayout>
   );
