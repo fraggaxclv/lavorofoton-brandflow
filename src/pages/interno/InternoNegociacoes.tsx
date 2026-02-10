@@ -13,6 +13,7 @@ import CheckinModal from "@/components/interno/CheckinModal";
 import WelcomeCheckinModal from "@/components/interno/WelcomeCheckinModal";
 import ProdutoSelector, { ProdutoNegociacao } from "@/components/interno/ProdutoSelector";
 import ExportButton from "@/components/interno/ExportButton";
+import MotivoPerdaModal from "@/components/interno/MotivoPerdaModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -695,8 +696,6 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
   const [novaAtividade, setNovaAtividade] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [lossDialogOpen, setLossDialogOpen] = useState(false);
-  const [lossReason, setLossReason] = useState("");
-  const [isSubmittingLoss, setIsSubmittingLoss] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [formValues, setFormValues] = useState({
     valor_estimado: negociacao.valor_estimado || 0,
@@ -719,24 +718,15 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
 
   const handleStatusChangeInternal = (status: StatusNegociacao) => {
     if (status === "perdido") {
-      setLossReason("");
       setLossDialogOpen(true);
     } else {
       onStatusChange(negociacao, status);
     }
   };
 
-  const handleConfirmLoss = async () => {
-    if (!lossReason.trim()) return;
-    
-    setIsSubmittingLoss(true);
-    try {
-      await onLossStatusChange(negociacao, lossReason.trim());
-      setLossDialogOpen(false);
-      setLossReason("");
-    } finally {
-      setIsSubmittingLoss(false);
-    }
+  const handleConfirmLoss = async (motivo: string) => {
+    await onLossStatusChange(negociacao, motivo);
+    setLossDialogOpen(false);
   };
 
   const handleSaveChanges = async () => {
@@ -1123,42 +1113,13 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
         </Tabs>
       </DialogContent>
 
-      {/* Dialog para motivo de perda */}
-      <Dialog open={lossDialogOpen} onOpenChange={(open) => !open && setLossDialogOpen(false)}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Motivo da Perda</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">
-              Para marcar a negociação como perdida, informe o motivo:
-            </p>
-            <div className="space-y-2">
-              <Label htmlFor="loss-reason-details">Motivo *</Label>
-              <Textarea
-                id="loss-reason-details"
-                value={lossReason}
-                onChange={(e) => setLossReason(e.target.value)}
-                placeholder="Ex: Cliente optou pela concorrência, preço acima do orçamento, desistiu da compra..."
-                rows={4}
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setLossDialogOpen(false)}>
-              Cancelar
-            </Button>
-            <Button 
-              onClick={handleConfirmLoss} 
-              disabled={!lossReason.trim() || isSubmittingLoss}
-              variant="destructive"
-            >
-              {isSubmittingLoss && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-              Confirmar Perda
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      {/* Modal para motivo de perda */}
+      <MotivoPerdaModal
+        open={lossDialogOpen}
+        onOpenChange={setLossDialogOpen}
+        numeroNegociacao={negociacao.numero_negociacao}
+        onConfirm={handleConfirmLoss}
+      />
     </Dialog>
   );
 }
