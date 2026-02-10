@@ -14,9 +14,10 @@ function escapeCsvValue(value: unknown): string {
 
 // Converter array de objetos para CSV
 function arrayToCSV(data: Record<string, unknown>[], headers: { key: string; label: string }[]): string {
-  const headerRow = headers.map(h => escapeCsvValue(h.label)).join(",");
+  const sep = ";";
+  const headerRow = headers.map(h => escapeCsvValue(h.label)).join(sep);
   const rows = data.map(item => 
-    headers.map(h => escapeCsvValue(item[h.key])).join(",")
+    headers.map(h => escapeCsvValue(item[h.key])).join(sep)
   );
   return [headerRow, ...rows].join("\n");
 }
