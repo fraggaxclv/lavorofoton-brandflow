@@ -40,28 +40,45 @@ export function useClientes(options: UseClientesOptions = {}) {
   const query = useQuery({
     queryKey: ["clientes", options],
     queryFn: async () => {
-      let query = supabase
-        .from("clientes")
-        .select("*", { count: "exact" })
-        .order("razao_social", { ascending: true })
-        .range(0, 1999);
+      const PAGE_SIZE = 1000;
+      let allData: Cliente[] = [];
+      let from = 0;
+      let hasMore = true;
 
-      if (options.search) {
-        query = query.or(`razao_social.ilike.%${options.search}%,nome_fantasia.ilike.%${options.search}%,cpf_cnpj.ilike.%${options.search}%,cidade.ilike.%${options.search}%`);
+      while (hasMore) {
+        let q = supabase
+          .from("clientes")
+          .select("*")
+          .order("razao_social", { ascending: true })
+          .range(from, from + PAGE_SIZE - 1);
+
+        if (options.search) {
+          q = q.or(`razao_social.ilike.%${options.search}%,nome_fantasia.ilike.%${options.search}%,cpf_cnpj.ilike.%${options.search}%,cidade.ilike.%${options.search}%`);
+        }
+
+        if (options.estado) {
+          q = q.eq("estado", options.estado);
+        }
+
+        if (options.ativo !== undefined) {
+          q = q.eq("ativo", options.ativo);
+        }
+
+        const { data, error } = await q;
+
+        if (error) throw error;
+        
+        const batch = (data || []) as Cliente[];
+        allData = [...allData, ...batch];
+        
+        if (batch.length < PAGE_SIZE) {
+          hasMore = false;
+        } else {
+          from += PAGE_SIZE;
+        }
       }
 
-      if (options.estado) {
-        query = query.eq("estado", options.estado);
-      }
-
-      if (options.ativo !== undefined) {
-        query = query.eq("ativo", options.ativo);
-      }
-
-      const { data, error } = await query;
-
-      if (error) throw error;
-      return data as Cliente[];
+      return allData;
     },
   });
 
