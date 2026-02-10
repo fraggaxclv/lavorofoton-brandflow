@@ -23,6 +23,39 @@ interface ClienteInput {
   observacoes?: string;
 }
 
+function parseCsvText(csvText: string): ClienteInput[] {
+  const lines = csvText.trim().split("\n");
+  const results: ClienteInput[] = [];
+  
+  for (const line of lines) {
+    // Skip empty lines and header
+    if (!line.trim() || line.startsWith("Nome Fantasia|") || line.startsWith("|Nome Fantasia|") || line.startsWith("|-")) continue;
+    
+    // Parse pipe-delimited line
+    const parts = line.split("|").map(p => p.trim()).filter((_, i, arr) => i > 0 && i < arr.length); // remove first/last empty from |...|
+    
+    if (parts.length < 1 || !parts[0]) continue;
+    
+    results.push({
+      nome_fantasia: parts[0] || "",
+      razao_social: parts[1] || "",
+      cpf_cnpj: parts[2] || "",
+      endereco: parts[3] || "",
+      numero: parts[4] || "",
+      complemento: parts[5] || "",
+      bairro: parts[6] || "",
+      cep: parts[7] || "",
+      cidade: parts[8] || "",
+      estado: parts[9] || "",
+      responsavel: parts[10] || "",
+      email: (parts[11] || "").replace(/\\@/g, "@"),
+      telefone: parts[12] || "",
+    });
+  }
+  
+  return results;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -33,10 +66,18 @@ Deno.serve(async (req) => {
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, serviceKey);
 
-    const { clientes } = await req.json() as { clientes: ClienteInput[] };
+    const body = await req.json();
+    
+    // Support both JSON array and raw CSV text
+    let clientes: ClienteInput[];
+    if (body.csv_text) {
+      clientes = parseCsvText(body.csv_text);
+    } else {
+      clientes = body.clientes as ClienteInput[];
+    }
 
     if (!clientes || !Array.isArray(clientes) || clientes.length === 0) {
-      return new Response(JSON.stringify({ error: "No clients provided" }), {
+      return new Response(JSON.stringify({ error: "No clients provided", parsed: 0 }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -69,38 +110,36 @@ Deno.serve(async (req) => {
       const nameKey = (c.nome_fantasia || "").toLowerCase().trim();
       const cnpjDigits = (c.cpf_cnpj || "").replace(/\D/g, "");
 
-      // Skip if no name
       if (!nameKey) {
         skipped.push("(sem nome)");
         continue;
       }
 
-      // Skip if already exists by name
       if (existingNames.has(nameKey)) {
         skipped.push(c.nome_fantasia);
         continue;
       }
 
-      // Skip if already exists by CNPJ (when CNPJ has 11+ digits)
       if (cnpjDigits.length >= 11 && existingCnpjs.has(cnpjDigits)) {
         skipped.push(`${c.nome_fantasia} (CNPJ duplicado)`);
         continue;
       }
 
-      // Skip if duplicate within this batch
       if (seen.has(nameKey)) {
         skipped.push(`${c.nome_fantasia} (duplicado no lote)`);
         continue;
       }
       seen.add(nameKey);
+      
+      // Also add to existing sets so next batches know about these
+      existingNames.add(nameKey);
+      if (cnpjDigits.length >= 11) existingCnpjs.add(cnpjDigits);
 
-      // Detect tipo from CPF/CNPJ
       let tipo = (c.tipo || "").toUpperCase().trim();
       if (!tipo || (tipo !== "PF" && tipo !== "PJ")) {
         tipo = cnpjDigits.length <= 11 ? "PF" : "PJ";
       }
 
-      // Normalize estado
       let estado = (c.estado || "").trim();
       if (estado.toLowerCase() === "minas gerais") estado = "MG";
 
@@ -135,7 +174,6 @@ Deno.serve(async (req) => {
         .select("id");
 
       if (error) {
-        // Try one by one
         for (const item of batch) {
           const { error: sErr } = await supabase.from("clientes").insert(item);
           if (sErr) {
@@ -153,10 +191,11 @@ Deno.serve(async (req) => {
       JSON.stringify({
         inserted,
         skipped: skipped.length,
-        skipped_names: skipped.slice(0, 20),
+        skipped_names: skipped.slice(0, 30),
         errors: errors.length,
         error_details: errors.slice(0, 10),
         total_received: clientes.length,
+        total_parsed: clientes.length,
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
