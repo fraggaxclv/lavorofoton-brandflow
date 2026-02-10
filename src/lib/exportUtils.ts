@@ -165,6 +165,43 @@ export function exportRankingToCSV(ranking: ConsultorRankingExport[], filename?:
   downloadFile(csv, filename || `ranking_consultores_${dateStr}.csv`, "text/csv;charset=utf-8");
 }
 
+// Exportar perdas
+interface PerdaExport {
+  numero: string;
+  cliente: string;
+  motivo_perda: string;
+  valor: number;
+  consultor: string;
+  data: string;
+  produto: string;
+}
+
+export function exportPerdasToCSV(perdas: PerdaExport[], filename?: string) {
+  const data = perdas.map(p => ({
+    numero: p.numero,
+    cliente: p.cliente,
+    motivo: p.motivo_perda,
+    produto: p.produto,
+    valor: formatCurrency(p.valor),
+    consultor: p.consultor,
+    data: format(new Date(p.data), "dd/MM/yyyy"),
+  }));
+
+  const headers = [
+    { key: "numero", label: "Número" },
+    { key: "cliente", label: "Cliente" },
+    { key: "motivo", label: "Motivo" },
+    { key: "produto", label: "Produto" },
+    { key: "valor", label: "Valor" },
+    { key: "consultor", label: "Consultor" },
+    { key: "data", label: "Data" },
+  ];
+
+  const csv = arrayToCSV(data, headers);
+  const dateStr = format(new Date(), "yyyy-MM-dd");
+  downloadFile(csv, filename || `perdas_${dateStr}.csv`, "text/csv;charset=utf-8");
+}
+
 // Exportar relatório do dashboard
 interface DashboardReportData {
   kpis: {

@@ -8,23 +8,29 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Download, FileSpreadsheet, Loader2 } from "lucide-react";
+import { Download, FileSpreadsheet, FileText, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 interface ExportButtonProps {
   onExport: (format: "csv") => void | Promise<void>;
+  onExportPDF?: () => void | Promise<void>;
   label?: string;
   disabled?: boolean;
 }
 
-export default function ExportButton({ onExport, label = "Exportar", disabled }: ExportButtonProps) {
+export default function ExportButton({ onExport, onExportPDF, label = "Exportar", disabled }: ExportButtonProps) {
   const [isExporting, setIsExporting] = useState(false);
 
-  const handleExport = async (format: "csv") => {
+  const handleExport = async (format: "csv" | "pdf") => {
     setIsExporting(true);
     try {
-      await onExport(format);
-      toast.success("Relatório exportado com sucesso!");
+      if (format === "pdf" && onExportPDF) {
+        await onExportPDF();
+        toast.success("PDF gerado! Use Ctrl+P ou Cmd+P para salvar.");
+      } else {
+        await onExport("csv");
+        toast.success("Relatório exportado com sucesso!");
+      }
     } catch (error) {
       console.error("Export error:", error);
       toast.error("Erro ao exportar relatório");
@@ -52,6 +58,12 @@ export default function ExportButton({ onExport, label = "Exportar", disabled }:
           <FileSpreadsheet className="h-4 w-4 mr-2" />
           CSV (Excel)
         </DropdownMenuItem>
+        {onExportPDF && (
+          <DropdownMenuItem onClick={() => handleExport("pdf")}>
+            <FileText className="h-4 w-4 mr-2" />
+            PDF com Logo
+          </DropdownMenuItem>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );

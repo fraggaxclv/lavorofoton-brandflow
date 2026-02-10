@@ -18,6 +18,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { exportDashboardToCSV } from "@/lib/exportUtils";
+import { exportDashboardPDF } from "@/lib/pdfExport";
 import { 
   Briefcase, 
   DollarSign, 
@@ -157,6 +158,15 @@ export default function InternoDashboard() {
             {isAdmin && (
               <ExportButton 
                 onExport={handleExportDashboard} 
+                onExportPDF={() => {
+                  if (kpis && rankingConsultores) {
+                    exportDashboardPDF({
+                      kpis,
+                      faturadosMes: analyticsQuery.data?.faturadosMesAtual || 0,
+                      ranking: rankingConsultores,
+                    });
+                  }
+                }}
                 label="Exportar"
                 disabled={analyticsQuery.isLoading}
               />

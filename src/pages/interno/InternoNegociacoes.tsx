@@ -82,6 +82,7 @@ import {
   formatCurrency
 } from "@/types/interno";
 import { exportNegociacoesToCSV } from "@/lib/exportUtils";
+import { exportNegociacoesPDF } from "@/lib/pdfExport";
 import { toast } from "sonner";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -298,6 +299,7 @@ export default function InternoNegociacoes() {
           <div className="flex gap-2">
             <ExportButton 
               onExport={() => exportNegociacoesToCSV(filteredNegociacoes as NegociacaoExportType[])} 
+              onExportPDF={() => exportNegociacoesPDF(filteredNegociacoes as NegociacaoExportType[])}
               label="Exportar"
               disabled={filteredNegociacoes.length === 0}
             />
