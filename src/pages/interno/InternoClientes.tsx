@@ -43,6 +43,7 @@ import {
   FileUp
 } from "lucide-react";
 import ImportClientesModal from "@/components/interno/ImportClientesModal";
+import ClienteDetalheModal from "@/components/interno/ClienteDetalheModal";
 import { Cliente, TIPO_CLIENTE_LABELS } from "@/types/interno";
 import { exportClientesToCSV } from "@/lib/exportUtils";
 import { toast } from "sonner";
@@ -62,6 +63,8 @@ export default function InternoClientes() {
   const [assignDialogOpen, setAssignDialogOpen] = useState(false);
   const [assigningCliente, setAssigningCliente] = useState<Cliente | null>(null);
   const [selectedConsultor, setSelectedConsultor] = useState<string>("");
+  const [detalheOpen, setDetalheOpen] = useState(false);
+  const [detalheCliente, setDetalheCliente] = useState<Cliente | null>(null);
   const { data: consultores = [] } = useConsultores();
 
   const { clientes, isLoading, createCliente, updateCliente, isCreating, isUpdating } = useClientes({ 
@@ -226,7 +229,11 @@ export default function InternoClientes() {
         ) : filteredClientes.length > 0 ? (
           <div className="grid gap-2">
             {filteredClientes.map(cliente => (
-              <Card key={cliente.id} className="hover:bg-muted/30 transition-colors">
+              <Card 
+                key={cliente.id} 
+                className="hover:bg-muted/30 transition-colors cursor-pointer"
+                onClick={() => { setDetalheCliente(cliente); setDetalheOpen(true); }}
+              >
                 <CardContent className="p-3">
                   <div className="flex items-center justify-between gap-3">
                     {/* Left: Icon + Info */}
@@ -282,7 +289,7 @@ export default function InternoClientes() {
                     </div>
 
                     {/* Right: Action Buttons */}
-                    <div className="flex items-center gap-1 shrink-0">
+                    <div className="flex items-center gap-1 shrink-0" onClick={(e) => e.stopPropagation()}>
                       <Button 
                         variant="ghost" 
                         size="sm"
@@ -382,6 +389,13 @@ export default function InternoClientes() {
           open={importOpen}
           onOpenChange={setImportOpen}
           onComplete={() => queryClient.invalidateQueries({ queryKey: ["clientes"] })}
+        />
+        {/* Detalhe do Cliente */}
+        <ClienteDetalheModal
+          open={detalheOpen}
+          onOpenChange={setDetalheOpen}
+          cliente={detalheCliente}
+          onNovaNegociacao={handleNewNegociacao}
         />
       </div>
     </InternoLayout>
