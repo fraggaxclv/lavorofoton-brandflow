@@ -13,7 +13,7 @@ import SobreFoton from "./pages/SobreFoton";
 import Modelos from "./pages/Modelos";
 import Servicos from "./pages/Servicos";
 import Contato from "./pages/Contato";
-import DiagnosticoFrota from "./pages/DiagnosticoFrota";
+
 import PedidoFaturamento from "./pages/PedidoFaturamento";
 import ListaPedidos from "./pages/ListaPedidos";
 import PropostaComercial from "./pages/PropostaComercial";
@@ -89,7 +89,7 @@ const App = () => (
             <Route path="/modelos/iblue-6t" element={<IBlue6T />} />
             <Route path="/servicos" element={<Servicos />} />
             <Route path="/contato" element={<Contato />} />
-            <Route path="/diagnostico-frota" element={<DiagnosticoFrota />} />
+            
             <Route path="/pedido-faturamento-lavoro" element={<PedidoFaturamento />} />
             <Route path="/pedido-de-faturamento" element={<PedidoFaturamento />} />
             <Route path="/proposta-comercial-lavoro" element={<PropostaComercial />} />

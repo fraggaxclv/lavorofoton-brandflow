@@ -32,9 +32,6 @@ const Navbar = () => {
             <Link to="/servicos" className="text-foreground hover:text-primary transition-colors font-medium">
               Serviços
             </Link>
-            <Link to="/diagnostico-frota" className="text-foreground hover:text-primary transition-colors font-medium">
-              Diagnóstico de Frota
-            </Link>
             {isAdmin && (
               <Link to="/admin/pedidos-faturamento" className="text-foreground hover:text-primary transition-colors font-medium">
                 Pedidos
@@ -78,9 +75,6 @@ const Navbar = () => {
             </Link>
             <Link to="/servicos" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsOpen(false)}>
               Serviços
-            </Link>
-            <Link to="/diagnostico-frota" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsOpen(false)}>
-              Diagnóstico de Frota
             </Link>
             {isAdmin && (
               <Link to="/admin/pedidos-faturamento" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={() => setIsOpen(false)}>
