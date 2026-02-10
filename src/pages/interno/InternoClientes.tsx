@@ -46,6 +46,7 @@ import ImportClientesModal from "@/components/interno/ImportClientesModal";
 import ClienteDetalheModal from "@/components/interno/ClienteDetalheModal";
 import { Cliente, TIPO_CLIENTE_LABELS } from "@/types/interno";
 import { exportClientesToCSV } from "@/lib/exportUtils";
+import { exportClientesPDF } from "@/lib/pdfExport";
 import { toast } from "sonner";
 
 // Type for export function
@@ -164,6 +165,7 @@ export default function InternoClientes() {
           <div className="flex gap-2">
             <ExportButton 
               onExport={() => exportClientesToCSV(filteredClientes as ClienteExportType[])} 
+              onExportPDF={() => exportClientesPDF(filteredClientes as ClienteExportType[])}
               label="Exportar"
               disabled={filteredClientes.length === 0}
             />

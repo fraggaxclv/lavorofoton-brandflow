@@ -43,6 +43,7 @@ import InternoClientes from "./pages/interno/InternoClientes";
 import InternoNegociacoes from "./pages/interno/InternoNegociacoes";
 import InternoConsultores from "./pages/interno/InternoConsultores";
 import InternoConsultorPerfil from "./pages/interno/InternoConsultorPerfil";
+import InternoRelatorioPerdas from "./pages/interno/InternoRelatorioPerdas";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -164,6 +165,16 @@ const App = () => (
                 <InternoAuthProvider>
                   <InternoProtectedRoute allowedRoles={['admin']}>
                     <InternoConsultorPerfil />
+                  </InternoProtectedRoute>
+                </InternoAuthProvider>
+              } 
+            />
+            <Route 
+              path="/interno/relatorio-perdas" 
+              element={
+                <InternoAuthProvider>
+                  <InternoProtectedRoute allowedRoles={['admin']}>
+                    <InternoRelatorioPerdas />
                   </InternoProtectedRoute>
                 </InternoAuthProvider>
               } 
