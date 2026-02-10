@@ -19,16 +19,7 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
+import MotivoPerdaModal from "@/components/interno/MotivoPerdaModal";
 import { 
   Negociacao, 
   StatusNegociacao,
@@ -38,7 +29,7 @@ import {
   TIPO_VENDA_LABELS,
   formatCurrency 
 } from "@/types/interno";
-import { Calendar, DollarSign, GripVertical, Loader2, Factory, Package, User } from "lucide-react";
+import { Calendar, DollarSign, GripVertical, Factory, Package, User } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { cn } from "@/lib/utils";
@@ -241,8 +232,6 @@ export default function KanbanBoard({
   const [activeCard, setActiveCard] = useState<Negociacao | null>(null);
   const [lossDialogOpen, setLossDialogOpen] = useState(false);
   const [pendingLossNegociacao, setPendingLossNegociacao] = useState<Negociacao | null>(null);
-  const [lossReason, setLossReason] = useState("");
-  const [isSubmittingLoss, setIsSubmittingLoss] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -312,7 +301,6 @@ export default function KanbanBoard({
       // If moving to "perdido", show loss reason dialog
       if (targetStatus === "perdido") {
         setPendingLossNegociacao(activeNegociacao);
-        setLossReason("");
         setLossDialogOpen(true);
       } else {
         await onStatusChange(activeNegociacao, targetStatus);
@@ -320,24 +308,10 @@ export default function KanbanBoard({
     }
   };
 
-  const handleConfirmLoss = async () => {
-    if (!pendingLossNegociacao || !lossReason.trim()) return;
-    
-    setIsSubmittingLoss(true);
-    try {
-      await onLossStatusChange(pendingLossNegociacao, lossReason.trim());
-      setLossDialogOpen(false);
-      setPendingLossNegociacao(null);
-      setLossReason("");
-    } finally {
-      setIsSubmittingLoss(false);
-    }
-  };
-
-  const handleCancelLoss = () => {
-    setLossDialogOpen(false);
+  const handleConfirmLoss = async (motivo: string) => {
+    if (!pendingLossNegociacao) return;
+    await onLossStatusChange(pendingLossNegociacao, motivo);
     setPendingLossNegociacao(null);
-    setLossReason("");
   };
 
   return (
@@ -375,43 +349,16 @@ export default function KanbanBoard({
         </DragOverlay>
       </DndContext>
 
-      {/* Dialog para motivo de perda */}
-      <Dialog open={lossDialogOpen} onOpenChange={handleCancelLoss}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Motivo da Perda</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">
-              Para marcar a negociação <strong>{pendingLossNegociacao?.numero_negociacao}</strong> como perdida, 
-              informe o motivo:
-            </p>
-            <div className="space-y-2">
-              <Label htmlFor="loss-reason">Motivo *</Label>
-              <Textarea
-                id="loss-reason"
-                value={lossReason}
-                onChange={(e) => setLossReason(e.target.value)}
-                placeholder="Ex: Cliente optou pela concorrência, preço acima do orçamento, desistiu da compra..."
-                rows={4}
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={handleCancelLoss}>
-              Cancelar
-            </Button>
-            <Button 
-              onClick={handleConfirmLoss} 
-              disabled={!lossReason.trim() || isSubmittingLoss}
-              variant="destructive"
-            >
-              {isSubmittingLoss && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-              Confirmar Perda
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      {/* Modal para motivo de perda */}
+      <MotivoPerdaModal
+        open={lossDialogOpen}
+        onOpenChange={(open) => {
+          setLossDialogOpen(open);
+          if (!open) setPendingLossNegociacao(null);
+        }}
+        numeroNegociacao={pendingLossNegociacao?.numero_negociacao}
+        onConfirm={handleConfirmLoss}
+      />
     </>
   );
 }
