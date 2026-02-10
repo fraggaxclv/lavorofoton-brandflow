@@ -42,8 +42,9 @@ export function useClientes(options: UseClientesOptions = {}) {
     queryFn: async () => {
       let query = supabase
         .from("clientes")
-        .select("*")
-        .order("razao_social", { ascending: true });
+        .select("*", { count: "exact" })
+        .order("razao_social", { ascending: true })
+        .range(0, 1999);
 
       if (options.search) {
         query = query.or(`razao_social.ilike.%${options.search}%,nome_fantasia.ilike.%${options.search}%,cpf_cnpj.ilike.%${options.search}%,cidade.ilike.%${options.search}%`);
