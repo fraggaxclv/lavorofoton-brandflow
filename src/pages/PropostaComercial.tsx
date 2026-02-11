@@ -108,6 +108,7 @@ const gerarInformacoesPersuasivas = (veiculo: Veiculo): string[] => {
 export default function PropostaComercial() {
   const [searchParams] = useSearchParams();
   const negociacaoId = searchParams.get("negociacao_id");
+  const clienteId = searchParams.get("cliente_id");
   const clienteNome = searchParams.get("cliente_nome");
   const clienteCnpj = searchParams.get("cliente_cnpj");
   const clienteCidade = searchParams.get("cliente_cidade");
@@ -696,6 +697,7 @@ export default function PropostaComercial() {
         })),
         observacoes: formData.observacoes,
         negociacao_id: negociacaoId || null,
+        cliente_id: clienteId || null,
       });
 
       if (error) throw error;

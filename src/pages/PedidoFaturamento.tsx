@@ -27,6 +27,7 @@ interface Produto {
 const PedidoFaturamento = () => {
   const [searchParams] = useSearchParams();
   const negociacaoId = searchParams.get("negociacao_id");
+  const clienteId = searchParams.get("cliente_id");
   const propostaOrigemId = searchParams.get("proposta_id");
   const clienteNome = searchParams.get("cliente_nome");
   const clienteCnpj = searchParams.get("cliente_cnpj");
@@ -234,6 +235,7 @@ const PedidoFaturamento = () => {
         observacoes: data.observacoes || null,
         produtos: produtos as any,
         negociacao_id: negociacaoId || null,
+        cliente_id: clienteId || null,
         proposta_origem_id: propostaOrigemId || null,
       };
 

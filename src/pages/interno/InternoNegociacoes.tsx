@@ -1035,6 +1035,7 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
                 onClick={() => {
                   const params = new URLSearchParams({
                     negociacao_id: negociacao.id,
+                    cliente_id: negociacao.cliente_id || "",
                     cliente_nome: negociacao.cliente?.razao_social || "",
                     cliente_cnpj: negociacao.cliente?.cpf_cnpj || "",
                     cliente_cidade: negociacao.cliente?.cidade || "",
@@ -1056,6 +1057,7 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
                 onClick={() => {
                   const params = new URLSearchParams({
                     negociacao_id: negociacao.id,
+                    cliente_id: negociacao.cliente_id || "",
                     cliente_nome: negociacao.cliente?.razao_social || "",
                     cliente_cnpj: negociacao.cliente?.cpf_cnpj || "",
                     cliente_cidade: negociacao.cliente?.cidade || "",
@@ -1096,6 +1098,7 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
                               onClick={() => {
                                 const params = new URLSearchParams({
                                   negociacao_id: negociacao.id,
+                                  cliente_id: negociacao.cliente_id || "",
                                   proposta_id: p.id,
                                   cliente_nome: negociacao.cliente?.razao_social || "",
                                   cliente_cnpj: negociacao.cliente?.cpf_cnpj || "",
