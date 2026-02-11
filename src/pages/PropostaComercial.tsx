@@ -673,36 +673,44 @@ export default function PropostaComercial() {
     const html = gerarHtmlProposta();
     const formData = getValues();
 
-    // Salvar no banco
     try {
       setLoading(true);
-      const { error } = await supabase.from('propostas_comerciais').insert({
-        numero_proposta: formData.numeroProposta,
-        local: formData.local,
-        data: formData.data,
-        nome_vendedor: formData.nomeConsultor,
-        nome_cliente: formData.nomeCliente,
-        cnpj: formData.cnpjCpf,
-        cidade: formData.cidade,
-        estado: formData.estado,
-        faturamento_tipo: 'estoque',
-        pagamento_tipo: formData.pagamentoTipo,
-        pagamento_outros: formData.pagamentoOutros,
-        valor_total: calcularTotalProdutos(),
-        produtos: produtos.map(p => ({
-          modelo: p.modelo,
-          quantidade: p.quantidade,
-          valorUnitario: p.valorUnitario,
-          valorTotal: p.valorTotal
-        })),
-        observacoes: formData.observacoes,
-        negociacao_id: negociacaoId || null,
-        cliente_id: clienteId || null,
-      });
 
-      if (error) throw error;
+      // Tentar salvar no banco apenas se o usuário estiver autenticado
+      const { data: sessionData } = await supabase.auth.getSession();
+      const isAuthenticated = !!sessionData?.session?.user;
 
-      // Abrir janela de impressão
+      if (isAuthenticated) {
+        const { error } = await supabase.from('propostas_comerciais').insert({
+          numero_proposta: formData.numeroProposta,
+          local: formData.local,
+          data: formData.data,
+          nome_vendedor: formData.nomeConsultor,
+          nome_cliente: formData.nomeCliente,
+          cnpj: formData.cnpjCpf,
+          cidade: formData.cidade,
+          estado: formData.estado,
+          faturamento_tipo: 'estoque',
+          pagamento_tipo: formData.pagamentoTipo,
+          pagamento_outros: formData.pagamentoOutros,
+          valor_total: calcularTotalProdutos(),
+          produtos: produtos.map(p => ({
+            modelo: p.modelo,
+            quantidade: p.quantidade,
+            valorUnitario: p.valorUnitario,
+            valorTotal: p.valorTotal
+          })),
+          observacoes: formData.observacoes,
+          negociacao_id: negociacaoId || null,
+          cliente_id: clienteId || null,
+        });
+
+        if (error) {
+          console.warn('Não foi possível salvar no banco:', error.message);
+        }
+      }
+
+      // Abrir janela de impressão independentemente do salvamento
       const printWindow = window.open('', '_blank');
       if (printWindow) {
         printWindow.document.write(html);
@@ -712,10 +720,10 @@ export default function PropostaComercial() {
         };
       }
 
-      toast.success("Proposta salva e PDF gerado com sucesso!");
+      toast.success(isAuthenticated ? "Proposta salva e PDF gerado com sucesso!" : "PDF gerado com sucesso!");
     } catch (error) {
-      console.error('Erro ao salvar proposta:', error);
-      toast.error("Erro ao salvar proposta");
+      console.error('Erro ao gerar proposta:', error);
+      toast.error("Erro ao gerar proposta");
     } finally {
       setLoading(false);
     }
