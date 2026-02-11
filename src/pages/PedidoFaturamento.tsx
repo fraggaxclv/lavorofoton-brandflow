@@ -191,92 +191,97 @@ const PedidoFaturamento = () => {
       setPreviewLoading(false);
     }
   };
-  const onSubmit = async (data: any) => {
-    // Validações básicas
-    if (produtos.some(p => !p.produto || p.quantidade <= 0 || p.valorUnitario <= 0)) {
-      toast.error("Preencha todos os produtos corretamente");
-      return;
-    }
-    if (!data.faturamento_tipo) {
-      toast.error("Selecione o tipo de faturamento (Estoque ou FADIRETO)");
-      return;
-    }
-    if (!data.financiamento_forma) {
-      toast.error("Selecione a forma de financiamento");
-      return;
-    }
-    setLoading(true);
-    try {
-      const numeroPedido = gerarNumeroPedido();
-      const valorTotal = calcularTotalProdutos();
-      const pedidoData = {
-        numero_pedido: numeroPedido,
-        local: data.local || null,
-        data: data.data,
-        nome_vendedor: data.nome_vendedor,
-        nome_cliente: data.nome_cliente,
-        cnpj: data.cnpj,
-        ie_rg: data.ie_rg || null,
-        rua: data.rua || null,
-        numero: data.numero || null,
-        bairro: data.bairro || null,
-        cep: data.cep || null,
-        cidade: data.cidade || null,
-        estado: data.estado || null,
-        telefone_cliente: data.telefone_cliente || null,
-        responsavel_frota: data.responsavel_frota || null,
-        email_responsavel: data.email_responsavel || null,
-        faturamento_tipo: data.faturamento_tipo,
-        nome_instituicao: data.nome_instituicao || null,
-        financiamento_forma: data.financiamento_forma,
-        financiamento_forma_outros: data.financiamento_forma_outros || null,
-        valor_total_produtos: valorTotal,
-        entrada: parseFloat(data.entrada || "0"),
-        observacoes: data.observacoes || null,
-        produtos: produtos as any,
-        negociacao_id: negociacaoId || null,
-        cliente_id: clienteId || null,
-        proposta_origem_id: propostaOrigemId || null,
-      };
+   const onSubmit = async (data: any) => {
+     // Validações básicas
+     if (produtos.some(p => !p.produto || p.quantidade <= 0 || p.valorUnitario <= 0)) {
+       toast.error("Preencha todos os produtos corretamente");
+       return;
+     }
+     if (!data.faturamento_tipo) {
+       toast.error("Selecione o tipo de faturamento (Estoque ou FADIRETO)");
+       return;
+     }
+     if (!data.financiamento_forma) {
+       toast.error("Selecione a forma de financiamento");
+       return;
+     }
+     setLoading(true);
+     try {
+       const numeroPedido = gerarNumeroPedido();
+       const valorTotal = calcularTotalProdutos();
+       const pedidoData = {
+         numero_pedido: numeroPedido,
+         local: data.local || null,
+         data: data.data,
+         nome_vendedor: data.nome_vendedor,
+         nome_cliente: data.nome_cliente,
+         cnpj: data.cnpj,
+         ie_rg: data.ie_rg || null,
+         rua: data.rua || null,
+         numero: data.numero || null,
+         bairro: data.bairro || null,
+         cep: data.cep || null,
+         cidade: data.cidade || null,
+         estado: data.estado || null,
+         telefone_cliente: data.telefone_cliente || null,
+         responsavel_frota: data.responsavel_frota || null,
+         email_responsavel: data.email_responsavel || null,
+         faturamento_tipo: data.faturamento_tipo,
+         nome_instituicao: data.nome_instituicao || null,
+         financiamento_forma: data.financiamento_forma,
+         financiamento_forma_outros: data.financiamento_forma_outros || null,
+         valor_total_produtos: valorTotal,
+         entrada: parseFloat(data.entrada || "0"),
+         observacoes: data.observacoes || null,
+         produtos: produtos as any,
+         negociacao_id: negociacaoId || null,
+         cliente_id: clienteId || null,
+         proposta_origem_id: propostaOrigemId || null,
+       };
 
-      // Salvar no banco
-      const {
-        error: dbError
-      } = await supabase.from("pedidos_faturamento").insert([pedidoData]);
-      if (dbError) throw dbError;
+       // Tentar salvar no banco apenas se o usuário estiver autenticado
+       const { data: sessionData } = await supabase.auth.getSession();
+       const isAuthenticated = !!sessionData?.session?.user;
 
-      // Gerar PDF e enviar email
-      const {
-        data: pdfData,
-        error: pdfError
-      } = await supabase.functions.invoke("gerar-pedido-pdf", {
-        body: pedidoData
-      });
-      if (pdfError) throw pdfError;
+       if (isAuthenticated) {
+         const { error: dbError } = await supabase.from("pedidos_faturamento").insert([pedidoData]);
+         if (dbError) {
+           console.warn('Não foi possível salvar no banco:', dbError.message);
+         }
+       }
 
-      // Mostrar preview do PDF
-      setPdfPreview(pdfData.pdfHTML);
-      setIsPreviewMode(false);
-      setShowPreview(true);
-      toast.success("Pedido criado com sucesso!");
+       // Gerar PDF independentemente do salvamento no banco
+       const {
+         data: pdfData,
+         error: pdfError
+       } = await supabase.functions.invoke("gerar-pedido-pdf", {
+         body: pedidoData
+       });
+       if (pdfError) throw pdfError;
 
-      // Reset form
-      reset();
-      setProdutos([{
-        produto: "",
-        quantidade: 1,
-        anoModelo: "2025/2026",
-        cor: "",
-        valorUnitario: 0,
-        valorTotal: 0
-      }]);
-    } catch (error: any) {
-      console.error("Erro:", error);
-      toast.error("Erro ao criar pedido: " + error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+       // Mostrar preview do PDF
+       setPdfPreview(pdfData.pdfHTML);
+       setIsPreviewMode(false);
+       setShowPreview(true);
+       toast.success(isAuthenticated ? "Pedido criado com sucesso!" : "PDF gerado com sucesso!");
+
+       // Reset form
+       reset();
+       setProdutos([{
+         produto: "",
+         quantidade: 1,
+         anoModelo: "2025/2026",
+         cor: "",
+         valorUnitario: 0,
+         valorTotal: 0
+       }]);
+     } catch (error: any) {
+       console.error("Erro ao gerar pedido:", error);
+       toast.error("Erro ao gerar pedido: " + error.message);
+     } finally {
+       setLoading(false);
+     }
+   };
   const downloadPDF = () => {
     if (!pdfPreview) return;
 
