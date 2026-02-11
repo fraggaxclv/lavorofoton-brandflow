@@ -91,7 +91,6 @@ const App = () => (
             <Route path="/contato" element={<Contato />} />
             
             <Route path="/pedido-faturamento-lavoro" element={<PedidoFaturamento />} />
-            <Route path="/pedido-de-faturamento" element={<PedidoFaturamento />} />
             <Route path="/proposta-comercial-lavoro" element={<PropostaComercial />} />
             <Route 
               path="/admin/pedidos-faturamento" 
