@@ -374,6 +374,7 @@ export type Database = {
           bairro: string | null
           cep: string | null
           cidade: string | null
+          cliente_id: string | null
           cnpj: string
           created_at: string
           data: string
@@ -386,6 +387,7 @@ export type Database = {
           id: string
           ie_rg: string | null
           local: string | null
+          negociacao_id: string | null
           nome_cliente: string
           nome_instituicao: string | null
           nome_vendedor: string
@@ -393,6 +395,7 @@ export type Database = {
           numero_pedido: string
           observacoes: string | null
           produtos: Json
+          proposta_origem_id: string | null
           responsavel_frota: string | null
           rua: string | null
           telefone_cliente: string | null
@@ -403,6 +406,7 @@ export type Database = {
           bairro?: string | null
           cep?: string | null
           cidade?: string | null
+          cliente_id?: string | null
           cnpj: string
           created_at?: string
           data: string
@@ -415,6 +419,7 @@ export type Database = {
           id?: string
           ie_rg?: string | null
           local?: string | null
+          negociacao_id?: string | null
           nome_cliente: string
           nome_instituicao?: string | null
           nome_vendedor: string
@@ -422,6 +427,7 @@ export type Database = {
           numero_pedido: string
           observacoes?: string | null
           produtos: Json
+          proposta_origem_id?: string | null
           responsavel_frota?: string | null
           rua?: string | null
           telefone_cliente?: string | null
@@ -432,6 +438,7 @@ export type Database = {
           bairro?: string | null
           cep?: string | null
           cidade?: string | null
+          cliente_id?: string | null
           cnpj?: string
           created_at?: string
           data?: string
@@ -444,6 +451,7 @@ export type Database = {
           id?: string
           ie_rg?: string | null
           local?: string | null
+          negociacao_id?: string | null
           nome_cliente?: string
           nome_instituicao?: string | null
           nome_vendedor?: string
@@ -451,13 +459,36 @@ export type Database = {
           numero_pedido?: string
           observacoes?: string | null
           produtos?: Json
+          proposta_origem_id?: string | null
           responsavel_frota?: string | null
           rua?: string | null
           telefone_cliente?: string | null
           updated_at?: string
           valor_total_produtos?: number
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "pedidos_faturamento_cliente_id_fkey"
+            columns: ["cliente_id"]
+            isOneToOne: false
+            referencedRelation: "clientes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pedidos_faturamento_negociacao_id_fkey"
+            columns: ["negociacao_id"]
+            isOneToOne: false
+            referencedRelation: "negociacoes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pedidos_faturamento_proposta_origem_id_fkey"
+            columns: ["proposta_origem_id"]
+            isOneToOne: false
+            referencedRelation: "propostas_comerciais"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profiles: {
         Row: {
@@ -498,6 +529,7 @@ export type Database = {
       propostas_comerciais: {
         Row: {
           cidade: string | null
+          cliente_id: string | null
           cnpj: string
           created_at: string
           data: string
@@ -505,6 +537,7 @@ export type Database = {
           faturamento_tipo: string
           id: string
           local: string | null
+          negociacao_id: string | null
           nome_cliente: string
           nome_vendedor: string
           numero_proposta: string
@@ -521,6 +554,7 @@ export type Database = {
         }
         Insert: {
           cidade?: string | null
+          cliente_id?: string | null
           cnpj: string
           created_at?: string
           data?: string
@@ -528,6 +562,7 @@ export type Database = {
           faturamento_tipo: string
           id?: string
           local?: string | null
+          negociacao_id?: string | null
           nome_cliente: string
           nome_vendedor: string
           numero_proposta: string
@@ -544,6 +579,7 @@ export type Database = {
         }
         Update: {
           cidade?: string | null
+          cliente_id?: string | null
           cnpj?: string
           created_at?: string
           data?: string
@@ -551,6 +587,7 @@ export type Database = {
           faturamento_tipo?: string
           id?: string
           local?: string | null
+          negociacao_id?: string | null
           nome_cliente?: string
           nome_vendedor?: string
           numero_proposta?: string
@@ -565,7 +602,22 @@ export type Database = {
           valor_frete?: number | null
           valor_total?: number
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "propostas_comerciais_cliente_id_fkey"
+            columns: ["cliente_id"]
+            isOneToOne: false
+            referencedRelation: "clientes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "propostas_comerciais_negociacao_id_fkey"
+            columns: ["negociacao_id"]
+            isOneToOne: false
+            referencedRelation: "negociacoes"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {

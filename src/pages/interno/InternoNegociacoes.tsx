@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useNegociacoes } from "@/hooks/useNegociacoes";
 import { useClientes } from "@/hooks/useClientes";
 import { useAtividades } from "@/hooks/useAtividades";
@@ -82,6 +83,7 @@ import {
   formatCurrency
 } from "@/types/interno";
 import { exportNegociacoesToCSV } from "@/lib/exportUtils";
+import { useDocumentosNegociacao } from "@/hooks/useDocumentosNegociacao";
 import { exportNegociacoesPDF } from "@/lib/pdfExport";
 import { toast } from "sonner";
 import { format } from "date-fns";
@@ -694,7 +696,9 @@ interface NegociacaoDetailsProps {
 
 function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onLossStatusChange, onUpdate, onDelete, consultores, isAdmin, isUpdating, isDeleting }: NegociacaoDetailsProps) {
   const { user } = useInternoAuth();
+  const navigate = useNavigate();
   const { atividades, isLoading: atividadesLoading, createAtividade, isCreating: atividadeIsCreating } = useAtividades(negociacao.id);
+  const { propostas, pedidos, isLoading: docsLoading } = useDocumentosNegociacao(negociacao.id);
   const [novaAtividade, setNovaAtividade] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [lossDialogOpen, setLossDialogOpen] = useState(false);
@@ -843,8 +847,9 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
         </DialogHeader>
 
         <Tabs defaultValue="detalhes" className="w-full">
-          <TabsList className="w-full grid grid-cols-2">
+          <TabsList className="w-full grid grid-cols-3">
             <TabsTrigger value="detalhes">Detalhes</TabsTrigger>
+            <TabsTrigger value="documentos">Documentos</TabsTrigger>
             <TabsTrigger value="atividades">Atividades</TabsTrigger>
           </TabsList>
 
@@ -1020,6 +1025,125 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
                 <p className="text-sm mt-1">{negociacao.observacoes || "-"}</p>
               )}
             </div>
+          </TabsContent>
+
+          <TabsContent value="documentos" className="space-y-4 mt-4">
+            {/* Ações */}
+            <div className="flex flex-wrap gap-2">
+              <Button 
+                size="sm" 
+                onClick={() => {
+                  const params = new URLSearchParams({
+                    negociacao_id: negociacao.id,
+                    cliente_nome: negociacao.cliente?.razao_social || "",
+                    cliente_cnpj: negociacao.cliente?.cpf_cnpj || "",
+                    cliente_cidade: negociacao.cliente?.cidade || "",
+                    cliente_estado: negociacao.cliente?.estado || "",
+                    cliente_telefone: negociacao.cliente?.telefone || "",
+                    consultor: negociacao.owner?.nome_exibicao || negociacao.owner?.full_name || "",
+                    produto: negociacao.produto_principal || "",
+                  });
+                  onOpenChange(false);
+                  navigate(`/proposta-comercial-lavoro?${params.toString()}`);
+                }}
+              >
+                <FileText className="h-4 w-4 mr-2" />
+                Nova Proposta
+              </Button>
+              <Button 
+                size="sm" 
+                variant="outline"
+                onClick={() => {
+                  const params = new URLSearchParams({
+                    negociacao_id: negociacao.id,
+                    cliente_nome: negociacao.cliente?.razao_social || "",
+                    cliente_cnpj: negociacao.cliente?.cpf_cnpj || "",
+                    cliente_cidade: negociacao.cliente?.cidade || "",
+                    cliente_estado: negociacao.cliente?.estado || "",
+                    cliente_telefone: negociacao.cliente?.telefone || "",
+                    consultor: negociacao.owner?.nome_exibicao || negociacao.owner?.full_name || "",
+                  });
+                  onOpenChange(false);
+                  navigate(`/pedido-faturamento-lavoro?${params.toString()}`);
+                }}
+              >
+                <DollarSign className="h-4 w-4 mr-2" />
+                Novo Pedido
+              </Button>
+            </div>
+
+            {/* Propostas existentes */}
+            {docsLoading ? (
+              <Skeleton className="h-20 w-full" />
+            ) : (
+              <>
+                {propostas.length > 0 && (
+                  <div>
+                    <h4 className="font-medium text-sm mb-2">Propostas Comerciais</h4>
+                    <div className="space-y-2">
+                      {propostas.map(p => (
+                        <Card key={p.id} className="p-3">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <p className="font-mono text-sm font-medium">{p.numero_proposta}</p>
+                              <p className="text-xs text-muted-foreground">
+                                {format(new Date(p.data), "dd/MM/yyyy", { locale: ptBR })} • {formatCurrency(p.valor_total)}
+                              </p>
+                            </div>
+                            <Button 
+                              size="sm" 
+                              variant="ghost"
+                              onClick={() => {
+                                const params = new URLSearchParams({
+                                  negociacao_id: negociacao.id,
+                                  proposta_id: p.id,
+                                  cliente_nome: negociacao.cliente?.razao_social || "",
+                                  cliente_cnpj: negociacao.cliente?.cpf_cnpj || "",
+                                  consultor: negociacao.owner?.nome_exibicao || negociacao.owner?.full_name || "",
+                                });
+                                onOpenChange(false);
+                                navigate(`/pedido-faturamento-lavoro?${params.toString()}`);
+                              }}
+                            >
+                              Converter em Pedido
+                            </Button>
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {pedidos.length > 0 && (
+                  <div>
+                    <h4 className="font-medium text-sm mb-2">Pedidos de Faturamento</h4>
+                    <div className="space-y-2">
+                      {pedidos.map(p => (
+                        <Card key={p.id} className="p-3">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <p className="font-mono text-sm font-medium">{p.numero_pedido}</p>
+                              <p className="text-xs text-muted-foreground">
+                                {format(new Date(p.data), "dd/MM/yyyy", { locale: ptBR })} • {formatCurrency(p.valor_total_produtos)}
+                              </p>
+                            </div>
+                            {p.proposta_origem_id && (
+                              <Badge variant="outline" className="text-xs">Convertido</Badge>
+                            )}
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {propostas.length === 0 && pedidos.length === 0 && (
+                  <p className="text-center text-muted-foreground py-8">
+                    Nenhum documento vinculado a esta negociação
+                  </p>
+                )}
+              </>
+            )}
           </TabsContent>
 
           <TabsContent value="atividades" className="space-y-4 mt-4">

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import DOMPurify from "dompurify";
 import { Button } from "@/components/ui/button";
@@ -24,6 +25,16 @@ interface Produto {
   valorTotal: number;
 }
 const PedidoFaturamento = () => {
+  const [searchParams] = useSearchParams();
+  const negociacaoId = searchParams.get("negociacao_id");
+  const propostaOrigemId = searchParams.get("proposta_id");
+  const clienteNome = searchParams.get("cliente_nome");
+  const clienteCnpj = searchParams.get("cliente_cnpj");
+  const clienteCidade = searchParams.get("cliente_cidade");
+  const clienteEstado = searchParams.get("cliente_estado");
+  const clienteTelefone = searchParams.get("cliente_telefone");
+  const consultorNome = searchParams.get("consultor");
+
   const {
     register,
     handleSubmit,
@@ -31,6 +42,16 @@ const PedidoFaturamento = () => {
     watch,
     reset
   } = useForm();
+
+  // Pre-fill from URL params
+  useEffect(() => {
+    if (clienteNome) setValue("nome_cliente", clienteNome);
+    if (clienteCnpj) setValue("cnpj", clienteCnpj);
+    if (clienteCidade) setValue("cidade", clienteCidade);
+    if (clienteEstado) setValue("estado", clienteEstado);
+    if (clienteTelefone) setValue("telefone_cliente", clienteTelefone);
+    if (consultorNome) setValue("nome_vendedor", consultorNome);
+  }, [clienteNome, clienteCnpj, clienteCidade, clienteEstado, clienteTelefone, consultorNome, setValue]);
   const [produtos, setProdutos] = useState<Produto[]>([{
     produto: "",
     quantidade: 1,
@@ -211,7 +232,9 @@ const PedidoFaturamento = () => {
         valor_total_produtos: valorTotal,
         entrada: parseFloat(data.entrada || "0"),
         observacoes: data.observacoes || null,
-        produtos: produtos as any
+        produtos: produtos as any,
+        negociacao_id: negociacaoId || null,
+        proposta_origem_id: propostaOrigemId || null,
       };
 
       // Salvar no banco

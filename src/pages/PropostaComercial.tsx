@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -105,6 +106,15 @@ const gerarInformacoesPersuasivas = (veiculo: Veiculo): string[] => {
 };
 
 export default function PropostaComercial() {
+  const [searchParams] = useSearchParams();
+  const negociacaoId = searchParams.get("negociacao_id");
+  const clienteNome = searchParams.get("cliente_nome");
+  const clienteCnpj = searchParams.get("cliente_cnpj");
+  const clienteCidade = searchParams.get("cliente_cidade");
+  const clienteEstado = searchParams.get("cliente_estado");
+  const clienteTelefone = searchParams.get("cliente_telefone");
+  const consultorNome = searchParams.get("consultor");
+
   const [produtos, setProdutos] = useState<ProdutoProposta[]>([]);
   const [loading, setLoading] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
@@ -115,14 +125,14 @@ export default function PropostaComercial() {
     defaultValues: {
       local: "Belo Horizonte",
       data: format(new Date(), "yyyy-MM-dd"),
-      nomeConsultor: "",
+      nomeConsultor: consultorNome || "",
       numeroProposta: "",
-      nomeCliente: "",
-      cnpjCpf: "",
-      cidade: "",
-      estado: "MG",
+      nomeCliente: clienteNome || "",
+      cnpjCpf: clienteCnpj || "",
+      cidade: clienteCidade || "",
+      estado: clienteEstado || "MG",
       email: "",
-      telefone: "",
+      telefone: clienteTelefone || "",
       pagamentoTipo: "avista",
       pagamentoOutros: "",
       financeira: "",
@@ -684,7 +694,8 @@ export default function PropostaComercial() {
           valorUnitario: p.valorUnitario,
           valorTotal: p.valorTotal
         })),
-        observacoes: formData.observacoes
+        observacoes: formData.observacoes,
+        negociacao_id: negociacaoId || null,
       });
 
       if (error) throw error;
