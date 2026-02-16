@@ -44,6 +44,7 @@ import InternoNegociacoes from "./pages/interno/InternoNegociacoes";
 import InternoConsultores from "./pages/interno/InternoConsultores";
 import InternoConsultorPerfil from "./pages/interno/InternoConsultorPerfil";
 import InternoRelatorioPerdas from "./pages/interno/InternoRelatorioPerdas";
+import InternoPedidosPublicos from "./pages/interno/InternoPedidosPublicos";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -174,6 +175,16 @@ const App = () => (
                 <InternoAuthProvider>
                   <InternoProtectedRoute allowedRoles={['admin']}>
                     <InternoRelatorioPerdas />
+                  </InternoProtectedRoute>
+                </InternoAuthProvider>
+              } 
+            />
+            <Route 
+              path="/interno/pedidos-publicos" 
+              element={
+                <InternoAuthProvider>
+                  <InternoProtectedRoute allowedRoles={['admin']}>
+                    <InternoPedidosPublicos />
                   </InternoProtectedRoute>
                 </InternoAuthProvider>
               } 

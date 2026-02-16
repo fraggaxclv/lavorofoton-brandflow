@@ -386,6 +386,7 @@ export type Database = {
           financiamento_forma_outros: string | null
           id: string
           ie_rg: string | null
+          importado: boolean | null
           local: string | null
           negociacao_id: string | null
           nome_cliente: string
@@ -418,6 +419,7 @@ export type Database = {
           financiamento_forma_outros?: string | null
           id?: string
           ie_rg?: string | null
+          importado?: boolean | null
           local?: string | null
           negociacao_id?: string | null
           nome_cliente: string
@@ -450,6 +452,7 @@ export type Database = {
           financiamento_forma_outros?: string | null
           id?: string
           ie_rg?: string | null
+          importado?: boolean | null
           local?: string | null
           negociacao_id?: string | null
           nome_cliente?: string
@@ -536,6 +539,7 @@ export type Database = {
           estado: string | null
           faturamento_tipo: string
           id: string
+          importado: boolean | null
           local: string | null
           negociacao_id: string | null
           nome_cliente: string
@@ -561,6 +565,7 @@ export type Database = {
           estado?: string | null
           faturamento_tipo: string
           id?: string
+          importado?: boolean | null
           local?: string | null
           negociacao_id?: string | null
           nome_cliente: string
@@ -586,6 +591,7 @@ export type Database = {
           estado?: string | null
           faturamento_tipo?: string
           id?: string
+          importado?: boolean | null
           local?: string | null
           negociacao_id?: string | null
           nome_cliente?: string
