@@ -17,7 +17,7 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Select,
@@ -283,32 +283,31 @@ function KanbanColumn({ status, negociacoes, onCardClick, isMobile, onMobileStat
   const totalValue = negociacoes.reduce((sum, n) => sum + (n.valor_estimado || 0), 0);
 
   return (
-    <div className="flex flex-col w-full bg-muted/30 rounded-lg h-full">
-      <CardHeader className="pb-2 px-3 pt-3 sticky top-0 bg-muted/30 backdrop-blur-sm z-10 rounded-t-lg">
+    <div className="flex flex-col w-full bg-muted/30 rounded-lg">
+      <div className="pb-2 px-3 pt-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div 
               className="w-3 h-3 rounded-full flex-shrink-0"
               style={{ backgroundColor: STATUS_COLORS[status] }}
             />
-            <CardTitle className="text-sm font-medium truncate">
+            <span className="text-sm font-medium truncate">
               {STATUS_LABELS[status]}
-            </CardTitle>
+            </span>
             <Badge variant="secondary" className="text-xs flex-shrink-0">
               {negociacoes.length}
             </Badge>
           </div>
         </div>
-        <p className="text-xs text-muted-foreground font-medium">
+        <p className="text-xs text-muted-foreground font-medium mt-1">
           {formatCurrencyCompact(totalValue)}
         </p>
-      </CardHeader>
+      </div>
       <div 
-        className="flex-1 px-2 pb-2 space-y-2 min-h-[180px] sm:min-h-[200px] overflow-y-auto overscroll-contain"
+        className="px-2 pb-2 space-y-2"
         data-column={status}
       >
         {isMobile ? (
-          // Mobile: no dnd-kit, just render cards directly
           <>
             {negociacoes.map(negociacao => (
               <MobileKanbanCard
@@ -431,16 +430,15 @@ export default function KanbanBoard({
 
   const columnContent = (
     <div 
-      className="flex gap-3 sm:gap-4 pb-4 -mx-3 px-3 sm:-mx-4 sm:px-4 snap-x snap-mandatory scroll-smooth"
+      className="flex gap-3 sm:gap-4 pb-4 -mx-3 px-3 sm:-mx-4 sm:px-4"
       style={{ 
         overflowX: 'auto', 
-        overflowY: 'hidden',
+        overflowY: 'visible',
         WebkitOverflowScrolling: 'touch',
-        overscrollBehaviorX: 'contain',
       }}
     >
       {kanbanColumns.map(status => (
-        <div key={status} className="snap-start flex-shrink-0" style={{ minWidth: 260, maxWidth: 320, width: '75vw' }}>
+        <div key={status} className="flex-shrink-0" style={{ width: isMobile ? '78vw' : 280, minWidth: 260 }}>
           <KanbanColumn
             status={status}
             negociacoes={getColumnNegociacoes(status)}
