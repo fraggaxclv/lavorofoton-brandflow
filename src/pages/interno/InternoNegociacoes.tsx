@@ -87,6 +87,7 @@ import { exportNegociacoesToCSV } from "@/lib/exportUtils";
 import { useDocumentosNegociacao } from "@/hooks/useDocumentosNegociacao";
 import { exportNegociacoesPDF } from "@/lib/pdfExport";
 import { toast } from "sonner";
+import ConfirmDialog from "@/components/interno/ConfirmDialog";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
@@ -704,6 +705,7 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
   const [editMode, setEditMode] = useState(false);
   const [lossDialogOpen, setLossDialogOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [confirmSaveNegOpen, setConfirmSaveNegOpen] = useState(false);
   const [formValues, setFormValues] = useState({
     valor_estimado: negociacao.valor_estimado || 0,
     probabilidade: negociacao.probabilidade || 50,
@@ -736,7 +738,11 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
     setLossDialogOpen(false);
   };
 
-  const handleSaveChanges = async () => {
+  const handleSaveChanges = () => {
+    setConfirmSaveNegOpen(true);
+  };
+
+  const confirmSaveNeg = async () => {
     try {
       const updateData: { id: string; valor_estimado?: number; probabilidade?: number; produto_principal?: string; proximo_passo?: string; data_proximo_passo?: string; observacoes?: string; owner_user_id?: string } = {
         id: negociacao.id,
@@ -756,6 +762,7 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
       await onUpdate(updateData);
       toast.success("Negociação atualizada!");
       setEditMode(false);
+      setConfirmSaveNegOpen(false);
     } catch (error) {
       toast.error("Erro ao atualizar negociação");
     }
@@ -1249,6 +1256,18 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
         onOpenChange={setLossDialogOpen}
         numeroNegociacao={negociacao.numero_negociacao}
         onConfirm={handleConfirmLoss}
+      />
+
+      {/* Confirmação antes de salvar negociação */}
+      <ConfirmDialog
+        open={confirmSaveNegOpen}
+        onOpenChange={setConfirmSaveNegOpen}
+        title="Deseja salvar as alterações?"
+        description="As informações da negociação serão atualizadas no sistema."
+        confirmLabel="Sim, salvar"
+        cancelLabel="Não, cancelar"
+        isLoading={isUpdating}
+        onConfirm={confirmSaveNeg}
       />
     </Dialog>
   );

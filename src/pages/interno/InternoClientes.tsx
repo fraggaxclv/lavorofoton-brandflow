@@ -51,6 +51,7 @@ import SolicitarAcessoModal from "@/components/interno/SolicitarAcessoModal";
 import { Cliente, TIPO_CLIENTE_LABELS } from "@/types/interno";
 import { exportClientesToCSV } from "@/lib/exportUtils";
 import { exportClientesPDF } from "@/lib/pdfExport";
+import ConfirmDialog from "@/components/interno/ConfirmDialog";
 import { toast } from "sonner";
 
 // Type for export function
@@ -71,6 +72,9 @@ export default function InternoClientes() {
   const [detalheOpen, setDetalheOpen] = useState(false);
   const [detalheCliente, setDetalheCliente] = useState<Cliente | null>(null);
   const [solicitarAcessoOpen, setSolicitarAcessoOpen] = useState(false);
+  const [confirmSaveOpen, setConfirmSaveOpen] = useState(false);
+  const [confirmAssignOpen, setConfirmAssignOpen] = useState(false);
+  const [pendingFormData, setPendingFormData] = useState<FormData | null>(null);
   const { data: consultores = [] } = useConsultores();
 
   const { clientes, isLoading, createCliente, updateCliente, isCreating, isUpdating } = useClientes({ 
@@ -99,6 +103,10 @@ export default function InternoClientes() {
   };
 
   const handleAssignConsultor = async () => {
+    setConfirmAssignOpen(true);
+  };
+
+  const confirmAssign = async () => {
     if (!assigningCliente) return;
     
     try {
@@ -109,6 +117,7 @@ export default function InternoClientes() {
       toast.success("Consultor atribuído com sucesso!");
       setAssignDialogOpen(false);
       setAssigningCliente(null);
+      setConfirmAssignOpen(false);
     } catch (error) {
       toast.error("Erro ao atribuir consultor");
     }
@@ -120,6 +129,13 @@ export default function InternoClientes() {
   };
 
   const handleSubmit = async (formData: FormData) => {
+    setPendingFormData(formData);
+    setConfirmSaveOpen(true);
+  };
+
+  const confirmSave = async () => {
+    if (!pendingFormData) return;
+    const formData = pendingFormData;
     const vendedorResponsavel = formData.get("vendedor_responsavel") as string;
     const tipoRaw = formData.get("tipo") as string;
     const tipo = tipoRaw.toUpperCase() as "PF" | "PJ";
@@ -151,6 +167,8 @@ export default function InternoClientes() {
         toast.success("Cliente criado com sucesso!");
       }
       setDialogOpen(false);
+      setConfirmSaveOpen(false);
+      setPendingFormData(null);
     } catch (error) {
       toast.error("Erro ao salvar cliente");
     }
@@ -389,6 +407,31 @@ export default function InternoClientes() {
         <SolicitarAcessoModal
           open={solicitarAcessoOpen}
           onOpenChange={setSolicitarAcessoOpen}
+        />
+        {/* Confirmação antes de salvar */}
+        <ConfirmDialog
+          open={confirmSaveOpen}
+          onOpenChange={setConfirmSaveOpen}
+          title="Deseja salvar as alterações?"
+          description={editingCliente 
+            ? "As informações do cliente serão atualizadas no sistema."
+            : "Um novo cliente será cadastrado no sistema."
+          }
+          confirmLabel="Sim, salvar"
+          cancelLabel="Não, cancelar"
+          isLoading={isCreating || isUpdating}
+          onConfirm={confirmSave}
+        />
+        {/* Confirmação antes de atribuir */}
+        <ConfirmDialog
+          open={confirmAssignOpen}
+          onOpenChange={setConfirmAssignOpen}
+          title="Confirmar atribuição?"
+          description="O consultor responsável por este cliente será alterado."
+          confirmLabel="Sim, atribuir"
+          cancelLabel="Cancelar"
+          isLoading={isUpdating}
+          onConfirm={confirmAssign}
         />
       </div>
     </InternoLayout>
