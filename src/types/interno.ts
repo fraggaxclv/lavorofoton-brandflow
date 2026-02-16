@@ -187,6 +187,16 @@ export function formatCurrency(value: number): string {
   }).format(value);
 }
 
+export function formatCurrencyCompact(value: number): string {
+  if (Math.abs(value) >= 1_000_000) {
+    return `R$ ${(value / 1_000_000).toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} Mi`;
+  }
+  if (Math.abs(value) >= 1_000) {
+    return `R$ ${(value / 1_000).toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 1 })} mil`;
+  }
+  return formatCurrency(value);
+}
+
 // Métricas para Dashboard
 export interface DashboardMetrics {
   totalNegociacoes: number;

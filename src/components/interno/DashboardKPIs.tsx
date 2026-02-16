@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { TrendingUp, TrendingDown, Minus, DollarSign, Target, Percent, Briefcase } from "lucide-react";
-import { formatCurrency } from "@/types/interno";
+import { formatCurrency, formatCurrencyCompact } from "@/types/interno";
 
 interface KPICardProps {
   title: string;
@@ -60,13 +60,15 @@ function KPICard({ title, value, variacao, icon: Icon, isLoading, format = "numb
   }
 
   return (
-    <Card className="hover:shadow-md transition-shadow">
-      <CardContent className="p-4">
+    <Card className="hover:shadow-md transition-shadow overflow-hidden">
+      <CardContent className="p-3 sm:p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{title}</span>
-          <Icon className="h-4 w-4 text-muted-foreground" />
+          <span className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wide truncate mr-1">{title}</span>
+          <Icon className="h-4 w-4 text-muted-foreground flex-shrink-0" />
         </div>
-        <p className="text-2xl font-bold text-foreground">{formatValue(value)}</p>
+        <p className="text-lg sm:text-2xl font-bold text-foreground truncate" title={typeof value === "number" && format === "currency" ? formatCurrency(value) : undefined}>
+          {format === "currency" && typeof value === "number" ? formatCurrencyCompact(value) : formatValue(value)}
+        </p>
         {renderVariacao()}
       </CardContent>
     </Card>
