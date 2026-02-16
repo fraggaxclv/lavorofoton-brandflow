@@ -9,6 +9,7 @@ import TrendChart from "@/components/interno/TrendChart";
 import RankingConsultores from "@/components/interno/RankingConsultores";
 import ExportButton from "@/components/interno/ExportButton";
 import PedidosPublicosCard from "@/components/interno/PedidosPublicosCard";
+import SolicitacoesAcessoCard from "@/components/interno/SolicitacoesAcessoCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -197,6 +198,9 @@ export default function InternoDashboard() {
 
         {/* Pedidos Públicos - Admin Only */}
         {isAdmin && <PedidosPublicosCard />}
+
+        {/* Solicitações de Acesso a Clientes - Admin Only */}
+        {isAdmin && <SolicitacoesAcessoCard />}
 
         {/* Navegação Rápida para Consultor */}
         {!isAdmin && (
