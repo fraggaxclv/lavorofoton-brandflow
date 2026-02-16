@@ -295,33 +295,33 @@ export default function InternoClientes() {
                       <Button 
                         variant="ghost" 
                         size="sm"
-                        className="h-8 px-2 text-xs"
+                        className="min-h-[44px] min-w-[44px] px-2 text-xs"
                         onClick={() => handleNewNegociacao(cliente)}
                         title="Nova Negociação"
                       >
-                        <Handshake className="h-3.5 w-3.5 mr-1" />
+                        <Handshake className="h-4 w-4 mr-1" />
                         <span className="hidden sm:inline">+Negociação</span>
                       </Button>
                       {isAdmin && (
                         <Button 
                           variant="ghost" 
                           size="sm"
-                          className="h-8 px-2 text-xs"
+                          className="min-h-[44px] min-w-[44px] px-2 text-xs"
                           onClick={() => handleOpenAssign(cliente)}
                           title="Atribuir Consultor"
                         >
-                          <Users className="h-3.5 w-3.5 mr-1" />
+                          <Users className="h-4 w-4 mr-1" />
                           <span className="hidden sm:inline">Atribuir</span>
                         </Button>
                       )}
                       <Button 
                         variant="ghost" 
                         size="sm"
-                        className="h-8 px-2 text-xs"
+                        className="min-h-[44px] min-w-[44px] px-2 text-xs"
                         onClick={() => handleOpenEdit(cliente)}
                         title="Editar Cliente"
                       >
-                        <Edit className="h-3.5 w-3.5 mr-1" />
+                        <Edit className="h-4 w-4 mr-1" />
                         <span className="hidden sm:inline">Editar</span>
                       </Button>
                     </div>
