@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
+import TouchCard from "@/components/interno/TouchCard";
 import { 
   Dialog, 
   DialogContent, 
@@ -240,10 +241,10 @@ export default function InternoClientes() {
         ) : filteredClientes.length > 0 ? (
           <div className="grid gap-2">
             {filteredClientes.map(cliente => (
-              <Card 
+              <TouchCard 
                 key={cliente.id} 
-                className="hover:bg-muted/30 transition-colors cursor-pointer"
-                onClick={() => { setDetalheCliente(cliente); setDetalheOpen(true); }}
+                className="hover:bg-muted/30 transition-colors"
+                onCardClick={() => { setDetalheCliente(cliente); setDetalheOpen(true); }}
               >
                 <CardContent className="p-3">
                   <div className="flex items-center justify-between gap-3">
@@ -336,7 +337,7 @@ export default function InternoClientes() {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
+              </TouchCard>
             ))}
           </div>
         ) : (
