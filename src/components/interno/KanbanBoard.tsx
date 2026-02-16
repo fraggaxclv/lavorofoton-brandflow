@@ -100,7 +100,7 @@ function KanbanCard({ negociacao, onClick, isDragging }: KanbanCardProps) {
           <button
             {...attributes}
             {...listeners}
-            className="mt-0.5 cursor-grab active:cursor-grabbing touch-none p-2 -m-2 min-w-[40px] min-h-[40px] flex items-center justify-center"
+            className="mt-0.5 cursor-grab active:cursor-grabbing touch-none p-2 -m-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <GripVertical className="h-5 w-5 text-muted-foreground" />
@@ -278,39 +278,41 @@ export default function KanbanBoard({
     const activeId = active.id as string;
     const overId = over.id as string;
 
-    // Find the negociacao being dragged
     const activeNegociacao = negociacoes.find(n => n.id === activeId);
     if (!activeNegociacao) return;
 
-    // Determine target column
     let targetStatus: StatusNegociacao | null = null;
 
-    // Check if dropped on a column directly
     if (kanbanColumns.includes(overId as StatusNegociacao)) {
       targetStatus = overId as StatusNegociacao;
     } else {
-      // Dropped on another card - find its column
       const overNegociacao = negociacoes.find(n => n.id === overId);
       if (overNegociacao) {
         targetStatus = overNegociacao.status;
       }
     }
 
-    // If status changed, update it
     if (targetStatus && targetStatus !== activeNegociacao.status) {
-      // If moving to "perdido", show loss reason dialog
       if (targetStatus === "perdido") {
         setPendingLossNegociacao(activeNegociacao);
         setLossDialogOpen(true);
       } else {
-        await onStatusChange(activeNegociacao, targetStatus);
+        try {
+          await onStatusChange(activeNegociacao, targetStatus);
+        } catch (error) {
+          console.error("Erro ao atualizar status:", error);
+        }
       }
     }
   };
 
   const handleConfirmLoss = async (motivo: string) => {
     if (!pendingLossNegociacao) return;
-    await onLossStatusChange(pendingLossNegociacao, motivo);
+    try {
+      await onLossStatusChange(pendingLossNegociacao, motivo);
+    } catch (error) {
+      console.error("Erro ao registrar perda:", error);
+    }
     setPendingLossNegociacao(null);
   };
 
