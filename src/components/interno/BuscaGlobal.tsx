@@ -102,7 +102,7 @@ export default function BuscaGlobal({ open, onOpenChange }: BuscaGlobalProps) {
   ];
 
   return (
-    <CommandDialog open={open} onOpenChange={onOpenChange}>
+    <CommandDialog open={open} onOpenChange={onOpenChange} shouldFilter={false}>
       <CommandInput
         placeholder="Buscar clientes, negociações, páginas..."
         value={search}
