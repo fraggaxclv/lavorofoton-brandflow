@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
   DndContext,
   DragOverlay,
@@ -18,6 +18,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Card, CardContent } from "@/components/ui/card";
+import TouchCard from "@/components/interno/TouchCard";
 import { Badge } from "@/components/ui/badge";
 import {
   Select,
@@ -77,31 +78,10 @@ interface MobileKanbanCardProps {
 }
 
 function MobileKanbanCard({ negociacao, onClick, onStatusChange }: MobileKanbanCardProps) {
-  const touchRef = useRef<{ x: number; y: number; time: number } | null>(null);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    const touch = e.touches[0];
-    touchRef.current = { x: touch.clientX, y: touch.clientY, time: Date.now() };
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (!touchRef.current) return;
-    const touch = e.changedTouches[0];
-    const dx = Math.abs(touch.clientX - touchRef.current.x);
-    const dy = Math.abs(touch.clientY - touchRef.current.y);
-    const dt = Date.now() - touchRef.current.time;
-    touchRef.current = null;
-    // Only trigger click if finger barely moved and tap was quick
-    if (dx < 12 && dy < 12 && dt < 300) {
-      onClick();
-    }
-  };
-
   return (
-    <Card 
-      className="bg-card touch-pan-x touch-pan-y"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
+    <TouchCard 
+      className="bg-card"
+      onCardClick={onClick}
     >
       <CardContent className="p-3">
         <div className="space-y-1.5">
@@ -183,7 +163,7 @@ function MobileKanbanCard({ negociacao, onClick, onStatusChange }: MobileKanbanC
           )}
         </div>
       </CardContent>
-    </Card>
+    </TouchCard>
   );
 }
 

@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
+import TouchCard from "@/components/interno/TouchCard";
 import { 
   Dialog, 
   DialogContent, 
@@ -412,10 +413,10 @@ export default function InternoNegociacoes() {
         ) : filteredNegociacoes.length > 0 ? (
           <div className="space-y-3">
             {filteredNegociacoes.map(negociacao => (
-              <Card 
+              <TouchCard 
                 key={negociacao.id} 
-                className="hover:shadow-md transition-shadow cursor-pointer"
-                onClick={() => handleOpenDetails(negociacao)}
+                className="hover:shadow-md transition-shadow"
+                onCardClick={() => handleOpenDetails(negociacao)}
               >
                 <CardContent className="p-4">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -468,7 +469,7 @@ export default function InternoNegociacoes() {
                     <ChevronRight className="h-5 w-5 text-muted-foreground hidden sm:block" />
                   </div>
                 </CardContent>
-              </Card>
+              </TouchCard>
             ))}
           </div>
         ) : (
