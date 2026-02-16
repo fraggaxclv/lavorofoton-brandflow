@@ -283,7 +283,7 @@ function KanbanColumn({ status, negociacoes, onCardClick, isMobile, onMobileStat
   const totalValue = negociacoes.reduce((sum, n) => sum + (n.valor_estimado || 0), 0);
 
   return (
-    <div className="flex flex-col min-w-[260px] sm:min-w-[280px] max-w-[320px] w-full bg-muted/30 rounded-lg flex-shrink-0">
+    <div className="flex flex-col w-full bg-muted/30 rounded-lg h-full">
       <CardHeader className="pb-2 px-3 pt-3 sticky top-0 bg-muted/30 backdrop-blur-sm z-10 rounded-t-lg">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -430,9 +430,17 @@ export default function KanbanBoard({
   };
 
   const columnContent = (
-    <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 -mx-3 px-3 sm:-mx-4 sm:px-4 snap-x snap-mandatory scroll-smooth overscroll-x-contain">
+    <div 
+      className="flex gap-3 sm:gap-4 pb-4 -mx-3 px-3 sm:-mx-4 sm:px-4 snap-x snap-mandatory scroll-smooth"
+      style={{ 
+        overflowX: 'auto', 
+        overflowY: 'hidden',
+        WebkitOverflowScrolling: 'touch',
+        overscrollBehaviorX: 'contain',
+      }}
+    >
       {kanbanColumns.map(status => (
-        <div key={status} className="snap-start">
+        <div key={status} className="snap-start flex-shrink-0" style={{ minWidth: 260, maxWidth: 320, width: '75vw' }}>
           <KanbanColumn
             status={status}
             negociacoes={getColumnNegociacoes(status)}
