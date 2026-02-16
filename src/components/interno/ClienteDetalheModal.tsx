@@ -11,6 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import { Handshake, Edit, Users as UsersIcon } from "lucide-react";
 import {
   Building2,
   User,
@@ -44,6 +45,9 @@ interface ClienteDetalheModalProps {
   onOpenChange: (open: boolean) => void;
   cliente: Cliente | null;
   onNovaNegociacao?: (cliente: Cliente) => void;
+  onEdit?: (cliente: Cliente) => void;
+  onAssign?: (cliente: Cliente) => void;
+  isAdmin?: boolean;
 }
 
 function useClienteNegociacoes(clienteId: string | undefined) {
@@ -79,6 +83,9 @@ export default function ClienteDetalheModal({
   onOpenChange,
   cliente,
   onNovaNegociacao,
+  onEdit,
+  onAssign,
+  isAdmin,
 }: ClienteDetalheModalProps) {
   const { data: negociacoes, isLoading } = useClienteNegociacoes(
     open ? cliente?.id : undefined
@@ -106,6 +113,28 @@ export default function ClienteDetalheModal({
             {cliente.nome_fantasia || cliente.razao_social}
           </DialogTitle>
         </DialogHeader>
+
+        {/* Ações rápidas */}
+        <div className="flex gap-2 flex-wrap">
+          {onNovaNegociacao && (
+            <Button size="sm" variant="outline" className="min-h-[44px] gap-1.5" onClick={() => onNovaNegociacao(cliente)}>
+              <Handshake className="h-4 w-4" />
+              Nova Negociação
+            </Button>
+          )}
+          {onEdit && (
+            <Button size="sm" variant="outline" className="min-h-[44px] gap-1.5" onClick={() => { onOpenChange(false); onEdit(cliente); }}>
+              <Edit className="h-4 w-4" />
+              Editar
+            </Button>
+          )}
+          {isAdmin && onAssign && (
+            <Button size="sm" variant="outline" className="min-h-[44px] gap-1.5" onClick={() => { onOpenChange(false); onAssign(cliente); }}>
+              <UsersIcon className="h-4 w-4" />
+              Atribuir
+            </Button>
+          )}
+        </div>
 
         {/* Info do cliente */}
         <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
@@ -176,11 +205,6 @@ export default function ClienteDetalheModal({
               <Briefcase className="h-4 w-4" />
               Histórico de Negociações ({negociacoes?.length || 0})
             </h3>
-            {onNovaNegociacao && (
-              <Button size="sm" variant="outline" className="h-7 text-xs" onClick={() => onNovaNegociacao(cliente)}>
-                + Nova Negociação
-              </Button>
-            )}
           </div>
 
           {isLoading ? (

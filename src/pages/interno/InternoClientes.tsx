@@ -42,7 +42,8 @@ import {
   Handshake,
   Users,
   FileUp,
-  KeyRound
+  KeyRound,
+  ChevronRight
 } from "lucide-react";
 import ImportClientesModal from "@/components/interno/ImportClientesModal";
 import ClienteDetalheModal from "@/components/interno/ClienteDetalheModal";
@@ -247,94 +248,50 @@ export default function InternoClientes() {
                 onCardClick={() => { setDetalheCliente(cliente); setDetalheOpen(true); }}
               >
                 <CardContent className="p-3">
-                  <div className="flex items-center justify-between gap-3">
-                    {/* Left: Icon + Info */}
-                    <div className="flex items-center gap-3 min-w-0 flex-1">
-                      <div className="p-2 rounded-md bg-primary/10 shrink-0">
-                        {cliente.tipo?.toLowerCase() === "pj" ? (
-                          <Building2 className="h-4 w-4 text-primary" />
-                        ) : (
-                          <User className="h-4 w-4 text-primary" />
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="p-2 rounded-md bg-primary/10 shrink-0">
+                      {cliente.tipo?.toLowerCase() === "pj" ? (
+                        <Building2 className="h-4 w-4 text-primary" />
+                      ) : (
+                        <User className="h-4 w-4 text-primary" />
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-sm font-medium truncate">
+                          {cliente.nome_fantasia || cliente.razao_social}
+                        </h3>
+                        <Badge variant="outline" className="text-[10px] px-1.5 py-0">
+                          {TIPO_CLIENTE_LABELS[cliente.tipo]}
+                        </Badge>
+                        {cliente.vendedor_responsavel && (
+                          <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
+                            <UserCheck className="h-2.5 w-2.5 mr-0.5" />
+                            {consultores.find(v => v.id === cliente.vendedor_responsavel)?.nome_exibicao || 
+                             consultores.find(v => v.id === cliente.vendedor_responsavel)?.full_name || 
+                             "Consultor"}
+                          </Badge>
                         )}
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="text-sm font-medium truncate">
-                            {cliente.nome_fantasia || cliente.razao_social}
-                          </h3>
-                          <Badge variant="outline" className="text-[10px] px-1.5 py-0">
-                            {TIPO_CLIENTE_LABELS[cliente.tipo]}
-                          </Badge>
-                          {cliente.vendedor_responsavel && (
-                            <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
-                              <UserCheck className="h-2.5 w-2.5 mr-0.5" />
-                              {consultores.find(v => v.id === cliente.vendedor_responsavel)?.nome_exibicao || 
-                               consultores.find(v => v.id === cliente.vendedor_responsavel)?.full_name || 
-                               "Consultor"}
-                            </Badge>
-                          )}
-                        </div>
-                        <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-muted-foreground mt-0.5">
-                          {cliente.cpf_cnpj && (
-                            <span>{cliente.tipo?.toLowerCase() === "pj" ? "CNPJ" : "CPF"}: {cliente.cpf_cnpj}</span>
-                          )}
-                          {cliente.telefone && (
-                            <span className="flex items-center gap-0.5">
-                              <Phone className="h-2.5 w-2.5" />
-                              {cliente.telefone}
-                            </span>
-                          )}
-                          {cliente.email && (
-                            <span className="flex items-center gap-0.5 truncate max-w-[180px]">
-                              <Mail className="h-2.5 w-2.5" />
-                              {cliente.email}
-                            </span>
-                          )}
-                          {(cliente.cidade || cliente.estado) && (
-                            <span className="flex items-center gap-0.5">
-                              <MapPin className="h-2.5 w-2.5" />
-                              {[cliente.cidade, cliente.estado].filter(Boolean).join(" - ")}
-                            </span>
-                          )}
-                        </div>
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-muted-foreground mt-0.5">
+                        {cliente.cpf_cnpj && (
+                          <span>{cliente.tipo?.toLowerCase() === "pj" ? "CNPJ" : "CPF"}: {cliente.cpf_cnpj}</span>
+                        )}
+                        {cliente.telefone && (
+                          <span className="flex items-center gap-0.5">
+                            <Phone className="h-2.5 w-2.5" />
+                            {cliente.telefone}
+                          </span>
+                        )}
+                        {(cliente.cidade || cliente.estado) && (
+                          <span className="flex items-center gap-0.5">
+                            <MapPin className="h-2.5 w-2.5" />
+                            {[cliente.cidade, cliente.estado].filter(Boolean).join(" - ")}
+                          </span>
+                        )}
                       </div>
                     </div>
-
-                    {/* Right: Action Buttons */}
-                    <div className="flex items-center gap-1 shrink-0" onClick={(e) => e.stopPropagation()}>
-                      <Button 
-                        variant="ghost" 
-                        size="sm"
-                        className="min-h-[44px] min-w-[44px] px-2 text-xs"
-                        onClick={() => handleNewNegociacao(cliente)}
-                        title="Nova Negociação"
-                      >
-                        <Handshake className="h-4 w-4 mr-1" />
-                        <span className="hidden sm:inline">+Negociação</span>
-                      </Button>
-                      {isAdmin && (
-                        <Button 
-                          variant="ghost" 
-                          size="sm"
-                          className="min-h-[44px] min-w-[44px] px-2 text-xs"
-                          onClick={() => handleOpenAssign(cliente)}
-                          title="Atribuir Consultor"
-                        >
-                          <Users className="h-4 w-4 mr-1" />
-                          <span className="hidden sm:inline">Atribuir</span>
-                        </Button>
-                      )}
-                      <Button 
-                        variant="ghost" 
-                        size="sm"
-                        className="min-h-[44px] min-w-[44px] px-2 text-xs"
-                        onClick={() => handleOpenEdit(cliente)}
-                        title="Editar Cliente"
-                      >
-                        <Edit className="h-4 w-4 mr-1" />
-                        <span className="hidden sm:inline">Editar</span>
-                      </Button>
-                    </div>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
                   </div>
                 </CardContent>
               </TouchCard>
@@ -408,6 +365,9 @@ export default function InternoClientes() {
           onOpenChange={setDetalheOpen}
           cliente={detalheCliente}
           onNovaNegociacao={handleNewNegociacao}
+          onEdit={handleOpenEdit}
+          onAssign={handleOpenAssign}
+          isAdmin={isAdmin}
         />
         {/* Solicitar Acesso Modal - Vendedor */}
         <SolicitarAcessoModal
