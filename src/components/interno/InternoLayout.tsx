@@ -17,6 +17,7 @@ import {
   UserCog,
   Home,
   TrendingDown,
+  Inbox,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -48,6 +49,12 @@ const navItems = [
     label: "Meu Perfil", 
     icon: User,
     roles: ["vendedor"] as const
+  },
+  { 
+    path: "/interno/pedidos-publicos", 
+    label: "Pedidos Site", 
+    icon: Inbox,
+    roles: ["admin"] as const
   },
   { 
     path: "/interno/relatorio-perdas", 

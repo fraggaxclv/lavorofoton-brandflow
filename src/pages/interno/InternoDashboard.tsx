@@ -8,6 +8,7 @@ import DashboardKPIs from "@/components/interno/DashboardKPIs";
 import TrendChart from "@/components/interno/TrendChart";
 import RankingConsultores from "@/components/interno/RankingConsultores";
 import ExportButton from "@/components/interno/ExportButton";
+import PedidosPublicosCard from "@/components/interno/PedidosPublicosCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -193,6 +194,9 @@ export default function InternoDashboard() {
 
         {/* KPIs Analytics - Novo */}
         <DashboardKPIs kpis={kpis} isLoading={analyticsQuery.isLoading} />
+
+        {/* Pedidos Públicos - Admin Only */}
+        {isAdmin && <PedidosPublicosCard />}
 
         {/* Navegação Rápida para Consultor */}
         {!isAdmin && (
