@@ -1,6 +1,12 @@
 import { MessageCircle } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 const WhatsAppButton = () => {
+  const location = useLocation();
+  
+  // Não exibir no sistema interno
+  if (location.pathname.startsWith("/interno")) return null;
+
   const whatsappNumber = "5531996970656";
   const message = "Olá! Gostaria de mais informações sobre os veículos Foton.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
