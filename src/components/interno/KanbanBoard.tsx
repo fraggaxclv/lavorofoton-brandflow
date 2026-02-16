@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   DndContext,
   DragOverlay,
@@ -19,6 +19,13 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import MotivoPerdaModal from "@/components/interno/MotivoPerdaModal";
 import { 
   Negociacao, 
@@ -27,12 +34,24 @@ import {
   STATUS_LABELS, 
   STATUS_COLORS,
   TIPO_VENDA_LABELS,
-  formatCurrency 
+  formatCurrency,
+  formatCurrencyCompact,
 } from "@/types/interno";
-import { Calendar, DollarSign, GripVertical, Factory, Package, User } from "lucide-react";
+import { Calendar, DollarSign, GripVertical, Factory, Package, User, ArrowRight } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { cn } from "@/lib/utils";
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
 
 interface KanbanBoardProps {
   negociacoes: Negociacao[];
@@ -42,14 +61,6 @@ interface KanbanBoardProps {
   isUpdating?: boolean;
 }
 
-const statusOrder: StatusNegociacao[] = [
-  "lead_novo",
-  "proposta_enviada", 
-  "faturado",
-  "perdido"
-];
-
-// Status columns to show in kanban - simplified view
 const kanbanColumns: StatusNegociacao[] = [
   "lead_novo",
   "proposta_enviada", 
@@ -57,13 +68,113 @@ const kanbanColumns: StatusNegociacao[] = [
   "perdido"
 ];
 
-interface KanbanCardProps {
+// ─── Mobile Card (no drag, just tap) ────────────────────────────
+
+interface MobileKanbanCardProps {
+  negociacao: Negociacao;
+  onClick: () => void;
+  onStatusChange: (negociacao: Negociacao, newStatus: StatusNegociacao) => void;
+}
+
+function MobileKanbanCard({ negociacao, onClick, onStatusChange }: MobileKanbanCardProps) {
+  return (
+    <Card 
+      className="cursor-pointer hover:shadow-md transition-all bg-card active:scale-[0.98]"
+      onClick={onClick}
+    >
+      <CardContent className="p-3">
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-xs text-muted-foreground">
+              {negociacao.numero_negociacao}
+            </span>
+            {/* Quick status change on mobile - stop propagation to prevent detail open */}
+            <Select
+              value={negociacao.status}
+              onValueChange={(val) => onStatusChange(negociacao, val as StatusNegociacao)}
+            >
+              <SelectTrigger 
+                className="h-6 w-auto text-[10px] px-2 py-0 border-none bg-transparent gap-1 font-medium"
+                onClick={(e) => e.stopPropagation()}
+                style={{ color: STATUS_COLORS[negociacao.status] }}
+              >
+                <div 
+                  className="w-2 h-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: STATUS_COLORS[negociacao.status] }}
+                />
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {kanbanColumns.map(s => (
+                  <SelectItem key={s} value={s}>
+                    <span className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: STATUS_COLORS[s] }} />
+                      {STATUS_LABELS[s]}
+                    </span>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <p className="font-medium text-sm truncate leading-tight">
+            {negociacao.cliente?.nome_fantasia || negociacao.cliente?.razao_social || "Cliente"}
+          </p>
+          {negociacao.produto_principal && (
+            <p className="text-xs text-muted-foreground truncate">
+              {negociacao.produto_principal}
+            </p>
+          )}
+          {negociacao.tipo_venda && negociacao.status === 'faturado' && (
+            <Badge 
+              variant={negociacao.tipo_venda === 'fadireto' ? 'default' : 'secondary'} 
+              className={cn(
+                "text-[10px] px-1.5 py-0.5",
+                negociacao.tipo_venda === 'fadireto' && "bg-orange-500 hover:bg-orange-600 text-white"
+              )}
+            >
+              {negociacao.tipo_venda === 'fadireto' ? (
+                <Factory className="h-2.5 w-2.5 mr-0.5" />
+              ) : (
+                <Package className="h-2.5 w-2.5 mr-0.5" />
+              )}
+              {TIPO_VENDA_LABELS[negociacao.tipo_venda]}
+            </Badge>
+          )}
+          <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
+            <span className="flex items-center gap-1 font-medium">
+              <DollarSign className="h-3.5 w-3.5" />
+              {formatCurrencyCompact(negociacao.valor_estimado || 0)}
+            </span>
+            {negociacao.data_proximo_passo && (
+              <span className="flex items-center gap-1">
+                <Calendar className="h-3.5 w-3.5" />
+                {format(new Date(negociacao.data_proximo_passo), "dd/MM", { locale: ptBR })}
+              </span>
+            )}
+          </div>
+          {negociacao.owner && (
+            <div className="flex items-center gap-1 text-xs text-muted-foreground pt-1 border-t border-border/50 mt-1">
+              <User className="h-3.5 w-3.5" />
+              <span className="truncate">
+                {negociacao.owner.nome_exibicao || negociacao.owner.full_name || negociacao.owner.email?.split('@')[0]}
+              </span>
+            </div>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+// ─── Desktop Card (draggable) ───────────────────────────────────
+
+interface DesktopKanbanCardProps {
   negociacao: Negociacao;
   onClick: () => void;
   isDragging?: boolean;
 }
 
-function KanbanCard({ negociacao, onClick, isDragging }: KanbanCardProps) {
+function DesktopKanbanCard({ negociacao, onClick, isDragging }: DesktopKanbanCardProps) {
   const {
     attributes,
     listeners,
@@ -73,10 +184,7 @@ function KanbanCard({ negociacao, onClick, isDragging }: KanbanCardProps) {
     isDragging: isSortableDragging,
   } = useSortable({ 
     id: negociacao.id,
-    data: {
-      type: "card",
-      negociacao,
-    }
+    data: { type: "card", negociacao }
   });
 
   const style = {
@@ -94,9 +202,8 @@ function KanbanCard({ negociacao, onClick, isDragging }: KanbanCardProps) {
       )}
       onClick={onClick}
     >
-      <CardContent className="p-3 sm:p-3">
+      <CardContent className="p-3">
         <div className="flex items-start gap-2">
-          {/* Grip maior para mobile - área de toque mínima 44x44 */}
           <button
             {...attributes}
             {...listeners}
@@ -119,24 +226,21 @@ function KanbanCard({ negociacao, onClick, isDragging }: KanbanCardProps) {
                 {negociacao.produto_principal}
               </p>
             )}
-            {/* Mostra badge de tipo de venda apenas quando faturado e definido */}
             {negociacao.tipo_venda && negociacao.status === 'faturado' && (
-              <div className="flex items-center gap-2">
-                <Badge 
-                  variant={negociacao.tipo_venda === 'fadireto' ? 'default' : 'secondary'} 
-                  className={cn(
-                    "text-[10px] px-1.5 py-0.5",
-                    negociacao.tipo_venda === 'fadireto' && "bg-orange-500 hover:bg-orange-600 text-white"
-                  )}
-                >
-                  {negociacao.tipo_venda === 'fadireto' ? (
-                    <Factory className="h-2.5 w-2.5 mr-0.5" />
-                  ) : (
-                    <Package className="h-2.5 w-2.5 mr-0.5" />
-                  )}
-                  {TIPO_VENDA_LABELS[negociacao.tipo_venda]}
-                </Badge>
-              </div>
+              <Badge 
+                variant={negociacao.tipo_venda === 'fadireto' ? 'default' : 'secondary'} 
+                className={cn(
+                  "text-[10px] px-1.5 py-0.5",
+                  negociacao.tipo_venda === 'fadireto' && "bg-orange-500 hover:bg-orange-600 text-white"
+                )}
+              >
+                {negociacao.tipo_venda === 'fadireto' ? (
+                  <Factory className="h-2.5 w-2.5 mr-0.5" />
+                ) : (
+                  <Package className="h-2.5 w-2.5 mr-0.5" />
+                )}
+                {TIPO_VENDA_LABELS[negociacao.tipo_venda]}
+              </Badge>
             )}
             <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
               <span className="flex items-center gap-1 font-medium">
@@ -150,7 +254,6 @@ function KanbanCard({ negociacao, onClick, isDragging }: KanbanCardProps) {
                 </span>
               )}
             </div>
-            {/* Consultor responsável */}
             {negociacao.owner && (
               <div className="flex items-center gap-1 text-xs text-muted-foreground pt-1 border-t border-border/50 mt-1">
                 <User className="h-3.5 w-3.5" />
@@ -166,13 +269,17 @@ function KanbanCard({ negociacao, onClick, isDragging }: KanbanCardProps) {
   );
 }
 
+// ─── Column ─────────────────────────────────────────────────────
+
 interface KanbanColumnProps {
   status: StatusNegociacao;
   negociacoes: Negociacao[];
   onCardClick: (negociacao: Negociacao) => void;
+  isMobile: boolean;
+  onMobileStatusChange: (negociacao: Negociacao, newStatus: StatusNegociacao) => void;
 }
 
-function KanbanColumn({ status, negociacoes, onCardClick }: KanbanColumnProps) {
+function KanbanColumn({ status, negociacoes, onCardClick, isMobile, onMobileStatusChange }: KanbanColumnProps) {
   const totalValue = negociacoes.reduce((sum, n) => sum + (n.valor_estimado || 0), 0);
 
   return (
@@ -193,34 +300,52 @@ function KanbanColumn({ status, negociacoes, onCardClick }: KanbanColumnProps) {
           </div>
         </div>
         <p className="text-xs text-muted-foreground font-medium">
-          {formatCurrency(totalValue)}
+          {formatCurrencyCompact(totalValue)}
         </p>
       </CardHeader>
       <div 
         className="flex-1 px-2 pb-2 space-y-2 min-h-[180px] sm:min-h-[200px] overflow-y-auto overscroll-contain"
         data-column={status}
       >
-        <SortableContext
-          items={negociacoes.map(n => n.id)}
-          strategy={verticalListSortingStrategy}
-        >
-          {negociacoes.map(negociacao => (
-            <KanbanCard
-              key={negociacao.id}
-              negociacao={negociacao}
-              onClick={() => onCardClick(negociacao)}
-            />
-          ))}
-        </SortableContext>
+        {isMobile ? (
+          // Mobile: no dnd-kit, just render cards directly
+          <>
+            {negociacoes.map(negociacao => (
+              <MobileKanbanCard
+                key={negociacao.id}
+                negociacao={negociacao}
+                onClick={() => onCardClick(negociacao)}
+                onStatusChange={onMobileStatusChange}
+              />
+            ))}
+          </>
+        ) : (
+          <SortableContext
+            items={negociacoes.map(n => n.id)}
+            strategy={verticalListSortingStrategy}
+          >
+            {negociacoes.map(negociacao => (
+              <DesktopKanbanCard
+                key={negociacao.id}
+                negociacao={negociacao}
+                onClick={() => onCardClick(negociacao)}
+              />
+            ))}
+          </SortableContext>
+        )}
         {negociacoes.length === 0 && (
           <div className="h-20 border-2 border-dashed border-muted-foreground/20 rounded-lg flex items-center justify-center">
-            <p className="text-xs text-muted-foreground">Arraste aqui</p>
+            <p className="text-xs text-muted-foreground">
+              {isMobile ? "Nenhuma negociação" : "Arraste aqui"}
+            </p>
           </div>
         )}
       </div>
     </div>
   );
 }
+
+// ─── Main Board ─────────────────────────────────────────────────
 
 export default function KanbanBoard({ 
   negociacoes, 
@@ -229,15 +354,14 @@ export default function KanbanBoard({
   onCardClick,
   isUpdating 
 }: KanbanBoardProps) {
+  const isMobile = useIsMobile();
   const [activeCard, setActiveCard] = useState<Negociacao | null>(null);
   const [lossDialogOpen, setLossDialogOpen] = useState(false);
   const [pendingLossNegociacao, setPendingLossNegociacao] = useState<Negociacao | null>(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 8,
-      },
+      activationConstraint: { distance: 8 },
     }),
     useSensor(KeyboardSensor)
   );
@@ -246,63 +370,52 @@ export default function KanbanBoard({
     return negociacoes.filter(n => n.status === status);
   };
 
-  const findColumn = (id: string): StatusNegociacao | null => {
-    // Check if id is a column
-    if (kanbanColumns.includes(id as StatusNegociacao)) {
-      return id as StatusNegociacao;
-    }
-    
-    // Find which column contains this card
-    const negociacao = negociacoes.find(n => n.id === id);
-    return negociacao?.status || null;
-  };
-
   const handleDragStart = (event: DragStartEvent) => {
-    const { active } = event;
-    const negociacao = negociacoes.find(n => n.id === active.id);
-    if (negociacao) {
-      setActiveCard(negociacao);
-    }
+    const negociacao = negociacoes.find(n => n.id === event.active.id);
+    if (negociacao) setActiveCard(negociacao);
   };
 
-  const handleDragOver = (event: DragOverEvent) => {
-    // Visual feedback handled by dnd-kit
-  };
+  const handleDragOver = (_event: DragOverEvent) => {};
 
   const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
     setActiveCard(null);
-
     if (!over) return;
 
-    const activeId = active.id as string;
-    const overId = over.id as string;
-
-    const activeNegociacao = negociacoes.find(n => n.id === activeId);
+    const activeNegociacao = negociacoes.find(n => n.id === active.id as string);
     if (!activeNegociacao) return;
 
     let targetStatus: StatusNegociacao | null = null;
+    const overId = over.id as string;
 
     if (kanbanColumns.includes(overId as StatusNegociacao)) {
       targetStatus = overId as StatusNegociacao;
     } else {
-      const overNegociacao = negociacoes.find(n => n.id === overId);
-      if (overNegociacao) {
-        targetStatus = overNegociacao.status;
-      }
+      const overNeg = negociacoes.find(n => n.id === overId);
+      if (overNeg) targetStatus = overNeg.status;
     }
 
     if (targetStatus && targetStatus !== activeNegociacao.status) {
-      if (targetStatus === "perdido") {
-        setPendingLossNegociacao(activeNegociacao);
-        setLossDialogOpen(true);
-      } else {
-        try {
-          await onStatusChange(activeNegociacao, targetStatus);
-        } catch (error) {
-          console.error("Erro ao atualizar status:", error);
-        }
+      await handleStatusTransition(activeNegociacao, targetStatus);
+    }
+  };
+
+  const handleStatusTransition = async (negociacao: Negociacao, newStatus: StatusNegociacao) => {
+    if (newStatus === "perdido") {
+      setPendingLossNegociacao(negociacao);
+      setLossDialogOpen(true);
+    } else {
+      try {
+        await onStatusChange(negociacao, newStatus);
+      } catch (error) {
+        console.error("Erro ao atualizar status:", error);
       }
+    }
+  };
+
+  const handleMobileStatusChange = (negociacao: Negociacao, newStatus: StatusNegociacao) => {
+    if (newStatus !== negociacao.status) {
+      handleStatusTransition(negociacao, newStatus);
     }
   };
 
@@ -316,42 +429,52 @@ export default function KanbanBoard({
     setPendingLossNegociacao(null);
   };
 
+  const columnContent = (
+    <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 -mx-3 px-3 sm:-mx-4 sm:px-4 snap-x snap-mandatory scroll-smooth overscroll-x-contain">
+      {kanbanColumns.map(status => (
+        <div key={status} className="snap-start">
+          <KanbanColumn
+            status={status}
+            negociacoes={getColumnNegociacoes(status)}
+            onCardClick={onCardClick}
+            isMobile={isMobile}
+            onMobileStatusChange={handleMobileStatusChange}
+          />
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <>
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCorners}
-        onDragStart={handleDragStart}
-        onDragOver={handleDragOver}
-        onDragEnd={handleDragEnd}
-      >
-        {/* Scroll horizontal otimizado para mobile - momentum scroll */}
-        <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 -mx-3 px-3 sm:-mx-4 sm:px-4 snap-x snap-mandatory scroll-smooth overscroll-x-contain">
-          {kanbanColumns.map(status => (
-            <div key={status} className="snap-start">
-              <KanbanColumn
-                status={status}
-                negociacoes={getColumnNegociacoes(status)}
-                onCardClick={onCardClick}
-              />
-            </div>
-          ))}
-        </div>
+      {isMobile ? (
+        // Mobile: no DndContext wrapping, pure scroll
+        columnContent
+      ) : (
+        // Desktop: full drag-and-drop
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCorners}
+          onDragStart={handleDragStart}
+          onDragOver={handleDragOver}
+          onDragEnd={handleDragEnd}
+        >
+          {columnContent}
 
-        <DragOverlay>
-          {activeCard && (
-            <div className="w-[280px]">
-              <KanbanCard
-                negociacao={activeCard}
-                onClick={() => {}}
-                isDragging
-              />
-            </div>
-          )}
-        </DragOverlay>
-      </DndContext>
+          <DragOverlay>
+            {activeCard && (
+              <div className="w-[280px]">
+                <DesktopKanbanCard
+                  negociacao={activeCard}
+                  onClick={() => {}}
+                  isDragging
+                />
+              </div>
+            )}
+          </DragOverlay>
+        </DndContext>
+      )}
 
-      {/* Modal para motivo de perda */}
       <MotivoPerdaModal
         open={lossDialogOpen}
         onOpenChange={(open) => {
