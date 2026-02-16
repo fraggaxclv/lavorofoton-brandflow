@@ -701,6 +701,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      buscar_cliente_por_cnpj: {
+        Args: { p_cnpj: string }
+        Returns: {
+          id: string
+          razao_social: string
+          vendedor_responsavel: string
+        }[]
+      }
       gerar_numero_negociacao: { Args: never; Returns: string }
       gerar_numero_proposta: { Args: never; Returns: string }
       get_user_role: { Args: never; Returns: string }

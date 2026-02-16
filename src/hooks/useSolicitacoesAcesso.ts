@@ -39,13 +39,10 @@ export function useSolicitacoesAcesso() {
     mutationFn: async ({ cnpj }: { cnpj: string }) => {
       if (!user) throw new Error("Usuário não autenticado");
       
-      // Buscar cliente pelo CNPJ
+      // Buscar cliente pelo CNPJ usando função SECURITY DEFINER
       const cnpjLimpo = cnpj.replace(/\D/g, "");
       const { data: clientes, error: clienteError } = await supabase
-        .from("clientes")
-        .select("id, razao_social, vendedor_responsavel")
-        .eq("cpf_cnpj", cnpjLimpo)
-        .limit(1);
+        .rpc("buscar_cliente_por_cnpj", { p_cnpj: cnpjLimpo });
 
       if (clienteError) throw clienteError;
       
