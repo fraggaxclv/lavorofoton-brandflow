@@ -244,62 +244,68 @@ export default function InternoClientes() {
             {filteredClientes.map(cliente => (
               <Card key={cliente.id} className="overflow-hidden">
                 <CardContent className="p-0">
-                  {/* Tappable main area — opens detail */}
-                  <TouchCard
-                    className="border-0 shadow-none rounded-none"
-                    onCardClick={() => { setDetalheCliente(cliente); setDetalheOpen(true); }}
+                  {/* Info area — tap opens detail */}
+                  <div
+                    className="px-3 pt-3 pb-2 active:bg-muted/30 transition-colors"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => { setDetalheCliente(cliente); setDetalheOpen(true); }}
                   >
-                    <div className="px-3 pt-3 pb-2">
-                      <div className="flex items-center gap-2 mb-0.5">
-                        <h3 className="text-sm font-medium truncate flex-1">
-                          {cliente.nome_fantasia || cliente.razao_social}
-                        </h3>
-                        <Badge variant="outline" className="text-[10px] px-1.5 py-0 shrink-0">
-                          {TIPO_CLIENTE_LABELS[cliente.tipo]}
-                        </Badge>
-                      </div>
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
-                        {cliente.cpf_cnpj && (
-                          <span>{cliente.cpf_cnpj}</span>
-                        )}
-                        {cliente.telefone && (
-                          <span className="flex items-center gap-0.5">
-                            <Phone className="h-2.5 w-2.5" />
-                            {cliente.telefone}
-                          </span>
-                        )}
-                        {(cliente.cidade || cliente.estado) && (
-                          <span className="flex items-center gap-0.5">
-                            <MapPin className="h-2.5 w-2.5" />
-                            {[cliente.cidade, cliente.estado].filter(Boolean).join(" - ")}
-                          </span>
-                        )}
-                      </div>
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <h3 className="text-sm font-medium truncate flex-1">
+                        {cliente.nome_fantasia || cliente.razao_social}
+                      </h3>
+                      <Badge variant="outline" className="text-[10px] px-1.5 py-0 shrink-0">
+                        {TIPO_CLIENTE_LABELS[cliente.tipo]}
+                      </Badge>
                     </div>
-                  </TouchCard>
-                  {/* Action bar — always visible, easy to tap */}
-                  <div className="flex border-t border-border divide-x divide-border">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
+                      {cliente.cpf_cnpj && <span>{cliente.cpf_cnpj}</span>}
+                      {cliente.telefone && (
+                        <span className="flex items-center gap-0.5">
+                          <Phone className="h-2.5 w-2.5" />
+                          {cliente.telefone}
+                        </span>
+                      )}
+                      {(cliente.cidade || cliente.estado) && (
+                        <span className="flex items-center gap-0.5">
+                          <MapPin className="h-2.5 w-2.5" />
+                          {[cliente.cidade, cliente.estado].filter(Boolean).join(" - ")}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  {/* Action buttons — full width, no horizontal scroll */}
+                  <div className="grid grid-cols-3 border-t border-border">
                     <button
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs text-muted-foreground hover:bg-muted/50 active:bg-muted transition-colors min-h-[44px]"
+                      className="flex items-center justify-center gap-1 py-2.5 text-xs text-muted-foreground hover:bg-muted/50 active:bg-muted transition-colors min-h-[44px] border-r border-border"
                       onClick={() => handleNewNegociacao(cliente)}
                     >
-                      <Handshake className="h-3.5 w-3.5" />
-                      <span>Negociar</span>
+                      <Handshake className="h-3.5 w-3.5 shrink-0" />
+                      <span className="truncate">Negociar</span>
                     </button>
                     <button
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs text-muted-foreground hover:bg-muted/50 active:bg-muted transition-colors min-h-[44px]"
+                      className="flex items-center justify-center gap-1 py-2.5 text-xs text-muted-foreground hover:bg-muted/50 active:bg-muted transition-colors min-h-[44px] border-r border-border"
                       onClick={() => handleOpenEdit(cliente)}
                     >
-                      <Edit className="h-3.5 w-3.5" />
-                      <span>Editar</span>
+                      <Edit className="h-3.5 w-3.5 shrink-0" />
+                      <span className="truncate">Editar</span>
                     </button>
-                    {isAdmin && (
+                    {isAdmin ? (
                       <button
-                        className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs text-muted-foreground hover:bg-muted/50 active:bg-muted transition-colors min-h-[44px]"
+                        className="flex items-center justify-center gap-1 py-2.5 text-xs text-muted-foreground hover:bg-muted/50 active:bg-muted transition-colors min-h-[44px]"
                         onClick={() => handleOpenAssign(cliente)}
                       >
-                        <Users className="h-3.5 w-3.5" />
-                        <span>Atribuir</span>
+                        <Users className="h-3.5 w-3.5 shrink-0" />
+                        <span className="truncate">Atribuir</span>
+                      </button>
+                    ) : (
+                      <button
+                        className="flex items-center justify-center gap-1 py-2.5 text-xs text-muted-foreground hover:bg-muted/50 active:bg-muted transition-colors min-h-[44px]"
+                        onClick={() => { setDetalheCliente(cliente); setDetalheOpen(true); }}
+                      >
+                        <ChevronRight className="h-3.5 w-3.5 shrink-0" />
+                        <span className="truncate">Detalhes</span>
                       </button>
                     )}
                   </div>
