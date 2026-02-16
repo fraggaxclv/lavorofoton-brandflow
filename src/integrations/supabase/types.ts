@@ -625,6 +625,56 @@ export type Database = {
           },
         ]
       }
+      solicitacoes_acesso_cliente: {
+        Row: {
+          aprovado_por: string | null
+          cliente_id: string | null
+          cnpj_solicitado: string
+          created_at: string
+          id: string
+          motivo_rejeicao: string | null
+          razao_social_encontrada: string | null
+          status: string
+          updated_at: string
+          vendedor_atual_id: string | null
+          vendedor_id: string
+        }
+        Insert: {
+          aprovado_por?: string | null
+          cliente_id?: string | null
+          cnpj_solicitado: string
+          created_at?: string
+          id?: string
+          motivo_rejeicao?: string | null
+          razao_social_encontrada?: string | null
+          status?: string
+          updated_at?: string
+          vendedor_atual_id?: string | null
+          vendedor_id: string
+        }
+        Update: {
+          aprovado_por?: string | null
+          cliente_id?: string | null
+          cnpj_solicitado?: string
+          created_at?: string
+          id?: string
+          motivo_rejeicao?: string | null
+          razao_social_encontrada?: string | null
+          status?: string
+          updated_at?: string
+          vendedor_atual_id?: string | null
+          vendedor_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "solicitacoes_acesso_cliente_cliente_id_fkey"
+            columns: ["cliente_id"]
+            isOneToOne: false
+            referencedRelation: "clientes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string

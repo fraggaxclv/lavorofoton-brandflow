@@ -40,10 +40,12 @@ import {
   UserCheck,
   Handshake,
   Users,
-  FileUp
+  FileUp,
+  KeyRound
 } from "lucide-react";
 import ImportClientesModal from "@/components/interno/ImportClientesModal";
 import ClienteDetalheModal from "@/components/interno/ClienteDetalheModal";
+import SolicitarAcessoModal from "@/components/interno/SolicitarAcessoModal";
 import { Cliente, TIPO_CLIENTE_LABELS } from "@/types/interno";
 import { exportClientesToCSV } from "@/lib/exportUtils";
 import { exportClientesPDF } from "@/lib/pdfExport";
@@ -66,6 +68,7 @@ export default function InternoClientes() {
   const [selectedConsultor, setSelectedConsultor] = useState<string>("");
   const [detalheOpen, setDetalheOpen] = useState(false);
   const [detalheCliente, setDetalheCliente] = useState<Cliente | null>(null);
+  const [solicitarAcessoOpen, setSolicitarAcessoOpen] = useState(false);
   const { data: consultores = [] } = useConsultores();
 
   const { clientes, isLoading, createCliente, updateCliente, isCreating, isUpdating } = useClientes({ 
@@ -162,7 +165,13 @@ export default function InternoClientes() {
               {filteredClientes.length} cliente{filteredClientes.length !== 1 ? 's' : ''} encontrado{filteredClientes.length !== 1 ? 's' : ''}
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
+            {!isAdmin && (
+              <Button size="sm" variant="outline" onClick={() => setSolicitarAcessoOpen(true)}>
+                <KeyRound className="h-4 w-4 mr-1" />
+                <span className="hidden sm:inline">Solicitar</span> Acesso
+              </Button>
+            )}
             <ExportButton 
               onExport={() => exportClientesToCSV(filteredClientes as ClienteExportType[])} 
               onExportPDF={() => exportClientesPDF(filteredClientes as ClienteExportType[])}
@@ -398,6 +407,11 @@ export default function InternoClientes() {
           onOpenChange={setDetalheOpen}
           cliente={detalheCliente}
           onNovaNegociacao={handleNewNegociacao}
+        />
+        {/* Solicitar Acesso Modal - Vendedor */}
+        <SolicitarAcessoModal
+          open={solicitarAcessoOpen}
+          onOpenChange={setSolicitarAcessoOpen}
         />
       </div>
     </InternoLayout>
