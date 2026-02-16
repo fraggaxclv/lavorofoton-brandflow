@@ -242,40 +242,25 @@ export default function InternoClientes() {
         ) : filteredClientes.length > 0 ? (
           <div className="grid gap-2">
             {filteredClientes.map(cliente => (
-              <TouchCard 
-                key={cliente.id} 
-                className="hover:bg-muted/30 transition-colors"
-                onCardClick={() => { setDetalheCliente(cliente); setDetalheOpen(true); }}
-              >
-                <CardContent className="p-3">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="p-2 rounded-md bg-primary/10 shrink-0">
-                      {cliente.tipo?.toLowerCase() === "pj" ? (
-                        <Building2 className="h-4 w-4 text-primary" />
-                      ) : (
-                        <User className="h-4 w-4 text-primary" />
-                      )}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="text-sm font-medium truncate">
+              <Card key={cliente.id} className="overflow-hidden">
+                <CardContent className="p-0">
+                  {/* Tappable main area — opens detail */}
+                  <TouchCard
+                    className="border-0 shadow-none rounded-none"
+                    onCardClick={() => { setDetalheCliente(cliente); setDetalheOpen(true); }}
+                  >
+                    <div className="px-3 pt-3 pb-2">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <h3 className="text-sm font-medium truncate flex-1">
                           {cliente.nome_fantasia || cliente.razao_social}
                         </h3>
-                        <Badge variant="outline" className="text-[10px] px-1.5 py-0">
+                        <Badge variant="outline" className="text-[10px] px-1.5 py-0 shrink-0">
                           {TIPO_CLIENTE_LABELS[cliente.tipo]}
                         </Badge>
-                        {cliente.vendedor_responsavel && (
-                          <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
-                            <UserCheck className="h-2.5 w-2.5 mr-0.5" />
-                            {consultores.find(v => v.id === cliente.vendedor_responsavel)?.nome_exibicao || 
-                             consultores.find(v => v.id === cliente.vendedor_responsavel)?.full_name || 
-                             "Consultor"}
-                          </Badge>
-                        )}
                       </div>
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-muted-foreground mt-0.5">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
                         {cliente.cpf_cnpj && (
-                          <span>{cliente.tipo?.toLowerCase() === "pj" ? "CNPJ" : "CPF"}: {cliente.cpf_cnpj}</span>
+                          <span>{cliente.cpf_cnpj}</span>
                         )}
                         {cliente.telefone && (
                           <span className="flex items-center gap-0.5">
@@ -291,10 +276,35 @@ export default function InternoClientes() {
                         )}
                       </div>
                     </div>
-                    <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
+                  </TouchCard>
+                  {/* Action bar — always visible, easy to tap */}
+                  <div className="flex border-t border-border divide-x divide-border">
+                    <button
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs text-muted-foreground hover:bg-muted/50 active:bg-muted transition-colors min-h-[44px]"
+                      onClick={() => handleNewNegociacao(cliente)}
+                    >
+                      <Handshake className="h-3.5 w-3.5" />
+                      <span>Negociar</span>
+                    </button>
+                    <button
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs text-muted-foreground hover:bg-muted/50 active:bg-muted transition-colors min-h-[44px]"
+                      onClick={() => handleOpenEdit(cliente)}
+                    >
+                      <Edit className="h-3.5 w-3.5" />
+                      <span>Editar</span>
+                    </button>
+                    {isAdmin && (
+                      <button
+                        className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs text-muted-foreground hover:bg-muted/50 active:bg-muted transition-colors min-h-[44px]"
+                        onClick={() => handleOpenAssign(cliente)}
+                      >
+                        <Users className="h-3.5 w-3.5" />
+                        <span>Atribuir</span>
+                      </button>
+                    )}
                   </div>
                 </CardContent>
-              </TouchCard>
+              </Card>
             ))}
           </div>
         ) : (
