@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { InternoAuthProvider } from "@/contexts/InternoAuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import InternoProtectedRoute from "@/components/interno/InternoProtectedRoute";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import Home from "./pages/Home";
 import QuemSomos from "./pages/QuemSomos";
 import SobreFoton from "./pages/SobreFoton";
@@ -67,6 +68,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <AuthProvider>
           <WhatsAppButton />
           <Routes>
