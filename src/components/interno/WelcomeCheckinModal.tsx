@@ -524,7 +524,11 @@ export default function WelcomeCheckinModal({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-md overflow-hidden">
+      <DialogContent 
+        className="max-w-md overflow-hidden"
+        onPointerDownOutside={(e) => e.preventDefault()}
+        onInteractOutside={(e) => e.preventDefault()}
+      >
         <VisuallyHidden>
           <DialogTitle>Check-in Diário</DialogTitle>
         </VisuallyHidden>
