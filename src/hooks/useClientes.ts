@@ -87,6 +87,18 @@ export function useClientes(options: UseClientesOptions = {}) {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error("Usuário não autenticado");
 
+      // Validar CNPJ/CPF duplicado
+      if (data.cpf_cnpj) {
+        const cnpjLimpo = data.cpf_cnpj.replace(/\D/g, "");
+        if (cnpjLimpo.length >= 11) {
+          const { data: existentes } = await supabase
+            .rpc("buscar_cliente_por_cnpj", { p_cnpj: cnpjLimpo });
+          if (existentes && existentes.length > 0) {
+            throw new Error("Já existe um cliente cadastrado com este CPF/CNPJ");
+          }
+        }
+      }
+
       const { data: cliente, error } = await supabase
         .from("clientes")
         .insert({
