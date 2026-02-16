@@ -68,21 +68,13 @@ export const InternoAuthProvider = ({ children }: { children: React.ReactNode })
       }
 
       if (!data || data.length === 0) {
-        console.warn("No roles found for user:", userId);
         return null;
       }
 
       // Priority: admin > vendedor
       const roles = data.map(r => r.role);
-      console.log("Roles fetched for user:", userId, roles);
-      if (roles.includes('admin')) {
-        console.log("Admin role detected");
-        return 'admin';
-      }
-      if (roles.includes('vendedor')) {
-        console.log("Vendedor role detected");
-        return 'vendedor';
-      }
+      if (roles.includes('admin')) return 'admin';
+      if (roles.includes('vendedor')) return 'vendedor';
       
       return roles[0] as UserRole;
     } catch (error) {
