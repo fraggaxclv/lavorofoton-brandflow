@@ -3,7 +3,7 @@ import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import { useDashboard, useRankingVendedores, useVendedores } from "@/hooks/useDashboard";
 import { useDashboardAnalytics, useRankingConsultores } from "@/hooks/useDashboardAnalytics";
 import { useMetaMensal, getMetaVendedor } from "@/hooks/useMetaMensal";
-import { useHistoricoMetas } from "@/hooks/useHistoricoMetas";
+import { useHistoricoMetas, useHistoricoMetasTime } from "@/hooks/useHistoricoMetas";
 import InternoLayout from "@/components/interno/InternoLayout";
 import DashboardKPIs from "@/components/interno/DashboardKPIs";
 import TrendChart from "@/components/interno/TrendChart";
@@ -63,6 +63,7 @@ export default function InternoDashboard() {
     isLoadingIndividual,
   } = useMetaMensal(user?.id);
   const historicoMetasQuery = useHistoricoMetas(user?.id);
+  const historicoTimeQuery = useHistoricoMetasTime();
   
   const [metaDialogOpen, setMetaDialogOpen] = useState(false);
   const [metaIndividualDialogOpen, setMetaIndividualDialogOpen] = useState(false);
@@ -426,7 +427,14 @@ export default function InternoDashboard() {
           </Card>
         )}
 
-        {/* Gráfico de Tendência e Ranking - Novo Layout */}
+        {/* Histórico de Metas do Time - Admin */}
+        {isAdmin && (
+          <HistoricoMetas 
+            historico={historicoTimeQuery.data} 
+            isLoading={historicoTimeQuery.isLoading} 
+          />
+        )}
+
         {isAdmin && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <TrendChart data={tendencia} isLoading={analyticsQuery.isLoading} />
