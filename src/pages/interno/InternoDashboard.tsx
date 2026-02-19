@@ -3,10 +3,12 @@ import { useInternoAuth } from "@/contexts/InternoAuthContext";
 import { useDashboard, useRankingVendedores, useVendedores } from "@/hooks/useDashboard";
 import { useDashboardAnalytics, useRankingConsultores } from "@/hooks/useDashboardAnalytics";
 import { useMetaMensal, getMetaVendedor } from "@/hooks/useMetaMensal";
+import { useHistoricoMetas } from "@/hooks/useHistoricoMetas";
 import InternoLayout from "@/components/interno/InternoLayout";
 import DashboardKPIs from "@/components/interno/DashboardKPIs";
 import TrendChart from "@/components/interno/TrendChart";
 import RankingConsultores from "@/components/interno/RankingConsultores";
+import HistoricoMetas from "@/components/interno/HistoricoMetas";
 import ExportButton from "@/components/interno/ExportButton";
 import PedidosPublicosCard from "@/components/interno/PedidosPublicosCard";
 import SolicitacoesAcessoCard from "@/components/interno/SolicitacoesAcessoCard";
@@ -38,6 +40,8 @@ import {
 } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import { formatCurrency, STATUS_LABELS, STATUS_COLORS, StatusNegociacao } from "@/types/interno";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 export default function InternoDashboard() {
   const navigate = useNavigate();
@@ -58,6 +62,7 @@ export default function InternoDashboard() {
     valorMetaIndividual,
     isLoadingIndividual,
   } = useMetaMensal(user?.id);
+  const historicoMetasQuery = useHistoricoMetas(user?.id);
   
   const [metaDialogOpen, setMetaDialogOpen] = useState(false);
   const [metaIndividualDialogOpen, setMetaIndividualDialogOpen] = useState(false);
@@ -151,7 +156,7 @@ export default function InternoDashboard() {
               Olá, {displayName}!
             </h1>
             <p className="text-sm text-muted-foreground">
-              {isAdmin ? "Visão geral do time" : "Continue suas vendas"}
+              {isAdmin ? "Visão geral do time" : "Continue suas vendas"} · <span className="capitalize font-medium text-foreground">{format(new Date(), "MMMM yyyy", { locale: ptBR })}</span>
             </p>
           </div>
           
@@ -361,6 +366,14 @@ export default function InternoDashboard() {
               )}
             </CardContent>
           </Card>
+        )}
+
+        {/* Histórico de Metas - Últimos 3 meses */}
+        {!isAdmin && (
+          <HistoricoMetas 
+            historico={historicoMetasQuery.data} 
+            isLoading={historicoMetasQuery.isLoading} 
+          />
         )}
 
         {/* Meta do Time - Admin */}
