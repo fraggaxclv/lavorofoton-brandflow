@@ -314,7 +314,7 @@ export default function InternoNegociacoes() {
                   Nova Negociação
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-lg">
+              <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto overscroll-contain">
                 <DialogHeader>
                   <DialogTitle>Nova Negociação</DialogTitle>
                 </DialogHeader>
@@ -796,8 +796,8 @@ function NegociacaoDetails({ negociacao, open, onOpenChange, onStatusChange, onL
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto overscroll-contain">
+        <DialogHeader className="pr-8">
           <DialogTitle className="flex items-center gap-2 justify-between">
             <span className="font-mono text-muted-foreground">
               {negociacao.numero_negociacao}
