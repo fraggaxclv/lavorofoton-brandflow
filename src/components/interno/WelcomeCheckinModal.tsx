@@ -525,7 +525,7 @@ export default function WelcomeCheckinModal({
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent 
-        className="max-w-md overflow-hidden"
+        className="max-w-md max-h-[90vh] overflow-y-auto overscroll-contain"
         onPointerDownOutside={(e) => e.preventDefault()}
         onInteractOutside={(e) => e.preventDefault()}
       >

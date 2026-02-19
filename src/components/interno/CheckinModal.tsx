@@ -220,7 +220,7 @@ export default function CheckinModal({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-md p-0 overflow-hidden bg-gradient-to-b from-background to-muted/50">
+      <DialogContent className="max-w-md p-0 overflow-hidden bg-gradient-to-b from-background to-muted/50 max-h-[90vh] overscroll-contain">
         <VisuallyHidden>
           <DialogTitle>Check-in Diário de Negociações</DialogTitle>
         </VisuallyHidden>

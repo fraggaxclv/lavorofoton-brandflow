@@ -209,7 +209,7 @@ export default function InternoClientes() {
                   Novo Cliente
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
+              <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto overscroll-contain">
                 <DialogHeader>
                   <DialogTitle>
                     {editingCliente ? "Editar Cliente" : "Novo Cliente"}
