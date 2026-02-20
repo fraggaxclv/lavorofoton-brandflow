@@ -215,7 +215,7 @@ const ComparativoAumark1217 = () => {
                 </span>
               </div>
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed text-white/90 mt-4">
-                "A COOPMETRO, com mais de 30.000 associados, adquiriu 4 unidades Foton Aumark 1217 e registrou economia de <span className="text-[#F5A623] font-bold">20%+</span> em combustível em comparação com o VW Delivery 11.180 — com capacidade de carga <span className="text-[#F5A623] font-bold">1.000 kg superior</span> por viagem."
+                "No fim de 2025, a COOPMETRO, com mais de 30.000 associados, adquiriu 4 unidades para fazer os primeiros testes com o Foton Aumark 1217 e registrou economia de <span className="text-[#F5A623] font-bold">+20%</span> em combustível em comparação com o VW Delivery 11.180 e ainda com capacidade de carga <span className="text-[#F5A623] font-bold">1.000 kg superior</span> por viagem."
               </blockquote>
               <div className="mt-6 flex items-center gap-3">
                 <div className="w-1 h-8 bg-[#F5A623] rounded-full" />
