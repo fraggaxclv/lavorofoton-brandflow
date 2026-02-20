@@ -35,6 +35,7 @@ import IBlue6T from "./pages/models/IBlue6T";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ComparativoAumark1217 from "./pages/ComparativoAumark1217";
+import CalculadoraROI from "./pages/CalculadoraROI";
 
 // Páginas do sistema interno
 import InternoLogin from "./pages/interno/InternoLogin";
@@ -94,6 +95,7 @@ const App = () => (
             <Route path="/servicos" element={<Servicos />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/comparativo-aumark-1217" element={<ComparativoAumark1217 />} />
+            <Route path="/calculadora-roi" element={<CalculadoraROI />} />
             
             <Route path="/pedido-faturamento-lavoro" element={<PedidoFaturamento />} />
             <Route path="/proposta-comercial-lavoro" element={<PropostaComercial />} />
