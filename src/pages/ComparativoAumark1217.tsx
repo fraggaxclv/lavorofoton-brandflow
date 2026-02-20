@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { MessageCircle, Trophy, Wrench, DollarSign, Check, ChevronRight, Instagram, Linkedin, Phone, ExternalLink, Weight, Fuel, Shield, Award, Star } from "lucide-react";
+import { MessageCircle, Trophy, Wrench, DollarSign, Check, ChevronRight, Phone, ExternalLink, Weight, Fuel, Shield, Award, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import SimuladorEficiencia from "@/components/SimuladorEficiencia";
@@ -254,24 +254,22 @@ const ComparativoAumark1217 = () => {
         {/* ===== SEÇÃO 7 — RODAPÉ ===== */}
         <footer className="py-12 border-t border-white/10 bg-[#071528]">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-10 md:h-12" />
-                <div className="text-sm text-white/50">
-                  <p>Concessionária Oficial Foton em Minas Gerais</p>
-                  <p>Atendimento dono a dono</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-6">
-                <a href="https://www.instagram.com/lavorofoton/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#F5A623] transition-colors">
-                  <Instagram size={22} />
+            <div className="flex flex-col items-center gap-6">
+              <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-10 md:h-12 brightness-0 invert" />
+              <p className="text-sm text-white/50">Concessionária Oficial Foton em Minas Gerais — Atendimento dono a dono</p>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                  <Button className="bg-[#22C55E] hover:bg-[#16A34A] text-white px-6 py-3 rounded-xl font-semibold">
+                    <MessageCircle size={18} />
+                    Falar no WhatsApp
+                  </Button>
                 </a>
-                <a href="https://www.linkedin.com/company/lavorofoton/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#F5A623] transition-colors">
-                  <Linkedin size={22} />
-                </a>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#22C55E] transition-colors">
-                  <MessageCircle size={22} />
-                </a>
+                <Link to="/calculadora-roi">
+                  <button className="inline-flex items-center gap-2 border border-white/30 text-white hover:bg-white/10 px-6 py-3 rounded-xl font-semibold transition-colors">
+                    <ExternalLink size={18} />
+                    Simular minha economia
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
