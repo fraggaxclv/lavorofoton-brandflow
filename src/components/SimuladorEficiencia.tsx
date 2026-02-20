@@ -139,7 +139,7 @@ function TruckRace({ inView }: { inView: boolean }) {
           <span className="inline-block bg-[#22C55E]/20 text-[#22C55E] text-xs md:text-sm font-bold px-3 py-1 rounded-full">
             Foton Aumark S 1217
           </span>
-          <span className="block text-white/50 text-xs mt-1 ml-1">8.326 kg/viagem</span>
+          <span className="block text-white/50 text-xs mt-1 ml-1">8.256 kg/viagem</span>
         </div>
         <div className="flex items-center gap-1 overflow-x-auto pb-2 scrollbar-hide">
           {Array.from({ length: 14 }).map((_, i) => (
