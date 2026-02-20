@@ -38,8 +38,8 @@ const comparisonData = [
   { spec: "Transmissão", foton: "Manual 6 marchas", mb: "Manual 6 marchas", vw: "Manual 6 marchas", iveco: "Manual 6 marchas" },
   { spec: "PBT Legal", foton: "11.500 kg", mb: "10.700 kg", vw: "10.800 kg", iveco: "10.600 kg" },
   { spec: "PBT Técnico", foton: "12.000 kg 🏆", mb: "10.700 kg", vw: "10.800 kg", iveco: "10.600 kg", highlight: true },
-  { spec: "Carga útil", foton: "8.256–8.326 kg", mb: "7.044–7.260 kg", vw: "7.330–7.480 kg", iveco: "6.930–7.080 kg", highlight: true },
-  { spec: "Tanque", foton: "Alumínio", mb: "Aço", vw: "Aço", iveco: "Aço" },
+  { spec: "Carga útil", foton: "8.326 kg", mb: "7.260 kg", vw: "7.480 kg", iveco: "7.080 kg", highlight: true },
+  { spec: "Tanque", foton: "Alumínio", mb: "Plástico", vw: "Plástico", iveco: "Plástico" },
   { spec: "Garantia", foton: "3 anos s/ limite km", mb: "2 anos", vw: "2 anos", iveco: "2 anos", highlight: true },
 ];
 
@@ -148,8 +148,8 @@ const ComparativoAumark1217 = () => {
                     <th className="text-left py-4 px-4 text-white/50 font-medium text-sm uppercase tracking-wider">Especificação</th>
                     <th className="py-4 px-4 text-center relative">
                       <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                        <span className="bg-[#F5A623] text-[#0A1F3D] text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
-                          ⭐ Melhor da Categoria
+                      <span className="bg-[#F5A623] text-[#0A1F3D] text-[10px] md:text-xs font-bold px-2 md:px-3 py-1 rounded-full whitespace-nowrap">
+                          ⭐ Melhor
                         </span>
                       </div>
                       <span className="font-bold text-[#F5A623] text-sm md:text-base">FOTON AUMARK S 1217</span>
@@ -223,10 +223,10 @@ const ComparativoAumark1217 = () => {
                 </thead>
                 <tbody>
                   {[
-                    { modelo: "Foton Aumark S 1217", eixos: "3.800 mm / 4.500 mm", carga: "8.326 kg / 8.256 kg", peso: "1.000 kg", viagens: "14 viagens", best: true },
-                    { modelo: "MB Accelo 1117", eixos: "3.900 mm / 4.600 mm", carga: "7.121 kg / 7.044 kg", peso: "1.000 kg", viagens: "17 viagens", best: false },
-                    { modelo: "VW Delivery 11.180", eixos: "4.000 mm / 4.600 mm", carga: "7.430 kg / 7.330 kg", peso: "1.000 kg", viagens: "17 viagens", best: false },
-                    { modelo: "Iveco Tector 11-190", eixos: "3.900 mm / 4.455 mm", carga: "7.080 kg / 6.930 kg", peso: "1.000 kg", viagens: "17 viagens", best: false },
+                    { modelo: "Foton Aumark S 1217", eixos: "4.500 mm", carga: "8.326 kg", peso: "1.000 kg", viagens: "14 viagens", best: true },
+                    { modelo: "MB Accelo 1117", eixos: "4.600 mm", carga: "7.260 kg", peso: "1.000 kg", viagens: "17 viagens", best: false },
+                    { modelo: "VW Delivery 11.180", eixos: "4.600 mm", carga: "7.480 kg", peso: "1.000 kg", viagens: "17 viagens", best: false },
+                    { modelo: "Iveco Tector 11-190", eixos: "4.455 mm", carga: "7.080 kg", peso: "1.000 kg", viagens: "17 viagens", best: false },
                   ].map((row, i) => (
                     <tr key={i} className={`border-t border-white/10 ${row.best ? "bg-[#F5A623]/8" : ""}`}>
                       <td className={`py-4 px-4 font-semibold text-sm ${row.best ? "text-[#F5A623]" : "text-white/80"}`}>{row.modelo}</td>
@@ -248,7 +248,7 @@ const ComparativoAumark1217 = () => {
             {/* Card destaque */}
             <div className="reveal opacity-0 translate-y-6 transition-all duration-700 delay-300 mt-10 bg-[#22C55E]/10 border border-[#22C55E]/25 rounded-2xl p-6 md:p-8">
               <p className="text-lg md:text-xl font-medium text-white/90 text-center italic mb-6">
-                "O Foton Aumark S 1217 transporta a mesma quantidade de carga em <span className="text-[#F5A623] font-bold not-italic">2 a 3 viagens A MENOS</span> que os concorrentes."
+                "O Foton Aumark S 1217 transporta a mesma quantidade de carga em <span className="text-[#F5A623] font-bold not-italic">3 viagens A MENOS</span> que os concorrentes."
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {[
