@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { MessageCircle, Trophy, Wrench, DollarSign, Check, ChevronRight, Instagram, Linkedin, Phone, ExternalLink, Weight, Fuel, Shield, Award, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SimuladorEficiencia from "@/components/SimuladorEficiencia";
 import foton1217 from "@/assets/foton-1217.jpg";
 import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
@@ -200,82 +201,8 @@ const ComparativoAumark1217 = () => {
           </div>
         </section>
 
-        {/* ===== SEÇÃO 4.5 — SIMULADOR DE EFICIÊNCIA ===== */}
-        <section className="py-20 md:py-28 bg-[#0A1F3D]">
-          <div className="max-w-5xl mx-auto px-4 md:px-8">
-            <h2 className="reveal opacity-0 translate-y-6 transition-all duration-700 text-3xl md:text-5xl font-bold text-center mb-4">
-              Vamos ver <span className="text-[#F5A623]">na prática</span>?
-            </h2>
-            <p className="reveal opacity-0 translate-y-6 transition-all duration-700 delay-100 text-center text-white/60 mb-12 max-w-2xl mx-auto">
-              Qual dos modelos abaixo faz menos viagens para transportar a mesma quantidade de carga?
-            </p>
-
-            <div className="reveal opacity-0 translate-y-6 transition-all duration-700 delay-200 overflow-x-auto scrollbar-hide -mx-4 px-4">
-              <table className="w-full min-w-[640px] border-collapse">
-                <thead>
-                  <tr className="border-b border-white/15">
-                    <th className="text-left py-4 px-4 text-white/50 font-medium text-sm uppercase tracking-wider">Modelo</th>
-                    <th className="py-4 px-4 text-center text-white/50 font-medium text-sm uppercase tracking-wider">Entre-eixos</th>
-                    <th className="py-4 px-4 text-center text-white/50 font-medium text-sm uppercase tracking-wider">Carga útil</th>
-                    <th className="py-4 px-4 text-center text-white/50 font-medium text-sm uppercase tracking-wider">Peso carroceria</th>
-                    <th className="py-4 px-4 text-center text-white/50 font-medium text-sm uppercase tracking-wider">Nº de viagens</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { modelo: "Foton Aumark S 1217", eixos: "4.500 mm", carga: "8.326 kg", peso: "1.000 kg", viagens: "14 viagens", best: true },
-                    { modelo: "MB Accelo 1117", eixos: "4.600 mm", carga: "7.260 kg", peso: "1.000 kg", viagens: "17 viagens", best: false },
-                    { modelo: "VW Delivery 11.180", eixos: "4.600 mm", carga: "7.480 kg", peso: "1.000 kg", viagens: "17 viagens", best: false },
-                    { modelo: "Iveco Tector 11-190", eixos: "4.455 mm", carga: "7.080 kg", peso: "1.000 kg", viagens: "17 viagens", best: false },
-                  ].map((row, i) => (
-                    <tr key={i} className={`border-t border-white/10 ${row.best ? "bg-[#F5A623]/8" : ""}`}>
-                      <td className={`py-4 px-4 font-semibold text-sm ${row.best ? "text-[#F5A623]" : "text-white/80"}`}>{row.modelo}</td>
-                      <td className="py-4 px-4 text-center text-white/60 text-sm">{row.eixos}</td>
-                      <td className={`py-4 px-4 text-center text-sm font-medium ${row.best ? "text-[#22C55E]" : "text-white/60"}`}>{row.carga}</td>
-                      <td className="py-4 px-4 text-center text-white/60 text-sm">{row.peso}</td>
-                      <td className="py-4 px-4 text-center text-sm font-bold">
-                        <span className="inline-flex items-center gap-2">
-                          {row.viagens}
-                          <span className={`inline-block w-3 h-3 rounded-full ${row.best ? "bg-[#22C55E]" : "bg-red-400"}`} />
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Card destaque */}
-            <div className="reveal opacity-0 translate-y-6 transition-all duration-700 delay-300 mt-10 bg-[#22C55E]/10 border border-[#22C55E]/25 rounded-2xl p-6 md:p-8">
-              <p className="text-lg md:text-xl font-medium text-white/90 text-center italic mb-6">
-                "O Foton Aumark S 1217 transporta a mesma quantidade de carga em <span className="text-[#F5A623] font-bold not-italic">3 viagens A MENOS</span> que os concorrentes."
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                {[
-                  "MENOS MOTORISTAS",
-                  "MENOS COMBUSTÍVEL",
-                  "MENOS MANUTENÇÃO",
-                  "MAIS PRODUTIVIDADE",
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div className="flex-shrink-0 w-6 h-6 rounded bg-[#22C55E] flex items-center justify-center">
-                      <Check size={14} className="text-white" />
-                    </div>
-                    <span className="text-white/90 text-sm font-bold">{item}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="text-center">
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-[#22C55E] hover:bg-[#16A34A] text-white text-lg px-8 py-5 rounded-xl font-semibold shadow-lg shadow-[#22C55E]/25">
-                    <MessageCircle size={20} />
-                    Simular minha economia
-                  </Button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* ===== SEÇÃO 5 — SIMULADOR DE EFICIÊNCIA ===== */}
+        <SimuladorEficiencia />
 
         {/* ===== SEÇÃO 5 — PROVA SOCIAL ===== */}
         <section className="py-20 md:py-28 bg-[#0A1F3D]">
