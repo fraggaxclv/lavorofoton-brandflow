@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { MessageCircle, Trophy, Wrench, DollarSign, Check, ChevronRight, Instagram, Linkedin, Phone, ExternalLink, Weight, Fuel, Shield, Award, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import SimuladorEficiencia from "@/components/SimuladorEficiencia";
 import foton1217 from "@/assets/foton-1217.jpg";
 import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
@@ -240,12 +241,12 @@ const ComparativoAumark1217 = () => {
                   Falar no WhatsApp
                 </Button>
               </a>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              <Link to="/calculadora-roi">
                 <button className="inline-flex items-center justify-center gap-2 border border-white/30 text-white hover:bg-white/10 text-lg px-8 py-4 rounded-xl font-semibold w-full sm:w-auto transition-colors">
                   <ExternalLink size={20} />
                   Simular minha economia
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
         </section>

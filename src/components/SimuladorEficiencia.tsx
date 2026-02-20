@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { MessageCircle, ChevronDown, ChevronUp } from "lucide-react";
+import { MessageCircle, ChevronDown, ChevronUp, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const WHATSAPP_URL_SIMULACAO =
   "https://wa.me/5531996970656?text=Ol%C3%A1!%20Vi%20a%20simula%C3%A7%C3%A3o%20no%20site%20e%20quero%20calcular%20minha%20economia%20com%20o%20Foton%20Aumark%20S%201217.";
@@ -388,12 +389,12 @@ export default function SimuladorEficiencia() {
         {/* ── PARTE F: CTA ── */}
         <div className="text-center">
           <p className="text-white text-lg mb-5">Quer calcular com os números da sua operação?</p>
-          <a href={WHATSAPP_URL_SIMULACAO} target="_blank" rel="noopener noreferrer">
+          <Link to="/calculadora-roi">
             <Button className="bg-[#22C55E] hover:bg-[#16A34A] text-white text-lg px-8 py-5 rounded-xl font-semibold shadow-lg shadow-[#22C55E]/25">
-              <MessageCircle size={20} />
+              <Calculator size={20} />
               Simular minha economia agora
             </Button>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
