@@ -9,32 +9,32 @@ const modelos = [
   {
     nome: "Foton Aumark S 1217",
     cor: "green",
-    eixos: ["3.800 mm", "4.500 mm"],
-    cargas: [8326, 8256],
+    eixos: "4.500 mm",
+    carga: 8256,
     viagens: 14,
     best: true,
   },
   {
     nome: "MB Accelo 1117",
     cor: "red",
-    eixos: ["3.900 mm", "4.600 mm"],
-    cargas: [7121, 7044],
+    eixos: "4.600 mm",
+    carga: 7044,
     viagens: 17,
     best: false,
   },
   {
     nome: "VW Delivery 11.180",
     cor: "red",
-    eixos: ["4.000 mm", "4.600 mm"],
-    cargas: [7430, 7330],
+    eixos: "4.600 mm",
+    carga: 7330,
     viagens: 17,
     best: false,
   },
   {
     nome: "Iveco Tector 11-190",
     cor: "red",
-    eixos: ["3.900 mm", "4.455 mm"],
-    cargas: [7080, 6930],
+    eixos: "4.455 mm",
+    carga: 6930,
     viagens: 17,
     best: false,
   },
@@ -43,11 +43,11 @@ const modelos = [
 const detailedTableData = [
   {
     spec: "Entre-eixos",
-    values: ["3.800 / 4.500 mm", "3.900 / 4.600 mm", "4.000 / 4.600 mm", "3.900 / 4.455 mm"],
+    values: ["4.500 mm", "4.600 mm", "4.600 mm", "4.455 mm"],
   },
   {
     spec: "Carga + Carroceria",
-    values: ["8.326 / 8.256 kg", "7.121 / 7.044 kg", "7.430 / 7.330 kg", "7.080 / 6.930 kg"],
+    values: ["8.256 kg", "7.044 kg", "7.330 kg", "6.930 kg"],
     highlight: true,
   },
   {
@@ -69,21 +69,28 @@ const savingsCards = [
   {
     icon: "⛽",
     title: "Menos combustível",
-    value: "~R$ 180 economizados",
-    sub: "3 viagens × 80km × R$6,50/L ÷ 8,5km/L",
+    value: "R$ 9.487 economizados/ano",
+    sub: "Foton faz 7.200 km/ano a menos + 20% de eficiência do motor Cummins",
   },
   {
     icon: "👷",
     title: "Menos horas de motorista",
-    value: "~R$ 300 economizados",
-    sub: "3 viagens a menos = horas extras evitadas",
+    value: "R$ 9.000 economizados/ano",
+    sub: "36 viagens evitadas × custo proporcional de R$ 250/viagem",
   },
   {
     icon: "🔧",
     title: "Menos desgaste mecânico",
-    value: "~R$ 180 economizados",
-    sub: "Pneus, freios e embreagem preservados",
+    value: "R$ 1.800 economizados/ano",
+    sub: "7.200 km a menos/ano × R$ 0,25/km (pneus, freios, embreagem)",
   },
+];
+
+const frotaImpacto = [
+  { frota: "1 caminhão", economia: "R$ 20.287" },
+  { frota: "5 caminhões", economia: "R$ 101.435" },
+  { frota: "10 caminhões", economia: "R$ 202.871" },
+  { frota: "20 caminhões", economia: "R$ 405.741" },
 ];
 
 /* ── Hooks ── */
@@ -222,7 +229,7 @@ function TruckRace({ inView }: { inView: boolean }) {
 export default function SimuladorEficiencia() {
   const { ref: raceRef, inView: raceInView } = useInView(0.15);
   const { ref: impactRef, inView: impactInView } = useInView(0.3);
-  const counter = useCountUp(36, 1500, impactInView);
+  const counter = useCountUp(20287, 2000, impactInView);
   const [tableOpen, setTableOpen] = useState(false);
 
   return (
@@ -336,22 +343,45 @@ export default function SimuladorEficiencia() {
         </div>
 
         {/* ── PARTE E: Impacto Anual ── */}
-        <div ref={impactRef} className="max-w-[600px] mx-auto mb-16">
+        <div ref={impactRef} className="max-w-[600px] mx-auto mb-10">
           <div className="bg-gradient-to-br from-[#0A1F3D] to-[#0D3D2A] border-2 border-[#F5A623] rounded-2xl p-8 md:p-10 text-center">
             <p className="text-white text-lg mb-4">
-              Transportando 100.000 kg/mês, em 12 meses você faz:
+              Transportando 100.000 kg/mês, em 12 meses você economiza:
             </p>
-            <p className="text-[#F5A623] font-bold leading-none" style={{ fontSize: "clamp(60px, 12vw, 80px)" }}>
-              {counter}
+            <p className="text-[#F5A623] font-bold leading-none" style={{ fontSize: "clamp(48px, 10vw, 72px)" }}>
+              R$ {counter.toLocaleString("pt-BR")}
             </p>
-            <p className="text-white text-xl font-medium mt-2 mb-6">viagens a menos por ano</p>
+            <p className="text-white text-xl font-medium mt-2 mb-6">reais economizados por caminhão por ano</p>
             <hr className="border-[#F5A623]/40 mb-6" />
             <p className="text-[#22C55E] font-bold text-2xl md:text-[32px] mb-3">
-              R$ 6.000 a R$ 9.600 economizados/ano
+              R$ 1.690/mês de economia por caminhão
             </p>
             <p className="text-white/70 text-sm">
-              Apenas pela eficiência de carga. Sem contar a economia de mais de 20% no combustível do motor Cummins.
+              Baseado em 200km/viagem, diesel R$6,30/L, 100.000 kg/mês transportados. Inclui economia de combustível, motorista e desgaste mecânico.
             </p>
+          </div>
+        </div>
+
+        {/* ── Tabela de Impacto por Frota ── */}
+        <div className="max-w-[600px] mx-auto mb-16">
+          <h4 className="text-white text-lg font-bold text-center mb-4">Quanto maior sua frota, maior o impacto:</h4>
+          <div className="overflow-hidden rounded-xl border border-white/10">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-[#0D2647]">
+                  <th className="text-left py-3 px-5 text-white/70 font-medium text-sm">Tamanho da frota</th>
+                  <th className="text-right py-3 px-5 text-white/70 font-medium text-sm">Economia estimada/ano</th>
+                </tr>
+              </thead>
+              <tbody>
+                {frotaImpacto.map((row, i) => (
+                  <tr key={i} className="border-t border-white/10 bg-[#0D2647]/60">
+                    <td className="py-3 px-5 text-white/80 text-sm">{row.frota}</td>
+                    <td className="py-3 px-5 text-right text-[#22C55E] font-bold text-sm">{row.economia}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
 
