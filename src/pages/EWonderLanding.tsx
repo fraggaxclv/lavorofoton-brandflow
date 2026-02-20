@@ -201,7 +201,7 @@ const EWonderLanding = () => {
               </div>
               <p className="text-[#002D6F]/60 text-sm mb-4">R$ 0,86 por km rodado</p>
               <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold text-white bg-[#EF4444]">
-                R$ 2.278/mês saindo
+                R$ 2.278/mês sumindo
               </span>
             </div>
 
@@ -215,7 +215,7 @@ const EWonderLanding = () => {
               </div>
               <p className="text-[#002D6F]/60 text-sm mb-4">R$ 0,23 por km rodado</p>
               <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold text-white bg-[#00C853]">
-                R$ 601/mês saindo
+                R$ 601/mês sumindo
               </span>
             </div>
           </div>
@@ -252,9 +252,9 @@ const EWonderLanding = () => {
       <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-[#002D6F] via-[#003B8E] to-[#002D6F]">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-2">
-            Coloca seus números. Vê por você mesmo.
+            Coloque seus números. Veja por você mesmo.
           </h2>
-          <p className="text-white/60 text-center mb-10">Quantos km você roda por dia?</p>
+            <p className="text-white/60 text-center mb-10">Quantos km você roda por dia?</p>
 
           <div className="rounded-2xl bg-white border-2 border-[#002D6F] p-6 md:p-10 shadow-xl">
             <div className="flex flex-col md:flex-row gap-8 items-center mb-8">
@@ -264,7 +264,7 @@ const EWonderLanding = () => {
               </div>
 
               {/* Slider */}
-              <div className="md:w-2/3 w-full">
+              <div className="md:w-2/3 w-full" style={{ touchAction: "none" }}>
                 <div className="flex justify-between text-[#002D6F]/50 text-sm mb-2">
                   <span>80 km</span>
                   <span>180 km</span>
@@ -275,7 +275,7 @@ const EWonderLanding = () => {
                   min={80}
                   max={180}
                   step={5}
-                  className="w-full [&_[role=slider]]:bg-[#FFC540] [&_[role=slider]]:border-[#FFB020] [&_[data-orientation=horizontal]>[data-orientation=horizontal]]:bg-[#FFC540]"
+                  className="w-full [&_[role=slider]]:bg-[#FFC540] [&_[role=slider]]:border-[#FFB020] [&_[role=slider]]:w-8 [&_[role=slider]]:h-8 [&_[data-orientation=horizontal]>[data-orientation=horizontal]]:bg-[#FFC540]"
                 />
                 <div className="text-center text-5xl font-bold mt-4 text-[#002D6F]">
                   {kmDia} km/dia
@@ -391,9 +391,12 @@ const EWonderLanding = () => {
               <h3 className="text-xl font-bold text-white mb-4">Custo total por km</h3>
               <p className="text-lg mb-1 text-[#FFC540] font-bold">Bongo/HR: R$ 0,86/km</p>
               <p className="text-2xl font-bold mb-4 text-white">E-Wonder: R$ 0,23/km</p>
-              <span className="inline-flex items-center justify-center w-20 h-20 rounded-full text-sm font-bold bg-[#FFC540] text-[#002D6F] mx-auto">
-                73%
-              </span>
+              <div className="flex flex-col items-center mt-2">
+                <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-[#FFC540] to-[#FFB020] shadow-lg flex items-center justify-center">
+                  <span className="text-3xl font-extrabold text-[#002D6F] leading-none">73%</span>
+                </div>
+                <span className="text-xs font-semibold text-white/80 mt-2">de economia</span>
+              </div>
             </div>
           </div>
 
