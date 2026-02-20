@@ -1,7 +1,8 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import logoFotonLavoro from "@/assets/logo-foton-lavoro.png";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { MessageCircle, ChevronDown, Truck, Home, TrendingUp, Users, Fuel, Wrench, Trophy, Battery, Zap, Leaf } from "lucide-react";
@@ -499,7 +500,29 @@ const EWonderLanding = () => {
         </div>
       </section>
 
-      <Footer />
+      {/* ══════ RODAPÉ SIMPLIFICADO ══════ */}
+      <footer className="py-12 border-t border-white/10 bg-[#071528]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="flex flex-col items-center gap-6">
+            <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-10 md:h-12 brightness-0 invert" />
+            <p className="text-sm text-white/50">Concessionária Oficial Foton em Minas Gerais — Atendimento dono a dono</p>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <a href="https://wa.me/5531996970656?text=Ol%C3%A1!%20Quero%20agendar%20o%20test%20drive%20do%20Foton%20E-Wonder%20na%20Lavoro%20Foton." target="_blank" rel="noopener noreferrer">
+                <Button className="bg-[#22C55E] hover:bg-[#16A34A] text-white px-6 py-3 rounded-xl font-semibold">
+                  <MessageCircle size={18} />
+                  Falar no WhatsApp
+                </Button>
+              </a>
+              <Link to="/calculadora-roi">
+                <button className="inline-flex items-center gap-2 border border-white/30 text-white hover:bg-white/10 px-6 py-3 rounded-xl font-semibold transition-colors min-h-[44px] min-w-[44px]">
+                  <Zap size={18} />
+                  Simular minha economia
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
