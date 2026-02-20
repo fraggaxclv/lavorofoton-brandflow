@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import logoFotonLavoro from "@/assets/logo-foton-lavoro.png";
+import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { MessageCircle, ChevronDown, Truck, Home, TrendingUp, Users, Fuel, Wrench, Trophy, Battery, Zap, Leaf } from "lucide-react";
