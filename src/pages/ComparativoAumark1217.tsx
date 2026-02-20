@@ -85,7 +85,7 @@ const ComparativoAumark1217 = () => {
                 <span className="block text-[#F5A623] text-2xl md:text-3xl mt-3 font-semibold">O Caminhão Médio que Muda o Jogo</span>
               </h1>
               <p className="reveal opacity-0 translate-y-6 transition-all duration-700 delay-200 text-lg md:text-xl text-white/80 mb-8 leading-relaxed max-w-xl">
-                Maior carga útil da categoria. Motor Cummins. Economia de combustível de mais de 20%. Conheça o novo padrão do transporte urbano e rodoviário em Minas Gerais.
+                Maior carga útil da categoria. Motor Cummins. Mais de 20% de economia em combustível. Conheça o novo padrão do transporte urbano e rodoviário em Minas Gerais.
               </p>
               <div className="reveal opacity-0 translate-y-6 transition-all duration-700 delay-300">
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
@@ -114,7 +114,7 @@ const ComparativoAumark1217 = () => {
               {[
                 { icon: <Weight size={36} />, title: "Mais Carga por Viagem", desc: "PBT Técnico de 12.000 kg, o maior da categoria. Carrega até 1.000 kg a mais que o VW Delivery 11.180S." },
                 { icon: <Wrench size={36} />, title: "Motor Cummins", desc: "O motor mais confiável e valorizado do mercado brasileiro, com maior rede de assistência e peças disponíveis." },
-                { icon: <DollarSign size={36} />, title: "20% Mais Econômico", desc: "Menor custo por quilômetro rodado. Seus clientes já economizam mais de 20% em combustível vs concorrentes." },
+                { icon: <DollarSign size={36} />, title: "Mais de 20% Econômico", desc: "Menor custo por quilômetro rodado. Seus clientes já economizam mais de 20% em combustível vs concorrentes." },
               ].map((card, i) => (
                 <div
                   key={i}
@@ -147,8 +147,8 @@ const ComparativoAumark1217 = () => {
                   <tr>
                     <th className="text-left py-4 px-4 text-white/50 font-medium text-sm uppercase tracking-wider">Especificação</th>
                     <th className="py-4 px-4 text-center relative">
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-[#F5A623] text-[#0A1F3D] text-[10px] md:text-xs font-bold px-2 md:px-3 py-1 rounded-full whitespace-nowrap">
+                      <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-10">
+                        <span className="bg-[#F5A623] text-[#0A1F3D] text-[10px] md:text-xs font-bold px-2 md:px-3 py-1 rounded-full whitespace-nowrap shadow-md">
                           ⭐ Melhor
                         </span>
                       </div>
