@@ -384,7 +384,7 @@ export default function CalculadoraROI() {
                   badge: "✅ Case Real Documentado",
                   badgeColor: "#22C55E",
                   icon: "🏢",
-                  text: "COOPMETRO — 30.000+ associados — Economia real de 20%+ em combustível confirmada após 6 meses com Foton Aumark",
+                  text: "No fim de 2025, a COOPMETRO, com mais de 30.000 associados, adquiriu 4 unidades para fazer os primeiros testes com o Foton Aumark 1217 e registrou economia de +20% em combustível em comparação com o VW Delivery 11.180 e ainda com capacidade de carga 1.000 kg superior por viagem.",
                 },
                 {
                   badge: "📊 Simulação Validada",
