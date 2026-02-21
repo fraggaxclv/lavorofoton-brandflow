@@ -63,8 +63,8 @@ function DesktopDropdown({
       onMouseLeave={leave}
     >
       <button className="flex items-center gap-1 text-foreground hover:text-primary transition-colors font-medium py-2">
-        {label}
-        <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
+        <span className="text-primary font-bold">{label}</span>
+        <ChevronDown className={`h-4 w-4 text-primary transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
 
       {open && (
@@ -114,8 +114,8 @@ function MobileAccordion({
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between text-foreground hover:text-primary transition-colors font-medium py-1"
       >
-        {label}
-        <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
+        <span className="text-primary font-bold">{label}</span>
+        <ChevronDown className={`h-4 w-4 text-primary transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
         <div className="pl-4 pt-1 pb-2 space-y-1">
