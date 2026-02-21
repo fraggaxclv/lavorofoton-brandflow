@@ -1,6 +1,6 @@
 import { Phone, Mail, MapPin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo-foton-lavoro.png";
+import logo from "@/assets/logo-foton-lavoro-transparente.png";
 const Footer = () => {
   return <footer className="bg-industrial-dark text-primary-foreground">
       <div className="container-lavoro py-12">
