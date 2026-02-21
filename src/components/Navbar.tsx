@@ -62,7 +62,7 @@ function DesktopDropdown({
       onMouseEnter={enter}
       onMouseLeave={leave}
     >
-      <button className="flex items-center gap-1 text-foreground hover:text-primary transition-colors font-medium py-2">
+      <button className="flex items-center gap-1 transition-colors py-2">
         <span className="text-primary font-bold">{label}</span>
         <ChevronDown className={`h-4 w-4 text-primary transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
