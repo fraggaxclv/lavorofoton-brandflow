@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { MessageCircle, Check, ChevronRight, Instagram, Linkedin, Fuel, User, Wrench, Trophy, ArrowLeft, Truck, Calculator, Package, Route, Gauge, DollarSign, Settings, CreditCard, Info, Scale } from "lucide-react";
+import { MessageCircle, Check, ChevronRight, Instagram, Linkedin, Fuel, User, Wrench, Trophy, ArrowLeft, Truck, Calculator, Package, Route, Gauge, Info, Scale } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -110,12 +110,7 @@ export default function CalculadoraROI() {
   const [precoDiesel, setPrecoDiesel] = useState(6.30);
   const [custoMotorista, setCustoMotorista] = useState(4500);
   const [custoManutencao, setCustoManutencao] = useState(2500);
-  const [valorUsado, setValorUsado] = useState(80000);
-  const [valorFoton, setValorFoton] = useState(275000);
   const [pesoImplemento, setPesoImplemento] = useState(1000);
-  const [parcelaFinanciamento, setParcelaFinanciamento] = useState(0);
-
-  const { ref: paybackRef, inView: paybackInView } = useInView(0.3);
 
   // Calculations
   const calc = useMemo(() => {
@@ -152,15 +147,7 @@ export default function CalculadoraROI() {
 
     const totalMensal = economiaCombMensal + economiaMotoristaMensal + economiaManutMensal;
     const totalAnual = totalMensal * 12;
-
-    const investimentoLiquido = Math.max(0, (valorFoton || 0) - (valorUsado || 0));
-    const paybackMeses = totalMensal > 0 ? Math.ceil(investimentoLiquido / totalMensal) : 999;
-
-    // Financiamento
-    const parcela = parcelaFinanciamento || 0;
-    const economiaLiquidaMensal = totalMensal - parcela;
-    const economiaLiquidaAnual = economiaLiquidaMensal * 12;
-    const paybackFinanciado = economiaLiquidaMensal > 0 ? Math.ceil(investimentoLiquido / economiaLiquidaMensal) : 999;
+    const totalTresAnos = totalAnual * 3;
 
     return {
       viagensConcorrente, viagensFoton, viagensEconomizadas,
@@ -169,13 +156,9 @@ export default function CalculadoraROI() {
       custoCombConcorrente, custoCombFoton, economiaCombMensal, economiaCombAnual,
       custoPorViagemMotorista, economiaMotoristaMensal, economiaMotoristaAnual,
       economiaManutMensal, economiaManutAnual,
-      totalMensal, totalAnual,
-      investimentoLiquido, paybackMeses,
-      economiaLiquidaMensal, economiaLiquidaAnual, paybackFinanciado,
+      totalMensal, totalAnual, totalTresAnos,
     };
-  }, [caminhaoIdx, cargaMensal, distanciaViagem, consumoAtual, precoDiesel, custoMotorista, custoManutencao, valorUsado, valorFoton, pesoImplemento, parcelaFinanciamento]);
-
-  const paybackCounter = useCountUp(paybackInView ? calc.paybackMeses : 0, 1200, paybackInView);
+  }, [caminhaoIdx, cargaMensal, distanciaViagem, consumoAtual, precoDiesel, custoMotorista, custoManutencao, pesoImplemento]);
 
   const whatsappMsg = encodeURIComponent(
     `Olá! Fiz a simulação na calculadora da Lavoro Foton e vi que posso economizar ${formatBRL(calc.totalAnual)} por ano trocando para o Foton Aumark S 1217. Podem me ajudar com mais detalhes?`
@@ -244,8 +227,6 @@ export default function CalculadoraROI() {
                   <InputField label="Preço do diesel (R$/litro)" icon={Fuel} value={precoDiesel} onChange={setPrecoDiesel} hint="Preço médio que você abastece" prefix="R$" step="0.01" />
                   <InputField label="Custo mensal com motorista (R$)" icon={User} value={custoMotorista} onChange={setCustoMotorista} hint="Salário + encargos do motorista" prefix="R$" />
                   <InputField label="Custo mensal com manutenção (R$)" icon={Wrench} value={custoManutencao} onChange={setCustoManutencao} hint="Média dos últimos 6 meses" prefix="R$" />
-                  <InputField label="Valor estimado do seu caminhão usado (R$)" icon={CreditCard} value={valorUsado} onChange={setValorUsado} hint="Para calcular o investimento líquido" prefix="R$" />
-                  <InputField label="Parcela mensal do financiamento (R$)" icon={DollarSign} value={parcelaFinanciamento} onChange={setParcelaFinanciamento} hint="Opcional — se financiar o Foton" prefix="R$" />
                 </div>
               </div>
 
@@ -317,8 +298,8 @@ export default function CalculadoraROI() {
                   </ResultBlock>
                 </TooltipProvider>
 
-                {/* R5 — Total + Payback */}
-                <div ref={paybackRef} className="bg-gradient-to-br from-[#0A1F3D] to-[#0D3D2A] border-2 border-[#F5A623] rounded-2xl p-6 md:p-8">
+                {/* R5 — Total */}
+                <div className="bg-gradient-to-br from-[#0A1F3D] to-[#0D3D2A] border-2 border-[#F5A623] rounded-2xl p-6 md:p-8">
                   <h4 className="text-white font-bold text-lg mb-5">
                     🏆 Sua economia total com o Foton Aumark S 1217:
                   </h4>
@@ -349,68 +330,25 @@ export default function CalculadoraROI() {
                           <td className="py-3 px-4 text-right text-white/80">{formatBRL(calc.economiaManutMensal)}</td>
                           <td className="py-3 px-4 text-right text-white/80">{formatBRL(calc.economiaManutAnual)}</td>
                         </tr>
-                        <tr className="border-t-2 border-[#F5A623]/40 bg-[#22C55E]/10">
-                          <td className="py-3 px-4 text-white font-bold">ECONOMIA BRUTA</td>
-                          <td className="py-3 px-4 text-right text-[#22C55E] font-bold">{formatBRL(calc.totalMensal)}</td>
-                          <td className="py-3 px-4 text-right text-[#22C55E] font-bold">{formatBRL(calc.totalAnual)}</td>
-                        </tr>
-                        {parcelaFinanciamento > 0 && (
-                          <>
-                            <tr className="border-t border-white/10">
-                              <td className="py-3 px-4 text-red-400">(-) Parcela financiamento</td>
-                              <td className="py-3 px-4 text-right text-red-400">{formatBRL(parcelaFinanciamento)}</td>
-                              <td className="py-3 px-4 text-right text-red-400">{formatBRL(parcelaFinanciamento * 12)}</td>
-                            </tr>
-                            <tr className="border-t-2 border-[#F5A623]/40 bg-[#22C55E]/10">
-                              <td className="py-3 px-4 text-white font-bold">ECONOMIA LÍQUIDA</td>
-                              <td className="py-3 px-4 text-right font-bold" style={{ color: calc.economiaLiquidaMensal >= 0 ? '#22C55E' : '#EF4444' }}>{formatBRL(calc.economiaLiquidaMensal)}</td>
-                              <td className="py-3 px-4 text-right font-bold" style={{ color: calc.economiaLiquidaAnual >= 0 ? '#22C55E' : '#EF4444' }}>{formatBRL(calc.economiaLiquidaAnual)}</td>
-                            </tr>
-                          </>
-                        )}
                       </tbody>
                     </table>
                   </div>
 
                   <hr className="border-[#F5A623]/40 mb-6" />
 
-                  {/* Payback */}
-                  <div className="text-center">
-                    <p className="text-[#F5A623] font-bold transition-all duration-300" style={{ fontSize: "clamp(40px, 10vw, 56px)" }}>
-                      {paybackCounter} meses
-                    </p>
-                    <p className="text-white text-lg font-medium mb-2">para o Foton pagar o investimento</p>
-                    <p className="text-white/60 text-sm mb-4">
-                      A partir do {calc.paybackMeses + 1}º mês, cada real economizado é lucro puro na sua operação.
-                    </p>
-
-                    {parcelaFinanciamento > 0 && (
-                      <div className="bg-white/[0.05] border border-white/10 rounded-xl p-4 mb-4">
-                        <p className="text-white/70 text-sm mb-1">Payback considerando financiamento:</p>
-                        <p className="text-[#F5A623] font-bold text-2xl">
-                          {calc.paybackFinanciado >= 999 ? "∞" : `${calc.paybackFinanciado} meses`}
-                        </p>
-                        {calc.economiaLiquidaMensal <= 0 && (
-                          <p className="text-red-400 text-xs mt-1">⚠️ A parcela supera a economia — considere renegociar o financiamento.</p>
-                        )}
-                      </div>
-                    )}
-
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4">
-                      <span className="text-white/50 text-xs">Ajustar valor do Foton:</span>
-                      <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 text-xs">R$</span>
-                        <input
-                          type="number"
-                          min={0}
-                          value={valorFoton || ""}
-                          onChange={(e) => {
-                            const v = parseFloat(e.target.value);
-                            setValorFoton(isNaN(v) || v < 0 ? 0 : v);
-                          }}
-                          className="w-40 bg-white/[0.06] border border-white/15 rounded-lg py-2 pl-9 pr-3 text-white text-sm focus:outline-none focus:border-[#F5A623]/60 transition-all"
-                        />
-                      </div>
+                  {/* Resultado principal destacado */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                    <div className="bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-xl p-5">
+                      <p className="text-white/60 text-sm mb-1">Economia mensal</p>
+                      <p className="text-[#22C55E] font-bold text-2xl md:text-3xl">{formatBRL(calc.totalMensal)}</p>
+                    </div>
+                    <div className="bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-xl p-5">
+                      <p className="text-white/60 text-sm mb-1">Economia anual</p>
+                      <p className="text-[#22C55E] font-bold text-2xl md:text-3xl">{formatBRL(calc.totalAnual)}</p>
+                    </div>
+                    <div className="bg-[#F5A623]/10 border border-[#F5A623]/30 rounded-xl p-5">
+                      <p className="text-white/60 text-sm mb-1">Em 3 anos</p>
+                      <p className="text-[#F5A623] font-bold text-2xl md:text-3xl">{formatBRL(calc.totalTresAnos)}</p>
                     </div>
                   </div>
                 </div>
