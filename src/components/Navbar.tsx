@@ -30,7 +30,8 @@ const modelosPickups = [
 const comparativos = [
   { label: "Aumark 1217 vs Concorrentes", to: "/comparativo-aumark-1217" },
   { label: "eWonder vs Diesel", to: "/comparativo-ewonder" },
-  { label: "Calculadora ROI", to: "/calculadora-roi" },
+  { label: "Calculadora ROI Aumark", to: "/calculadora-roi" },
+  { label: "Calculadora ROI eWonder", to: "/calculadora-ewonder" },
 ];
 
 // Desktop dropdown component
