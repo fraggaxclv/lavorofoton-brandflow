@@ -884,7 +884,7 @@ export default function PropostaComercial() {
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
-                        <div className="grid grid-cols-6 gap-3">
+                        <div className="grid grid-cols-2 sm:grid-cols-6 gap-3">
                           <div className="col-span-2 space-y-1">
                             <Label className="text-xs">Modelo</Label>
                             <Select
@@ -943,20 +943,25 @@ export default function PropostaComercial() {
                           <div className="space-y-1">
                             <Label className="text-xs">Qtd</Label>
                             <Input
-                              type="number"
-                              min="1"
+                              inputMode="numeric"
+                              pattern="[0-9]*"
+                              placeholder="1"
                               value={produto.quantidade}
                               onChange={(e) => atualizarProduto(produto.id, 'quantidade', parseInt(e.target.value) || 1)}
-                              className="bg-white"
+                              className="bg-white text-center"
                             />
                           </div>
                           <div className="space-y-1">
                             <Label className="text-xs">Valor Unit.</Label>
                             <Input
-                              type="number"
-                              placeholder="0"
+                              inputMode="decimal"
+                              pattern="[0-9]*[.,]?[0-9]*"
+                              placeholder="0,00"
                               value={produto.valorUnitario || ''}
-                              onChange={(e) => atualizarProduto(produto.id, 'valorUnitario', parseFloat(e.target.value) || 0)}
+                              onChange={(e) => {
+                                const val = e.target.value.replace(',', '.');
+                                atualizarProduto(produto.id, 'valorUnitario', parseFloat(val) || 0);
+                              }}
                               className="bg-white"
                             />
                           </div>
