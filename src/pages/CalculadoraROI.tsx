@@ -105,8 +105,8 @@ export default function CalculadoraROI() {
   // Inputs state
   const [caminhaoIdx, setCaminhaoIdx] = useState(0);
   const [cargaMensal, setCargaMensal] = useState(100000);
-  const [distanciaViagem, setDistanciaViagem] = useState(200);
-  const [consumoAtual, setConsumoAtual] = useState(8.5);
+  const [distanciaViagem, setDistanciaViagem] = useState(350);
+  const [consumoAtual, setConsumoAtual] = useState(5.0);
   const [precoDiesel, setPrecoDiesel] = useState(6.30);
   const [custoMotorista, setCustoMotorista] = useState(4500);
   const [custoManutencao, setCustoManutencao] = useState(2500);
