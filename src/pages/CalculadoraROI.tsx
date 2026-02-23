@@ -226,7 +226,38 @@ export default function CalculadoraROI() {
                   <InputField label="Peso do implemento (kg)" icon={Scale} value={pesoImplemento} onChange={setPesoImplemento} hint="Ex: baú, carroceria, grade. Descontado da carga útil." />
                   <InputField label="Preço do diesel (R$/litro)" icon={Fuel} value={precoDiesel} onChange={setPrecoDiesel} hint="Preço médio que você abastece" prefix="R$" step="0.01" />
                   <InputField label="Custo mensal com motorista (R$)" icon={User} value={custoMotorista} onChange={setCustoMotorista} hint="Salário + encargos do motorista" prefix="R$" />
-                  <InputField label="Custo mensal com manutenção (R$)" icon={Wrench} value={custoManutencao} onChange={setCustoManutencao} hint="Média dos últimos 6 meses" prefix="R$" />
+                  <div className="space-y-1.5">
+                    <label className="text-white/80 text-sm font-medium flex items-center gap-2">
+                      <Wrench size={16} className="text-[#F5A623]" />
+                      Custo mensal com manutenção (R$)
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button type="button" className="text-white/40 hover:text-[#F5A623] transition-colors">
+                              <Info size={14} />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent className="max-w-xs">
+                            <p className="text-sm">Média do setor para caminhões médios com 4+ anos de uso, conforme Guia do Transportador. Ajuste conforme sua realidade.</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </label>
+                    <div className="relative">
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 text-sm">R$</span>
+                      <input
+                        type="number"
+                        min={0}
+                        value={custoManutencao || ""}
+                        onChange={(e) => {
+                          const v = parseFloat(e.target.value);
+                          setCustoManutencao(isNaN(v) || v < 0 ? 0 : v);
+                        }}
+                        className="w-full bg-white/[0.06] border border-white/15 rounded-xl py-3 pl-10 pr-4 text-white placeholder:text-white/30 focus:outline-none focus:border-[#F5A623]/60 focus:ring-1 focus:ring-[#F5A623]/30 transition-all"
+                      />
+                    </div>
+                    <p className="text-white/40 text-xs">Média dos últimos 6 meses</p>
+                  </div>
                 </div>
               </div>
 
