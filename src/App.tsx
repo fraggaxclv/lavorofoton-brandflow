@@ -8,6 +8,7 @@ import { InternoAuthProvider } from "@/contexts/InternoAuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import InternoProtectedRoute from "@/components/interno/InternoProtectedRoute";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import MetaPixel from "@/components/MetaPixel";
 import Home from "./pages/Home";
 import QuemSomos from "./pages/QuemSomos";
 import SobreFoton from "./pages/SobreFoton";
@@ -73,6 +74,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <MetaPixel />
         <AuthProvider>
           <WhatsAppButton />
           <Routes>
