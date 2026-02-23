@@ -37,7 +37,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import ComparativoAumark1217 from "./pages/ComparativoAumark1217";
 import CalculadoraROI from "./pages/CalculadoraROI";
 import EWonderLanding from "./pages/EWonderLanding";
-import CalculadoraEWonder from "./pages/CalculadoraEWonder";
+import { Navigate } from "react-router-dom";
 
 // Páginas do sistema interno
 import InternoLogin from "./pages/interno/InternoLogin";
@@ -99,7 +99,7 @@ const App = () => (
             <Route path="/comparativo-aumark-1217" element={<ComparativoAumark1217 />} />
             <Route path="/calculadora-roi" element={<CalculadoraROI />} />
             <Route path="/comparativo-ewonder" element={<EWonderLanding />} />
-            <Route path="/calculadora-ewonder" element={<CalculadoraEWonder />} />
+            <Route path="/calculadora-ewonder" element={<Navigate to="/calculadora-roi" replace />} />
             
             <Route path="/pedido-faturamento-lavoro" element={<PedidoFaturamento />} />
             <Route path="/proposta-comercial-lavoro" element={<PropostaComercial />} />
