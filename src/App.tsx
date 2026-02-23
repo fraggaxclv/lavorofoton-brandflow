@@ -40,6 +40,13 @@ import CalculadoraROI from "./pages/CalculadoraROI";
 import EWonderLanding from "./pages/EWonderLanding";
 import { Navigate } from "react-router-dom";
 
+// Páginas de tráfego pago (duplicadas com mensagens WhatsApp customizadas)
+import HomeTrafego from "./pages/trafego/HomeTrafego";
+import S315Trafego from "./pages/trafego/S315Trafego";
+import Foton1217Trafego from "./pages/trafego/Foton1217Trafego";
+import ComparativoAumark1217Trafego from "./pages/trafego/ComparativoAumark1217Trafego";
+import ComparativoEWonderTrafego from "./pages/trafego/ComparativoEWonderTrafego";
+
 // Páginas do sistema interno
 import InternoLogin from "./pages/interno/InternoLogin";
 import RecuperarSenha from "./pages/interno/RecuperarSenha";
@@ -102,6 +109,13 @@ const App = () => (
             <Route path="/calculadora-roi" element={<CalculadoraROI />} />
             <Route path="/comparativo-ewonder" element={<EWonderLanding />} />
             <Route path="/calculadora-ewonder" element={<Navigate to="/calculadora-roi" replace />} />
+            
+            {/* Rotas de tráfego pago — duplicatas com WhatsApp tagueado */}
+            <Route path="/home-trafego" element={<HomeTrafego />} />
+            <Route path="/modelos/aumark-s315-trafego" element={<S315Trafego />} />
+            <Route path="/modelos/aumark-1217-trafego" element={<Foton1217Trafego />} />
+            <Route path="/comparativo-aumark-1217-trafego" element={<ComparativoAumark1217Trafego />} />
+            <Route path="/comparativo-ewonder-trafego" element={<ComparativoEWonderTrafego />} />
             
             <Route path="/pedido-faturamento-lavoro" element={<PedidoFaturamento />} />
             <Route path="/proposta-comercial-lavoro" element={<PropostaComercial />} />
