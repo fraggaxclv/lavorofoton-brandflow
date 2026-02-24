@@ -257,9 +257,9 @@ const HomeV2 = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
             {[
               { name: "COOPMETRO", logo: logoCoopmetro, segment: "Cooperativa de transporte — mais de 30.000 associados", data: "Registrou economia de +20% em combustível vs VW Delivery 11.180" },
-              { name: "Roodacoop", logo: logoRoodacoop, segment: "Cooperativa de Transporte", data: "Maior fornecedor Logística em MG Mercado Livre." },
-              { name: "Zero Carbon — Grupo Lenarge", logo: logoZeroCarbon, segment: "Logística sustentável — Grupo Lafarge", data: "Empresa Lenarge com Logística com veículos Zero Emissão de Carbono." },
-              { name: "TransFlau", logo: logoTransflau, segment: "Transporte de cargas", data: "Registro de mais de 25% de economia de combustível vs VW Delivery 11.180" },
+              { name: "Roodacoop", logo: logoRoodacoop, segment: "Cooperativa de Transporte — mais de 20.000 associados", data: "Maior fornecedor Logística em MG Mercado Livre." },
+              { name: "Zero Carbon — Grupo Lenarge", logo: logoZeroCarbon, segment: "Logística sustentável — Grupo Lenarge", data: "Empresa Lenarge com Logística com veículos Zero Emissão de Carbono." },
+              { name: "TransFlau", logo: logoTransflau, segment: "Transporte de cargas medicamentos", data: "Registro de mais de 25% de economia de combustível vs VW Delivery 11.180" },
             ].map((item, i) => (
               <div key={i} className="bg-card border border-border rounded-lg p-5 text-left hover:shadow-md transition-shadow">
                 <img src={item.logo} alt={item.name} className="h-10 object-contain mb-3" />
