@@ -140,11 +140,11 @@ const HomeV2 = () => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {[
-              { icon: <img src={iconeFotonGlobal} alt="Foton Global" className="w-13 h-13 object-contain" />, text: "Presente em mais de 110 países" },
-              { icon: <img src={icone12Milhoes} alt="12 milhões" className="w-13 h-13 object-contain" />, text: "Mais de 12 milhões de veículos produzidos até 2025" },
-              { icon: <img src={iconeCumminsZf} alt="Cummins e ZF" className="w-13 h-13 object-contain" />, text: "Motor Cummins + Caixa ZF + Componentes Bosch e Dana" },
-              { icon: <img src={iconeDaimlerBenz} alt="Daimler Benz" className="w-13 h-13 object-contain" />, text: "Joint Venture com a Mercedes-Benz (Daimler) para engenharia de veículos pesados" },
-              { icon: <img src={icone200Porcento} alt="200%" className="w-13 h-13 object-contain" />, text: "Market share — crescimento de +200% em 2025" },
+              { icon: <img src={iconeFotonGlobal} alt="Foton Global" className="w-12 h-12 object-contain" />, text: "Presente em mais de 110 países" },
+              { icon: <img src={icone12Milhoes} alt="12 milhões" className="w-12 h-12 object-contain" />, text: "Mais de 12 milhões de veículos produzidos até 2025" },
+              { icon: <img src={iconeCumminsZf} alt="Cummins e ZF" className="w-12 h-12 object-contain" />, text: "Motor Cummins + Caixa ZF + Componentes Bosch e Dana" },
+              { icon: <img src={iconeDaimlerBenz} alt="Daimler Benz" className="w-12 h-12 object-contain" />, text: "Joint Venture com a Mercedes-Benz (Daimler) para engenharia de veículos pesados" },
+              { icon: <img src={icone200Porcento} alt="200%" className="w-12 h-12 object-contain" />, text: "Market share — crescimento de +200% em 2025" },
             ].map((item, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-lg p-5 flex flex-col items-center gap-3 text-center hover:border-primary/40 transition-colors">
                 {item.icon}
