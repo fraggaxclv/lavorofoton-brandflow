@@ -70,15 +70,15 @@ const SobreFoton = () => {
     description: "Crescimento acelerado"
   }, {
     label: "Market Share",
-    value: "4,0%",
-    description: "Alcançado em outubro/2024"
+    value: "7,2%",
+    description: "Competitivo em dezembro/2025"
   }, {
     label: "Crescimento",
     value: "+185%",
     description: "Vendas até out/2025"
   }, {
     label: "Concessionários",
-    value: "+70",
+    value: "+80",
     description: "Rede nacional em 2025"
   }, {
     label: "Meta 2026",
