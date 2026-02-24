@@ -137,12 +137,14 @@ export const veiculosCatalogo: Veiculo[] = [
     cnh: 'B',
     aplicacao: 'Urbano - Zero Emissões',
     caracteristicas: [
-      'Motor elétrico de alta eficiência',
-      'Autonomia de até 200 km',
-      'Bateria de lítio LFP',
-      'Carregamento rápido DC',
-      'Zero emissões',
-      'Economia de até 80%',
+      'Motor Síncrono Imã Permanente — eAxle',
+      'Potência: 35 kW @ 75 kW (pico)',
+      'Torque: 105-220 N.m',
+      'Bateria CATL LFP 41,86 kWh',
+      'Autonomia: 180 km',
+      'PBT: 2.550 kg | Carga útil: 1.325 kg',
+      'Conector CCS2 (AC/DC) | 335V',
+      'Zero emissões · 73% economia',
       'Garantia de 5 anos bateria'
     ],
     cores: ['Branco', 'Verde']
