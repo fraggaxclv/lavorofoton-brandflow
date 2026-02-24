@@ -24,13 +24,17 @@ const Home = () => {
         {/* Mobile Hero */}
         <img 
           src={heroTruckMobile} 
-          alt="Foton Lavoro" 
+          alt="Foton Lavoro - Concessionária em Belo Horizonte" 
+          fetchPriority="high"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover object-[35%_center] md:hidden"
         />
         {/* Desktop Hero */}
         <img 
           src={heroTruckDesktop} 
-          alt="Foton Lavoro" 
+          alt="Foton Lavoro - Concessionária em Belo Horizonte" 
+          fetchPriority="high"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover object-center hidden md:block"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
@@ -55,6 +59,8 @@ const Home = () => {
               <img 
                 src={cumminsLogo} 
                 alt="Cummins - Parceiro Foton Lavoro" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto max-h-16 object-contain"
               />
             </div>
@@ -62,6 +68,8 @@ const Home = () => {
               <img 
                 src={zfLogo} 
                 alt="ZF - Parceiro Foton Lavoro" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto max-h-16 object-contain"
               />
             </div>
@@ -69,6 +77,8 @@ const Home = () => {
               <img 
                 src={boschLogo} 
                 alt="Bosch - Parceiro Foton Lavoro" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto max-h-16 object-contain"
               />
             </div>
@@ -76,6 +86,8 @@ const Home = () => {
               <img 
                 src={danaLogo} 
                 alt="Dana - Parceiro Foton Lavoro" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto max-h-16 object-contain"
               />
             </div>
@@ -105,7 +117,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center border-2 border-primary rounded-lg p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <img src={lavoro40Years} alt="40 anos Lavoro" className="w-16 h-16 object-contain" />
+                <img src={lavoro40Years} alt="40 anos Lavoro" loading="lazy" decoding="async" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-2">Especialização</h3>
               <p className="text-muted-foreground">
@@ -114,7 +126,7 @@ const Home = () => {
             </div>
             <div className="text-center border-2 border-primary rounded-lg p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <img src={parceriaIcon} alt="Parceria" className="w-16 h-16 object-contain" />
+                <img src={parceriaIcon} alt="Parceria" loading="lazy" decoding="async" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-2">Atendimento</h3>
               <p className="text-muted-foreground">
@@ -123,7 +135,7 @@ const Home = () => {
             </div>
             <div className="text-center border-2 border-primary rounded-lg p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <img src={qualidadeIcon} alt="Qualidade" className="w-16 h-16 object-contain" />
+                <img src={qualidadeIcon} alt="Qualidade" loading="lazy" decoding="async" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-2">Resultados</h3>
               <p className="text-muted-foreground">
@@ -132,7 +144,7 @@ const Home = () => {
             </div>
             <div className="text-center border-2 border-primary rounded-lg p-6 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <img src={atendimentoMineiroIcon} alt="Atendimento Mineiro" className="w-16 h-16 object-contain" />
+                <img src={atendimentoMineiroIcon} alt="Atendimento Mineiro" loading="lazy" decoding="async" className="w-16 h-16 object-contain" />
               </div>
               <h3 className="text-xl font-bold mb-2">Confiança</h3>
               <p className="text-muted-foreground">

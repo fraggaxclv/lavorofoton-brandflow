@@ -104,7 +104,7 @@ const SobreFoton = () => {
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroTruck} alt="Foton - Tecnologia Global" className="w-full h-full object-cover" />
+          <img src={heroTruck} alt="Foton - Tecnologia Global" loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/98 via-background/90 to-background/70" />
         </div>
 
@@ -171,7 +171,7 @@ const SobreFoton = () => {
                         <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
                         <p className="text-muted-foreground leading-relaxed">{item.description}</p>
                         {item.logo && <div className="mt-4 flex items-center">
-                            <img src={item.logo} alt={item.title} className="h-8 object-contain" />
+                            <img src={item.logo} alt={item.title} loading="lazy" decoding="async" className="h-8 object-contain" />
                           </div>}
                       </CardContent>
                     </Card>

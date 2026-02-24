@@ -35,7 +35,7 @@ const Modelos = () => {
       <section className="section-padding">
         <div className="container-lavoro">
           <div className="text-center mb-12">
-            <img src={linhaDieselBadge} alt="Linha Diesel" className="mx-auto mb-4 h-12 md:h-16 rounded-2xl" />
+            <img src={linhaDieselBadge} alt="Linha Diesel" loading="lazy" decoding="async" className="mx-auto mb-4 h-12 md:h-16 rounded-2xl" />
             <h2>Linha Motores Diesel EURO-6</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -52,7 +52,7 @@ const Modelos = () => {
       <section className="section-padding bg-industrial-light">
         <div className="container-lavoro">
           <div className="text-center mb-12">
-            <img src={linhaEletricaBadge} alt="Linha Elétrica" className="mx-auto mb-4 h-12 md:h-16 rounded-2xl" />
+            <img src={linhaEletricaBadge} alt="Linha Elétrica" loading="lazy" decoding="async" className="mx-auto mb-4 h-12 md:h-16 rounded-2xl" />
             <h2>Linha e-Foton            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mt-4">
               Zero emissões. Economia de até 80%. O futuro do transporte chegou.
@@ -73,7 +73,7 @@ const Modelos = () => {
       <section className="section-padding">
         <div className="container-lavoro">
           <div className="text-center mb-12">
-            <img src={linhaPicapesBadge} alt="Linha Picapes" className="mx-auto mb-4 h-12 md:h-16 rounded-2xl" />
+            <img src={linhaPicapesBadge} alt="Linha Picapes" loading="lazy" decoding="async" className="mx-auto mb-4 h-12 md:h-16 rounded-2xl" />
             <h2>Tunland V9/V7</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

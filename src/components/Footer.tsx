@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <img src={logo} alt="Foton Lavoro" className="h-10 mb-4 brightness-0 invert" />
+            <img src={logo} alt="Foton Lavoro" loading="lazy" decoding="async" className="h-10 mb-4 brightness-0 invert" />
             <p className="text-sm text-muted-foreground">
               Concessionária oficial Foton em Belo Horizonte, Minas Gerais. Força, confiança e performance.
             </p>

@@ -27,8 +27,8 @@ const HomeTrafego = () => {
 
       {/* Hero Section */}
       <section className="relative h-[85vh] md:h-screen flex items-end justify-center overflow-hidden mt-16">
-        <img src={heroTruckMobile} alt="Foton Lavoro" className="absolute inset-0 w-full h-full object-cover object-[35%_center] md:hidden" />
-        <img src={heroTruckDesktop} alt="Foton Lavoro" className="absolute inset-0 w-full h-full object-cover object-center hidden md:block" />
+        <img src={heroTruckMobile} alt="Foton Lavoro" fetchPriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover object-[35%_center] md:hidden" />
+        <img src={heroTruckDesktop} alt="Foton Lavoro" fetchPriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover object-center hidden md:block" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         <div className="container-lavoro relative z-10 pb-16 md:pb-20 px-6 md:px-4">
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
@@ -49,7 +49,7 @@ const HomeTrafego = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[cumminsLogo, zfLogo, boschLogo, danaLogo].map((logo, i) => (
               <div key={i} className="bg-card border-2 border-primary/20 rounded-xl p-8 flex items-center justify-center hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-105">
-                <img src={logo} alt="Parceiro Foton Lavoro" className="w-full h-auto max-h-16 object-contain" />
+                <img src={logo} alt="Parceiro Foton Lavoro" loading="lazy" decoding="async" className="w-full h-auto max-h-16 object-contain" />
               </div>
             ))}
           </div>
@@ -84,7 +84,7 @@ const HomeTrafego = () => {
             ].map((item, i) => (
               <div key={i} className="text-center border-2 border-primary rounded-lg p-6 hover:shadow-lg transition-shadow">
                 <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <img src={item.img} alt={item.alt} className="w-16 h-16 object-contain" />
+                  <img src={item.img} alt={item.alt} loading="lazy" decoding="async" className="w-16 h-16 object-contain" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                 <p className="text-muted-foreground">{item.desc}</p>

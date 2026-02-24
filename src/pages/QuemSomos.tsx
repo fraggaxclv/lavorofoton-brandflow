@@ -106,7 +106,7 @@ const QuemSomos = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* Timeline Card 1 */}
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <img src={lavoro40Years} alt="Lavoro 40 Anos" className="w-20 h-20 object-contain mb-6 mx-auto" />
+              <img src={lavoro40Years} alt="Lavoro 40 Anos" loading="lazy" decoding="async" className="w-20 h-20 object-contain mb-6 mx-auto" />
               <h3 className="text-2xl font-bold text-center mb-4 text-foreground">1984–2020</h3>
               <p className="text-muted-foreground text-center leading-relaxed">
                 40 anos liderando operações Mercedes-Benz como CEO do Grupo VDL
@@ -115,7 +115,7 @@ const QuemSomos = () => {
 
             {/* Timeline Card 2 */}
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <img src={globalPartnershipIcon} alt="Legado Global" className="w-20 h-20 object-contain mb-6 mx-auto" />
+              <img src={globalPartnershipIcon} alt="Legado Global" loading="lazy" decoding="async" className="w-20 h-20 object-contain mb-6 mx-auto" />
               <h3 className="text-2xl font-bold text-center mb-4 text-foreground">Legado</h3>
               <p className="text-muted-foreground text-center leading-relaxed">
                 27 prêmios StarClass — recorde dentro da Mercedes-Benz Brasil
@@ -124,7 +124,7 @@ const QuemSomos = () => {
 
             {/* Timeline Card 3 */}
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <img src={lavoroLogoIcon} alt="Lavoro Foton" className="w-20 h-20 object-contain mb-6 mx-auto" />
+              <img src={lavoroLogoIcon} alt="Lavoro Foton" loading="lazy" decoding="async" className="w-20 h-20 object-contain mb-6 mx-auto" />
               <h3 className="text-2xl font-bold text-center mb-4 text-foreground">2020</h3>
               <p className="text-muted-foreground text-center leading-relaxed">
                 Fundação da Lavoro Foton — um novo capítulo
@@ -139,7 +139,7 @@ const QuemSomos = () => {
                 {timelineImages.map((image, index) => <CarouselItem key={index}>
                     <div className="relative group">
                       <div className="rounded-2xl overflow-hidden shadow-lg border border-border bg-card">
-                        <img src={image.src} alt={image.alt} className="w-full h-auto cursor-pointer transition-transform duration-300 group-hover:scale-[1.02]" onClick={() => openLightbox(index)} />
+                        <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className="w-full h-auto cursor-pointer transition-transform duration-300 group-hover:scale-[1.02]" onClick={() => openLightbox(index)} />
                       </div>
                       <button onClick={() => openLightbox(index)} className="absolute top-4 right-4 p-2 bg-background/80 backdrop-blur-sm rounded-lg border border-border opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-background" aria-label="Expandir imagem">
                         <Maximize2 className="w-5 h-5 text-foreground" />
@@ -234,37 +234,37 @@ const QuemSomos = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <img src={qualidadeMecanicaIcon} alt="Qualidade mecânica" className="w-16 h-16 object-contain mb-6 mx-auto" />
+              <img src={qualidadeMecanicaIcon} alt="Qualidade mecânica" loading="lazy" decoding="async" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Qualidade mecânica real</h3>
               <p className="text-muted-foreground">Engenharia robusta e confiável</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <img src={cumminsLogoFull} alt="Cummins" className="w-16 h-16 object-contain mb-6 mx-auto" />
+              <img src={cumminsLogoFull} alt="Cummins" loading="lazy" decoding="async" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Motores Cummins</h3>
               <p className="text-muted-foreground">Potência e durabilidade</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <img src={zfLogoFull} alt="ZF" className="w-16 h-16 object-contain mb-6 mx-auto" />
+              <img src={zfLogoFull} alt="ZF" loading="lazy" decoding="async" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Caixas de transmissão ZF</h3>
               <p className="text-muted-foreground">Eficiência premium</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <img src={boschLogoFull} alt="Bosch" className="w-16 h-16 object-contain mb-6 mx-auto" />
+              <img src={boschLogoFull} alt="Bosch" loading="lazy" decoding="async" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Componentes Bosch</h3>
               <p className="text-muted-foreground">Tecnologia de ponta</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <img src={danaLogoFull} alt="Dana" className="w-16 h-16 object-contain mb-6 mx-auto" />
+              <img src={danaLogoFull} alt="Dana" loading="lazy" decoding="async" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Componentes Dana</h3>
               <p className="text-muted-foreground">Alta performance</p>
             </div>
 
             <div className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-              <img src={engenhariaGlobalIcon} alt="Engenharia global" className="w-16 h-16 object-contain mb-6 mx-auto" />
+              <img src={engenhariaGlobalIcon} alt="Engenharia global" loading="lazy" decoding="async" className="w-16 h-16 object-contain mb-6 mx-auto" />
               <h3 className="text-xl font-semibold mb-2 text-foreground">Engenharia global</h3>
               <p className="text-muted-foreground">Montagem já no Brasil</p>
             </div>
@@ -300,7 +300,7 @@ const QuemSomos = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <img src={relacionamentoDiretoIcon} alt="Relacionamento direto" className="w-10 h-10 object-contain flex-shrink-0" />
+                  <img src={relacionamentoDiretoIcon} alt="Relacionamento direto" loading="lazy" decoding="async" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Relacionamento direto</h3>
                     <p className="text-muted-foreground">Humano e transparente</p>
@@ -310,7 +310,7 @@ const QuemSomos = () => {
 
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <img src={atendimentoTecnicoIcon} alt="Atendimento técnico" className="w-10 h-10 object-contain flex-shrink-0" />
+                  <img src={atendimentoTecnicoIcon} alt="Atendimento técnico" loading="lazy" decoding="async" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Atendimento técnico</h3>
                     <p className="text-muted-foreground">Baseado na engenharia e na boa prática</p>
@@ -320,7 +320,7 @@ const QuemSomos = () => {
 
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <img src={suportePosVendaIcon} alt="Suporte pós-venda real" className="w-10 h-10 object-contain flex-shrink-0" />
+                  <img src={suportePosVendaIcon} alt="Suporte pós-venda real" loading="lazy" decoding="async" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Suporte pós-venda real</h3>
                     <p className="text-muted-foreground">Presente quando você precisar</p>
@@ -330,7 +330,7 @@ const QuemSomos = () => {
 
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <img src={caminhõesRobustosIcon} alt="Caminhões robustos" className="w-10 h-10 object-contain flex-shrink-0" />
+                  <img src={caminhõesRobustosIcon} alt="Caminhões robustos" loading="lazy" decoding="async" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Caminhões robustos</h3>
                     <p className="text-muted-foreground">Eficientes e acessíveis</p>
@@ -340,7 +340,7 @@ const QuemSomos = () => {
 
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <img src={atendimentoProximoMineiroIcon} alt="Atendimento próximo e mineiro" className="w-10 h-10 object-contain flex-shrink-0" />
+                  <img src={atendimentoProximoMineiroIcon} alt="Atendimento próximo e mineiro" loading="lazy" decoding="async" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Atendimento próximo e mineiro</h3>
                     <p className="text-muted-foreground">Confiança em primeiro lugar</p>
@@ -350,7 +350,7 @@ const QuemSomos = () => {
 
               <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
                 <div className="flex items-start gap-4">
-                  <img src={marketplaceHonestoIcon} alt="Marketplace honesto" className="w-10 h-10 object-contain flex-shrink-0" />
+                  <img src={marketplaceHonestoIcon} alt="Marketplace honesto" loading="lazy" decoding="async" className="w-10 h-10 object-contain flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">Um marketplace honesto</h3>
                     <p className="text-muted-foreground">Profissional e responsável</p>
@@ -421,7 +421,7 @@ const QuemSomos = () => {
             </div>
 
             <div className="relative">
-              <img src={dealershipImage} alt="Nova concessionária Lavoro Foton" className="rounded-2xl shadow-2xl w-full h-auto" />
+              <img src={dealershipImage} alt="Nova concessionária Lavoro Foton" loading="lazy" decoding="async" className="rounded-2xl shadow-2xl w-full h-auto" />
             </div>
           </div>
         </div>
@@ -444,15 +444,15 @@ const QuemSomos = () => {
             
             <div className="grid md:grid-cols-3 gap-8 mb-10">
               <div className="text-center">
-                <img src={experienceIcon} alt="Experiência de décadas" className="w-20 h-20 object-contain mb-4 mx-auto" />
+                <img src={experienceIcon} alt="Experiência de décadas" loading="lazy" decoding="async" className="w-20 h-20 object-contain mb-4 mx-auto" />
                 <h3 className="text-xl font-semibold text-foreground">A experiência de décadas</h3>
               </div>
               <div className="text-center">
-                <img src={globalEngineeringIcon} alt="Nova engenharia global" className="w-20 h-20 object-contain mb-4 mx-auto" />
+                <img src={globalEngineeringIcon} alt="Nova engenharia global" loading="lazy" decoding="async" className="w-20 h-20 object-contain mb-4 mx-auto" />
                 <h3 className="text-xl font-semibold text-foreground">A nova engenharia global</h3>
               </div>
               <div className="text-center">
-                <img src={atendimentoMineiroIcon} alt="Atendimento próximo e mineiro" className="w-20 h-20 object-contain mb-4 mx-auto" />
+                <img src={atendimentoMineiroIcon} alt="Atendimento próximo e mineiro" loading="lazy" decoding="async" className="w-20 h-20 object-contain mb-4 mx-auto" />
                 <h3 className="text-xl font-semibold text-foreground">O atendimento próximo e mineiro</h3>
               </div>
             </div>
