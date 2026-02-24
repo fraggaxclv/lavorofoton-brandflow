@@ -12,6 +12,10 @@ import icone12Milhoes from "@/assets/icone-12milhoes.png";
 import iconeCumminsZf from "@/assets/icone-cummins-zf.png";
 import iconeDaimlerBenz from "@/assets/icone-daimler-benz.png";
 import icone200Porcento from "@/assets/icone-200-porcento.png";
+import logoCoopmetro from "@/assets/logo-coopmetro.png";
+import logoRoodacoop from "@/assets/logo-roodacoop.png";
+import logoZeroCarbon from "@/assets/logo-zero-carbon.png";
+import logoTransflau from "@/assets/logo-transflau.png";
 
 /* ─── BLOCO 1 — Banner de urgência (componente isolado) ─── */
 const BannerUrgencia = () => (
@@ -252,12 +256,13 @@ const HomeV2 = () => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
             {[
-              { name: "COOPMETRO", segment: "Cooperativa de transporte — mais de 30.000 associados", data: "Registrou economia de +20% em combustível vs VW Delivery 11.180" },
-              { name: "Roodacoop", segment: "Cooperativa de Transporte", data: "Maior fornecedor Logística em MG Mercado Livre." },
-              { name: "Zero Carbon — Grupo Lenarge", segment: "Logística sustentável — Grupo Lafarge", data: "Empresa Lenarge com Logística com veículos Zero Emissão de Carbono." },
-              { name: "TransFlau", segment: "Transporte de cargas", data: "Registro de mais de 25% de economia de combustível vs VW Delivery 11.180" },
+              { name: "COOPMETRO", logo: logoCoopmetro, segment: "Cooperativa de transporte — mais de 30.000 associados", data: "Registrou economia de +20% em combustível vs VW Delivery 11.180" },
+              { name: "Roodacoop", logo: logoRoodacoop, segment: "Cooperativa de Transporte", data: "Maior fornecedor Logística em MG Mercado Livre." },
+              { name: "Zero Carbon — Grupo Lenarge", logo: logoZeroCarbon, segment: "Logística sustentável — Grupo Lafarge", data: "Empresa Lenarge com Logística com veículos Zero Emissão de Carbono." },
+              { name: "TransFlau", logo: logoTransflau, segment: "Transporte de cargas", data: "Registro de mais de 25% de economia de combustível vs VW Delivery 11.180" },
             ].map((item, i) => (
               <div key={i} className="bg-card border border-border rounded-lg p-5 text-left hover:shadow-md transition-shadow">
+                <img src={item.logo} alt={item.name} className="h-10 object-contain mb-3" />
                 <h4 className="font-bold text-foreground mb-1">{item.name}</h4>
                 <p className="text-xs text-muted-foreground mb-2">{item.segment}</p>
                 {item.data && <p className="text-xs text-primary font-medium">{item.data}</p>}
