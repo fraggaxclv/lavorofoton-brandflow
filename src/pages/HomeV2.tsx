@@ -179,10 +179,10 @@ const HomeV2 = () => {
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   <ModelCardV2 name="eWONDER" description="VUC elétrico para entregas urbanas de última milha. Emissão zero." link="/modelos/ewonder" secondaryLink={{ label: "Ver comparativo vs Diesel →", to: "/comparativo-ewonder" }} />
-                  <ModelCardV2 name="eTOANO" description="Médio porte elétrico. Alta capacidade com zero emissões." link="/modelos/etoano" badge="EM BREVE" />
-                  <ModelCardV2 name="eAumark 9T" description="9 toneladas elétrico. Força e eficiência energética." link="/modelos/eaumark-9t" badge="EM BREVE" />
-                  <ModelCardV2 name="eAumark 12T" description="12 toneladas elétrico. Alta capacidade com emissão zero." link="/modelos/eaumark-12t" badge="EM BREVE" />
-                  <ModelCardV2 name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." link="/modelos/eview" badge="EM BREVE" />
+                  <ModelCardV2 name="eTOANO" description="Médio porte elétrico. Alta capacidade com zero emissões." link="/modelos/etoano" />
+                  <ModelCardV2 name="eAumark 9T" description="9 toneladas elétrico. Força e eficiência energética." link="/modelos/eaumark-9t" />
+                  <ModelCardV2 name="eAumark 12T" description="12 toneladas elétrico. Alta capacidade com emissão zero." link="/modelos/eaumark-12t" />
+                  <ModelCardV2 name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." link="/modelos/eview" />
                 </div>
               </div>
             </TabsContent>
