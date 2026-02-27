@@ -79,27 +79,34 @@ const HomeV2 = () => {
 
       <BannerUrgencia />
       {/* ─── BLOCO 1 — HERO ─── */}
-      <section className="relative h-[80vh] md:h-[calc(100vh-7rem)] flex flex-col overflow-hidden">
-        {/* Background images */}
-        <img
-          src={heroTruckMobile}
-          alt="Foton Lavoro - Concessionária em Belo Horizonte"
-          fetchPriority="high"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover object-[35%_center] md:hidden"
-        />
-        <img
-          src={heroTruckDesktop}
-          alt="Foton Lavoro - Concessionária em Belo Horizonte"
-          fetchPriority="high"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover object-center hidden md:block"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+      <section className="relative flex flex-col overflow-hidden">
+        {/* Mobile: imagem sem corte, sem overlay */}
+        <div className="relative w-full md:hidden">
+          <img
+            src={heroTruckMobile}
+            alt="Foton Lavoro - Concessionária em Belo Horizonte"
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-auto block"
+          />
+          {/* Gradiente sutil só na base para os CTAs */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/70 to-transparent" />
+        </div>
+        {/* Desktop: mantém comportamento atual */}
+        <div className="relative hidden md:block h-[calc(100vh-7rem)]">
+          <img
+            src={heroTruckDesktop}
+            alt="Foton Lavoro - Concessionária em Belo Horizonte"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        </div>
 
-        {/* Hero content */}
-        <div className="flex-1 flex items-end relative z-10">
-          <div className="container-lavoro pb-12 md:pb-20 px-6 md:px-4 w-full">
+        {/* Hero content - sobre a base da imagem */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 md:flex md:items-end md:inset-0">
+          <div className="container-lavoro pb-6 md:pb-20 px-6 md:px-4 w-full">
             <div className="flex flex-col sm:flex-row gap-3 mb-3">
               <Link to="/modelos" className="btn-primary-large text-center shadow-2xl">
                 Ver Modelos
