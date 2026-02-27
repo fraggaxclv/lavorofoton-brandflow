@@ -100,21 +100,6 @@ const HomeV2 = () => {
         {/* Hero content */}
         <div className="flex-1 flex items-end relative z-10">
           <div className="container-lavoro pb-12 md:pb-20 px-6 md:px-4 w-full">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-none text-white mb-2 animate-fade-in">
-              LAVORO
-            </h1>
-            <p className="text-2xl md:text-3xl font-medium text-white/90 mb-0 leading-snug">
-              Sua Concessionária
-            </p>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-none text-white mb-1 animate-fade-in">
-              FOTON
-            </h1>
-            <p className="text-xl md:text-2xl font-medium text-white/90 mb-4">
-              em Belo Horizonte e Minas Gerais.
-            </p>
-            <p className="text-sm md:text-base text-white/70 mb-8 max-w-xl">
-              Motor Cummins. Caixa ZF. Presente em 110 países. Aqui do seu lado, em Minas Gerais.
-            </p>
             <div className="flex flex-col sm:flex-row gap-3 mb-3">
               <Link to="/modelos" className="btn-primary-large text-center shadow-2xl">
                 Ver Modelos
