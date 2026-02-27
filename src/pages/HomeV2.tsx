@@ -95,7 +95,7 @@ const HomeV2 = () => {
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover object-center hidden md:block"
         />
-        <div className="absolute inset-0 bg-black/70 md:bg-gradient-to-r md:from-black md:via-black/90 md:to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
         {/* Hero content */}
         <div className="flex-1 flex items-end relative z-10">
