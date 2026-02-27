@@ -19,7 +19,7 @@ import logoTransflau from "@/assets/logo-transflau.png";
 
 /* ─── BLOCO 1 — Banner de urgência (componente isolado) ─── */
 const BannerUrgencia = () => (
-  <div className="w-full bg-[hsl(38,80%,25%)] text-white text-center text-xs md:text-sm py-2 px-4 z-[60] relative">
+  <div className="w-full bg-[hsl(38,80%,25%)] text-white text-center text-xs md:text-sm py-2 px-4 relative z-[5]">
     ⚠️ Taxa 0% com condições especiais via Santander — válida por tempo limitado. Consulte disponibilidade.
   </div>
 );
@@ -77,9 +77,9 @@ const HomeV2 = () => {
     <div className="min-h-screen">
       <Navbar />
 
-      <BannerUrgencia />
       {/* ─── BLOCO 1 — HERO ─── */}
       <section className="relative h-[85vh] md:h-screen flex flex-col mt-16 overflow-hidden">
+        <BannerUrgencia />
         {/* Background images */}
         <img
           src={heroTruckMobile}
