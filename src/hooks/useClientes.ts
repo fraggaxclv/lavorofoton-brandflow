@@ -20,6 +20,7 @@ interface CreateClienteData {
   responsavel?: string;
   observacoes?: string;
   vendedor_responsavel?: string;
+  origem_lead?: string;
 }
 
 interface UpdateClienteData extends Partial<CreateClienteData> {
