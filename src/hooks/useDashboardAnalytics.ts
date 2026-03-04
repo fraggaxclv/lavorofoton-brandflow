@@ -63,7 +63,7 @@ export function useDashboardAnalytics(options: UseDashboardAnalyticsOptions = {}
       const negs = negociacoes || [];
 
       // Definir status ativos
-      const statusAtivos: StatusNegociacao[] = ['lead_novo', 'proposta_enviada'];
+      const statusAtivos: StatusNegociacao[] = ['lead_novo', 'proposta_enviada', 'negociacao', 'credito_analise', 'aprovado'];
 
       // KPIs do mês atual
       const ativasMesAtual = negs.filter(n => statusAtivos.includes(n.status as StatusNegociacao));
@@ -199,7 +199,7 @@ export function useRankingConsultores() {
 
       // Agrupar por consultor
       const consultorMap = new Map<string, RankingConsultor>();
-      const statusAtivos: StatusNegociacao[] = ['lead_novo', 'proposta_enviada'];
+      const statusAtivos: StatusNegociacao[] = ['lead_novo', 'proposta_enviada', 'negociacao', 'credito_analise', 'aprovado'];
 
       for (const neg of negociacoes || []) {
         const owner = profilesMap.get(neg.owner_user_id);

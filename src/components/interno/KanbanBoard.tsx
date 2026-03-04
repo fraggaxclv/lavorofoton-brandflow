@@ -64,7 +64,10 @@ interface KanbanBoardProps {
 
 const kanbanColumns: StatusNegociacao[] = [
   "lead_novo",
-  "proposta_enviada", 
+  "proposta_enviada",
+  "negociacao",
+  "credito_analise",
+  "aprovado",
   "faturado",
   "perdido"
 ];
@@ -439,7 +442,7 @@ export default function KanbanBoard({
       }}
     >
       {kanbanColumns.map(status => (
-        <div key={status} className="flex-shrink-0" style={{ width: isMobile ? '78vw' : 280, minWidth: 260 }}>
+        <div key={status} className="flex-shrink-0" style={{ width: isMobile ? '78vw' : 220, minWidth: 200 }}>
           <KanbanColumn
             status={status}
             negociacoes={getColumnNegociacoes(status)}

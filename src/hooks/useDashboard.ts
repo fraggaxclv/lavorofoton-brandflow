@@ -61,9 +61,11 @@ export function useDashboard(options: UseDashboardOptions = {}) {
       const negs = (negociacoes || []) as NegociacaoRaw[];
 
       // Calcular métricas
-      const statusAbertos: StatusNegociacao[] = ['lead_novo', 'proposta_enviada'];
+      const statusAbertos: StatusNegociacao[] = ['lead_novo', 'proposta_enviada', 'negociacao', 'credito_analise', 'aprovado'];
       const abertas = negs.filter(n => statusAbertos.includes(n.status as StatusNegociacao));
       const propostasEnviadas = negs.filter(n => n.status === 'proposta_enviada');
+      const creditoAnalise = negs.filter(n => n.status === 'credito_analise');
+      const aprovados = negs.filter(n => n.status === 'aprovado');
       
       // Faturados no mês
       const faturadosMes = negs.filter(n => 
@@ -93,8 +95,8 @@ export function useDashboard(options: UseDashboardOptions = {}) {
         totalNegociacoes: negs.length,
         negociacoesAbertas: abertas.length,
         propostasEnviadas: propostasEnviadas.length,
-        creditoAnalise: 0,
-        aprovados: 0,
+        creditoAnalise: creditoAnalise.length,
+        aprovados: aprovados.length,
         faturadosMes: faturadosMes.length,
         valorPipeline,
         valorFaturadoMes,
@@ -145,7 +147,7 @@ export function useRankingVendedores() {
 
       // Agrupar por vendedor
       const vendedorMap = new Map<string, RankingVendedor>();
-      const statusAbertos: StatusNegociacao[] = ['lead_novo', 'proposta_enviada'];
+      const statusAbertos: StatusNegociacao[] = ['lead_novo', 'proposta_enviada', 'negociacao', 'credito_analise', 'aprovado'];
 
       for (const neg of negociacoes || []) {
         const owner = profilesMap.get(neg.owner_user_id);
