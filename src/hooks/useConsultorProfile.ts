@@ -100,7 +100,7 @@ export function useConsultorProfile(consultorId: string | undefined) {
       if (clientesError) throw clientesError;
 
       const negs = negociacoes || [];
-      const statusAbertos: StatusNegociacao[] = ["lead_novo", "proposta_enviada"];
+      const statusAbertos: StatusNegociacao[] = ["lead_novo", "proposta_enviada", "negociacao", "credito_analise", "aprovado"];
 
       const abertas = negs.filter((n) =>
         statusAbertos.includes(n.status as StatusNegociacao)

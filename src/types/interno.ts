@@ -7,6 +7,9 @@ export type UserRole = 'admin' | 'vendedor' | 'financeiro';
 export type StatusNegociacao = 
   | 'lead_novo'
   | 'proposta_enviada'
+  | 'negociacao'
+  | 'credito_analise'
+  | 'aprovado'
   | 'faturado'
   | 'perdido';
 
@@ -116,15 +119,31 @@ export interface Atividade {
 export const STATUS_LABELS: Record<StatusNegociacao, string> = {
   lead_novo: 'Lead Novo',
   proposta_enviada: 'Proposta Enviada',
+  negociacao: 'Em Negociação',
+  credito_analise: 'Crédito em Análise',
+  aprovado: 'Aprovado',
   faturado: 'Faturado',
   perdido: 'Perdido',
 };
 
 export const STATUS_COLORS: Record<StatusNegociacao, string> = {
-  lead_novo: '#3b82f6',
-  proposta_enviada: '#8b5cf6',
-  faturado: '#22c55e',
+  lead_novo: '#6b7280',
+  proposta_enviada: '#3b82f6',
+  negociacao: '#eab308',
+  credito_analise: '#f97316',
+  aprovado: '#84cc16',
+  faturado: '#16a34a',
   perdido: '#ef4444',
+};
+
+export const STATUS_PROBABILIDADE_PADRAO: Record<StatusNegociacao, number> = {
+  lead_novo: 10,
+  proposta_enviada: 30,
+  negociacao: 50,
+  credito_analise: 60,
+  aprovado: 80,
+  faturado: 100,
+  perdido: 0,
 };
 
 export const TIPO_CLIENTE_LABELS: Record<string, string> = {
