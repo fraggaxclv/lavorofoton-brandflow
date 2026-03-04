@@ -131,103 +131,56 @@ const App = () => (
               } 
             />
 
-            {/* Rotas do sistema interno */}
-            <Route 
-              path="/interno/login" 
-              element={
-                <InternoAuthProvider>
-                  <InternoLogin />
-                </InternoAuthProvider>
-              } 
-            />
-            <Route 
-              path="/interno/recuperar-senha" 
-              element={<RecuperarSenha />} 
-            />
-            <Route 
-              path="/interno/redefinir-senha" 
-              element={<RedefinirSenha />} 
-            />
-            <Route 
-              path="/interno/dashboard" 
-              element={
-                <InternoAuthProvider>
-                  <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
-                    <InternoDashboard />
-                  </InternoProtectedRoute>
-                </InternoAuthProvider>
-              } 
-            />
-            <Route 
-              path="/interno/clientes" 
-              element={
-                <InternoAuthProvider>
-                  <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
-                    <InternoClientes />
-                  </InternoProtectedRoute>
-                </InternoAuthProvider>
-              } 
-            />
-            <Route 
-              path="/interno/negociacoes" 
-              element={
-                <InternoAuthProvider>
-                  <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
-                    <InternoNegociacoes />
-                  </InternoProtectedRoute>
-                </InternoAuthProvider>
-              } 
-            />
-            <Route 
-              path="/interno/consultores" 
-              element={
-                <InternoAuthProvider>
-                  <InternoProtectedRoute allowedRoles={['admin']}>
-                    <InternoConsultores />
-                  </InternoProtectedRoute>
-                </InternoAuthProvider>
-              } 
-            />
-            <Route 
-              path="/interno/consultor/:id" 
-              element={
-                <InternoAuthProvider>
-                  <InternoProtectedRoute allowedRoles={['admin']}>
-                    <InternoConsultorPerfil />
-                  </InternoProtectedRoute>
-                </InternoAuthProvider>
-              } 
-            />
-            <Route 
-              path="/interno/relatorio-perdas" 
-              element={
-                <InternoAuthProvider>
-                  <InternoProtectedRoute allowedRoles={['admin']}>
-                    <InternoRelatorioPerdas />
-                  </InternoProtectedRoute>
-                </InternoAuthProvider>
-              } 
-            />
-            <Route 
-              path="/interno/pedidos-publicos" 
-              element={
-                <InternoAuthProvider>
-                  <InternoProtectedRoute allowedRoles={['admin']}>
-                    <InternoPedidosPublicos />
-                  </InternoProtectedRoute>
-                </InternoAuthProvider>
-              } 
-            />
-            <Route 
-              path="/interno/meu-perfil" 
-              element={
-                <InternoAuthProvider>
-                  <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
-                    <InternoConsultorPerfil />
-                  </InternoProtectedRoute>
-                </InternoAuthProvider>
-              } 
-            />
+            {/* Rotas do sistema interno — Provider único para todas as rotas */}
+            <Route path="/interno/*" element={
+              <InternoAuthProvider>
+                <Routes>
+                  <Route path="login" element={<InternoLogin />} />
+                  <Route path="recuperar-senha" element={<RecuperarSenha />} />
+                  <Route path="redefinir-senha" element={<RedefinirSenha />} />
+                  <Route path="dashboard" element={
+                    <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
+                      <InternoDashboard />
+                    </InternoProtectedRoute>
+                  } />
+                  <Route path="clientes" element={
+                    <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
+                      <InternoClientes />
+                    </InternoProtectedRoute>
+                  } />
+                  <Route path="negociacoes" element={
+                    <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
+                      <InternoNegociacoes />
+                    </InternoProtectedRoute>
+                  } />
+                  <Route path="consultores" element={
+                    <InternoProtectedRoute allowedRoles={['admin']}>
+                      <InternoConsultores />
+                    </InternoProtectedRoute>
+                  } />
+                  <Route path="consultor/:id" element={
+                    <InternoProtectedRoute allowedRoles={['admin']}>
+                      <InternoConsultorPerfil />
+                    </InternoProtectedRoute>
+                  } />
+                  <Route path="relatorio-perdas" element={
+                    <InternoProtectedRoute allowedRoles={['admin']}>
+                      <InternoRelatorioPerdas />
+                    </InternoProtectedRoute>
+                  } />
+                  <Route path="pedidos-publicos" element={
+                    <InternoProtectedRoute allowedRoles={['admin']}>
+                      <InternoPedidosPublicos />
+                    </InternoProtectedRoute>
+                  } />
+                  <Route path="meu-perfil" element={
+                    <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
+                      <InternoConsultorPerfil />
+                    </InternoProtectedRoute>
+                  } />
+                </Routes>
+              </InternoAuthProvider>
+            } />
 
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
