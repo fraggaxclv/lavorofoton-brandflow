@@ -186,7 +186,7 @@ export default function InternoNegociacoes() {
     const valorFinal = valorProdutos > 0 ? valorProdutos : valorManual;
 
     // Get selected consultant or default to current user
-    const consultorSelecionado = formData.get("consultor_responsavel") as string;
+    const consultorSelecionado = formData.get("owner_consultor") as string;
     const ownerUserId = consultorSelecionado && consultorSelecionado !== "current" 
       ? consultorSelecionado 
       : user!.id;
@@ -593,8 +593,8 @@ function NovaNegociacaoForm({ clientes, consultores, isAdmin, currentUserId, onS
       {/* Seletor de Consultor - apenas para admins */}
       {isAdmin && (
         <div>
-          <Label htmlFor="consultor_responsavel">Consultor Responsável *</Label>
-          <Select name="consultor_responsavel" defaultValue="current">
+          <Label htmlFor="owner_consultor">Consultor Responsável *</Label>
+          <Select name="owner_consultor" defaultValue="current">
             <SelectTrigger>
               <SelectValue placeholder="Selecione o consultor" />
             </SelectTrigger>

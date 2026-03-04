@@ -55,7 +55,7 @@ const CLIENTE_FIELDS = [
   { key: "cidade", label: "Cidade", required: false },
   { key: "estado", label: "Estado", required: false },
   { key: "responsavel", label: "Responsável", required: false },
-  { key: "consultor_responsavel", label: "Consultor Responsável", required: false },
+  { key: "consultor_responsavel", label: "Consultor/Vendedor (nome)", required: false },
   { key: "observacoes", label: "Observações", required: false },
 ] as const;
 
@@ -282,30 +282,52 @@ export default function ImportClientesModal({
       return;
     }
 
+    // Build a name→uuid map for consultant matching
+    let consultorMap = new Map<string, string>();
+    const { data: profiles } = await supabase
+      .from("profiles")
+      .select("id, full_name, nome_exibicao, email");
+    if (profiles) {
+      for (const p of profiles) {
+        const names = [p.nome_exibicao, p.full_name, p.email].filter(Boolean);
+        for (const name of names) {
+          if (name) consultorMap.set(name.toLowerCase().trim(), p.id);
+        }
+      }
+    }
+
     let success = 0;
     const errors: { row: number; message: string }[] = [];
     const BATCH = 20;
 
     for (let i = 0; i < rows.length; i += BATCH) {
-      const batch = rows.slice(i, i + BATCH).map((r) => ({
-        razao_social: r.razao_social || "Sem Nome",
-        nome_fantasia: r.nome_fantasia || null,
-        cpf_cnpj: r.cpf_cnpj || "000.000.000-00",
-        tipo: r.tipo || "PJ",
-        telefone: r.telefone || null,
-        email: r.email || null,
-        endereco: r.endereco || null,
-        numero: r.numero || null,
-        complemento: r.complemento || null,
-        bairro: r.bairro || null,
-        cep: r.cep || null,
-        cidade: r.cidade || null,
-        estado: r.estado || null,
-        responsavel: r.responsavel || null,
-        consultor_responsavel: r.consultor_responsavel || null,
-        observacoes: r.observacoes || null,
-        created_by: user.id,
-      }));
+      const batch = rows.slice(i, i + BATCH).map((r) => {
+        // Try to match consultor name to UUID
+        let vendedorId: string | null = null;
+        if (r.consultor_responsavel) {
+          vendedorId = consultorMap.get(r.consultor_responsavel.toLowerCase().trim()) || null;
+        }
+
+        return {
+          razao_social: r.razao_social || "Sem Nome",
+          nome_fantasia: r.nome_fantasia || null,
+          cpf_cnpj: r.cpf_cnpj || "000.000.000-00",
+          tipo: r.tipo || "PJ",
+          telefone: r.telefone || null,
+          email: r.email || null,
+          endereco: r.endereco || null,
+          numero: r.numero || null,
+          complemento: r.complemento || null,
+          bairro: r.bairro || null,
+          cep: r.cep || null,
+          cidade: r.cidade || null,
+          estado: r.estado || null,
+          responsavel: r.responsavel || null,
+          vendedor_responsavel: vendedorId,
+          observacoes: r.observacoes || null,
+          created_by: user.id,
+        };
+      });
 
       const { data, error } = await supabase
         .from("clientes")
