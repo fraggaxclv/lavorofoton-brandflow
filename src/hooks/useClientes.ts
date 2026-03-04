@@ -4,7 +4,7 @@ import { Cliente, TipoCliente } from "@/types/interno";
 import { useToast } from "@/hooks/use-toast";
 
 interface CreateClienteData {
-  tipo: TipoCliente | "PF" | "PJ";
+  tipo: TipoCliente;
   nome_fantasia?: string;
   razao_social: string;
   cpf_cnpj: string;

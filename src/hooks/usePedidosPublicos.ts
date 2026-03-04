@@ -107,7 +107,7 @@ export function usePedidosPublicos(options?: { status?: 'todos' | 'pendentes' | 
           .insert({
             razao_social: pedido.cliente_nome,
             cpf_cnpj: pedido.cliente_cnpj,
-            tipo: pedido.cliente_cnpj.length > 14 ? 'PJ' : 'PF',
+            tipo: pedido.cliente_cnpj.length > 14 ? 'pj' : 'pf',
             email: pedido.cliente_email || undefined,
             telefone: pedido.cliente_telefone || undefined,
             created_by: user.id,

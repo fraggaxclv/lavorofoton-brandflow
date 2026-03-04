@@ -123,7 +123,7 @@ export default function WelcomeCheckinModal({
 
     try {
       await createCliente({
-        tipo: "PF",
+        tipo: "pf",
         razao_social: clienteForm.nome,
         cpf_cnpj: "",
         telefone: clienteForm.telefone || undefined,

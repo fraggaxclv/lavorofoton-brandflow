@@ -157,9 +157,9 @@ function parseCSV(text: string): { headers: string[]; rows: string[][] } {
   return { headers, rows };
 }
 
-function detectTipo(cpfCnpj: string): "PF" | "PJ" {
+function detectTipo(cpfCnpj: string): "pf" | "pj" {
   const digits = cpfCnpj.replace(/\D/g, "");
-  return digits.length <= 11 ? "PF" : "PJ";
+  return digits.length <= 11 ? "pf" : "pj";
 }
 
 export default function ImportClientesModal({
@@ -266,8 +266,8 @@ export default function ImportClientesModal({
       if (!obj.tipo && obj.cpf_cnpj) {
         obj.tipo = detectTipo(obj.cpf_cnpj);
       } else if (obj.tipo) {
-        const t = obj.tipo.toUpperCase().trim();
-        obj.tipo = t === "PF" || t.includes("FIS") ? "PF" : "PJ";
+        const t = obj.tipo.toLowerCase().trim();
+        obj.tipo = t === "pf" || t.includes("fis") ? "pf" : "pj";
       }
       return obj;
     });

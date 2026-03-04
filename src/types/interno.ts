@@ -33,7 +33,7 @@ export type OrigemLead =
   | 'evento'
   | 'outro';
 
-export type TipoCliente = 'pj' | 'pf' | 'PJ' | 'PF';
+export type TipoCliente = 'pj' | 'pf';
 
 export type TipoVenda = 'estoque' | 'fadireto';
 
@@ -149,8 +149,6 @@ export const STATUS_PROBABILIDADE_PADRAO: Record<StatusNegociacao, number> = {
 export const TIPO_CLIENTE_LABELS: Record<string, string> = {
   pf: 'Pessoa Física',
   pj: 'Pessoa Jurídica',
-  PF: 'Pessoa Física',
-  PJ: 'Pessoa Jurídica',
 };
 
 export const ORIGEM_LEAD_LABELS: Record<OrigemLead, string> = {

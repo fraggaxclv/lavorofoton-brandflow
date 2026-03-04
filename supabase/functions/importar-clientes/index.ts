@@ -173,9 +173,9 @@ Deno.serve(async (req) => {
       existingNames.add(nameKey);
       if (cnpjDigits.length >= 11) existingCnpjs.add(cnpjDigits);
 
-      let tipo = (c.tipo || "").toUpperCase().trim();
-      if (!tipo || (tipo !== "PF" && tipo !== "PJ")) {
-        tipo = cnpjDigits.length <= 11 ? "PF" : "PJ";
+      let tipo = (c.tipo || "").toLowerCase().trim();
+      if (!tipo || (tipo !== "pf" && tipo !== "pj")) {
+        tipo = cnpjDigits.length <= 11 ? "pf" : "pj";
       }
 
       let estado = (c.estado || "").trim();
