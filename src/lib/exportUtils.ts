@@ -99,7 +99,7 @@ export function exportClientesToCSV(clientes: ClienteExport[], filename?: string
   const data = clientes.map(c => ({
     nome_fantasia: c.nome_fantasia || "",
     razao_social: c.razao_social,
-    tipo: c.tipo === "pj" || c.tipo === "PJ" ? "Pessoa Jurídica" : "Pessoa Física",
+    tipo: c.tipo === "pj" ? "Pessoa Jurídica" : "Pessoa Física",
     cpf_cnpj: c.cpf_cnpj,
     telefone: c.telefone || "",
     email: c.email || "",

@@ -153,7 +153,7 @@ export async function exportClientesPDF(clientes: ClientePDF[]) {
     <tr>
       <td>${c.nome_fantasia || c.razao_social}</td>
       <td>${c.cpf_cnpj}</td>
-      <td>${c.tipo?.toUpperCase() === "PJ" ? "PJ" : "PF"}</td>
+      <td>${c.tipo === "pj" ? "PJ" : "PF"}</td>
       <td>${c.telefone || "—"}</td>
       <td>${c.email || "—"}</td>
       <td>${[c.cidade, c.estado].filter(Boolean).join(" - ") || "—"}</td>

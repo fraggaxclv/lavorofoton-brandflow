@@ -138,7 +138,7 @@ export default function InternoClientes() {
     const formData = pendingFormData;
     const vendedorResponsavel = formData.get("vendedor_responsavel") as string;
     const tipoRaw = formData.get("tipo") as string;
-    const tipo = tipoRaw.toUpperCase() as "PF" | "PJ";
+    const tipo = tipoRaw.toLowerCase().trim() as "pf" | "pj";
     const data = {
       nome_fantasia: formData.get("nome_fantasia") as string || undefined,
       razao_social: formData.get("razao_social") as string,
