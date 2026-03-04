@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { usePedidosPublicos, PedidoPublico } from "@/hooks/usePedidosPublicos";
 import InternoLayout from "@/components/interno/InternoLayout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -21,7 +21,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Inbox, Search, Import, Loader2, CheckCircle2, Clock, FileText } from "lucide-react";
+import { Inbox, Search, Import, Loader2, CheckCircle2, Clock, FileText, X } from "lucide-react";
 import ExportButton from "@/components/interno/ExportButton";
 import { formatCurrency } from "@/types/interno";
 
@@ -29,21 +29,37 @@ export default function InternoPedidosPublicos() {
   const [statusFilter, setStatusFilter] = useState<'todos' | 'pendentes' | 'importados'>('todos');
   const [tipoFilter, setTipoFilter] = useState<'todos' | 'pedido' | 'proposta'>('todos');
   const [searchTerm, setSearchTerm] = useState("");
+  const [dataInicio, setDataInicio] = useState("");
+  const [dataFim, setDataFim] = useState("");
 
   const { pedidos, isLoading, importar, isImporting } = usePedidosPublicos({
     status: statusFilter,
     tipo: tipoFilter,
   });
 
-  const filteredPedidos = pedidos.filter(p => {
-    if (!searchTerm) return true;
-    const term = searchTerm.toLowerCase();
-    return (
-      p.cliente_nome.toLowerCase().includes(term) ||
-      p.cliente_cnpj.toLowerCase().includes(term) ||
-      p.modelo_veiculo.toLowerCase().includes(term)
-    );
-  });
+  const filteredPedidos = useMemo(() => {
+    return pedidos.filter(p => {
+      // Text search
+      if (searchTerm) {
+        const term = searchTerm.toLowerCase();
+        if (
+          !p.cliente_nome.toLowerCase().includes(term) &&
+          !p.cliente_cnpj.toLowerCase().includes(term) &&
+          !p.modelo_veiculo.toLowerCase().includes(term)
+        ) return false;
+      }
+      // Date range
+      if (dataInicio) {
+        const pedidoDate = new Date(p.created_at).toISOString().split('T')[0];
+        if (pedidoDate < dataInicio) return false;
+      }
+      if (dataFim) {
+        const pedidoDate = new Date(p.created_at).toISOString().split('T')[0];
+        if (pedidoDate > dataFim) return false;
+      }
+      return true;
+    });
+  }, [pedidos, searchTerm, dataInicio, dataFim]);
 
   const handleExport = () => {
     const csv = [
@@ -93,36 +109,70 @@ export default function InternoPedidosPublicos() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <div className="relative flex-1">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Buscar por nome, CNPJ, modelo..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-8 h-9 text-sm"
-            />
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <div className="relative flex-1">
+              <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Buscar por nome, CNPJ, modelo..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-8 h-9 text-sm"
+              />
+            </div>
+            <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v as any)}>
+              <SelectTrigger className="w-full sm:w-36 h-9 text-sm">
+                <SelectValue placeholder="Status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="todos">Todos</SelectItem>
+                <SelectItem value="pendentes">Pendentes</SelectItem>
+                <SelectItem value="importados">Importados</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={tipoFilter} onValueChange={(v) => setTipoFilter(v as any)}>
+              <SelectTrigger className="w-full sm:w-36 h-9 text-sm">
+                <SelectValue placeholder="Tipo" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="todos">Todos</SelectItem>
+                <SelectItem value="pedido">Pedidos</SelectItem>
+                <SelectItem value="proposta">Propostas</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
-          <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v as any)}>
-            <SelectTrigger className="w-full sm:w-36 h-9 text-sm">
-              <SelectValue placeholder="Status" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="todos">Todos</SelectItem>
-              <SelectItem value="pendentes">Pendentes</SelectItem>
-              <SelectItem value="importados">Importados</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select value={tipoFilter} onValueChange={(v) => setTipoFilter(v as any)}>
-            <SelectTrigger className="w-full sm:w-36 h-9 text-sm">
-              <SelectValue placeholder="Tipo" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="todos">Todos</SelectItem>
-              <SelectItem value="pedido">Pedidos</SelectItem>
-              <SelectItem value="proposta">Propostas</SelectItem>
-            </SelectContent>
-          </Select>
+          <div className="flex flex-col sm:flex-row gap-3 items-end">
+            <div className="flex gap-2 items-center flex-1">
+              <div className="flex-1">
+                <label className="text-xs text-muted-foreground mb-1 block">De</label>
+                <Input
+                  type="date"
+                  value={dataInicio}
+                  onChange={(e) => setDataInicio(e.target.value)}
+                  className="h-9 text-sm"
+                />
+              </div>
+              <div className="flex-1">
+                <label className="text-xs text-muted-foreground mb-1 block">Até</label>
+                <Input
+                  type="date"
+                  value={dataFim}
+                  onChange={(e) => setDataFim(e.target.value)}
+                  className="h-9 text-sm"
+                />
+              </div>
+              {(dataInicio || dataFim) && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-9 px-2 mt-4"
+                  onClick={() => { setDataInicio(""); setDataFim(""); }}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Table */}
