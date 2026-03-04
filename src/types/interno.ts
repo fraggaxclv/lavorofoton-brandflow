@@ -31,6 +31,8 @@ export type OrigemLead =
   | 'telefone'
   | 'visita_loja'
   | 'evento'
+  | 'contato_pessoal'
+  | 'lead_fornecido'
   | 'outro';
 
 export type TipoCliente = 'pj' | 'pf';
@@ -159,6 +161,8 @@ export const ORIGEM_LEAD_LABELS: Record<OrigemLead, string> = {
   telefone: 'Telefone',
   visita_loja: 'Visita à Loja',
   evento: 'Evento',
+  contato_pessoal: 'Contato Pessoal',
+  lead_fornecido: 'Lead Fornecido',
   outro: 'Outro',
 };
 

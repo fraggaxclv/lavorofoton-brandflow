@@ -106,6 +106,7 @@ export type Database = {
           nome_fantasia: string | null
           numero: string | null
           observacoes: string | null
+          origem_lead: string | null
           razao_social: string
           responsavel: string | null
           telefone: string | null
@@ -130,6 +131,7 @@ export type Database = {
           nome_fantasia?: string | null
           numero?: string | null
           observacoes?: string | null
+          origem_lead?: string | null
           razao_social: string
           responsavel?: string | null
           telefone?: string | null
@@ -154,6 +156,7 @@ export type Database = {
           nome_fantasia?: string | null
           numero?: string | null
           observacoes?: string | null
+          origem_lead?: string | null
           razao_social?: string
           responsavel?: string | null
           telefone?: string | null

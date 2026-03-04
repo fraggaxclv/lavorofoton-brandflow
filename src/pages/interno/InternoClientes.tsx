@@ -48,7 +48,7 @@ import {
 import ImportClientesModal from "@/components/interno/ImportClientesModal";
 import ClienteDetalheModal from "@/components/interno/ClienteDetalheModal";
 import SolicitarAcessoModal from "@/components/interno/SolicitarAcessoModal";
-import { Cliente, TIPO_CLIENTE_LABELS } from "@/types/interno";
+import { Cliente, TIPO_CLIENTE_LABELS, ORIGEM_LEAD_LABELS, OrigemLead } from "@/types/interno";
 import { exportClientesToCSV } from "@/lib/exportUtils";
 import { exportClientesPDF } from "@/lib/pdfExport";
 import ConfirmDialog from "@/components/interno/ConfirmDialog";
@@ -139,6 +139,7 @@ export default function InternoClientes() {
     const vendedorResponsavel = formData.get("vendedor_responsavel") as string;
     const tipoRaw = formData.get("tipo") as string;
     const tipo = tipoRaw.toLowerCase().trim() as "pf" | "pj";
+    const origemLead = formData.get("origem_lead") as string || "outro";
     const data = {
       nome_fantasia: formData.get("nome_fantasia") as string || undefined,
       razao_social: formData.get("razao_social") as string,
@@ -155,7 +156,10 @@ export default function InternoClientes() {
       email: formData.get("email") as string || undefined,
       responsavel: formData.get("responsavel") as string || undefined,
       observacoes: formData.get("observacoes") as string || undefined,
-      vendedor_responsavel: vendedorResponsavel && vendedorResponsavel !== "none" ? vendedorResponsavel : undefined,
+      origem_lead: origemLead,
+      vendedor_responsavel: isAdmin
+        ? (vendedorResponsavel && vendedorResponsavel !== "none" ? vendedorResponsavel : undefined)
+        : (!editingCliente ? user?.id : undefined), // Auto-assign to vendedor on create
     };
 
     try {
@@ -447,6 +451,8 @@ interface ClienteFormProps {
 }
 
 function ClienteForm({ cliente, onSubmit, isLoading, consultores, isAdmin }: ClienteFormProps) {
+  const origemOptions = Object.entries(ORIGEM_LEAD_LABELS) as [OrigemLead, string][];
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -499,6 +505,20 @@ function ClienteForm({ cliente, onSubmit, isLoading, consultores, isAdmin }: Cli
             required
             className="h-8 text-sm"
           />
+        </div>
+
+        <div>
+          <Label htmlFor="origem_lead" className="text-xs">Origem do Lead</Label>
+          <Select name="origem_lead" defaultValue={(cliente as any)?.origem_lead || "outro"}>
+            <SelectTrigger className="h-8 text-sm">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {origemOptions.map(([value, label]) => (
+                <SelectItem key={value} value={value}>{label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         <div>
