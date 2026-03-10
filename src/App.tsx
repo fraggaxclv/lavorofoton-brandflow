@@ -113,6 +113,7 @@ const App = () => (
             <Route path="/comparativo-ewonder" element={<EWonderLanding />} />
             <Route path="/calculadora-ewonder" element={<Navigate to="/calculadora-roi" replace />} />
             <Route path="/home-v2" element={<Navigate to="/" replace />} />
+            <Route path="/eletricos-beneficios" element={<EletricosBeneficios />} />
             
             {/* Rotas de tráfego pago — duplicatas com WhatsApp tagueado */}
             <Route path="/home-trafego" element={<HomeTrafego />} />
