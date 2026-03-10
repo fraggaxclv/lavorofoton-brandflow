@@ -48,6 +48,57 @@ export default function EletricosBeneficios() {
         </div>
       </div>
 
+      {/* Tabela comparativa */}
+      <div className="flex gap-8 w-full max-w-5xl flex-shrink-0">
+        {/* Elétrico Foton */}
+        <div className="flex-1 rounded-xl overflow-hidden" style={{ background: "rgba(255,255,255,0.97)" }}>
+          <div className="px-8 py-4" style={{ borderBottom: "2px solid #e0e5ea" }}>
+            <h3 className="text-2xl font-black tracking-wide" style={{ color: "#041954" }}>
+              ELÉTRICO FOTON
+            </h3>
+          </div>
+          <div className="px-8 py-4 space-y-3">
+            {[
+              ["Custo por km", "R$ 0,08"],
+              ["Manutenção", "–60% vs. diesel"],
+              ["Bateria", "CATL (mesma Tesla)"],
+              ["Garantia bateria", "6 a 8 anos"],
+              ["Emissão CO₂", "Zero"],
+              ["Ruído", "Silencioso"],
+            ].map(([label, value], i) => (
+              <div key={i} className="flex justify-between items-center">
+                <span className="text-sm" style={{ color: "#6b7a8d" }}>{label}</span>
+                <span className="text-sm font-bold" style={{ color: "#1a1a1a" }}>{value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Diesel Convencional */}
+        <div className="flex-1 rounded-xl overflow-hidden" style={{ background: "rgba(255,255,255,0.97)" }}>
+          <div className="px-8 py-4" style={{ borderBottom: "2px solid #e0e5ea" }}>
+            <h3 className="text-2xl font-black tracking-wide" style={{ color: "#6b7a8d" }}>
+              DIESEL CONVENCIONAL
+            </h3>
+          </div>
+          <div className="px-8 py-4 space-y-3">
+            {[
+              ["Custo por km", "R$ 0,55"],
+              ["Manutenção", "Frequente e cara"],
+              ["Motor", "Centenas de peças"],
+              ["Garantia motor", "1 a 2 anos"],
+              ["Emissão CO₂", "Alta"],
+              ["Ruído", "Alto"],
+            ].map(([label, value], i) => (
+              <div key={i} className="flex justify-between items-center">
+                <span className="text-sm" style={{ color: "#6b7a8d" }}>{label}</span>
+                <span className="text-sm font-bold" style={{ color: "#1a1a1a" }}>{value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Frase de fechamento */}
       <p className="text-lg text-white/90 text-center flex-shrink-0">
         Enquanto a concorrência planeja, a Foton já entrega.
