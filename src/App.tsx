@@ -39,6 +39,7 @@ import ComparativoAumark1217 from "./pages/ComparativoAumark1217";
 import CalculadoraROI from "./pages/CalculadoraROI";
 import EWonderLanding from "./pages/EWonderLanding";
 import HomeV2 from "./pages/HomeV2";
+import EletricosBeneficios from "./pages/EletricosBeneficios";
 import { Navigate } from "react-router-dom";
 
 // Páginas de tráfego pago (duplicadas com mensagens WhatsApp customizadas)
@@ -112,6 +113,7 @@ const App = () => (
             <Route path="/comparativo-ewonder" element={<EWonderLanding />} />
             <Route path="/calculadora-ewonder" element={<Navigate to="/calculadora-roi" replace />} />
             <Route path="/home-v2" element={<Navigate to="/" replace />} />
+            <Route path="/eletricos-beneficios" element={<EletricosBeneficios />} />
             
             {/* Rotas de tráfego pago — duplicatas com WhatsApp tagueado */}
             <Route path="/home-trafego" element={<HomeTrafego />} />
