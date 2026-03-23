@@ -117,6 +117,7 @@ const App = () => (
             <Route path="/home-v2" element={<Navigate to="/" replace />} />
             <Route path="/eletricos-beneficios" element={<EletricosBeneficios />} />
             <Route path="/eletricos-beneficios-2" element={<EletricosBeneficios2 />} />
+            <Route path="/calculadora-tco" element={<CalculadoraTCO />} />
             
             {/* Rotas de tráfego pago — duplicatas com WhatsApp tagueado */}
             <Route path="/home-trafego" element={<HomeTrafego />} />

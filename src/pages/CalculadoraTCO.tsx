@@ -105,6 +105,10 @@ const CalculadoraTCO: React.FC = () => {
 
   // ─── TCO Calculation ───────────────────────────────────────────
   const { chartData, paybackMonth, totalElec, totalDiesel, costPerKmElec, costPerKmDiesel, monthlyBreakdown } = useMemo(() => {
+    const eKwhPerKm = "kwhPerKm" in elecV ? elecV.kwhPerKm : 0;
+    const dKmPerLiter = "kmPerLiter" in dieselV ? dieselV.kmPerLiter : 1;
+    const dArlaPerKm = "arlaPerKm" in dieselV ? dieselV.arlaPerKm : 0;
+
     let accElec = elecV.price * effectiveFleet;
     let accDiesel = dieselV.price * effectiveFleet;
     const totalKmMonth = kmMonth * effectiveFleet;
@@ -112,16 +116,13 @@ const CalculadoraTCO: React.FC = () => {
     const data: { month: number; label: string; electric: number; diesel: number }[] = [];
 
     for (let m = 1; m <= months; m++) {
-      // Energy
-      const energyElec = totalKmMonth * elecV.kwhPerKm * electricityPrice;
-      const energyDiesel = totalKmMonth * ((1 / dieselV.kmPerLiter!) * dieselPrice + dieselV.arlaPerKm!);
-      // Maintenance
+      const energyElec = totalKmMonth * eKwhPerKm * electricityPrice;
+      const energyDiesel = totalKmMonth * ((1 / dKmPerLiter) * dieselPrice + dArlaPerKm);
+
       const maintElec = totalKmMonth * elecV.maintenancePerKm;
       const maintDiesel = totalKmMonth * dieselV.maintenancePerKm;
-      // Insurance
       const insElec = (elecV.insuranceYear * effectiveFleet) / 12;
       const insDiesel = (dieselV.insuranceYear * effectiveFleet) / 12;
-      // Tires
       const tiresElec = (totalKmMonth / elecV.tireLifeKm) * elecV.tireCost;
       const tiresDiesel = (totalKmMonth / dieselV.tireLifeKm) * dieselV.tireCost;
 
@@ -129,7 +130,6 @@ const CalculadoraTCO: React.FC = () => {
       accDiesel += energyDiesel + maintDiesel + insDiesel + tiresDiesel;
 
       if (payback === -1 && accDiesel > accElec) payback = m;
-
       const label = m % 12 === 0 ? `${m / 12}a` : "";
       data.push({ month: m, label, electric: Math.round(accElec), diesel: Math.round(accDiesel) });
     }
@@ -138,9 +138,8 @@ const CalculadoraTCO: React.FC = () => {
     const cpkE = totalKm > 0 ? accElec / totalKm : 0;
     const cpkD = totalKm > 0 ? accDiesel / totalKm : 0;
 
-    // Monthly breakdown at month 12
-    const energyElec12 = totalKmMonth * elecV.kwhPerKm * electricityPrice;
-    const energyDiesel12 = totalKmMonth * ((1 / dieselV.kmPerLiter!) * dieselPrice + dieselV.arlaPerKm!);
+    const energyElec12 = totalKmMonth * eKwhPerKm * electricityPrice;
+    const energyDiesel12 = totalKmMonth * ((1 / dKmPerLiter) * dieselPrice + dArlaPerKm);
     const maintElec12 = totalKmMonth * elecV.maintenancePerKm;
     const maintDiesel12 = totalKmMonth * dieselV.maintenancePerKm;
     const insElec12 = (elecV.insuranceYear * effectiveFleet) / 12;
