@@ -41,6 +41,7 @@ import EWonderLanding from "./pages/EWonderLanding";
 import HomeV2 from "./pages/HomeV2";
 import EletricosBeneficios from "./pages/EletricosBeneficios";
 import EletricosBeneficios2 from "./pages/EletricosBeneficios2";
+import CalculadoraTCO from "./pages/CalculadoraTCO";
 import { Navigate } from "react-router-dom";
 
 // Páginas de tráfego pago (duplicadas com mensagens WhatsApp customizadas)
