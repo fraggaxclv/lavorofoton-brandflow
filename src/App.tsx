@@ -119,7 +119,7 @@ const App = () => (
             <Route path="/eletricos-beneficios" element={<EletricosBeneficios />} />
             <Route path="/eletricos-beneficios-2" element={<EletricosBeneficios2 />} />
             <Route path="/calculadora-tco" element={<CalculadoraTCO />} />
-            <Route path="/calculadora-tcoeletrico" element={<CalculadoraTCOEletrico />} />
+            <Route path="/calculadora" element={<CalculadoraTCOEletrico />} />
             
             {/* Rotas de tráfego pago — duplicatas com WhatsApp tagueado */}
             <Route path="/home-trafego" element={<HomeTrafego />} />
