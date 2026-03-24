@@ -41,31 +41,78 @@ const PROFILES: Record<string, { dieselKmL: number; elecKwhKm: number }> = {
   "Rodoviário": { dieselKmL: 7.0, elecKwhKm: 0.45 },
 };
 
-// ── Input component ──
-function InputField({
-  label, value, onChange, prefix, suffix, min, max, step,
+// ── Centavos-style input for decimal fields ──
+function CentavosInput({
+  label, value, onChange, prefix, suffix, maxVal = 99.99,
 }: {
   label: string; value: number; onChange: (v: number) => void;
-  prefix?: string; suffix?: string; min?: number; max?: number; step?: number;
+  prefix?: string; suffix?: string; maxVal?: number;
+}) {
+  // Store as integer cents internally
+  const centsFromValue = Math.round(value * 100);
+  const displayFormatted = value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Backspace") {
+      e.preventDefault();
+      const newCents = Math.floor(centsFromValue / 10);
+      onChange(newCents / 100);
+      return;
+    }
+    if (!/^[0-9]$/.test(e.key)) return;
+    e.preventDefault();
+    const digit = parseInt(e.key, 10);
+    const newCents = centsFromValue * 10 + digit;
+    const maxCents = Math.round(maxVal * 100);
+    if (newCents > maxCents) return;
+    onChange(newCents / 100);
+  };
+
+  return (
+    <div className="flex flex-col gap-1">
+      <label className="text-[11px] uppercase tracking-[1.2px] font-medium" style={{ color: C.textSecondary }}>
+        {label}
+      </label>
+      <div className="flex items-center border rounded-md px-3 py-2 bg-white" style={{ borderColor: C.border }}>
+        {prefix && <span className="text-sm mr-1" style={{ color: C.textSecondary }}>{prefix}</span>}
+        <input
+          type="text"
+          inputMode="numeric"
+          value={displayFormatted}
+          onKeyDown={handleKeyDown}
+          onChange={() => {}}
+          className="flex-1 outline-none text-sm bg-transparent font-medium"
+          style={{ color: C.textPrimary }}
+        />
+        {suffix && <span className="text-sm ml-1" style={{ color: C.textSecondary }}>{suffix}</span>}
+      </div>
+    </div>
+  );
+}
+
+// ── Integer input (for large values like price, km, months, qty) ──
+function InputField({
+  label, value, onChange, prefix, suffix, min, max,
+}: {
+  label: string; value: number; onChange: (v: number) => void;
+  prefix?: string; suffix?: string; min?: number; max?: number;
 }) {
   const [editing, setEditing] = useState(false);
   const [rawText, setRawText] = useState("");
-  const isDecimal = step !== undefined && step < 1;
 
-  const displayValue = isDecimal
-    ? value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    : value.toLocaleString("pt-BR");
+  const displayValue = value.toLocaleString("pt-BR");
 
   const handleFocus = () => {
     setEditing(true);
-    setRawText(isDecimal ? value.toString().replace(".", ",") : value.toString());
+    setRawText(value.toString());
   };
 
   const handleBlur = () => {
     setEditing(false);
-    const parsed = Number(rawText.replace(/\./g, "").replace(",", "."));
+    const parsed = parseInt(rawText.replace(/\D/g, ""), 10);
     if (!isNaN(parsed) && parsed >= 0) {
-      onChange(parsed);
+      const clamped = Math.max(min ?? 0, Math.min(max ?? Infinity, parsed));
+      onChange(clamped);
     }
   };
 
@@ -82,7 +129,7 @@ function InputField({
         {prefix && <span className="text-sm mr-1" style={{ color: C.textSecondary }}>{prefix}</span>}
         <input
           type="text"
-          inputMode="decimal"
+          inputMode="numeric"
           value={editing ? rawText : displayValue}
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -333,16 +380,16 @@ export default function CalculadoraTCOEletrico() {
             <div className="sm:col-span-2 lg:col-span-4 mt-4">
               <BlockLabel>Combustível & Energia</BlockLabel>
             </div>
-            <InputField label="Preço do diesel" value={precoDieselL} onChange={setPrecoDieselL} prefix="R$" suffix="/L" step={0.1} />
-            <InputField label="Preço da energia" value={precoEnergia} onChange={setPrecoEnergia} prefix="R$" suffix="/kWh" step={0.01} />
-            <InputField label="Preço do ARLA 32" value={precoArla} onChange={setPrecoArla} prefix="R$" suffix="/L" step={0.1} />
+            <CentavosInput label="Preço do diesel" value={precoDieselL} onChange={setPrecoDieselL} prefix="R$" suffix="/L" />
+            <CentavosInput label="Preço da energia" value={precoEnergia} onChange={setPrecoEnergia} prefix="R$" suffix="/kWh" />
+            <CentavosInput label="Preço do ARLA 32" value={precoArla} onChange={setPrecoArla} prefix="R$" suffix="/L" />
 
             {/* Bloco 4 */}
             <div className="sm:col-span-2 lg:col-span-4 mt-4">
               <BlockLabel>Consumo</BlockLabel>
             </div>
-            <InputField label="Consumo diesel" value={consumoDieselKmL} onChange={handleConsumoDiesel} suffix="km/L" step={0.1} />
-            <InputField label="Consumo elétrico" value={consumoEletricoKwhKm} onChange={handleConsumoEletrico} suffix="kWh/km" step={0.01} />
+            <CentavosInput label="Consumo diesel" value={consumoDieselKmL} onChange={handleConsumoDiesel} suffix="km/L" />
+            <CentavosInput label="Consumo elétrico" value={consumoEletricoKwhKm} onChange={handleConsumoEletrico} suffix="kWh/km" />
           </div>
         </Section>
 
