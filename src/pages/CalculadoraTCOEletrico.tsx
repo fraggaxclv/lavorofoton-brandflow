@@ -48,6 +48,19 @@ function InputField({
   label: string; value: number; onChange: (v: number) => void;
   prefix?: string; suffix?: string; min?: number; max?: number; step?: number;
 }) {
+  const isDecimal = step !== undefined && step < 1;
+  const displayValue = isDecimal
+    ? value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    : value.toLocaleString("pt-BR");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/\./g, "").replace(",", ".");
+    const num = Number(raw);
+    if (!isNaN(num)) {
+      onChange(num);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-1">
       <label className="text-[11px] uppercase tracking-[1.2px] font-medium" style={{ color: C.textSecondary }}>
@@ -56,13 +69,11 @@ function InputField({
       <div className="flex items-center border rounded-md px-3 py-2 bg-white" style={{ borderColor: C.border }}>
         {prefix && <span className="text-sm mr-1" style={{ color: C.textSecondary }}>{prefix}</span>}
         <input
-          type="number"
-          value={value}
-          min={min}
-          max={max}
-          step={step || 1}
-          onChange={(e) => onChange(Number(e.target.value))}
-          className="flex-1 outline-none text-sm bg-transparent font-medium"
+          type="text"
+          inputMode="decimal"
+          value={displayValue}
+          onChange={handleChange}
+          className="flex-1 outline-none text-sm bg-transparent font-medium [appearance:textfield]"
           style={{ color: C.textPrimary }}
         />
         {suffix && <span className="text-sm ml-1" style={{ color: C.textSecondary }}>{suffix}</span>}
