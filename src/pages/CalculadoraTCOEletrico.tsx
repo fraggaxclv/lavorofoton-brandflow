@@ -48,13 +48,17 @@ function CentavosInput({
   label: string; value: number; onChange: (v: number) => void;
   prefix?: string; suffix?: string; maxVal?: number;
 }) {
-  // Store as integer cents internally
+  const [freshFocus, setFreshFocus] = useState(false);
   const centsFromValue = Math.round(value * 100);
   const displayFormatted = value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const handleFocus = () => setFreshFocus(true);
+  const handleBlur = () => setFreshFocus(false);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Backspace") {
       e.preventDefault();
+      setFreshFocus(false);
       const newCents = Math.floor(centsFromValue / 10);
       onChange(newCents / 100);
       return;
@@ -62,7 +66,10 @@ function CentavosInput({
     if (!/^[0-9]$/.test(e.key)) return;
     e.preventDefault();
     const digit = parseInt(e.key, 10);
-    const newCents = centsFromValue * 10 + digit;
+    // If first digit typed after focusing, start fresh from 0
+    const baseCents = freshFocus ? 0 : centsFromValue;
+    setFreshFocus(false);
+    const newCents = baseCents * 10 + digit;
     const maxCents = Math.round(maxVal * 100);
     if (newCents > maxCents) return;
     onChange(newCents / 100);
@@ -79,6 +86,8 @@ function CentavosInput({
           type="text"
           inputMode="numeric"
           value={displayFormatted}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           onKeyDown={handleKeyDown}
           onChange={() => {}}
           className="flex-1 outline-none text-sm bg-transparent font-medium"
