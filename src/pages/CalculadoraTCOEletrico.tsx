@@ -4,6 +4,7 @@ import {
   BarChart, Bar, Legend
 } from "recharts";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
 
 // ── Brand tokens ──
 const C = {
@@ -324,20 +325,18 @@ export default function CalculadoraTCOEletrico() {
       {/* ── Header ── */}
       <header className="px-6 md:px-12 py-5 border-b" style={{ borderColor: C.brand, borderBottomWidth: 2 }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-semibold tracking-wider uppercase" style={{ color: C.brand }}>
-                Lavoro Foton
-              </span>
+          <div className="flex items-center gap-4">
+            <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-10 md:h-12" />
+            <div className="h-8 w-px" style={{ background: C.border }} />
+            <div>
+              <h1 className="text-xl md:text-2xl font-semibold" style={{ color: C.brand }}>
+                Calculadora TCO
+              </h1>
+              <p className="text-xs md:text-sm mt-0.5" style={{ color: C.textSecondary }}>
+                Custo Total de Propriedade · Elétrico vs Diesel
+              </p>
             </div>
-            <h1 className="text-2xl font-semibold mt-1" style={{ color: C.brand }}>
-              Calculadora TCO
-            </h1>
-            <p className="text-sm mt-0.5" style={{ color: C.textSecondary }}>
-              Custo Total de Propriedade · Elétrico vs Diesel
-            </p>
           </div>
-          <span className="text-3xl" style={{ color: C.brand }}>⚡</span>
         </div>
       </header>
 
@@ -700,9 +699,10 @@ export default function CalculadoraTCOEletrico() {
             <p>Manutenção elétrica ~60-70% menor: sem motor combustão, ARLA 32, câmbio, embreagem, correia, filtros de óleo e combustível.</p>
             <p>Custos amortizados pela quilometragem mensal informada. Valores reais variam conforme operação e condições de uso.</p>
             <p>Garantias eAumark 9T: Veículo 3 anos / 100.000 km · Bateria 8 anos / 400.000 km (CATL LFP).</p>
-            <p className="mt-3 font-semibold" style={{ color: C.brand }}>
-              LAVORO FOTON · Contagem/MG
-            </p>
+            <div className="flex items-center gap-3 mt-4">
+              <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-8 brightness-0 opacity-40" />
+              <span className="text-xs font-semibold" style={{ color: C.textSecondary }}>Contagem/MG</span>
+            </div>
           </div>
         </footer>
       </main>
