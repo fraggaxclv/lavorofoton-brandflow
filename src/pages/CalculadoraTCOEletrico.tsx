@@ -4,6 +4,7 @@ import {
   BarChart, Bar, Legend
 } from "recharts";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
 
 // ── Brand tokens ──
 const C = {
