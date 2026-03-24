@@ -48,17 +48,29 @@ function InputField({
   label: string; value: number; onChange: (v: number) => void;
   prefix?: string; suffix?: string; min?: number; max?: number; step?: number;
 }) {
+  const [editing, setEditing] = useState(false);
+  const [rawText, setRawText] = useState("");
   const isDecimal = step !== undefined && step < 1;
+
   const displayValue = isDecimal
     ? value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
     : value.toLocaleString("pt-BR");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const raw = e.target.value.replace(/\./g, "").replace(",", ".");
-    const num = Number(raw);
-    if (!isNaN(num)) {
-      onChange(num);
+  const handleFocus = () => {
+    setEditing(true);
+    setRawText(isDecimal ? value.toString().replace(".", ",") : value.toString());
+  };
+
+  const handleBlur = () => {
+    setEditing(false);
+    const parsed = Number(rawText.replace(/\./g, "").replace(",", "."));
+    if (!isNaN(parsed) && parsed >= 0) {
+      onChange(parsed);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRawText(e.target.value);
   };
 
   return (
@@ -71,9 +83,11 @@ function InputField({
         <input
           type="text"
           inputMode="decimal"
-          value={displayValue}
+          value={editing ? rawText : displayValue}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           onChange={handleChange}
-          className="flex-1 outline-none text-sm bg-transparent font-medium [appearance:textfield]"
+          className="flex-1 outline-none text-sm bg-transparent font-medium"
           style={{ color: C.textPrimary }}
         />
         {suffix && <span className="text-sm ml-1" style={{ color: C.textSecondary }}>{suffix}</span>}
