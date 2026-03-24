@@ -380,16 +380,16 @@ export default function CalculadoraTCOEletrico() {
             <div className="sm:col-span-2 lg:col-span-4 mt-4">
               <BlockLabel>Combustível & Energia</BlockLabel>
             </div>
-            <InputField label="Preço do diesel" value={precoDieselL} onChange={setPrecoDieselL} prefix="R$" suffix="/L" step={0.1} />
-            <InputField label="Preço da energia" value={precoEnergia} onChange={setPrecoEnergia} prefix="R$" suffix="/kWh" step={0.01} />
-            <InputField label="Preço do ARLA 32" value={precoArla} onChange={setPrecoArla} prefix="R$" suffix="/L" step={0.1} />
+            <CentavosInput label="Preço do diesel" value={precoDieselL} onChange={setPrecoDieselL} prefix="R$" suffix="/L" />
+            <CentavosInput label="Preço da energia" value={precoEnergia} onChange={setPrecoEnergia} prefix="R$" suffix="/kWh" />
+            <CentavosInput label="Preço do ARLA 32" value={precoArla} onChange={setPrecoArla} prefix="R$" suffix="/L" />
 
             {/* Bloco 4 */}
             <div className="sm:col-span-2 lg:col-span-4 mt-4">
               <BlockLabel>Consumo</BlockLabel>
             </div>
-            <InputField label="Consumo diesel" value={consumoDieselKmL} onChange={handleConsumoDiesel} suffix="km/L" step={0.1} />
-            <InputField label="Consumo elétrico" value={consumoEletricoKwhKm} onChange={handleConsumoEletrico} suffix="kWh/km" step={0.01} />
+            <CentavosInput label="Consumo diesel" value={consumoDieselKmL} onChange={handleConsumoDiesel} suffix="km/L" />
+            <CentavosInput label="Consumo elétrico" value={consumoEletricoKwhKm} onChange={handleConsumoEletrico} suffix="kWh/km" />
           </div>
         </Section>
 
