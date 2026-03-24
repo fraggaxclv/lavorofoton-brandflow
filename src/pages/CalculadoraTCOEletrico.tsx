@@ -699,9 +699,10 @@ export default function CalculadoraTCOEletrico() {
             <p>Manutenção elétrica ~60-70% menor: sem motor combustão, ARLA 32, câmbio, embreagem, correia, filtros de óleo e combustível.</p>
             <p>Custos amortizados pela quilometragem mensal informada. Valores reais variam conforme operação e condições de uso.</p>
             <p>Garantias eAumark 9T: Veículo 3 anos / 100.000 km · Bateria 8 anos / 400.000 km (CATL LFP).</p>
-            <p className="mt-3 font-semibold" style={{ color: C.brand }}>
-              LAVORO FOTON · Contagem/MG
-            </p>
+            <div className="flex items-center gap-3 mt-4">
+              <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-8 brightness-0 opacity-40" />
+              <span className="text-xs font-semibold" style={{ color: C.textSecondary }}>Contagem/MG</span>
+            </div>
           </div>
         </footer>
       </main>
