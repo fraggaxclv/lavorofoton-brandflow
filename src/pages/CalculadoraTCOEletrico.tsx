@@ -325,20 +325,18 @@ export default function CalculadoraTCOEletrico() {
       {/* ── Header ── */}
       <header className="px-6 md:px-12 py-5 border-b" style={{ borderColor: C.brand, borderBottomWidth: 2 }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-semibold tracking-wider uppercase" style={{ color: C.brand }}>
-                Lavoro Foton
-              </span>
+          <div className="flex items-center gap-4">
+            <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-10 md:h-12" />
+            <div className="h-8 w-px" style={{ background: C.border }} />
+            <div>
+              <h1 className="text-xl md:text-2xl font-semibold" style={{ color: C.brand }}>
+                Calculadora TCO
+              </h1>
+              <p className="text-xs md:text-sm mt-0.5" style={{ color: C.textSecondary }}>
+                Custo Total de Propriedade · Elétrico vs Diesel
+              </p>
             </div>
-            <h1 className="text-2xl font-semibold mt-1" style={{ color: C.brand }}>
-              Calculadora TCO
-            </h1>
-            <p className="text-sm mt-0.5" style={{ color: C.textSecondary }}>
-              Custo Total de Propriedade · Elétrico vs Diesel
-            </p>
           </div>
-          <span className="text-3xl" style={{ color: C.brand }}>⚡</span>
         </div>
       </header>
 
