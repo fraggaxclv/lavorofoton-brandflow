@@ -30,6 +30,7 @@ import TunlandV7 from "./pages/models/TunlandV7";
 import EWonder from "./pages/models/EWonder";
 import EToano from "./pages/models/EToano";
 import EView from "./pages/models/EView";
+import EViewConnect from "./pages/models/EViewConnect";
 import EAumark9T from "./pages/models/EAumark9T";
 import EAumark12T from "./pages/models/EAumark12T";
 import IBlue6T from "./pages/models/IBlue6T";
@@ -106,6 +107,7 @@ const App = () => (
             <Route path="/modelos/ewonder" element={<EWonder />} />
             <Route path="/modelos/etoano" element={<EToano />} />
             <Route path="/modelos/eview" element={<EView />} />
+            <Route path="/modelos/ev-connect" element={<EViewConnect />} />
             <Route path="/modelos/eaumark-9t" element={<EAumark9T />} />
             <Route path="/modelos/eaumark-12t" element={<EAumark12T />} />
             <Route path="/modelos/iblue-6t" element={<IBlue6T />} />

@@ -15,6 +15,7 @@ import iblue6t from "@/assets/iblue-6t.jpg";
 import eaumark12t from "@/assets/eaumark-12t.jpg";
 import eaumark9t from "@/assets/eaumark-9t-card.webp";
 import eview from "@/assets/eview.jpg";
+import eviewConnect from "@/assets/eview-connect.jpg";
 import linhaEletricaBadge from "@/assets/linha-eletrica-badge.png";
 import linhaDieselBadge from "@/assets/badge-linha-diesel.png";
 import linhaPicapesBadge from "@/assets/badge-linha-picapes.png";
@@ -65,6 +66,7 @@ const Modelos = () => {
             <ModelCard name="eAumark 9T" description="9 toneladas elétrico. Força e eficiência energética." image={eaumark9t} link="/modelos/eaumark-9t" comingSoon />
             <ModelCard name="eAumark 12T" description="12 toneladas elétrico. Alta capacidade com emissão zero." image={eaumark12t} link="/modelos/eaumark-12t" comingSoon />
             <ModelCard name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." image={eview} link="/modelos/eview" comingSoon />
+            <ModelCard name="E-V Connect" description="Van elétrica top de linha. 7,2 m³ de carga, 170 cv. Seu escritório sobre rodas." image={eviewConnect} link="/modelos/ev-connect" />
           </div>
         </div>
       </section>
