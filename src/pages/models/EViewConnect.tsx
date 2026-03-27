@@ -53,7 +53,7 @@ const EViewConnect = () => {
               <span className="bg-cyan-500/20 text-cyan-300 text-xs font-bold px-3 py-1.5 rounded-full border border-cyan-500/30">SEU ESCRITÓRIO SOBRE RODAS</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-black mb-4 leading-tight">
-              E-V <span className="text-cyan-400">Connect</span>
+              eView <span className="text-cyan-400">Connect</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-6">
               Disponibilidade total, zero complicação. A praticidade da recarga e a confiabilidade que mantém o seu negócio em movimento.
