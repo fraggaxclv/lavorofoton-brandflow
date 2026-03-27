@@ -253,6 +253,27 @@ export const veiculosCatalogo: Veiculo[] = [
     ],
     cores: ['Branco', 'Prata']
   },
+  {
+    id: 'ev-connect',
+    modelo: 'E-V Connect',
+    categoria: 'eletrico',
+    imagem: eview,
+    capacidade: 'Van Elétrica',
+    cnh: 'B',
+    aplicacao: 'Urbano - Zero Emissões',
+    caracteristicas: [
+      'Motor Síncrono de Imã Permanente',
+      'Potência: 170 cv (125 kW)',
+      'Torque: 245 Nm',
+      'Bateria LFP 50 kWh',
+      'Autonomia: 245 km (WLTP) / 202 km (INMETRO)',
+      'Volume de carga: 7,2 m³',
+      'Conector CCS2 (AC/DC)',
+      'Porta traseira com abertura de 270°',
+      'Zero emissões'
+    ],
+    cores: ['Branco', 'Azul Claro']
+  },
   // Linha Picapes
   {
     id: 'tunland-v9',
