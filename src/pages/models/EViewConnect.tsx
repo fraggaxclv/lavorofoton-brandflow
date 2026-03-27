@@ -20,13 +20,13 @@ const EViewConnect = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const galleryImages = [
-    { src: frontImg, alt: "E-V Connect vista frontal", title: "Vista Frontal" },
-    { src: interiorImg, alt: "Interior da E-V Connect", title: "Design Interior" },
-    { src: lateralImg, alt: "E-V Connect vista lateral", title: "Vista Lateral" },
-    { src: spec1, alt: "Chassi da E-V Connect", title: "Chassi de Alta Capacidade" },
-    { src: spec2, alt: "Suspensão da E-V Connect", title: "Suspensão Traseira" },
-    { src: spec3, alt: "Motor da E-V Connect", title: "Motor Elétrico" },
-    { src: spec4, alt: "Porta traseira da E-V Connect", title: "Porta Traseira 270°" },
+    { src: frontImg, alt: "eView Connect vista frontal", title: "Vista Frontal" },
+    { src: interiorImg, alt: "Interior da eView Connect", title: "Design Interior" },
+    { src: lateralImg, alt: "eView Connect vista lateral", title: "Vista Lateral" },
+    { src: spec1, alt: "Chassi da eView Connect", title: "Chassi de Alta Capacidade" },
+    { src: spec2, alt: "Suspensão da eView Connect", title: "Suspensão Traseira" },
+    { src: spec3, alt: "Motor da eView Connect", title: "Motor Elétrico" },
+    { src: spec4, alt: "Porta traseira da eView Connect", title: "Porta Traseira 270°" },
   ];
 
   const handlePrevious = () => {
@@ -43,7 +43,7 @@ const EViewConnect = () => {
       {/* Hero */}
       <section className="mt-16 relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="Foton E-V Connect" className="w-full h-full object-cover" />
+          <img src={heroImg} alt="Foton eView Connect" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
         </div>
         <div className="relative z-10 container-lavoro text-white">
@@ -53,7 +53,7 @@ const EViewConnect = () => {
               <span className="bg-cyan-500/20 text-cyan-300 text-xs font-bold px-3 py-1.5 rounded-full border border-cyan-500/30">SEU ESCRITÓRIO SOBRE RODAS</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-black mb-4 leading-tight">
-              E-V <span className="text-cyan-400">Connect</span>
+              eView <span className="text-cyan-400">Connect</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-6">
               Disponibilidade total, zero complicação. A praticidade da recarga e a confiabilidade que mantém o seu negócio em movimento.
@@ -83,7 +83,7 @@ const EViewConnect = () => {
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 gap-2" asChild>
-                <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Olá! Gostaria de solicitar uma proposta para a E-V Connect.")}`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Olá! Gostaria de solicitar uma proposta para a eView Connect.")}`} target="_blank" rel="noopener noreferrer">
                   <FileText size={20} /> Solicitar Proposta
                 </a>
               </Button>
@@ -93,10 +93,10 @@ const EViewConnect = () => {
         </div>
       </section>
 
-      {/* Por que E-V Connect */}
+      {/* Por que eView Connect */}
       <section className="section-padding bg-background">
         <div className="container-lavoro">
-          <h2 className="text-center mb-4">Por Que a E-V Connect?</h2>
+          <h2 className="text-center mb-4">Por Que a eView Connect?</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto text-lg">
             A van elétrica top de linha da Foton. Seu escritório sobre rodas com tecnologia de ponta e zero emissões.
           </p>
@@ -143,7 +143,7 @@ const EViewConnect = () => {
               </div>
             </div>
             <div className="rounded-xl overflow-hidden">
-              <img src={interiorImg} alt="Interior da E-V Connect" className="w-full h-auto object-cover rounded-xl" loading="lazy" />
+              <img src={interiorImg} alt="Interior da eView Connect" className="w-full h-auto object-cover rounded-xl" loading="lazy" />
             </div>
           </div>
         </div>
@@ -153,7 +153,7 @@ const EViewConnect = () => {
       <section className="section-padding bg-secondary/30">
         <div className="container-lavoro">
           <h2 className="text-center mb-4">Galeria de Fotos</h2>
-          <p className="text-center text-muted-foreground mb-10">Conheça cada detalhe da E-V Connect</p>
+          <p className="text-center text-muted-foreground mb-10">Conheça cada detalhe da eView Connect</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {galleryImages.map((img, i) => (
               <div key={i} className="cursor-pointer group overflow-hidden rounded-xl" onClick={() => setSelectedImage(i)}>
@@ -299,7 +299,7 @@ const EViewConnect = () => {
               </a>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 gap-2" asChild>
-              <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Olá! Gostaria de agendar um test drive da E-V Connect.")}`} target="_blank" rel="noopener noreferrer">
+              <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Olá! Gostaria de agendar um test drive da eView Connect.")}`} target="_blank" rel="noopener noreferrer">
                 <Truck size={20} /> Agendar Test Drive
               </a>
             </Button>

@@ -255,7 +255,7 @@ export const veiculosCatalogo: Veiculo[] = [
   },
   {
     id: 'ev-connect',
-    modelo: 'E-V Connect',
+    modelo: 'eView Connect',
     categoria: 'eletrico',
     imagem: eview,
     capacidade: 'Van Elétrica',
