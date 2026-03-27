@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { MessageCircle, FileText, Battery, Zap, TrendingDown, Shield, Package, Truck, Leaf, Monitor, ChevronLeft, ChevronRight, X, Volume2, Gauge, BatteryCharging, DoorOpen } from "lucide-react";
+import { MessageCircle, FileText, Battery, Zap, TrendingDown, Shield, Package, Users, Truck, Leaf, Monitor, ChevronLeft, ChevronRight, X, Volume2, Gauge, BatteryCharging, DoorOpen } from "lucide-react";
 import { useState } from "react";
 import heroImg from "@/assets/eview-connect.jpg";
 import frontImg from "@/assets/eview-connect-front.jpg";
