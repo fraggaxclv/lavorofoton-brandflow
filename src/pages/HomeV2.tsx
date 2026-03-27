@@ -190,7 +190,7 @@ const HomeV2 = () => {
                   <ModelCardV2 name="eAumark 9T" description="9 toneladas elétrico. Força e eficiência energética." link="/modelos/eaumark-9t" />
                   <ModelCardV2 name="eAumark 12T" description="12 toneladas elétrico. Alta capacidade com emissão zero." link="/modelos/eaumark-12t" />
                   <ModelCardV2 name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." link="/modelos/eview" />
-                  <ModelCardV2 name="E-V Connect" description="Van elétrica top de linha. 7,2 m³, 170 cv. Seu escritório sobre rodas." link="/modelos/ev-connect" />
+                  <ModelCardV2 name="eView Connect" description="Van elétrica top de linha. 7,2 m³, 170 cv. Seu escritório sobre rodas." link="/modelos/ev-connect" />
                 </div>
               </div>
             </TabsContent>

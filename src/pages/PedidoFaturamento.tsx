@@ -14,7 +14,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import logoLinhaLavoro from "@/assets/logo-linha-lavoro.png";
-const MODELOS_VEICULOS = ["Foton Aumark S315", "Foton Aumark 715", "Foton Aumark 916", "Foton Aumark 1217", "Foton eWonder", "Foton Auman D 1722", "Foton eAumark 9T", "Foton eAumark 12T", "Foton eToano", "Foton eView", "Foton E-V Connect", "Tunland V7", "Tunland V9"];
+const MODELOS_VEICULOS = ["Foton Aumark S315", "Foton Aumark 715", "Foton Aumark 916", "Foton Aumark 1217", "Foton eWonder", "Foton Auman D 1722", "Foton eAumark 9T", "Foton eAumark 12T", "Foton eToano", "Foton eView", "Foton eView Connect", "Tunland V7", "Tunland V9"];
 const ESTADOS_BR = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
 interface Produto {
   produto: string;

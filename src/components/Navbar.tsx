@@ -17,7 +17,7 @@ const modelosEletricos = [
   { label: "eWonder", to: "/modelos/ewonder" },
   { label: "eToano", to: "/modelos/etoano" },
   { label: "eView", to: "/modelos/eview" },
-  { label: "E-V Connect", to: "/modelos/ev-connect" },
+  { label: "eView Connect", to: "/modelos/ev-connect" },
   { label: "eAumark 9T", to: "/modelos/eaumark-9t" },
   { label: "eAumark 12T", to: "/modelos/eaumark-12t" },
   { label: "iBlue 6T", to: "/modelos/iblue-6t" },
