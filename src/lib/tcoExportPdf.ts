@@ -140,17 +140,17 @@ export async function exportTCOPdf({
   inputRows.forEach((row, i) => {
     if (i % 2 === 0) {
       pdf.setFillColor("#F9FAFB");
-      pdf.rect(margin, y - 3.5, contentW, 7, "F");
+      pdf.rect(margin, y - 3, contentW, 5.5, "F");
     }
-    pdf.setFontSize(9);
+    pdf.setFontSize(7.5);
     pdf.setTextColor(C.textPrimary);
     pdf.text(row[0], margin + 3, y);
     pdf.setFont("helvetica", "bold");
     pdf.text(row[1], pageW - margin - 3, y, { align: "right" });
     pdf.setFont("helvetica", "normal");
-    y += 7;
+    y += 5.5;
   });
-  y += 4;
+  y += 2;
 
   // ── SEÇÃO 3: Chart capture ──
   const chartEl = document.getElementById(chartElementId);
@@ -160,16 +160,14 @@ export async function exportTCOPdf({
       const canvas = await html2canvas(chartEl, { backgroundColor: "#ffffff", scale: 2 });
       const imgData = canvas.toDataURL("image/png");
       const ratio = canvas.width / canvas.height;
+      const maxChartH = 270 - y - 45; // leave room for resumo + footer
       const imgW = contentW;
-      const imgH = imgW / ratio;
-      
-      if (y + imgH > 280) {
-        pdf.addPage();
-        y = margin;
-        y = drawSectionTitle(pdf, "Custo Acumulado no Período", margin, y, contentW);
+      let imgH = imgW / ratio;
+      if (imgH > maxChartH) {
+        imgH = maxChartH;
       }
       pdf.addImage(imgData, "PNG", margin, y, imgW, imgH);
-      y += imgH + 6;
+      y += imgH + 3;
     } catch {
       // skip chart
     }
