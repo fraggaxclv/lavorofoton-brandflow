@@ -214,6 +214,9 @@ export default function CalculadoraTCOEletrico() {
   const [perfil, setPerfil] = useState<string>("Misto");
   const [perfilCustom, setPerfilCustom] = useState(false);
   const [showDetalhamento, setShowDetalhamento] = useState(false);
+  const [nomeSimulacaoAtual, setNomeSimulacaoAtual] = useState<string | undefined>();
+  const [exportingPdf, setExportingPdf] = useState(false);
+  const { simulacoes, salvar, excluir, renomear } = useSimulacoesTCO();
 
   // Track manual edits to consumption
   const consumoEditedRef = useRef(false);
