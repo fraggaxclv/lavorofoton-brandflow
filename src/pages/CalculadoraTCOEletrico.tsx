@@ -476,6 +476,17 @@ export default function CalculadoraTCOEletrico() {
           </div>
         </Section>
 
+        {/* ── Action Bar: Salvar + Exportar PDF ── */}
+        <TCOActionBar
+          simulacoes={simulacoes}
+          onSalvar={handleSalvar}
+          onCarregar={handleCarregar}
+          onExcluir={handleExcluir}
+          onRenomear={renomear}
+          onExportPdf={handleExportPdf}
+          exportingPdf={exportingPdf}
+        />
+
         {/* ── Seção 3: KPIs ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <KPICard
