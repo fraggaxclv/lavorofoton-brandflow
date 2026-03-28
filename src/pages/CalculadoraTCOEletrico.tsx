@@ -1,12 +1,16 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import React, { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   BarChart, Bar, Legend
 } from "recharts";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { toast } from "sonner";
 import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useSimulacoesTCO, SimulacaoTCO } from "@/hooks/useSimulacoesTCO";
+import TCOActionBar from "@/components/calculadoras/TCOActionBar";
+import { exportTCOPdf } from "@/lib/tcoExportPdf";
 
 // ── Brand tokens ──
 const C = {
@@ -210,6 +214,9 @@ export default function CalculadoraTCOEletrico() {
   const [perfil, setPerfil] = useState<string>("Misto");
   const [perfilCustom, setPerfilCustom] = useState(false);
   const [showDetalhamento, setShowDetalhamento] = useState(false);
+  const [nomeSimulacaoAtual, setNomeSimulacaoAtual] = useState<string | undefined>();
+  const [exportingPdf, setExportingPdf] = useState(false);
+  const { simulacoes, salvar, excluir, renomear } = useSimulacoesTCO();
 
   // Track manual edits to consumption
   const consumoEditedRef = useRef(false);
@@ -322,6 +329,71 @@ export default function CalculadoraTCOEletrico() {
   const economiaAnual = calc.economiaMensal * 12;
   const showFrota = frota > 1;
 
+  const getInputs = useCallback(() => ({
+    precoEletrico, precoDiesel, kmMes, frota, meses,
+    precoDieselL, precoEnergia, precoArla,
+    consumoDieselKmL, consumoEletricoKwhKm, perfil: perfilCustom ? "Personalizado" : perfil,
+  }), [precoEletrico, precoDiesel, kmMes, frota, meses, precoDieselL, precoEnergia, precoArla, consumoDieselKmL, consumoEletricoKwhKm, perfil, perfilCustom]);
+
+  const getResultados = useCallback(() => ({
+    economiaMensal: calc.economiaMensal,
+    economiaAnual,
+    payback: calc.payback,
+    economiaLiquida: calc.economiaLiquida,
+  }), [calc, economiaAnual]);
+
+  const handleSalvar = useCallback((nome: string) => {
+    salvar({ nome, inputs: getInputs(), resultados: getResultados() });
+    setNomeSimulacaoAtual(nome);
+    toast.success("Simulação salva com sucesso!");
+  }, [salvar, getInputs, getResultados]);
+
+  const handleCarregar = useCallback((sim: SimulacaoTCO) => {
+    const i = sim.inputs;
+    setPrecoEletrico(i.precoEletrico);
+    setPrecoDiesel(i.precoDiesel);
+    setKmMes(i.kmMes);
+    setFrota(i.frota);
+    setMeses(i.meses);
+    setPrecoDieselL(i.precoDieselL);
+    setPrecoEnergia(i.precoEnergia);
+    setPrecoArla(i.precoArla);
+    setConsumoDieselKmL(i.consumoDieselKmL);
+    setConsumoEletricoKwhKm(i.consumoEletricoKwhKm);
+    if (i.perfil === "Personalizado") {
+      setPerfilCustom(true);
+    } else {
+      setPerfil(i.perfil);
+      setPerfilCustom(false);
+    }
+    setNomeSimulacaoAtual(sim.nome);
+    toast.success(`Simulação "${sim.nome}" carregada`);
+  }, []);
+
+  const handleExcluir = useCallback((id: string) => {
+    excluir(id);
+    toast.success("Simulação excluída");
+  }, [excluir]);
+
+  const handleExportPdf = useCallback(async () => {
+    setExportingPdf(true);
+    try {
+      await exportTCOPdf({
+        inputs: getInputs(),
+        resultados: getResultados(),
+        nomeSimulacao: nomeSimulacaoAtual,
+        logoUrl: logoFotonLavoro,
+        chartElementId: "tco-chart-area",
+      });
+      toast.success("PDF exportado com sucesso!");
+    } catch (err) {
+      toast.error("Erro ao gerar PDF");
+      console.error(err);
+    } finally {
+      setExportingPdf(false);
+    }
+  }, [getInputs, getResultados, nomeSimulacaoAtual]);
+
   return (
     <div className="min-h-screen" style={{ background: C.bg, fontFamily: "'Inter', 'IBM Plex Sans', system-ui, sans-serif" }}>
       <Navbar />
@@ -404,6 +476,17 @@ export default function CalculadoraTCOEletrico() {
           </div>
         </Section>
 
+        {/* ── Action Bar: Salvar + Exportar PDF ── */}
+        <TCOActionBar
+          simulacoes={simulacoes}
+          onSalvar={handleSalvar}
+          onCarregar={handleCarregar}
+          onExcluir={handleExcluir}
+          onRenomear={renomear}
+          onExportPdf={handleExportPdf}
+          exportingPdf={exportingPdf}
+        />
+
         {/* ── Seção 3: KPIs ── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <KPICard
@@ -429,7 +512,7 @@ export default function CalculadoraTCOEletrico() {
 
         {/* ── Seção 4: Gráfico Acumulado ── */}
         <Section title="Custo Acumulado no Período">
-          <div className="w-full h-[380px]">
+          <div id="tco-chart-area" className="w-full h-[380px]">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={calc.chartData} margin={{ top: 10, right: 20, left: 20, bottom: 10 }}>
                 <defs>
