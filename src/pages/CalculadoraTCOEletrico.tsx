@@ -329,7 +329,71 @@ export default function CalculadoraTCOEletrico() {
   const economiaAnual = calc.economiaMensal * 12;
   const showFrota = frota > 1;
 
-  return (
+  const getInputs = useCallback(() => ({
+    precoEletrico, precoDiesel, kmMes, frota, meses,
+    precoDieselL, precoEnergia, precoArla,
+    consumoDieselKmL, consumoEletricoKwhKm, perfil: perfilCustom ? "Personalizado" : perfil,
+  }), [precoEletrico, precoDiesel, kmMes, frota, meses, precoDieselL, precoEnergia, precoArla, consumoDieselKmL, consumoEletricoKwhKm, perfil, perfilCustom]);
+
+  const getResultados = useCallback(() => ({
+    economiaMensal: calc.economiaMensal,
+    economiaAnual,
+    payback: calc.payback,
+    economiaLiquida: calc.economiaLiquida,
+  }), [calc, economiaAnual]);
+
+  const handleSalvar = useCallback((nome: string) => {
+    salvar({ nome, inputs: getInputs(), resultados: getResultados() });
+    setNomeSimulacaoAtual(nome);
+    toast.success("Simulação salva com sucesso!");
+  }, [salvar, getInputs, getResultados]);
+
+  const handleCarregar = useCallback((sim: SimulacaoTCO) => {
+    const i = sim.inputs;
+    setPrecoEletrico(i.precoEletrico);
+    setPrecoDiesel(i.precoDiesel);
+    setKmMes(i.kmMes);
+    setFrota(i.frota);
+    setMeses(i.meses);
+    setPrecoDieselL(i.precoDieselL);
+    setPrecoEnergia(i.precoEnergia);
+    setPrecoArla(i.precoArla);
+    setConsumoDieselKmL(i.consumoDieselKmL);
+    setConsumoEletricoKwhKm(i.consumoEletricoKwhKm);
+    if (i.perfil === "Personalizado") {
+      setPerfilCustom(true);
+    } else {
+      setPerfil(i.perfil);
+      setPerfilCustom(false);
+    }
+    setNomeSimulacaoAtual(sim.nome);
+    toast.success(`Simulação "${sim.nome}" carregada`);
+  }, []);
+
+  const handleExcluir = useCallback((id: string) => {
+    excluir(id);
+    toast.success("Simulação excluída");
+  }, [excluir]);
+
+  const handleExportPdf = useCallback(async () => {
+    setExportingPdf(true);
+    try {
+      await exportTCOPdf({
+        inputs: getInputs(),
+        resultados: getResultados(),
+        nomeSimulacao: nomeSimulacaoAtual,
+        logoUrl: logoFotonLavoro,
+        chartElementId: "tco-chart-area",
+      });
+      toast.success("PDF exportado com sucesso!");
+    } catch (err) {
+      toast.error("Erro ao gerar PDF");
+      console.error(err);
+    } finally {
+      setExportingPdf(false);
+    }
+  }, [getInputs, getResultados, nomeSimulacaoAtual]);
+
     <div className="min-h-screen" style={{ background: C.bg, fontFamily: "'Inter', 'IBM Plex Sans', system-ui, sans-serif" }}>
       <Navbar />
       {/* ── Header ── */}
