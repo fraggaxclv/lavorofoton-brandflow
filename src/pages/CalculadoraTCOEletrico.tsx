@@ -709,6 +709,7 @@ export default function CalculadoraTCOEletrico() {
           </div>
         </footer>
       </main>
+      <Footer />
     </div>
   );
 }
