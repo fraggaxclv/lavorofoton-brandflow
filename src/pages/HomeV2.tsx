@@ -78,7 +78,8 @@ const HomeV2 = () => {
       <Navbar />
 
       <div className="mt-16">
-      <BannerUrgencia />
+        <BannerUrgencia />
+      </div>
       {/* ─── BLOCO 1 — HERO ─── */}
       <section className="relative flex flex-col overflow-hidden">
         {/* Mobile: imagem sem corte, sem overlay */}
