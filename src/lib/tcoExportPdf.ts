@@ -173,11 +173,7 @@ export async function exportTCOPdf({
     }
   }
 
-  // ── SEÇÃO 4-6: Resumo consolidado ──
-  if (y > 230) {
-    pdf.addPage();
-    y = margin;
-  }
+  // ── SEÇÃO 4: Resumo consolidado ──
   y = drawSectionTitle(pdf, "Resumo Econômico", margin, y, contentW);
 
   const resumoRows = [
@@ -191,18 +187,18 @@ export async function exportTCOPdf({
     const isLast = i === resumoRows.length - 1;
     if (isLast) {
       pdf.setFillColor(resultados.economiaLiquida > 0 ? "#D1FAE5" : "#FEE2E2");
-      pdf.rect(margin, y - 4, contentW, 9, "F");
+      pdf.rect(margin, y - 3.5, contentW, 7, "F");
     } else if (i % 2 === 0) {
       pdf.setFillColor("#F9FAFB");
-      pdf.rect(margin, y - 3.5, contentW, 7, "F");
+      pdf.rect(margin, y - 3, contentW, 5.5, "F");
     }
-    pdf.setFontSize(isLast ? 10 : 9);
+    pdf.setFontSize(isLast ? 8.5 : 7.5);
     pdf.setFont("helvetica", isLast ? "bold" : "normal");
     pdf.setTextColor(isLast ? (resultados.economiaLiquida > 0 ? C.green : "#C0392B") : C.textPrimary);
     pdf.text(row[0], margin + 3, y);
     pdf.text(row[1], pageW - margin - 3, y, { align: "right" });
     pdf.setFont("helvetica", "normal");
-    y += isLast ? 9 : 7;
+    y += isLast ? 7 : 5.5;
   });
 
   // ── FOOTER ──
