@@ -31,7 +31,7 @@ const modelosPickups = [
 const comparativos = [
   { label: "Aumark 1217 vs Concorrentes", to: "/comparativo-aumark-1217" },
   { label: "eWonder vs Diesel", to: "/comparativo-ewonder" },
-  { label: "Comparações Interativas", to: "/calculadora" },
+  { label: "Calculadora Lavoro TCO", to: "/calculadora" },
 ];
 
 // Desktop dropdown component
