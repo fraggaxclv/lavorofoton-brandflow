@@ -405,7 +405,8 @@ export default function CalculadoraTCOEletrico() {
         <meta property="og:image" content="https://www.lavorofoton.com.br/og-calculadora.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta name="twitter:title" content="Calculadora Lavoro TCO | Elétrico vs Diesel" />
+        <meta name="twitter:title" content="Calcule sua economia real | Elétrico vs Diesel" />
+        <meta name="twitter:description" content="Descubra quanto sua operação pode economizar por mês com caminhões elétricos Foton. Simulação gratuita em 30 segundos." />
         <meta name="twitter:image" content="https://www.lavorofoton.com.br/og-calculadora.png" />
       </Helmet>
       <Navbar />
