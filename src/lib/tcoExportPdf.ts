@@ -109,17 +109,17 @@ export async function exportTCOPdf({
   kpis.forEach((kpi, i) => {
     const x = margin + i * (kpiW + 4);
     pdf.setFillColor("#F0F9F5");
-    pdf.roundedRect(x, y, kpiW, 22, 2, 2, "F");
-    pdf.setFontSize(8);
+    pdf.roundedRect(x, y, kpiW, 18, 2, 2, "F");
+    pdf.setFontSize(7);
     pdf.setTextColor(C.textSecondary);
-    pdf.text(kpi.label.toUpperCase(), x + kpiW / 2, y + 7, { align: "center" });
-    pdf.setFontSize(14);
+    pdf.text(kpi.label.toUpperCase(), x + kpiW / 2, y + 6, { align: "center" });
+    pdf.setFontSize(12);
     pdf.setFont("helvetica", "bold");
     pdf.setTextColor(kpi.color);
-    pdf.text(kpi.value, x + kpiW / 2, y + 17, { align: "center" });
+    pdf.text(kpi.value, x + kpiW / 2, y + 14, { align: "center" });
     pdf.setFont("helvetica", "normal");
   });
-  y += 28;
+  y += 22;
 
   // ── SEÇÃO 2: Inputs ──
   y = drawSectionTitle(pdf, "Parâmetros da Simulação", margin, y, contentW);
