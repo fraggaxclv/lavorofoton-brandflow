@@ -77,7 +77,9 @@ const HomeV2 = () => {
     <div className="min-h-screen">
       <Navbar />
 
-      <BannerUrgencia />
+      <div className="mt-16">
+        <BannerUrgencia />
+      </div>
       {/* ─── BLOCO 1 — HERO ─── */}
       <section className="relative flex flex-col overflow-hidden">
         {/* Mobile: imagem sem corte, sem overlay */}
