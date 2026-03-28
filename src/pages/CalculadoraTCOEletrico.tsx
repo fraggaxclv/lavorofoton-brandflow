@@ -1,12 +1,16 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import React, { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   BarChart, Bar, Legend
 } from "recharts";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { toast } from "sonner";
 import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useSimulacoesTCO, SimulacaoTCO } from "@/hooks/useSimulacoesTCO";
+import TCOActionBar from "@/components/calculadoras/TCOActionBar";
+import { exportTCOPdf } from "@/lib/tcoExportPdf";
 
 // ── Brand tokens ──
 const C = {
