@@ -394,6 +394,7 @@ export default function CalculadoraTCOEletrico() {
     }
   }, [getInputs, getResultados, nomeSimulacaoAtual]);
 
+  return (
     <div className="min-h-screen" style={{ background: C.bg, fontFamily: "'Inter', 'IBM Plex Sans', system-ui, sans-serif" }}>
       <Navbar />
       {/* ── Header ── */}
