@@ -230,12 +230,12 @@ function drawSectionTitle(pdf: jsPDF, title: string, x: number, y: number, w: nu
   pdf.setDrawColor(C.border);
   pdf.setLineWidth(0.3);
   pdf.line(x, y, x + w, y);
-  y += 5;
-  pdf.setFontSize(10);
+  y += 4;
+  pdf.setFontSize(8);
   pdf.setFont("helvetica", "bold");
   pdf.setTextColor(C.brand);
   pdf.text(title.toUpperCase(), x, y);
   pdf.setFont("helvetica", "normal");
-  y += 6;
+  y += 4;
   return y;
 }
