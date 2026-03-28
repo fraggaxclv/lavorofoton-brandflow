@@ -6,7 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import heroTruckMobile from "@/assets/hero-lavoro-bh.png";
 import heroTruckDesktop from "@/assets/hero-lavoro-desktop.png";
-import { Search, CreditCard, Handshake, Settings, Package, Building2 } from "lucide-react";
+import { Search, CreditCard, Handshake, Settings, Package, Building2, Calculator } from "lucide-react";
 import iconeFotonGlobal from "@/assets/icone-foton-global.png";
 import icone12Milhoes from "@/assets/icone-12milhoes.png";
 import iconeCumminsZf from "@/assets/icone-cummins-zf.png";
