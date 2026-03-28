@@ -512,7 +512,7 @@ export default function CalculadoraTCOEletrico() {
 
         {/* ── Seção 4: Gráfico Acumulado ── */}
         <Section title="Custo Acumulado no Período">
-          <div className="w-full h-[380px]">
+          <div id="tco-chart-area" className="w-full h-[380px]">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={calc.chartData} margin={{ top: 10, right: 20, left: 20, bottom: 10 }}>
                 <defs>
