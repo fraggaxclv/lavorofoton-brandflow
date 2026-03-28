@@ -56,32 +56,47 @@ export async function exportTCOPdf({
 
   // ── HEADER ──
   if (logoBase64) {
-    pdf.addImage(logoBase64, "PNG", margin, y, 45, 14);
+    pdf.addImage(logoBase64, "PNG", margin, y, 40, 12);
   }
-  pdf.setFontSize(9);
+  pdf.setFontSize(8);
   pdf.setTextColor(C.textSecondary);
-  pdf.text(dataStr, pageW - margin, y + 5, { align: "right" });
-  if (nomeSimulacao) {
-    pdf.setFontSize(8);
-    pdf.text(nomeSimulacao, pageW - margin, y + 10, { align: "right" });
-  }
-  y += 20;
+  pdf.text(dataStr, pageW - margin, y + 4, { align: "right" });
+  y += 14;
 
   // Title
   pdf.setDrawColor(C.brand);
   pdf.setLineWidth(0.6);
   pdf.line(margin, y, pageW - margin, y);
-  y += 6;
-  pdf.setFontSize(16);
+  y += 5;
+  pdf.setFontSize(14);
   pdf.setTextColor(C.brand);
   pdf.setFont("helvetica", "bold");
   pdf.text("Calculadora TCO — Lavoro Foton", margin, y);
   y += 4;
-  pdf.setFontSize(9);
+  pdf.setFontSize(8);
   pdf.setFont("helvetica", "normal");
   pdf.setTextColor(C.textSecondary);
   pdf.text("Custo Total de Propriedade · Elétrico vs Diesel", margin, y);
-  y += 8;
+  y += 5;
+
+  // ── Client name highlight ──
+  if (nomeSimulacao) {
+    pdf.setFillColor("#EFF6FF");
+    pdf.roundedRect(margin, y, contentW, 10, 2, 2, "F");
+    pdf.setDrawColor(C.brand);
+    pdf.setLineWidth(0.4);
+    pdf.roundedRect(margin, y, contentW, 10, 2, 2, "S");
+    pdf.setFontSize(9);
+    pdf.setFont("helvetica", "bold");
+    pdf.setTextColor(C.brand);
+    pdf.text(`Simulação realizada para atender ${nomeSimulacao}.`, margin + 4, y + 4.5);
+    pdf.setFontSize(7.5);
+    pdf.setFont("helvetica", "normal");
+    pdf.setTextColor(C.accent);
+    pdf.text("Elaborar plano de redução de custos.", margin + 4, y + 8.5);
+    y += 13;
+  }
+  y += 1;
 
   // ── SEÇÃO 1: KPIs ──
   const kpis = [
@@ -94,17 +109,17 @@ export async function exportTCOPdf({
   kpis.forEach((kpi, i) => {
     const x = margin + i * (kpiW + 4);
     pdf.setFillColor("#F0F9F5");
-    pdf.roundedRect(x, y, kpiW, 22, 2, 2, "F");
-    pdf.setFontSize(8);
+    pdf.roundedRect(x, y, kpiW, 18, 2, 2, "F");
+    pdf.setFontSize(7);
     pdf.setTextColor(C.textSecondary);
-    pdf.text(kpi.label.toUpperCase(), x + kpiW / 2, y + 7, { align: "center" });
-    pdf.setFontSize(14);
+    pdf.text(kpi.label.toUpperCase(), x + kpiW / 2, y + 6, { align: "center" });
+    pdf.setFontSize(12);
     pdf.setFont("helvetica", "bold");
     pdf.setTextColor(kpi.color);
-    pdf.text(kpi.value, x + kpiW / 2, y + 17, { align: "center" });
+    pdf.text(kpi.value, x + kpiW / 2, y + 14, { align: "center" });
     pdf.setFont("helvetica", "normal");
   });
-  y += 28;
+  y += 22;
 
   // ── SEÇÃO 2: Inputs ──
   y = drawSectionTitle(pdf, "Parâmetros da Simulação", margin, y, contentW);
@@ -125,17 +140,17 @@ export async function exportTCOPdf({
   inputRows.forEach((row, i) => {
     if (i % 2 === 0) {
       pdf.setFillColor("#F9FAFB");
-      pdf.rect(margin, y - 3.5, contentW, 7, "F");
+      pdf.rect(margin, y - 3, contentW, 5.5, "F");
     }
-    pdf.setFontSize(9);
+    pdf.setFontSize(7.5);
     pdf.setTextColor(C.textPrimary);
     pdf.text(row[0], margin + 3, y);
     pdf.setFont("helvetica", "bold");
     pdf.text(row[1], pageW - margin - 3, y, { align: "right" });
     pdf.setFont("helvetica", "normal");
-    y += 7;
+    y += 5.5;
   });
-  y += 4;
+  y += 2;
 
   // ── SEÇÃO 3: Chart capture ──
   const chartEl = document.getElementById(chartElementId);
@@ -145,26 +160,20 @@ export async function exportTCOPdf({
       const canvas = await html2canvas(chartEl, { backgroundColor: "#ffffff", scale: 2 });
       const imgData = canvas.toDataURL("image/png");
       const ratio = canvas.width / canvas.height;
+      const maxChartH = 270 - y - 45; // leave room for resumo + footer
       const imgW = contentW;
-      const imgH = imgW / ratio;
-      
-      if (y + imgH > 280) {
-        pdf.addPage();
-        y = margin;
-        y = drawSectionTitle(pdf, "Custo Acumulado no Período", margin, y, contentW);
+      let imgH = imgW / ratio;
+      if (imgH > maxChartH) {
+        imgH = maxChartH;
       }
       pdf.addImage(imgData, "PNG", margin, y, imgW, imgH);
-      y += imgH + 6;
+      y += imgH + 3;
     } catch {
       // skip chart
     }
   }
 
-  // ── SEÇÃO 4-6: Resumo consolidado ──
-  if (y > 230) {
-    pdf.addPage();
-    y = margin;
-  }
+  // ── SEÇÃO 4: Resumo consolidado ──
   y = drawSectionTitle(pdf, "Resumo Econômico", margin, y, contentW);
 
   const resumoRows = [
@@ -178,18 +187,18 @@ export async function exportTCOPdf({
     const isLast = i === resumoRows.length - 1;
     if (isLast) {
       pdf.setFillColor(resultados.economiaLiquida > 0 ? "#D1FAE5" : "#FEE2E2");
-      pdf.rect(margin, y - 4, contentW, 9, "F");
+      pdf.rect(margin, y - 3.5, contentW, 7, "F");
     } else if (i % 2 === 0) {
       pdf.setFillColor("#F9FAFB");
-      pdf.rect(margin, y - 3.5, contentW, 7, "F");
+      pdf.rect(margin, y - 3, contentW, 5.5, "F");
     }
-    pdf.setFontSize(isLast ? 10 : 9);
+    pdf.setFontSize(isLast ? 8.5 : 7.5);
     pdf.setFont("helvetica", isLast ? "bold" : "normal");
     pdf.setTextColor(isLast ? (resultados.economiaLiquida > 0 ? C.green : "#C0392B") : C.textPrimary);
     pdf.text(row[0], margin + 3, y);
     pdf.text(row[1], pageW - margin - 3, y, { align: "right" });
     pdf.setFont("helvetica", "normal");
-    y += isLast ? 9 : 7;
+    y += isLast ? 7 : 5.5;
   });
 
   // ── FOOTER ──
@@ -221,12 +230,12 @@ function drawSectionTitle(pdf: jsPDF, title: string, x: number, y: number, w: nu
   pdf.setDrawColor(C.border);
   pdf.setLineWidth(0.3);
   pdf.line(x, y, x + w, y);
-  y += 5;
-  pdf.setFontSize(10);
+  y += 4;
+  pdf.setFontSize(8);
   pdf.setFont("helvetica", "bold");
   pdf.setTextColor(C.brand);
   pdf.text(title.toUpperCase(), x, y);
   pdf.setFont("helvetica", "normal");
-  y += 6;
+  y += 4;
   return y;
 }
