@@ -398,7 +398,7 @@ export default function CalculadoraTCOEletrico() {
     <div className="min-h-screen" style={{ background: C.bg, fontFamily: "'Inter', 'IBM Plex Sans', system-ui, sans-serif" }}>
       <Navbar />
       {/* ── Header ── */}
-      <header className="px-6 md:px-12 py-5 border-b" style={{ borderColor: C.brand, borderBottomWidth: 2 }}>
+      <header className="mt-16 px-6 md:px-12 py-5 border-b" style={{ borderColor: C.brand, borderBottomWidth: 2 }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-10 md:h-12" />
