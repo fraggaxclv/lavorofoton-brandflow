@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { Helmet } from "react-helmet-async";
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   BarChart, Bar, Legend
@@ -396,6 +397,17 @@ export default function CalculadoraTCOEletrico() {
 
   return (
     <div className="min-h-screen" style={{ background: C.bg, fontFamily: "'Inter', 'IBM Plex Sans', system-ui, sans-serif" }}>
+      <Helmet>
+        <title>Calculadora Lavoro TCO | Elétrico vs Diesel</title>
+        <meta name="description" content="Compare o Custo Total de Propriedade entre caminhões elétricos e diesel. Simule economia de combustível, manutenção e payback." />
+        <meta property="og:title" content="Calculadora Lavoro TCO | Elétrico vs Diesel" />
+        <meta property="og:description" content="Compare o Custo Total de Propriedade entre caminhões elétricos e diesel. Simule economia de combustível, manutenção e payback." />
+        <meta property="og:image" content="https://www.lavorofoton.com.br/og-calculadora.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:title" content="Calculadora Lavoro TCO | Elétrico vs Diesel" />
+        <meta name="twitter:image" content="https://www.lavorofoton.com.br/og-calculadora.png" />
+      </Helmet>
       <Navbar />
       {/* ── Header ── */}
       <header className="mt-16 px-6 md:px-12 py-5 border-b" style={{ borderColor: C.brand, borderBottomWidth: 2 }}>
