@@ -6,7 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import heroTruckMobile from "@/assets/hero-lavoro-bh.png";
 import heroTruckDesktop from "@/assets/hero-lavoro-desktop.png";
-import { Search, CreditCard, Handshake, Settings, Package, Building2 } from "lucide-react";
+import { Search, CreditCard, Handshake, Settings, Package, Building2, Calculator } from "lucide-react";
 import iconeFotonGlobal from "@/assets/icone-foton-global.png";
 import icone12Milhoes from "@/assets/icone-12milhoes.png";
 import iconeCumminsZf from "@/assets/icone-cummins-zf.png";
@@ -236,6 +236,34 @@ const HomeV2 = () => {
                 Ver comparativo técnico →
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── BLOCO 4.5 — CALCULADORA TCO ─── */}
+      <section className="section-padding bg-gradient-to-br from-primary/5 via-background to-primary/10 border-y border-primary/20">
+        <div className="container-lavoro text-center">
+          <div className="max-w-3xl mx-auto">
+            <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary mb-4 bg-primary/10 px-4 py-1.5 rounded-full">
+              Ferramenta exclusiva
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
+              Calculadora Lavoro <span className="text-primary">TCO</span>
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground mb-3 max-w-2xl mx-auto">
+              Comprove a economia real ao trocar seu veículo atual por um Foton elétrico. 
+              Compare custo total de propriedade — combustível, manutenção, ARLA e mais — mês a mês.
+            </p>
+            <p className="text-sm text-muted-foreground/80 mb-8 max-w-xl mx-auto">
+              Dados reais. Sem achismo. Coloque os números da sua operação e veja o resultado.
+            </p>
+            <Link
+              to="/calculadora"
+              className="btn-primary-large inline-flex items-center gap-2 text-center shadow-xl"
+            >
+              <Calculator className="w-5 h-5" />
+              Simular minha economia →
+            </Link>
           </div>
         </div>
       </section>
