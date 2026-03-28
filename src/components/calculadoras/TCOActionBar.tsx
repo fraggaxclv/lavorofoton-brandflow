@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Save, FileText, ChevronDown, Trash2, Pencil, FolderOpen, Loader2, X } from "lucide-react";
 import { SimulacaoTCO } from "@/hooks/useSimulacoesTCO";
 
+const fmt = (v: number) =>
+  v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 0, maximumFractionDigits: 0 });
+
 const C = {
   brand: "#003B73",
   accent: "#F28C28",
