@@ -56,32 +56,47 @@ export async function exportTCOPdf({
 
   // ── HEADER ──
   if (logoBase64) {
-    pdf.addImage(logoBase64, "PNG", margin, y, 45, 14);
+    pdf.addImage(logoBase64, "PNG", margin, y, 40, 12);
   }
-  pdf.setFontSize(9);
+  pdf.setFontSize(8);
   pdf.setTextColor(C.textSecondary);
-  pdf.text(dataStr, pageW - margin, y + 5, { align: "right" });
-  if (nomeSimulacao) {
-    pdf.setFontSize(8);
-    pdf.text(nomeSimulacao, pageW - margin, y + 10, { align: "right" });
-  }
-  y += 20;
+  pdf.text(dataStr, pageW - margin, y + 4, { align: "right" });
+  y += 14;
 
   // Title
   pdf.setDrawColor(C.brand);
   pdf.setLineWidth(0.6);
   pdf.line(margin, y, pageW - margin, y);
-  y += 6;
-  pdf.setFontSize(16);
+  y += 5;
+  pdf.setFontSize(14);
   pdf.setTextColor(C.brand);
   pdf.setFont("helvetica", "bold");
   pdf.text("Calculadora TCO — Lavoro Foton", margin, y);
   y += 4;
-  pdf.setFontSize(9);
+  pdf.setFontSize(8);
   pdf.setFont("helvetica", "normal");
   pdf.setTextColor(C.textSecondary);
   pdf.text("Custo Total de Propriedade · Elétrico vs Diesel", margin, y);
-  y += 8;
+  y += 5;
+
+  // ── Client name highlight ──
+  if (nomeSimulacao) {
+    pdf.setFillColor("#EFF6FF");
+    pdf.roundedRect(margin, y, contentW, 10, 2, 2, "F");
+    pdf.setDrawColor(C.brand);
+    pdf.setLineWidth(0.4);
+    pdf.roundedRect(margin, y, contentW, 10, 2, 2, "S");
+    pdf.setFontSize(9);
+    pdf.setFont("helvetica", "bold");
+    pdf.setTextColor(C.brand);
+    pdf.text(`Simulação realizada para atender ${nomeSimulacao}.`, margin + 4, y + 4.5);
+    pdf.setFontSize(7.5);
+    pdf.setFont("helvetica", "normal");
+    pdf.setTextColor(C.accent);
+    pdf.text("Elaborar plano de redução de custos.", margin + 4, y + 8.5);
+    y += 13;
+  }
+  y += 1;
 
   // ── SEÇÃO 1: KPIs ──
   const kpis = [
