@@ -13,7 +13,7 @@ const tcoRows = [
 const barData = [
   { label: "Combustível", diesel: 66000, eletrico: 9600 },
   { label: "Manutenção", diesel: 48000, eletrico: 9000 },
-  { label: "IPVA + Seguro", diesel: 12000, eletrico: 4800 },
+  { label: "Seguro", diesel: 10000, eletrico: 8000 },
   { label: "Depreciação", diesel: 44000, eletrico: 28000 },
 ];
 
