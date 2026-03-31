@@ -445,7 +445,7 @@ const EWonderLanding = () => {
               {[
                 { icon: <Battery className="w-8 h-8" />, title: "Bateria CATL-LFP", text: "A mesma tecnologia da Tesla. Garantia de 6 a 8 anos." },
                 { icon: <Zap className="w-8 h-8" />, title: "Carga rápida em 1 hora", text: "Carga lenta em 6 horas. Funciona em tomada industrial." },
-                { icon: <Leaf className="w-8 h-8" />, title: "Zero emissões", text: "IPVA isento em Minas Gerais. Narrativa ESG para seus clientes." },
+                { icon: <Leaf className="w-8 h-8" />, title: "Zero emissões", text: "Sem emissões de CO₂. Narrativa ESG para seus clientes." },
               ].map((d, i) => (
                 <div key={i} className="rounded-2xl p-6 bg-[#E4F8FF] border border-[#33C5F4]/30">
                   <div className="flex items-start gap-4">

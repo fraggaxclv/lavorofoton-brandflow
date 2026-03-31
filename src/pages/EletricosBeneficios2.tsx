@@ -5,7 +5,7 @@ const tcoRows = [
   { item: "Combustível / Energia", diesel: "R$ 0,55/km", eletrico: "R$ 0,08/km", economia: "–85%" },
   { item: "Manutenção preventiva", diesel: "R$ 1.800/mês", eletrico: "R$ 450/mês", economia: "–75%" },
   { item: "Manutenção corretiva", diesel: "R$ 2.200/mês", eletrico: "R$ 300/mês", economia: "–86%" },
-  { item: "IPVA + Seguro", diesel: "R$ 12.000/ano", eletrico: "R$ 4.800/ano", economia: "–60%" },
+  { item: "Seguro", diesel: "R$ 10.000/ano", eletrico: "R$ 8.000/ano", economia: "–20%" },
   { item: "Depreciação (5 anos)", diesel: "–55%", eletrico: "–35%", economia: "+20pp" },
   { item: "Downtime oficina", diesel: "8 dias/ano", eletrico: "2 dias/ano", economia: "–75%" },
 ];
@@ -13,7 +13,7 @@ const tcoRows = [
 const barData = [
   { label: "Combustível", diesel: 66000, eletrico: 9600 },
   { label: "Manutenção", diesel: 48000, eletrico: 9000 },
-  { label: "IPVA + Seguro", diesel: 12000, eletrico: 4800 },
+  { label: "Seguro", diesel: 10000, eletrico: 8000 },
   { label: "Depreciação", diesel: 44000, eletrico: 28000 },
 ];
 
