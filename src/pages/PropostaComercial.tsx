@@ -253,16 +253,16 @@ export default function PropostaComercial() {
 
     const rows = specs.map(s => `
       <tr>
-        <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #003366; width: 40%; font-size: 12px;">${s.label}</td>
-        <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; color: #374151; font-size: 12px;">${s.valor}</td>
+        <td style="padding: 6px 10px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #003366; width: 40%; font-size: 11px;">${s.label}</td>
+        <td style="padding: 6px 10px; border-bottom: 1px solid #e5e7eb; color: #374151; font-size: 11px;">${s.valor}</td>
       </tr>
     `).join('');
 
     return `
-      <table style="width: 100%; border-collapse: collapse; font-size: 13px; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
         <thead>
           <tr style="background: #003366; color: white;">
-            <th colspan="2" style="padding: 14px 16px; text-align: left; font-size: 14px; font-weight: 700;">ESPECIFICAÇÕES TÉCNICAS</th>
+            <th colspan="2" style="padding: 10px 12px; text-align: left; font-size: 13px; font-weight: 700;">ESPECIFICAÇÕES TÉCNICAS</th>
           </tr>
         </thead>
         <tbody>
