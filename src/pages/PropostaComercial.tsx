@@ -253,16 +253,16 @@ export default function PropostaComercial() {
 
     const rows = specs.map(s => `
       <tr>
-        <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #003366; width: 40%; font-size: 12px;">${s.label}</td>
-        <td style="padding: 10px 14px; border-bottom: 1px solid #e5e7eb; color: #374151; font-size: 12px;">${s.valor}</td>
+        <td style="padding: 6px 10px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #003366; width: 40%; font-size: 11px;">${s.label}</td>
+        <td style="padding: 6px 10px; border-bottom: 1px solid #e5e7eb; color: #374151; font-size: 11px;">${s.valor}</td>
       </tr>
     `).join('');
 
     return `
-      <table style="width: 100%; border-collapse: collapse; font-size: 13px; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
         <thead>
           <tr style="background: #003366; color: white;">
-            <th colspan="2" style="padding: 14px 16px; text-align: left; font-size: 14px; font-weight: 700;">ESPECIFICAÇÕES TÉCNICAS</th>
+            <th colspan="2" style="padding: 10px 12px; text-align: left; font-size: 13px; font-weight: 700;">ESPECIFICAÇÕES TÉCNICAS</th>
           </tr>
         </thead>
         <tbody>
@@ -293,40 +293,37 @@ export default function PropostaComercial() {
         garantiaLabel = '**3 anos sem limite de km';
       }
       
-      // Primeiro produto NÃO quebra página (continua da capa)
-      const pageBreak = index === 0 ? '' : 'page-break-before: always;';
-      
       return `
-        <div style="${pageBreak} min-height: 100vh; padding: 32px 0;">
-          <!-- Cabeçalho do Produto - 25% maior -->
-          <div style="margin-bottom: 20px;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;">
-              <span style="background: #003366; color: white; padding: 6px 16px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border: 2px solid #003366;">${categoriaLabel}</span>
-              <span style="background: #e0f2fe; color: #0369a1; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 2px solid #0369a1;">CNH ${p.veiculo?.cnh || '-'}</span>
-              ${p.cor ? `<span style="background: #fef3c7; color: #b45309; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 2px solid #b45309;">Cor: ${p.cor}</span>` : ''}
-              ${p.anoModelo ? `<span style="background: #e0e7ff; color: #4338ca; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 2px solid #4338ca;">${p.anoModelo}</span>` : ''}
-              <span style="background: #dcfce7; color: #15803d; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 2px solid #15803d;">Garantia: ${garantiaLabel}</span>
+        <div style="page-break-before: always; page-break-after: always; page-break-inside: avoid; padding: 24px 0;">
+          <!-- Cabeçalho do Produto -->
+          <div style="margin-bottom: 14px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
+              <span style="background: #003366; color: white; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border: 2px solid #003366;">${categoriaLabel}</span>
+              <span style="background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; border: 2px solid #0369a1;">CNH ${p.veiculo?.cnh || '-'}</span>
+              ${p.cor ? `<span style="background: #fef3c7; color: #b45309; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; border: 2px solid #b45309;">Cor: ${p.cor}</span>` : ''}
+              ${p.anoModelo ? `<span style="background: #e0e7ff; color: #4338ca; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; border: 2px solid #4338ca;">${p.anoModelo}</span>` : ''}
+              <span style="background: #dcfce7; color: #15803d; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; border: 2px solid #15803d;">Garantia: ${garantiaLabel}</span>
             </div>
-            <h2 style="font-size: 30px; font-weight: 800; color: #000000 !important; margin: 0 0 6px 0; letter-spacing: -0.5px; background: #003366; color: #ffffff !important; padding: 12px 20px; border-radius: 8px; display: inline-block;">${p.modelo}</h2>
-            <p style="font-size: 15px; color: #6b7280; margin: 0;">Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
+            <h2 style="font-size: 26px; font-weight: 800; color: #ffffff !important; margin: 0 0 4px 0; letter-spacing: -0.5px; background: #003366; padding: 10px 18px; border-radius: 8px; display: inline-block;">${p.modelo}</h2>
+            <p style="font-size: 13px; color: #6b7280; margin: 4px 0 0 0;">Capacidade: ${p.veiculo?.capacidade || 'Consultar'}</p>
           </div>
 
-          <!-- Imagem Principal - Mantendo tamanho atual -->
-          <div style="margin-bottom: 20px;">
+          <!-- Imagem Principal -->
+          <div style="margin-bottom: 14px;">
             ${p.veiculo ? `
-              <img src="${p.veiculo.imagem}" alt="${p.modelo}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
-            ` : '<div style="width: 100%; height: 180px; background: #f3f4f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 14px;">Imagem não disponível</div>'}
+              <img src="${p.veiculo.imagem}" alt="${p.modelo}" style="width: 100%; height: 160px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" />
+            ` : '<div style="width: 100%; height: 160px; background: #f3f4f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 14px;">Imagem não disponível</div>'}
           </div>
 
-          <!-- Grid: 10 Qualificações + Tabela Técnica + Valor -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-            <!-- 10 Informações Relevantes -->
+          <!-- Grid: Qualificações + Tabela Técnica + Valor -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <!-- Informações Relevantes -->
             <div>
-              <h3 style="font-size: 14px; font-weight: 700; color: #1a1a2e; margin: 0 0 16px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #003366; padding-bottom: 8px; display: inline-block;">Por que este veículo?</h3>
+              <h3 style="font-size: 13px; font-weight: 700; color: #1a1a2e; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #003366; padding-bottom: 6px; display: inline-block;">Por que este veículo?</h3>
               <ul style="margin: 0; padding: 0; list-style: none;">
                 ${infos.map((info, i) => `
-                  <li style="display: flex; gap: 10px; margin-bottom: 8px; font-size: 12px; line-height: 1.6; color: #374151;">
-                    <span style="flex-shrink: 0; width: 20px; height: 20px; background: linear-gradient(135deg, #003366, #001a33); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;">${i + 1}</span>
+                  <li style="display: flex; gap: 8px; margin-bottom: 5px; font-size: 11px; line-height: 1.5; color: #374151;">
+                    <span style="flex-shrink: 0; width: 18px; height: 18px; background: linear-gradient(135deg, #003366, #001a33); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700;">${i + 1}</span>
                     <span>${info}</span>
                   </li>
                 `).join('')}
@@ -334,23 +331,23 @@ export default function PropostaComercial() {
             </div>
 
             <!-- Coluna Direita: Tabela Técnica + Valor -->
-            <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
               ${tabelaTecnica}
               
-              <!-- Valor deste produto - abaixo da tabela técnica -->
-              <div style="background: #f8fafc; padding: 14px 20px; border-radius: 8px; border: 1px solid #003366; text-align: right;">
-                <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Valor Unitário</div>
-                <div style="font-size: 20px; font-weight: 800; color: #003366;">${formatarMoeda(p.valorUnitario)}</div>
-                <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">Qtd: ${p.quantidade} | Total: ${formatarMoeda(p.valorTotal)}</div>
+              <!-- Valor deste produto -->
+              <div style="background: #f8fafc; padding: 12px 16px; border-radius: 8px; border: 1px solid #003366; text-align: right;">
+                <div style="font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Valor Unitário</div>
+                <div style="font-size: 18px; font-weight: 800; color: #003366;">${formatarMoeda(p.valorUnitario)}</div>
+                <div style="font-size: 11px; color: #6b7280; margin-top: 2px;">Qtd: ${p.quantidade} | Total: ${formatarMoeda(p.valorTotal)}</div>
               </div>
             </div>
           </div>
 
           ${p.opcionais ? `
           <!-- Opcionais -->
-          <div style="margin-top: 20px; background: #fffbeb; padding: 16px 20px; border-radius: 8px; border-left: 4px solid #f59e0b;">
-            <div style="font-size: 11px; color: #92400e; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; font-weight: 600;">Opcionais Inclusos</div>
-            <p style="font-size: 13px; color: #78350f; margin: 0; line-height: 1.6;">${p.opcionais}</p>
+          <div style="margin-top: 14px; background: #fffbeb; padding: 12px 16px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+            <div style="font-size: 10px; color: #92400e; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; font-weight: 600;">Opcionais Inclusos</div>
+            <p style="font-size: 12px; color: #78350f; margin: 0; line-height: 1.5;">${p.opcionais}</p>
           </div>
           ` : ''}
         </div>
