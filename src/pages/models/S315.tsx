@@ -53,7 +53,7 @@ const S315 = () => {
     alt: "Motor Cummins do Foton Aumark S315",
     caption: "Motor Cummins ISF 2.8"
   }];
-  const whatsappNumber = "5531996970656";
+  const whatsappNumber = "5531997966042";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Aumark S315.");
   const handleWhatsApp = () => {
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");

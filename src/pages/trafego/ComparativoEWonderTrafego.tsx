@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import EWonderLanding from "@/pages/EWonderLanding";
 
-const WHATSAPP_NUMBER = "5531996970656";
+const WHATSAPP_NUMBER = "5531997966042";
 const WHATSAPP_MSG = encodeURIComponent("Olá, eu vim dos anúncios do Google e do comparativo do eWonder.");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
 

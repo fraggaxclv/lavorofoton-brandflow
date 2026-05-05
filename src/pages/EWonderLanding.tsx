@@ -492,7 +492,7 @@ const EWonderLanding = () => {
           </p>
           <Button asChild size="lg" className="text-lg px-10 py-6 rounded-xl font-bold bg-[#00C853] hover:bg-[#00B048] text-black">
             <a
-              href="https://wa.me/5531996970656?text=Ol%C3%A1!%20Quero%20agendar%20o%20test%20drive%20do%20Foton%20E-Wonder%20na%20Lavoro%20Foton."
+              href="https://wa.me/5531997966042?text=Ol%C3%A1!%20Quero%20agendar%20o%20test%20drive%20do%20Foton%20E-Wonder%20na%20Lavoro%20Foton."
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -510,7 +510,7 @@ const EWonderLanding = () => {
             <img src={logoFotonLavoro} alt="Lavoro Foton" className="h-10 md:h-12 brightness-0 invert" />
             <p className="text-sm text-white/50">Concessionária Oficial Foton em Minas Gerais — Atendimento dono a dono</p>
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <a href="https://wa.me/5531996970656?text=Ol%C3%A1!%20Quero%20agendar%20o%20test%20drive%20do%20Foton%20E-Wonder%20na%20Lavoro%20Foton." target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5531997966042?text=Ol%C3%A1!%20Quero%20agendar%20o%20test%20drive%20do%20Foton%20E-Wonder%20na%20Lavoro%20Foton." target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#22C55E] hover:bg-[#16A34A] text-white px-6 py-3 rounded-xl font-semibold">
                   <MessageCircle size={18} />
                   Falar no WhatsApp

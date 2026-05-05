@@ -114,7 +114,7 @@ const HomeV2 = () => {
                 Ver Modelos
               </Link>
               <a
-                href="https://wa.me/5531996970656?text=Olá, vim pelo site e quero saber mais sobre os veículos Foton."
+                href="https://wa.me/5531997966042?text=Olá, vim pelo site e quero saber mais sobre os veículos Foton."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded text-lg font-semibold border-2 border-white/60 hover:bg-white hover:text-foreground transition-all text-center shadow-2xl"
@@ -358,7 +358,7 @@ const HomeV2 = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <a
-              href="https://wa.me/5531996970656?text=Olá, vim pelo site e quero saber mais sobre os veículos Foton."
+              href="https://wa.me/5531997966042?text=Olá, vim pelo site e quero saber mais sobre os veículos Foton."
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[hsl(145,60%,40%)] text-white px-8 py-4 rounded text-lg font-semibold hover:bg-[hsl(145,60%,35%)] transition-all shadow-2xl text-center"

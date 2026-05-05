@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const WHATSAPP_URL_SIMULACAO =
-  "https://wa.me/5531996970656?text=Ol%C3%A1!%20Vi%20a%20simula%C3%A7%C3%A3o%20no%20site%20e%20quero%20calcular%20minha%20economia%20com%20o%20Foton%20Aumark%20S%201217.";
+  "https://wa.me/5531997966042?text=Ol%C3%A1!%20Vi%20a%20simula%C3%A7%C3%A3o%20no%20site%20e%20quero%20calcular%20minha%20economia%20com%20o%20Foton%20Aumark%20S%201217.";
 
 const modelos = [
   {
