@@ -63,7 +63,7 @@ const Foton17T = () => {
     }
   ];
 
-  const whatsappNumber = "5531996970656";
+  const whatsappNumber = "5531997966042";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o Foton Auman D 1722.");
 
   const handleWhatsApp = () => {

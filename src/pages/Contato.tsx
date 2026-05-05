@@ -240,8 +240,8 @@ const Contato = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">WhatsApp</h3>
-                      <p className="text-muted-foreground mb-2">(31) 99697-0656</p>
-                      <a href="https://wa.me/5531996970656" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">
+                      <p className="text-muted-foreground mb-2">(31) 99796-6042</p>
+                      <a href="https://wa.me/5531997966042" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">
                         Iniciar conversa →
                       </a>
                     </div>
@@ -256,8 +256,8 @@ const Contato = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Telefone</h3>
-                      <a href="https://wa.me/5531996970656" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                        (31) 99697-0656
+                      <a href="https://wa.me/5531997966042" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                        (31) 99796-6042
                       </a>
                       <p className="text-sm text-muted-foreground">Seg a Sex, 8h às 18h</p>
                     </div>
@@ -322,7 +322,7 @@ Minas Gerais, Brasil</p>
             Nossa equipe está pronta para recebê-lo. Conheça nossa estrutura e veja de perto os caminhões Foton.
           </p>
           <p className="text-lg font-semibold text-foreground">
-            Agende sua visita pelo WhatsApp: <a href="https://wa.me/5531996970656" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">(31) 99697-0656</a>
+            Agende sua visita pelo WhatsApp: <a href="https://wa.me/5531997966042" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">(31) 99796-6042</a>
           </p>
         </div>
       </section>

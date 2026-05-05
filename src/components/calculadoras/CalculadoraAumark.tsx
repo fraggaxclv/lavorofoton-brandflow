@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
 
-const WHATSAPP_BASE = "https://wa.me/5531996970656?text=";
+const WHATSAPP_BASE = "https://wa.me/5531997966042?text=";
 
 const caminhoesConcorrentes = [
   { nome: "VW Delivery 11.180", cargaUtil: 7380 },

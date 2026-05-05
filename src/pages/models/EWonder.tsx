@@ -15,7 +15,7 @@ import ewonderInteriorFront from "@/assets/ewonder-interior-front.jpg";
 import ewonderControls from "@/assets/ewonder-controls.jpg";
 import ewonderCargo from "@/assets/ewonder-cargo.png";
 
-const WHATSAPP_NUMBER = "5531996970656";
+const WHATSAPP_NUMBER = "5531997966042";
 const WHATSAPP_MSG = encodeURIComponent("Olá! Gostaria de mais informações sobre o eWonder.");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
 

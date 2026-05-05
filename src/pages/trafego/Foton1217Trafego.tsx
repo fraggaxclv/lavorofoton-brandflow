@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Foton1217 from "@/pages/models/Foton1217";
 
-const WHATSAPP_NUMBER = "5531996970656";
+const WHATSAPP_NUMBER = "5531997966042";
 const WHATSAPP_MSG = encodeURIComponent("Olá, eu vim dos anúncios do Google e quero saber mais do Foton Aumark 1217.");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
 

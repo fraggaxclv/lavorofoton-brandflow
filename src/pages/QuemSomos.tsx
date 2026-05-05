@@ -75,7 +75,7 @@ const QuemSomos = () => {
     title: "Mercedes-Benz Atego"
   }];
   const handleWhatsAppContact = () => {
-    window.open("https://wa.me/5531996970656", "_blank");
+    window.open("https://wa.me/5531997966042", "_blank");
   };
   const openLightbox = (index: number) => {
     setSelectedImage(index);

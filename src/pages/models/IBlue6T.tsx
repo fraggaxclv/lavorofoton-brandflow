@@ -8,7 +8,7 @@ import iblue6tImg from "@/assets/iblue-6t.jpg";
 
 const IBlue6T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const whatsappNumber = "5531996970656";
+  const whatsappNumber = "5531997966042";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o iBlue 6T.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 

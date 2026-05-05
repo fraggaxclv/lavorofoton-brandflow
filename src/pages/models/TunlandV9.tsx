@@ -117,7 +117,7 @@ const TunlandV9 = () => {
     }
   ];
 
-  const whatsappNumber = "5531996970656";
+  const whatsappNumber = "5531997966042";
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre a Foton Tunland V9 Premium.");
 
   const handleWhatsApp = () => {

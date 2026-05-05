@@ -8,7 +8,7 @@ import foton1217 from "@/assets/foton-1217.jpg";
 import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 
-const WHATSAPP_URL = "https://wa.me/5531996970656?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20o%20Aumark%20S%201217.";
+const WHATSAPP_URL = "https://wa.me/5531997966042?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20o%20Aumark%20S%201217.";
 
 // Intersection Observer hook for scroll animations
 function useScrollReveal() {
