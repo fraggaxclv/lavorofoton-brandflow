@@ -12,6 +12,7 @@ import iblue6t from "@/assets/iblue-6t.jpg";
 import eaumark12t from "@/assets/eaumark-12t.jpg";
 import eaumark9t from "@/assets/eaumark-9t-card.webp";
 import eview from "@/assets/eview.jpg";
+import aumanD1830Hero from "@/assets/auman-d-1830-hero.png";
 
 export interface Veiculo {
   id: string;
@@ -125,7 +126,61 @@ export const veiculosCatalogo: Veiculo[] = [
       'Garantia de 3 anos'
     ],
     cores: ['Branco', 'Azul', 'Vermelho'],
-    cargaUtilCarroceria: '11.375 kg'
+  },
+  {
+    id: 'auman-d-1830',
+    modelo: 'AUMAN D 1830',
+    categoria: 'diesel',
+    imagem: aumanD1830Hero,
+    capacidade: '18 toneladas',
+    cnh: 'D/E',
+    aplicacao: 'Pesado/Regional',
+    caracteristicas: [
+      'Motor Cummins D6.7 — 282 cv',
+      'Torque máximo: 1.100 Nm @ 1.100-1.600 rpm',
+      'Transmissão ZF 9AS1517TO AUTOMATIZADA — 9 marchas + ré',
+      'Embreagem automatizada com conversor de torque',
+      'Freios a ar tipo S Cam — ABS, EBD, ESC, TCS, HSA, EAT',
+      'Cabine com semi leito de série',
+      'Banco do motorista com amortecimento pneumático',
+      'Ar condicionado automático + painel LCD 7"',
+      'Suspensão traseira: feixe parabólico 4+3 com barra estabilizadora',
+      'Tanque de combustível em alumínio: 260 L ou 450 L',
+      'PBT 18.000 kg (técnico) | PBTC 34.000 kg',
+      'EURO 6 — IBAMA Proconve homologado',
+      'Garantia: 1 ano veículo completo + 3 anos motor e câmbio (sem limite de km)',
+    ],
+    cores: ['Branco', 'Azul', 'Vermelho'],
+    cargaUtilCarroceria: '10.360 kg',
+  },
+  {
+    id: 'auman-d-2632',
+    modelo: 'AUMAN D 2632',
+    // TODO: substituir por foto exclusiva do D 2632 quando disponível (ex: auman-d-2632-hero.png)
+    imagem: aumanD1830Hero,
+    categoria: 'diesel',
+    capacidade: '26 toneladas',
+    cnh: 'D/E',
+    aplicacao: 'Pesado 6x2/Longas distâncias',
+    caracteristicas: [
+      'Motor Cummins D6.7 — 320 cv',
+      'Torque máximo: 1.200 Nm @ 1.100-1.600 rpm',
+      'Transmissão ZF 9AS1517TO AUTOMATIZADA — 9 marchas + ré',
+      'Embreagem automatizada com conversor de torque',
+      'Freios a ar tipo S Cam — ABS, EBD, ESC, TCS, HSA, EAT',
+      'Ajuste automático da folga do freio',
+      'Cabine com semi leito de série',
+      'Banco do motorista com amortecimento pneumático',
+      'Ar condicionado automático + painel LCD 7" + farol de neblina dianteiro',
+      'Suspensão traseira pneumática (a ar) com 3º eixo elevável — bolsas 2+2+1',
+      'Tanque de combustível em alumínio: 450 L',
+      'PBT 26.000 kg (técnico) | PBTC 36.000 kg',
+      'Versões disponíveis: padrão (entre-eixos 4.800 + 1.350 mm) e L (5.450 + 1.350 mm, plataforma 8.201 mm)',
+      'EURO 6 — IBAMA Proconve homologado',
+      'Garantia: 1 ano veículo completo + 3 anos motor e câmbio (sem limite de km)',
+    ],
+    cores: ['Branco', 'Azul', 'Vermelho'],
+    cargaUtilCarroceria: '15.630 kg (padrão) / 15.560 kg (L)',
   },
   // Linha Elétrica
   {
