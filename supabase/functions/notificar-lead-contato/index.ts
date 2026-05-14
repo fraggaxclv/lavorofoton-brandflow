@@ -31,20 +31,29 @@ Deno.serve(async (req) => {
       });
     }
 
-    const subject = `Novo lead site Lavoro Foton — ${body.nome}`;
+    const empresaLabel = body.empresa?.trim() || 'sem empresa';
+    const subject = `Novo lead site Lavoro Foton — ${body.nome} — ${empresaLabel}`;
+
+    const telefoneDigits = (body.telefone || '').replace(/\D/g, '');
+    const waNumber = telefoneDigits.length >= 10
+      ? (telefoneDigits.startsWith('55') ? telefoneDigits : `55${telefoneDigits}`)
+      : null;
+    const waLink = waNumber ? `https://wa.me/${waNumber}` : null;
+
     const html = `
       <div style="font-family: Arial, sans-serif; max-width:640px; margin:0 auto; color:#0A1F3D;">
         <h2 style="color:#0A1F3D; border-bottom: 2px solid #F5A623; padding-bottom:8px;">Novo lead pelo site</h2>
         <table style="width:100%; border-collapse:collapse; font-size:14px;">
           <tr><td style="padding:8px 4px; font-weight:bold; width:140px;">Nome:</td><td>${escapeHtml(body.nome)}</td></tr>
           <tr><td style="padding:8px 4px; font-weight:bold;">Email:</td><td><a href="mailto:${escapeHtml(body.email)}">${escapeHtml(body.email)}</a></td></tr>
-          <tr><td style="padding:8px 4px; font-weight:bold;">Telefone:</td><td><a href="https://wa.me/${body.telefone.replace(/\D/g, '')}">${escapeHtml(body.telefone)}</a></td></tr>
+          <tr><td style="padding:8px 4px; font-weight:bold;">Telefone:</td><td>${escapeHtml(body.telefone)}</td></tr>
           <tr><td style="padding:8px 4px; font-weight:bold;">Empresa:</td><td>${escapeHtml(body.empresa || '—')}</td></tr>
           <tr><td style="padding:8px 4px; font-weight:bold;">Origem:</td><td>${escapeHtml(body.origem || 'site_publico_contato')}</td></tr>
           <tr><td style="padding:8px 4px; font-weight:bold; vertical-align:top;">Mensagem:</td><td style="white-space:pre-wrap;">${escapeHtml(body.mensagem || '—')}</td></tr>
         </table>
+        ${waLink ? `<p style="margin-top:24px;"><a href="${waLink}" style="display:inline-block; background:#25D366; color:#fff; padding:12px 20px; border-radius:6px; text-decoration:none; font-weight:bold;">Responder via WhatsApp</a></p>` : ''}
         <hr style="margin-top:24px; border:none; border-top:1px solid #ddd;" />
-        <p style="font-size:12px; color:#666;">Lavoro Foton — Notificação automática<br/>Responda diretamente a este lead pelo WhatsApp ou email acima.</p>
+        <p style="font-size:12px; color:#666;">Lavoro Foton — Notificação automática</p>
       </div>
     `;
 
@@ -55,7 +64,7 @@ Deno.serve(async (req) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Lavoro Foton <onboarding@resend.dev>',
+        from: 'Lavoro Foton <leads@lavorofoton.com.br>',
         to: ['contato@lavorofoton.com.br'],
         cc: ['matheus@lavorofoton.com.br'],
         subject,
