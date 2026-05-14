@@ -11,6 +11,8 @@ const modelosDiesel = [
   { label: "Aumark 916", to: "/modelos/aumark-916" },
   { label: "Aumark 1217", to: "/modelos/aumark-1217" },
   { label: "Auman D 1722", to: "/modelos/auman-d-1722" },
+  { label: "Auman D 1830", to: "/modelos/auman-d-1830" },
+  { label: "Auman D 2632", to: "/modelos/auman-d-2632" },
 ];
 
 const modelosEletricos = [

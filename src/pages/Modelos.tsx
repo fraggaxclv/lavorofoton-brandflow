@@ -7,6 +7,7 @@ import fotonHeavy from "@/assets/foton-heavy.jpg";
 import foton916 from "@/assets/foton-916.jpg";
 import foton1217 from "@/assets/foton-1217.jpg";
 import foton1722 from "@/assets/foton-1722.jpg";
+import aumanD1830Hero from "@/assets/auman-d-1830-hero.png";
 import tunlandV9 from "@/assets/tunland-v9.jpg";
 import tunlandV7 from "@/assets/tunland-v7.jpg";
 import ewonder from "@/assets/ewonder.jpg";
@@ -45,6 +46,8 @@ const Modelos = () => {
             <ModelCard name="AUMARK 916" description="Capacidade ampliada. Performance para distribuição regional." image={foton916} link="/modelos/aumark-916" />
             <ModelCard name="AUMARK 1217" description="Semipesado robusto. Força para grandes volumes." image={foton1217} link="/modelos/aumark-1217" />
             <ModelCard name="AUMAN D 1722" description="Alta capacidade. Longas distâncias e cargas pesadas." image={foton1722} link="/modelos/auman-d-1722" />
+            <ModelCard name="AUMAN D 1830" description="Toco 18 toneladas com câmbio ZF automatizado, semi leito de série e 3 anos de garantia sem limite de km." image={aumanD1830Hero} link="/modelos/auman-d-1830" />
+            <ModelCard name="AUMAN D 2632" description="Truck 6x2 com suspensão a ar, 3º eixo elevável, semi leito e câmbio automatizado — tudo de série." image={aumanD1830Hero} link="/modelos/auman-d-2632" />
           </div>
         </div>
       </section>
@@ -124,11 +127,23 @@ const Modelos = () => {
                   <td className="py-4 px-6">D/E</td>
                   <td className="py-4 px-6">Pesado</td>
                 </tr>
-                <tr className="hover:bg-secondary/50 transition-colors">
+                <tr className="border-b border-border hover:bg-secondary/50 transition-colors">
                   <td className="py-4 px-6 font-semibold">AUMAN D 1722</td>
                   <td className="py-4 px-6">17 toneladas</td>
                   <td className="py-4 px-6">D/E</td>
                   <td className="py-4 px-6">Pesado/Longas distâncias</td>
+                </tr>
+                <tr className="border-b border-border hover:bg-secondary/50 transition-colors">
+                  <td className="py-4 px-6 font-semibold">AUMAN D 1830</td>
+                  <td className="py-4 px-6">18 toneladas</td>
+                  <td className="py-4 px-6">D/E</td>
+                  <td className="py-4 px-6">Pesado-Regional</td>
+                </tr>
+                <tr className="hover:bg-secondary/50 transition-colors">
+                  <td className="py-4 px-6 font-semibold">AUMAN D 2632</td>
+                  <td className="py-4 px-6">26 toneladas</td>
+                  <td className="py-4 px-6">D/E</td>
+                  <td className="py-4 px-6">Pesado-Longas distâncias</td>
                 </tr>
               </tbody>
             </table>
