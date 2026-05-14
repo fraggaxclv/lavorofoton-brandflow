@@ -45,28 +45,28 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Modelos</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/modelos/s315" className="text-muted-foreground hover:text-primary transition-colors">
-                  Foton S315
+                <Link to="/modelos/aumark-s315" className="text-muted-foreground hover:text-primary transition-colors">
+                  Aumark S315
                 </Link>
               </li>
               <li>
-                <Link to="/modelos/7t" className="text-muted-foreground hover:text-primary transition-colors">
-                  Foton 7T
+                <Link to="/modelos/aumark-715" className="text-muted-foreground hover:text-primary transition-colors">
+                  Aumark 715
                 </Link>
               </li>
               <li>
-                <Link to="/modelos/9t" className="text-muted-foreground hover:text-primary transition-colors">
-                  Foton 9T
+                <Link to="/modelos/aumark-916" className="text-muted-foreground hover:text-primary transition-colors">
+                  Aumark 916
                 </Link>
               </li>
               <li>
-                <Link to="/modelos/1217" className="text-muted-foreground hover:text-primary transition-colors">
-                  Foton 1217
+                <Link to="/modelos/aumark-1217" className="text-muted-foreground hover:text-primary transition-colors">
+                  Aumark 1217
                 </Link>
               </li>
               <li>
-                <Link to="/modelos/17t" className="text-muted-foreground hover:text-primary transition-colors">
-                  Foton 17T
+                <Link to="/modelos/auman-d-1722" className="text-muted-foreground hover:text-primary transition-colors">
+                  Auman D 1722
                 </Link>
               </li>
             </ul>

@@ -2,3 +2,6 @@ project_id = "odmxffgnjloqzzaatffx"
 
 [functions.gerar-pedido-pdf]
 verify_jwt = false
+
+[functions.notificar-lead-contato]
+verify_jwt = false

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import { 
   useFormSecurity, 
   validateEmail, 
@@ -93,13 +94,37 @@ const Contato = () => {
     try {
       // Increment rate limit
       incrementRateLimit();
-      
-      // Here you would send the data to your backend
-      // For now, just show success message
-      await new Promise(resolve => setTimeout(resolve, 500)); // Simulate API call
-      
-      toast.success("Mensagem enviada! Retornaremos em breve.");
-      
+
+      const payload = {
+        nome: formData.nome,
+        email: formData.email,
+        telefone: formData.telefone,
+        empresa: formData.empresa || null,
+        mensagem: formData.mensagem,
+        origem: 'site_publico_contato',
+        user_agent: typeof navigator !== 'undefined' ? navigator.userAgent : null,
+      };
+
+      // Insert no Supabase + notificação por email em paralelo
+      const [insertRes, notifyRes] = await Promise.allSettled([
+        supabase.from('leads_contato').insert(payload),
+        supabase.functions.invoke('notificar-lead-contato', { body: payload }),
+      ]);
+
+      if (insertRes.status === 'rejected' || (insertRes.status === 'fulfilled' && insertRes.value.error)) {
+        const err = insertRes.status === 'fulfilled' ? insertRes.value.error : insertRes.reason;
+        console.error('Erro ao salvar lead:', err);
+        toast.error('Não foi possível registrar seu contato. Tente novamente ou fale pelo WhatsApp.');
+        return;
+      }
+
+      if (notifyRes.status === 'rejected' || (notifyRes.status === 'fulfilled' && notifyRes.value.error)) {
+        const err = notifyRes.status === 'fulfilled' ? notifyRes.value.error : notifyRes.reason;
+        console.warn('Lead salvo, mas notificação por email falhou:', err);
+      }
+
+      toast.success("Mensagem enviada! Vamos retornar pelo WhatsApp em até 24h.");
+
       // Reset form
       setFormData({
         nome: '',
@@ -108,7 +133,8 @@ const Contato = () => {
         empresa: '',
         mensagem: ''
       });
-    } catch {
+    } catch (err) {
+      console.error('Erro inesperado no envio do contato:', err);
       toast.error('Erro ao enviar mensagem. Tente novamente.');
     } finally {
       setIsSubmitting(false);

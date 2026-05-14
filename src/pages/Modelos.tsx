@@ -60,12 +60,12 @@ const Modelos = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ModelCard name="eWONDER" description="VUC elétrico. Emissão zero para entregas urbanas sustentáveis." image={ewonder} link="/modelos/ewonder" comingSoon />
+            <ModelCard name="eWONDER" description="VUC elétrico. Emissão zero para entregas urbanas sustentáveis." image={ewonder} link="/modelos/ewonder" />
             <ModelCard name="iBlue 6T" description="6 toneladas elétrico. Eficiência e sustentabilidade." image={iblue6t} link="/modelos/iblue-6t" />
-            <ModelCard name="eTOANO" description="Médio porte elétrico. Alta capacidade com zero emissões." image={etoano} link="/modelos/etoano" comingSoon />
-            <ModelCard name="eAumark 9T" description="9 toneladas elétrico. Força e eficiência energética." image={eaumark9t} link="/modelos/eaumark-9t" comingSoon />
-            <ModelCard name="eAumark 12T" description="12 toneladas elétrico. Alta capacidade com emissão zero." image={eaumark12t} link="/modelos/eaumark-12t" comingSoon />
-            <ModelCard name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." image={eview} link="/modelos/eview" comingSoon />
+            <ModelCard name="eTOANO" description="Médio porte elétrico. Alta capacidade com zero emissões." image={etoano} link="/modelos/etoano" />
+            <ModelCard name="eAumark 9T" description="9 toneladas elétrico. Força e eficiência energética." image={eaumark9t} link="/modelos/eaumark-9t" />
+            <ModelCard name="eAumark 12T" description="12 toneladas elétrico. Alta capacidade com emissão zero." image={eaumark12t} link="/modelos/eaumark-12t" />
+            <ModelCard name="eVIEW" description="Pesado elétrico. Máxima capacidade com impacto ambiental zero." image={eview} link="/modelos/eview" />
             <ModelCard name="eView Connect" description="Van elétrica top de linha. 7,2 m³ de carga, 170 cv. Seu escritório sobre rodas." image={eviewConnect} link="/modelos/ev-connect" />
           </div>
         </div>
@@ -143,7 +143,12 @@ const Modelos = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Nossos consultores analisam sua operação e recomendam a solução ideal.
           </p>
-          <a href="/contato" className="inline-block bg-background text-foreground px-8 py-4 rounded text-lg font-semibold hover:bg-secondary transition-all">
+          <a
+            href="https://wa.me/5531997966042?text=Ol%C3%A1!%20Vi%20a%20linha%20Foton%20no%20site%20e%20quero%20falar%20com%20um%20consultor."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-background text-foreground px-8 py-4 rounded text-lg font-semibold hover:bg-secondary transition-all"
+          >
             Falar com Especialista
           </a>
         </div>

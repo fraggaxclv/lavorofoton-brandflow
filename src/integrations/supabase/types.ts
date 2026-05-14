@@ -288,6 +288,48 @@ export type Database = {
         }
         Relationships: []
       }
+      leads_contato: {
+        Row: {
+          created_at: string
+          email: string
+          empresa: string | null
+          id: string
+          ip_hash: string | null
+          mensagem: string | null
+          nome: string
+          origem: string | null
+          status: string
+          telefone: string
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          empresa?: string | null
+          id?: string
+          ip_hash?: string | null
+          mensagem?: string | null
+          nome: string
+          origem?: string | null
+          status?: string
+          telefone: string
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          empresa?: string | null
+          id?: string
+          ip_hash?: string | null
+          mensagem?: string | null
+          nome?: string
+          origem?: string | null
+          status?: string
+          telefone?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       metas_mensais: {
         Row: {
           ano: number
