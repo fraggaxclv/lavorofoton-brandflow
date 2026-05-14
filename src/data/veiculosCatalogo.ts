@@ -12,6 +12,7 @@ import iblue6t from "@/assets/iblue-6t.jpg";
 import eaumark12t from "@/assets/eaumark-12t.jpg";
 import eaumark9t from "@/assets/eaumark-9t-card.webp";
 import eview from "@/assets/eview.jpg";
+import aumanD1830Hero from "@/assets/auman-d-1830-hero.png";
 
 export interface Veiculo {
   id: string;
