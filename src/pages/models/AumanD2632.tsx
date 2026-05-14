@@ -387,6 +387,7 @@ const AumanD2632 = () => {
             <AccordionItem value="dim">
               <AccordionTrigger className="text-lg font-semibold hover:no-underline">Dimensões</AccordionTrigger>
               <AccordionContent className="px-6">
+                <p className="text-sm text-muted-foreground mb-2">Dados nesta ordem: versão padrão / versão L.</p>
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Comprimento total: 9.721 mm / 10.371 mm</li>
                   <li>Entre-eixos: 4.800 + 1.350 mm / 5.450 + 1.350 mm</li>
