@@ -143,7 +143,12 @@ const Modelos = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Nossos consultores analisam sua operação e recomendam a solução ideal.
           </p>
-          <a href="/contato" className="inline-block bg-background text-foreground px-8 py-4 rounded text-lg font-semibold hover:bg-secondary transition-all">
+          <a
+            href="https://wa.me/5531997966042?text=Ol%C3%A1!%20Vi%20a%20linha%20Foton%20no%20site%20e%20quero%20falar%20com%20um%20consultor."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-background text-foreground px-8 py-4 rounded text-lg font-semibold hover:bg-secondary transition-all"
+          >
             Falar com Especialista
           </a>
         </div>
