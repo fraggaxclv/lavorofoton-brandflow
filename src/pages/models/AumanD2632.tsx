@@ -349,7 +349,7 @@ const AumanD2632 = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">Ficha Técnica Completa</h2>
           <Accordion type="single" collapsible className="bg-white rounded-lg shadow-sm">
             <AccordionItem value="motor">
-              <AccordionTrigger className="px-6 text-left font-semibold">Motor e Desempenho</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Motor e Desempenho</AccordionTrigger>
               <AccordionContent className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Cummins D6.7 | 320 cv | 1.200 Nm @ 1.100-1.600 rpm</li>
@@ -359,7 +359,7 @@ const AumanD2632 = () => {
             </AccordionItem>
 
             <AccordionItem value="trans">
-              <AccordionTrigger className="px-6 text-left font-semibold">Transmissão e Trem de Força</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Transmissão e Trem de Força</AccordionTrigger>
               <AccordionContent className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>ZF 9AS1517TO automatizada, 9 marchas + ré</li>
@@ -371,7 +371,7 @@ const AumanD2632 = () => {
             </AccordionItem>
 
             <AccordionItem value="pesos">
-              <AccordionTrigger className="px-6 text-left font-semibold">Pesos e Capacidade de Carga (versão padrão / versão L)</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Pesos e Capacidade de Carga</AccordionTrigger>
               <AccordionContent className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Peso ordem de marcha total: 7.370 kg (padrão) / 7.440 kg (L)</li>
@@ -384,7 +384,7 @@ const AumanD2632 = () => {
             </AccordionItem>
 
             <AccordionItem value="dim">
-              <AccordionTrigger className="px-6 text-left font-semibold">Dimensões (padrão / versão L)</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Dimensões</AccordionTrigger>
               <AccordionContent className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Comprimento total: 9.721 mm / 10.371 mm</li>
@@ -399,7 +399,7 @@ const AumanD2632 = () => {
             </AccordionItem>
 
             <AccordionItem value="freios">
-              <AccordionTrigger className="px-6 text-left font-semibold">Freios, Suspensão e Sistema Elétrico</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Freios, Suspensão e Sistema Elétrico</AccordionTrigger>
               <AccordionContent className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Freios a ar tipo "S" Cam, circuito duplo</li>
@@ -413,7 +413,7 @@ const AumanD2632 = () => {
             </AccordionItem>
 
             <AccordionItem value="rodas">
-              <AccordionTrigger className="px-6 text-left font-semibold">Rodas, Pneus e Abastecimento</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Rodas, Pneus e Abastecimento</AccordionTrigger>
               <AccordionContent className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Rodas em aço, 22.5" x 9.00"</li>
@@ -425,7 +425,7 @@ const AumanD2632 = () => {
             </AccordionItem>
 
             <AccordionItem value="cab">
-              <AccordionTrigger className="px-6 text-left font-semibold">Cabine e Ergonomia</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Cabine e Ergonomia</AccordionTrigger>
               <AccordionContent className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Cabine com semi leito de série</li>
@@ -443,7 +443,7 @@ const AumanD2632 = () => {
             </AccordionItem>
 
             <AccordionItem value="hab">
-              <AccordionTrigger className="px-6 text-left font-semibold">Habilitação, Garantia e Versões</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Habilitação, Garantia e Versões</AccordionTrigger>
               <AccordionContent className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>CNH exigida: D ou E</li>
