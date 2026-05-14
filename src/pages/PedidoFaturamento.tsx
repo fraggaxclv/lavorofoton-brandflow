@@ -17,7 +17,7 @@ import logoLinhaLavoro from "@/assets/logo-linha-lavoro.png";
 // TODO [tech-debt]: refatorar pra consumir nomes diretamente de src/data/veiculosCatalogo.ts
 // (.map(v => v.modelo)) — hoje há duplicação manual entre essa const e o catálogo rico.
 // Quando refatorar, validar que componentes consumidores aceitam o formato.
-const MODELOS_VEICULOS = ["Foton Aumark S315", "Foton Aumark 715", "Foton Aumark 916", "Foton Aumark 1217", "Foton eWonder", "Foton Auman D 1722", "AUMAN D 1830", "AUMAN D 2632", "Foton eAumark 9T", "Foton eAumark 12T", "Foton eToano", "Foton eView", "Foton eView Connect", "Tunland V7", "Tunland V9"];
+const MODELOS_VEICULOS = ["Foton Aumark S315", "Foton Aumark 715", "Foton Aumark 916", "Foton Aumark 1217", "Foton eWonder", "Foton Auman D 1722", "Foton Auman D 1830", "Foton Auman D 2632", "Foton eAumark 9T", "Foton eAumark 12T", "Foton eToano", "Foton eView", "Foton eView Connect", "Tunland V7", "Tunland V9"];
 const ESTADOS_BR = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
 interface Produto {
   produto: string;
