@@ -373,6 +373,7 @@ const AumanD2632 = () => {
             <AccordionItem value="pesos">
               <AccordionTrigger className="text-lg font-semibold hover:no-underline">Pesos e Capacidade de Carga</AccordionTrigger>
               <AccordionContent className="px-6">
+                <p className="text-sm text-muted-foreground mb-2">Dados nesta ordem: versão padrão / versão L (quando há diferença).</p>
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Peso ordem de marcha total: 7.370 kg (padrão) / 7.440 kg (L)</li>
                   <li>PBT legal: 23.000 kg | técnico: 26.000 kg</li>
