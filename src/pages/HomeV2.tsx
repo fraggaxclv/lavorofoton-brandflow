@@ -75,6 +75,9 @@ const ModelCardV2 = ({ name, description, tags, link, secondaryLink, badge }: Mo
 const HomeV2 = () => {
   return (
     <div className="min-h-screen">
+      <h1 className="sr-only">
+        Concessionária Foton em Belo Horizonte e Minas Gerais — Caminhões Aumark, Auman D, Tunland e Linha e-Foton com economia operacional comprovada
+      </h1>
       <Navbar />
 
       <div className="mt-16">
