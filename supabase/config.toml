@@ -7,4 +7,9 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.buscar-clipping]
+[functions.buscar-clipping]
 verify_jwt = false
+
+[functions.atualizar-senha-admin]
+verify_jwt = false
+
