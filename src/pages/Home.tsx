@@ -152,6 +152,7 @@ const Home = () => {
               </p>
             </div>
           </div>
+        </div>
       </section>
 
       {/* Lavoro na Mídia */}

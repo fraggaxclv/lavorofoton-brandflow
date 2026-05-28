@@ -257,15 +257,7 @@ const Navbar = () => {
             <Link to="/imprensa" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>
               Imprensa
             </Link>
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </MobileAccordion>
-
-            <Link to="/servicos" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>
-              Serviços
-            </Link>
+            {isAdmin && (
             {isAdmin && (
               <Link to="/admin/pedidos-faturamento" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>
                 Pedidos
