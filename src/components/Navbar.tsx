@@ -255,9 +255,7 @@ const Navbar = () => {
               Serviços
             </Link>
             <Link to="/imprensa" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>
-              Imprensa
             </Link>
-            {isAdmin && (
             {isAdmin && (
               <Link to="/admin/pedidos-faturamento" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>
                 Pedidos
