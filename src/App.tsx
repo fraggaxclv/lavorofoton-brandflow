@@ -67,6 +67,8 @@ import InternoConsultores from "./pages/interno/InternoConsultores";
 import InternoConsultorPerfil from "./pages/interno/InternoConsultorPerfil";
 import InternoRelatorioPerdas from "./pages/interno/InternoRelatorioPerdas";
 import InternoPedidosPublicos from "./pages/interno/InternoPedidosPublicos";
+import InternoClipping from "./pages/interno/InternoClipping";
+import Imprensa from "./pages/Imprensa";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -128,6 +130,8 @@ const App = () => (
             <Route path="/calculadora-tco" element={<CalculadoraTCO />} />
             <Route path="/calculadora" element={<CalculadoraTCOEletrico />} />
             <Route path="/calculadora-2" element={<CalculadoraTCO2 />} />
+            <Route path="/imprensa" element={<Imprensa />} />
+            <Route path="/na-midia" element={<Navigate to="/imprensa" replace />} />
             
             {/* Rotas de tráfego pago — duplicatas com WhatsApp tagueado */}
             <Route path="/home-trafego" element={<HomeTrafego />} />
@@ -187,6 +191,11 @@ const App = () => (
                   <Route path="pedidos-publicos" element={
                     <InternoProtectedRoute allowedRoles={['admin']}>
                       <InternoPedidosPublicos />
+                    </InternoProtectedRoute>
+                  } />
+                  <Route path="clipping" element={
+                    <InternoProtectedRoute allowedRoles={['admin']}>
+                      <InternoClipping />
                     </InternoProtectedRoute>
                   } />
                   <Route path="meu-perfil" element={
