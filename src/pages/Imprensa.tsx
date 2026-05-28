@@ -86,7 +86,7 @@ export default function Imprensa() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <Navbar />
       <main className="container mx-auto px-4 pt-24 pb-16">
         <header className="mb-10 max-w-3xl">
           <Badge variant="secondary" className="mb-3">Sala de imprensa</Badge>
