@@ -3,7 +3,7 @@ import { useClippings, Clipping } from "@/hooks/useClippings";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Newspaper, Play, ExternalLink, Loader2 } from "lucide-react";
-import Navigation from "@/components/Navigation";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 function formatData(d: string | null) {
