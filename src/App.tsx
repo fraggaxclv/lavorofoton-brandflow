@@ -68,6 +68,7 @@ import InternoConsultorPerfil from "./pages/interno/InternoConsultorPerfil";
 import InternoRelatorioPerdas from "./pages/interno/InternoRelatorioPerdas";
 import InternoPedidosPublicos from "./pages/interno/InternoPedidosPublicos";
 import InternoClipping from "./pages/interno/InternoClipping";
+import InternoTrafego from "./pages/interno/InternoTrafego";
 import Imprensa from "./pages/Imprensa";
 
 const queryClient = new QueryClient({
@@ -196,6 +197,11 @@ const App = () => (
                   <Route path="clipping" element={
                     <InternoProtectedRoute allowedRoles={['admin']}>
                       <InternoClipping />
+                    </InternoProtectedRoute>
+                  } />
+                  <Route path="trafego" element={
+                    <InternoProtectedRoute allowedRoles={['admin']}>
+                      <InternoTrafego />
                     </InternoProtectedRoute>
                   } />
                   <Route path="meu-perfil" element={
