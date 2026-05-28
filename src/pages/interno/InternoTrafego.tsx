@@ -30,12 +30,19 @@ const RANGES: { key: RangeKey; label: string }[] = [
 ];
 
 // ============ MOCK DATA (base = últimos 30 dias) ============
-const baseKpis = [
+const baseKpis: Array<{
+  label: string;
+  base: number;
+  delta: Record<RangeKey, number>;
+  icon: typeof UsersIcon;
+  hint: string;
+  currency?: boolean;
+}> = [
   { label: "Sessões", base: 24781, delta: { "7d": 8.1, "30d": 12.4, "90d": 18.2, custom: 10.5 }, icon: UsersIcon, hint: "vs período anterior" },
   { label: "Usuários", base: 18243, delta: { "7d": 5.4, "30d": 9.1, "90d": 14.6, custom: 7.8 }, icon: Globe, hint: "vs período anterior" },
   { label: "Conversões", base: 412, delta: { "7d": -1.2, "30d": -3.2, "90d": 4.7, custom: 0.5 }, icon: Target, hint: "leads WhatsApp + form" },
   { label: "Custo por Lead", base: 38.72, delta: { "7d": -4.1, "30d": -8.6, "90d": -12.3, custom: -6.0 }, icon: Sparkles, hint: "Meta Ads", currency: true },
-] as const;
+];
 
 const baseChannelData = [
   { name: "Orgânico", base: 9820, color: "hsl(142 76% 45%)" },
