@@ -197,16 +197,14 @@ const Navbar = () => {
                 >
                   {item.label}
                 </Link>
-              ))}
             </DesktopDropdown>
 
             <Link to="/servicos" className="text-foreground hover:text-primary transition-colors font-medium">
               Serviços
             </Link>
-            {isAdmin && (
-              <Link to="/admin/pedidos-faturamento" className="text-foreground hover:text-primary transition-colors font-medium">
-                Pedidos
-              </Link>
+            <Link to="/imprensa" className="text-foreground hover:text-primary transition-colors font-medium">
+              Imprensa
+            </Link>
             )}
             <Link to="/contato" className="bg-primary text-primary-foreground px-6 py-2 rounded font-semibold hover:bg-primary-dark transition-all">
               Contato
@@ -253,14 +251,12 @@ const Navbar = () => {
               <MobileSubSection title="Picapes" items={modelosPickups} onClose={close} />
             </MobileAccordion>
 
-            {/* Comparativos Accordion */}
-            <MobileAccordion label="Comparativos" onClose={close}>
-              {comparativos.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  onClick={close}
-                  className="block py-1.5 text-sm text-foreground hover:text-primary transition-colors"
+            <Link to="/servicos" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>
+              Serviços
+            </Link>
+            <Link to="/imprensa" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>
+              Imprensa
+            </Link>
                 >
                   {item.label}
                 </Link>

@@ -152,6 +152,24 @@ const Home = () => {
               </p>
             </div>
           </div>
+      </section>
+
+      {/* Lavoro na Mídia */}
+      <section className="section-padding bg-muted">
+        <div className="container-lavoro">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="mb-4">Lavoro na Mídia</h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              Acompanhe as reportagens, notícias e cobertura da Lavoro Foton nos principais veículos de comunicação do Brasil.
+            </p>
+            <Link 
+              to="/imprensa" 
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded text-lg font-semibold hover:bg-primary/90 transition-all"
+            >
+              Ver Sala de Imprensa
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            </Link>
+          </div>
         </div>
       </section>
 
