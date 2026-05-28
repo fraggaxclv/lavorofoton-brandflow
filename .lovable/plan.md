@@ -1,119 +1,60 @@
+## Clipping de Mídia — Versão sem custo + Filtro de Concorrentes MG
 
-# Clipping de Mídia — Foton/Lavoro na Imprensa
+### Estratégia: Custo Zero
+Trocar Firecrawl/Perplexity por **Google News RSS** (gratuito, sem API key, sem limite prático).
 
-## Visão geral
+**Como funciona:**
+- Google News expõe feeds RSS por busca: `https://news.google.com/rss/search?q=<query>&hl=pt-BR&gl=BR&ceid=BR:pt-419`
+- Retorna: título, link, data de publicação, fonte (veículo), snippet
+- Edge Function `buscar-clipping` faz fetch do RSS, parseia XML e insere no banco
+- Cron diário (1x/dia) — zero custo de API
+- Thumbnail: extraída do Open Graph da página de destino via fetch direto do HTML (sem Firecrawl). Fallback: logo do veículo.
 
-Página pública `/imprensa` (também linkada do footer e do menu) com cards de matérias publicadas sobre Foton e Lavoro Foton. Conteúdo alimentado por uma rotina automática que busca notícias e vídeos novos, salva no banco como "pendente", e o admin aprova no CRM antes de publicar.
+**Para YouTube:** RSS de busca também existe via `https://www.youtube.com/feeds/videos.xml?search_query=...` (alternativa) ou consultas adicionais ao Google News filtradas por `site:youtube.com`.
 
-```text
-┌─────────────────────┐       ┌──────────────────────┐       ┌──────────────────┐
-│ Cron diário (pg_cron)│  ──▶ │ Edge: buscar-clipping │ ──▶  │ clippings (DB)   │
-│                     │       │ Perplexity + Firecrawl│       │ status=pendente  │
-└─────────────────────┘       └──────────────────────┘       └────────┬─────────┘
-                                                                       │
-                              ┌────────────────────────────────────────┘
-                              ▼
-                    ┌─────────────────────────┐       ┌──────────────────────┐
-                    │ /interno/clipping (CRM) │ ───▶ │ status=publicado     │
-                    │ Admin aprova/edita      │       │ aparece em /imprensa │
-                    └─────────────────────────┘       └──────────────────────┘
+**Trade-off aceito:** Sem resumo gerado por IA. Usaremos o snippet do próprio RSS (~150 caracteres) como resumo. Se quiser resumo melhor depois, podemos passar pelo Lovable AI (Gemini Flash Lite, já incluso no Lovable Cloud, sem custo adicional para o usuário).
+
+### Filtro de Concorrentes (Minas Gerais)
+
+Lista negra de concessionárias concorrentes Foton em MG:
+```
+- Contauto / Contauto Foton
+- Diamantina / Diamantina Foton
+- Triama Norte / Triama Norte Foton
+- (extensível via tabela no banco)
 ```
 
-## O que será construído
+**Regra aplicada no servidor (Edge Function):**
+1. Se a notícia menciona MG / Belo Horizonte / Minas Gerais **E** menciona qualquer termo da blacklist → **descartada antes de inserir no banco**
+2. Notícias nacionais (sem menção a MG) com esses nomes → mantidas (raras, mas possíveis)
+3. Notícias de MG mencionando Lavoro ou Foton sem concorrente → mantidas normalmente
 
-### 1. Página pública `/imprensa`
-- Hero curto: "Foton e Lavoro na mídia"
-- Filtros por tipo (Notícia / Vídeo) e por marca (Foton / Lavoro / Ambos)
-- Grid de cards (3 colunas desktop, 1 mobile) com:
-  - Thumbnail da matéria
-  - Logo do veículo (G1, AutoData, etc.) — auto-detectado por domínio
-  - Título, veículo de imprensa, data
-  - Resumo de 2-3 linhas
-  - Botão "Ler matéria" abre em nova aba
-- Seção separada para vídeos do YouTube (embed lazy)
-- SEO: title, meta description, JSON-LD `CollectionPage`
-- Link no footer e no menu Navbar
+**Implementação:** array `CONCORRENTES_MG` + array `TERMOS_MG` no código da Edge Function. Função `deveDescartar(titulo, snippet)` aplica regex case-insensitive.
 
-### 2. CRM `/interno/clipping` (admin)
-- Tabela com 3 abas: **Pendentes** / **Publicados** / **Rejeitados**
-- Cada item mostra preview do card como sairá no site
-- Ações: Aprovar, Rejeitar, Editar (título/resumo/thumb), Excluir
-- Botão "Buscar agora" que dispara a edge function manualmente
-- Botão "Adicionar manualmente" (cola URL → Firecrawl extrai → vira pendente)
+**Tabela `clipping_blacklist` (opcional, recomendado):** para o admin gerenciar pelo CRM sem precisar editar código. Campos: `id`, `termo`, `escopo_geografico` ('mg' | 'nacional'), `ativo`.
 
-### 3. Backend — Tabela e Edge Functions
-- Tabela `clippings_midia` (status: pendente/publicado/rejeitado)
-- Edge function `buscar-clipping`:
-  - Usa **Perplexity** (`sonar` com `search_recency_filter: week`) para descobrir menções recentes a "Foton caminhões Brasil" e "Lavoro Foton"
-  - Para cada URL nova, usa **Firecrawl** scrape com formats `['markdown', 'summary']` + extração de OG image
-  - Deduplica por URL, salva como `status='pendente'`
-- Edge function `aprovar-clipping` (admin-only)
-- Cron diário às 8h via `pg_cron + pg_net`
-
-## Conectores necessários
-
-| Conector | Para quê |
-|---|---|
-| **Perplexity** | Descobrir notícias novas com filtro temporal e fontes confiáveis |
-| **Firecrawl** | Extrair título/resumo/thumbnail/OG image de cada URL |
-
-Os dois são connectors padrão Lovable — você confirma no diálogo de conexão. Sem custo adicional além do que cada provedor cobra (Perplexity e Firecrawl têm planos free/baixo custo suficientes pra este volume).
-
-## Detalhes técnicos
-
-**Schema:**
-```sql
-CREATE TABLE public.clippings_midia (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  url text NOT NULL UNIQUE,
-  titulo text NOT NULL,
-  resumo text,
-  thumbnail_url text,
-  veiculo_nome text,        -- "G1", "AutoData"
-  veiculo_dominio text,     -- "g1.globo.com"
-  veiculo_logo_url text,    -- opcional, mapeado por domínio
-  tipo text NOT NULL,       -- 'noticia' | 'video'
-  marca text NOT NULL,      -- 'foton' | 'lavoro' | 'ambos'
-  data_publicacao date,
-  status text NOT NULL DEFAULT 'pendente', -- pendente|publicado|rejeitado
-  fonte_descoberta text,    -- 'perplexity' | 'manual' | 'firecrawl'
-  created_at timestamptz DEFAULT now(),
-  updated_at timestamptz DEFAULT now()
-);
+### Queries de Busca
 ```
+1. "Foton caminhões Brasil"
+2. "Lavoro Foton"  
+3. "Foton Aumark"
+4. "Foton Auman"
+5. "Foton Tunland"
+```
+Cada query roda 1x/dia. Resultados deduplicados por URL antes de inserir.
 
-**RLS:**
-- `anon` + `authenticated` SELECT apenas WHERE `status = 'publicado'`
-- INSERT/UPDATE/DELETE: somente admins (via `has_role`)
-- `service_role`: full (edge functions usam pra inserir pendentes)
+### Schema (sem mudanças vs plano anterior)
+Mesmo `clippings_midia` com `status` (pendente|publicado|rejeitado) + nova tabela `clipping_blacklist`.
 
-**Mapa de logos de veículos:** arquivo `src/data/veiculosImprensa.ts` com `{ dominio → { nome, logoUrl } }` pra G1, Estadão, Folha, AutoData, AutoEsporte, Quatro Rodas, UOL Carros, Estradão, Diário do Transporte, CanalTech, etc. Fallback: mostra o domínio em texto.
+### Páginas (sem mudanças)
+- `/imprensa` — pública
+- `/interno/clipping` — admin (aprovar/rejeitar + gerenciar blacklist)
 
-**Rotas:**
-- `/imprensa` (pública) — adicionada ao `App.tsx` e ao Footer
-- `/interno/clipping` (admin only)
+### Custo Total: R$ 0
+- Google News RSS: grátis
+- Cron Supabase: incluso no Lovable Cloud
+- Edge Functions: incluso no Lovable Cloud
+- Storage de thumbnails: usar URL externa direto (sem rehospedar) → grátis
 
-**Stack reuso:** TanStack Query, shadcn (Card, Tabs, Badge, Dialog), padrão dark-mode do `/interno`.
-
-## Fora de escopo (fica pra depois)
-- Push/email quando notícia nova entra na fila
-- Tradução automática de matérias em inglês
-- Análise de sentimento
-- Compartilhar matéria direto no WhatsApp do consultor
-
-## Arquivos a criar/modificar
-- `supabase/migrations/...` — tabela + RLS + cron
-- `supabase/functions/buscar-clipping/index.ts`
-- `supabase/functions/aprovar-clipping/index.ts`
-- `src/pages/Imprensa.tsx`
-- `src/pages/interno/InternoClipping.tsx`
-- `src/components/imprensa/ClippingCard.tsx`
-- `src/components/interno/ClippingReviewCard.tsx`
-- `src/hooks/useClippings.ts`
-- `src/data/veiculosImprensa.ts`
-- `src/App.tsx` (rotas)
-- `src/components/Footer.tsx` (link)
-- `src/components/interno/InternoLayout.tsx` (menu)
-
-## Próximo passo
-Aprovando esse plano, eu conecto Perplexity e Firecrawl, crio a migration e implemento na ordem: backend → CRM → página pública.
+### Próximo passo
+Se aprovar, eu: (1) crio migration `clippings_midia` + `clipping_blacklist` populada com os 3 concorrentes, (2) crio Edge Function `buscar-clipping` com parser RSS + filtro, (3) crio cron diário, (4) crio `/imprensa` e `/interno/clipping`.
