@@ -197,6 +197,7 @@ const Navbar = () => {
                 >
                   {item.label}
                 </Link>
+              ))}
             </DesktopDropdown>
 
             <Link to="/servicos" className="text-foreground hover:text-primary transition-colors font-medium">
@@ -205,7 +206,6 @@ const Navbar = () => {
             <Link to="/imprensa" className="text-foreground hover:text-primary transition-colors font-medium">
               Imprensa
             </Link>
-            )}
             <Link to="/contato" className="bg-primary text-primary-foreground px-6 py-2 rounded font-semibold hover:bg-primary-dark transition-all">
               Contato
             </Link>
