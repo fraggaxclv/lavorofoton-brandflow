@@ -166,6 +166,93 @@ export type Database = {
         }
         Relationships: []
       }
+      clipping_blacklist: {
+        Row: {
+          ativo: boolean
+          created_at: string
+          escopo_geografico: string
+          id: string
+          termo: string
+        }
+        Insert: {
+          ativo?: boolean
+          created_at?: string
+          escopo_geografico?: string
+          id?: string
+          termo: string
+        }
+        Update: {
+          ativo?: boolean
+          created_at?: string
+          escopo_geografico?: string
+          id?: string
+          termo?: string
+        }
+        Relationships: []
+      }
+      clippings_midia: {
+        Row: {
+          aprovado_em: string | null
+          aprovado_por: string | null
+          created_at: string
+          data_publicacao: string | null
+          fonte_descoberta: string | null
+          id: string
+          marca: string | null
+          query_busca: string | null
+          resumo: string | null
+          status: string
+          thumbnail_url: string | null
+          tipo: string
+          titulo: string
+          updated_at: string
+          url: string
+          veiculo_dominio: string | null
+          veiculo_logo_url: string | null
+          veiculo_nome: string | null
+        }
+        Insert: {
+          aprovado_em?: string | null
+          aprovado_por?: string | null
+          created_at?: string
+          data_publicacao?: string | null
+          fonte_descoberta?: string | null
+          id?: string
+          marca?: string | null
+          query_busca?: string | null
+          resumo?: string | null
+          status?: string
+          thumbnail_url?: string | null
+          tipo?: string
+          titulo: string
+          updated_at?: string
+          url: string
+          veiculo_dominio?: string | null
+          veiculo_logo_url?: string | null
+          veiculo_nome?: string | null
+        }
+        Update: {
+          aprovado_em?: string | null
+          aprovado_por?: string | null
+          created_at?: string
+          data_publicacao?: string | null
+          fonte_descoberta?: string | null
+          id?: string
+          marca?: string | null
+          query_busca?: string | null
+          resumo?: string | null
+          status?: string
+          thumbnail_url?: string | null
+          tipo?: string
+          titulo?: string
+          updated_at?: string
+          url?: string
+          veiculo_dominio?: string | null
+          veiculo_logo_url?: string | null
+          veiculo_nome?: string | null
+        }
+        Relationships: []
+      }
       diagnosticos_arquivos: {
         Row: {
           arquivo_url: string
