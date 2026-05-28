@@ -29,29 +29,23 @@ const RANGES: { key: RangeKey; label: string }[] = [
   { key: "custom", label: "Personalizado" },
 ];
 
-// ============ MOCK DATA ============
-const kpis = [
-  { label: "Sessões", value: "24.781", delta: 12.4, icon: UsersIcon, hint: "vs período anterior" },
-  { label: "Usuários", value: "18.243", delta: 9.1, icon: Globe, hint: "vs período anterior" },
-  { label: "Conversões", value: "412", delta: -3.2, icon: Target, hint: "leads WhatsApp + form" },
-  { label: "Custo por Lead", value: "R$ 38,72", delta: -8.6, icon: Sparkles, hint: "Meta Ads" },
+// ============ MOCK DATA (base = últimos 30 dias) ============
+const baseKpis = [
+  { label: "Sessões", base: 24781, delta: { "7d": 8.1, "30d": 12.4, "90d": 18.2, custom: 10.5 }, icon: UsersIcon, hint: "vs período anterior" },
+  { label: "Usuários", base: 18243, delta: { "7d": 5.4, "30d": 9.1, "90d": 14.6, custom: 7.8 }, icon: Globe, hint: "vs período anterior" },
+  { label: "Conversões", base: 412, delta: { "7d": -1.2, "30d": -3.2, "90d": 4.7, custom: 0.5 }, icon: Target, hint: "leads WhatsApp + form" },
+  { label: "Custo por Lead", base: 38.72, delta: { "7d": -4.1, "30d": -8.6, "90d": -12.3, custom: -6.0 }, icon: Sparkles, hint: "Meta Ads", currency: true },
+] as const;
+
+const baseChannelData = [
+  { name: "Orgânico", base: 9820, color: "hsl(142 76% 45%)" },
+  { name: "Pago", base: 7140, color: "hsl(38 92% 55%)" },
+  { name: "Direto", base: 4220, color: "hsl(217 91% 60%)" },
+  { name: "Social", base: 2310, color: "hsl(280 80% 65%)" },
+  { name: "Referral", base: 1291, color: "hsl(0 0% 60%)" },
 ];
 
-const trendData = Array.from({ length: 30 }).map((_, i) => ({
-  day: `D${i + 1}`,
-  sessoes: 600 + Math.round(Math.sin(i / 3) * 120 + Math.random() * 180),
-  usuarios: 420 + Math.round(Math.cos(i / 4) * 90 + Math.random() * 140),
-}));
-
-const channelData = [
-  { name: "Orgânico", value: 9820, color: "hsl(142 76% 45%)" },
-  { name: "Pago", value: 7140, color: "hsl(38 92% 55%)" },
-  { name: "Direto", value: 4220, color: "hsl(217 91% 60%)" },
-  { name: "Social", value: 2310, color: "hsl(280 80% 65%)" },
-  { name: "Referral", value: 1291, color: "hsl(0 0% 60%)" },
-];
-
-const landingPages = [
+const baseLandingPages = [
   { url: "/", sessions: 8120, users: 6420, engRate: 62.1, conv: 142 },
   { url: "/calculadora", sessions: 4310, users: 3620, engRate: 71.4, conv: 96 },
   { url: "/modelos/aumark-1217", sessions: 2980, users: 2410, engRate: 58.8, conv: 41 },
@@ -60,14 +54,14 @@ const landingPages = [
   { url: "/modelos/aumark-s315", sessions: 1190, users: 990, engRate: 60.1, conv: 18 },
 ];
 
-const gscKpis = [
-  { label: "Cliques", value: "6.412", delta: 14.2 },
-  { label: "Impressões", value: "184.330", delta: 21.6 },
-  { label: "CTR médio", value: "3,48%", delta: -1.1 },
-  { label: "Posição média", value: "12,4", delta: 2.3, invert: true },
+const baseGscKpis = [
+  { label: "Cliques", base: 6412, delta: { "7d": 9.4, "30d": 14.2, "90d": 22.1, custom: 12.0 }, format: "int" as const },
+  { label: "Impressões", base: 184330, delta: { "7d": 15.2, "30d": 21.6, "90d": 28.4, custom: 18.0 }, format: "int" as const },
+  { label: "CTR médio", base: 3.48, delta: { "7d": -0.6, "30d": -1.1, "90d": 0.8, custom: -0.3 }, format: "pct" as const },
+  { label: "Posição média", base: 12.4, delta: { "7d": 1.1, "30d": 2.3, "90d": 3.4, custom: 1.5 }, format: "dec" as const, invert: true },
 ];
 
-const gscQueries = [
+const baseGscQueries = [
   { query: "foton aumark 1217", clicks: 612, impressions: 8240, ctr: 7.4, position: 4.1 },
   { query: "foton lavoro", clicks: 488, impressions: 1320, ctr: 36.9, position: 1.2 },
   { query: "caminhão foton mg", clicks: 320, impressions: 5610, ctr: 5.7, position: 6.8 },
@@ -76,12 +70,28 @@ const gscQueries = [
   { query: "tco caminhão", clicks: 161, impressions: 9410, ctr: 1.7, position: 22.6 },
 ];
 
-const metaCampaigns = [
+const baseMetaCampaigns = [
   { name: "Aumark 1217 — MG", spend: 4820, impressions: 184230, clicks: 3240, ctr: 1.76, cpc: 1.49, leads: 84, cpl: 57.38 },
   { name: "eWonder — Frotas", spend: 3210, impressions: 121440, clicks: 2110, ctr: 1.74, cpc: 1.52, leads: 61, cpl: 52.62 },
   { name: "TCO Calculadora — Geral", spend: 2640, impressions: 98210, clicks: 1980, ctr: 2.02, cpc: 1.33, leads: 92, cpl: 28.70 },
   { name: "Remarketing — Modelos", spend: 1120, impressions: 64210, clicks: 1410, ctr: 2.20, cpc: 0.79, leads: 38, cpl: 29.47 },
 ];
+
+// Scale factor (relative to base 30d window) per range
+const RANGE_SCALE: Record<RangeKey, { factor: number; days: number; label: string }> = {
+  "7d": { factor: 7 / 30, days: 7, label: "7 dias" },
+  "30d": { factor: 1, days: 30, label: "30 dias" },
+  "90d": { factor: 3, days: 90, label: "90 dias" },
+  custom: { factor: 1.4, days: 45, label: "personalizado" },
+};
+
+function fmtInt(n: number) {
+  return Math.round(n).toLocaleString("pt-BR");
+}
+function fmtCurrency(n: number) {
+  return `R$ ${n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
 
 // ============ HELPERS ============
 function Delta({ value, invert }: { value: number; invert?: boolean }) {
