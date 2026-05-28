@@ -161,10 +161,86 @@ export default function InternoTrafego() {
     fixes: { severity: "high" | "medium" | "low"; title: string; impact: string }[];
   }>(null);
 
+  const { factor, days, label: rangeLabel } = RANGE_SCALE[range];
+
+  // Deterministic pseudo-random per range, so charts change but stay stable on re-render
+  const seed = useMemo(() => {
+    let h = 0;
+    for (const c of range) h = (h * 31 + c.charCodeAt(0)) | 0;
+    return h;
+  }, [range]);
+
+  const kpis = useMemo(() => baseKpis.map((k) => {
+    const scaled = k.currency ? k.base * (1 + (factor - 1) * 0.1) : k.base * factor;
+    return {
+      label: k.label,
+      value: k.currency ? fmtCurrency(scaled) : fmtInt(scaled),
+      delta: k.delta[range],
+      icon: k.icon,
+      hint: k.hint,
+    };
+  }), [factor, range]);
+
+  const channelData = useMemo(
+    () => baseChannelData.map((c) => ({ ...c, value: Math.round(c.base * factor) })),
+    [factor],
+  );
+
   const totalChannel = useMemo(
     () => channelData.reduce((s, c) => s + c.value, 0),
-    [],
+    [channelData],
   );
+
+  const trendData = useMemo(() => {
+    return Array.from({ length: days }).map((_, i) => {
+      const r1 = Math.sin((seed + i) * 1.7) * 0.5 + 0.5;
+      const r2 = Math.cos((seed + i) * 2.3) * 0.5 + 0.5;
+      return {
+        day: `D${i + 1}`,
+        sessoes: 600 + Math.round(Math.sin(i / 3) * 120 + r1 * 180),
+        usuarios: 420 + Math.round(Math.cos(i / 4) * 90 + r2 * 140),
+      };
+    });
+  }, [days, seed]);
+
+  const landingPages = useMemo(
+    () => baseLandingPages.map((p) => ({
+      ...p,
+      sessions: Math.round(p.sessions * factor),
+      users: Math.round(p.users * factor),
+      conv: Math.round(p.conv * factor),
+    })),
+    [factor],
+  );
+
+  const gscKpis = useMemo(() => baseGscKpis.map((k) => {
+    let value: string;
+    if (k.format === "int") value = fmtInt(k.base * factor);
+    else if (k.format === "pct") value = `${(k.base * (1 + (factor - 1) * 0.05)).toFixed(2)}%`;
+    else value = (k.base * (1 + (factor - 1) * -0.08)).toFixed(1);
+    return { label: k.label, value, delta: k.delta[range], invert: k.invert };
+  }), [factor, range]);
+
+  const gscQueries = useMemo(
+    () => baseGscQueries.map((q) => ({
+      ...q,
+      clicks: Math.round(q.clicks * factor),
+      impressions: Math.round(q.impressions * factor),
+    })),
+    [factor],
+  );
+
+  const metaCampaigns = useMemo(
+    () => baseMetaCampaigns.map((c) => ({
+      ...c,
+      spend: Math.round(c.spend * factor),
+      impressions: Math.round(c.impressions * factor),
+      clicks: Math.round(c.clicks * factor),
+      leads: Math.round(c.leads * factor),
+    })),
+    [factor],
+  );
+
 
   function runAudit() {
     setAuditing(true);
