@@ -20,6 +20,7 @@ import {
   UserCog,
   TrendingDown,
   Inbox,
+  Newspaper,
   Search,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -34,6 +35,7 @@ const navItems = [
   { path: "/interno/clientes", label: "Clientes", icon: Users, roles: ["admin", "vendedor"] as const },
   { path: "/interno/meu-perfil", label: "Meu Perfil", icon: User, roles: ["vendedor"] as const },
   { path: "/interno/pedidos-publicos", label: "Pedidos Site", icon: Inbox, roles: ["admin"] as const },
+  { path: "/interno/clipping", label: "Clipping", icon: Newspaper, roles: ["admin"] as const },
   { path: "/interno/relatorio-perdas", label: "Rel. Perdas", icon: TrendingDown, roles: ["admin"] as const },
   { path: "/interno/consultores", label: "Consultores", icon: UserCog, roles: ["admin"] as const },
 ];

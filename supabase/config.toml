@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.notificar-lead-contato]
 verify_jwt = false
+
+[functions.buscar-clipping]
+verify_jwt = false
