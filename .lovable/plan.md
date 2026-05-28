@@ -1,107 +1,119 @@
 
-# Plano: Recuperação de Senha - Sistema Interno
+# Clipping de Mídia — Foton/Lavoro na Imprensa
 
-## Resumo
-Implementar um fluxo completo de recuperação de senha para o sistema interno (`/interno`), utilizando o Supabase Auth nativo junto com envio de emails personalizados via Resend.
+## Visão geral
 
-## O que será criado
-
-### 1. Modificações na Tela de Login
-**Arquivo:** `src/pages/interno/InternoLogin.tsx`
-- Adicionar link "Esqueci minha senha" abaixo do botão de login
-- Link direciona para `/interno/recuperar-senha`
-- Design consistente com a página atual
-
-### 2. Nova Página: Solicitar Recuperação de Senha
-**Arquivo:** `src/pages/interno/RecuperarSenha.tsx`
-- Formulário simples com campo de email
-- Validação com Zod
-- Feedback visual de sucesso/erro
-- Link para voltar ao login
-- Estados: inicial, enviando, sucesso, erro
-
-### 3. Nova Página: Redefinir Senha
-**Arquivo:** `src/pages/interno/RedefinirSenha.tsx`
-- Formulário com campos: nova senha e confirmar senha
-- Validação de token via URL (Supabase gera automaticamente)
-- Requisitos de senha (mínimo 6 caracteres)
-- Redirecionamento para login após sucesso
-
-### 4. Nova Edge Function: Envio de Email de Reset
-**Arquivo:** `supabase/functions/enviar-email-reset-senha/index.ts`
-- Recebe requisição do cliente
-- Usa Supabase Auth para gerar token de reset
-- Envia email personalizado via Resend (API key já configurada)
-- Template de email em português com branding Foton Lavoro
-
-### 5. Novas Rotas no App
-**Arquivo:** `src/App.tsx`
-- `/interno/recuperar-senha` - Página de solicitação
-- `/interno/redefinir-senha` - Página de redefinição (recebe token via URL)
-
-## Fluxo do Usuário
+Página pública `/imprensa` (também linkada do footer e do menu) com cards de matérias publicadas sobre Foton e Lavoro Foton. Conteúdo alimentado por uma rotina automática que busca notícias e vídeos novos, salva no banco como "pendente", e o admin aprova no CRM antes de publicar.
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│                    FLUXO DE RECUPERAÇÃO                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  1. Login ──> Clica "Esqueci minha senha"                   │
-│                    │                                         │
-│                    ▼                                         │
-│  2. /recuperar-senha ──> Digita email ──> Clica "Enviar"    │
-│                    │                                         │
-│                    ▼                                         │
-│  3. Edge Function ──> Supabase gera token ──> Resend envia  │
-│                    │                                         │
-│                    ▼                                         │
-│  4. Usuário recebe email ──> Clica no link                  │
-│                    │                                         │
-│                    ▼                                         │
-│  5. /redefinir-senha?token=xxx ──> Digite nova senha        │
-│                    │                                         │
-│                    ▼                                         │
-│  6. Senha atualizada ──> Redireciona para /interno/login    │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────┐       ┌──────────────────────┐       ┌──────────────────┐
+│ Cron diário (pg_cron)│  ──▶ │ Edge: buscar-clipping │ ──▶  │ clippings (DB)   │
+│                     │       │ Perplexity + Firecrawl│       │ status=pendente  │
+└─────────────────────┘       └──────────────────────┘       └────────┬─────────┘
+                                                                       │
+                              ┌────────────────────────────────────────┘
+                              ▼
+                    ┌─────────────────────────┐       ┌──────────────────────┐
+                    │ /interno/clipping (CRM) │ ───▶ │ status=publicado     │
+                    │ Admin aprova/edita      │       │ aparece em /imprensa │
+                    └─────────────────────────┘       └──────────────────────┘
 ```
 
-## Detalhes Técnicos
+## O que será construído
 
-### Edge Function - Enviar Email Reset
-- Usa `supabase.auth.resetPasswordForEmail()` com redirect customizado
-- Template HTML responsivo para email
-- Tratamento de erros (email não encontrado, rate limiting)
-- CORS headers configurados
+### 1. Página pública `/imprensa`
+- Hero curto: "Foton e Lavoro na mídia"
+- Filtros por tipo (Notícia / Vídeo) e por marca (Foton / Lavoro / Ambos)
+- Grid de cards (3 colunas desktop, 1 mobile) com:
+  - Thumbnail da matéria
+  - Logo do veículo (G1, AutoData, etc.) — auto-detectado por domínio
+  - Título, veículo de imprensa, data
+  - Resumo de 2-3 linhas
+  - Botão "Ler matéria" abre em nova aba
+- Seção separada para vídeos do YouTube (embed lazy)
+- SEO: title, meta description, JSON-LD `CollectionPage`
+- Link no footer e no menu Navbar
 
-### Página de Redefinição
-- Detecta token via `supabase.auth.onAuthStateChange` evento `PASSWORD_RECOVERY`
-- Usa `supabase.auth.updateUser({ password })` para atualizar
-- Validação client-side antes de enviar
+### 2. CRM `/interno/clipping` (admin)
+- Tabela com 3 abas: **Pendentes** / **Publicados** / **Rejeitados**
+- Cada item mostra preview do card como sairá no site
+- Ações: Aprovar, Rejeitar, Editar (título/resumo/thumb), Excluir
+- Botão "Buscar agora" que dispara a edge function manualmente
+- Botão "Adicionar manualmente" (cola URL → Firecrawl extrai → vira pendente)
 
-### Segurança
-- Validação de email com Zod
-- Tokens expiram automaticamente (configuração padrão Supabase: 1 hora)
-- Rate limiting nativo do Supabase Auth
-- Mensagens genéricas para não expor se email existe ou não
+### 3. Backend — Tabela e Edge Functions
+- Tabela `clippings_midia` (status: pendente/publicado/rejeitado)
+- Edge function `buscar-clipping`:
+  - Usa **Perplexity** (`sonar` com `search_recency_filter: week`) para descobrir menções recentes a "Foton caminhões Brasil" e "Lavoro Foton"
+  - Para cada URL nova, usa **Firecrawl** scrape com formats `['markdown', 'summary']` + extração de OG image
+  - Deduplica por URL, salva como `status='pendente'`
+- Edge function `aprovar-clipping` (admin-only)
+- Cron diário às 8h via `pg_cron + pg_net`
 
-## Arquivos a Serem Modificados/Criados
+## Conectores necessários
 
-| Arquivo | Ação |
-|---------|------|
-| `src/pages/interno/InternoLogin.tsx` | Modificar |
-| `src/pages/interno/RecuperarSenha.tsx` | Criar |
-| `src/pages/interno/RedefinirSenha.tsx` | Criar |
-| `supabase/functions/enviar-email-reset-senha/index.ts` | Criar |
-| `supabase/config.toml` | Modificar (adicionar nova function) |
-| `src/App.tsx` | Modificar (adicionar rotas) |
+| Conector | Para quê |
+|---|---|
+| **Perplexity** | Descobrir notícias novas com filtro temporal e fontes confiáveis |
+| **Firecrawl** | Extrair título/resumo/thumbnail/OG image de cada URL |
 
-## Dependências
-- Resend API Key (já configurada como `RESEND_API_KEY`)
-- Supabase Auth (já configurado)
-- Nenhuma nova dependência NPM necessária
+Os dois são connectors padrão Lovable — você confirma no diálogo de conexão. Sem custo adicional além do que cada provedor cobra (Perplexity e Firecrawl têm planos free/baixo custo suficientes pra este volume).
 
-## Observações Importantes
-1. O email será enviado do domínio configurado no Resend
-2. O link de redefinição redirecionará para a URL publicada do app
-3. Mobile-first: formulários otimizados para toque com alvos de 44px mínimo
+## Detalhes técnicos
+
+**Schema:**
+```sql
+CREATE TABLE public.clippings_midia (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  url text NOT NULL UNIQUE,
+  titulo text NOT NULL,
+  resumo text,
+  thumbnail_url text,
+  veiculo_nome text,        -- "G1", "AutoData"
+  veiculo_dominio text,     -- "g1.globo.com"
+  veiculo_logo_url text,    -- opcional, mapeado por domínio
+  tipo text NOT NULL,       -- 'noticia' | 'video'
+  marca text NOT NULL,      -- 'foton' | 'lavoro' | 'ambos'
+  data_publicacao date,
+  status text NOT NULL DEFAULT 'pendente', -- pendente|publicado|rejeitado
+  fonte_descoberta text,    -- 'perplexity' | 'manual' | 'firecrawl'
+  created_at timestamptz DEFAULT now(),
+  updated_at timestamptz DEFAULT now()
+);
+```
+
+**RLS:**
+- `anon` + `authenticated` SELECT apenas WHERE `status = 'publicado'`
+- INSERT/UPDATE/DELETE: somente admins (via `has_role`)
+- `service_role`: full (edge functions usam pra inserir pendentes)
+
+**Mapa de logos de veículos:** arquivo `src/data/veiculosImprensa.ts` com `{ dominio → { nome, logoUrl } }` pra G1, Estadão, Folha, AutoData, AutoEsporte, Quatro Rodas, UOL Carros, Estradão, Diário do Transporte, CanalTech, etc. Fallback: mostra o domínio em texto.
+
+**Rotas:**
+- `/imprensa` (pública) — adicionada ao `App.tsx` e ao Footer
+- `/interno/clipping` (admin only)
+
+**Stack reuso:** TanStack Query, shadcn (Card, Tabs, Badge, Dialog), padrão dark-mode do `/interno`.
+
+## Fora de escopo (fica pra depois)
+- Push/email quando notícia nova entra na fila
+- Tradução automática de matérias em inglês
+- Análise de sentimento
+- Compartilhar matéria direto no WhatsApp do consultor
+
+## Arquivos a criar/modificar
+- `supabase/migrations/...` — tabela + RLS + cron
+- `supabase/functions/buscar-clipping/index.ts`
+- `supabase/functions/aprovar-clipping/index.ts`
+- `src/pages/Imprensa.tsx`
+- `src/pages/interno/InternoClipping.tsx`
+- `src/components/imprensa/ClippingCard.tsx`
+- `src/components/interno/ClippingReviewCard.tsx`
+- `src/hooks/useClippings.ts`
+- `src/data/veiculosImprensa.ts`
+- `src/App.tsx` (rotas)
+- `src/components/Footer.tsx` (link)
+- `src/components/interno/InternoLayout.tsx` (menu)
+
+## Próximo passo
+Aprovando esse plano, eu conecto Perplexity e Firecrawl, crio a migration e implemento na ordem: backend → CRM → página pública.
