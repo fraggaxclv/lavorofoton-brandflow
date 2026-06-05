@@ -147,8 +147,8 @@ const TunlandV9 = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Tunland V9 — Picape off-road premium"
-        description="Foton Tunland V9: picape off-road com motor Cummins, tração 4x4 e capacidade de carga. Robustez para trabalho e aventura."
+        title="Foton Tunland V9 — Picape off-road premium 4x4 Cummins | Lavoro Foton BH"
+        description="Tunland V9: picape off-road premium com motor Cummins e tração 4x4. Robustez para trabalho e aventura. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/tunland-v9"
       />
 
