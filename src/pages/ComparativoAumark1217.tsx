@@ -61,8 +61,9 @@ const ComparativoAumark1217 = () => {
   return (
     <>
       <Helmet>
-        <title>Foton Aumark S 1217 | Comparativo vs VW, Mercedes e Iveco | Lavoro Foton MG</title>
-        <meta name="description" content="Conheça o Foton Aumark S 1217, o caminhão médio com maior PBT da categoria, motor Cummins e mais de 20% de economia que os concorrentes. Lavoro Foton, Minas Gerais." />
+        <title>Foton Aumark 1217 vs VW Delivery 11.180, Mercedes Accelo, Iveco Tector | Lavoro Foton</title>
+        <meta name="description" content="Comparativo técnico: Aumark 1217 carrega 1 tonelada a mais, faz 3 viagens a menos por mês, garantia 3 anos sem limite de km. Dados reais de operação." />
+        <link rel="canonical" href="https://lavorofoton.com.br/comparativo-aumark-1217" />
       </Helmet>
 
       <div ref={containerRef} className="min-h-screen font-['Poppins',sans-serif] bg-[#0A1F3D] text-white">
