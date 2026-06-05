@@ -13,6 +13,7 @@ import { useSimulacoesTCO, SimulacaoTCO } from "@/hooks/useSimulacoesTCO";
 import TCOActionBar from "@/components/calculadoras/TCOActionBar";
 import { exportTCOPdf } from "@/lib/tcoExportPdf";
 import SEO from "@/components/SEO";
+import GatedExportModal, { GatedExportPayload, SavedSimulation } from "@/components/tco/GatedExportModal";
 
 // ── Brand tokens ──
 const C = {
@@ -220,6 +221,7 @@ export default function CalculadoraTCOEletrico() {
   const [showDetalhamento, setShowDetalhamento] = useState(false);
   const [nomeSimulacaoAtual, setNomeSimulacaoAtual] = useState<string | undefined>();
   const [exportingPdf, setExportingPdf] = useState(false);
+  const [gateOpen, setGateOpen] = useState(false);
   const { simulacoes, salvar, excluir, renomear } = useSimulacoesTCO();
 
   // Track manual edits to consumption
@@ -379,24 +381,48 @@ export default function CalculadoraTCOEletrico() {
     toast.success("Simulação excluída");
   }, [excluir]);
 
+  // Gate: ao clicar em "Exportar PDF" abrimos o modal de captura.
   const handleExportPdf = useCallback(async () => {
-    setExportingPdf(true);
-    try {
-      await exportTCOPdf({
-        inputs: getInputs(),
-        resultados: getResultados(),
-        nomeSimulacao: nomeSimulacaoAtual,
-        logoUrl: logoFotonLavoro,
-        chartElementId: "tco-chart-area",
-      });
-      toast.success("PDF exportado com sucesso!");
-    } catch (err) {
-      toast.error("Erro ao gerar PDF");
-      console.error(err);
-    } finally {
-      setExportingPdf(false);
-    }
-  }, [getInputs, getResultados, nomeSimulacaoAtual]);
+    setGateOpen(true);
+  }, []);
+
+  const gatePayload: GatedExportPayload = useMemo(() => {
+    const i = getInputs();
+    return {
+      inputs_simulacao: i,
+      resultados_simulacao: getResultados(),
+      modelo_foton: "Foton elétrico",
+      modelo_concorrente: `Diesel (${i.perfil})`,
+    };
+  }, [getInputs, getResultados]);
+
+  const handleGenerateAfterGate = useCallback(
+    async (sim: SavedSimulation) => {
+      setExportingPdf(true);
+      try {
+        const res = await exportTCOPdf({
+          inputs: getInputs(),
+          resultados: getResultados(),
+          nomeSimulacao: nomeSimulacaoAtual,
+          logoUrl: logoFotonLavoro,
+          chartElementId: "tco-chart-area",
+          lead: { nome: sim.lead.nome, simulationCode: sim.simulation_code },
+          returnBase64: true,
+          autoSave: true,
+        });
+        toast.success("PDF gerado com sucesso!");
+        return { pdfBase64: res.base64 ?? "", filename: res.filename };
+      } catch (err) {
+        toast.error("Erro ao gerar PDF");
+        console.error(err);
+        return null;
+      } finally {
+        setExportingPdf(false);
+      }
+    },
+    [getInputs, getResultados, nomeSimulacaoAtual],
+  );
+
 
   return (
     <div className="min-h-screen" style={{ background: C.bg, fontFamily: "'Inter', 'IBM Plex Sans', system-ui, sans-serif" }}>
@@ -803,6 +829,12 @@ export default function CalculadoraTCOEletrico() {
         </footer>
       </main>
       <Footer />
+      <GatedExportModal
+        open={gateOpen}
+        onOpenChange={setGateOpen}
+        payload={gatePayload}
+        onGeneratePdf={handleGenerateAfterGate}
+      />
     </div>
   );
 }

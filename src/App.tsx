@@ -47,6 +47,8 @@ import EletricosBeneficios2 from "./pages/EletricosBeneficios2";
 import CalculadoraTCO from "./pages/CalculadoraTCO";
 import CalculadoraTCOEletrico from "./pages/CalculadoraTCOEletrico";
 import CalculadoraTCO2 from "./pages/CalculadoraTCO2";
+import VerificarSimulacao from "./pages/VerificarSimulacao";
+import Privacidade from "./pages/Privacidade";
 import { Navigate } from "react-router-dom";
 
 // Páginas de tráfego pago (duplicadas com mensagens WhatsApp customizadas)
@@ -131,6 +133,8 @@ const App = () => (
             <Route path="/calculadora-tco" element={<CalculadoraTCO />} />
             <Route path="/calculadora" element={<CalculadoraTCOEletrico />} />
             <Route path="/calculadora-2" element={<CalculadoraTCO2 />} />
+            <Route path="/verificar/:code" element={<VerificarSimulacao />} />
+            <Route path="/privacidade" element={<Privacidade />} />
             <Route path="/imprensa" element={<Imprensa />} />
             <Route path="/na-midia" element={<Navigate to="/imprensa" replace />} />
             

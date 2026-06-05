@@ -214,9 +214,15 @@ function drawDataRows(
   return y;
 }
 
-/* ── Footer ── */
-function drawFooter(pdf: jsPDF, logoBase64: string | null, pageW: number, margin: number) {
-  const footerY = 280;
+/* ── Footer (identificado, em todas as páginas) ── */
+function drawFooter(
+  pdf: jsPDF,
+  logoBase64: string | null,
+  pageW: number,
+  margin: number,
+  opts?: { nome?: string; dataStr?: string; simulationCode?: string; pageNum?: number; pageTotal?: number },
+) {
+  const footerY = 270;
 
   // Bottom accent bars
   pdf.setFillColor(C.accent);
@@ -229,26 +235,39 @@ function drawFooter(pdf: jsPDF, logoBase64: string | null, pageW: number, margin
   pdf.setLineWidth(0.2);
   pdf.line(margin, footerY, pageW - margin, footerY);
 
-  // Footer text
   pdf.setFontSize(6);
   pdf.setTextColor(C.textMuted);
-  pdf.text("CONFIDENCIAL", margin, footerY + 4);
-  pdf.text(
-    "Simulação gerada pela Calculadora Lavoro TCO  |  www.lavorofoton.com.br",
-    pageW / 2, footerY + 4,
-    { align: "center" }
-  );
 
-  // Mini logo
+  if (opts?.simulationCode) {
+    const line1 = `Análise gerada para ${opts.nome ?? "—"} em ${opts.dataStr ?? ""}. ID: ${opts.simulationCode}.`;
+    const line2 = `Verificação de autenticidade: lavorofoton.com.br/verificar/${opts.simulationCode}`;
+    const line3 = "Dados de TCO calculados com base em frotas reais operadas em Minas Gerais por clientes Lavoro Foton. Valores podem variar conforme operação.";
+    const line4 = "Para análise personalizada da sua frota: (31) 99796-6042.";
+    pdf.text(line1, margin, footerY + 4);
+    pdf.text(line2, margin, footerY + 7);
+    pdf.setFontSize(5.5);
+    pdf.text(line3, margin, footerY + 10.5, { maxWidth: pageW - margin * 2 - 25 });
+    pdf.text(line4, margin, footerY + 14);
+  } else {
+    pdf.text("CONFIDENCIAL", margin, footerY + 4);
+    pdf.text(
+      "Simulação gerada pela Calculadora Lavoro TCO  |  www.lavorofoton.com.br",
+      pageW / 2, footerY + 4,
+      { align: "center" },
+    );
+  }
+
   if (logoBase64) {
     pdf.addImage(logoBase64, "PNG", pageW - margin - 20, footerY + 2, 20, 6);
   }
 
-  // Page number
   pdf.setFontSize(6);
   pdf.setTextColor(C.textSecondary);
-  pdf.text("1/1", pageW - margin, footerY + 10, { align: "right" });
+  const num = opts?.pageNum ?? 1;
+  const tot = opts?.pageTotal ?? num;
+  pdf.text(`${num}/${tot}`, pageW - margin, footerY + 17, { align: "right" });
 }
+
 
 /* ═══════════════════════════════════════════════════
    MAIN EXPORT
@@ -259,13 +278,19 @@ export async function exportTCOPdf({
   nomeSimulacao,
   logoUrl,
   chartElementId,
+  lead,
+  returnBase64,
+  autoSave = true,
 }: {
   inputs: SimulacaoTCO["inputs"];
   resultados: SimulacaoTCO["resultados"];
   nomeSimulacao?: string;
   logoUrl: string;
   chartElementId: string;
-}) {
+  lead?: { nome: string; simulationCode: string };
+  returnBase64?: boolean;
+  autoSave?: boolean;
+}): Promise<{ filename: string; base64?: string }> {
   const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
   const pageW = 210;
   const margin = 16;
@@ -411,11 +436,32 @@ export async function exportTCOPdf({
     economiaLiquida: resultados.economiaLiquida,
   });
 
-  // ── FOOTER ──
-  drawFooter(pdf, logoBase64, pageW, margin);
+  // ── FOOTER (em todas as páginas) ──
+  const totalPages = (pdf as any).getNumberOfPages?.() ?? 1;
+  for (let p = 1; p <= totalPages; p++) {
+    pdf.setPage(p);
+    drawFooter(pdf, logoBase64, pageW, margin, {
+      nome: lead?.nome ?? nomeSimulacao,
+      dataStr,
+      simulationCode: lead?.simulationCode,
+      pageNum: p,
+      pageTotal: totalPages,
+    });
+  }
 
   // ── Save ──
-  const nomeArq = nomeSimulacao ? sanitizeFilename(nomeSimulacao) : "Simulacao";
+  const nomeArq = lead?.simulationCode
+    ? lead.simulationCode
+    : nomeSimulacao ? sanitizeFilename(nomeSimulacao) : "Simulacao";
   const dataArq = now.toISOString().slice(0, 10);
-  pdf.save(`Simulacao_TCO_Lavoro_${nomeArq}_${dataArq}.pdf`);
+  const filename = `Analise_TCO_Lavoro_${nomeArq}_${dataArq}.pdf`;
+  if (autoSave) pdf.save(filename);
+
+  if (returnBase64) {
+    const dataUri = pdf.output("datauristring");
+    const base64 = dataUri.split(",")[1] ?? "";
+    return { filename, base64 };
+  }
+  return { filename };
 }
+
