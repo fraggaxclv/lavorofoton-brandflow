@@ -101,8 +101,8 @@ const SobreFoton = () => {
   }];
   return <div className="min-h-screen bg-background">
     <SEO
-        title="Foton — Maior fabricante de caminhões da China, 110 países, JV Mercedes-Benz | Lavoro Foton"
-        description="Foton: 12 milhões de veículos produzidos, presente em 110 países, joint venture com Mercedes-Benz (Daimler) e Cummins. Crescimento de 200% no Brasil em 2025."
+        title="Foton — Maior fabricante de veículos comerciais do mundo desde 2009 | Lavoro Foton"
+        description="Foton: maior fabricante de veículos comerciais do mundo desde 2009. Mais de 12 milhões de veículos produzidos, presente em 110 países, joint ventures com Mercedes-Benz (Daimler), Cummins e ZF. Crescimento de 200% no Brasil em 2025."
         path="/sobre-foton"
       />
       <Navbar />
