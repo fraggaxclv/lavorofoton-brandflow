@@ -108,7 +108,7 @@ const Foton17T = () => {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 order-2 lg:order-1">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Foton Auman D 1722
+                O semipesado que devolve em torque o que custa em combustível.
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
                 O semipesado mais forte, mais tecnológico e mais eficiente do Brasil.

@@ -148,10 +148,20 @@ const TunlandV9 = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Tunland V9 — Picape off-road premium 4x4 Cummins | Lavoro Foton BH"
-        description="Tunland V9: picape off-road premium com motor Cummins e tração 4x4. Robustez para trabalho e aventura. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton Tunland V9 — Picape do grupo que produz com a Mercedes-Benz | Lavoro Foton"
+        description="Tunland V9 vem do grupo BAIC Foton, que tem joint venture com a Mercedes-Benz (Daimler) para veículos pesados. A picape com DNA premium ao preço Foton. Lavoro Foton, Contagem MG."
         path="/modelos/tunland-v9"
-        jsonLd={buildProductSchema({ name: "Foton Tunland V9", model: "Tunland V9", category: "Picape off-road premium", description: "Picape off-road premium com motor Cummins e tração 4x4" })}
+        jsonLd={buildProductSchema({
+          name: "Foton Tunland V9",
+          model: "Tunland V9",
+          category: "Picape diesel 4x4",
+          description: "Picape off-road premium do grupo BAIC Foton — joint venture com Mercedes-Benz/Daimler. Motor Cummins, tração 4x4.",
+          properties: [
+            ["Configuração", "4x4"],
+            ["Motor", "Cummins diesel"],
+            ["Grupo", "BAIC Foton — JV com Daimler/Mercedes-Benz"],
+          ],
+        })}
       />
 
       <Navbar />
@@ -164,7 +174,7 @@ const TunlandV9 = () => {
             <div className="space-y-8 order-2 lg:order-1">
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                  Foton Tunland V9
+                  A picape do mesmo grupo que produz com a Mercedes-Benz.
                 </h1>
                 <p className="text-2xl md:text-3xl text-gray-200 font-light">
                   A picape que redefine <span className="text-primary font-semibold">luxo</span>, <span className="text-primary font-semibold">conforto</span> e <span className="text-primary font-semibold">tecnologia</span> no Brasil.

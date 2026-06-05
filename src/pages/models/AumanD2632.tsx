@@ -69,10 +69,22 @@ const AumanD2632 = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Auman D 2632 — Cavalo mecânico 26T Cummins ISG | Lavoro Foton BH"
-        description="Auman D 2632: cavalo mecânico 6x2 com Cummins ISG, câmbio ZF AMT e cabine premium. Para operações pesadas. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton Auman D 2632 — Pesado 6x2 com Cummins e ZF | Lavoro Foton"
+        description="Auman D 2632 entrega 26 toneladas em configuração 6x2 com motor Cummins e transmissão ZF — engenharia premium ao preço Foton. Lavoro Foton, Contagem MG."
         path="/modelos/auman-d-2632"
-        jsonLd={buildProductSchema({ name: "Foton Auman D 2632", model: "Auman D 2632", category: "Cavalo mecânico", description: "Cavalo mecânico 26T com Cummins ISG, câmbio ZF AMT e cabine premium" })}
+        jsonLd={buildProductSchema({
+          name: "Foton Auman D 2632",
+          model: "Auman D 2632",
+          category: "Caminhão pesado 6x2",
+          description: "Pesado 6x2 26 toneladas: motor americano Cummins, caixa alemã ZF, preço Foton.",
+          properties: [
+            ["PBT", "26.000 kg"],
+            ["Configuração", "6x2"],
+            ["Categoria CNH", "E"],
+            ["Motor", "Cummins ISG"],
+            ["Transmissão", "ZF AMT"],
+          ],
+        })}
       />
 
       <Helmet>
@@ -92,7 +104,7 @@ const AumanD2632 = () => {
         <div className="container mx-auto px-4 py-12 md:py-20">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 order-2 lg:order-1">
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">Foton Auman D 2632</h1>
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">6x2 com motor americano, caixa alemã, preço chinês.</h1>
               <p className="text-xl md:text-2xl text-gray-300">
                 O truck 6x2 que faz mais quilômetro com menos pneu.
                 <br />

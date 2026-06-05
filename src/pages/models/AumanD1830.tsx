@@ -69,10 +69,21 @@ const AumanD1830 = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Auman D 1830 — Pesado 18T para transporte regional | Lavoro Foton BH"
-        description="Auman D 1830: pesado robusto com motor Cummins e câmbio ZF para transporte regional de cargas pesadas. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton Auman D 1830 — Pesado 18T para logística regional | Lavoro Foton"
+        description="Auman D 1830 entrega 18 toneladas de PBT com torque alto e economia operacional. Logística regional pesada sem rateio. Lavoro Foton, Contagem MG."
         path="/modelos/auman-d-1830"
-        jsonLd={buildProductSchema({ name: "Foton Auman D 1830", model: "Auman D 1830", category: "Caminhão pesado", description: "Pesado 18T motor Cummins e câmbio ZF para transporte regional" })}
+        jsonLd={buildProductSchema({
+          name: "Foton Auman D 1830",
+          model: "Auman D 1830",
+          category: "Caminhão pesado",
+          description: "Pesado 18 toneladas para logística regional. Motor maior, torque alto, sem desconto em força.",
+          properties: [
+            ["PBT", "18.000 kg"],
+            ["Categoria CNH", "D/E"],
+            ["Motor", "Cummins"],
+            ["Transmissão", "ZF"],
+          ],
+        })}
       />
 
       <Helmet>
@@ -92,7 +103,7 @@ const AumanD1830 = () => {
         <div className="container mx-auto px-4 py-12 md:py-20">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 order-2 lg:order-1">
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">Foton Auman D 1830</h1>
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">Pesado pra distância. Sem desconto no torque.</h1>
               <p className="text-xl md:text-2xl text-gray-300">
                 O 18 toneladas que chegou pra mudar a régua do semipesado brasileiro.
                 <br />
