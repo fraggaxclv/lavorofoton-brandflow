@@ -76,8 +76,8 @@ const TunlandV7 = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Tunland V7 — Picape diesel 4x4"
-        description="Foton Tunland V7: picape diesel 4x4 com motor Cummins. Robustez, economia e capacidade de carga para o dia a dia."
+        title="Foton Tunland V7 — Picape diesel 4x4 motor Cummins | Lavoro Foton BH"
+        description="Tunland V7: picape diesel 4x4 com motor Cummins, robustez e capacidade de carga para o dia a dia. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/tunland-v7"
       />
 
