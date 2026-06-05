@@ -14,8 +14,8 @@ import SEO from "@/components/SEO";
 const EToano = () => {
   return <div className="min-h-screen">
     <SEO
-        title="Foton eToano — Furgão elétrico para entregas"
-        description="Foton eToano: furgão 100% elétrico para last-mile e entregas urbanas. Zero emissão, baixo custo operacional."
+        title="Foton eToano — Furgão 100% elétrico para last-mile | Lavoro Foton BH"
+        description="eToano: furgão 100% elétrico, zero emissão e baixo custo operacional para entregas urbanas. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/etoano"
       />
       <Navbar />
