@@ -58,7 +58,7 @@ export default defineConfig(({ mode }) => ({
         renderer: "@prerenderer/renderer-puppeteer",
         rendererOptions: {
           renderAfterTime: 1500,
-          headless: "new",
+          headless: true,
         },
       }),
   ].filter(Boolean),
