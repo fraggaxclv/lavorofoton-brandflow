@@ -133,6 +133,8 @@ const App = () => (
             <Route path="/calculadora-tco" element={<CalculadoraTCO />} />
             <Route path="/calculadora" element={<CalculadoraTCOEletrico />} />
             <Route path="/calculadora-2" element={<CalculadoraTCO2 />} />
+            <Route path="/verificar/:code" element={<VerificarSimulacao />} />
+            <Route path="/privacidade" element={<Privacidade />} />
             <Route path="/imprensa" element={<Imprensa />} />
             <Route path="/na-midia" element={<Navigate to="/imprensa" replace />} />
             
