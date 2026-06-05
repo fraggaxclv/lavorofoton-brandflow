@@ -86,11 +86,7 @@ function CentavosInput({
 
   return (
     <div className="flex flex-col gap-1">
-      <SEO
-        title="Calculadora TCO Foton — Diesel vs Elétrico, McKinsey style"
-        description="Ferramenta completa de Total Cost of Ownership para caminhões Foton. Compare diesel e elétrico, exporte PDF e descubra sua economia real."
-        path="/calculadora"
-      />
+
 
       <label className="text-[11px] uppercase tracking-[1.2px] font-medium" style={{ color: C.textSecondary }}>
         {label}
