@@ -35,6 +35,7 @@ import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import qualidadeIcon from "@/assets/qualidade-icon.png";
+import SEO from "@/components/SEO";
 
 const Foton1217New = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -121,6 +122,12 @@ const Foton1217New = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Foton Aumark 1217 — Caminhão semipesado 12 toneladas"
+        description="Foton Aumark 1217: semipesado de 12 toneladas PBT. Motor Cummins, câmbio ZF e tanques de alumínio. Compare TCO com VW Delivery."
+        path="/modelos/aumark-1217"
+      />
+
       <Navbar />
 
       {/* 1. HERO */}

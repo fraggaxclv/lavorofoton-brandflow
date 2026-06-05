@@ -20,8 +20,14 @@ import eviewConnect from "@/assets/eview-connect.jpg";
 import linhaEletricaBadge from "@/assets/linha-eletrica-badge.png";
 import linhaDieselBadge from "@/assets/badge-linha-diesel.png";
 import linhaPicapesBadge from "@/assets/badge-linha-picapes.png";
+import SEO from "@/components/SEO";
 const Modelos = () => {
   return <div className="min-h-screen">
+    <SEO
+        title="Modelos Foton — Linha completa Aumark, Auman, Tunland e elétricos"
+        description="Veja todos os modelos Foton disponíveis em BH: caminhões leves, médios, pesados, picapes off-road e elétricos. Solicite orçamento via WhatsApp."
+        path="/modelos"
+      />
       <Navbar />
 
       {/* Hero */}

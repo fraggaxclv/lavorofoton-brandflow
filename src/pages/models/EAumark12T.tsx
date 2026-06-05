@@ -7,6 +7,7 @@ import { useState } from "react";
 import eaumarkFrontalImg from "@/assets/eaumark-9t-frontal.png";
 import eaumarkLateralImg from "@/assets/eaumark-9t-lateral.png";
 import eaumarkInteriorImg from "@/assets/eaumark-9t-interior.png";
+import SEO from "@/components/SEO";
 const EAumark12T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const whatsappNumber = "5531997966042";
@@ -32,6 +33,11 @@ const EAumark12T = () => {
     setSelectedImage(prev => prev !== null ? prev < galleryImages.length - 1 ? prev + 1 : 0 : null);
   };
   return <div className="min-h-screen">
+    <SEO
+        title="Foton eAumark 12T — Semipesado elétrico"
+        description="Foton eAumark 12T: semipesado 100% elétrico de 12 toneladas PBT. Performance Aumark sem emissão."
+        path="/modelos/eaumark-12t"
+      />
       <Navbar />
 
       {/* 🟥 SEÇÃO 1 — HERO */}

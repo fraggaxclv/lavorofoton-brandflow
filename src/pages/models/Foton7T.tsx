@@ -35,6 +35,7 @@ import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import qualidadeIcon from "@/assets/qualidade-icon.png";
+import SEO from "@/components/SEO";
 
 const Foton7T = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -121,6 +122,12 @@ const Foton7T = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Foton Aumark 715 — Caminhão leve 7 toneladas"
+        description="Foton Aumark 715: caminhão leve de 7 toneladas PBT. Ideal para distribuição urbana e regional com baixo custo operacional."
+        path="/modelos/aumark-715"
+      />
+
       <Navbar />
 
       {/* 1. HERO */}

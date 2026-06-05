@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
 import { 
   Wrench, 
   CreditCard, 
@@ -113,6 +114,12 @@ const Servicos = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Serviços — Pós-venda e assistência técnica Foton"
+        description="Assistência técnica autorizada, peças originais, financiamento e suporte completo para caminhões Foton em Minas Gerais."
+        path="/servicos"
+      />
+
       <Navbar />
 
       {/* Hero Impactante */}

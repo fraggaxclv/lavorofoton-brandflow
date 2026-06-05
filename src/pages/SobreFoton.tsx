@@ -10,6 +10,7 @@ import cumminsLogo from "@/assets/cummins-logo-full.png";
 import boschLogo from "@/assets/bosch-logo-full.png";
 import zfLogo from "@/assets/zf-logo-full.png";
 import daimlerLogo from "@/assets/daimler-logo-full.png";
+import SEO from "@/components/SEO";
 const SobreFoton = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -99,6 +100,11 @@ const SobreFoton = () => {
     icon: <TrendingUp className="w-6 h-6" />
   }];
   return <div className="min-h-screen bg-background">
+    <SEO
+        title="Sobre a Foton — Maior fabricante de caminhões do mundo"
+        description="Conheça a Foton, líder global em produção de caminhões comerciais. Tecnologia chinesa com componentes Cummins, ZF, Bosch e Dana."
+        path="/sobre-foton"
+      />
       <Navbar />
 
       {/* Hero Section */}

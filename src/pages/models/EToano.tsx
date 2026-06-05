@@ -10,8 +10,14 @@ import etoanoHeadlight from "@/assets/etoano-headlight.png";
 import etoanoInterior from "@/assets/etoano-interior.png";
 import etoanoNormalRoof from "@/assets/etoano-normal-roof.png";
 import etoanoHighRoof from "@/assets/etoano-high-roof.png";
+import SEO from "@/components/SEO";
 const EToano = () => {
   return <div className="min-h-screen">
+    <SEO
+        title="Foton eToano — Furgão elétrico para entregas"
+        description="Foton eToano: furgão 100% elétrico para last-mile e entregas urbanas. Zero emissão, baixo custo operacional."
+        path="/modelos/etoano"
+      />
       <Navbar />
 
       {/* Hero */}

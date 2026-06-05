@@ -8,6 +8,7 @@ import eaumarkFrontalImg from "@/assets/eaumark-9t-frontal.png";
 import eaumarkLateralImg from "@/assets/eaumark-9t-lateral.png";
 import eaumarkInteriorImg from "@/assets/eaumark-9t-interior.png";
 import eaumarkChassisImg from "@/assets/eaumark-9t-chassis.webp";
+import SEO from "@/components/SEO";
 const EAumark9T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const whatsappNumber = "5531997966042";
@@ -33,6 +34,11 @@ const EAumark9T = () => {
     setSelectedImage(prev => prev !== null ? prev < galleryImages.length - 1 ? prev + 1 : 0 : null);
   };
   return <div className="min-h-screen">
+    <SEO
+        title="Foton eAumark 9T — Caminhão médio elétrico"
+        description="Foton eAumark 9T: caminhão médio elétrico de 9 toneladas PBT. Robustez Aumark com motorização 100% elétrica."
+        path="/modelos/eaumark-9t"
+      />
       <Navbar />
 
       {/* 🟥 SEÇÃO 1 — HERO */}

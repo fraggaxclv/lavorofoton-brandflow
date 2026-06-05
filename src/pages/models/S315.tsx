@@ -29,6 +29,7 @@ import concessionariasIcon from "@/assets/70-concessionarias-icon.png";
 import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
+import SEO from "@/components/SEO";
 const S315 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -74,6 +75,11 @@ const S315 = () => {
     setCurrentImageIndex(prev => (prev - 1 + productImages.length) % productImages.length);
   };
   return <div className="min-h-screen bg-background">
+    <SEO
+        title="Foton Aumark S315 — Caminhão urbano CNH B"
+        description="Foton Aumark S315: caminhão urbano de carga dirigível com CNH B. Ideal para entregas urbanas e last-mile em Belo Horizonte."
+        path="/modelos/aumark-s315"
+      />
       <Navbar />
 
       {/* 1. HERO */}

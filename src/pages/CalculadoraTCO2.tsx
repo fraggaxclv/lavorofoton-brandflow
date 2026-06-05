@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 /* ════════════════════════════════════════════════════════
    BRAND TOKENS — Consulting-grade palette
@@ -406,9 +407,11 @@ const CalculadoraTCO2: React.FC = () => {
      ════════════════════════════════════════════════════════ */
   return (
     <>
-      <Helmet>
-        <title>Calculadora TCO v2 | Lavoro Foton</title>
-      </Helmet>
+      <SEO
+        title="Calculadora TCO Avançada — Consultoria com 20 variáveis"
+        description="Análise consultiva de TCO com 20 variáveis, projeções de inflação e vantagens ESG. Para gestores de frota que decidem por dados."
+        path="/calculadora-2"
+      />
       <Navbar />
 
       <main className="pt-28 pb-16" style={{ background: C.bg, fontFamily: "'Inter', sans-serif" }}>

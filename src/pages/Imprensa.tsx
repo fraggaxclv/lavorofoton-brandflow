@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Newspaper, Play, ExternalLink, Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 function formatData(d: string | null) {
   if (!d) return "";
@@ -28,6 +29,7 @@ function ClippingCard({ c }: { c: Clipping }) {
       rel="noopener noreferrer"
       className="group block"
     >
+
       <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow border-border">
         <div className="aspect-video bg-muted relative overflow-hidden">
           {c.thumbnail_url ? (
@@ -86,6 +88,11 @@ export default function Imprensa() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Lavoro na Mídia — Clipping de notícias e cobertura"
+        description="Cobertura de imprensa da Lavoro Foton: lançamentos, parcerias, eletrificação de frotas e novidades do setor de caminhões comerciais."
+        path="/imprensa"
+      />
       <Navbar />
       <main className="container mx-auto px-4 pt-24 pb-16">
         <header className="mb-10 max-w-3xl">

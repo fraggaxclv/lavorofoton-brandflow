@@ -59,6 +59,7 @@ import concessionariasIcon from "@/assets/70-concessionarias-icon.png";
 import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
+import SEO from "@/components/SEO";
 
 const TunlandV9 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -145,6 +146,12 @@ const TunlandV9 = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Foton Tunland V9 — Picape off-road premium"
+        description="Foton Tunland V9: picape off-road com motor Cummins, tração 4x4 e capacidade de carga. Robustez para trabalho e aventura."
+        path="/modelos/tunland-v9"
+      />
+
       <Navbar />
 
       {/* 1. HERO ULTRA PREMIUM */}

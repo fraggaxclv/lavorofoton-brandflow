@@ -42,6 +42,7 @@ import danaLogo from "@/assets/dana-logo-full.png";
 import garantia3AnosIcon from "@/assets/garantia-3anos-foton.png";
 import chassiReforcadoIcon from "@/assets/chassi-reforcado-icon.png";
 import tanqueAluminioIcon from "@/assets/tanque-aluminio-icon.png";
+import SEO from "@/components/SEO";
 
 const AumanD1830 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -66,6 +67,12 @@ const AumanD1830 = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Foton Auman D 1830 — Caminhão pesado para operações exigentes"
+        description="Foton Auman D 1830: pesado robusto com motor Cummins, câmbio ZF. Ideal para transporte regional de cargas pesadas."
+        path="/modelos/auman-d-1830"
+      />
+
       <Helmet>
         <title>Foton Auman D 1830 — Toco 4x2, 18T, ZF Automatizado e Semi Leito de Série | Lavoro Foton MG</title>
         <meta name="description" content="Foton Auman D 1830: motor Cummins D6.7 com 282 cv, câmbio ZF automatizado de 9 marchas, cabine com semi leito de série e 3 anos de garantia em motor e câmbio sem limite de km. Comparativo com VW Constellation, Mercedes Atego, Iveco Tector e Volvo VM." />

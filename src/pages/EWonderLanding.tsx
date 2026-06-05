@@ -11,6 +11,7 @@ import { MessageCircle, ChevronDown, Truck, Home, TrendingUp, Users, Fuel, Wrenc
 import ewonderHero from "@/assets/ewonder.jpg";
 import ewonderSide from "@/assets/ewonder-cargo.png";
 import ewonderDetail from "@/assets/ewonder-interior-front.jpg";
+import SEO from "@/components/SEO";
 
 // ── Constants ──
 const CUSTO_KM_BONGO = 0.8629;
@@ -78,6 +79,8 @@ const ComparisonBar = ({ label, bongo, ewonder, diff, maxVal }: { label: string;
 
   return (
     <div className="mb-8">
+
+
       <div className="flex items-center justify-between mb-2">
         <span className="font-semibold text-white text-sm md:text-base">{label}</span>
         <span className="text-xs md:text-sm font-bold px-3 py-1 rounded-full bg-[#FFC540] text-[#002D6F]">
@@ -130,10 +133,11 @@ const EWonderLanding = () => {
 
   return (
     <div className="min-h-screen bg-[#002D6F]">
-      <Helmet>
-        <title>Foton E-Wonder | 73% mais barato que Bongo e HR | Lavoro Foton MG</title>
-        <meta name="description" content="Veja quanto custa rodar um Kia Bongo vs Foton E-Wonder. R$ 0,86/km vs R$ 0,23/km. 73% de economia operacional. Test drive grátis em BH." />
-      </Helmet>
+      <SEO
+        title="Foton eWonder — 73% mais barato que Bongo e HR"
+        description="Veja quanto custa rodar um Kia Bongo vs Foton eWonder. R$ 0,86/km vs R$ 0,23/km. 73% de economia operacional. Test drive grátis em BH."
+        path="/comparativo-ewonder"
+      />
       <Navbar />
 
       {/* ══════ SEÇÃO 1 — HERO SPLIT ══════ */}

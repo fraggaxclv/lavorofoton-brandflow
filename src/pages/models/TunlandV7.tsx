@@ -45,6 +45,7 @@ import concessionariasIcon from "@/assets/70-concessionarias-icon.png";
 import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
+import SEO from "@/components/SEO";
 
 const TunlandV7 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -74,6 +75,12 @@ const TunlandV7 = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Foton Tunland V7 — Picape diesel 4x4"
+        description="Foton Tunland V7: picape diesel 4x4 com motor Cummins. Robustez, economia e capacidade de carga para o dia a dia."
+        path="/modelos/tunland-v7"
+      />
+
       <Navbar />
 
       {/* 1. HERO */}

@@ -4,6 +4,7 @@ import {
   ResponsiveContainer, BarChart, Bar, Legend, Cell
 } from "recharts";
 import { ChevronDown, ChevronUp, Zap, Fuel } from "lucide-react";
+import SEO from "@/components/SEO";
 
 // ─── Vehicle Data ───────────────────────────────────────────────
 const VEHICLES = {
@@ -172,6 +173,8 @@ const CalculadoraTCO: React.FC = () => {
     if (!active || !payload?.length) return null;
     return (
       <div className="rounded-lg px-4 py-3 text-sm shadow-xl border" style={{ background: "#0d1a2e", borderColor: "rgba(255,255,255,0.1)" }}>
+
+
         <p className="text-white/60 mb-1">Mês {label}</p>
         {payload.map((p: any) => (
           <p key={p.dataKey} style={{ color: p.color }} className="font-semibold">
@@ -254,6 +257,11 @@ const CalculadoraTCO: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full" style={{ background: "linear-gradient(180deg, #060e1a 0%, #0a1628 50%, #0d1f3c 100%)" }}>
+      <SEO
+        title="Calculadora TCO — Custo total de propriedade Foton"
+        description="Calcule o custo total de propriedade (TCO) do seu caminhão Foton: combustível, manutenção, depreciação e financiamento."
+        path="/calculadora-tco"
+      />
       <div className="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
 
         {/* Header */}

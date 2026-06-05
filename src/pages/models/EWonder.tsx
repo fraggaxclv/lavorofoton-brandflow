@@ -14,6 +14,7 @@ import ewonderInteriorSeats from "@/assets/ewonder-interior-seats.jpg";
 import ewonderInteriorFront from "@/assets/ewonder-interior-front.jpg";
 import ewonderControls from "@/assets/ewonder-controls.jpg";
 import ewonderCargo from "@/assets/ewonder-cargo.png";
+import SEO from "@/components/SEO";
 
 const WHATSAPP_NUMBER = "5531997966042";
 const WHATSAPP_MSG = encodeURIComponent("Olá! Gostaria de mais informações sobre o eWonder.");
@@ -37,6 +38,12 @@ const EWonder = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Foton eWonder — Picape elétrica urbana"
+        description="Foton eWonder: picape 100% elétrica, 0,23 kWh/km, 86% menos manutenção. Ideal para frotas urbanas sustentáveis."
+        path="/modelos/ewonder"
+      />
+
       <Navbar />
 
       {/* ── HERO ── */}

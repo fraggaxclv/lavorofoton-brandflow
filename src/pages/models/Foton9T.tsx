@@ -31,6 +31,7 @@ import concessionariasIcon from "@/assets/70-concessionarias-icon.png";
 import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
+import SEO from "@/components/SEO";
 
 const Foton9T = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -107,6 +108,12 @@ const Foton9T = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Foton Aumark 916 — Caminhão médio 9 toneladas"
+        description="Foton Aumark 916: caminhão médio de 9 toneladas PBT com motor Cummins. Robustez para entregas regionais e cargas variadas."
+        path="/modelos/aumark-916"
+      />
+
       <Navbar />
 
       {/* 1. HERO - ESPECIALISTA EM CADEIA FRIA */}

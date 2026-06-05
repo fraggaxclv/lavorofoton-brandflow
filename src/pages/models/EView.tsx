@@ -10,6 +10,7 @@ import eviewDimensions from "@/assets/eview-dimensions.png";
 import eviewDimensions2 from "@/assets/eview-dimensions-2.png";
 import eviewInteriorSeats from "@/assets/eview-interior-seats.png";
 import eviewInteriorDashboard from "@/assets/eview-interior-dashboard.png";
+import SEO from "@/components/SEO";
 const EView = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const galleryImages = [{
@@ -40,6 +41,11 @@ const EView = () => {
     setSelectedImage(prev => prev === null || prev === galleryImages.length - 1 ? 0 : prev + 1);
   };
   return <div className="min-h-screen">
+    <SEO
+        title="Foton eView — Caminhão elétrico urbano"
+        description="Foton eView: caminhão urbano 100% elétrico. Operação silenciosa, zero emissão e custo por km reduzido."
+        path="/modelos/eview"
+      />
       <Navbar />
 
       {/* Hero */}

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import SEO from "@/components/SEO";
 import { 
   useFormSecurity, 
   validateEmail, 
@@ -143,6 +144,12 @@ const Contato = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Contato — Lavoro Foton Belo Horizonte"
+        description="Fale com a Lavoro Foton em Belo Horizonte: WhatsApp +55 31 99697-0656, endereço e horário de atendimento da concessionária."
+        path="/contato"
+      />
+
       <Navbar />
 
       {/* Hero */}

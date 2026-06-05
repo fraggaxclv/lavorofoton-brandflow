@@ -1,5 +1,6 @@
 import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
 import logoFotonIcon from "@/assets/foton-logo-icon-transparent.png";
+import SEO from "@/components/SEO";
 
 const tcoRows = [
   { item: "Combustível / Energia", diesel: "R$ 0,55/km", eletrico: "R$ 0,08/km", economia: "–85%" },
@@ -29,6 +30,12 @@ export default function EletricosBeneficios2() {
       className="w-[1920px] h-[1080px] flex flex-col items-center justify-between px-20 py-12 relative overflow-hidden"
       style={{ background: "linear-gradient(to right, #041954, #000000)" }}
     >
+      <SEO
+        title="Caminhões Elétricos Foton — Apresentação Executiva"
+        description="Apresentação executiva sobre a linha elétrica Foton: eWonder, eToano, eView, eAumark e iBlue. Tecnologia para frotas modernas."
+        path="/eletricos-beneficios-2"
+      />
+
       {/* Logo topo direito */}
       <img src={logoFotonIcon} alt="Foton" className="absolute top-10 right-12 h-10 opacity-80" />
 
