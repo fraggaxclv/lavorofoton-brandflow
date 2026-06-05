@@ -60,6 +60,7 @@ import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const TunlandV9 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -150,6 +151,7 @@ const TunlandV9 = () => {
         title="Foton Tunland V9 — Picape off-road premium 4x4 Cummins | Lavoro Foton BH"
         description="Tunland V9: picape off-road premium com motor Cummins e tração 4x4. Robustez para trabalho e aventura. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/tunland-v9"
+        jsonLd={buildProductSchema({ name: "Foton Tunland V9", model: "Tunland V9", category: "Picape off-road premium", description: "Picape off-road premium com motor Cummins e tração 4x4" })}
       />
 
       <Navbar />

@@ -36,6 +36,7 @@ import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import qualidadeIcon from "@/assets/qualidade-icon.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const Foton7T = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -126,6 +127,7 @@ const Foton7T = () => {
         title="Foton Aumark 715 — Caminhão leve 7T motor Cummins | Lavoro Foton BH"
         description="Aumark 715: leve de 7 toneladas PBT com motor Cummins e câmbio ZF. Ideal para distribuição urbana e regional. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/aumark-715"
+        jsonLd={buildProductSchema({ name: "Foton Aumark 715", model: "Aumark 715", category: "Caminhão leve", description: "Caminhão leve 7 toneladas PBT com motor Cummins e câmbio ZF" })}
       />
 
       <Navbar />

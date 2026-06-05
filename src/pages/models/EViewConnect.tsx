@@ -13,6 +13,7 @@ import spec2 from "@/assets/eview-connect-spec2.jpg";
 import spec3 from "@/assets/eview-connect-spec3.jpg";
 import spec4 from "@/assets/eview-connect-spec4.jpg";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const whatsappNumber = "553196970656";
 const whatsappMessage = encodeURIComponent("Olá! Gostaria de mais informações sobre a eView Connect.");
@@ -43,6 +44,7 @@ const EViewConnect = () => {
         title="Foton eView Connect — Elétrico com telemetria embarcada | Lavoro Foton BH"
         description="eView Connect: caminhão elétrico com telemetria embarcada e gestão de frota integrada. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/ev-connect"
+        jsonLd={buildProductSchema({ name: "Foton eView Connect", model: "eView Connect", category: "Caminhão elétrico conectado", description: "Caminhão elétrico com telemetria embarcada e gestão de frota integrada" })}
       />
 
       <Navbar />

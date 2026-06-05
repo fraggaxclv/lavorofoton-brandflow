@@ -36,6 +36,7 @@ import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import qualidadeIcon from "@/assets/qualidade-icon.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const Foton1217New = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -126,6 +127,7 @@ const Foton1217New = () => {
         title="Foton Aumark 1217 — Caminhão médio 12T com 1 tonelada a mais | Lavoro Foton BH"
         description="Aumark 1217 carrega 1.000 kg a mais que VW Delivery 11.180. Motor Cummins F3.8, transmissão ZF, garantia de 3 anos. Compre na Lavoro Foton, concessionária oficial em Contagem, MG."
         path="/modelos/aumark-1217"
+        jsonLd={buildProductSchema({ name: "Foton Aumark 1217", model: "Aumark 1217", category: "Caminhão médio", description: "Caminhão médio 12 toneladas PBT, motor Cummins F3.8 170cv, transmissão ZF, carrega 1 tonelada a mais que VW Delivery 11.180" })}
       />
 
       <Navbar />

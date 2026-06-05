@@ -11,6 +11,7 @@ import eviewDimensions2 from "@/assets/eview-dimensions-2.png";
 import eviewInteriorSeats from "@/assets/eview-interior-seats.png";
 import eviewInteriorDashboard from "@/assets/eview-interior-dashboard.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 const EView = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const galleryImages = [{
@@ -45,6 +46,7 @@ const EView = () => {
         title="Foton eView — Caminhão urbano 100% elétrico | Lavoro Foton BH"
         description="eView: caminhão urbano 100% elétrico, operação silenciosa e custo por km reduzido. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/eview"
+        jsonLd={buildProductSchema({ name: "Foton eView", model: "eView Grand", category: "Caminhão urbano elétrico", description: "Caminhão urbano 100% elétrico, operação silenciosa e custo por km reduzido" })}
       />
       <Navbar />
 

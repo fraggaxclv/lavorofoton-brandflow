@@ -6,6 +6,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useState } from "react";
 import iblue6tImg from "@/assets/iblue-6t.jpg";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const IBlue6T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -33,6 +34,7 @@ const IBlue6T = () => {
         title="Foton iBlue 6T — Caminhão leve 100% elétrico 6T | Lavoro Foton BH"
         description="iBlue 6T: leve 100% elétrico de 6 toneladas para distribuição urbana sustentável. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/iblue-6t"
+        jsonLd={buildProductSchema({ name: "Foton iBlue 6T", model: "iBlue 6T", category: "Caminhão leve elétrico", description: "Caminhão leve 100% elétrico de 6 toneladas para distribuição urbana" })}
       />
 
       <Navbar />
