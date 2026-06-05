@@ -46,16 +46,16 @@ const SobreFoton = () => {
   }];
   const fotonFacts = [{
     icon: <Globe className="w-8 h-8" />,
-    text: "Uma das maiores fabricantes de veículos comerciais do planeta"
+    text: "Maior fabricante de veículos comerciais do mundo desde 2009"
   }, {
     icon: <TrendingUp className="w-8 h-8" />,
-    text: "Presente em mais de 110 países"
+    text: "Presente em mais de 110 países — cinco bases de produção: China, Índia, Rússia, Brasil e Tailândia"
   }, {
     icon: <Shield className="w-8 h-8" />,
     text: "Mais de 12 milhões de veículos produzidos até 2025"
   }, {
     icon: <Zap className="w-8 h-8" />,
-    text: "Líder global em tecnologia para caminhões leves, médios, pesados e elétricos"
+    text: "Joint ventures com Mercedes-Benz (Daimler), Cummins e ZF — caminhões leves, médios, pesados e elétricos"
   }];
   const brazilMetrics = [{
     label: "Estoque de Peças",
