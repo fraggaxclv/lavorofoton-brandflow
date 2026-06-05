@@ -15,7 +15,7 @@ import ewonderInteriorFront from "@/assets/ewonder-interior-front.jpg";
 import ewonderControls from "@/assets/ewonder-controls.jpg";
 import ewonderCargo from "@/assets/ewonder-cargo.png";
 import SEO from "@/components/SEO";
-import { buildProductSchema } from "@/lib/productSchema";
+import { buildProductSchema, buildFaqSchema, speakableSchema } from "@/lib/productSchema";
 
 const WHATSAPP_NUMBER = "5531997966042";
 const WHATSAPP_MSG = encodeURIComponent("Olá! Gostaria de mais informações sobre o eWonder.");
@@ -40,10 +40,33 @@ const EWonder = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Foton eWonder — Picape 100% elétrica 0,23 kWh/km | Lavoro Foton BH"
-        description="eWonder: picape 100% elétrica com consumo de 0,23 kWh/km e 86% menos manutenção. Ideal para frotas urbanas. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton eWonder — Picape elétrica com economia de R$ 1.677/mês | Lavoro Foton"
+        description="eWonder substitui Kia Bongo e Hyundai HR com economia comprovada de R$ 1.677 por mês por veículo, só na troca do combustível por energia elétrica. CNH B. Lavoro Foton, Contagem MG."
         path="/modelos/ewonder"
-        jsonLd={buildProductSchema({ name: "Foton eWonder", model: "eWonder", category: "Picape elétrica", description: "Picape 100% elétrica com consumo 0,23 kWh/km e 86% menos manutenção" })}
+        jsonLd={[
+          buildProductSchema({
+            name: "Foton eWonder",
+            model: "eWonder",
+            category: "Picape elétrica urbana",
+            description: "Picape 100% elétrica que substitui Kia Bongo e Hyundai HR com economia comprovada de R$ 1.677/mês por veículo. CNH B.",
+            properties: [
+              ["PBT", "2.550 kg"],
+              ["Carga útil", "1.325 kg"],
+              ["Categoria CNH", "B"],
+              ["Autonomia", "180 km"],
+              ["Bateria", "41,86 kWh — CATL LFP"],
+              ["Consumo", "0,23 kWh/km"],
+              ["Economia mensal", "R$ 1.677 vs Kia Bongo / Hyundai HR"],
+            ],
+          }),
+          buildFaqSchema([
+            { question: "Quanto economiza um eWonder vs Kia Bongo?", answer: "O Foton eWonder gera economia comprovada de R$ 1.677 por mês por veículo em relação a Kia Bongo e Hyundai HR, apenas considerando a troca do combustível (diesel) por energia elétrica, sem contar a redução de 86% nos custos de manutenção." },
+            { question: "O eWonder pode ser dirigido com CNH B?", answer: "Sim. O eWonder tem PBT de 2.550 kg, o que permite dirigi-lo com CNH categoria B — sem necessidade de habilitação de caminhão." },
+            { question: "Qual a autonomia do eWonder?", answer: "180 km de autonomia real com bateria CATL LFP de 41,86 kWh, ideal para operações urbanas de 60 a 140 km/dia." },
+            { question: "Onde recarregar o eWonder em BH?", answer: "O eWonder usa conector CCS2 padrão (AC e DC), compatível com a rede pública de eletropostos em Belo Horizonte e região metropolitana, além da recarga em base própria com carregador AC." },
+          ]),
+          speakableSchema,
+        ]}
       />
 
       <Navbar />
@@ -59,8 +82,8 @@ const EWonder = () => {
             <Zap className="w-5 h-5" />
             <span className="font-bold">100% ELÉTRICO</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in max-w-4xl" style={{ animationDelay: "0.1s" }}>
-            eWonder
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in max-w-4xl" style={{ animationDelay: "0.1s" }}>
+            A picape que devolve R$ 1.677 todo mês.
           </h1>
           <p className="text-2xl md:text-4xl mb-4 max-w-3xl animate-fade-in font-bold" style={{ animationDelay: "0.2s" }}>
             O VUC elétrico que entrega economia real desde o primeiro dia.
