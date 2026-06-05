@@ -12,6 +12,7 @@ import spec1 from "@/assets/eview-connect-spec1.jpg";
 import spec2 from "@/assets/eview-connect-spec2.jpg";
 import spec3 from "@/assets/eview-connect-spec3.jpg";
 import spec4 from "@/assets/eview-connect-spec4.jpg";
+import SEO from "@/components/SEO";
 
 const whatsappNumber = "553196970656";
 const whatsappMessage = encodeURIComponent("Olá! Gostaria de mais informações sobre a eView Connect.");
@@ -38,6 +39,12 @@ const EViewConnect = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Foton eView Connect — Elétrico conectado"
+        description="Foton eView Connect: caminhão elétrico com telemetria embarcada e gestão de frota integrada."
+        path="/modelos/ev-connect"
+      />
+
       <Navbar />
 
       {/* Hero */}

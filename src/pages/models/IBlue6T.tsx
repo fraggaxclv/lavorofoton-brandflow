@@ -5,6 +5,7 @@ import { TrendingDown, Zap, Battery, Package, Shield, Truck, Wrench, CheckCircle
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useState } from "react";
 import iblue6tImg from "@/assets/iblue-6t.jpg";
+import SEO from "@/components/SEO";
 
 const IBlue6T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -28,6 +29,12 @@ const IBlue6T = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Foton iBlue 6T — Caminhão leve elétrico"
+        description="Foton iBlue 6T: caminhão leve 100% elétrico de 6 toneladas. Solução econômica para distribuição urbana sustentável."
+        path="/modelos/iblue-6t"
+      />
+
       <Navbar />
 
       {/* 🟥 SEÇÃO 1 — HERO */}

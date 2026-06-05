@@ -11,6 +11,7 @@ import { MessageCircle, ChevronDown, Truck, Home, TrendingUp, Users, Fuel, Wrenc
 import ewonderHero from "@/assets/ewonder.jpg";
 import ewonderSide from "@/assets/ewonder-cargo.png";
 import ewonderDetail from "@/assets/ewonder-interior-front.jpg";
+import SEO from "@/components/SEO";
 
 // ── Constants ──
 const CUSTO_KM_BONGO = 0.8629;
@@ -78,6 +79,12 @@ const ComparisonBar = ({ label, bongo, ewonder, diff, maxVal }: { label: string;
 
   return (
     <div className="mb-8">
+      <SEO
+        title="Foton eWonder — Picape elétrica com 86% menos manutenção"
+        description="Picape elétrica Foton eWonder: 0,23 kWh/km, autonomia urbana, 86% menos manutenção vs Bongo e HR. Simule sua economia."
+        path="/comparativo-ewonder"
+      />
+
       <div className="flex items-center justify-between mb-2">
         <span className="font-semibold text-white text-sm md:text-base">{label}</span>
         <span className="text-xs md:text-sm font-bold px-3 py-1 rounded-full bg-[#FFC540] text-[#002D6F]">

@@ -41,6 +41,7 @@ import danaLogo from "@/assets/dana-logo-full.png";
 import garantia3AnosIcon from "@/assets/garantia-3anos-foton.png";
 import chassiReforcadoIcon from "@/assets/chassi-reforcado-icon.png";
 import tanqueAluminioIcon from "@/assets/tanque-aluminio-icon.png";
+import SEO from "@/components/SEO";
 
 const AumanD2632 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -66,6 +67,12 @@ const AumanD2632 = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Foton Auman D 2632 — Cavalo mecânico 26 toneladas"
+        description="Foton Auman D 2632: cavalo mecânico para operações pesadas. Cummins ISG, câmbio ZF AMT e cabine premium."
+        path="/modelos/auman-d-2632"
+      />
+
       <Helmet>
         <title>Foton Auman D 2632 — Truck 6x2 26T, Suspensão a Ar, 3º Eixo Elevável e Semi Leito | Lavoro Foton MG</title>
         <meta name="description" content="Foton Auman D 2632: truck 6x2 com suspensão a ar e 3º eixo elevável de série. Motor Cummins 320 cv, ZF automatizado 9 marchas, cabine com semi leito, PBTC 36 t e 3 anos de garantia em motor e câmbio sem limite de km." />

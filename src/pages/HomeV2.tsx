@@ -16,6 +16,7 @@ import logoCoopmetro from "@/assets/logo-coopmetro.png";
 import logoRoodacoop from "@/assets/logo-roodacoop.png";
 import logoZeroCarbon from "@/assets/logo-zero-carbon.png";
 import logoTransflau from "@/assets/logo-transflau.png";
+import SEO from "@/components/SEO";
 
 /* ─── BLOCO 1 — Banner de urgência (componente isolado) ─── */
 const BannerUrgencia = () => (
@@ -75,6 +76,12 @@ const ModelCardV2 = ({ name, description, tags, link, secondaryLink, badge }: Mo
 const HomeV2 = () => {
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Caminhões Foton em BH | Diesel e Elétrico com até 80% de economia"
+        description="Concessionária oficial Foton em Belo Horizonte e Minas Gerais. Linha completa Aumark, Auman, Tunland e elétricos. Calcule sua economia com TCO."
+        path="/"
+      />
+
       <h1 className="sr-only">
         Concessionária Foton em Belo Horizonte e Minas Gerais — Caminhões Aumark, Auman D, Tunland e Linha e-Foton com economia operacional comprovada
       </h1>

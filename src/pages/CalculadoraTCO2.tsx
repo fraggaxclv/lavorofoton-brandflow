@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 /* ════════════════════════════════════════════════════════
    BRAND TOKENS — Consulting-grade palette
@@ -65,7 +66,13 @@ const Tip: React.FC<{ text: string }> = ({ text }) => {
   const [show, setShow] = useState(false);
   return (
     <span className="relative inline-block ml-1 cursor-help"
-      onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}
+      onMouseEnter={() =>
+      <SEO
+        title="Calculadora TCO Avançada — Consultoria com 20 variáveis"
+        description="Análise consultiva de TCO com 20 variáveis, projeções de inflação e vantagens ESG. Para gestores de frota que decidem por dados."
+        path="/calculadora-2"
+      />
+ setShow(true)} onMouseLeave={() => setShow(false)}
       onClick={() => setShow(!show)}>
       <HelpCircle size={13} className="inline" style={{ color: C.text2 }} />
       {show && (

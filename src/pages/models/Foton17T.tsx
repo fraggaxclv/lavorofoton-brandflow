@@ -25,6 +25,7 @@ import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import durabilityIcon from "@/assets/durability-icon.png";
+import SEO from "@/components/SEO";
 
 const Foton17T = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -91,6 +92,12 @@ const Foton17T = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Foton Auman D 1722 — Caminhão pesado 17 toneladas"
+        description="Foton Auman D 1722: caminhão pesado de 17 toneladas PBT. Robustez Cummins para operações de carga geral e construção."
+        path="/modelos/auman-d-1722"
+      />
+
       <Navbar />
 
       {/* 1. HERO */}

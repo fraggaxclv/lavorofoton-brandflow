@@ -1,5 +1,6 @@
 import logoFotonLavoro from "@/assets/logo-foton-lavoro-transparente.png";
 import logoFotonIcon from "@/assets/foton-logo-icon-transparent.png";
+import SEO from "@/components/SEO";
 
 const cards = [
   { destaque: "80%", frase: "menos custo operacional", detalhe: "Eletricidade vs. diesel. A conta fecha no primeiro mês." },
@@ -17,6 +18,12 @@ export default function EletricosBeneficios() {
         background: "linear-gradient(to right, #041954, #000000)",
       }}
     >
+      <SEO
+        title="Benefícios dos Caminhões Elétricos Foton"
+        description="Vantagens econômicas e operacionais dos caminhões elétricos Foton: redução de custos, manutenção simplificada e desempenho urbano."
+        path="/eletricos-beneficios"
+      />
+
       {/* Logo topo direito */}
       <img
         src={logoFotonIcon}
