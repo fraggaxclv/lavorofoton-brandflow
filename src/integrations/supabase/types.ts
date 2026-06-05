@@ -790,6 +790,60 @@ export type Database = {
           },
         ]
       }
+      simulacoes_tco: {
+        Row: {
+          aceite_consultoria: boolean
+          aceite_privacidade: boolean
+          created_at: string
+          email: string
+          empresa: string | null
+          id: string
+          inputs_simulacao: Json
+          ip_address: unknown
+          modelo_concorrente: string | null
+          modelo_foton: string | null
+          nome: string
+          resultados_simulacao: Json
+          simulation_code: string
+          telefone: string
+          user_agent: string | null
+        }
+        Insert: {
+          aceite_consultoria?: boolean
+          aceite_privacidade?: boolean
+          created_at?: string
+          email: string
+          empresa?: string | null
+          id?: string
+          inputs_simulacao?: Json
+          ip_address?: unknown
+          modelo_concorrente?: string | null
+          modelo_foton?: string | null
+          nome: string
+          resultados_simulacao?: Json
+          simulation_code: string
+          telefone: string
+          user_agent?: string | null
+        }
+        Update: {
+          aceite_consultoria?: boolean
+          aceite_privacidade?: boolean
+          created_at?: string
+          email?: string
+          empresa?: string | null
+          id?: string
+          inputs_simulacao?: Json
+          ip_address?: unknown
+          modelo_concorrente?: string | null
+          modelo_foton?: string | null
+          nome?: string
+          resultados_simulacao?: Json
+          simulation_code?: string
+          telefone?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       solicitacoes_acesso_cliente: {
         Row: {
           aprovado_por: string | null
@@ -883,6 +937,16 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      verificar_simulacao: {
+        Args: { p_code: string }
+        Returns: {
+          created_at: string
+          modelo_concorrente: string
+          modelo_foton: string
+          nome_mascarado: string
+          simulation_code: string
+        }[]
       }
     }
     Enums: {
