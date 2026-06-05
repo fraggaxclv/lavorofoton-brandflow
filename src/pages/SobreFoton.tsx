@@ -116,14 +116,14 @@ const SobreFoton = () => {
 
         <div className="relative z-10 container mx-auto px-6 max-w-4xl text-left">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Foton.
+            A maior fabricante de
             <br />
-            <span className="text-primary">Tecnologia global.</span>
+            <span className="text-primary">veículos comerciais</span>
             <br />
-            Performance para o Brasil.
+            do mundo.
           </h1>
           <p className="text-xl md:text-2xl text-foreground font-bold mb-8 max-w-2xl">
-            A Lavoro representa no Brasil uma das maiores fabricantes de veículos comerciais do mundo.
+            Líder global em veículos comerciais desde 2009. Caminhões, vans, picapes, ônibus e máquinas de construção. Tudo o que move o comércio do mundo.
           </p>
           <Button size="lg" onClick={() => scrollToSection("quem-e-foton")} className="text-lg px-8 py-6">
             Conheça nossa história
