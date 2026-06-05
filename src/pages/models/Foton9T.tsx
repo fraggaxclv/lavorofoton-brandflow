@@ -32,6 +32,7 @@ import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const Foton9T = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -112,6 +113,7 @@ const Foton9T = () => {
         title="Foton Aumark 916 — Caminhão médio 9T motor Cummins | Lavoro Foton BH"
         description="Aumark 916: médio de 9 toneladas PBT com motor Cummins F3.8 e câmbio ZF. Robustez para entregas regionais. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/aumark-916"
+        jsonLd={buildProductSchema({ name: "Foton Aumark 916", model: "Aumark 916", category: "Caminhão médio", description: "Caminhão médio 9 toneladas PBT com motor Cummins F3.8" })}
       />
 
       <Navbar />

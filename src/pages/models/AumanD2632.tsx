@@ -42,6 +42,7 @@ import garantia3AnosIcon from "@/assets/garantia-3anos-foton.png";
 import chassiReforcadoIcon from "@/assets/chassi-reforcado-icon.png";
 import tanqueAluminioIcon from "@/assets/tanque-aluminio-icon.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const AumanD2632 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -71,6 +72,7 @@ const AumanD2632 = () => {
         title="Foton Auman D 2632 — Cavalo mecânico 26T Cummins ISG | Lavoro Foton BH"
         description="Auman D 2632: cavalo mecânico 6x2 com Cummins ISG, câmbio ZF AMT e cabine premium. Para operações pesadas. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/auman-d-2632"
+        jsonLd={buildProductSchema({ name: "Foton Auman D 2632", model: "Auman D 2632", category: "Cavalo mecânico", description: "Cavalo mecânico 26T com Cummins ISG, câmbio ZF AMT e cabine premium" })}
       />
 
       <Helmet>

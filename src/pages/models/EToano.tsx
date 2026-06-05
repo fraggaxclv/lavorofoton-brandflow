@@ -11,12 +11,14 @@ import etoanoInterior from "@/assets/etoano-interior.png";
 import etoanoNormalRoof from "@/assets/etoano-normal-roof.png";
 import etoanoHighRoof from "@/assets/etoano-high-roof.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 const EToano = () => {
   return <div className="min-h-screen">
     <SEO
         title="Foton eToano — Furgão 100% elétrico para last-mile | Lavoro Foton BH"
         description="eToano: furgão 100% elétrico, zero emissão e baixo custo operacional para entregas urbanas. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/etoano"
+        jsonLd={buildProductSchema({ name: "Foton eToano", model: "eToano Pro", category: "Furgão elétrico", description: "Furgão 100% elétrico para last-mile e entregas urbanas, zero emissão" })}
       />
       <Navbar />
 

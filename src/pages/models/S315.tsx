@@ -30,6 +30,7 @@ import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 const S315 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -79,6 +80,7 @@ const S315 = () => {
         title="Foton Aumark S315 — VUC urbano CNH B | Lavoro Foton BH"
         description="Aumark S315 é o caminhão urbano 3,5T que pode ser dirigido com CNH B. Ideal para distribuição last-mile. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/aumark-s315"
+        jsonLd={buildProductSchema({ name: "Foton Aumark S315", model: "Aumark S315", category: "VUC urbano", description: "Caminhão urbano 3,5T dirigível com CNH B, ideal para distribuição last-mile" })}
       />
       <Navbar />
 

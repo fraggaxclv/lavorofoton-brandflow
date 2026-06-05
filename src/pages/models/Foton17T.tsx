@@ -26,6 +26,7 @@ import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import durabilityIcon from "@/assets/durability-icon.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const Foton17T = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -96,6 +97,7 @@ const Foton17T = () => {
         title="Foton Auman D 1722 — Caminhão pesado 17T motor Cummins | Lavoro Foton BH"
         description="Auman D 1722: pesado de 17 toneladas PBT com motor Cummins e câmbio ZF. Para carga geral e construção. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/auman-d-1722"
+        jsonLd={buildProductSchema({ name: "Foton Auman D 1722", model: "Auman D 1722", category: "Caminhão pesado", description: "Caminhão pesado 17 toneladas PBT com motor Cummins e câmbio ZF" })}
       />
 
       <Navbar />

@@ -46,6 +46,7 @@ import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const TunlandV7 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -79,6 +80,7 @@ const TunlandV7 = () => {
         title="Foton Tunland V7 — Picape diesel 4x4 motor Cummins | Lavoro Foton BH"
         description="Tunland V7: picape diesel 4x4 com motor Cummins, robustez e capacidade de carga para o dia a dia. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/tunland-v7"
+        jsonLd={buildProductSchema({ name: "Foton Tunland V7", model: "Tunland V7", category: "Picape diesel 4x4", description: "Picape diesel 4x4 com motor Cummins, robustez e capacidade de carga" })}
       />
 
       <Navbar />

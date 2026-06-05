@@ -43,6 +43,7 @@ import garantia3AnosIcon from "@/assets/garantia-3anos-foton.png";
 import chassiReforcadoIcon from "@/assets/chassi-reforcado-icon.png";
 import tanqueAluminioIcon from "@/assets/tanque-aluminio-icon.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const AumanD1830 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -71,6 +72,7 @@ const AumanD1830 = () => {
         title="Foton Auman D 1830 — Pesado 18T para transporte regional | Lavoro Foton BH"
         description="Auman D 1830: pesado robusto com motor Cummins e câmbio ZF para transporte regional de cargas pesadas. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/auman-d-1830"
+        jsonLd={buildProductSchema({ name: "Foton Auman D 1830", model: "Auman D 1830", category: "Caminhão pesado", description: "Pesado 18T motor Cummins e câmbio ZF para transporte regional" })}
       />
 
       <Helmet>

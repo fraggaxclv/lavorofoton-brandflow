@@ -9,6 +9,7 @@ import eaumarkLateralImg from "@/assets/eaumark-9t-lateral.png";
 import eaumarkInteriorImg from "@/assets/eaumark-9t-interior.png";
 import eaumarkChassisImg from "@/assets/eaumark-9t-chassis.webp";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 const EAumark9T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const whatsappNumber = "5531997966042";
@@ -38,6 +39,7 @@ const EAumark9T = () => {
         title="Foton eAumark 9T — Caminhão médio elétrico 9 toneladas | Lavoro Foton BH"
         description="eAumark 9T: caminhão médio 100% elétrico de 9 toneladas PBT. Robustez Aumark sem emissão. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/eaumark-9t"
+        jsonLd={buildProductSchema({ name: "Foton eAumark 9T", model: "eAumark 9T", category: "Caminhão médio elétrico", description: "Caminhão médio 100% elétrico de 9 toneladas PBT" })}
       />
       <Navbar />
 

@@ -8,6 +8,7 @@ import eaumarkFrontalImg from "@/assets/eaumark-9t-frontal.png";
 import eaumarkLateralImg from "@/assets/eaumark-9t-lateral.png";
 import eaumarkInteriorImg from "@/assets/eaumark-9t-interior.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 const EAumark12T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const whatsappNumber = "5531997966042";
@@ -37,6 +38,7 @@ const EAumark12T = () => {
         title="Foton eAumark 12T — Semipesado elétrico 12 toneladas | Lavoro Foton BH"
         description="eAumark 12T: semipesado 100% elétrico de 12 toneladas PBT. Performance Aumark sem emissão. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/eaumark-12t"
+        jsonLd={buildProductSchema({ name: "Foton eAumark 12T", model: "eAumark 12T", category: "Semipesado elétrico", description: "Semipesado 100% elétrico de 12 toneladas PBT" })}
       />
       <Navbar />
 

@@ -15,6 +15,7 @@ import ewonderInteriorFront from "@/assets/ewonder-interior-front.jpg";
 import ewonderControls from "@/assets/ewonder-controls.jpg";
 import ewonderCargo from "@/assets/ewonder-cargo.png";
 import SEO from "@/components/SEO";
+import { buildProductSchema } from "@/lib/productSchema";
 
 const WHATSAPP_NUMBER = "5531997966042";
 const WHATSAPP_MSG = encodeURIComponent("Olá! Gostaria de mais informações sobre o eWonder.");
@@ -42,6 +43,7 @@ const EWonder = () => {
         title="Foton eWonder — Picape 100% elétrica 0,23 kWh/km | Lavoro Foton BH"
         description="eWonder: picape 100% elétrica com consumo de 0,23 kWh/km e 86% menos manutenção. Ideal para frotas urbanas. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/ewonder"
+        jsonLd={buildProductSchema({ name: "Foton eWonder", model: "eWonder", category: "Picape elétrica", description: "Picape 100% elétrica com consumo 0,23 kWh/km e 86% menos manutenção" })}
       />
 
       <Navbar />
