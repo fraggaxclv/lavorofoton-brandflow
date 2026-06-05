@@ -35,10 +35,21 @@ const EAumark12T = () => {
   };
   return <div className="min-h-screen">
     <SEO
-        title="Foton eAumark 12T — Semipesado elétrico 12 toneladas | Lavoro Foton BH"
-        description="eAumark 12T: semipesado 100% elétrico de 12 toneladas PBT. Performance Aumark sem emissão. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton eAumark 12T — Caminhão elétrico 12 toneladas | Lavoro Foton"
+        description="eAumark 12T entrega a capacidade do Aumark 1217 em versão 100% elétrica. Zero combustível, zero ARLA, manutenção mínima. Lavoro Foton, Contagem MG."
         path="/modelos/eaumark-12t"
-        jsonLd={buildProductSchema({ name: "Foton eAumark 12T", model: "eAumark 12T", category: "Semipesado elétrico", description: "Semipesado 100% elétrico de 12 toneladas PBT" })}
+        jsonLd={buildProductSchema({
+          name: "Foton eAumark 12T",
+          model: "eAumark 12T",
+          category: "Caminhão médio elétrico",
+          description: "Caminhão elétrico 12 toneladas — substituto direto do Aumark 1217 sem combustível e sem ARLA.",
+          properties: [
+            ["PBT", "12.000 kg"],
+            ["Tipo de propulsão", "100% elétrico"],
+            ["Categoria CNH", "D/E"],
+            ["Substitui", "Foton Aumark 1217 diesel"],
+          ],
+        })}
       />
       <Navbar />
 
@@ -61,8 +72,8 @@ const EAumark12T = () => {
 
               {/* Título e subtítulo */}
               <div>
-                <h1 className="text-6xl md:text-7xl font-black mb-6 bg-gradient-to-r from-white via-green-100 to-green-400 bg-clip-text text-transparent leading-tight">
-                  e-Aumark 12T
+                <h1 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-white via-green-100 to-green-400 bg-clip-text text-transparent leading-tight">
+                  12 toneladas. Zero gota de diesel.
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
                   O caminhão elétrico mais potente da linha: <strong className="text-white">7.150 kg de carga</strong>, <strong className="text-white">220 km de autonomia real</strong> e custo operacional até <strong className="text-green-400">80% menor</strong>. Ideal para operações pesadas urbanas e regionais.
