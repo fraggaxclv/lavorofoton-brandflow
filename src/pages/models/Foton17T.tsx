@@ -93,8 +93,8 @@ const Foton17T = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Auman D 1722 — Caminhão pesado 17 toneladas"
-        description="Foton Auman D 1722: caminhão pesado de 17 toneladas PBT. Robustez Cummins para operações de carga geral e construção."
+        title="Foton Auman D 1722 — Caminhão pesado 17T motor Cummins | Lavoro Foton BH"
+        description="Auman D 1722: pesado de 17 toneladas PBT com motor Cummins e câmbio ZF. Para carga geral e construção. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/auman-d-1722"
       />
 

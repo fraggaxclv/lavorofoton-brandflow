@@ -123,8 +123,8 @@ const Foton1217New = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Aumark 1217 — Caminhão semipesado 12 toneladas"
-        description="Foton Aumark 1217: semipesado de 12 toneladas PBT. Motor Cummins, câmbio ZF e tanques de alumínio. Compare TCO com VW Delivery."
+        title="Foton Aumark 1217 — Caminhão médio 12T com 1 tonelada a mais | Lavoro Foton BH"
+        description="Aumark 1217 carrega 1.000 kg a mais que VW Delivery 11.180. Motor Cummins F3.8, transmissão ZF, garantia de 3 anos. Compre na Lavoro Foton, concessionária oficial em Contagem, MG."
         path="/modelos/aumark-1217"
       />
 

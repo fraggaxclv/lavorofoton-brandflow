@@ -34,8 +34,8 @@ const EAumark12T = () => {
   };
   return <div className="min-h-screen">
     <SEO
-        title="Foton eAumark 12T — Semipesado elétrico"
-        description="Foton eAumark 12T: semipesado 100% elétrico de 12 toneladas PBT. Performance Aumark sem emissão."
+        title="Foton eAumark 12T — Semipesado elétrico 12 toneladas | Lavoro Foton BH"
+        description="eAumark 12T: semipesado 100% elétrico de 12 toneladas PBT. Performance Aumark sem emissão. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/eaumark-12t"
       />
       <Navbar />

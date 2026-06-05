@@ -76,8 +76,8 @@ const S315 = () => {
   };
   return <div className="min-h-screen bg-background">
     <SEO
-        title="Foton Aumark S315 — Caminhão urbano CNH B"
-        description="Foton Aumark S315: caminhão urbano de carga dirigível com CNH B. Ideal para entregas urbanas e last-mile em Belo Horizonte."
+        title="Foton Aumark S315 — VUC urbano CNH B | Lavoro Foton BH"
+        description="Aumark S315 é o caminhão urbano 3,5T que pode ser dirigido com CNH B. Ideal para distribuição last-mile. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/aumark-s315"
       />
       <Navbar />

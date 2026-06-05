@@ -30,8 +30,8 @@ const IBlue6T = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Foton iBlue 6T — Caminhão leve elétrico"
-        description="Foton iBlue 6T: caminhão leve 100% elétrico de 6 toneladas. Solução econômica para distribuição urbana sustentável."
+        title="Foton iBlue 6T — Caminhão leve 100% elétrico 6T | Lavoro Foton BH"
+        description="iBlue 6T: leve 100% elétrico de 6 toneladas para distribuição urbana sustentável. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/iblue-6t"
       />
 

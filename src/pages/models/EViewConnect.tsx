@@ -40,8 +40,8 @@ const EViewConnect = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Foton eView Connect — Elétrico conectado"
-        description="Foton eView Connect: caminhão elétrico com telemetria embarcada e gestão de frota integrada."
+        title="Foton eView Connect — Elétrico com telemetria embarcada | Lavoro Foton BH"
+        description="eView Connect: caminhão elétrico com telemetria embarcada e gestão de frota integrada. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/ev-connect"
       />
 

@@ -109,8 +109,8 @@ const Foton9T = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Aumark 916 — Caminhão médio 9 toneladas"
-        description="Foton Aumark 916: caminhão médio de 9 toneladas PBT com motor Cummins. Robustez para entregas regionais e cargas variadas."
+        title="Foton Aumark 916 — Caminhão médio 9T motor Cummins | Lavoro Foton BH"
+        description="Aumark 916: médio de 9 toneladas PBT com motor Cummins F3.8 e câmbio ZF. Robustez para entregas regionais. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/aumark-916"
       />
 

@@ -68,8 +68,8 @@ const AumanD2632 = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Auman D 2632 — Cavalo mecânico 26 toneladas"
-        description="Foton Auman D 2632: cavalo mecânico para operações pesadas. Cummins ISG, câmbio ZF AMT e cabine premium."
+        title="Foton Auman D 2632 — Cavalo mecânico 26T Cummins ISG | Lavoro Foton BH"
+        description="Auman D 2632: cavalo mecânico 6x2 com Cummins ISG, câmbio ZF AMT e cabine premium. Para operações pesadas. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/auman-d-2632"
       />
 

@@ -39,8 +39,8 @@ const EWonder = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Foton eWonder — Picape elétrica urbana"
-        description="Foton eWonder: picape 100% elétrica, 0,23 kWh/km, 86% menos manutenção. Ideal para frotas urbanas sustentáveis."
+        title="Foton eWonder — Picape 100% elétrica 0,23 kWh/km | Lavoro Foton BH"
+        description="eWonder: picape 100% elétrica com consumo de 0,23 kWh/km e 86% menos manutenção. Ideal para frotas urbanas. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/ewonder"
       />
 

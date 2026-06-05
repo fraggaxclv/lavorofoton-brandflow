@@ -35,8 +35,8 @@ const EAumark9T = () => {
   };
   return <div className="min-h-screen">
     <SEO
-        title="Foton eAumark 9T — Caminhão médio elétrico"
-        description="Foton eAumark 9T: caminhão médio elétrico de 9 toneladas PBT. Robustez Aumark com motorização 100% elétrica."
+        title="Foton eAumark 9T — Caminhão médio elétrico 9 toneladas | Lavoro Foton BH"
+        description="eAumark 9T: caminhão médio 100% elétrico de 9 toneladas PBT. Robustez Aumark sem emissão. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/eaumark-9t"
       />
       <Navbar />
