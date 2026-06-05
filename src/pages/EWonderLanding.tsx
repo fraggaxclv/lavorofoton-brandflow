@@ -133,10 +133,11 @@ const EWonderLanding = () => {
 
   return (
     <div className="min-h-screen bg-[#002D6F]">
-      <Helmet>
-        <title>Foton E-Wonder | 73% mais barato que Bongo e HR | Lavoro Foton MG</title>
-        <meta name="description" content="Veja quanto custa rodar um Kia Bongo vs Foton E-Wonder. R$ 0,86/km vs R$ 0,23/km. 73% de economia operacional. Test drive grátis em BH." />
-      </Helmet>
+      <SEO
+        title="Foton eWonder — 73% mais barato que Bongo e HR"
+        description="Veja quanto custa rodar um Kia Bongo vs Foton eWonder. R$ 0,86/km vs R$ 0,23/km. 73% de economia operacional. Test drive grátis em BH."
+        path="/comparativo-ewonder"
+      />
       <Navbar />
 
       {/* ══════ SEÇÃO 1 — HERO SPLIT ══════ */}
