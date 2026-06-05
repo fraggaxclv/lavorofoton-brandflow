@@ -123,8 +123,8 @@ const Foton7T = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Aumark 715 — Caminhão leve 7 toneladas"
-        description="Foton Aumark 715: caminhão leve de 7 toneladas PBT. Ideal para distribuição urbana e regional com baixo custo operacional."
+        title="Foton Aumark 715 — Caminhão leve 7T motor Cummins | Lavoro Foton BH"
+        description="Aumark 715: leve de 7 toneladas PBT com motor Cummins e câmbio ZF. Ideal para distribuição urbana e regional. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/aumark-715"
       />
 
