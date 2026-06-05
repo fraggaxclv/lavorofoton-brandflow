@@ -79,11 +79,7 @@ const ComparisonBar = ({ label, bongo, ewonder, diff, maxVal }: { label: string;
 
   return (
     <div className="mb-8">
-      <SEO
-        title="Foton eWonder — Picape elétrica com 86% menos manutenção"
-        description="Picape elétrica Foton eWonder: 0,23 kWh/km, autonomia urbana, 86% menos manutenção vs Bongo e HR. Simule sua economia."
-        path="/comparativo-ewonder"
-      />
+
 
       <div className="flex items-center justify-between mb-2">
         <span className="font-semibold text-white text-sm md:text-base">{label}</span>
