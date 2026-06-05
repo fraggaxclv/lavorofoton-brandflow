@@ -1,60 +1,91 @@
-## Clipping de Mídia — Versão sem custo + Filtro de Concorrentes MG
 
-### Estratégia: Custo Zero
-Trocar Firecrawl/Perplexity por **Google News RSS** (gratuito, sem API key, sem limite prático).
+# Pré-render estático das páginas públicas Lavoro Foton
 
-**Como funciona:**
-- Google News expõe feeds RSS por busca: `https://news.google.com/rss/search?q=<query>&hl=pt-BR&gl=BR&ceid=BR:pt-419`
-- Retorna: título, link, data de publicação, fonte (veículo), snippet
-- Edge Function `buscar-clipping` faz fetch do RSS, parseia XML e insere no banco
-- Cron diário (1x/dia) — zero custo de API
-- Thumbnail: extraída do Open Graph da página de destino via fetch direto do HTML (sem Firecrawl). Fallback: logo do veículo.
+## Objetivo
 
-**Para YouTube:** RSS de busca também existe via `https://www.youtube.com/feeds/videos.xml?search_query=...` (alternativa) ou consultas adicionais ao Google News filtradas por `site:youtube.com`.
+Fazer com que o site Lavoro entregue HTML pronto (com todo o texto, títulos e meta tags já dentro) para Google, ChatGPT, Perplexity, LinkedIn, WhatsApp e scrapers de inteligência de mercado — sem mudar nada do que o visitante humano vê e sem mexer no CRM `/interno`.
 
-**Trade-off aceito:** Sem resumo gerado por IA. Usaremos o snippet do próprio RSS (~150 caracteres) como resumo. Se quiser resumo melhor depois, podemos passar pelo Lovable AI (Gemini Flash Lite, já incluso no Lovable Cloud, sem custo adicional para o usuário).
+## O que muda na prática
 
-### Filtro de Concorrentes (Minas Gerais)
+- **Para o visitante humano:** nada. O site continua igual, mesma navegação, mesmas animações.
+- **Para robôs e IAs:** ao pedir qualquer página pública, recebem o HTML completo com textos dos caminhões, calculadoras, comparativos, FAQ, etc. — sem precisar executar JavaScript.
+- **Para SEO:** Google indexa mais rápido e dá mais peso. Links colados em WhatsApp/LinkedIn mostram preview rico. IAs conseguem citar a Lavoro quando alguém perguntar sobre Foton em BH.
+- **Para o CRM `/interno`:** zero impacto. Continua sendo SPA dinâmico autenticado, como hoje.
 
-Lista negra de concessionárias concorrentes Foton em MG:
+## Como funciona (em linguagem simples)
+
+Hoje, quando o Lovable publica o site, ele gera **um único** `index.html` vazio que serve para todas as rotas. O conteúdo só aparece quando o JavaScript roda no navegador.
+
+Com pré-render, no momento do build (publicação), uma ferramenta abre cada página pública num navegador invisível, espera o conteúdo aparecer, e salva um arquivo HTML completo para cada rota:
+
 ```
-- Contauto / Contauto Foton
-- Diamantina / Diamantina Foton
-- Triama Norte / Triama Norte Foton
-- (extensível via tabela no banco)
+dist/
+├── index.html                              (home com todo conteúdo dentro)
+├── modelos/aumark-1217/index.html          (página completa do 1217)
+├── calculadora/index.html                  (calculadora TCO)
+├── imprensa/index.html                     (clipping)
+└── ... uma pasta por rota pública
 ```
 
-**Regra aplicada no servidor (Edge Function):**
-1. Se a notícia menciona MG / Belo Horizonte / Minas Gerais **E** menciona qualquer termo da blacklist → **descartada antes de inserir no banco**
-2. Notícias nacionais (sem menção a MG) com esses nomes → mantidas (raras, mas possíveis)
-3. Notícias de MG mencionando Lavoro ou Foton sem concorrente → mantidas normalmente
+Quando um robô pede `lavorofoton.com.br/modelos/aumark-1217`, o servidor entrega o HTML pronto. Quando um humano clica, o React assume o controle normalmente.
 
-**Implementação:** array `CONCORRENTES_MG` + array `TERMOS_MG` no código da Edge Function. Função `deveDescartar(titulo, snippet)` aplica regex case-insensitive.
+## Escopo das rotas pré-renderizadas
 
-**Tabela `clipping_blacklist` (opcional, recomendado):** para o admin gerenciar pelo CRM sem precisar editar código. Campos: `id`, `termo`, `escopo_geografico` ('mg' | 'nacional'), `ativo`.
+**Incluir (públicas, institucionais, conversão):**
 
-### Queries de Busca
-```
-1. "Foton caminhões Brasil"
-2. "Lavoro Foton"  
-3. "Foton Aumark"
-4. "Foton Auman"
-5. "Foton Tunland"
-```
-Cada query roda 1x/dia. Resultados deduplicados por URL antes de inserir.
+- `/` (HomeV2)
+- `/quem-somos`, `/sobre-foton`, `/servicos`, `/contato`
+- `/modelos` e todas as 16 páginas de modelos (`/modelos/aumark-s315`, `/modelos/aumark-1217`, `/modelos/ewonder`, etc.)
+- `/calculadora`, `/calculadora-tco`, `/calculadora-2`, `/calculadora-roi`
+- `/comparativo-aumark-1217`, `/comparativo-ewonder`
+- `/imprensa`
+- `/eletricos-beneficios`, `/eletricos-beneficios-2`
 
-### Schema (sem mudanças vs plano anterior)
-Mesmo `clippings_midia` com `status` (pendente|publicado|rejeitado) + nova tabela `clipping_blacklist`.
+**Excluir (não devem ser indexadas):**
 
-### Páginas (sem mudanças)
-- `/imprensa` — pública
-- `/interno/clipping` — admin (aprovar/rejeitar + gerenciar blacklist)
+- `/interno/*` — CRM autenticado
+- `/pedido-faturamento-lavoro`, `/proposta-comercial-lavoro` — formulários internos
+- `/admin/*` — área administrativa
+- `/home-trafego` e variantes `-trafego` — páginas de anúncio pago, já tem rastreio próprio
 
-### Custo Total: R$ 0
-- Google News RSS: grátis
-- Cron Supabase: incluso no Lovable Cloud
-- Edge Functions: incluso no Lovable Cloud
-- Storage de thumbnails: usar URL externa direto (sem rehospedar) → grátis
+## Implementação técnica
 
-### Próximo passo
-Se aprovar, eu: (1) crio migration `clippings_midia` + `clipping_blacklist` populada com os 3 concorrentes, (2) crio Edge Function `buscar-clipping` com parser RSS + filtro, (3) crio cron diário, (4) crio `/imprensa` e `/interno/clipping`.
+**Stack:** `vite-plugin-prerender-spa` (mantido, compatível com Vite 5, usa Puppeteer headless).
+
+**Mudanças:**
+
+1. `bun add -D vite-plugin-prerender-spa puppeteer`
+2. Editar `vite.config.ts` adicionando o plugin com lista explícita de rotas a pré-renderizar (lista acima).
+3. Adicionar `react-helmet-async` (caso ainda não esteja instalado) e envelopar cada página pública com `<Helmet>` definindo `<title>`, `<meta description>`, `<meta og:*>` e `<link rel="canonical">` específicos. Hoje todas as páginas herdam o mesmo head do `index.html` — esse é o passo que dá ganho real de SEO por página.
+4. Atualizar `public/robots.txt` mantendo `Disallow: /interno/`, `Disallow: /admin/`, `Disallow: /pedido-faturamento-lavoro`, etc.
+5. Gerar `public/sitemap.xml` listando só as rotas pré-renderizadas.
+
+**Riscos e mitigações:**
+
+- **Build mais lento:** publicar pode levar ~1-2 min a mais (Puppeteer renderiza cada rota). Aceitável.
+- **Páginas que dependem de dados do Supabase em tempo de carregamento** (ex: `/imprensa` puxa clippings): pré-renderizamos o "esqueleto" com SEO básico; os dados continuam carregando dinamicamente após hidratar. O Google ainda vê o título e descrição corretos.
+- **Calculadoras com estado:** mesma coisa, estado interativo continua client-side; SEO pega só o conteúdo institucional da página.
+
+## Entrega
+
+Em um único loop de build:
+
+1. Instalar dependências
+2. Configurar `vite.config.ts` com pré-render apenas das rotas públicas
+3. Adicionar `<Helmet>` com title/description/canonical/og em cada uma das ~25 páginas públicas (a maior parte do trabalho)
+4. Atualizar `robots.txt` e criar `sitemap.xml`
+5. Publicar e validar com `curl` em 3-4 rotas que o HTML retornado já contém o conteúdo
+
+## O que NÃO está incluído neste plano
+
+- Migração para TanStack Start (caminho B que recusamos)
+- Internacionalização ou novos idiomas
+- Alteração de design ou conteúdo das páginas
+- Mudanças no CRM `/interno`
+- Conexão das fontes reais do dashboard Central de Tráfego (segue paralelo, fase posterior)
+
+## Pós-implementação — como você valida
+
+1. Abrir terminal e rodar `curl https://lavorofoton.com.br/modelos/aumark-1217` — deve ver texto do caminhão no HTML, não só `<div id="root">`.
+2. Colar o link no WhatsApp ou LinkedIn — preview deve mostrar título e descrição corretos da página específica (não o título genérico da home).
+3. Em 1-2 semanas, repetir o relatório Semrush — esperar mais keywords ranqueadas das páginas de modelos.
