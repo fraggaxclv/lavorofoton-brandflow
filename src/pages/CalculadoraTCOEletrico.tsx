@@ -829,6 +829,12 @@ export default function CalculadoraTCOEletrico() {
         </footer>
       </main>
       <Footer />
+      <GatedExportModal
+        open={gateOpen}
+        onOpenChange={setGateOpen}
+        payload={gatePayload}
+        onGeneratePdf={handleGenerateAfterGate}
+      />
     </div>
   );
 }
