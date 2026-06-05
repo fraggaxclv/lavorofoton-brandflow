@@ -145,8 +145,8 @@ const Contato = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Contato — Lavoro Foton Belo Horizonte"
-        description="Fale com a Lavoro Foton em Belo Horizonte: WhatsApp +55 31 99697-0656, endereço e horário de atendimento da concessionária."
+        title="Contato Lavoro Foton — Concessionária Foton em Contagem, MG"
+        description="Fale com a Lavoro Foton: WhatsApp (31) 99796-6042. Rua Cornélio Vaz de Melo, 11, Contagem, MG. Concessionária oficial Foton em Belo Horizonte."
         path="/contato"
       />
 
