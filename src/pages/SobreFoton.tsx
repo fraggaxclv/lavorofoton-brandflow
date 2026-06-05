@@ -101,8 +101,8 @@ const SobreFoton = () => {
   }];
   return <div className="min-h-screen bg-background">
     <SEO
-        title="Sobre a Foton — Maior fabricante de caminhões do mundo"
-        description="Conheça a Foton, líder global em produção de caminhões comerciais. Tecnologia chinesa com componentes Cummins, ZF, Bosch e Dana."
+        title="Foton — A maior fabricante de caminhões da China | Lavoro Foton BH"
+        description="Foton: 12 milhões de veículos produzidos, presente em 110 países, joint venture com Mercedes-Benz (Daimler) e Cummins. Crescimento de 200% no Brasil em 2025."
         path="/sobre-foton"
       />
       <Navbar />
