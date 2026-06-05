@@ -68,8 +68,8 @@ const AumanD1830 = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Auman D 1830 — Caminhão pesado para operações exigentes"
-        description="Foton Auman D 1830: pesado robusto com motor Cummins, câmbio ZF. Ideal para transporte regional de cargas pesadas."
+        title="Foton Auman D 1830 — Pesado 18T para transporte regional | Lavoro Foton BH"
+        description="Auman D 1830: pesado robusto com motor Cummins e câmbio ZF para transporte regional de cargas pesadas. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/auman-d-1830"
       />
 
