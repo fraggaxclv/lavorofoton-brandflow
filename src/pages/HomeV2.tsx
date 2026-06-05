@@ -133,7 +133,7 @@ const HomeV2 = () => {
               </a>
             </div>
             <Link to="/sobre-foton" className="text-sm text-white/60 hover:text-white transition-colors">
-              Conheça a Foton, a maior fabricante de caminhões que você ainda não conhecia →
+              Conheça a Foton, a maior fabricante de veículos comerciais do mundo que você ainda não conhecia →
             </Link>
           </div>
         </div>
