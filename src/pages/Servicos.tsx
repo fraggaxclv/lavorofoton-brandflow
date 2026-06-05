@@ -115,8 +115,8 @@ const Servicos = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Serviços — Pós-venda e assistência técnica Foton"
-        description="Assistência técnica autorizada, peças originais, financiamento e suporte completo para caminhões Foton em Minas Gerais."
+        title="Serviços Lavoro Foton — Consultoria, Financiamento, Consórcio, Pós-venda BH"
+        description="Consultoria técnica de frota, financiamento Santander em 24h, consórcio Canopus sem entrada, oficina autorizada Foton com 88% fill rate em peças."
         path="/servicos"
       />
 

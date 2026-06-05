@@ -61,9 +61,9 @@ const ComparativoAumark1217 = () => {
   return (
     <>
       <Helmet>
-        <title>Foton Aumark 1217 vs VW Delivery 11.180, Mercedes Accelo, Iveco Tector | Lavoro Foton</title>
-        <meta name="description" content="Comparativo técnico: Aumark 1217 carrega 1 tonelada a mais, faz 3 viagens a menos por mês, garantia 3 anos sem limite de km. Dados reais de operação." />
-        <link rel="canonical" href="https://lavorofoton.com.br/comparativo-aumark-1217" />
+        <title>Foton Aumark 1217 vs VW Delivery 11.180, Mercedes Accelo 1117, Iveco Tector | Lavoro Foton</title>
+        <meta name="description" content="Comparativo técnico oficial: o Aumark 1217 carrega 1.016 kg a mais que o VW Delivery 11.180, faz 3 viagens a menos por mês, tem garantia 3 anos sem limite de km." />
+        <link rel="canonical" href="https://www.lavorofoton.com.br/comparativo-aumark-1217" />
       </Helmet>
 
       <div ref={containerRef} className="min-h-screen font-['Poppins',sans-serif] bg-[#0A1F3D] text-white">
