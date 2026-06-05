@@ -13,6 +13,7 @@ import { useSimulacoesTCO, SimulacaoTCO } from "@/hooks/useSimulacoesTCO";
 import TCOActionBar from "@/components/calculadoras/TCOActionBar";
 import { exportTCOPdf } from "@/lib/tcoExportPdf";
 import SEO from "@/components/SEO";
+import GatedExportModal, { GatedExportPayload, SavedSimulation } from "@/components/tco/GatedExportModal";
 
 // ── Brand tokens ──
 const C = {
