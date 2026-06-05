@@ -46,16 +46,16 @@ const SobreFoton = () => {
   }];
   const fotonFacts = [{
     icon: <Globe className="w-8 h-8" />,
-    text: "Uma das maiores fabricantes de veículos comerciais do planeta"
+    text: "Maior fabricante de veículos comerciais do mundo desde 2009"
   }, {
     icon: <TrendingUp className="w-8 h-8" />,
-    text: "Presente em mais de 110 países"
+    text: "Presente em mais de 110 países — cinco bases de produção: China, Índia, Rússia, Brasil e Tailândia"
   }, {
     icon: <Shield className="w-8 h-8" />,
     text: "Mais de 12 milhões de veículos produzidos até 2025"
   }, {
     icon: <Zap className="w-8 h-8" />,
-    text: "Líder global em tecnologia para caminhões leves, médios, pesados e elétricos"
+    text: "Joint ventures com Mercedes-Benz (Daimler), Cummins e ZF — caminhões leves, médios, pesados e elétricos"
   }];
   const brazilMetrics = [{
     label: "Estoque de Peças",
@@ -101,8 +101,8 @@ const SobreFoton = () => {
   }];
   return <div className="min-h-screen bg-background">
     <SEO
-        title="Foton — Maior fabricante de caminhões da China, 110 países, JV Mercedes-Benz | Lavoro Foton"
-        description="Foton: 12 milhões de veículos produzidos, presente em 110 países, joint venture com Mercedes-Benz (Daimler) e Cummins. Crescimento de 200% no Brasil em 2025."
+        title="Foton — Maior fabricante de veículos comerciais do mundo desde 2009 | Lavoro Foton"
+        description="Foton: maior fabricante de veículos comerciais do mundo desde 2009. Mais de 12 milhões de veículos produzidos, presente em 110 países, joint ventures com Mercedes-Benz (Daimler), Cummins e ZF. Crescimento de 200% no Brasil em 2025."
         path="/sobre-foton"
       />
       <Navbar />
@@ -116,14 +116,14 @@ const SobreFoton = () => {
 
         <div className="relative z-10 container mx-auto px-6 max-w-4xl text-left">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Foton.
+            A maior fabricante de
             <br />
-            <span className="text-primary">Tecnologia global.</span>
+            <span className="text-primary">veículos comerciais</span>
             <br />
-            Performance para o Brasil.
+            do mundo.
           </h1>
           <p className="text-xl md:text-2xl text-foreground font-bold mb-8 max-w-2xl">
-            A Lavoro representa no Brasil uma das maiores fabricantes de veículos comerciais do mundo.
+            Líder global em veículos comerciais desde 2009. Caminhões, vans, picapes, ônibus e máquinas de construção. Tudo o que move o comércio do mundo.
           </p>
           <Button size="lg" onClick={() => scrollToSection("quem-e-foton")} className="text-lg px-8 py-6">
             Conheça nossa história

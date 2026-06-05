@@ -133,7 +133,7 @@ const HomeV2 = () => {
               </a>
             </div>
             <Link to="/sobre-foton" className="text-sm text-white/60 hover:text-white transition-colors">
-              Conheça a Foton, a maior fabricante de caminhões que você ainda não conhecia →
+              Conheça a Foton, a maior fabricante de veículos comerciais do mundo que você ainda não conhecia →
             </Link>
           </div>
         </div>
@@ -150,8 +150,8 @@ const HomeV2 = () => {
             {[
               { icon: <img src={iconeFotonGlobal} alt="Foton Global" className="w-12 h-12 object-contain" />, text: "Presente em mais de 110 países" },
               { icon: <img src={icone12Milhoes} alt="12 milhões" className="w-12 h-12 object-contain" />, text: "Mais de 12 milhões de veículos produzidos até 2025" },
+              { icon: <img src={iconeDaimlerBenz} alt="Líder mundial" className="w-12 h-12 object-contain" />, text: "Maior fabricante de veículos comerciais do mundo desde 2009" },
               { icon: <img src={iconeCumminsZf} alt="Cummins e ZF" className="w-12 h-12 object-contain" />, text: "Motor Cummins + Caixa ZF + Componentes Bosch e Dana" },
-              { icon: <img src={iconeDaimlerBenz} alt="Daimler Benz" className="w-12 h-12 object-contain" />, text: "Joint Venture com a Mercedes-Benz (Daimler) para engenharia de veículos pesados" },
               { icon: <img src={icone200Porcento} alt="200%" className="w-12 h-12 object-contain" />, text: "Market share — crescimento de +200% em 2025" },
             ].map((item, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-lg p-5 flex flex-col items-center gap-3 text-center hover:border-primary/40 transition-colors">
