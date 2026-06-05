@@ -258,8 +258,8 @@ const CalculadoraTCO: React.FC = () => {
   return (
     <div className="min-h-screen w-full" style={{ background: "linear-gradient(180deg, #060e1a 0%, #0a1628 50%, #0d1f3c 100%)" }}>
       <SEO
-        title="Calculadora TCO — Custo total de propriedade Foton"
-        description="Calcule o custo total de propriedade (TCO) do seu caminhão Foton: combustível, manutenção, depreciação e financiamento."
+        title="Calculadora TCO Lavoro Foton — Simule sua economia diesel x elétrico"
+        description="Calcule o custo total de propriedade comparando seu veículo atual com um Foton elétrico. Combustível, manutenção, ARLA — mês a mês, sem achismo."
         path="/calculadora-tco"
       />
       <div className="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">

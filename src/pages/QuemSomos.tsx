@@ -84,8 +84,8 @@ const QuemSomos = () => {
   };
   return <div className="min-h-screen bg-background">
     <SEO
-        title="Lavoro — 40 anos, 87 mil veículos vendidos, 27 prêmios StarClass Mercedes-Benz"
-        description="A Lavoro é a maior história do varejo automotivo de Minas Gerais. 40 anos, 27 prêmios StarClass Mercedes-Benz (recorde nacional), agora concessionária oficial Foton em Contagem."
+        title="Lavoro — 40 anos, 87 mil veículos, 27 prêmios StarClass | Concessionária Foton BH"
+        description="Lavoro é a história mineira do varejo automotivo. 40 anos, 87 mil veículos vendidos, 27 prêmios StarClass Mercedes-Benz (recorde nacional). Agora Foton em Contagem."
         path="/quem-somos"
       />
       <Navbar />

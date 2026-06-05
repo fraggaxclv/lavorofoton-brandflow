@@ -110,10 +110,22 @@ const Foton9T = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Aumark 916 — Caminhão médio 9T motor Cummins | Lavoro Foton BH"
-        description="Aumark 916: médio de 9 toneladas PBT com motor Cummins F3.8 e câmbio ZF. Robustez para entregas regionais. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton Aumark 916 — Campeão do transporte refrigerado 9T | Lavoro Foton"
+        description="Chassi dimensionado para baús térmicos. Motor Cummins F3.8, transmissão ZF, 9 toneladas de PBT. O caminhão preferido das operações de carga refrigerada. Lavoro Foton, Contagem MG."
         path="/modelos/aumark-916"
-        jsonLd={buildProductSchema({ name: "Foton Aumark 916", model: "Aumark 916", category: "Caminhão médio", description: "Caminhão médio 9 toneladas PBT com motor Cummins F3.8" })}
+        jsonLd={buildProductSchema({
+          name: "Foton Aumark 916",
+          model: "Aumark 916",
+          category: "Caminhão médio",
+          description: "Caminhão 9 toneladas com chassi dimensionado para baús térmicos. Referência em transporte refrigerado.",
+          properties: [
+            ["PBT", "9.000 kg"],
+            ["Categoria CNH", "C"],
+            ["Motor", "Cummins F3.8 — 160 cv"],
+            ["Transmissão", "ZF — 6 marchas"],
+            ["Aplicação", "Cargas refrigeradas e baús térmicos"],
+          ],
+        })}
       />
 
       <Navbar />
@@ -129,8 +141,8 @@ const Foton9T = () => {
                 <span className="text-cyan-300 font-semibold text-sm">Especialista em Cadeia Fria</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Foton Aumark S 916
-                <span className="block text-2xl md:text-3xl text-cyan-400 mt-2 font-medium">O campeão do transporte refrigerado</span>
+                O caminhão que ganhou o frio.
+                <span className="block text-2xl md:text-3xl text-cyan-400 mt-2 font-medium">Foton Aumark S 916 — referência no transporte refrigerado</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
                 9 toneladas de PBT. Motor Cummins F3.8 de <span className="text-cyan-400 font-bold">160 cv</span>. 

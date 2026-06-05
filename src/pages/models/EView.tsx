@@ -43,10 +43,21 @@ const EView = () => {
   };
   return <div className="min-h-screen">
     <SEO
-        title="Foton eView — Caminhão urbano 100% elétrico | Lavoro Foton BH"
-        description="eView: caminhão urbano 100% elétrico, operação silenciosa e custo por km reduzido. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton eView Grand — Van elétrica média urbana | Lavoro Foton"
+        description="eView Grand é a van elétrica para o tráfego urbano denso. Silenciosa, sem calor de motor, baixíssimo custo por km. Lavoro Foton, Contagem MG."
         path="/modelos/eview"
-        jsonLd={buildProductSchema({ name: "Foton eView", model: "eView Grand", category: "Caminhão urbano elétrico", description: "Caminhão urbano 100% elétrico, operação silenciosa e custo por km reduzido" })}
+        jsonLd={buildProductSchema({
+          name: "Foton eView Grand",
+          model: "eView Grand",
+          category: "Van elétrica urbana",
+          description: "Van elétrica média urbana com até 300 km de autonomia e 7 m³ de carga. Silenciosa, sem calor de motor.",
+          properties: [
+            ["Autonomia", "até 300 km"],
+            ["Volume de carga", "7 m³"],
+            ["Tipo de propulsão", "100% elétrico"],
+            ["Bateria", "CATL LFP"],
+          ],
+        })}
       />
       <Navbar />
 
@@ -61,10 +72,10 @@ const EView = () => {
             <Zap className="w-5 h-5" />
             <span className="font-bold text-sm">⚡ 100% ELÉTRICO | BATERIA CATL LFP (Tecnologia estilo Tesla)</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in max-w-4xl" style={{
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in max-w-4xl" style={{
           animationDelay: "0.1s"
         }}>
-            e-View Grand
+            A van elétrica que vence o engarrafamento sem aquecer.
           </h1>
           <p className="text-2xl md:text-4xl mb-4 max-w-3xl animate-fade-in font-bold" style={{
           animationDelay: "0.2s"

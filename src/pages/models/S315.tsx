@@ -30,7 +30,7 @@ import centroLogisticoIcon from "@/assets/centro-logistico-icon.png";
 import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import SEO from "@/components/SEO";
-import { buildProductSchema } from "@/lib/productSchema";
+import { buildProductSchema, buildFaqSchema, speakableSchema } from "@/lib/productSchema";
 const S315 = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -77,10 +77,29 @@ const S315 = () => {
   };
   return <div className="min-h-screen bg-background">
     <SEO
-        title="Foton Aumark S315 — VUC urbano CNH B | Lavoro Foton BH"
-        description="Aumark S315 é o caminhão urbano 3,5T que pode ser dirigido com CNH B. Ideal para distribuição last-mile. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton Aumark S315 — Caminhão urbano 3,5T com CNH B | Lavoro Foton"
+        description="Único caminhão na categoria 3,5T que pode ser dirigido com habilitação B — sem precisar tirar CNH de caminhão. Ideal para last-mile, distribuição urbana e prestador PJ. Lavoro Foton, Contagem MG."
         path="/modelos/aumark-s315"
-        jsonLd={buildProductSchema({ name: "Foton Aumark S315", model: "Aumark S315", category: "VUC urbano", description: "Caminhão urbano 3,5T dirigível com CNH B, ideal para distribuição last-mile" })}
+        jsonLd={[
+          buildProductSchema({
+            name: "Foton Aumark S315",
+            model: "Aumark S315",
+            category: "Caminhão leve urbano",
+            description: "Único caminhão na categoria que pode ser dirigido com CNH B. PBT 3.500 kg, motor Cummins.",
+            properties: [
+              ["PBT", "3.500 kg"],
+              ["Categoria CNH", "B"],
+              ["Motor", "Cummins diesel"],
+              ["Aplicação", "Last-mile, distribuição urbana, prestador PJ"],
+            ],
+          }),
+          buildFaqSchema([
+            { question: "Qual caminhão Foton pode ser dirigido com CNH B?", answer: "O Foton Aumark S315 é o único caminhão da Foton que pode ser dirigido com habilitação categoria B, pois tem PBT de 3.500 kg — o limite máximo permitido para CNH B no Brasil." },
+            { question: "O Aumark S315 serve para entregas last-mile?", answer: "Sim. O Aumark S315 é especialmente projetado para distribuição urbana, last-mile e prestadores PJ que precisam de capacidade de carga maior que uma van mas sem o custo de uma CNH C." },
+            { question: "Onde comprar o Foton Aumark S315 em Belo Horizonte?", answer: "Na Lavoro Foton, concessionária oficial Foton em Contagem, região metropolitana de BH, localizada na Rua Cornélio Vaz de Melo, 11." },
+          ]),
+          speakableSchema,
+        ]}
       />
       <Navbar />
 
@@ -90,7 +109,7 @@ const S315 = () => {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 order-2 lg:order-1">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Foton Lavoro Aumark S315 – O caminhão CNH B mais completo do Brasil.
+                O único caminhão que você dirige com a CNH que já tem.
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
                 Parece caminhão. Dirige com CNH B.

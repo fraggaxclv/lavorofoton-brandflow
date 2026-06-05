@@ -124,10 +124,22 @@ const Foton7T = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Aumark 715 — Caminhão leve 7T motor Cummins | Lavoro Foton BH"
-        description="Aumark 715: leve de 7 toneladas PBT com motor Cummins e câmbio ZF. Ideal para distribuição urbana e regional. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton Aumark 715 — Caminhão 7T com Cummins e ZF | Lavoro Foton"
+        description="Aumark 715 leva motor Cummins F2.5 150cv e transmissão ZF para a categoria 7 toneladas — componentes que você só encontra nos pesados. Distribuição urbana e regional. Lavoro Foton, Contagem MG."
         path="/modelos/aumark-715"
-        jsonLd={buildProductSchema({ name: "Foton Aumark 715", model: "Aumark 715", category: "Caminhão leve", description: "Caminhão leve 7 toneladas PBT com motor Cummins e câmbio ZF" })}
+        jsonLd={buildProductSchema({
+          name: "Foton Aumark 715",
+          model: "Aumark 715",
+          category: "Caminhão leve",
+          description: "Caminhão 7 toneladas com motor Cummins F2.5 e transmissão ZF — componentes premium dos pesados aplicados num caminhão leve.",
+          properties: [
+            ["PBT", "7.000 kg"],
+            ["Categoria CNH", "C"],
+            ["Motor", "Cummins F2.5 — 150 cv / 400 Nm"],
+            ["Transmissão", "ZF"],
+            ["Garantia", "3 anos sem limite de quilometragem"],
+          ],
+        })}
       />
 
       <Navbar />
@@ -138,7 +150,7 @@ const Foton7T = () => {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 order-2 lg:order-1">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Foton Aumark 715
+                7 toneladas com motor Cummins e caixa ZF.
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
                 Médio porte com alta capacidade. Ideal para operações urbanas e regionais.

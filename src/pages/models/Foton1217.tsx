@@ -36,7 +36,7 @@ import fillRateIcon from "@/assets/fill-rate-icon.png";
 import aprovacaoClientesIcon from "@/assets/aprovacao-clientes-icon.png";
 import qualidadeIcon from "@/assets/qualidade-icon.png";
 import SEO from "@/components/SEO";
-import { buildProductSchema } from "@/lib/productSchema";
+import { buildProductSchema, buildFaqSchema, speakableSchema } from "@/lib/productSchema";
 
 const Foton1217New = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -124,10 +124,35 @@ const Foton1217New = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Aumark 1217 — Caminhão médio 12T com 1 tonelada a mais | Lavoro Foton BH"
-        description="Aumark 1217 carrega 1.000 kg a mais que VW Delivery 11.180. Motor Cummins F3.8, transmissão ZF, garantia de 3 anos. Compre na Lavoro Foton, concessionária oficial em Contagem, MG."
+        title="Foton Aumark 1217 — 8.326 kg de carga útil. Mais que todo concorrente. | Lavoro Foton"
+        description="Aumark 1217 carrega 1.016 kg a mais que o VW Delivery 11.180, com motor Cummins F3.8 170cv e transmissão ZF 6S558. Ganha 3 viagens por mês. Garantia 3 anos sem limite de km. Lavoro Foton, Contagem MG."
         path="/modelos/aumark-1217"
-        jsonLd={buildProductSchema({ name: "Foton Aumark 1217", model: "Aumark 1217", category: "Caminhão médio", description: "Caminhão médio 12 toneladas PBT, motor Cummins F3.8 170cv, transmissão ZF, carrega 1 tonelada a mais que VW Delivery 11.180" })}
+        jsonLd={[
+          buildProductSchema({
+            name: "Foton Aumark 1217",
+            model: "Aumark 1217",
+            category: "Caminhão médio",
+            description: "Caminhão médio com a maior carga útil da categoria: 8.326 kg. Carrega 1.016 kg a mais que o VW Delivery 11.180, com motor Cummins F3.8 170cv e transmissão ZF 6S558.",
+            properties: [
+              ["PBT", "11.500 kg"],
+              ["Carga útil", "8.326 kg"],
+              ["PBTC", "14.000 kg"],
+              ["Motor", "Cummins F3.8 — 170 cv / 600 Nm"],
+              ["Transmissão", "ZF 6S558 — 6 marchas"],
+              ["Categoria CNH", "D/E"],
+              ["Norma de emissões", "CONAMA P8"],
+              ["Garantia", "3 anos sem limite de quilometragem"],
+            ],
+          }),
+          buildFaqSchema([
+            { question: "O Aumark 1217 carrega mais que o VW Delivery 11.180?", answer: "Sim. O Foton Aumark 1217 tem carga útil de 8.326 kg, contra 7.310 kg do Volkswagen Delivery 11.180 — uma diferença de 1.016 kg por viagem. Em uma operação típica de distribuição, isso significa 3 viagens a menos por mês para transportar a mesma carga total." },
+            { question: "Qual é o motor do Foton Aumark 1217?", answer: "O Aumark 1217 vem equipado com motor Cummins F3.8 de 170 cv e 600 Nm de torque, atendendo à norma de emissões CONAMA P8, com transmissão ZF 6S558 de 6 marchas." },
+            { question: "Qual é a garantia do Aumark 1217?", answer: "3 anos sem limite de quilometragem no powertrain — único do mercado nessa categoria." },
+            { question: "Aumark 1217 vs Mercedes-Benz Accelo 1117 — qual carrega mais?", answer: "O Foton Aumark 1217 carrega aproximadamente 1.000 kg a mais que o Mercedes-Benz Accelo 1117 na mesma categoria, com componentes premium equivalentes (Cummins e ZF)." },
+            { question: "Onde comprar o Foton Aumark 1217 em Minas Gerais?", answer: "Na Lavoro Foton, concessionária oficial Foton em Contagem, região metropolitana de BH. Rua Cornélio Vaz de Melo, 11. WhatsApp (31) 99796-6042." },
+          ]),
+          speakableSchema,
+        ]}
       />
 
       <Navbar />
@@ -138,7 +163,7 @@ const Foton1217New = () => {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 order-2 lg:order-1">
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Foton Aumark 1217
+                O três-quartos que carrega 1 tonelada a mais.
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
                 O três-quartos mais forte, mais tecnológico e mais eficiente do Brasil.

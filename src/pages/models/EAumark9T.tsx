@@ -36,10 +36,21 @@ const EAumark9T = () => {
   };
   return <div className="min-h-screen">
     <SEO
-        title="Foton eAumark 9T — Caminhão médio elétrico 9 toneladas | Lavoro Foton BH"
-        description="eAumark 9T: caminhão médio 100% elétrico de 9 toneladas PBT. Robustez Aumark sem emissão. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton eAumark 9T — Caminhão elétrico 9 toneladas | Lavoro Foton"
+        description="eAumark 9T é o substituto elétrico direto do Aumark 916. Mesma capacidade, zero diesel, zero ARLA. Lavoro Foton, Contagem MG."
         path="/modelos/eaumark-9t"
-        jsonLd={buildProductSchema({ name: "Foton eAumark 9T", model: "eAumark 9T", category: "Caminhão médio elétrico", description: "Caminhão médio 100% elétrico de 9 toneladas PBT" })}
+        jsonLd={buildProductSchema({
+          name: "Foton eAumark 9T",
+          model: "eAumark 9T",
+          category: "Caminhão médio elétrico",
+          description: "Caminhão elétrico 9 toneladas — substituto direto do Aumark 916 sem combustível e sem ARLA.",
+          properties: [
+            ["PBT", "9.000 kg"],
+            ["Tipo de propulsão", "100% elétrico"],
+            ["Categoria CNH", "C"],
+            ["Substitui", "Foton Aumark 916 diesel"],
+          ],
+        })}
       />
       <Navbar />
 
@@ -62,8 +73,8 @@ const EAumark9T = () => {
 
               {/* Título e subtítulo */}
               <div>
-                <h1 className="text-6xl md:text-7xl font-black mb-6 bg-gradient-to-r from-white via-green-100 to-green-400 bg-clip-text text-transparent leading-tight">
-                  e-Aumark 9T
+                <h1 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-white via-green-100 to-green-400 bg-clip-text text-transparent leading-tight">
+                  9 toneladas que zeraram o diesel.
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
                   O caminhão elétrico mais versátil do Brasil: <strong className="text-white">5.550 kg de carga</strong>, <strong className="text-white">200 km de autonomia real</strong> e custo operacional até <strong className="text-green-400">80% menor</strong>. Perfeito para frotas urbanas e operações regionais.

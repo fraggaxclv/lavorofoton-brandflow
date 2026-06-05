@@ -41,10 +41,21 @@ const EViewConnect = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Foton eView Connect — Elétrico com telemetria embarcada | Lavoro Foton BH"
-        description="eView Connect: caminhão elétrico com telemetria embarcada e gestão de frota integrada. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton eView Connect — Van elétrica compacta urbana | Lavoro Foton"
+        description="eView Connect é a van elétrica compacta para last-mile fino — caixotes, encomendas, entrega rápida. Custo operacional mínimo. Lavoro Foton, Contagem MG."
         path="/modelos/ev-connect"
-        jsonLd={buildProductSchema({ name: "Foton eView Connect", model: "eView Connect", category: "Caminhão elétrico conectado", description: "Caminhão elétrico com telemetria embarcada e gestão de frota integrada" })}
+        jsonLd={buildProductSchema({
+          name: "Foton eView Connect",
+          model: "eView Connect",
+          category: "Van elétrica compacta",
+          description: "Van elétrica compacta para last-mile fino. 7,2 m³ de volume, 170 cv, custo operacional mínimo.",
+          properties: [
+            ["Volume de carga", "7,2 m³"],
+            ["Potência", "170 cv"],
+            ["Torque", "245 Nm"],
+            ["Tipo de propulsão", "100% elétrico"],
+          ],
+        })}
       />
 
       <Navbar />
@@ -61,8 +72,8 @@ const EViewConnect = () => {
               <span className="bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">100% ELÉTRICO</span>
               <span className="bg-cyan-500/20 text-cyan-300 text-xs font-bold px-3 py-1.5 rounded-full border border-cyan-500/30">SEU ESCRITÓRIO SOBRE RODAS</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-black mb-4 leading-tight">
-              eView <span className="text-cyan-400">Connect</span>
+            <h1 className="text-4xl md:text-6xl font-black mb-4 leading-tight">
+              O last-mile elétrico do tamanho da entrega.
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-6">
               Disponibilidade total, zero complicação. A praticidade da recarga e a confiabilidade que mantém o seu negócio em movimento.

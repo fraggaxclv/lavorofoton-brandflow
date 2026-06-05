@@ -15,10 +15,21 @@ import { buildProductSchema } from "@/lib/productSchema";
 const EToano = () => {
   return <div className="min-h-screen">
     <SEO
-        title="Foton eToano — Furgão 100% elétrico para last-mile | Lavoro Foton BH"
-        description="eToano: furgão 100% elétrico, zero emissão e baixo custo operacional para entregas urbanas. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton eToano Pro — Van elétrica de alta capacidade | Lavoro Foton"
+        description="eToano Pro é a van elétrica de maior porte da linha Foton, ideal para last-mile premium e operações de e-commerce que não param. Lavoro Foton, Contagem MG."
         path="/modelos/etoano"
-        jsonLd={buildProductSchema({ name: "Foton eToano", model: "eToano Pro", category: "Furgão elétrico", description: "Furgão 100% elétrico para last-mile e entregas urbanas, zero emissão" })}
+        jsonLd={buildProductSchema({
+          name: "Foton eToano Pro",
+          model: "eToano Pro",
+          category: "Van elétrica",
+          description: "Van 100% elétrica de alta capacidade — 230 km reais de autonomia e até 12,2 m³ de volume.",
+          properties: [
+            ["Autonomia", "230 km"],
+            ["Volume de carga", "até 12,2 m³"],
+            ["Tipo de propulsão", "100% elétrico"],
+            ["Bateria", "CATL LFP"],
+          ],
+        })}
       />
       <Navbar />
 
@@ -33,10 +44,10 @@ const EToano = () => {
             <Zap className="w-5 h-5" />
             <span className="font-bold text-sm">⚡ 100% ELÉTRICO | TECNOLOGIA DE BATERIA ESTILO TESLA (CATL LFP)</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in max-w-4xl" style={{
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in max-w-4xl" style={{
           animationDelay: "0.1s"
         }}>
-            e-Toano Pro
+            A van elétrica para quem entrega muito.
           </h1>
           <p className="text-2xl md:text-4xl mb-4 max-w-3xl animate-fade-in font-bold" style={{
           animationDelay: "0.2s"

@@ -77,8 +77,8 @@ const HomeV2 = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Caminhões Foton em BH | Diesel e Elétrico com até 80% de economia"
-        description="Concessionária oficial Foton em Belo Horizonte e Minas Gerais. Linha completa Aumark, Auman, Tunland e elétricos. Calcule sua economia com TCO."
+        title="Lavoro Foton — Caminhões que custam menos pra rodar | Belo Horizonte e MG"
+        description="Concessionária oficial Foton em Contagem, MG. Caminhões Aumark e Auman, picapes Tunland e Wonder, linha elétrica e-Foton. 40 anos de Lavoro, 87 mil veículos vendidos."
         path="/"
       />
 

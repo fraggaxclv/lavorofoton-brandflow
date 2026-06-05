@@ -1,12 +1,15 @@
 /**
- * Builds a Schema.org Product JSON-LD object for Foton model pages.
- * Consumed by <SEO jsonLd={...}> on each /modelos/* route.
+ * Schema.org helpers used by <SEO jsonLd={...}> on public pages.
  */
+
+type PropertyTuple = [string, string];
+
 export function buildProductSchema(opts: {
   name: string;
   model: string;
   category: string;
   description: string;
+  properties?: PropertyTuple[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -16,6 +19,15 @@ export function buildProductSchema(opts: {
     model: opts.model,
     category: opts.category,
     description: opts.description,
+    ...(opts.properties && opts.properties.length > 0
+      ? {
+          additionalProperty: opts.properties.map(([name, value]) => ({
+            "@type": "PropertyValue",
+            name,
+            value,
+          })),
+        }
+      : {}),
     offers: {
       "@type": "Offer",
       priceCurrency: "BRL",
@@ -31,5 +43,32 @@ export function buildProductSchema(opts: {
         },
       },
     },
-  } as const;
+  } as Record<string, unknown>;
 }
+
+export function buildFaqSchema(items: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((it) => ({
+      "@type": "Question",
+      name: it.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: it.answer,
+      },
+    })),
+  } as Record<string, unknown>;
+}
+
+export const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    xpath: [
+      "/html/head/title",
+      "/html/head/meta[@name='description']/@content",
+    ],
+  },
+} as Record<string, unknown>;
