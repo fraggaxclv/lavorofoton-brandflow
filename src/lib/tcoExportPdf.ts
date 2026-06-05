@@ -436,11 +436,32 @@ export async function exportTCOPdf({
     economiaLiquida: resultados.economiaLiquida,
   });
 
-  // ── FOOTER ──
-  drawFooter(pdf, logoBase64, pageW, margin);
+  // ── FOOTER (em todas as páginas) ──
+  const totalPages = (pdf as any).getNumberOfPages?.() ?? 1;
+  for (let p = 1; p <= totalPages; p++) {
+    pdf.setPage(p);
+    drawFooter(pdf, logoBase64, pageW, margin, {
+      nome: lead?.nome ?? nomeSimulacao,
+      dataStr,
+      simulationCode: lead?.simulationCode,
+      pageNum: p,
+      pageTotal: totalPages,
+    });
+  }
 
   // ── Save ──
-  const nomeArq = nomeSimulacao ? sanitizeFilename(nomeSimulacao) : "Simulacao";
+  const nomeArq = lead?.simulationCode
+    ? lead.simulationCode
+    : nomeSimulacao ? sanitizeFilename(nomeSimulacao) : "Simulacao";
   const dataArq = now.toISOString().slice(0, 10);
-  pdf.save(`Simulacao_TCO_Lavoro_${nomeArq}_${dataArq}.pdf`);
+  const filename = `Analise_TCO_Lavoro_${nomeArq}_${dataArq}.pdf`;
+  if (autoSave) pdf.save(filename);
+
+  if (returnBase64) {
+    const dataUri = pdf.output("datauristring");
+    const base64 = dataUri.split(",")[1] ?? "";
+    return { filename, base64 };
+  }
+  return { filename };
 }
+
