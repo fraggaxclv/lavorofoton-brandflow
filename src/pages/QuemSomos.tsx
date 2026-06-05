@@ -34,6 +34,7 @@ import cardieselConcessionaria from "@/assets/cardiesel-concessionaria.jpeg";
 import feiraMercedesShowroom from "@/assets/feira-mercedes-showroom.jpg";
 import fabricaMercedesVisita from "@/assets/fabrica-mercedes-visita.jpg";
 import mercedesCaminhaoAzul from "@/assets/mercedes-caminhao-azul.jpg";
+import SEO from "@/components/SEO";
 const QuemSomos = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -82,6 +83,11 @@ const QuemSomos = () => {
     setIsLightboxOpen(true);
   };
   return <div className="min-h-screen bg-background">
+    <SEO
+        title="Quem Somos — 40 anos no transporte mineiro"
+        description="Lavoro Foton: concessionária oficial Foton em Belo Horizonte. 40+ anos de experiência no setor de transporte e caminhões comerciais em Minas Gerais."
+        path="/quem-somos"
+      />
       <Navbar />
 
       {/* Hero Section */}
