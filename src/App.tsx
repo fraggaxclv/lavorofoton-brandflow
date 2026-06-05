@@ -47,6 +47,8 @@ import EletricosBeneficios2 from "./pages/EletricosBeneficios2";
 import CalculadoraTCO from "./pages/CalculadoraTCO";
 import CalculadoraTCOEletrico from "./pages/CalculadoraTCOEletrico";
 import CalculadoraTCO2 from "./pages/CalculadoraTCO2";
+import VerificarSimulacao from "./pages/VerificarSimulacao";
+import Privacidade from "./pages/Privacidade";
 import { Navigate } from "react-router-dom";
 
 // Páginas de tráfego pago (duplicadas com mensagens WhatsApp customizadas)
