@@ -94,10 +94,21 @@ const Foton17T = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Auman D 1722 — Caminhão pesado 17T motor Cummins | Lavoro Foton BH"
-        description="Auman D 1722: pesado de 17 toneladas PBT com motor Cummins e câmbio ZF. Para carga geral e construção. Concessionária Lavoro Foton em Contagem, MG."
+        title="Foton Auman D 1722 — Semipesado 17T com Cummins ISF 3.8 | Lavoro Foton"
+        description="Auman D 1722 com motor Cummins ISF 3.8 para longas distâncias e cargas pesadas regionais. Robustez de pesado com economia operacional comprovada. Lavoro Foton, Contagem MG."
         path="/modelos/auman-d-1722"
-        jsonLd={buildProductSchema({ name: "Foton Auman D 1722", model: "Auman D 1722", category: "Caminhão pesado", description: "Caminhão pesado 17 toneladas PBT com motor Cummins e câmbio ZF" })}
+        jsonLd={buildProductSchema({
+          name: "Foton Auman D 1722",
+          model: "Auman D 1722",
+          category: "Caminhão semipesado",
+          description: "Semipesado 17 toneladas com motor Cummins ISF 3.8 e transmissão ZF para longas distâncias e cargas pesadas regionais.",
+          properties: [
+            ["PBT", "17.000 kg"],
+            ["Categoria CNH", "D/E"],
+            ["Motor", "Cummins ISF 3.8"],
+            ["Transmissão", "ZF"],
+          ],
+        })}
       />
 
       <Navbar />
