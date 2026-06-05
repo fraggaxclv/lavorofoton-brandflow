@@ -88,6 +88,11 @@ export default function Imprensa() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Lavoro na Mídia — Clipping de notícias e cobertura"
+        description="Cobertura de imprensa da Lavoro Foton: lançamentos, parcerias, eletrificação de frotas e novidades do setor de caminhões comerciais."
+        path="/imprensa"
+      />
       <Navbar />
       <main className="container mx-auto px-4 pt-24 pb-16">
         <header className="mb-10 max-w-3xl">
