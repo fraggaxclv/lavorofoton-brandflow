@@ -278,13 +278,19 @@ export async function exportTCOPdf({
   nomeSimulacao,
   logoUrl,
   chartElementId,
+  lead,
+  returnBase64,
+  autoSave = true,
 }: {
   inputs: SimulacaoTCO["inputs"];
   resultados: SimulacaoTCO["resultados"];
   nomeSimulacao?: string;
   logoUrl: string;
   chartElementId: string;
-}) {
+  lead?: { nome: string; simulationCode: string };
+  returnBase64?: boolean;
+  autoSave?: boolean;
+}): Promise<{ filename: string; base64?: string }> {
   const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
   const pageW = 210;
   const margin = 16;
