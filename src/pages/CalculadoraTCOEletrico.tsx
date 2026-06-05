@@ -400,18 +400,12 @@ export default function CalculadoraTCOEletrico() {
 
   return (
     <div className="min-h-screen" style={{ background: C.bg, fontFamily: "'Inter', 'IBM Plex Sans', system-ui, sans-serif" }}>
-      <Helmet>
-        <title>Calcule sua economia real | Elétrico vs Diesel</title>
-        <meta name="description" content="Descubra quanto sua operação pode economizar por mês com caminhões elétricos Foton. Simulação gratuita em 30 segundos." />
-        <meta property="og:title" content="Calcule sua economia real | Elétrico vs Diesel" />
-        <meta property="og:description" content="Descubra quanto sua operação pode economizar por mês com caminhões elétricos Foton. Simulação gratuita em 30 segundos." />
-        <meta property="og:image" content="https://www.lavorofoton.com.br/og-calculadora.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:title" content="Calcule sua economia real | Elétrico vs Diesel" />
-        <meta name="twitter:description" content="Descubra quanto sua operação pode economizar por mês com caminhões elétricos Foton. Simulação gratuita em 30 segundos." />
-        <meta name="twitter:image" content="https://www.lavorofoton.com.br/og-calculadora.png" />
-      </Helmet>
+      <SEO
+        title="Calcule sua economia real — Elétrico vs Diesel"
+        description="Descubra quanto sua operação pode economizar por mês com caminhões elétricos Foton. Simulação gratuita em 30 segundos."
+        path="/calculadora"
+        ogImage="https://www.lavorofoton.com.br/og-calculadora.png"
+      />
       <Navbar />
       {/* ── Header ── */}
       <header className="mt-16 px-6 md:px-12 py-5 border-b" style={{ borderColor: C.brand, borderBottomWidth: 2 }}>
