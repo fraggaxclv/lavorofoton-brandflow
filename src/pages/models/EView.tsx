@@ -42,8 +42,8 @@ const EView = () => {
   };
   return <div className="min-h-screen">
     <SEO
-        title="Foton eView — Caminhão elétrico urbano"
-        description="Foton eView: caminhão urbano 100% elétrico. Operação silenciosa, zero emissão e custo por km reduzido."
+        title="Foton eView — Caminhão urbano 100% elétrico | Lavoro Foton BH"
+        description="eView: caminhão urbano 100% elétrico, operação silenciosa e custo por km reduzido. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/eview"
       />
       <Navbar />
