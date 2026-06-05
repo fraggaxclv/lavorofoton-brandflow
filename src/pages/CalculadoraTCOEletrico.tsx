@@ -401,8 +401,8 @@ export default function CalculadoraTCOEletrico() {
   return (
     <div className="min-h-screen" style={{ background: C.bg, fontFamily: "'Inter', 'IBM Plex Sans', system-ui, sans-serif" }}>
       <SEO
-        title="Calcule sua economia real — Elétrico vs Diesel"
-        description="Descubra quanto sua operação pode economizar por mês com caminhões elétricos Foton. Simulação gratuita em 30 segundos."
+        title="Calculadora TCO Lavoro Foton — simule sua economia | Diesel x Elétrico"
+        description="Calcule o custo total de propriedade ao trocar seu veículo atual por um Foton elétrico. Combustível, manutenção, ARLA — mês a mês, sem achismo."
         path="/calculadora"
         ogImage="https://www.lavorofoton.com.br/og-calculadora.png"
       />
