@@ -1,14 +1,45 @@
 User-agent: Googlebot
 Allow: /
+Disallow: /interno/
+Disallow: /admin/
+Disallow: /pedido-faturamento-lavoro
+Disallow: /proposta-comercial-lavoro
 
 User-agent: Bingbot
 Allow: /
+Disallow: /interno/
+Disallow: /admin/
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /interno/
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /interno/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /interno/
+Disallow: /admin/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /interno/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /interno/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /interno/
 
 User-agent: *
 Allow: /
+Disallow: /interno/
+Disallow: /admin/
+Disallow: /pedido-faturamento-lavoro
+Disallow: /proposta-comercial-lavoro
+
+Sitemap: https://lavorofoton.com.br/sitemap.xml
