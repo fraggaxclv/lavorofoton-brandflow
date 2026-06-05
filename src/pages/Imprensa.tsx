@@ -29,11 +29,6 @@ function ClippingCard({ c }: { c: Clipping }) {
       rel="noopener noreferrer"
       className="group block"
     >
-      <SEO
-        title="Lavoro na Mídia — Clipping de notícias e cobertura"
-        description="Cobertura de imprensa da Lavoro Foton: lançamentos, parcerias, eletrificação de frotas e novidades do setor de caminhões comerciais."
-        path="/imprensa"
-      />
 
       <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow border-border">
         <div className="aspect-video bg-muted relative overflow-hidden">
