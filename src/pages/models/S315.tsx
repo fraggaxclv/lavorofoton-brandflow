@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X, FileText } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
 import cnhBIcon from "@/assets/cnh-b-icon.png";
 import aumarkS315Hero from "@/assets/aumark-s315-hero.png";
@@ -462,13 +461,11 @@ dora            </h3>
             </div>
 
             {/* Accordion com especificações */}
-            <Accordion type="single" collapsible className="space-y-4">
+            <div className="space-y-4">
               {/* Motor */}
-              <AccordionItem value="motor" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">🔧 Motor e Desempenho</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">🔧 Motor e Desempenho</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Fabricante/Modelo:</span>
@@ -503,15 +500,13 @@ dora            </h3>
                       <span className="font-medium">SCR+DOC+DPF</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Diferenciais Técnicos */}
-              <AccordionItem value="diferenciais" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">⭐ Diferenciais Técnicos</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">⭐ Diferenciais Técnicos</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex flex-col py-2 border-b border-border/50">
                       <span className="font-medium text-primary">Trem de força premium</span>
@@ -531,15 +526,13 @@ dora            </h3>
                     </div>
                   </div>
                   <p className="text-xs text-muted-foreground italic mt-4">*Dados estimados podem variar conforme condições de uso e operação</p>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Transmissão */}
-              <AccordionItem value="transmissao" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">⚙️ Transmissão e Trem de Força</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">⚙️ Transmissão e Trem de Força</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Fabricante/Modelo:</span>
@@ -574,15 +567,13 @@ dora            </h3>
                       <span className="font-medium">Aço - L205/75R16-10PR-RH</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Dimensões e Capacidades */}
-              <AccordionItem value="dimensoes" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">📏 Dimensões e Capacidades</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">📏 Dimensões e Capacidades</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Comprimento total:</span>
@@ -637,15 +628,13 @@ dora            </h3>
                       <span className="font-medium">15°</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Pesos e Capacidades */}
-              <AccordionItem value="pesos" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">⚖️ Pesos e Capacidades de Carga</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">⚖️ Pesos e Capacidades de Carga</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">PBT (homologado):</span>
@@ -680,15 +669,13 @@ dora            </h3>
                       <span className="font-medium">5.000 kg</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Sistemas e Conforto */}
-              <AccordionItem value="sistemas" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">🛞 Suspensão, Freios e Sistema Elétrico</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">🛞 Suspensão, Freios e Sistema Elétrico</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Suspensão Dianteira:</span>
@@ -723,15 +710,13 @@ dora            </h3>
                       <span className="font-medium">14L</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Habilitação e Garantia */}
-              <AccordionItem value="outros" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">✅ Habilitação, Garantia e Itens de Série</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-4">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">✅ Habilitação, Garantia e Itens de Série</span></h3>
+                <div className="pt-4 space-y-4">
                   <div className="grid md:grid-cols-2 gap-4 pb-4 border-b border-border">
                     <div className="flex justify-between py-2">
                       <span className="text-muted-foreground">CNH necessária:</span>
@@ -812,9 +797,9 @@ dora            </h3>
                       </div>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+                </div>
+              </section>
+            </div>
 
             {/* CTA */}
             <div className="text-center mt-12 p-8 bg-primary/5 rounded-2xl border border-primary/20">
