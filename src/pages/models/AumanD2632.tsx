@@ -19,13 +19,6 @@ import {
   Route,
 } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
 import aumanD2632Hero from "@/assets/auman-d-1830-hero.png";
 import suspensaoAr from "@/assets/auman-d-2632-suspensao-ar.png";
 import cabineInterior from "@/assets/auman-d-cabine-interior.png";
@@ -368,32 +361,32 @@ const AumanD2632 = () => {
       <section className="py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">Ficha Técnica Completa</h2>
-          <Accordion type="single" collapsible className="bg-white rounded-lg shadow-sm">
-            <AccordionItem value="motor">
-              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Motor e Desempenho</AccordionTrigger>
-              <AccordionContent className="px-6">
+          <div className="bg-white rounded-lg shadow-sm">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
+              <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Motor e Desempenho</h3>
+              <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Cummins D6.7 | 320 cv | 1.200 Nm @ 1.100-1.600 rpm</li>
                   <li>6.690 cm³ | 6 cilindros em linha | Common Rail | EURO 6</li>
                 </ul>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </section>
 
-            <AccordionItem value="trans">
-              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Transmissão e Trem de Força</AccordionTrigger>
-              <AccordionContent className="px-6">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
+              <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Transmissão e Trem de Força</h3>
+              <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>ZF 9AS1517TO automatizada, 9 marchas + ré</li>
                   <li>Conversor de torque (embreagem 430 mm)</li>
                   <li>Eixo traseiro rígido aço estampado, relação 4,875:1</li>
                   <li>Direção hidráulica esferas recirculantes</li>
                 </ul>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </section>
 
-            <AccordionItem value="pesos">
-              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Pesos e Capacidade de Carga</AccordionTrigger>
-              <AccordionContent className="px-6">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
+              <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Pesos e Capacidade de Carga</h3>
+              <div className="px-6">
                 <p className="text-sm text-muted-foreground mb-2">Dados nesta ordem: versão padrão / versão L (quando há diferença).</p>
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Peso ordem de marcha total: 7.370 kg (padrão) / 7.440 kg (L)</li>
@@ -402,12 +395,12 @@ const AumanD2632 = () => {
                   <li>Carga útil + carroceria: 15.630 kg (padrão) / 15.560 kg (L)</li>
                   <li>Limites técnicos: 7.800 kg eixo dianteiro / 18.200 kg eixo traseiro</li>
                 </ul>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </section>
 
-            <AccordionItem value="dim">
-              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Dimensões</AccordionTrigger>
-              <AccordionContent className="px-6">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
+              <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Dimensões</h3>
+              <div className="px-6">
                 <p className="text-sm text-muted-foreground mb-2">Dados nesta ordem: versão padrão / versão L.</p>
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Comprimento total: 9.721 mm / 10.371 mm</li>
@@ -418,12 +411,12 @@ const AumanD2632 = () => {
                   <li>Balanço dianteiro: 1.320 mm | traseiro: 2.251 mm</li>
                   <li>Ângulo de ataque: 18° | de saída: 11°</li>
                 </ul>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </section>
 
-            <AccordionItem value="freios">
-              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Freios, Suspensão e Sistema Elétrico</AccordionTrigger>
-              <AccordionContent className="px-6">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
+              <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Freios, Suspensão e Sistema Elétrico</h3>
+              <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Freios a ar tipo "S" Cam, circuito duplo</li>
                   <li>Freio-motor de escape automático (EAT), EBD, ABS, ESC, TCS</li>
@@ -432,24 +425,24 @@ const AumanD2632 = () => {
                   <li>Suspensão dianteira: feixe parabólico 3 lâminas + amortecedores + barra estabilizadora</li>
                   <li>Sistema elétrico 24V | 2x 135 Ah | alternador 100 A</li>
                 </ul>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </section>
 
-            <AccordionItem value="rodas">
-              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Rodas, Pneus e Abastecimento</AccordionTrigger>
-              <AccordionContent className="px-6">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
+              <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Rodas, Pneus e Abastecimento</h3>
+              <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Rodas em aço, 22.5" x 9.00"</li>
                   <li>Pneus 295/80 R22.5</li>
                   <li>Tanque de combustível em alumínio: 450 L</li>
                   <li>Capacidade ARLA 32: 25 L</li>
                 </ul>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </section>
 
-            <AccordionItem value="cab">
-              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Cabine e Ergonomia</AccordionTrigger>
-              <AccordionContent className="px-6">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
+              <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Cabine e Ergonomia</h3>
+              <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>Cabine com semi leito de série</li>
                   <li>Volante multifuncional + painel LCD 7"</li>
@@ -462,12 +455,12 @@ const AumanD2632 = () => {
                   <li>MP3 + Bluetooth, controle de cruzeiro, HSA</li>
                   <li>Farol de neblina dianteiro</li>
                 </ul>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </section>
 
-            <AccordionItem value="hab">
-              <AccordionTrigger className="text-lg font-semibold hover:no-underline">Habilitação, Garantia e Versões</AccordionTrigger>
-              <AccordionContent className="px-6">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
+              <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Habilitação, Garantia e Versões</h3>
+              <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                   <li>CNH exigida: D ou E</li>
                   <li>Garantia veículo completo: 1 ano sem limite de km</li>
@@ -475,9 +468,9 @@ const AumanD2632 = () => {
                   <li>Versões disponíveis: padrão e L (plataforma estendida)</li>
                   <li>Homologação IBAMA Proconve | Conama</li>
                 </ul>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+              </div>
+            </section>
+          </div>
         </div>
       </section>
 

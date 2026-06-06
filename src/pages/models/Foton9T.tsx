@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X, FileText, Snowflake } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
 import foton916 from "@/assets/foton-916.jpg";
 import aumarkFrenteLinha from "@/assets/aumark-frente-linha.jpg";
@@ -370,13 +369,11 @@ const Foton9T = () => {
               </p>
             </div>
 
-            <Accordion type="single" collapsible className="space-y-4">
+            <div className="space-y-4">
               {/* Motor */}
-              <AccordionItem value="motor" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">🔧 Motor e Desempenho</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">🔧 Motor e Desempenho</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Fabricante/Modelo:</span>
@@ -415,15 +412,13 @@ const Foton9T = () => {
                       <span className="font-medium">SCR+DOC+DPF</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Diferenciais Técnicos */}
-              <AccordionItem value="diferenciais" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">⭐ Diferenciais Técnicos</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">⭐ Diferenciais Técnicos</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex flex-col py-2 border-b border-border/50">
                       <span className="font-medium text-primary">Trem de força Cummins + ZF</span>
@@ -443,15 +438,13 @@ const Foton9T = () => {
                     </div>
                   </div>
                   <p className="text-xs text-muted-foreground italic mt-4">*Dados estimados podem variar conforme condições de uso e operação</p>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Transmissão */}
-              <AccordionItem value="transmissao" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">⚙️ Transmissão e Trem de Força</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">⚙️ Transmissão e Trem de Força</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Fabricante/Modelo:</span>
@@ -482,15 +475,13 @@ const Foton9T = () => {
                       <span className="font-medium">Aço - 215/75 R17.5</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Dimensões */}
-              <AccordionItem value="dimensoes" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">📏 Dimensões e Capacidades</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">📏 Dimensões e Capacidades</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Comprimento total:</span>
@@ -537,15 +528,13 @@ const Foton9T = () => {
                       <span className="font-medium">5.140 mm</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Pesos */}
-              <AccordionItem value="pesos" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">⚖️ Pesos e Capacidades de Carga</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">⚖️ Pesos e Capacidades de Carga</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">PBT (homologado):</span>
@@ -580,15 +569,13 @@ const Foton9T = () => {
                       <span className="font-medium">12.000 kg</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Sistemas */}
-              <AccordionItem value="sistemas" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">🛞 Suspensão, Freios e Sistema Elétrico</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-3">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">🛞 Suspensão, Freios e Sistema Elétrico</span></h3>
+                <div className="pt-4 space-y-3">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex justify-between py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Suspensão Dianteira:</span>
@@ -627,15 +614,13 @@ const Foton9T = () => {
                       <span className="font-medium">30L</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* CNH e Garantia */}
-              <AccordionItem value="outros" className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow">
-                <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                  <span className="flex items-center gap-2">✅ Habilitação, Garantia e Itens de Série</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-4 space-y-4">
+              <section className="bg-white border border-border rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">✅ Habilitação, Garantia e Itens de Série</span></h3>
+                <div className="pt-4 space-y-4">
                   <div className="grid md:grid-cols-2 gap-4 pb-4 border-b border-border">
                     <div className="flex justify-between py-2">
                       <span className="text-muted-foreground">CNH necessária:</span>
@@ -692,9 +677,9 @@ const Foton9T = () => {
                       </div>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+                </div>
+              </section>
+            </div>
           </div>
         </div>
       </section>

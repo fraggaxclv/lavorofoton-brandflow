@@ -24,7 +24,6 @@ import {
   Mountain
 } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useState } from "react";
 import tunlandV9Photo1 from "@/assets/tunland-v9-photo-1.png";
 import tunlandV9Photo2 from "@/assets/tunland-v9-photo-2.png";
@@ -586,13 +585,11 @@ const TunlandV9 = () => {
               </p>
             </div>
 
-            <Accordion type="single" collapsible className="space-y-4">
+            <div className="space-y-4">
               {/* Motor */}
-              <AccordionItem value="motor" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
-                <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  <span className="flex items-center gap-2">🔧 Motor e Desempenho</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-6 pb-8 space-y-3">
+              <section className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">🔧 Motor e Desempenho</span></h3>
+                <div className="pt-6 pb-8 space-y-3">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Fabricante/Modelo:</span>
@@ -619,15 +616,13 @@ const TunlandV9 = () => {
                       <span className="font-bold">76 litros</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Diferenciais Técnicos */}
-              <AccordionItem value="diferenciais" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
-                <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  <span className="flex items-center gap-2">⭐ Diferenciais Técnicos</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-6 pb-8 space-y-3">
+              <section className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">⭐ Diferenciais Técnicos</span></h3>
+                <div className="pt-6 pb-8 space-y-3">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="flex flex-col py-3 border-b border-border/50">
                       <span className="font-bold text-primary">Trem de força premium</span>
@@ -647,15 +642,13 @@ const TunlandV9 = () => {
                     </div>
                   </div>
                   <p className="text-xs text-muted-foreground italic mt-4">*Dados estimados podem variar conforme condições de uso e operação</p>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Transmissão */}
-              <AccordionItem value="transmissao" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
-                <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  <span className="flex items-center gap-2">⚙️ Transmissão e Tração</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-6 pb-8 space-y-3">
+              <section className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">⚙️ Transmissão e Tração</span></h3>
+                <div className="pt-6 pb-8 space-y-3">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Fabricante/Modelo:</span>
@@ -686,15 +679,13 @@ const TunlandV9 = () => {
                       <span className="font-bold">Independente</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Dimensões */}
-              <AccordionItem value="dimensoes" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
-                <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  <span className="flex items-center gap-2">📏 Dimensões e Capacidades</span>
-                </AccordionTrigger>
-                <AccordionContent className="pt-6 pb-8 space-y-3">
+              <section className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60"><span className="flex items-center gap-2">📏 Dimensões e Capacidades</span></h3>
+                <div className="pt-6 pb-8 space-y-3">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="flex justify-between py-3 border-b border-border/50">
                       <span className="text-muted-foreground font-medium">Comprimento total:</span>
@@ -750,15 +741,13 @@ const TunlandV9 = () => {
                       ⭐ Dimensões até 20% maiores que concorrentes diretos
                     </p>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Segurança e Tecnologia */}
-              <AccordionItem value="seguranca" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
-                <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  Segurança e Tecnologia ADAS
-                </AccordionTrigger>
-                <AccordionContent className="pt-6 pb-8 space-y-4">
+              <section className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Segurança e Tecnologia ADAS</h3>
+                <div className="pt-6 pb-8 space-y-4">
                   <div className="grid md:grid-cols-2 gap-2 text-sm">
                     <div className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
@@ -833,15 +822,13 @@ const TunlandV9 = () => {
                       <span>Sensores de estacionamento traseiros e dianteiros</span>
                     </div>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </div>
+              </section>
 
               {/* Conforto e Acabamento */}
-              <AccordionItem value="conforto" className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow">
-                <AccordionTrigger className="text-xl font-semibold hover:no-underline py-6">
-                  Conforto, Acabamento e Tecnologia Embarcada
-                </AccordionTrigger>
-                <AccordionContent className="pt-6 pb-8 space-y-4">
+              <section className="bg-white border-2 border-border rounded-2xl px-8 shadow-lg hover:shadow-2xl transition-shadow py-6">
+                <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Conforto, Acabamento e Tecnologia Embarcada</h3>
+                <div className="pt-6 pb-8 space-y-4">
                   <h4 className="font-bold text-base mb-3">Sistema Multimídia:</h4>
                   <div className="grid md:grid-cols-2 gap-2 text-sm mb-6">
                     <div className="flex items-start gap-2">
@@ -939,9 +926,9 @@ const TunlandV9 = () => {
                       ⭐ Garantia de 10 anos*
                     </p>
                   </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+                </div>
+              </section>
+            </div>
 
             {/* CTA */}
             <div className="text-center mt-16 p-10 bg-primary/5 rounded-2xl border-2 border-primary/20">
