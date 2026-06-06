@@ -1,53 +1,67 @@
-# Open Sim, Gated Asset — Calculadora TCO
+## Objetivo
 
-Mantém a simulação 100% livre (preserva SEO). Gate aparece só ao **exportar/salvar/enviar por email**, com modal de captura, validação de email/telefone, persistência no Supabase, PDF identificado com código, página de verificação pública e compliance LGPD.
+Remover os accordions (clique-pra-abrir) da seção "Ficha Técnica Completa" nas páginas de modelos e substituir por um **grid sempre aberto** em 2 colunas, estilo datasheet de montadora premium (Tesla / Mercedes-Benz). Zero cliques, máxima leitura, visual limpo.
 
-## 1. Backend (Supabase)
+## Padrão visual da nova ficha
 
-**Migration — nova tabela `simulacoes_tco`:**
-- `id` (uuid PK), `simulation_code` (text único, ex: `LVF-A1217-7K3F9`)
-- `nome`, `email`, `telefone`, `empresa`
-- `aceite_consultoria` (bool), `aceite_privacidade` (bool)
-- `inputs_simulacao` (jsonb), `resultados_simulacao` (jsonb)
-- `ip_address` (inet), `user_agent` (text), `created_at`
-- GRANTs: `INSERT` para `anon`+`authenticated`; `SELECT` só `service_role` (admin lê via edge function)
-- RLS: policy INSERT aberta; SELECT bloqueado para anon (`USING false`)
-- Função pública `verificar_simulacao(code)` SECURITY DEFINER que retorna só nome mascarado + data + modelos (sem dados sensíveis)
+```text
+┌──────────────────────────────────────────────────────────────┐
+│  FICHA TÉCNICA COMPLETA                                      │
+│  Todas as especificações técnicas do Foton Aumark 1217       │
+└──────────────────────────────────────────────────────────────┘
 
-## 2. Edge Functions
+┌─ 🔧 MOTOR E DESEMPENHO ──────────────────────────────────────┐
+│  Fabricante/Modelo ················ Cummins ISF 3.8          │
+│  Cilindros/Cilindrada ············· 4 / 3.760 cm³            │
+│  Potência Máxima ·················· 170 cv @ 2.600 rpm       │
+│  Torque Máximo ···················· 600 Nm @ 1.200-1.900 rpm │
+│  (...)                                                       │
+└──────────────────────────────────────────────────────────────┘
 
-- **`salvar-simulacao-tco`**: recebe payload validado, valida MX do domínio (DNS over HTTPS via Cloudflare `1.1.1.1`), bloqueia ~200 domínios descartáveis, gera `simulation_code`, insere no DB, retorna `{ code, id }`
-- **`enviar-pdf-tco`**: recebe `{ simulation_id, pdf_base64 }`, envia via Resend para o email do lead com PDF anexado
+┌─ ⭐ DIFERENCIAIS TÉCNICOS ───────────────────────────────────┐
+│  (renderizado aberto, idem)                                  │
+└──────────────────────────────────────────────────────────────┘
 
-## 3. Frontend
+(... todas as 7 seções renderizadas abertas, uma abaixo da outra)
+```
 
-**Componentes novos:**
-- `src/components/tco/GatedExportModal.tsx` — modal com form (nome, email corp, telefone, empresa, 2 checkboxes), validações Zod (regex email, telefone BR 10/11 dígitos, rejeita dígitos repetidos/sequências). Após submit OK → mostra "Baixar PDF" + "Receber por WhatsApp"
-- `src/lib/disposableEmails.ts` — set com lista de ~200 domínios descartáveis
-- `src/lib/validations/leadForm.ts` — schemas Zod
-- `src/lib/pdf/tcoReport.ts` — geração do PDF usando jsPDF+html2canvas (já no projeto), com header (logo + título) e footer identificado em todas páginas (nome, data, código, URL verificação, disclaimer + telefone consultivo)
+### Especificação visual
+- Cada seção vira um **card branco** (`bg-white`, `border`, `rounded-xl`, `shadow-sm`).
+- Cabeçalho da seção: ícone + título em uppercase tracking-wide, barra horizontal sutil abaixo.
+- Conteúdo: grid `md:grid-cols-2 gap-x-8 gap-y-2`, linhas com label à esquerda (muted) e valor à direita em medium/semibold, divisor `border-b border-border/40` entre linhas.
+- Sem `<Accordion>`, sem `<AccordionTrigger>`, sem chevron.
+- Espaçamento entre cards: `space-y-6`.
+- Largura: mantém `max-w-4xl mx-auto` (igual hoje).
 
-**Páginas:**
-- `src/pages/VerificarSimulacao.tsx` na rota `/verificar/:code` — faz fetch via RPC `verificar_simulacao`, mostra estados encontrado/não encontrado
-- `src/pages/Privacidade.tsx` em `/privacidade` — texto LGPD padrão (dados coletados, finalidade, retenção, contato@lavorofoton.com.br para exclusão)
+### Mobile
+- Em mobile (<768px) grid colapsa pra 1 coluna automaticamente — labels ficam acima dos valores ou empilhados (`flex justify-between` continua funcionando, igual hoje).
 
-**Integração nas calculadoras existentes** (`CalculadoraTCO.tsx`, `CalculadoraTCO2.tsx`, `CalculadoraTCOEletrico.tsx`):
-- Substituir handlers atuais de "Exportar PDF" / "Salvar" / "Enviar email" para abrirem `GatedExportModal` ao invés de gerar direto
-- Após gate aprovado, gerar PDF com `tcoReport.ts` e chamar edge functions
+## Escopo de arquivos
 
-**Rotas no `App.tsx`:** adicionar `/verificar/:code` e `/privacidade`
+10 páginas de modelos que hoje usam `<Accordion>` na ficha técnica:
 
-## 4. Secrets necessários
+- `src/pages/models/Foton1217.tsx`
+- `src/pages/models/Foton7T.tsx`
+- `src/pages/models/Foton9T.tsx`
+- `src/pages/models/Foton17T.tsx`
+- `src/pages/models/S315.tsx`
+- `src/pages/models/AumanD1830.tsx`
+- `src/pages/models/AumanD2632.tsx`
+- `src/pages/models/EWonder.tsx`
+- `src/pages/models/EToano.tsx`
+- `src/pages/models/EView.tsx` (verificar — outras EView/EAumark se aplicável)
 
-`RESEND_API_KEY` (já existe ✓). Usaremos domínio de email já configurado.
+Em cada arquivo: substituir o bloco `<Accordion type="single" collapsible>...</Accordion>` por uma lista de cards `<section>` sempre abertos. Remover imports `Accordion*` não utilizados.
 
-## Detalhes técnicos
+**Conteúdo (textos, labels, valores) permanece idêntico.** Mudança é puramente apresentacional.
 
-- Validação MX: `https://cloudflare-dns.com/dns-query?name={dominio}&type=MX` com header `Accept: application/dns-json` dentro da edge function (sem dependências)
-- `simulation_code`: prefixo `LVF-` + abreviação do modelo Foton (slug 4 chars) + 5 chars random base32. Unicidade garantida por constraint + retry
-- WhatsApp pós-gate: usa número padrão `+55 31 99697-0656` (per project knowledge) com mensagem `Olá, acabei de fazer a simulação ID {CODE} e gostaria de falar com um consultor`
-- Mascaramento na verificação: primeiro nome + inicial do sobrenome (ex: `Matheus F.`)
-- Nenhum captcha; nenhum double opt-in; nenhum bloqueio antes da simulação
-- IP capturado server-side via `x-forwarded-for` na edge function
+## Não-escopo
 
-Confirma para eu seguir? Posso começar pela migration + edge functions e depois o frontend.
+- Não alterar textos, ordem de seções, nem dados técnicos.
+- Não mexer em outras seções da página (hero, comparativos, CTA, SEO/JSON-LD).
+- Não tocar em landing pages de tráfego (`/trafego/*`) — só `/modelos/*`.
+- Não criar componente compartilhado novo (mudança inline em cada página, mantém padrão atual do projeto).
+
+## Resultado esperado
+
+Comprador técnico abre a página, rola até "Ficha Técnica" e **vê tudo de uma vez** — comparável a um datasheet PDF. Zero fricção, percepção de transparência e profissionalismo.
