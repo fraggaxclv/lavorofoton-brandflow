@@ -362,7 +362,7 @@ const AumanD2632 = () => {
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">Ficha Técnica Completa</h2>
           <div className="bg-white rounded-lg shadow-sm">
-            <AccordionItem value="motor">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
               <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Motor e Desempenho</h3>
               <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
@@ -372,7 +372,7 @@ const AumanD2632 = () => {
               </div>
             </section>
 
-            <AccordionItem value="trans">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
               <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Transmissão e Trem de Força</h3>
               <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
@@ -384,7 +384,7 @@ const AumanD2632 = () => {
               </div>
             </section>
 
-            <AccordionItem value="pesos">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
               <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Pesos e Capacidade de Carga</h3>
               <div className="px-6">
                 <p className="text-sm text-muted-foreground mb-2">Dados nesta ordem: versão padrão / versão L (quando há diferença).</p>
@@ -398,7 +398,7 @@ const AumanD2632 = () => {
               </div>
             </section>
 
-            <AccordionItem value="dim">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
               <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Dimensões</h3>
               <div className="px-6">
                 <p className="text-sm text-muted-foreground mb-2">Dados nesta ordem: versão padrão / versão L.</p>
@@ -414,7 +414,7 @@ const AumanD2632 = () => {
               </div>
             </section>
 
-            <AccordionItem value="freios">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
               <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Freios, Suspensão e Sistema Elétrico</h3>
               <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
@@ -428,7 +428,7 @@ const AumanD2632 = () => {
               </div>
             </section>
 
-            <AccordionItem value="rodas">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
               <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Rodas, Pneus e Abastecimento</h3>
               <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
@@ -440,7 +440,7 @@ const AumanD2632 = () => {
               </div>
             </section>
 
-            <AccordionItem value="cab">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
               <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Cabine e Ergonomia</h3>
               <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
@@ -458,7 +458,7 @@ const AumanD2632 = () => {
               </div>
             </section>
 
-            <AccordionItem value="hab">
+            <section className="bg-white border border-border rounded-lg px-6 shadow-sm py-6">
               <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Habilitação, Garantia e Versões</h3>
               <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
