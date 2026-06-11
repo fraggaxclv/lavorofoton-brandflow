@@ -38,6 +38,7 @@ const navItems = [
   { path: "/interno/pedidos-publicos", label: "Pedidos Site", icon: Inbox, roles: ["admin"] as const },
   { path: "/interno/clipping", label: "Clipping", icon: Newspaper, roles: ["admin"] as const },
   { path: "/interno/trafego", label: "Central de Tráfego", icon: BarChart3, roles: ["admin"] as const },
+  { path: "/interno/relatorios-leads", label: "Rel. Leads", icon: FileText, roles: ["admin"] as const },
   { path: "/interno/relatorio-perdas", label: "Rel. Perdas", icon: TrendingDown, roles: ["admin"] as const },
   { path: "/interno/consultores", label: "Consultores", icon: UserCog, roles: ["admin"] as const },
 ];
