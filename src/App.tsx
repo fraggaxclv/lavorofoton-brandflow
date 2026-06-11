@@ -212,6 +212,11 @@ const App = () => (
                       <InternoTrafego />
                     </InternoProtectedRoute>
                   } />
+                  <Route path="relatorios-leads" element={
+                    <InternoProtectedRoute allowedRoles={['admin']}>
+                      <InternoRelatoriosLeads />
+                    </InternoProtectedRoute>
+                  } />
                   <Route path="meu-perfil" element={
                     <InternoProtectedRoute allowedRoles={['admin', 'vendedor']}>
                       <InternoConsultorPerfil />
