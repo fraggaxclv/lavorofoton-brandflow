@@ -23,6 +23,7 @@ import {
   Newspaper,
   Search,
   BarChart3,
+  FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
