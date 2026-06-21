@@ -140,7 +140,27 @@ function ClippingCard({ c }: { c: Clipping }) {
 }
 
 export default function Imprensa() {
-  const { data: clippings = [], isLoading } = useClippings("publicado");
+  const { data: rawClippings = [], isLoading } = useClippings("publicado");
+
+  // Deduplica títulos quase iguais (ex.: mesma matéria republicada por veículos diferentes)
+  const clippings = (() => {
+    const seen = new Set<string>();
+    const norm = (s: string) =>
+      s
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9 ]/g, "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 80);
+    return rawClippings.filter((c) => {
+      const k = norm(c.titulo);
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+  })();
 
   useEffect(() => {
     document.title = "Imprensa - Lavoro Foton na Mídia";
