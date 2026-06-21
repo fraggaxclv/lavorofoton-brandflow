@@ -20,34 +20,92 @@ function formatData(d: string | null) {
   }
 }
 
+function initials(name?: string | null) {
+  if (!name) return "LF";
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
+const GRADIENTS = [
+  "from-blue-700 via-blue-900 to-slate-900",
+  "from-slate-800 via-slate-900 to-black",
+  "from-indigo-700 via-blue-800 to-slate-900",
+  "from-zinc-700 via-zinc-900 to-black",
+  "from-blue-600 via-indigo-800 to-slate-900",
+  "from-emerald-800 via-slate-800 to-slate-900",
+];
+function gradientFor(key: string) {
+  let h = 0;
+  for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
+  return GRADIENTS[h % GRADIENTS.length];
+}
+
+function FallbackArt({
+  veiculo,
+  isVideo,
+}: {
+  veiculo: string;
+  isVideo: boolean;
+}) {
+  const grad = gradientFor(veiculo);
+  return (
+    <div
+      className={`absolute inset-0 bg-gradient-to-br ${grad} flex items-center justify-center text-white`}
+    >
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 20% 20%, white 1px, transparent 1px), radial-gradient(circle at 80% 60%, white 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+      <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/15 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] uppercase tracking-wider font-semibold">
+        {isVideo ? <Play className="w-3 h-3" /> : <Newspaper className="w-3 h-3" />}
+        {isVideo ? "Vídeo" : "Notícia"}
+      </div>
+      <div className="relative z-10 text-center px-6">
+        <div className="text-5xl font-black tracking-tight mb-2 drop-shadow">
+          {initials(veiculo)}
+        </div>
+        <div className="text-[11px] uppercase tracking-[0.2em] opacity-80 font-medium line-clamp-1">
+          {veiculo}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ClippingCard({ c }: { c: Clipping }) {
   const isVideo = c.tipo === "video";
+  const veiculo = c.veiculo_nome || c.veiculo_dominio || "Imprensa";
+  const [imgFailed, setImgFailed] = useState(false);
+  const showFallback = !c.thumbnail_url || imgFailed;
+
   return (
     <a
       href={c.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block"
+      className="group block h-full"
     >
-
-      <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow border-border">
-        <div className="aspect-video bg-muted relative overflow-hidden">
-          {c.thumbnail_url ? (
+      <Card className="h-full flex flex-col overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 border-border">
+        <div className="aspect-video relative overflow-hidden bg-muted">
+          {!showFallback && (
             <img
-              src={c.thumbnail_url}
+              src={c.thumbnail_url!}
               alt={c.titulo}
               loading="lazy"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).style.display = "none";
-              }}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              onError={() => setImgFailed(true)}
             />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-              {isVideo ? <Play className="w-12 h-12" /> : <Newspaper className="w-12 h-12" />}
-            </div>
           )}
-          {isVideo && (
+          {showFallback && <FallbackArt veiculo={veiculo} isVideo={isVideo} />}
+          {isVideo && !showFallback && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <div className="bg-white/90 rounded-full p-3">
                 <Play className="w-6 h-6 text-black fill-black" />
@@ -55,18 +113,24 @@ function ClippingCard({ c }: { c: Clipping }) {
             </div>
           )}
         </div>
-        <div className="p-4">
-          <div className="flex items-center justify-between gap-2 mb-2 text-xs text-muted-foreground">
-            <span className="font-medium truncate">{c.veiculo_nome || c.veiculo_dominio}</span>
-            <span>{formatData(c.data_publicacao)}</span>
+        <div className="p-5 flex flex-col flex-1">
+          <div className="flex items-center justify-between gap-2 mb-2 text-xs">
+            <span className="font-semibold text-primary truncate uppercase tracking-wide">
+              {veiculo}
+            </span>
+            <span className="text-muted-foreground whitespace-nowrap">
+              {formatData(c.data_publicacao)}
+            </span>
           </div>
-          <h3 className="font-semibold text-base mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+          <h3 className="font-bold text-base leading-snug mb-2 line-clamp-3 group-hover:text-primary transition-colors">
             {c.titulo}
           </h3>
-          {c.resumo && (
-            <p className="text-sm text-muted-foreground line-clamp-3">{c.resumo}</p>
+          {c.resumo && c.resumo.trim().toLowerCase() !== c.titulo.trim().toLowerCase() && (
+            <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+              {c.resumo}
+            </p>
           )}
-          <div className="flex items-center gap-1 mt-3 text-xs text-primary font-medium">
+          <div className="flex items-center gap-1 mt-auto pt-2 text-xs text-primary font-semibold">
             Ler matéria <ExternalLink className="w-3 h-3" />
           </div>
         </div>
