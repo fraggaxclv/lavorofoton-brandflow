@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useClippings, Clipping } from "@/hooks/useClippings";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
