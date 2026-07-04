@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "lavoro-foton-mcp",
+      "version": "0.1.0",
+      "title": "Lavoro Foton MCP"
+    },
+    "tools": [
+      {
+        "name": "listar_modelos",
+        "title": "Listar modelos Foton",
+        "description": "Lista os modelos de caminhões e picapes Foton disponíveis na Lavoro Foton, opcionalmente filtrados por categoria (diesel, eletrico, picape).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "categoria": {
+              "description": "Filtro opcional por categoria.",
+              "type": "string",
+              "enum": [
+                "diesel",
+                "eletrico",
+                "picape"
+              ]
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "info_empresa",
+        "title": "Informações da Lavoro Foton",
+        "description": "Retorna informações institucionais da Lavoro Foton: concessionária oficial Foton em Minas Gerais, canais de contato e links úteis (calculadora TCO, imprensa, modelos).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "gerar_link_whatsapp",
+        "title": "Gerar link de contato WhatsApp",
+        "description": "Gera um link direto de WhatsApp para o consultor Lavoro Foton, com mensagem pré-preenchida sobre o interesse do cliente.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "mensagem": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500,
+              "description": "Mensagem inicial que o cliente enviaria ao consultor."
+            },
+            "modelo": {
+              "description": "Nome ou slug do modelo de interesse, se houver.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "mensagem"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
