@@ -22,19 +22,20 @@
           "openWorldHint": false
         },
         "inputSchema": {
-          "$schema": "http://json-schema.org/draft-07/schema#",
           "type": "object",
           "properties": {
             "categoria": {
-              "description": "Filtro opcional por categoria.",
               "type": "string",
               "enum": [
                 "diesel",
                 "eletrico",
                 "picape"
-              ]
+              ],
+              "description": "Filtro opcional por categoria."
             }
-          }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
         },
         "outputSchema": null
       },
@@ -64,7 +65,6 @@
           "openWorldHint": false
         },
         "inputSchema": {
-          "$schema": "http://json-schema.org/draft-07/schema#",
           "type": "object",
           "properties": {
             "mensagem": {
@@ -74,13 +74,15 @@
               "description": "Mensagem inicial que o cliente enviaria ao consultor."
             },
             "modelo": {
-              "description": "Nome ou slug do modelo de interesse, se houver.",
-              "type": "string"
+              "type": "string",
+              "description": "Nome ou slug do modelo de interesse, se houver."
             }
           },
           "required": [
             "mensagem"
-          ]
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
         },
         "outputSchema": null
       }
