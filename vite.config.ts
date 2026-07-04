@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import prerender from "@prerenderer/rollup-plugin";
+import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/supabase/vite";
 
 // Rotas públicas a pré-renderizar — entregam HTML completo para
 // crawlers que não executam JavaScript (ChatGPT, Perplexity, LinkedIn,
@@ -50,6 +51,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
+    mcpPlugin(),
     mode === "development" && componentTagger(),
     // Pré-renderização estática só em produção
     mode === "production" &&
