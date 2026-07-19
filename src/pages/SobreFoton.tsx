@@ -110,7 +110,7 @@ const SobreFoton = () => {
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroTruck} alt="Foton - Tecnologia Global" loading="eager" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
+          <img src={heroTruck} alt="Foton - Tecnologia Global" loading="eager" fetchpriority="high" decoding="async" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/98 via-background/90 to-background/70" />
         </div>
 

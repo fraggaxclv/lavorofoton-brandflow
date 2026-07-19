@@ -25,7 +25,7 @@ const Home = () => {
         <img 
           src={heroTruckMobile} 
           alt="Foton Lavoro - Concessionária em Belo Horizonte" 
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover object-[35%_center] md:hidden"
         />
@@ -33,7 +33,7 @@ const Home = () => {
         <img 
           src={heroTruckDesktop} 
           alt="Foton Lavoro - Concessionária em Belo Horizonte" 
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover object-center hidden md:block"
         />

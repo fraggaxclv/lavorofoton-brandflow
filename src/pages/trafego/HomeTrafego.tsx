@@ -27,8 +27,8 @@ const HomeTrafego = () => {
 
       {/* Hero Section */}
       <section className="relative h-[85vh] md:h-screen flex items-end justify-center overflow-hidden mt-16">
-        <img src={heroTruckMobile} alt="Foton Lavoro" fetchPriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover object-[35%_center] md:hidden" />
-        <img src={heroTruckDesktop} alt="Foton Lavoro" fetchPriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover object-center hidden md:block" />
+        <img src={heroTruckMobile} alt="Foton Lavoro" fetchpriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover object-[35%_center] md:hidden" />
+        <img src={heroTruckDesktop} alt="Foton Lavoro" fetchpriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover object-center hidden md:block" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         <div className="container-lavoro relative z-10 pb-16 md:pb-20 px-6 md:px-4">
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
