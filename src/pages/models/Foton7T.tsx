@@ -5,21 +5,18 @@ import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, 
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { useState } from "react";
 import cnhBIcon from "@/assets/cnh-b-icon.png";
-import foton7t from "@/assets/foton-7t.jpg";
 import cnhBTruckIcon from "@/assets/cnh-b-truck-icon.png";
-import aumarkFrenteLinha from "@/assets/aumark-frente-linha.jpg";
 import eagleEyeExt from "@/assets/aumark-eagle-eye-ext.jpg";
 import eagleEyeInterior from "@/assets/aumark-eagle-eye-interior.jpg";
 import eagleEyeCentral from "@/assets/aumark-eagle-eye-central.jpg";
-import aumarkVolantePainel from "@/assets/aumark-volante-painel.jpg";
+import eagleEyeBancos from "@/assets/aumark-eagle-eye-bancos.jpg";
+import eagleEyeBasculante from "@/assets/aumark-eagle-eye-basculante.jpg";
+import eagleEyeCarroceria from "@/assets/aumark-eagle-eye-carroceria.jpg";
+import aumarkCumminsRender from "@/assets/aumark-cummins-render.jpg";
 import aumarkChassisLateral from "@/assets/aumark-chassis-lateral.webp";
-import aumarkFrenteUrbano from "@/assets/aumark-frente-urbano.jpg";
 import aumarkChassisAberto from "@/assets/aumark-chassis-aberto.jpg";
 import aumarkLineupFabrica from "@/assets/aumark-lineup-fabrica.jpg";
-import aumarkPainelCentral from "@/assets/aumark-painel-central.jpg";
 import aumarkChassisSuperior from "@/assets/aumark-chassis-superior.jpg";
-import aumarkMotorDetalhe from "@/assets/aumark-motor-detalhe.jpg";
-import aumarkInteriorCompleto from "@/assets/aumark-interior-completo.jpg";
 import durabilityIcon from "@/assets/durability-icon.png";
 import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
 import chassiReforcadoIcon from "@/assets/chassi-reforcado-icon.png";
@@ -45,71 +42,17 @@ const Foton7T = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const productImages = [
-    {
-      src: aumarkFrenteLinha,
-      alt: "Foton Aumark 715 - Linha de Caminhões",
-      caption: "Linha Aumark - Design frontal"
-    },
-    {
-      src: aumarkFrenteUrbano,
-      alt: "Foton Aumark 715 - Vista Frontal Urbana",
-      caption: "Aumark 715 em ambiente urbano"
-    },
-    {
-      src: aumarkVolantePainel,
-      alt: "Foton Aumark 715 - Volante e Painel",
-      caption: "Volante multifuncional e painel digital"
-    },
-    {
-      src: aumarkInteriorCompleto,
-      alt: "Foton Aumark 715 - Interior Completo",
-      caption: "Interior completo da cabine"
-    },
-    {
-      src: aumarkPainelCentral,
-      alt: "Foton Aumark 715 - Painel Central",
-      caption: "Console central com multimídia"
-    },
-    {
-      src: aumarkChassisLateral,
-      alt: "Foton Aumark 715 - Chassi Lateral",
-      caption: "Chassi robusto - Vista lateral"
-    },
-    {
-      src: aumarkChassisAberto,
-      alt: "Foton Aumark 715 - Chassi Aberto",
-      caption: "Estrutura do chassi"
-    },
-    {
-      src: aumarkChassisSuperior,
-      alt: "Foton Aumark 715 - Chassi Superior",
-      caption: "Chassi completo - Vista superior"
-    },
-    {
-      src: aumarkMotorDetalhe,
-      alt: "Motor Cummins do Foton Aumark 715",
-      caption: "Motor Cummins F2.5 - Detalhe"
-    },
-    {
-      src: aumarkLineupFabrica,
-      alt: "Foton Aumark 715 - Lineup Fábrica",
-      caption: "Linha de produção Foton"
-    },
-    {
-      src: eagleEyeExt,
-      alt: "Novo Foton Aumark 715 - Cabine Eagle Eye",
-      caption: "NOVO 715 — cabine Eagle Eye, a mesma do S315"
-    },
-    {
-      src: eagleEyeInterior,
-      alt: "Novo Foton Aumark 715 - Interior da cabine Eagle Eye",
-      caption: "Interior novo — bancos Aumark e acabamento renovado"
-    },
-    {
-      src: eagleEyeCentral,
-      alt: "Novo Foton Aumark 715 - Central multimídia de 10 polegadas",
-      caption: "Central multimídia de 10\" (versão Plus)"
-    }
+    { src: eagleEyeExt, alt: "Novo Foton Aumark 715 - Cabine Eagle Eye", caption: "NOVO 715 — cabine Eagle Eye, a mesma do S315" },
+    { src: eagleEyeInterior, alt: "Novo Foton Aumark 715 - Interior da cabine Eagle Eye", caption: "Interior novo — bancos Aumark e acabamento renovado" },
+    { src: eagleEyeCentral, alt: "Novo Foton Aumark 715 - Central multimidia de 10 polegadas", caption: "Central multimídia de 10\" (versão Plus)" },
+    { src: eagleEyeBancos, alt: "Novo Foton Aumark 715 - Bancos da cabine Eagle Eye", caption: "Cabine Eagle Eye — conforto de carro de passeio" },
+    { src: eagleEyeBasculante, alt: "Novo Foton Aumark 715 - Cabine basculante", caption: "Cabine basculante — manutenção facilitada" },
+    { src: eagleEyeCarroceria, alt: "Novo Foton Aumark 715 - Versão carroceria", caption: "Versão carroceria de madeira" },
+    { src: aumarkCumminsRender, alt: "Motor Cummins do Foton Aumark 715", caption: "Motor Cummins — confiabilidade global" },
+    { src: aumarkChassisLateral, alt: "Foton Aumark 715 - Chassi Lateral", caption: "Chassi robusto - Vista lateral" },
+    { src: aumarkChassisAberto, alt: "Foton Aumark 715 - Chassi Aberto", caption: "Estrutura do chassi" },
+    { src: aumarkChassisSuperior, alt: "Foton Aumark 715 - Chassi Superior", caption: "Chassi completo - Vista superior" },
+    { src: aumarkLineupFabrica, alt: "Foton Aumark 715 - Lineup Fabrica", caption: "Linha de produção Foton" }
   ];
 
   const whatsappNumber = "5531997966042";
@@ -221,7 +164,7 @@ const Foton7T = () => {
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
             <div
               className="aspect-video rounded-2xl overflow-hidden border border-border cursor-pointer hover:opacity-90 transition-opacity"
-              onClick={() => openLightbox(11)}
+              onClick={() => openLightbox(1)}
             >
               <img src={eagleEyeInterior} alt="Interior da nova cabine Eagle Eye do Aumark 715" className="w-full h-full object-cover" />
             </div>
@@ -322,18 +265,18 @@ const Foton7T = () => {
               onClick={() => openLightbox(0)}
             >
               <img 
-                src={aumarkFrenteLinha} 
-                alt="Foton Aumark 715 - Linha de Caminhões" 
+                src={eagleEyeExt} 
+                alt="Novo Foton Aumark 715 - Cabine Eagle Eye" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div 
               className="aspect-video rounded-2xl border border-border overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-              onClick={() => openLightbox(3)}
+              onClick={() => openLightbox(1)}
             >
               <img 
-                src={aumarkInteriorCompleto} 
-                alt="Foton Aumark 715 - Interior Completo" 
+                src={eagleEyeInterior} 
+                alt="Novo Foton Aumark 715 - Interior Eagle Eye" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -398,43 +341,43 @@ const Foton7T = () => {
             <div className="space-y-3">
               <div 
                 className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(1)}
+                onClick={() => openLightbox(5)}
               >
-                <img 
-                  src={aumarkFrenteUrbano} 
-                  alt="Foton Aumark 715 - Vista Frontal Urbana" 
+                <img
+                  src={eagleEyeCarroceria}
+                  alt="Novo Foton Aumark 715 - Versão carroceria"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-sm text-center text-muted-foreground">Aumark 715 em ambiente urbano</p>
+              <p className="text-sm text-center text-muted-foreground">Novo 715 — versão carroceria</p>
             </div>
 
             <div className="space-y-3">
               <div 
                 className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(4)}
+                onClick={() => openLightbox(2)}
               >
-                <img 
-                  src={aumarkPainelCentral} 
-                  alt="Foton Aumark 715 - Painel Central" 
+                <img
+                  src={eagleEyeCentral}
+                  alt="Novo Foton Aumark 715 - Central multimídia de 10 polegadas"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-sm text-center text-muted-foreground">Console central com multimídia</p>
+              <p className="text-sm text-center text-muted-foreground">Central multimídia de 10" (versão Plus)</p>
             </div>
 
             <div className="space-y-3">
               <div 
                 className="aspect-[4/3] rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" 
-                onClick={() => openLightbox(8)}
+                onClick={() => openLightbox(6)}
               >
-                <img 
-                  src={aumarkMotorDetalhe} 
-                  alt="Motor Cummins do Foton Aumark 715" 
+                <img
+                  src={aumarkCumminsRender}
+                  alt="Motor Cummins do Foton Aumark 715"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-sm text-center text-muted-foreground">Motor Cummins F2.5 - Detalhe</p>
+              <p className="text-sm text-center text-muted-foreground">Motor Cummins F2.5 — confiabilidade global</p>
             </div>
           </div>
         </div>

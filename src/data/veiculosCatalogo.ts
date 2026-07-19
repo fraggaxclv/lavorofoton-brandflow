@@ -1,7 +1,6 @@
 // Catálogo de veículos FOTON com dados completos para propostas
 import fotonS315 from "@/assets/foton-s315.jpg";
-import foton7t from "@/assets/foton-7t.jpg";
-import foton916 from "@/assets/foton-916.jpg";
+import aumarkEagleExt from "@/assets/aumark-eagle-eye-ext.jpg";
 import foton1217 from "@/assets/foton-1217.jpg";
 import foton1722 from "@/assets/foton-1722.jpg";
 import tunlandV9 from "@/assets/tunland-v9.jpg";
@@ -52,7 +51,7 @@ export const veiculosCatalogo: Veiculo[] = [
     id: 'aumark-715',
     modelo: 'AUMARK 715',
     categoria: 'diesel',
-    imagem: foton7t,
+    imagem: aumarkEagleExt,
     capacidade: '7 toneladas',
     cnh: 'C',
     aplicacao: 'Urbano/Regional',
@@ -73,7 +72,7 @@ export const veiculosCatalogo: Veiculo[] = [
     id: 'aumark-916',
     modelo: 'AUMARK 916',
     categoria: 'diesel',
-    imagem: foton916,
+    imagem: aumarkEagleExt,
     capacidade: '9 toneladas',
     cnh: 'C',
     aplicacao: 'Regional',

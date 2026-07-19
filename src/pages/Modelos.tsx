@@ -2,9 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModelCard from "@/components/ModelCard";
 import fotonS315 from "@/assets/foton-s315.jpg";
-import foton7t from "@/assets/foton-7t.jpg";
+import eagleEyeExt from "@/assets/aumark-eagle-eye-ext.jpg";
 import fotonHeavy from "@/assets/foton-heavy.jpg";
-import foton916 from "@/assets/foton-916.jpg";
 import foton1217 from "@/assets/foton-1217.jpg";
 import foton1722 from "@/assets/foton-1722.jpg";
 import aumanD1830Hero from "@/assets/auman-d-1830-hero.png";
@@ -48,8 +47,8 @@ const Modelos = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ModelCard name="AUMARK S315" description="VUC. Pode ser dirigido com CNH B. Ideal para entregas urbanas." image={fotonS315} link="/modelos/aumark-s315" />
-            <ModelCard name="AUMARK 715" description="Médio porte com excelente custo-benefício. Versatilidade comprovada." image={foton7t} link="/modelos/aumark-715" />
-            <ModelCard name="AUMARK 916" description="Capacidade ampliada. Performance para distribuição regional." image={foton916} link="/modelos/aumark-916" />
+            <ModelCard name="AUMARK 715" description="Médio porte com excelente custo-benefício. Versatilidade comprovada." image={eagleEyeExt} link="/modelos/aumark-715" />
+            <ModelCard name="AUMARK 916" description="Capacidade ampliada. Performance para distribuição regional." image={eagleEyeExt} link="/modelos/aumark-916" />
             <ModelCard name="AUMARK 1217" description="Semipesado robusto. Força para grandes volumes." image={foton1217} link="/modelos/aumark-1217" />
             <ModelCard name="AUMAN D 1722" description="Alta capacidade. Longas distâncias e cargas pesadas." image={foton1722} link="/modelos/auman-d-1722" />
             <ModelCard name="AUMAN D 1830" description="Toco 18 toneladas com câmbio ZF automatizado, semi leito de série e 3 anos de garantia sem limite de km." image={aumanD1830Hero} link="/modelos/auman-d-1830" />

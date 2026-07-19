@@ -4,20 +4,14 @@ import Footer from "@/components/Footer";
 import { CheckCircle2, MessageSquare, Shield, Wrench, Award, Settings, Package, Truck, ShoppingCart, Store, TrendingUp, Phone, ChevronLeft, ChevronRight, X, FileText, Snowflake } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { useState } from "react";
-import foton916 from "@/assets/foton-916.jpg";
-import aumarkFrenteLinha from "@/assets/aumark-frente-linha.jpg";
 import eagleEyeExt from "@/assets/aumark-eagle-eye-ext.jpg";
 import eagleEyeInterior from "@/assets/aumark-eagle-eye-interior.jpg";
 import eagleEyeCentral from "@/assets/aumark-eagle-eye-central.jpg";
-import aumarkVolantePainel from "@/assets/aumark-volante-painel.jpg";
+import eagleEyeBancos from "@/assets/aumark-eagle-eye-bancos.jpg";
+import eagleEyeBasculante from "@/assets/aumark-eagle-eye-basculante.jpg";
+import aumarkCumminsRender from "@/assets/aumark-cummins-render.jpg";
 import aumarkChassisLateral from "@/assets/aumark-chassis-lateral.webp";
-import aumarkFrenteUrbano from "@/assets/aumark-frente-urbano.jpg";
-import aumarkChassisAberto from "@/assets/aumark-chassis-aberto.jpg";
 import aumarkLineupFabrica from "@/assets/aumark-lineup-fabrica.jpg";
-import aumarkPainelCentral from "@/assets/aumark-painel-central.jpg";
-import aumarkChassisSuperior from "@/assets/aumark-chassis-superior.jpg";
-import aumarkMotorDetalhe from "@/assets/aumark-motor-detalhe.jpg";
-import aumarkInteriorCompleto from "@/assets/aumark-interior-completo.jpg";
 import durabilityIcon from "@/assets/durability-icon.png";
 import rodadoDuploIcon from "@/assets/rodado-duplo-icon.png";
 import chassiReforcadoIcon from "@/assets/chassi-reforcado-icon.png";
@@ -41,61 +35,14 @@ const Foton9T = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const productImages = [
-    {
-      src: foton916,
-      alt: "Foton Aumark 916 - Vista Externa",
-      caption: "Foton Aumark 916 - Especialista em Cadeia Fria"
-    },
-    {
-      src: aumarkFrenteLinha,
-      alt: "Foton Aumark 916 - Linha de Caminhões",
-      caption: "Linha Aumark - Design frontal"
-    },
-    {
-      src: aumarkFrenteUrbano,
-      alt: "Foton Aumark 916 - Vista Frontal Urbana",
-      caption: "Aumark 916 em ambiente urbano"
-    },
-    {
-      src: aumarkVolantePainel,
-      alt: "Foton Aumark 916 - Volante e Painel",
-      caption: "Volante multifuncional e painel digital"
-    },
-    {
-      src: aumarkInteriorCompleto,
-      alt: "Foton Aumark 916 - Interior Completo",
-      caption: "Interior completo da cabine"
-    },
-    {
-      src: aumarkPainelCentral,
-      alt: "Foton Aumark 916 - Painel Central",
-      caption: "Console central com multimídia"
-    },
-    {
-      src: aumarkChassisLateral,
-      alt: "Foton Aumark 916 - Chassi Lateral",
-      caption: "Chassi robusto - Vista lateral"
-    },
-    {
-      src: aumarkMotorDetalhe,
-      alt: "Motor Cummins do Foton Aumark 916",
-      caption: "Motor Cummins F3.8 - 160 cv"
-    },
-    {
-      src: eagleEyeExt,
-      alt: "Novo Foton Aumark 916 - Cabine Eagle Eye",
-      caption: "NOVO 916 — cabine Eagle Eye, a mesma do S315"
-    },
-    {
-      src: eagleEyeInterior,
-      alt: "Novo Foton Aumark 916 - Interior da cabine Eagle Eye",
-      caption: "Interior novo — bancos Aumark e acabamento renovado"
-    },
-    {
-      src: eagleEyeCentral,
-      alt: "Novo Foton Aumark 916 - Central multimídia de 10 polegadas",
-      caption: "Central multimídia de 10\" (versão Plus)"
-    }
+    { src: eagleEyeExt, alt: "Novo Foton Aumark 916 - Cabine Eagle Eye", caption: "NOVO 916 — cabine Eagle Eye, a mesma do S315" },
+    { src: eagleEyeInterior, alt: "Novo Foton Aumark 916 - Interior da cabine Eagle Eye", caption: "Interior novo — bancos Aumark e acabamento renovado" },
+    { src: eagleEyeCentral, alt: "Novo Foton Aumark 916 - Central multimidia de 10 polegadas", caption: "Central multimídia de 10\" (versão Plus)" },
+    { src: eagleEyeBancos, alt: "Novo Foton Aumark 916 - Bancos da cabine Eagle Eye", caption: "Cabine Eagle Eye — conforto pra rota longa" },
+    { src: eagleEyeBasculante, alt: "Novo Foton Aumark 916 - Cabine basculante", caption: "Cabine basculante — manutenção facilitada" },
+    { src: aumarkCumminsRender, alt: "Motor Cummins F3.8 do Foton Aumark 916", caption: "Motor Cummins F3.8 - 160 cv" },
+    { src: aumarkChassisLateral, alt: "Foton Aumark 916 - Chassi Lateral", caption: "Chassi dimensionado para baús térmicos" },
+    { src: aumarkLineupFabrica, alt: "Foton Aumark 916 - Lineup Fabrica", caption: "Linha de produção Foton" }
   ];
 
   const whatsappNumber = "5531997966042";
@@ -196,8 +143,8 @@ const Foton9T = () => {
               <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl"></div>
               <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border-2 border-cyan-500/30">
                 <img 
-                  src={foton916} 
-                  alt="Foton Aumark 916 - Especialista em Cadeia Fria" 
+                  src={eagleEyeExt} 
+                  alt="Novo Foton Aumark 916 - Cabine Eagle Eye" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -259,7 +206,7 @@ const Foton9T = () => {
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
             <div
               className="aspect-video rounded-2xl overflow-hidden border border-border cursor-pointer hover:opacity-90 transition-opacity"
-              onClick={() => openLightbox(9)}
+              onClick={() => openLightbox(1)}
             >
               <img src={eagleEyeInterior} alt="Interior da nova cabine Eagle Eye do Aumark 916" className="w-full h-full object-cover" />
             </div>
