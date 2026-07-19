@@ -36,7 +36,7 @@ import EView from "./pages/models/EView";
 import EViewConnect from "./pages/models/EViewConnect";
 import EAumark9T from "./pages/models/EAumark9T";
 import EAumark12T from "./pages/models/EAumark12T";
-import IBlue6T from "./pages/models/IBlue6T";
+import EAumark6T from "./pages/models/EAumark6T";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ComparativoAumark1217 from "./pages/ComparativoAumark1217";
@@ -123,7 +123,8 @@ const App = () => (
             <Route path="/modelos/ev-connect" element={<EViewConnect />} />
             <Route path="/modelos/eaumark-9t" element={<EAumark9T />} />
             <Route path="/modelos/eaumark-12t" element={<EAumark12T />} />
-            <Route path="/modelos/iblue-6t" element={<IBlue6T />} />
+            <Route path="/modelos/eaumark-6t" element={<EAumark6T />} />
+            <Route path="/modelos/iblue-6t" element={<Navigate to="/modelos/eaumark-6t" replace />} />
             <Route path="/servicos" element={<Servicos />} />
             <Route path="/consorcio" element={<Consorcio />} />
             <Route path="/contato" element={<Contato />} />

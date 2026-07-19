@@ -6,6 +6,9 @@ import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { useState } from "react";
 import foton916 from "@/assets/foton-916.jpg";
 import aumarkFrenteLinha from "@/assets/aumark-frente-linha.jpg";
+import eagleEyeExt from "@/assets/aumark-eagle-eye-ext.jpg";
+import eagleEyeInterior from "@/assets/aumark-eagle-eye-interior.jpg";
+import eagleEyeCentral from "@/assets/aumark-eagle-eye-central.jpg";
 import aumarkVolantePainel from "@/assets/aumark-volante-painel.jpg";
 import aumarkChassisLateral from "@/assets/aumark-chassis-lateral.webp";
 import aumarkFrenteUrbano from "@/assets/aumark-frente-urbano.jpg";
@@ -77,6 +80,21 @@ const Foton9T = () => {
       src: aumarkMotorDetalhe,
       alt: "Motor Cummins do Foton Aumark 916",
       caption: "Motor Cummins F3.8 - 160 cv"
+    },
+    {
+      src: eagleEyeExt,
+      alt: "Novo Foton Aumark 916 - Cabine Eagle Eye",
+      caption: "NOVO 916 — cabine Eagle Eye, a mesma do S315"
+    },
+    {
+      src: eagleEyeInterior,
+      alt: "Novo Foton Aumark 916 - Interior da cabine Eagle Eye",
+      caption: "Interior novo — bancos Aumark e acabamento renovado"
+    },
+    {
+      src: eagleEyeCentral,
+      alt: "Novo Foton Aumark 916 - Central multimídia de 10 polegadas",
+      caption: "Central multimídia de 10\" (versão Plus)"
     }
   ];
 
@@ -109,20 +127,24 @@ const Foton9T = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Aumark 916 — Campeão do transporte refrigerado 9T | Lavoro Foton"
-        description="Chassi dimensionado para baús térmicos. Motor Cummins F3.8, transmissão ZF, 9 toneladas de PBT. O caminhão preferido das operações de carga refrigerada. Lavoro Foton, Contagem MG."
+        title="NOVO Foton Aumark 916 — cabine Eagle Eye, manual ou automatizado | Lavoro Foton"
+        description="Novo Aumark 916: cabine Eagle Eye (a mesma do S315), câmbio manual OU automatizado e versão Plus com câmera 360, alerta de ponto cego e sensor de fadiga. Chassi dimensionado para baús térmicos — o campeão da cadeia fria. Lavoro Foton, Contagem MG."
         path="/modelos/aumark-916"
         jsonLd={buildProductSchema({
           name: "Foton Aumark 916",
           model: "Aumark 916",
           category: "Caminhão médio",
-          description: "Caminhão 9 toneladas com chassi dimensionado para baús térmicos. Referência em transporte refrigerado.",
+          description: "Novo caminhão 9 toneladas com cabine Eagle Eye, motor Cummins F3.8, transmissão manual ou automatizada e versões Standard e Plus (câmera 360, alerta de ponto cego, sensor de fadiga). Referência em transporte refrigerado.",
           properties: [
             ["PBT", "9.000 kg"],
             ["Categoria CNH", "C"],
-            ["Motor", "Cummins F3.8 — 160 cv"],
-            ["Transmissão", "ZF — 6 marchas"],
+            ["Motor", "Cummins F3.8 — 160 cv / 500 Nm"],
+            ["Transmissão", "Manual ou automatizada"],
+            ["Cabine", "Eagle Eye — mesma da linha S315"],
+            ["Versões", "Standard e Plus (câmera 360, alerta de ponto cego, sensor de fadiga, central 10\", câmera de ré, TPMS)"],
+            ["Tara", "Baixa — mais carga útil que a concorrência"],
             ["Aplicação", "Cargas refrigeradas e baús térmicos"],
+            ["Garantia", "3 anos sem limite de quilometragem"],
           ],
         })}
       />
@@ -144,8 +166,11 @@ const Foton9T = () => {
                 <span className="block text-2xl md:text-3xl text-cyan-400 mt-2 font-medium">Foton Aumark S 916 — referência no transporte refrigerado</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
-                9 toneladas de PBT. Motor Cummins F3.8 de <span className="text-cyan-400 font-bold">160 cv</span>. 
-                Transmissão ZF 6 marchas. Chassi dimensionado para baús térmicos.
+                9 toneladas de PBT. Motor Cummins F3.8 de <span className="text-cyan-400 font-bold">160 cv</span>.
+                Chassi dimensionado para baús térmicos.
+                <span className="block mt-2 text-cyan-300 font-semibold">
+                  E agora de cara nova: cabine Eagle Eye (a mesma do S315), câmbio manual ou automatizado, versões Standard e Plus.
+                </span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button 
@@ -223,6 +248,32 @@ const Foton9T = () => {
               </div>
               <h3 className="font-bold text-lg mb-2 text-foreground">Segurança Total</h3>
               <p className="text-muted-foreground text-sm">ABS + ASR + ESC de série para proteção completa</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2B. NOVIDADE — CABINE EAGLE EYE (palestra Foton 16/07/2026) */}
+      <section className="py-12 md:py-16 bg-secondary border-b border-border">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+            <div
+              className="aspect-video rounded-2xl overflow-hidden border border-border cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => openLightbox(9)}
+            >
+              <img src={eagleEyeInterior} alt="Interior da nova cabine Eagle Eye do Aumark 916" className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                O que mudou no <span className="text-cyan-600">novo 916</span>
+              </h2>
+              <ul className="space-y-3 text-muted-foreground">
+                <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-cyan-600 flex-shrink-0 mt-0.5" /><span><b className="text-foreground">Cabine Eagle Eye</b> — a nova identidade Foton, a mesma cabine do S315.</span></li>
+                <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-cyan-600 flex-shrink-0 mt-0.5" /><span><b className="text-foreground">Manual OU automatizado</b> — mais conforto pro motorista que roda o dia inteiro em rota fria.</span></li>
+                <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-cyan-600 flex-shrink-0 mt-0.5" /><span><b className="text-foreground">Versões Standard e Plus</b> — a Plus com central multimídia de 10", ar, vidros e travas elétricas, câmera de ré e TPMS.</span></li>
+                <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-cyan-600 flex-shrink-0 mt-0.5" /><span><b className="text-foreground">Exclusivos no segmento (Plus):</b> câmera 360°, alerta de ponto cego (BLIS) e sensor de fadiga.</span></li>
+                <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-cyan-600 flex-shrink-0 mt-0.5" /><span><b className="text-foreground">Tara baixa</b> — peso em ordem de marcha entre os menores do segmento: sobra mais PBT pro baú térmico e pra carga.</span></li>
+              </ul>
             </div>
           </div>
         </div>

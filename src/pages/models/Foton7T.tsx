@@ -8,6 +8,9 @@ import cnhBIcon from "@/assets/cnh-b-icon.png";
 import foton7t from "@/assets/foton-7t.jpg";
 import cnhBTruckIcon from "@/assets/cnh-b-truck-icon.png";
 import aumarkFrenteLinha from "@/assets/aumark-frente-linha.jpg";
+import eagleEyeExt from "@/assets/aumark-eagle-eye-ext.jpg";
+import eagleEyeInterior from "@/assets/aumark-eagle-eye-interior.jpg";
+import eagleEyeCentral from "@/assets/aumark-eagle-eye-central.jpg";
 import aumarkVolantePainel from "@/assets/aumark-volante-painel.jpg";
 import aumarkChassisLateral from "@/assets/aumark-chassis-lateral.webp";
 import aumarkFrenteUrbano from "@/assets/aumark-frente-urbano.jpg";
@@ -91,6 +94,21 @@ const Foton7T = () => {
       src: aumarkLineupFabrica,
       alt: "Foton Aumark 715 - Lineup Fábrica",
       caption: "Linha de produção Foton"
+    },
+    {
+      src: eagleEyeExt,
+      alt: "Novo Foton Aumark 715 - Cabine Eagle Eye",
+      caption: "NOVO 715 — cabine Eagle Eye, a mesma do S315"
+    },
+    {
+      src: eagleEyeInterior,
+      alt: "Novo Foton Aumark 715 - Interior da cabine Eagle Eye",
+      caption: "Interior novo — bancos Aumark e acabamento renovado"
+    },
+    {
+      src: eagleEyeCentral,
+      alt: "Novo Foton Aumark 715 - Central multimídia de 10 polegadas",
+      caption: "Central multimídia de 10\" (versão Plus)"
     }
   ];
 
@@ -123,19 +141,22 @@ const Foton7T = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Foton Aumark 715 — Caminhão 7T com Cummins e ZF | Lavoro Foton"
-        description="Aumark 715 leva motor Cummins F2.5 150cv e transmissão ZF para a categoria 7 toneladas — componentes que você só encontra nos pesados. Distribuição urbana e regional. Lavoro Foton, Contagem MG."
+        title="NOVO Foton Aumark 715 — cabine Eagle Eye, manual ou automatizado | Lavoro Foton"
+        description="Novo Aumark 715: cabine Eagle Eye (a mesma do S315), transmissão manual OU automatizada e versão Plus com câmera 360, alerta de ponto cego e sensor de fadiga — exclusivos no segmento 7t. Lavoro Foton, Contagem MG."
         path="/modelos/aumark-715"
         jsonLd={buildProductSchema({
           name: "Foton Aumark 715",
           model: "Aumark 715",
           category: "Caminhão leve",
-          description: "Caminhão 7 toneladas com motor Cummins F2.5 e transmissão ZF — componentes premium dos pesados aplicados num caminhão leve.",
+          description: "Novo caminhão 7 toneladas com cabine Eagle Eye, motor Cummins, transmissão manual ou automatizada e versões Standard e Plus (câmera 360, alerta de ponto cego, sensor de fadiga).",
           properties: [
-            ["PBT", "7.000 kg"],
+            ["PBT", "7.000 kg (PBT técnico 7.500 kg)"],
             ["Categoria CNH", "C"],
             ["Motor", "Cummins F2.5 — 150 cv / 400 Nm"],
-            ["Transmissão", "ZF"],
+            ["Transmissão", "Manual ou automatizada"],
+            ["Cabine", "Eagle Eye — mesma da linha S315"],
+            ["Versões", "Standard e Plus (câmera 360, alerta de ponto cego, sensor de fadiga, central 10\", câmera de ré, TPMS)"],
+            ["Freios", "Freio a ar"],
             ["Garantia", "3 anos sem limite de quilometragem"],
           ],
         })}
@@ -148,14 +169,17 @@ const Foton7T = () => {
         <div className="container mx-auto px-4 py-12 md:py-20">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 order-2 lg:order-1">
+              <span className="inline-block bg-primary text-primary-foreground font-bold text-xs tracking-widest uppercase px-4 py-1 rounded-full">
+                NOVO · cabine Eagle Eye
+              </span>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                7 toneladas com motor Cummins e caixa ZF.
+                O 7 toneladas de cara nova — manual ou automatizado.
               </h1>
               <p className="text-xl md:text-2xl text-gray-300">
-                Médio porte com alta capacidade. Ideal para operações urbanas e regionais.
+                O novo 715 chegou com a mesma cabine Eagle Eye do S315 — o VUC mais desejado do Brasil — e agora também em versão automatizada.
                 <br />
                 <span className="text-primary font-semibold">
-                  7 toneladas de PBT, motor Cummins F2.5, transmissão ZF, componentes globais e 3 anos de garantia.
+                  Motor Cummins, freio a ar, versões Standard e Plus com câmera 360 e alerta de ponto cego — exclusivos no segmento.
                 </span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -180,12 +204,38 @@ const Foton7T = () => {
             
             <div className="order-1 lg:order-2">
               <div className="relative w-full aspect-[4/5] md:aspect-video rounded-lg overflow-hidden">
-                <img 
-                  src={aumarkFrenteUrbano} 
-                  alt="Foton Aumark 715" 
+                <img
+                  src={eagleEyeExt}
+                  alt="Novo Foton Aumark 715 com cabine Eagle Eye"
                   className="w-full h-full object-cover"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 1B. NOVIDADE — CABINE EAGLE EYE (palestra Foton 16/07/2026) */}
+      <section className="py-12 md:py-16 bg-secondary border-b border-border">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+            <div
+              className="aspect-video rounded-2xl overflow-hidden border border-border cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => openLightbox(11)}
+            >
+              <img src={eagleEyeInterior} alt="Interior da nova cabine Eagle Eye do Aumark 715" className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                O que mudou no <span className="text-primary">novo 715</span>
+              </h2>
+              <ul className="space-y-3 text-muted-foreground">
+                <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" /><span><b className="text-foreground">Cabine Eagle Eye</b> — o mesmo design e conforto do S315, agora no 7 toneladas.</span></li>
+                <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" /><span><b className="text-foreground">Manual OU automatizado</b> — o câmbio automatizado que todo mundo procura no VUC chegou ao 715.</span></li>
+                <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" /><span><b className="text-foreground">Versões Standard e Plus</b> — a Plus vem com central multimídia de 10", ar, vidros e travas elétricas, câmera de ré e TPMS.</span></li>
+                <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" /><span><b className="text-foreground">Exclusivos no segmento (Plus):</b> câmera 360°, alerta de ponto cego (BLIS) e sensor de fadiga — segurança que nenhum concorrente de 7t entrega.</span></li>
+                <li className="flex gap-2"><CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" /><span><b className="text-foreground">Freio a ar</b> — raridade na categoria, robustez de caminhão grande.</span></li>
+              </ul>
             </div>
           </div>
         </div>

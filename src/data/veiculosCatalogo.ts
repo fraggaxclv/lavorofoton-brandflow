@@ -8,7 +8,7 @@ import tunlandV9 from "@/assets/tunland-v9.jpg";
 import tunlandV7 from "@/assets/tunland-v7.jpg";
 import ewonder from "@/assets/ewonder.jpg";
 import etoano from "@/assets/etoano.jpg";
-import iblue6t from "@/assets/iblue-6t.jpg";
+import eaumark6t from "@/assets/eaumark-6t-carroceria.jpg";
 import eaumark12t from "@/assets/eaumark-12t.jpg";
 import eaumark9t from "@/assets/eaumark-9t-card.webp";
 import eview from "@/assets/eview.jpg";
@@ -57,13 +57,14 @@ export const veiculosCatalogo: Veiculo[] = [
     cnh: 'C',
     aplicacao: 'Urbano/Regional',
     caracteristicas: [
-      'Motor Cummins ISF 3.8L Diesel',
-      'Potência: 170 cv',
-      'Torque: 450 Nm',
-      'Transmissão manual de 6 marchas',
-      'Freios ABS',
-      'Direção hidráulica',
-      'Garantia de 3 anos'
+      'NOVA cabine Eagle Eye — mesma do S315',
+      'Motor Cummins F2.5 Diesel',
+      'Potência: 150 cv',
+      'Torque: 400 Nm',
+      'Transmissão manual OU automatizada',
+      'Freio a ar — raro no segmento',
+      'Versões Standard e Plus (Plus: câmera 360, alerta de ponto cego, sensor de fadiga, central 10")',
+      'Garantia de 3 anos km livre'
     ],
     cores: ['Branco', 'Prata', 'Azul'],
     cargaUtilCarroceria: '4.520 kg'
@@ -77,13 +78,14 @@ export const veiculosCatalogo: Veiculo[] = [
     cnh: 'C',
     aplicacao: 'Regional',
     caracteristicas: [
-      'Motor Cummins ISF 3.8L Diesel',
-      'Potência: 170 cv',
+      'NOVA cabine Eagle Eye — mesma do S315',
+      'Motor Cummins F3.8 Diesel',
+      'Potência: 160 cv',
       'Torque: 500 Nm',
-      'Transmissão manual de 6 marchas',
-      'Freios ABS com EBD',
-      'Suspensão reforçada',
-      'Garantia de 3 anos'
+      'Transmissão manual OU automatizada',
+      'Tara baixa — carrega mais que a concorrência',
+      'Versões Standard e Plus (Plus: câmera 360, alerta de ponto cego, sensor de fadiga, central 10")',
+      'Garantia de 3 anos km livre'
     ],
     cores: ['Branco', 'Prata'],
     cargaUtilCarroceria: '6.021 kg'
@@ -205,10 +207,10 @@ export const veiculosCatalogo: Veiculo[] = [
     cores: ['Branco', 'Verde']
   },
   {
-    id: 'iblue-6t',
-    modelo: 'iBlue 6T',
+    id: 'eaumark-6t',
+    modelo: 'e-AUMARK 6T',
     categoria: 'eletrico',
-    imagem: iblue6t,
+    imagem: eaumark6t,
     capacidade: '6 toneladas',
     cnh: 'C',
     aplicacao: 'Urbano - Zero Emissões',

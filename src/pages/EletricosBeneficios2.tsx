@@ -32,7 +32,7 @@ export default function EletricosBeneficios2() {
     >
       <SEO
         title="Caminhões Elétricos Foton — Apresentação Executiva"
-        description="Apresentação executiva sobre a linha elétrica Foton: eWonder, eToano, eView, eAumark e iBlue. Tecnologia para frotas modernas."
+        description="Apresentação executiva sobre a linha elétrica Foton: eWonder, eToano, eView, e-Aumark 9T, 12T e 6T. Tecnologia para frotas modernas."
         path="/eletricos-beneficios-2"
       />
 

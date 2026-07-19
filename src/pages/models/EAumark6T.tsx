@@ -4,19 +4,19 @@ import { Button } from "@/components/ui/button";
 import { TrendingDown, Zap, Battery, Package, Shield, Truck, Wrench, CheckCircle2, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useState } from "react";
-import iblue6tImg from "@/assets/iblue-6t.jpg";
+import eaumark6tImg from "@/assets/eaumark-6t-hero.jpg";
 import SEO from "@/components/SEO";
 import { buildProductSchema } from "@/lib/productSchema";
 
-const IBlue6T = () => {
+const EAumark6T = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const whatsappNumber = "5531997966042";
-  const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o iBlue 6T.");
+  const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o e-Aumark 6T (novo iBlue).");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   const galleryImages = [{
-    src: iblue6tImg,
-    title: "iBlue 6T - Vista Frontal",
+    src: eaumark6tImg,
+    title: "e-Aumark 6T - Vista Frontal",
     description: "Design moderno com tecnologia elétrica avançada"
   }];
 
@@ -31,10 +31,10 @@ const IBlue6T = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Foton iBlue 6T — Caminhão leve 100% elétrico 6T | Lavoro Foton BH"
-        description="iBlue 6T: leve 100% elétrico de 6 toneladas para distribuição urbana sustentável. Concessionária Lavoro Foton em Contagem, MG."
-        path="/modelos/iblue-6t"
-        jsonLd={buildProductSchema({ name: "Foton iBlue 6T", model: "iBlue 6T", category: "Caminhão leve elétrico", description: "Caminhão leve 100% elétrico de 6 toneladas para distribuição urbana" })}
+        title="Foton e-Aumark 6T — Caminhão leve 100% elétrico 6T | Lavoro Foton BH"
+        description="e-Aumark 6T (novo nome do iBlue 6T): caminhão leve 100% elétrico de 6 toneladas para distribuição urbana sustentável. Concessionária Lavoro Foton em Contagem, MG."
+        path="/modelos/eaumark-6t"
+        jsonLd={buildProductSchema({ name: "Foton e-Aumark 6T", model: "e-Aumark 6T", category: "Caminhão leve elétrico", description: "Caminhão leve 100% elétrico de 6 toneladas para distribuição urbana" })}
       />
 
       <Navbar />
@@ -55,7 +55,7 @@ const IBlue6T = () => {
 
               <div>
                 <h1 className="text-6xl md:text-7xl font-black mb-6 bg-gradient-to-r from-white via-blue-100 to-blue-400 bg-clip-text text-transparent leading-tight">
-                  iBlue 6T
+                  e-Aumark 6T
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
                   O caminhão elétrico leve e ágil: <strong className="text-white">3.575 kg de carga</strong>, <strong className="text-white">220 km de autonomia real</strong> e custo operacional até <strong className="text-blue-400">80% menor</strong>. Perfeito para entregas urbanas.
@@ -95,17 +95,17 @@ const IBlue6T = () => {
 
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-cyan-500/20 rounded-3xl blur-3xl" />
-              <img src={iblue6tImg} alt="iBlue 6T" className="relative z-10 w-full rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500" />
+              <img src={eaumark6tImg} alt="e-Aumark 6T" className="relative z-10 w-full rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 🟦 SEÇÃO 2 — POR QUE O iBLUE 6T? */}
+      {/* 🟦 SEÇÃO 2 — POR QUE O e-AUMARK 6T? */}
       <section className="section-padding bg-white dark:bg-industrial-dark">
         <div className="container-lavoro">
           <div className="text-center mb-16">
-            <h2 className="mb-4">Por que o iBlue 6T?</h2>
+            <h2 className="mb-4">Por que o e-Aumark 6T?</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               O caminhão elétrico compacto que une agilidade, economia e tecnologia de ponta
             </p>
@@ -228,7 +228,7 @@ const IBlue6T = () => {
       <section className="section-padding bg-industrial-light dark:bg-black">
         <div className="container-lavoro">
           <div className="text-center mb-16">
-            <h2 className="mb-4">Conheça o iBlue 6T</h2>
+            <h2 className="mb-4">Conheça o e-Aumark 6T</h2>
             <p className="text-xl text-muted-foreground">Design compacto e tecnologia de ponta</p>
           </div>
 
@@ -406,7 +406,7 @@ const IBlue6T = () => {
           <div className="text-center mb-16">
             <h2 className="mb-4">Diesel vs Elétrico: A diferença é brutal</h2>
             <p className="text-xl text-muted-foreground">
-              Veja quanto você economiza ao escolher o iBlue 6T
+              Veja quanto você economiza ao escolher o e-Aumark 6T
             </p>
           </div>
 
@@ -441,14 +441,14 @@ const IBlue6T = () => {
               </ul>
             </div>
 
-            {/* Card iBlue 6T */}
+            {/* Card e-Aumark 6T */}
             <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/20 dark:to-cyan-950/20 border-2 border-blue-400 dark:border-blue-600 shadow-lg">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
                   <Zap className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
                 <h3 className="text-2xl font-bold text-blue-700 dark:text-blue-400">
-                  iBlue 6T
+                  e-Aumark 6T
                 </h3>
               </div>
               <ul className="space-y-3 text-foreground">
@@ -545,7 +545,7 @@ const IBlue6T = () => {
             O próximo passo da sua frota começa aqui
           </h2>
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto">
-            Conheça o iBlue 6T e descubra como reduzir custos e aumentar eficiência com zero emissões
+            Conheça o e-Aumark 6T e descubra como reduzir custos e aumentar eficiência com zero emissões
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center mb-16">
@@ -574,4 +574,4 @@ const IBlue6T = () => {
   );
 };
 
-export default IBlue6T;
+export default EAumark6T;

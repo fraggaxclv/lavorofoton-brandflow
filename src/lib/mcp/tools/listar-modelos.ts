@@ -17,7 +17,7 @@ const MODELOS = [
   { slug: "ev-connect", nome: "eV CONNECT", categoria: "eletrico", capacidade: "1,5 t", cnh: "B" },
   { slug: "eaumark-9t", nome: "eAUMARK 9T", categoria: "eletrico", capacidade: "9 t", cnh: "C" },
   { slug: "eaumark-12t", nome: "eAUMARK 12T", categoria: "eletrico", capacidade: "12 t", cnh: "C" },
-  { slug: "iblue-6t", nome: "iBLUE 6T", categoria: "eletrico", capacidade: "6 t", cnh: "C" },
+  { slug: "eaumark-6t", nome: "e-AUMARK 6T", categoria: "eletrico", capacidade: "6 t", cnh: "C" },
 ];
 
 export default defineTool({

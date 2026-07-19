@@ -41,7 +41,7 @@ const PRERENDER_ROUTES = [
   "/modelos/ev-connect",
   "/modelos/eaumark-9t",
   "/modelos/eaumark-12t",
-  "/modelos/iblue-6t",
+  "/modelos/eaumark-6t",
 ];
 
 // https://vitejs.dev/config/

@@ -22,7 +22,7 @@ const modelosEletricos = [
   { label: "eView Connect", to: "/modelos/ev-connect" },
   { label: "eAumark 9T", to: "/modelos/eaumark-9t" },
   { label: "eAumark 12T", to: "/modelos/eaumark-12t" },
-  { label: "iBlue 6T", to: "/modelos/iblue-6t" },
+  { label: "e-Aumark 6T", to: "/modelos/eaumark-6t" },
 ];
 
 const modelosPickups = [
