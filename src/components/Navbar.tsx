@@ -203,6 +203,9 @@ const Navbar = () => {
             <Link to="/servicos" className="text-foreground hover:text-primary transition-colors font-medium">
               Serviços
             </Link>
+            <Link to="/consorcio" className="text-foreground hover:text-primary transition-colors font-medium">
+              Consórcio
+            </Link>
             <Link to="/imprensa" className="text-foreground hover:text-primary transition-colors font-medium">
               Imprensa
             </Link>
@@ -254,7 +257,11 @@ const Navbar = () => {
             <Link to="/servicos" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>
               Serviços
             </Link>
+            <Link to="/consorcio" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>
+              Consórcio
+            </Link>
             <Link to="/imprensa" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>
+              Imprensa
             </Link>
             {isAdmin && (
               <Link to="/admin/pedidos-faturamento" className="block text-foreground hover:text-primary transition-colors font-medium" onClick={close}>

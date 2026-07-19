@@ -15,6 +15,7 @@ const PRERENDER_ROUTES = [
   "/sobre-foton",
   "/modelos",
   "/servicos",
+  "/consorcio",
   "/contato",
   "/imprensa",
   "/calculadora",

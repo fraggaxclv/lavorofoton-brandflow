@@ -15,6 +15,7 @@ import SobreFoton from "./pages/SobreFoton";
 import Modelos from "./pages/Modelos";
 import Servicos from "./pages/Servicos";
 import Contato from "./pages/Contato";
+import Consorcio from "./pages/Consorcio";
 
 import PedidoFaturamento from "./pages/PedidoFaturamento";
 import ListaPedidos from "./pages/ListaPedidos";
@@ -124,6 +125,7 @@ const App = () => (
             <Route path="/modelos/eaumark-12t" element={<EAumark12T />} />
             <Route path="/modelos/iblue-6t" element={<IBlue6T />} />
             <Route path="/servicos" element={<Servicos />} />
+            <Route path="/consorcio" element={<Consorcio />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/comparativo-aumark-1217" element={<ComparativoAumark1217 />} />
             <Route path="/calculadora-roi" element={<CalculadoraROI />} />
