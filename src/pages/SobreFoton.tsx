@@ -386,7 +386,7 @@ const SobreFoton = () => {
               <Link to="/modelos">Ver Linha de Caminhões</Link>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
-              <a href="https://wa.me/553121164735?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Foton." target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5531997966042?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Foton." target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Fale com um Consultor
               </a>

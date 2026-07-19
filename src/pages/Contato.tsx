@@ -146,7 +146,7 @@ const Contato = () => {
     <div className="min-h-screen">
       <SEO
         title="Contato Lavoro Foton — Concessionária oficial Foton em Contagem, MG"
-        description="WhatsApp (31) 99796-6042. Rua Cornélio Vaz de Melo, 11, Contagem MG. Atendimento consultivo Foton sem pressão de venda. Lavoro Foton."
+        description="WhatsApp (31) 99796-6042. Ligações (31) 2116-4735. Rua Cornélio Vaz de Melo, 11, Contagem MG. Atendimento consultivo Foton sem pressão de venda. Lavoro Foton."
         path="/contato"
       />
 
@@ -289,8 +289,8 @@ const Contato = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Telefone</h3>
-                      <a href="https://wa.me/5531997966042" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                        (31) 99796-6042
+                      <a href="tel:+553121164735" className="text-muted-foreground hover:text-primary transition-colors">
+                        (31) 2116-4735
                       </a>
                       <p className="text-sm text-muted-foreground">Seg a Sex, 8h às 18h</p>
                     </div>

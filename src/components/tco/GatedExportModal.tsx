@@ -32,7 +32,7 @@ interface Props {
   onGeneratePdf: (sim: SavedSimulation) => Promise<{ pdfBase64: string; filename: string } | null>;
 }
 
-const WHATSAPP = "5531996970656";
+const WHATSAPP = "5531997966042";
 
 function formatPhone(v: string) {
   const d = v.replace(/\D/g, "").slice(0, 11);

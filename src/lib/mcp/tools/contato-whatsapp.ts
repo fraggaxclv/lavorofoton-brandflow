@@ -1,7 +1,7 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
 
-const WHATSAPP = "+5531996970656";
+const WHATSAPP = "+5531997966042";
 
 export default defineTool({
   name: "gerar_link_whatsapp",

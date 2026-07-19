@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-foton-lavoro-transparente.png";
 const Footer = () => {
@@ -88,6 +88,12 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone size={16} className="text-primary" />
+                <a href="tel:+553121164735" className="hover:text-primary transition-colors">
+                  (31) 2116-4735
+                </a>
+              </li>
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <MessageCircle size={16} className="text-primary" />
                 <a href="https://wa.me/5531997966042" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                   (31) 99796-6042
                 </a>

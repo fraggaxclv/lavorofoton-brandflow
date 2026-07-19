@@ -11,7 +11,8 @@ export default defineTool({
     const info = {
       nome: "Lavoro Foton",
       descricao: "Concessionária oficial Foton em Minas Gerais — caminhões diesel, elétricos e picapes Tunland.",
-      whatsapp: "+55 31 99697-0656",
+      whatsapp: "+55 31 99796-6042",
+      telefone: "+55 31 2116-4735",
       site: "https://lavorofoton.com.br",
       links: {
         modelos: "https://lavorofoton.com.br/modelos",
