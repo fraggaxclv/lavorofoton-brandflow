@@ -46,7 +46,7 @@ const EAumark12T = () => {
           properties: [
             ["PBT", "12.000 kg"],
             ["Tipo de propulsão", "100% elétrico"],
-            ["Categoria CNH", "D/E"],
+            ["Categoria CNH", "C"],
             ["Substitui", "Foton Aumark 1217 diesel"],
           ],
         })}

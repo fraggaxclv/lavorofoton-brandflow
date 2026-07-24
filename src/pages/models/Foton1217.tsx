@@ -138,7 +138,7 @@ const Foton1217New = () => {
               ["PBTC", "14.000 kg"],
               ["Motor", "Cummins F3.8 — 170 cv / 600 Nm"],
               ["Transmissão", "ZF 6S558 — 6 marchas"],
-              ["Categoria CNH", "D/E"],
+              ["Categoria CNH", "C"],
               ["Norma de emissões", "CONAMA P8"],
               ["Garantia", "3 anos sem limite de quilometragem"],
             ],

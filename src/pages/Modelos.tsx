@@ -129,25 +129,25 @@ const Modelos = () => {
                 <tr className="border-b border-border hover:bg-secondary/50 transition-colors">
                   <td className="py-4 px-6 font-semibold">AUMARK 1217</td>
                   <td className="py-4 px-6">12 toneladas</td>
-                  <td className="py-4 px-6">D/E</td>
+                  <td className="py-4 px-6">C</td>
                   <td className="py-4 px-6">Pesado</td>
                 </tr>
                 <tr className="border-b border-border hover:bg-secondary/50 transition-colors">
                   <td className="py-4 px-6 font-semibold">AUMAN D 1722</td>
-                  <td className="py-4 px-6">17 toneladas</td>
-                  <td className="py-4 px-6">D/E</td>
-                  <td className="py-4 px-6">Pesado/Longas distâncias</td>
+                  <td className="py-4 px-6">16 toneladas</td>
+                  <td className="py-4 px-6">C</td>
+                  <td className="py-4 px-6">Pesado/Distribuição regional</td>
                 </tr>
                 <tr className="border-b border-border hover:bg-secondary/50 transition-colors">
                   <td className="py-4 px-6 font-semibold">AUMAN D 1830</td>
                   <td className="py-4 px-6">18 toneladas</td>
-                  <td className="py-4 px-6">D/E</td>
+                  <td className="py-4 px-6">C</td>
                   <td className="py-4 px-6">Pesado-Regional</td>
                 </tr>
                 <tr className="hover:bg-secondary/50 transition-colors">
                   <td className="py-4 px-6 font-semibold">AUMAN D 2632</td>
                   <td className="py-4 px-6">26 toneladas</td>
-                  <td className="py-4 px-6">D/E</td>
+                  <td className="py-4 px-6">C</td>
                   <td className="py-4 px-6">Pesado-Longas distâncias</td>
                 </tr>
               </tbody>

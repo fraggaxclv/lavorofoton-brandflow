@@ -279,7 +279,7 @@ const Slide7 = () => {
     ["Aumark 715", "Caminhão leve", "7T", "C", "Cummins F2.5", "Distribuição urbana e regional"],
     ["Aumark 916", "Caminhão leve", "9T", "C", "Cummins F3.8", "Campeão do refrigerado"],
     ["Aumark 1217", "Caminhão médio", "12T", "C", "Cummins F3.8 + ZF 6S558", "Peça-âncora — 8.326 kg de carga útil"],
-    ["Auman D 1722", "Semipesado", "17T", "C/E", "Cummins ISF 3.8", "Distribuição pesada regional"],
+    ["Auman D 1722", "Semipesado", "16T", "C", "Cummins F4.5", "Distribuição pesada regional"],
     ["Auman D 1830", "Pesado", "18T", "C/E", "Cummins", "Logística regional pesada"],
     ["Auman D 2632", "Pesado 6x2", "26T", "E", "Cummins + ZF", "Logística multieixo"],
     ["eWonder", "Picape elétrica", "3,5T", "B", "Elétrico", "ESG-ready, R$ 1.677/mês economia"],

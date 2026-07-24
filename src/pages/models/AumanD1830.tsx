@@ -72,7 +72,7 @@ const AumanD1830 = () => {
           description: "Pesado 18 toneladas para logística regional. Motor maior, torque alto, sem desconto em força.",
           properties: [
             ["PBT", "18.000 kg"],
-            ["Categoria CNH", "D/E"],
+            ["Categoria CNH", "C"],
             ["Motor", "Cummins"],
             ["Transmissão", "ZF"],
           ],
@@ -465,7 +465,7 @@ const AumanD1830 = () => {
               <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Habilitação, Garantia e Versões</h3>
               <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-                  <li>CNH exigida: D ou E</li>
+                  <li>CNH exigida: C</li>
                   <li>Garantia veículo completo: 1 ano sem limite de km</li>
                   <li>Garantia motor e câmbio: 3 anos sem limite de km</li>
                   <li>Homologação IBAMA Proconve | Conama</li>

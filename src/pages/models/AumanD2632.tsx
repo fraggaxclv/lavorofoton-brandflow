@@ -73,7 +73,7 @@ const AumanD2632 = () => {
           properties: [
             ["PBT", "26.000 kg"],
             ["Configuração", "6x2"],
-            ["Categoria CNH", "E"],
+            ["Categoria CNH", "C"],
             ["Motor", "Cummins ISG"],
             ["Transmissão", "ZF AMT"],
           ],
@@ -462,7 +462,7 @@ const AumanD2632 = () => {
               <h3 className="text-lg font-semibold uppercase tracking-wide pb-3 mb-5 border-b border-border/60">Habilitação, Garantia e Versões</h3>
               <div className="px-6">
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-                  <li>CNH exigida: D ou E</li>
+                  <li>CNH exigida: C</li>
                   <li>Garantia veículo completo: 1 ano sem limite de km</li>
                   <li>Garantia motor e câmbio: 3 anos sem limite de km</li>
                   <li>Versões disponíveis: padrão e L (plataforma estendida)</li>

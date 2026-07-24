@@ -185,8 +185,8 @@ const HomeV2 = () => {
                 <ModelCardV2 name="AUMARK S315" description="VUC urbano. Pode ser dirigido com CNH B — sem precisar tirar habilitação de caminhão." tags={["3,5T", "CNH B"]} link="/modelos/aumark-s315" />
                 <ModelCardV2 name="AUMARK 715" description="Médio porte com excelente custo-benefício. Ideal para distribuição urbana e regional." tags={["7T", "CNH C"]} link="/modelos/aumark-715" />
                 <ModelCardV2 name="AUMARK 916" description="O campeão do transporte refrigerado. Chassi dimensionado para baús térmicos." tags={["9T", "CNH C"]} link="/modelos/aumark-916" />
-                <ModelCardV2 name="AUMARK 1217" description="O três-quartos mais carregado da categoria. Carrega até 1.000 kg a mais que o VW Delivery 11.180." tags={["12T", "CNH D/E"]} link="/modelos/aumark-1217" secondaryLink={{ label: "Ver comparativo vs VW, Mercedes e Iveco →", to: "/comparativo-aumark-1217" }} />
-                <ModelCardV2 name="AUMAN D 1722" description="Semipesado de alta capacidade. Motor Cummins ISF 3.8 para longas distâncias e cargas pesadas." tags={["17T", "CNH D/E"]} link="/modelos/auman-d-1722" />
+                <ModelCardV2 name="AUMARK 1217" description="O três-quartos mais carregado da categoria. Carrega até 1.000 kg a mais que o VW Delivery 11.180." tags={["12T", "CNH C"]} link="/modelos/aumark-1217" secondaryLink={{ label: "Ver comparativo vs VW, Mercedes e Iveco →", to: "/comparativo-aumark-1217" }} />
+                <ModelCardV2 name="AUMAN D 1722" description="Semipesado de alta capacidade. Motor Cummins F4.5 de 820 Nm para distribuição pesada e frete regional." tags={["16T", "CNH C"]} link="/modelos/auman-d-1722" />
               </div>
             </TabsContent>
 
