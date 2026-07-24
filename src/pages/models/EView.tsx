@@ -46,6 +46,7 @@ const EView = () => {
         title="Foton eView Grand — Van elétrica média urbana | Lavoro Foton"
         description="eView Grand é a van elétrica para o tráfego urbano denso. Silenciosa, sem calor de motor, baixíssimo custo por km. Lavoro Foton, Contagem MG."
         path="/modelos/eview"
+        ogImage="https://www.lavorofoton.com.br/og/eview.jpg"
         jsonLd={buildProductSchema({
           name: "Foton eView Grand",
           model: "eView Grand",

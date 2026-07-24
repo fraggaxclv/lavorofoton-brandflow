@@ -39,6 +39,7 @@ const EAumark9T = () => {
         title="Foton eAumark 9T — Caminhão elétrico 9 toneladas | Lavoro Foton"
         description="eAumark 9T é o substituto elétrico direto do Aumark 916. Mesma capacidade, zero diesel, zero ARLA. Lavoro Foton, Contagem MG."
         path="/modelos/eaumark-9t"
+        ogImage="https://www.lavorofoton.com.br/og/eaumark-9t.jpg"
         jsonLd={buildProductSchema({
           name: "Foton eAumark 9T",
           model: "eAumark 9T",

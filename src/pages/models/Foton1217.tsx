@@ -126,6 +126,7 @@ const Foton1217New = () => {
         title="Foton Aumark 1217 — 8.326 kg de carga útil. Mais que todo concorrente. | Lavoro Foton"
         description="Aumark 1217 carrega 1.016 kg a mais que o VW Delivery 11.180, com motor Cummins F3.8 170cv e transmissão ZF 6S558. Ganha 3 viagens por mês. Garantia 3 anos sem limite de km. Lavoro Foton, Contagem MG."
         path="/modelos/aumark-1217"
+        ogImage="https://www.lavorofoton.com.br/og/aumark-1217.jpg"
         jsonLd={[
           buildProductSchema({
             name: "Foton Aumark 1217",

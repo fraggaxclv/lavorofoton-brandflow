@@ -34,6 +34,7 @@ const EAumark6T = () => {
         title="Foton e-Aumark 6T — Caminhão leve 100% elétrico 6T | Lavoro Foton BH"
         description="e-Aumark 6T (novo nome do iBlue 6T): caminhão leve 100% elétrico de 6 toneladas para distribuição urbana sustentável. Concessionária Lavoro Foton em Contagem, MG."
         path="/modelos/eaumark-6t"
+        ogImage="https://www.lavorofoton.com.br/og/eaumark-6t.jpg"
         jsonLd={buildProductSchema({ name: "Foton e-Aumark 6T", model: "e-Aumark 6T", category: "Caminhão leve elétrico", description: "Caminhão leve 100% elétrico de 6 toneladas para distribuição urbana" })}
       />
 

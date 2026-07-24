@@ -65,6 +65,7 @@ const AumanD1830 = () => {
         title="Foton Auman D 1830 — Pesado 18T para logística regional | Lavoro Foton"
         description="Auman D 1830 entrega 18 toneladas de PBT com torque alto e economia operacional. Logística regional pesada sem rateio. Lavoro Foton, Contagem MG."
         path="/modelos/auman-d-1830"
+        ogImage="https://www.lavorofoton.com.br/og/auman-d-1830.jpg"
         jsonLd={buildProductSchema({
           name: "Foton Auman D 1830",
           model: "Auman D 1830",

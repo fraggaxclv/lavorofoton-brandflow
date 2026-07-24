@@ -43,6 +43,7 @@ const EWonder = () => {
         title="Foton eWonder — Picape elétrica com economia de R$ 1.677/mês | Lavoro Foton"
         description="eWonder substitui Kia Bongo e Hyundai HR com economia comprovada de R$ 1.677 por mês por veículo, só na troca do combustível por energia elétrica. CNH B. Lavoro Foton, Contagem MG."
         path="/modelos/ewonder"
+        ogImage="https://www.lavorofoton.com.br/og/ewonder.jpg"
         jsonLd={[
           buildProductSchema({
             name: "Foton eWonder",

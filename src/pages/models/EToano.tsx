@@ -18,6 +18,7 @@ const EToano = () => {
         title="Foton eToano Pro — Van elétrica de alta capacidade | Lavoro Foton"
         description="eToano Pro é a van elétrica de maior porte da linha Foton, ideal para last-mile premium e operações de e-commerce que não param. Lavoro Foton, Contagem MG."
         path="/modelos/etoano"
+        ogImage="https://www.lavorofoton.com.br/og/etoano.jpg"
         jsonLd={buildProductSchema({
           name: "Foton eToano Pro",
           model: "eToano Pro",

@@ -65,6 +65,7 @@ const AumanD2632 = () => {
         title="Foton Auman D 2632 — Pesado 6x2 com Cummins e ZF | Lavoro Foton"
         description="Auman D 2632 entrega 26 toneladas em configuração 6x2 com motor Cummins e transmissão ZF — engenharia premium ao preço Foton. Lavoro Foton, Contagem MG."
         path="/modelos/auman-d-2632"
+        ogImage="https://www.lavorofoton.com.br/og/auman-d-2632.jpg"
         jsonLd={buildProductSchema({
           name: "Foton Auman D 2632",
           model: "Auman D 2632",

@@ -77,6 +77,7 @@ const Foton9T = () => {
         title="NOVO Foton Aumark 916 — cabine Eagle Eye, manual ou automatizado | Lavoro Foton"
         description="Novo Aumark 916: cabine Eagle Eye (a mesma do S315), câmbio manual OU automatizado e versão Plus com câmera 360, alerta de ponto cego e sensor de fadiga. Chassi dimensionado para baús térmicos — o campeão da cadeia fria. Lavoro Foton, Contagem MG."
         path="/modelos/aumark-916"
+        ogImage="https://www.lavorofoton.com.br/og/aumark-916.jpg"
         jsonLd={buildProductSchema({
           name: "Foton Aumark 916",
           model: "Aumark 916",

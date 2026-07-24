@@ -150,6 +150,7 @@ const TunlandV9 = () => {
         title="Foton Tunland V9 — Picape do grupo que produz com a Mercedes-Benz | Lavoro Foton"
         description="Tunland V9 vem do grupo BAIC Foton, que tem joint venture com a Mercedes-Benz (Daimler) para veículos pesados. A picape com DNA premium ao preço Foton. Lavoro Foton, Contagem MG."
         path="/modelos/tunland-v9"
+        ogImage="https://www.lavorofoton.com.br/og/tunland-v9.jpg"
         jsonLd={buildProductSchema({
           name: "Foton Tunland V9",
           model: "Tunland V9",

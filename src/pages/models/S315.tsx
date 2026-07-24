@@ -79,6 +79,7 @@ const S315 = () => {
         title="Foton Aumark S315 — Caminhão urbano 3,5T com CNH B | Lavoro Foton"
         description="Único caminhão na categoria 3,5T que pode ser dirigido com habilitação B — sem precisar tirar CNH de caminhão. Ideal para last-mile, distribuição urbana e prestador PJ. Lavoro Foton, Contagem MG."
         path="/modelos/aumark-s315"
+        ogImage="https://www.lavorofoton.com.br/og/aumark-s315.jpg"
         jsonLd={[
           buildProductSchema({
             name: "Foton Aumark S315",

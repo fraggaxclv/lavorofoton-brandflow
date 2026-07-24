@@ -353,6 +353,7 @@ const LinhaAumark = () => {
         title="Linha Aumark — 315, 715, 916 e 1217 | Comparativo completo | Lavoro Foton"
         description="Os 4 caminhões Foton Aumark lado a lado: do S315 com CNH B ao S1217 de 12 toneladas. Compare PBT, carga útil, motor Cummins, câmbio ZF, configurações e implementos. Lavoro Foton, Contagem MG."
         path="/linha-aumark"
+        ogImage="https://www.lavorofoton.com.br/og/linha-aumark.jpg"
         jsonLd={[
           ...modelos.map((m) =>
             buildProductSchema({

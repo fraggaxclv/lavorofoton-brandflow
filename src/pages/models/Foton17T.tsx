@@ -96,6 +96,7 @@ const Foton17T = () => {
         title="Foton Auman D 1722 — Semipesado 16T com Cummins F4.5 | Lavoro Foton"
         description="Auman D 1722 com motor Cummins F4.5 de 820 Nm e câmbio ZF 6S1000. PBT de 16 toneladas e até 11.375 kg para carga + carroceria. Lavoro Foton, Contagem MG."
         path="/modelos/auman-d-1722"
+        ogImage="https://www.lavorofoton.com.br/og/auman-d-1722.jpg"
         jsonLd={buildProductSchema({
           name: "Foton Auman D 1722",
           model: "Auman D 1722",

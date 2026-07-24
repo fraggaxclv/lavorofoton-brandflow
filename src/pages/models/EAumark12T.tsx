@@ -38,6 +38,7 @@ const EAumark12T = () => {
         title="Foton eAumark 12T — Caminhão elétrico 12 toneladas | Lavoro Foton"
         description="eAumark 12T entrega a capacidade do Aumark 1217 em versão 100% elétrica. Zero combustível, zero ARLA, manutenção mínima. Lavoro Foton, Contagem MG."
         path="/modelos/eaumark-12t"
+        ogImage="https://www.lavorofoton.com.br/og/eaumark-12t.jpg"
         jsonLd={buildProductSchema({
           name: "Foton eAumark 12T",
           model: "eAumark 12T",

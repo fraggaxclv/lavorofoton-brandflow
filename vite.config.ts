@@ -11,6 +11,9 @@ import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/supabase/vite";
 // CRM /interno e fluxos autenticados NÃO entram aqui.
 const PRERENDER_ROUTES = [
   "/",
+  "/linha-aumark",
+  "/linha-auman",
+  "/linha-tunland",
   "/quem-somos",
   "/sobre-foton",
   "/modelos",

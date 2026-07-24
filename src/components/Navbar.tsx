@@ -28,11 +28,15 @@ const modelosEletricos = [
 ];
 
 const modelosPickups = [
+  { label: "Linha Tunland — visão geral", to: "/linha-tunland" },
   { label: "Tunland V9", to: "/modelos/tunland-v9" },
   { label: "Tunland V7", to: "/modelos/tunland-v7" },
 ];
 
 const comparativos = [
+  { label: "Linha Aumark — 4 modelos", to: "/linha-aumark" },
+  { label: "Linha Auman D — 3 modelos", to: "/linha-auman" },
+  { label: "Linha Tunland — V7 × V9", to: "/linha-tunland" },
   { label: "Aumark 1217 vs Concorrentes", to: "/comparativo-aumark-1217" },
   { label: "eWonder vs Diesel", to: "/comparativo-ewonder" },
   { label: "Calculadora Lavoro TCO", to: "/calculadora" },

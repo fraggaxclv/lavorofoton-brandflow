@@ -322,6 +322,7 @@ const LinhaAuman = () => {
         title="Linha Auman D — 1722, 1830 e 2632 | Comparativo completo | Lavoro Foton"
         description="Os caminhões pesados Foton Auman D lado a lado: 16 a 23 toneladas de PBT, Cummins de até 1.200 Nm, câmbio ZF automatizado e semileito de série. Compare capacidades, configurações e implementos. Lavoro Foton, Contagem MG."
         path="/linha-auman"
+        ogImage="https://www.lavorofoton.com.br/og/linha-auman.jpg"
         jsonLd={[
           ...modelos.map((m) =>
             buildProductSchema({

@@ -44,6 +44,7 @@ const EViewConnect = () => {
         title="Foton eView Connect — Van elétrica compacta urbana | Lavoro Foton"
         description="eView Connect é a van elétrica compacta para last-mile fino — caixotes, encomendas, entrega rápida. Custo operacional mínimo. Lavoro Foton, Contagem MG."
         path="/modelos/ev-connect"
+        ogImage="https://www.lavorofoton.com.br/og/ev-connect.jpg"
         jsonLd={buildProductSchema({
           name: "Foton eView Connect",
           model: "eView Connect",

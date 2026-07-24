@@ -87,6 +87,7 @@ const Foton7T = () => {
         title="NOVO Foton Aumark 715 — cabine Eagle Eye, manual ou automatizado | Lavoro Foton"
         description="Novo Aumark 715: cabine Eagle Eye (a mesma do S315), transmissão manual OU automatizada e versão Plus com câmera 360, alerta de ponto cego e sensor de fadiga — exclusivos no segmento 7t. Lavoro Foton, Contagem MG."
         path="/modelos/aumark-715"
+        ogImage="https://www.lavorofoton.com.br/og/aumark-715.jpg"
         jsonLd={buildProductSchema({
           name: "Foton Aumark 715",
           model: "Aumark 715",
