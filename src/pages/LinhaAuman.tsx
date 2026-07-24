@@ -21,36 +21,36 @@ import {
   Wrench,
   ShieldCheck,
   Settings2,
+  BedDouble,
+  Wind,
 } from "lucide-react";
 
 // Fotos — acervo oficial Lavoro/Foton
-import heroChassiNovo from "@/assets/aumark-linha-chassi-novo.webp";
-import aumarkBauLateral from "@/assets/aumark-bau-lateral.webp";
-import aumarkCabineBasculada from "@/assets/aumark-cabine-basculada.webp";
-import aumark1217Carroceria from "@/assets/aumark-1217-carroceria.webp";
-import aumark1217Estrada from "@/assets/aumark-1217-estrada.webp";
-import aumarkS315Hero from "@/assets/aumark-s315-hero.png";
-import eagleEyeExt from "@/assets/aumark-eagle-eye-ext.jpg";
-import eagleEyeCarroceria from "@/assets/aumark-eagle-eye-carroceria.jpg";
-import foton1217 from "@/assets/foton-1217.jpg";
+import aumanHeroStudio from "@/assets/auman-d-chassi-34-studio.webp";
+import auman2632Frontal from "@/assets/auman-d-2632-frontal.webp";
+import auman2632Chassi6x2 from "@/assets/auman-d-2632-chassi-6x2.webp";
+import aumanSemileitoInterior from "@/assets/auman-cabine-semileito-interior.webp";
+import auman1722Frontal from "@/assets/auman-1722-frontal-45.jpg";
+import auman1722Lateral from "@/assets/auman-1722-lateral.jpg";
+import auman1722Traseira from "@/assets/auman-1722-traseira.jpg";
+import aumanD1830Hero from "@/assets/auman-d-1830-hero.png";
+import aumanD1830Lateral from "@/assets/auman-d-1830-lateral.png";
+import aumanD2632SuspensaoAr from "@/assets/auman-d-2632-suspensao-ar.png";
+import aumanD2632SemiLeito from "@/assets/auman-d-2632-cabine-semi-leito.png";
+import aumanD2632Tanque from "@/assets/auman-d-2632-tanque-aluminio.png";
 import cumminsLogo from "@/assets/cummins-logo-icon.png";
 import zfLogo from "@/assets/zf-logo-icon.png";
 import boschLogo from "@/assets/bosch-logo-icon.png";
 import danaLogo from "@/assets/dana-logo-icon.png";
 import garantia3AnosIcon from "@/assets/garantia-3anos-foton.png";
-import aumarkLogoLight from "@/assets/aumark-logo-light.png";
-import aumarkLogoDark from "@/assets/aumark-logo-dark.png";
-import aumarkChassiLateralNovo from "@/assets/aumark-chassi-lateral-novo.webp";
-import aumarkFrontalNovo from "@/assets/aumark-frontal-novo.webp";
-import aumarkMotorVertical from "@/assets/aumark-motor-cummins-vertical.webp";
-import aumarkMotorExposto from "@/assets/aumark-motor-cummins-exposto.webp";
-import eagleEyeBasculante from "@/assets/aumark-eagle-eye-basculante.jpg";
+import aumanLogoLight from "@/assets/auman-logo-light.png";
+import aumanLogoDark from "@/assets/auman-logo-dark.png";
 
 const WHATSAPP = "5531997966042";
 const wa = (msg: string) =>
   `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
-interface ModeloAumark {
+interface ModeloAuman {
   id: string;
   nome: string;
   numero: string;
@@ -59,7 +59,7 @@ interface ModeloAumark {
   foto: string;
   fotoAlt: string;
   rota: string;
-  cnh: string;
+  eixos: string;
   pbt: string;
   cargaUtil: string;
   potencia: string;
@@ -69,174 +69,132 @@ interface ModeloAumark {
   cambio: string;
   chassi: string;
   versoes: string;
-  cabineNova: boolean;
   galeria: { src: string; alt: string }[];
   aplicacoes: string[];
   destaques: string[];
   waMsg: string;
 }
 
-const modelos: ModeloAumark[] = [
+const modelos: ModeloAuman[] = [
   {
-    id: "s315",
-    nome: "Aumark S315",
-    numero: "315",
-    tagline: "O caminhão da CNH B.",
+    id: "d1722",
+    nome: "Auman D 1722",
+    numero: "1722",
+    tagline: "O peso-médio que carrega como pesado.",
     descricao:
-      "Parece caminhão porque é caminhão — chassi, rodado duplo e motor Cummins. A diferença: com PBT de 3.500 kg, você dirige com a habilitação que já tem.",
-    foto: aumarkFrontalNovo,
-    fotoAlt: "Foton Aumark S315 — caminhão urbano com CNH B",
-    galeria: [
-      { src: aumarkMotorExposto, alt: "Motor Cummins do Aumark exposto no chassi" },
-      { src: aumarkS315Hero, alt: "Aumark S315 em operação urbana" },
-    ],
-    rota: "/modelos/aumark-s315",
-    cnh: "B",
-    pbt: "3.500 kg",
-    cargaUtil: "até 1.160 kg",
-    potencia: "150 cv",
-    torque: "400 Nm",
-    motor: "Cummins F2.5",
-    plataforma: "3,61 a 4,17 m",
-    cambio: "ZF 5 marchas · manual ou automatizada*",
-    chassi: "2 opções de entre-eixos: 315 (2.800 mm) e 315L (3.360 mm)",
-    versoes: "Padrão e TOP (câmera 360°, detecção de ponto cego, monitor de fadiga, central 10,25”, EPB, TPMS)",
-    cabineNova: true,
-    aplicacoes: ["Last-mile e e-commerce", "Entregas urbanas", "Prestador de serviço PJ", "Pequeno e médio varejo"],
-    destaques: [
-      "Único da linha dirigível com CNH B",
-      "Airbag duplo e freio a disco dianteiro de série",
-      "Torque de 400 Nm — força de caminhão grande no trânsito da cidade",
-    ],
-    waMsg: "Olá! Quero saber mais sobre o Foton Aumark S315 (CNH B).",
-  },
-  {
-    id: "s715",
-    nome: "Aumark S715",
-    numero: "715",
-    tagline: "Sete toneladas com jeito de cidade.",
-    descricao:
-      "O passo acima do VUC: 4.520 kg de carga + carroceria num caminhão ágil, com a mesma cabine nova do S315 e controle de cruzeiro de série.",
-    foto: aumarkChassiLateralNovo,
-    fotoAlt: "Foton Aumark S715 — chassi 7 toneladas cabine nova",
-    galeria: [
-      { src: heroChassiNovo, alt: "Aumark cabine nova — vista 3/4 do chassi" },
-      { src: eagleEyeExt, alt: "Aumark S715 rodando na cidade" },
-    ],
-    rota: "/modelos/aumark-715",
-    cnh: "C",
-    pbt: "7.000 kg",
-    cargaUtil: "4.520 kg",
-    potencia: "150 cv",
-    torque: "400 Nm",
-    motor: "Cummins F2.5",
-    plataforma: "4,20 m",
-    cambio: "ZF 5 marchas · manual ou automatizada*",
-    chassi: "Entre-eixos 3.360 mm",
-    versoes: "Padrão e Plus (câmera 360°, alerta de ponto cego, sensor de fadiga, central 10”)",
-    cabineNova: true,
-    aplicacoes: ["Distribuição urbana e regional", "Atacado e bebidas", "Mudanças e logística", "Frotas de entrega"],
-    destaques: [
-      "Freio a ar — raridade no segmento de 7 t",
-      "Controle de cruzeiro (ACC) de série",
-      "Cabine nova: a mesma do S315, com interior atualizado",
-    ],
-    waMsg: "Olá! Quero saber mais sobre o Foton Aumark S715 (7 toneladas).",
-  },
-  {
-    id: "s916",
-    nome: "Aumark S916",
-    numero: "916",
-    tagline: "A tara mais leve. A conta que fecha.",
-    descricao:
-      "Peso em ordem de marcha de 2.979 kg — tara baixa que vira carga paga: 6.021 kg de capacidade para carga + carroceria, com motor Cummins F3.8 e freio-motor EAT.",
-    foto: eagleEyeCarroceria,
-    fotoAlt: "Foton Aumark S916 — caminhão 9 toneladas com carroceria",
-    galeria: [
-      { src: aumarkMotorVertical, alt: "Motor Cummins F3.8 no chassi do Aumark" },
-      { src: eagleEyeBasculante, alt: "Aumark S916 com implemento basculante" },
-    ],
-    rota: "/modelos/aumark-916",
-    cnh: "C",
-    pbt: "9.000 kg",
-    cargaUtil: "6.021 kg",
-    potencia: "160 cv",
-    torque: "500 Nm",
-    motor: "Cummins F3.8",
-    plataforma: "5,14 m",
-    cambio: "ZF 6 marchas · manual ou automatizada*",
-    chassi: "Entre-eixos 3.800 mm",
-    versoes: "Padrão e Plus (câmera 360°, alerta de ponto cego, sensor de fadiga, central 10”)",
-    cabineNova: true,
-    aplicacoes: ["Distribuição regional", "Frigorífico e cadeia fria", "Bebidas e atacado", "Basculante e construção"],
-    destaques: [
-      "Tara baixa — carrega mais do que a concorrência do segmento",
-      "Freio-motor EAT para descidas com segurança",
-      "Motor Cummins F3.8 com 500 Nm de torque",
-    ],
-    waMsg: "Olá! Quero saber mais sobre o Foton Aumark S916 (9 toneladas).",
-  },
-  {
-    id: "s1217",
-    nome: "Aumark S1217",
-    numero: "1217",
-    tagline: "Mais carga por viagem. Menos viagens por dia.",
-    descricao:
-      "O topo da linha: até 8.326 kg de carga + carroceria e plataforma de até 6,15 m. Cummins F3.8 de 170 cv e 600 Nm para rota cheia, o dia inteiro.",
-    foto: foton1217,
-    fotoAlt: "Foton Aumark S1217 — caminhão 12 toneladas",
-    galeria: [
-      { src: aumark1217Carroceria, alt: "Aumark S1217 com carroceria aberta" },
-      { src: aumark1217Estrada, alt: "Aumark S1217 na estrada" },
-    ],
-    rota: "/modelos/aumark-1217",
-    cnh: "C",
-    pbt: "11.500 kg",
-    cargaUtil: "até 8.326 kg",
-    potencia: "170 cv",
-    torque: "600 Nm",
-    motor: "Cummins F3.8",
-    plataforma: "5,14 a 6,15 m",
+      "PBT de 16 toneladas com 11.375 kg de capacidade para carga + carroceria — margem rara no segmento. Cummins F4.5 de 820 Nm e itens de segurança que os concorrentes cobram à parte.",
+    foto: auman1722Frontal,
+    fotoAlt: "Foton Auman D 1722 — caminhão semipesado 16 toneladas",
+    rota: "/modelos/auman-d-1722",
+    eixos: "4x2",
+    pbt: "16.000 kg",
+    cargaUtil: "até 11.375 kg",
+    potencia: "220 cv",
+    torque: "820 Nm",
+    motor: "Cummins F4.5",
+    plataforma: "até 6,80 m",
     cambio: "ZF 6 marchas · manual",
-    chassi: "2 opções de entre-eixos: B (3.800 mm) e A (4.500 mm, plataforma de 6,15 m)",
-    versoes: "Versão única completa (central multimídia com câmera de ré opcional)",
-    cabineNova: false,
-    aplicacoes: ["Rotas de maior volume", "Basculante e mineração leve", "Bebidas e grandes atacados", "Transportadoras"],
-    destaques: [
-      "600 Nm de torque — o mais forte da linha",
-      "Plataforma de até 6,15 m para carrocerias grandes",
-      "Freio-motor EAT e freios a ar com ABS + ASR + ESC",
+    chassi: "Versão A (entre-eixos 4.200 mm, tanque 260 L) e Versão B (entre-eixos 5.150 mm, tanque 450 L)",
+    versoes: "A e B — muda o entre-eixos e o tanque, o resto é completo de série",
+    galeria: [
+      { src: auman1722Lateral, alt: "Auman D 1722 — vista lateral" },
+      { src: auman1722Traseira, alt: "Auman D 1722 — vista traseira" },
     ],
-    waMsg: "Olá! Quero saber mais sobre o Foton Aumark S1217 (12 toneladas).",
+    aplicacoes: ["Distribuição pesada", "Frete regional", "Bebidas e atacado", "Grandes mudanças"],
+    destaques: [
+      "820 Nm de torque — sobe serra carregado sem drama",
+      "Detecção de ponto cego (BSD) + TPMS de série",
+      "Freio de ar de circuito duplo com ESC + freio-motor EAT",
+    ],
+    waMsg: "Olá! Quero saber mais sobre o Foton Auman D 1722 (16 toneladas).",
+  },
+  {
+    id: "d1830",
+    nome: "Auman D 1830",
+    numero: "1830",
+    tagline: "Automatizado de série. Semileito de série.",
+    descricao:
+      "Cummins D6.7 de 6 cilindros com 1.100 Nm e câmbio ZF de 9 marchas AUTOMATIZADO com conversor de torque. O motorista dirige descansado — e a cabine com semileito deixa ele dormir no frete.",
+    foto: aumanD1830Hero,
+    fotoAlt: "Foton Auman D 1830 — caminhão semipesado com câmbio automatizado",
+    rota: "/modelos/auman-d-1830",
+    eixos: "4x2",
+    pbt: "16.000 kg",
+    cargaUtil: "10.360 kg",
+    potencia: "282 cv",
+    torque: "1.100 Nm",
+    motor: "Cummins D6.7",
+    plataforma: "6,67 m",
+    cambio: "ZF 9 marchas · automatizada (conversor de torque)",
+    chassi: "Entre-eixos 5.150 mm · tanque de alumínio 260 L ou 450 L",
+    versoes: "Única e completa — semileito, AC automático, banco pneumático, painel LCD 7”",
+    galeria: [
+      { src: aumanSemileitoInterior, alt: "Cabine do Auman D — semileito de série" },
+      { src: aumanD1830Lateral, alt: "Auman D 1830 — vista lateral do chassi" },
+    ],
+    aplicacoes: ["Rota regional e longa", "Distribuição pesada", "Frigorífico", "Graneleiro"],
+    destaques: [
+      "Câmbio ZF automatizado — adeus pedal de embreagem no trânsito",
+      "Cabine com semileito de série — o motorista descansa de verdade",
+      "1.100 Nm já a 1.100 rpm — força em rotação baixa, diesel poupado",
+    ],
+    waMsg: "Olá! Quero saber mais sobre o Foton Auman D 1830 (automatizado).",
+  },
+  {
+    id: "d2632",
+    nome: "Auman D 2632",
+    numero: "2632",
+    tagline: "O 6x2 da suspensão a ar. Até 15,6 t por viagem.",
+    descricao:
+      "PBT técnico de 26 toneladas, 15.630 kg para carga + carroceria e plataforma de até 8,20 m na versão L. Suspensão traseira a ar com 3º eixo elevável de série — sem upgrade pago.",
+    foto: auman2632Frontal,
+    fotoAlt: "Foton Auman D 2632 — caminhão 6x2 26 toneladas",
+    rota: "/modelos/auman-d-2632",
+    eixos: "6x2",
+    pbt: "23.000 kg",
+    cargaUtil: "até 15.630 kg",
+    potencia: "320 cv",
+    torque: "1.200 Nm",
+    motor: "Cummins D6.7",
+    plataforma: "7,55 a 8,20 m",
+    cambio: "ZF 9 marchas · automatizada (conversor de torque)",
+    chassi: "2632 (entre-eixos 4.800+1.350 mm, plataforma 7,55 m) e 2632 L (5.450+1.350 mm, plataforma 8,20 m)",
+    versoes: "2632 e 2632 L — semileito de série, farol de neblina, aviso de sobrecarga",
+    galeria: [
+      { src: auman2632Chassi6x2, alt: "Chassi 6x2 do Auman D 2632 — eixos traseiros" },
+      { src: aumanD2632SuspensaoAr, alt: "Suspensão a ar do Auman D 2632" },
+    ],
+    aplicacoes: ["Grandes volumes", "Graneleiro", "Bebidas", "Basculante e construção"],
+    destaques: [
+      "Suspensão a ar 2+2+1 com 3º eixo elevável — de série",
+      "15.630 kg de carga + carroceria e PBTC de 36 toneladas",
+      "ZF automatizada com conversor de torque — arranque suave, sempre",
+    ],
+    waMsg: "Olá! Quero saber mais sobre o Foton Auman D 2632 (6x2).",
   },
 ];
 
 const perfis = [
   {
-    id: "s315",
-    titulo: "“Não tenho CNH de caminhão”",
-    resposta: "Aumark S315 — dirige com CNH B",
+    id: "d1722",
+    titulo: "“Distribuição pesada, praça e região”",
+    resposta: "Auman D 1722 — 11,4 t de carga + carroceria",
   },
   {
-    id: "s715",
-    titulo: "“Entrego na cidade, o VUC ficou pequeno”",
-    resposta: "Aumark S715 — 4,5 t de carga + carroceria",
+    id: "d1830",
+    titulo: "“Estrada o dia inteiro, motorista inteiro”",
+    resposta: "Auman D 1830 — automatizado + semileito",
   },
   {
-    id: "s916",
-    titulo: "“Distribuição regional, custo por kg importa”",
-    resposta: "Aumark S916 — tara baixa, 6 t de capacidade",
-  },
-  {
-    id: "s1217",
-    titulo: "“Quero levar mais em cada viagem”",
-    resposta: "Aumark S1217 — até 8,3 t e 6,15 m de plataforma",
+    id: "d2632",
+    titulo: "“Quero o máximo por viagem”",
+    resposta: "Auman D 2632 — 6x2, até 15,6 t e 8,20 m",
   },
 ];
 
 interface LinhaComparativo {
   label: string;
-  valores: [string, string, string, string];
+  valores: [string, string, string];
   destaque?: boolean;
 }
 
@@ -251,79 +209,90 @@ const comparativo: GrupoComparativo[] = [
     linhas: [
       {
         label: "Aplicação típica",
-        valores: ["Urbano leve · last-mile", "Urbano / regional", "Distribuição regional", "Rotas de maior volume"],
+        valores: ["Distribuição pesada · regional", "Rota regional e longa", "Máximo volume por viagem"],
       },
-      { label: "CNH mínima", valores: ["B", "C", "C", "C"], destaque: true },
-      {
-        label: "Versões",
-        valores: ["Padrão · TOP", "Padrão · Plus", "Padrão · Plus", "Única (chassi A ou B)"],
-      },
+      { label: "Configuração de eixos", valores: ["4x2", "4x2", "6x2 · 3º eixo elevável"], destaque: true },
+      { label: "CNH mínima", valores: ["C", "C", "C"] },
     ],
   },
   {
     titulo: "Capacidades",
     linhas: [
-      { label: "PBT homologado", valores: ["3.500 kg", "7.000 kg", "9.000 kg", "11.500 kg"], destaque: true },
+      { label: "PBT homologado", valores: ["16.000 kg", "16.000 kg", "23.000 kg"], destaque: true },
       {
         label: "Carga útil + carroceria",
-        valores: ["até 1.160 kg", "4.520 kg", "6.021 kg", "até 8.326 kg"],
+        valores: ["até 11.375 kg", "10.360 kg", "até 15.630 kg"],
         destaque: true,
       },
-      { label: "PBT técnico", valores: ["4.800 kg", "7.500 kg", "9.800 kg", "12.000 kg"] },
-      { label: "CMT (cap. máx. de tração)", valores: ["5.000 kg", "9.000 kg", "12.000 kg", "14.000 kg"] },
+      { label: "PBT técnico", valores: ["18.700 kg", "18.000 kg", "26.000 kg"] },
+      { label: "PBTC / CMT", valores: ["—", "34.000 kg", "36.000 kg"] },
     ],
   },
   {
     titulo: "Trem de força",
     linhas: [
-      { label: "Motor", valores: ["Cummins F2.5", "Cummins F2.5", "Cummins F3.8", "Cummins F3.8"], destaque: true },
-      { label: "Cilindrada", valores: ["2.498 cm³ · 4 cil.", "2.498 cm³ · 4 cil.", "3.760 cm³ · 4 cil.", "3.760 cm³ · 4 cil."] },
-      { label: "Potência", valores: ["150 cv", "150 cv", "160 cv", "170 cv"], destaque: true },
-      { label: "Torque", valores: ["400 Nm", "400 Nm", "500 Nm", "600 Nm"], destaque: true },
+      { label: "Motor", valores: ["Cummins F4.5", "Cummins D6.7", "Cummins D6.7"], destaque: true },
+      {
+        label: "Cilindrada",
+        valores: ["4.460 cm³ · 4 cil.", "6.690 cm³ · 6 cil.", "6.690 cm³ · 6 cil."],
+      },
+      { label: "Potência", valores: ["220 cv", "282 cv", "320 cv"], destaque: true },
+      { label: "Torque", valores: ["820 Nm", "1.100 Nm", "1.200 Nm"], destaque: true },
       {
         label: "Câmbio ZF",
-        valores: ["5 marchas · man. ou aut.*", "5 marchas · man. ou aut.*", "6 marchas · man. ou aut.*", "6 marchas · manual"],
+        valores: ["6 marchas · manual", "9 marchas · AUTOMATIZADA", "9 marchas · AUTOMATIZADA"],
+        destaque: true,
       },
-      { label: "Freio-motor", valores: ["—", "—", "EAT", "EAT"] },
+      { label: "Freio-motor", valores: ["EAT", "EAT", "EAT"] },
     ],
   },
   {
     titulo: "Chassi e medidas",
     linhas: [
-      { label: "Entre-eixos", valores: ["2.800 / 3.360 mm", "3.360 mm", "3.800 mm", "3.800 / 4.500 mm"] },
+      {
+        label: "Entre-eixos",
+        valores: ["4.200 / 5.150 mm", "5.150 mm", "4.800+1.350 / 5.450+1.350 mm"],
+      },
       {
         label: "Plataforma p/ carroceria",
-        valores: ["3,61 – 4,17 m", "4,20 m", "5,14 m", "5,14 – 6,15 m"],
+        valores: ["até 6,80 m", "6,67 m", "7,55 – 8,20 m"],
         destaque: true,
       },
-      { label: "Comprimento total", valores: ["5,38 – 5,96 m", "5,96 m", "6,92 m", "6,89 – 8,00 m"] },
-      { label: "Tanque (alumínio)", valores: ["80 / 120 L", "120 L", "160 L", "160 / 200 L"] },
-      { label: "Pneus", valores: ["205/75 R16", "205/75 R17,5", "215/75 R17,5", "235/75 R17,5"] },
+      { label: "Comprimento total", valores: ["7,65 – 8,90 m", "8,90 m", "9,72 – 10,37 m"] },
+      {
+        label: "Suspensão traseira",
+        valores: ["Feixes parabólicos 4+3", "Feixes parabólicos 4+3", "A AR 2+2+1 · eixo elevável"],
+        destaque: true,
+      },
+      { label: "Tanque (alumínio)", valores: ["260 / 450 L", "260 / 450 L", "450 L"] },
+      { label: "Pneus", valores: ["275/80 R22.5", "275/80 R22.5", "295/80 R22.5"] },
     ],
   },
   {
-    titulo: "Segurança",
+    titulo: "Cabine e segurança",
     linhas: [
       {
-        label: "Freios",
+        label: "Cabine",
         valores: [
-          "A ar · disco diant. + tambor tras.",
-          "A ar · tambor",
-          "A ar · tambor + EAT",
-          "A ar · tambor + EAT",
+          "Basculamento eletrohidráulico",
+          "Semileito de série · basc. elétrico",
+          "Semileito de série · basc. elétrico",
         ],
       },
       {
-        label: "Controles eletrônicos",
-        valores: ["ABS + ASR + ESC + HSA", "ABS + ASR + ESC", "ABS + ASR + ESC", "ABS + ASR + ESC"],
+        label: "Freios",
+        valores: [
+          "Ar · circuito duplo · ESC",
+          "Ar S-Cam · ABS+EBD+ESC/TCS",
+          "Ar S-Cam · ABS+EBD+ESC/TCS",
+        ],
       },
       {
         label: "Itens de destaque",
         valores: [
-          "Airbag duplo · faróis LED · painel 7”",
-          "Cruise control · vidros elétricos",
-          "Cruise control · vidros elétricos",
-          "Cruise control · vidros elétricos",
+          "BSD + TPMS + cruise de série",
+          "Cruise · aviso de sobrecarga · LCD 7”",
+          "Idem 1830 + farol de neblina",
         ],
       },
     ],
@@ -331,15 +300,15 @@ const comparativo: GrupoComparativo[] = [
 ];
 
 const implementos = [
-  { nome: "Baú carga seca", icone: Package, compat: [true, true, true, true] },
-  { nome: "Baú refrigerado / isotérmico", icone: Snowflake, compat: [true, true, true, true] },
-  { nome: "Carroceria aberta / grade baixa", icone: Layers, compat: [true, true, true, true] },
-  { nome: "Sider (lona lateral)", icone: Container, compat: [true, true, true, true] },
-  { nome: "Basculante / caçamba", icone: Truck, compat: [true, true, true, true] },
-  { nome: "Plataforma / guincho", icone: Wrench, compat: [true, true, true, true] },
+  { nome: "Baú / Sider", icone: Package, compat: [true, true, true] },
+  { nome: "Frigorífico / isotérmico", icone: Snowflake, compat: [true, true, true] },
+  { nome: "Graneleiro / carga seca", icone: Layers, compat: [true, true, true] },
+  { nome: "Basculante / caçamba", icone: Truck, compat: [true, true, true] },
+  { nome: "Tanque / pipa", icone: Container, compat: [true, true, true] },
+  { nome: "Plataforma / guincho pesado", icone: Wrench, compat: [true, true, true] },
 ];
 
-const LinhaAumark = () => {
+const LinhaAuman = () => {
   const [perfilAtivo, setPerfilAtivo] = useState<string | null>(null);
 
   const irParaModelo = (id: string) => {
@@ -350,44 +319,43 @@ const LinhaAumark = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Linha Aumark — 315, 715, 916 e 1217 | Comparativo completo | Lavoro Foton"
-        description="Os 4 caminhões Foton Aumark lado a lado: do S315 com CNH B ao S1217 de 12 toneladas. Compare PBT, carga útil, motor Cummins, câmbio ZF, configurações e implementos. Lavoro Foton, Contagem MG."
-        path="/linha-aumark"
+        title="Linha Auman D — 1722, 1830 e 2632 | Comparativo completo | Lavoro Foton"
+        description="Os caminhões pesados Foton Auman D lado a lado: 16 a 23 toneladas de PBT, Cummins de até 1.200 Nm, câmbio ZF automatizado e semileito de série. Compare capacidades, configurações e implementos. Lavoro Foton, Contagem MG."
+        path="/linha-auman"
         jsonLd={[
           ...modelos.map((m) =>
             buildProductSchema({
               name: `Foton ${m.nome}`,
               model: m.nome,
-              category: "Caminhão leve/semileve",
+              category: "Caminhão semipesado/pesado",
               description: `${m.tagline} PBT ${m.pbt}, motor ${m.motor}, ${m.potencia} e ${m.torque}.`,
               properties: [
                 ["PBT", m.pbt],
                 ["Carga útil + carroceria", m.cargaUtil],
                 ["Motor", m.motor],
-                ["CNH", m.cnh],
+                ["Eixos", m.eixos],
               ],
             })
           ),
           buildFaqSchema([
             {
-              question: "Qual caminhão da linha Aumark pode ser dirigido com CNH B?",
+              question: "Qual Auman D tem câmbio automatizado?",
               answer:
-                "O Foton Aumark S315, com PBT de 3.500 kg — o limite da habilitação B. Os demais modelos (715, 916 e 1217) exigem CNH C.",
+                "O Auman D 1830 e o Auman D 2632 saem de fábrica com transmissão ZF de 9 marchas automatizada com conversor de torque. O Auman D 1722 usa câmbio ZF manual de 6 marchas.",
             },
             {
-              question: "Qual Aumark carrega mais?",
+              question: "Qual caminhão pesado da Foton carrega mais?",
               answer:
-                "O Aumark S1217 leva até 8.326 kg de carga + carroceria, com plataforma de até 6,15 m. Na faixa de 9 toneladas, o S916 se destaca pela tara baixa: 6.021 kg de capacidade.",
+                "O Auman D 2632 (6x2) leva até 15.630 kg de carga + carroceria, com plataforma de até 8,20 m na versão L e suspensão a ar com 3º eixo elevável de série.",
             },
             {
-              question: "A linha Aumark tem câmbio automatizado?",
+              question: "O Auman D tem cabine leito?",
               answer:
-                "Sim. Os modelos S315, S715 e S916 aceitam transmissão ZF automatizada além da manual. Consulte disponibilidade com a Lavoro Foton.",
+                "O Auman D 1830 e o 2632 têm cabine com semileito de série — item que na concorrência costuma ser opcional pago.",
             },
             {
-              question: "Quais implementos posso montar num Aumark?",
-              answer:
-                "Baú de carga seca, baú refrigerado, carroceria aberta, sider, basculante e plataforma, conforme o modelo. A Lavoro Foton dimensiona o implemento ideal para cada operação.",
+              question: "Qual CNH preciso para dirigir um Auman D?",
+              answer: "CNH categoria C — os três modelos são caminhões rígidos de carga.",
             },
           ]),
           speakableSchema,
@@ -409,24 +377,24 @@ const LinhaAumark = () => {
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div className="space-y-6 order-2 lg:order-1">
               <div className="space-y-3">
-                <img src={aumarkLogoLight} alt="Aumark" className="h-7 md:h-9 w-auto" />
+                <img src={aumanLogoLight} alt="Auman" className="h-7 md:h-9 w-auto" />
                 <p className="text-primary-light font-semibold tracking-[0.25em] text-sm md:text-base uppercase">
-                  Linha completa · 315 | 715 | 916 | 1217
+                  Linha D · 1722 | 1830 | 2632
                 </p>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold leading-[1.05]">
-                O caminhão certo é o que cabe na sua operação.
+                O pesado certo é o que cabe no seu frete.
               </h1>
               <p className="text-lg md:text-2xl text-gray-300 max-w-xl">
-                Da entrega de bairro com CNH B às 8 toneladas por viagem — quatro tamanhos, um só DNA:
-                motor Cummins, câmbio ZF e 3 anos de garantia sem limite de km.
+                De 16 a 23 toneladas de PBT: Cummins de até 1.200 Nm, câmbio ZF automatizado e
+                semileito de série — pra rodar longe e voltar inteiro.
               </p>
               <p className="text-primary-light font-semibold text-lg">
                 Foton por dentro. Lavoro por perto.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Button
-                  onClick={() => window.open(wa("Olá! Quero conhecer a linha Aumark (315, 715, 916 e 1217)."), "_blank")}
+                  onClick={() => window.open(wa("Olá! Quero conhecer a linha Auman D (1722, 1830 e 2632)."), "_blank")}
                   size="lg"
                   className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-8 py-6 h-auto"
                 >
@@ -439,27 +407,27 @@ const LinhaAumark = () => {
                   variant="outline"
                   className="border-white/40 text-white text-lg px-8 py-6 h-auto bg-white/5 hover:bg-white/15"
                 >
-                  Comparar os 4 modelos
+                  Comparar os 3 modelos
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-4 text-sm text-gray-400">
                 <span className="flex items-center gap-2">
-                  <img src={cumminsLogo} alt="Cummins" className="h-6 object-contain" /> Motor Cummins de série
+                  <img src={cumminsLogo} alt="Cummins" className="h-6 object-contain" /> Cummins 6 cilindros
                 </span>
                 <span className="flex items-center gap-2">
-                  <img src={zfLogo} alt="ZF" className="h-6 object-contain" /> Câmbio ZF
+                  <img src={zfLogo} alt="ZF" className="h-6 object-contain" /> ZF automatizada
                 </span>
                 <span className="flex items-center gap-2">
-                  <img src={garantia3AnosIcon} alt="Garantia 3 anos" className="h-6 object-contain" /> 3 anos sem limite de km
+                  <BedDouble className="h-5 w-5 text-primary-light" /> Semileito de série
                 </span>
               </div>
             </div>
             <div className="order-1 lg:order-2">
               <div className="relative w-full rounded-2xl overflow-hidden shadow-[var(--shadow-premium)]">
                 <img
-                  src={heroChassiNovo}
-                  alt="Chassi Foton Aumark — nova cabine"
+                  src={aumanHeroStudio}
+                  alt="Chassi Foton Auman D — vista 3/4"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -494,10 +462,10 @@ const LinhaAumark = () => {
               Configurações
             </button>
             <Link
-              to="/linha-auman"
+              to="/linha-aumark"
               className="shrink-0 px-4 py-2 rounded-full text-sm font-semibold border border-border hover:border-primary hover:text-primary transition-colors"
             >
-              Linha Auman D →
+              Linha Aumark →
             </Link>
           </div>
         </div>
@@ -506,14 +474,14 @@ const LinhaAumark = () => {
       {/* SELETOR POR PERFIL */}
       <section className="py-14 md:py-20 bg-secondary/60">
         <div className="container mx-auto px-4">
-          <img src={aumarkLogoDark} alt="Aumark" className="h-6 md:h-8 w-auto mx-auto mb-4 opacity-80" />
+          <img src={aumanLogoDark} alt="Auman" className="h-6 md:h-8 w-auto mx-auto mb-4 opacity-80" />
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-3">
-            Qual Aumark é o <span className="text-primary">seu</span>?
+            Qual Auman D é o <span className="text-primary">seu</span>?
           </h2>
           <p className="text-center text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
-            Comece pela sua operação. O caminhão vem em seguida.
+            Comece pelo frete. O caminhão vem em seguida.
           </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {perfis.map((p) => (
               <button
                 key={p.id}
@@ -533,7 +501,7 @@ const LinhaAumark = () => {
         </div>
       </section>
 
-      {/* OS 4 MODELOS */}
+      {/* OS 3 MODELOS */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 space-y-16 md:space-y-24">
           {modelos.map((m, i) => (
@@ -550,11 +518,11 @@ const LinhaAumark = () => {
                     <img src={m.foto} alt={m.fotoAlt} className="absolute inset-0 w-full h-full object-cover" />
                     <div className="absolute top-4 left-4 flex gap-2">
                       <span className="bg-industrial-dark/85 text-white text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">
-                        CNH {m.cnh}
+                        {m.eixos}
                       </span>
-                      {m.cabineNova && (
+                      {m.cambio.includes("automatizada") && (
                         <span className="bg-primary text-primary-foreground text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">
-                          Nova cabine
+                          ZF automatizada
                         </span>
                       )}
                     </div>
@@ -570,7 +538,7 @@ const LinhaAumark = () => {
                 <div className="p-7 md:p-10 [direction:ltr] relative">
                   <span
                     aria-hidden
-                    className="absolute -top-2 right-4 text-[7rem] md:text-[9rem] font-bold leading-none text-foreground/[0.04] select-none pointer-events-none"
+                    className="absolute -top-2 right-4 text-[6rem] md:text-[8rem] font-bold leading-none text-foreground/[0.04] select-none pointer-events-none"
                   >
                     {m.numero}
                   </span>
@@ -646,23 +614,25 @@ const LinhaAumark = () => {
       <section id="comparativo" className="scroll-mt-14 py-16 md:py-24 bg-industrial-dark text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-3">
-            Os quatro, <span className="text-primary-light">lado a lado</span>
+            Os três, <span className="text-primary-light">lado a lado</span>
           </h2>
           <p className="text-center text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
             Dados das fichas técnicas oficiais Foton do Brasil.
           </p>
 
-          <div className="max-w-6xl mx-auto overflow-x-auto rounded-2xl border border-white/10">
-            <table className="w-full min-w-[760px] text-sm md:text-base border-collapse">
+          <div className="max-w-5xl mx-auto overflow-x-auto rounded-2xl border border-white/10">
+            <table className="w-full min-w-[680px] text-sm md:text-base border-collapse">
               <thead>
                 <tr className="bg-white/[0.06]">
                   <th className="sticky left-0 bg-industrial-dark md:bg-transparent text-left p-4 min-w-[180px]">
-                    <img src={aumarkLogoLight} alt="Linha Aumark" className="h-5 md:h-6 w-auto" />
+                    <img src={aumanLogoLight} alt="Linha Auman" className="h-5 md:h-6 w-auto" />
                   </th>
                   {modelos.map((m) => (
-                    <th key={m.id} className="p-4 text-center min-w-[150px]">
+                    <th key={m.id} className="p-4 text-center min-w-[160px]">
                       <span className="block text-2xl md:text-3xl font-bold text-primary-light">{m.numero}</span>
-                      <span className="block text-xs text-gray-400 font-normal mt-1">PBT {m.pbt}</span>
+                      <span className="block text-xs text-gray-400 font-normal mt-1">
+                        {m.eixos} · PBT {m.pbt}
+                      </span>
                     </th>
                   ))}
                 </tr>
@@ -671,7 +641,7 @@ const LinhaAumark = () => {
                 {comparativo.map((grupo) => (
                   <Fragment key={grupo.titulo}>
                     <tr className="bg-primary/15">
-                      <td colSpan={5} className="p-3 pl-4 font-bold uppercase tracking-widest text-xs text-primary-light">
+                      <td colSpan={4} className="p-3 pl-4 font-bold uppercase tracking-widest text-xs text-primary-light">
                         {grupo.titulo}
                       </td>
                     </tr>
@@ -692,16 +662,16 @@ const LinhaAumark = () => {
                 ))}
                 <tr className="border-t border-white/[0.06] bg-primary/10">
                   <td className="sticky left-0 bg-industrial-dark p-4 font-medium text-gray-300">Garantia</td>
-                  <td colSpan={4} className="p-4 text-center font-bold text-primary-light">
-                    <ShieldCheck className="inline h-5 w-5 mr-2 -mt-1" />3 anos de garantia — sem limite de quilometragem
+                  <td colSpan={3} className="p-4 text-center font-bold text-primary-light">
+                    <ShieldCheck className="inline h-5 w-5 mr-2 -mt-1" />3 anos — motor e câmbio sem limite de quilometragem*
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p className="text-center text-gray-500 text-xs mt-4 max-w-3xl mx-auto">
-            *Câmbio automatizado ZF e versões TOP/Plus: disponibilidade conforme lote de produção — confirme com nosso
-            time. Pesos e medidas podem variar com itens opcionais (tolerância ±3%, NBR ISO 1176).
+            *Auman D 1830 e 2632: o 1º ano cobre o veículo completo; motor e câmbio seguem cobertos até o 3º ano, sempre
+            sem limite de km. Pesos e medidas podem variar com itens opcionais (tolerância ±3%, NBR ISO 1176).
           </p>
         </div>
       </section>
@@ -713,12 +683,13 @@ const LinhaAumark = () => {
             O que entra em <span className="text-primary">cada modelo</span>
           </h2>
           <p className="text-center text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
-            Chassi, câmbio, versões e implementos: a linha Aumark se monta em volta da sua carga.
+            Os três aceitam os principais implementos rodoviários — o que muda é a escala: plataforma de 6,7 a 8,2 m e
+            carga de 10,4 a 15,6 toneladas.
           </p>
 
           {/* Matriz de implementos */}
-          <div className="max-w-5xl mx-auto overflow-x-auto rounded-2xl border border-border shadow-[var(--shadow-card)] mb-14">
-            <table className="w-full min-w-[640px] border-collapse text-sm md:text-base">
+          <div className="max-w-4xl mx-auto overflow-x-auto rounded-2xl border border-border shadow-[var(--shadow-card)] mb-14">
+            <table className="w-full min-w-[560px] border-collapse text-sm md:text-base">
               <thead>
                 <tr className="bg-secondary">
                   <th className="text-left p-4 font-semibold min-w-[220px]">Implemento</th>
@@ -752,7 +723,7 @@ const LinhaAumark = () => {
           </div>
 
           {/* Cards de configuração por modelo */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-14">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-14">
             {modelos.map((m) => (
               <div key={m.id} className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-[var(--shadow-card)]">
                 <div className="flex items-center gap-3 mb-4">
@@ -777,25 +748,31 @@ const LinhaAumark = () => {
             ))}
           </div>
 
-          {/* Fotos de aplicações reais */}
+          {/* Fotos de detalhes que vendem */}
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <figure className="rounded-2xl overflow-hidden border border-border bg-industrial-dark">
+            <figure className="rounded-2xl overflow-hidden border border-border">
               <div className="aspect-[4/3]">
-                <img src={aumarkBauLateral} alt="Aumark com baú de carga seca" className="w-full h-full object-contain p-4" />
+                <img src={aumanD2632SuspensaoAr} alt="Suspensão a ar com 3º eixo elevável" className="w-full h-full object-cover" />
               </div>
-              <figcaption className="p-4 text-sm text-center text-white/80">Baú de carga seca — o clássico da distribuição</figcaption>
+              <figcaption className="p-4 text-sm text-center text-muted-foreground flex items-center justify-center gap-2">
+                <Wind className="h-4 w-4 text-primary" /> Suspensão a ar 2+2+1 — 3º eixo que sobe vazio (2632)
+              </figcaption>
             </figure>
             <figure className="rounded-2xl overflow-hidden border border-border">
               <div className="aspect-[4/3]">
-                <img src={aumark1217Carroceria} alt="Aumark 1217 com carroceria aberta" className="w-full h-full object-cover" />
+                <img src={aumanD2632SemiLeito} alt="Cabine com semileito de série" className="w-full h-full object-cover" />
               </div>
-              <figcaption className="p-4 text-sm text-center text-muted-foreground">Carroceria aberta — versatilidade pra qualquer carga</figcaption>
+              <figcaption className="p-4 text-sm text-center text-muted-foreground flex items-center justify-center gap-2">
+                <BedDouble className="h-4 w-4 text-primary" /> Semileito de série — motorista descansado rende mais
+              </figcaption>
             </figure>
             <figure className="rounded-2xl overflow-hidden border border-border">
               <div className="aspect-[4/3]">
-                <img src={aumarkCabineBasculada} alt="Cabine basculante do Aumark" className="w-full h-full object-cover" />
+                <img src={aumanD2632Tanque} alt="Tanque de combustível em alumínio" className="w-full h-full object-cover" />
               </div>
-              <figcaption className="p-4 text-sm text-center text-muted-foreground">Cabine basculante — manutenção rápida, caminhão na rua</figcaption>
+              <figcaption className="p-4 text-sm text-center text-muted-foreground">
+                Tanque de alumínio até 450 L — mais autonomia, menos parada
+              </figcaption>
             </figure>
           </div>
           <p className="text-center text-muted-foreground text-xs mt-6 max-w-3xl mx-auto">
@@ -809,28 +786,28 @@ const LinhaAumark = () => {
       <section className="py-16 md:py-24 bg-secondary/60">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
-            Um só <span className="text-primary">DNA</span>, quatro tamanhos
+            Um só <span className="text-primary">DNA</span>, três tamanhos de frete
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <div className="bg-card border border-border rounded-2xl p-8 text-center shadow-[var(--shadow-card)]">
               <img src={cumminsLogo} alt="Cummins" className="h-12 mx-auto mb-4 object-contain" />
-              <h3 className="font-bold text-lg mb-2">Motor Cummins de série</h3>
+              <h3 className="font-bold text-lg mb-2">Cummins de série</h3>
               <p className="text-sm text-muted-foreground">
-                O motor de 1 milhão de quilômetros, em toda a linha — sem upgrade pago.
+                F4.5 e D6.7 — o motor de 1 milhão de quilômetros, em toda a linha.
               </p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-8 text-center shadow-[var(--shadow-card)]">
               <img src={zfLogo} alt="ZF" className="h-12 mx-auto mb-4 object-contain" />
-              <h3 className="font-bold text-lg mb-2">Câmbio ZF</h3>
+              <h3 className="font-bold text-lg mb-2">ZF automatizada</h3>
               <p className="text-sm text-muted-foreground">
-                Precisão alemã nas trocas — manual ou automatizado, conforme o modelo.
+                9 marchas com conversor de torque no 1830 e 2632 — de série.
               </p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-8 text-center shadow-[var(--shadow-card)]">
               <img src={garantia3AnosIcon} alt="Garantia 3 anos" className="h-12 mx-auto mb-4 object-contain" />
-              <h3 className="font-bold text-lg mb-2">3 anos sem limite de km</h3>
+              <h3 className="font-bold text-lg mb-2">3 anos motor e câmbio</h3>
               <p className="text-sm text-muted-foreground">
-                Rode o quanto a operação pedir. A garantia acompanha.
+                Sem limite de quilometragem. Rode o quanto o frete pedir.
               </p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-8 text-center shadow-[var(--shadow-card)]">
@@ -840,7 +817,7 @@ const LinhaAumark = () => {
               </div>
               <h3 className="font-bold text-lg mb-2">Componentes globais</h3>
               <p className="text-sm text-muted-foreground">
-                Bosch e Dana por dentro: peça conhecida, mecânico tranquilo.
+                Bosch e Dana por dentro: peça conhecida, oficina tranquila.
               </p>
             </div>
           </div>
@@ -852,23 +829,23 @@ const LinhaAumark = () => {
 
       {/* CTA FINAL */}
       <section className="relative text-white overflow-hidden">
-        <img src={aumark1217Estrada} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-industrial-dark/80" />
+        <img src={auman2632Chassi6x2} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-industrial-dark/85" />
         <div className="container mx-auto px-4 py-20 md:py-28 relative">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <img src={aumarkLogoLight} alt="Aumark" className="h-8 md:h-10 w-auto mx-auto" />
-            <h2 className="text-3xl md:text-5xl font-bold">Qual número faz sentido pra você: 315, 715, 916 ou 1217?</h2>
+            <img src={aumanLogoLight} alt="Auman" className="h-8 md:h-10 w-auto mx-auto" />
+            <h2 className="text-3xl md:text-5xl font-bold">Qual número puxa o seu frete: 1722, 1830 ou 2632?</h2>
             <p className="text-lg md:text-xl text-gray-300">
-              Conte a sua operação pra gente. A resposta vem com caminhão, implemento e conta feita.
+              Conte a sua rota pra gente. A resposta vem com caminhão, implemento e conta feita.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
               <Button
-                onClick={() => window.open(wa("Olá! Quero ajuda para escolher o Aumark ideal para a minha operação."), "_blank")}
+                onClick={() => window.open(wa("Olá! Quero ajuda para escolher o Auman D ideal para o meu frete."), "_blank")}
                 size="lg"
                 className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-10 py-6 h-auto"
               >
                 <MessageSquare className="mr-2 h-5 w-5" />
-                Escolher meu Aumark no WhatsApp
+                Escolher meu Auman no WhatsApp
               </Button>
               <Button
                 asChild
@@ -891,4 +868,4 @@ const LinhaAumark = () => {
   );
 };
 
-export default LinhaAumark;
+export default LinhaAuman;

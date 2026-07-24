@@ -41,6 +41,7 @@ import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ComparativoAumark1217 from "./pages/ComparativoAumark1217";
 import LinhaAumark from "./pages/LinhaAumark";
+import LinhaAuman from "./pages/LinhaAuman";
 import CalculadoraROI from "./pages/CalculadoraROI";
 import EWonderLanding from "./pages/EWonderLanding";
 import HomeV2 from "./pages/HomeV2";
@@ -130,6 +131,7 @@ const App = () => (
             <Route path="/consorcio" element={<Consorcio />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/linha-aumark" element={<LinhaAumark />} />
+            <Route path="/linha-auman" element={<LinhaAuman />} />
             <Route path="/comparativo-aumark-1217" element={<ComparativoAumark1217 />} />
             <Route path="/calculadora-roi" element={<CalculadoraROI />} />
             <Route path="/comparativo-ewonder" element={<EWonderLanding />} />

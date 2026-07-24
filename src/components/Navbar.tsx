@@ -7,6 +7,7 @@ import logo from "@/assets/logo-foton-lavoro-transparente.png";
 
 const modelosDiesel = [
   { label: "Linha Aumark — visão geral", to: "/linha-aumark" },
+  { label: "Linha Auman D — visão geral", to: "/linha-auman" },
   { label: "Aumark S315", to: "/modelos/aumark-s315" },
   { label: "Aumark 715", to: "/modelos/aumark-715" },
   { label: "Aumark 916", to: "/modelos/aumark-916" },
