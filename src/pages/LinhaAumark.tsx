@@ -40,6 +40,11 @@ import danaLogo from "@/assets/dana-logo-icon.png";
 import garantia3AnosIcon from "@/assets/garantia-3anos-foton.png";
 import aumarkLogoLight from "@/assets/aumark-logo-light.png";
 import aumarkLogoDark from "@/assets/aumark-logo-dark.png";
+import aumarkChassiLateralNovo from "@/assets/aumark-chassi-lateral-novo.webp";
+import aumarkFrontalNovo from "@/assets/aumark-frontal-novo.webp";
+import aumarkMotorVertical from "@/assets/aumark-motor-cummins-vertical.webp";
+import aumarkMotorExposto from "@/assets/aumark-motor-cummins-exposto.webp";
+import eagleEyeBasculante from "@/assets/aumark-eagle-eye-basculante.jpg";
 
 const WHATSAPP = "5531997966042";
 const wa = (msg: string) =>
@@ -65,6 +70,7 @@ interface ModeloAumark {
   chassi: string;
   versoes: string;
   cabineNova: boolean;
+  galeria: { src: string; alt: string }[];
   aplicacoes: string[];
   destaques: string[];
   waMsg: string;
@@ -78,8 +84,12 @@ const modelos: ModeloAumark[] = [
     tagline: "O caminhão da CNH B.",
     descricao:
       "Parece caminhão porque é caminhão — chassi, rodado duplo e motor Cummins. A diferença: com PBT de 3.500 kg, você dirige com a habilitação que já tem.",
-    foto: aumarkS315Hero,
+    foto: aumarkFrontalNovo,
     fotoAlt: "Foton Aumark S315 — caminhão urbano com CNH B",
+    galeria: [
+      { src: aumarkMotorExposto, alt: "Motor Cummins do Aumark exposto no chassi" },
+      { src: aumarkS315Hero, alt: "Aumark S315 em operação urbana" },
+    ],
     rota: "/modelos/aumark-s315",
     cnh: "B",
     pbt: "3.500 kg",
@@ -107,8 +117,12 @@ const modelos: ModeloAumark[] = [
     tagline: "Sete toneladas com jeito de cidade.",
     descricao:
       "O passo acima do VUC: 4.520 kg de carga + carroceria num caminhão ágil, com a mesma cabine nova do S315 e controle de cruzeiro de série.",
-    foto: eagleEyeExt,
-    fotoAlt: "Foton Aumark S715 — caminhão 7 toneladas cabine nova",
+    foto: aumarkChassiLateralNovo,
+    fotoAlt: "Foton Aumark S715 — chassi 7 toneladas cabine nova",
+    galeria: [
+      { src: heroChassiNovo, alt: "Aumark cabine nova — vista 3/4 do chassi" },
+      { src: eagleEyeExt, alt: "Aumark S715 rodando na cidade" },
+    ],
     rota: "/modelos/aumark-715",
     cnh: "C",
     pbt: "7.000 kg",
@@ -138,6 +152,10 @@ const modelos: ModeloAumark[] = [
       "Peso em ordem de marcha de 2.979 kg — tara baixa que vira carga paga: 6.021 kg de capacidade para carga + carroceria, com motor Cummins F3.8 e freio-motor EAT.",
     foto: eagleEyeCarroceria,
     fotoAlt: "Foton Aumark S916 — caminhão 9 toneladas com carroceria",
+    galeria: [
+      { src: aumarkMotorVertical, alt: "Motor Cummins F3.8 no chassi do Aumark" },
+      { src: eagleEyeBasculante, alt: "Aumark S916 com implemento basculante" },
+    ],
     rota: "/modelos/aumark-916",
     cnh: "C",
     pbt: "9.000 kg",
@@ -167,6 +185,10 @@ const modelos: ModeloAumark[] = [
       "O topo da linha: até 8.326 kg de carga + carroceria e plataforma de até 6,15 m. Cummins F3.8 de 170 cv e 600 Nm para rota cheia, o dia inteiro.",
     foto: foton1217,
     fotoAlt: "Foton Aumark S1217 — caminhão 12 toneladas",
+    galeria: [
+      { src: aumark1217Carroceria, alt: "Aumark S1217 com carroceria aberta" },
+      { src: aumark1217Estrada, alt: "Aumark S1217 na estrada" },
+    ],
     rota: "/modelos/aumark-1217",
     cnh: "C",
     pbt: "11.500 kg",
@@ -312,9 +334,9 @@ const implementos = [
   { nome: "Baú carga seca", icone: Package, compat: [true, true, true, true] },
   { nome: "Baú refrigerado / isotérmico", icone: Snowflake, compat: [true, true, true, true] },
   { nome: "Carroceria aberta / grade baixa", icone: Layers, compat: [true, true, true, true] },
-  { nome: "Sider (lona lateral)", icone: Container, compat: [false, true, true, true] },
-  { nome: "Basculante / caçamba", icone: Truck, compat: [false, true, true, true] },
-  { nome: "Plataforma / guincho", icone: Wrench, compat: [false, true, true, true] },
+  { nome: "Sider (lona lateral)", icone: Container, compat: [true, true, true, true] },
+  { nome: "Basculante / caçamba", icone: Truck, compat: [true, true, true, true] },
+  { nome: "Plataforma / guincho", icone: Wrench, compat: [true, true, true, true] },
 ];
 
 const LinhaAumark = () => {
@@ -517,17 +539,26 @@ const LinhaAumark = () => {
               }`}
             >
               <div className={`grid lg:grid-cols-2 ${i % 2 === 1 ? "lg:[direction:rtl]" : ""}`}>
-                <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[460px] [direction:ltr]">
-                  <img src={m.foto} alt={m.fotoAlt} className="absolute inset-0 w-full h-full object-cover" />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="bg-industrial-dark/85 text-white text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">
-                      CNH {m.cnh}
-                    </span>
-                    {m.cabineNova && (
-                      <span className="bg-primary text-primary-foreground text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">
-                        Nova cabine
+                <div className="[direction:ltr] flex flex-col">
+                  <div className="relative flex-1 aspect-[4/3] lg:aspect-auto lg:min-h-[380px]">
+                    <img src={m.foto} alt={m.fotoAlt} className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <span className="bg-industrial-dark/85 text-white text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">
+                        CNH {m.cnh}
                       </span>
-                    )}
+                      {m.cabineNova && (
+                        <span className="bg-primary text-primary-foreground text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">
+                          Nova cabine
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-0.5 bg-border">
+                    {m.galeria.map((g) => (
+                      <div key={g.alt} className="h-28 md:h-40 overflow-hidden">
+                        <img src={g.src} alt={g.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div className="p-7 md:p-10 [direction:ltr] relative">
